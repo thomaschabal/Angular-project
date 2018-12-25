@@ -1,0 +1,19 @@
+<!-- Intro -->
+  <section id="intro" class="main style1 dark fullscreen">
+    <div class="content">
+      <header>
+        <h2>Les membres du Ponthé</h2>
+      </header>
+      <p>Créé par un 016, Thomas Chevrier, le Ponthé a vu se succéder des générations de cinéastes et photographes...</p>
+      <footer>
+        <a href="#p020" class="button style2 down">More</a>
+      </footer>
+    </div>
+  </section>
+
+  <app-team-ponthe-year *ngFor = "let team of team_ponthe; let i = index"
+                        [year_id] = "team.year_id"
+                        [index_placement] = "i"
+                        [year] = "team.year"
+                        [members] = "team.members"
+                        [prev_year_id] = "team.prev_year_id"></app-team-ponthe-year>

@@ -1,0 +1,9 @@
+<section id="{{ year_id }}" class="main style2 {{ placement() }} dark fullscreen">
+  <div class="content box style2">
+    <header>
+      <h2>Ponthé {{ year }}</h2>
+    </header>
+    <p *ngFor = "let poste of members">{{ poste }}</p>
+  </div>
+  <a href="{{ prev_year_id }}" class="button style2 down anchored">Next</a>
+</section>

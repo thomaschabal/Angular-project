@@ -1,0 +1,7 @@
+<!-- Main -->
+  <div id="main">
+    <app-galerie-events *ngFor = "let event of galeries_events"
+                        [name] = "event.name"
+                        [routing] = "event.routing"
+                        [image] = "event.image"></app-galerie-events>
+  </div>
