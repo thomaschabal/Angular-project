@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GaleriesService } from '../services/galeries.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-event',
@@ -12,12 +13,14 @@ export class EventComponent implements OnInit {
   pics : any[];
   resume : string;
 
-  constructor(private galeriesService : GaleriesService) { }
+  constructor(private galeriesService : GaleriesService,
+              private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.name = this.galeriesService.event_pics[5].name;
-    this.pics = this.galeriesService.event_pics[5].pics;
-    this.resume = this.galeriesService.event_pics[5].resume;
+    const selected_route = this.route.snapshot.params['event'];
+    this.name = this.galeriesService.getEventByName(selected_route).name;
+    this.pics = this.galeriesService.getEventByName(selected_route).pics;
+    this.resume = this.galeriesService.getEventByName(selected_route).resume;
   }
 
 }

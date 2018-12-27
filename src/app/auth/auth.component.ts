@@ -20,7 +20,7 @@ export class AuthComponent implements OnInit {
   onSignIn() {
     this.authService.signIn();
     this.authStatus = this.authService.isAuth;
-    this.router.navigate(['home']);
+    this.router.navigate(['/home']);
   }
 
   onSignOut() {

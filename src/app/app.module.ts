@@ -22,12 +22,16 @@ import { MembersComponent } from './members/members.component';
 import { TeamPontheYearComponent } from './team-ponthe-year/team-ponthe-year.component';
 // Material page
 import { MaterialComponent } from './material/material.component';
+// Error 404 page
+import { NotfoundComponent } from './notfound/notfound.component';
 
 // Services to import
 import { HomeService } from './services/home.service';
 import { GaleriesService } from './services/galeries.service';
 import { MembersService } from './services/members.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
+
 
 
 
@@ -45,7 +49,8 @@ import { AuthService } from './services/auth.service';
     GalerieEventsComponent,
     EventPhotoComponent,
     MaterialComponent,
-    EventComponent
+    EventComponent,
+    NotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,8 @@ import { AuthService } from './services/auth.service';
     HomeService,
     GaleriesService,
     MembersService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

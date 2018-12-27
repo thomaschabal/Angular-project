@@ -1659,7 +1659,7 @@ input, select, textarea {
 
 /* Main */
 
-html {
+	#main {
 		-moz-transition: -moz-filter 0.5s ease, -webkit-filter 0.5s ease, -ms-filter 0.5s ease, -moz-filter 0.5s ease;
 		-webkit-transition: -moz-filter 0.5s ease, -webkit-filter 0.5s ease, -ms-filter 0.5s ease, -webkit-filter 0.5s ease;
 		-ms-transition: -moz-filter 0.5s ease, -webkit-filter 0.5s ease, -ms-filter 0.5s ease, -ms-filter 0.5s ease;
@@ -1675,8 +1675,7 @@ html {
 		-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 	}
 
-
-		.thumb{
+		#main .thumb{
 			-moz-transition: opacity 1.25s ease-in-out;
 			-webkit-transition: opacity 1.25s ease-in-out;
 			-ms-transition: opacity 1.25s ease-in-out;
@@ -1688,7 +1687,7 @@ html {
 			position: relative;
 		}
 
-			.thumb:after {
+			#main .thumb:after {
 				background-image: -moz-linear-gradient(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
 				background-image: -webkit-linear-gradient(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
 				background-image: -ms-linear-gradient(to top, rgba(10,17,25,0.35) 5%, rgba(10,17,25,0) 35%);
@@ -1704,7 +1703,7 @@ html {
 				width: 100%;
 			}
 
-			.thumb > .image {
+			#main .thumb > .image {
 				-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 				background-position: center;
 				background-repeat: no-repeat;
@@ -1717,7 +1716,7 @@ html {
 				width: 100%;
 			}
 
-			.thumb > h2 {
+			#main .thumb > h2 {
 				pointer-events: none;
 				bottom: 1.875em;
 				font-size: 0.8em;
@@ -1727,11 +1726,11 @@ html {
 				z-index: 1;
 			}
 
-			.thumb > p {
+			#main .thumb > p {
 				display: none;
 			}
 
-		:after {
+		#main:after {
 			pointer-events: none;
 			-moz-transition: opacity 0.5s ease, visibility 0.5s;
 			-webkit-transition: opacity 0.5s ease, visibility 0.5s;
@@ -1750,29 +1749,29 @@ html {
 			z-index: 1;
 		}
 
-			body.ie :after {
+			body.ie #main:after {
 				background: rgba(36, 38, 41, 0.55);
 			}
 
-		body.content-active {
+		body.content-active #main {
 			-moz-filter: blur(6px);
 			-webkit-filter: blur(6px);
 			-ms-filter: blur(6px);
 			filter: blur(6px);
 		}
 
-			body.content-active :after {
+			body.content-active #main:after {
 				pointer-events: auto;
 				opacity: 1;
 				visibility: visible;
 			}
 
-		body.is-preload  .thumb {
+		body.is-preload #main .thumb {
 			pointer-events: none;
 			opacity: 0;
 		}
 
-		 .thumb {
+		#main .thumb {
 			-moz-transition-delay: 2.525s;
 			-webkit-transition-delay: 2.525s;
 			-ms-transition-delay: 2.525s;
@@ -1782,14 +1781,14 @@ html {
 			width: 25%;
 		}
 
-			 .thumb:nth-child(1) {
+			#main .thumb:nth-child(1) {
 				-moz-transition-delay: 0.65s;
 				-webkit-transition-delay: 0.65s;
 				-ms-transition-delay: 0.65s;
 				transition-delay: 0.65s;
 			}
 
-			 .thumb:nth-child(2) {
+			#main .thumb:nth-child(2) {
 				-moz-transition-delay: 0.8s;
 				-webkit-transition-delay: 0.8s;
 				-ms-transition-delay: 0.8s;

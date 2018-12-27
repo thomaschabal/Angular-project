@@ -65,7 +65,8 @@ export class GaleriesService {
               "assets/images/ski/10.jpg",
               "assets/images/ski/11.jpg"
             ],
-      resume : "Rappel des voyages effectués pendant l'année."
+      resume : "Rappel des voyages effectués pendant l'année.",
+      event : "voyage"
     },
     {
       name : "La Nuit de la Rentrée 2017",
@@ -75,7 +76,8 @@ export class GaleriesService {
               "assets/images/font2.jpg",
               "assets/images/introP.jpg"
             ],
-      resume : "La soirée inoubliable des Ponts, organisée par le Bitum et remémorée ici par les appareils du Ponthé."
+      resume : "La soirée inoubliable des Ponts, organisée par le Bitum et remémorée ici par les appareils du Ponthé.",
+      event : "ndlr2017"
     },
     {
       name : "Les sports",
@@ -87,7 +89,8 @@ export class GaleriesService {
               "assets/images/supponts.jpg",
               "assets/images/pom.jpg"
             ],
-      resume : "Images des tournois sportifs auxquels participent les Ponts (Sup'Ponts, TOSS, Coupe de l'X et bien d'autres)."
+      resume : "Images des tournois sportifs auxquels participent les Ponts (Sup'Ponts, TOSS, Coupe de l'X et bien d'autres).",
+      event : "sport"
     },
     {
       name : "Le WEI 2017",
@@ -97,7 +100,8 @@ export class GaleriesService {
               "assets/images/wei4.jpg",
               "assets/images/wei5.jpg"
             ],
-      resume : "Reportage photo en immersion au Wei des Ponts 2017 !"
+      resume : "Reportage photo en immersion au Wei des Ponts 2017 !",
+      event : "wei2017"
     },
     {
       name : "Bal des Ponts 2018",
@@ -126,7 +130,8 @@ export class GaleriesService {
               "assets/images/gala/23.jpg",
               "assets/images/gala/24.jpg"
             ],
-      resume : "Photos du concert du Bal des Ponts 2018, au Pavillon Cambon Capucines."
+      resume : "Photos du concert du Bal des Ponts 2018, au Pavillon Cambon Capucines.",
+      event : "gala2018"
     },
     {
       name : "Skult 2018",
@@ -152,7 +157,8 @@ export class GaleriesService {
               "assets/images/skult/20.JPG",
               "assets/images/skult/21.JPG"
             ],
-      resume : "Entre repas de Sushis, Fast and Curious, Buffet des Régions et Quizz des Familles, cette nouvelle édition de la Skult a été bien remplie ! A l'année prochaine pour de nouvelles aventures ;)"
+      resume : "Entre repas de Sushis, Fast and Curious, Buffet des Régions et Quizz des Familles, cette nouvelle édition de la Skult a été bien remplie ! A l'année prochaine pour de nouvelles aventures ;)",
+      event : "skult2018"
     },
     {
       name : "Dimanche des campagnes 2017",
@@ -180,7 +186,8 @@ export class GaleriesService {
               "assets/images/dim_camp_2017/22.jpg",
               "assets/images/dim_camp_2017/23.jpg"
             ],
-      resume : "Quelques images du lancement de la campagne BDE 2017, avec l'accrochage des tentures de listes et la soirée Pipoterie 020."
+      resume : "Quelques images du lancement de la campagne BDE 2017, avec l'accrochage des tentures de listes et la soirée Pipoterie 020.",
+      event : "dim_camp_2017"
     },
     {
       name : "Art aux Ponts en 2018",
@@ -200,7 +207,8 @@ export class GaleriesService {
               "assets/images/art_2018/14.jpg",
               "assets/images/art_2018/15.png"
             ],
-      resume : "L'Ecole des Ponts est très sensible aux Arts, à travers ses chansons paillardes et ses danses du Limousin, mais pas que..."
+      resume : "L'Ecole des Ponts est très sensible aux Arts, à travers ses chansons paillardes et ses danses du Limousin, mais pas que...",
+      event : "arts2018"
     },
     {
       name : "Club Rock 2018",
@@ -211,7 +219,15 @@ export class GaleriesService {
               "assets/images/rock2018/5.jpg",
               "assets/images/rock2018/6.jpg"
             ],
-      resume : "Quelques passes endiablées du club Rock qui ont marqué la vie des Ponts cette année."
+      resume : "Quelques passes endiablées du club Rock qui ont marqué la vie des Ponts cette année.",
+      event : "rock2018"
     }
-  ]
+  ];
+
+  getEventByName(event : string) {
+    const evenement = this.event_pics.find(
+      (singleEvent) => { return singleEvent.event === event }
+    );
+    return evenement;
+  }
 }

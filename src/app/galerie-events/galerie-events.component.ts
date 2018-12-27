@@ -10,7 +10,6 @@ export class GalerieEventsComponent implements OnInit {
   @Input() name : string;
   @Input() routing : string;
   @Input() image : string;
-  @Input() id : number;
 
   constructor() { }
 
