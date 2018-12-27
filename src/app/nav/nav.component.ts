@@ -17,6 +17,10 @@ export class NavComponent implements OnInit {
     this.authStatus = this.authService.isAuth;
   }
 
+  isOnline() {
+    return (this.authService.isAuth === true);
+  }
+
   onSignIn() {
     this.authService.signIn();
     this.authStatus = this.authService.isAuth;

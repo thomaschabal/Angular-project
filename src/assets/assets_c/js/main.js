@@ -3,6 +3,7 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+console.log("Test test !");
 
 (function() {
 
@@ -36,10 +37,10 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'../../../assets/images/font1.jpg': 'center',
-							'../../../assets/images/supponts.jpg': 'center',
-							'../../../assets/images/voyage1.jpg': 'center',
-              '../../../assets/images/wei.jpg': 'center'
+							'/src/assets/images/font1.jpg': 'center',
+							'/src/assets/images/supponts.jpg': 'center',
+							'/src/assets/images/voyage1.jpg': 'center',
+              '/src/assets/images/wei.jpg': 'center'
 						},
 
 					// Delay.

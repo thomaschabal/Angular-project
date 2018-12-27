@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../services/home.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +20,13 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.last_events = this.homeService.last_events;
     this.love_pics = this.homeService.love_pics;
+  }
+
+  onSubmit(form : ngForm) {
+    const name = form.value['name'];
+    const email = form.value['email'];
+    const message = form.value['message'];
+    console.log (name + ", dont le mail est " + email + ", vous dit : " + message);
   }
 
 }

@@ -9,23 +9,18 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
-  authStatus : boolean;
-
   constructor(private authService : AuthService, private router : Router) { }
 
   ngOnInit() {
-    this.authStatus = this.authService.isAuth;
   }
 
   onSignIn() {
     this.authService.signIn();
-    this.authStatus = this.authService.isAuth;
     this.router.navigate(['/home']);
   }
 
   onSignOut() {
     this.authService.signOut();
-    this.authStatus = this.authService.isAuth;
   }
 
 }

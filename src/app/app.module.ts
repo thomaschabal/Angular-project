@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 // Components to import
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -31,6 +33,7 @@ import { GaleriesService } from './services/galeries.service';
 import { MembersService } from './services/members.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -50,11 +53,14 @@ import { AuthGuard } from './services/auth-guard.service';
     EventPhotoComponent,
     MaterialComponent,
     EventComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     HomeService,

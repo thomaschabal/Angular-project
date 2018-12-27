@@ -3,21 +3,21 @@ export class HomeService {
     {
       name : "Le WEI",
       resume : "Du 29 Août au 2 Septembre dernier avait lieu le WEI des Ponts. En voici quelques souvenirs immortalisés par nos appareils.",
-      routing : "wei.html",
+      routing : "wei2017",
       event_id : "one",
       next_event_id : "#two"
     },
     {
       name : "Sup'Ponts'Héros",
       resume : "Récapitulatif de l'évènement sportif le plus marquant de l'année, qui avait lieu cette année à domicile. Supaéro n'est pas prêt de s'en remettre...",
-      routing : "sport.html",
+      routing : "sport",
       event_id : "two",
       next_event_id : "#three"
     },
     {
       name : "Les voyages",
       resume : "Les Ponts ont beaucoup voyagé cette année, de Bruxelles à Budapest en passant par Dunkerque, Super Devoluy et Amsterdam.",
-      routing : "voyages.html",
+      routing : "voyages",
       event_id : "three",
       next_event_id : "#coeur"
     }
