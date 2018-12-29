@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { HttpClientModule } from '@angular/common/http';
+
 // Components to import
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -33,7 +35,12 @@ import { GaleriesService } from './services/galeries.service';
 import { MembersService } from './services/members.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
+import { UserService } from './services/user.service';
+
+
 import { FooterComponent } from './footer/footer.component';
+import { NewAccountComponent } from './new-account/new-account.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 
@@ -54,20 +61,24 @@ import { FooterComponent } from './footer/footer.component';
     MaterialComponent,
     EventComponent,
     NotfoundComponent,
-    FooterComponent
+    FooterComponent,
+    NewAccountComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     HomeService,
     GaleriesService,
     MembersService,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
