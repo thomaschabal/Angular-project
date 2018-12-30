@@ -19,8 +19,4 @@ export class AuthComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  onSignOut() {
-    this.authService.signOut();
-  }
-
 }

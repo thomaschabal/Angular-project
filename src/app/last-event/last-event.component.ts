@@ -28,4 +28,8 @@ export class LastEventComponent implements OnInit {
     }
   }
 
+  scroll(el) {
+    el.scrollIntoView();
+  }
+
 }

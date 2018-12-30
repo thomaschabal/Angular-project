@@ -13,7 +13,6 @@ export class EventPhotoComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.adresse);
   }
 
 }

@@ -13,7 +13,7 @@ export class MembersService {
                  "Polaroid : Clémence Barillot",
                  "Respo International : Rolando Saavedra"
                 ],
-      prev_year_id : "#p019"
+      prev_year_id : "p019"
     },
     {
       year : "019",
@@ -22,7 +22,7 @@ export class MembersService {
                  "Responsable Web : Philippe Ferreira de Sousa",
                  "Membres : Francesca Carreiro, Victor Noisette, Thomas Benichou, Stephane Allado, Hugo Sénetaire, Anaïs Chopin, Louis Dumont"
                 ],
-      prev_year_id : "#p018"
+      prev_year_id : "p018"
     },
     {
       year : "018",
@@ -33,14 +33,14 @@ export class MembersService {
                  "Photons : Victor Marchais, Nicolas Thery et Aurélie Shi",
                  "Pixels : Alexandre Aheto, Felix Roubaud et Romain Durand"
                 ],
-      prev_year_id : "#p017"
+      prev_year_id : "p017"
     },
     {
       year : "017",
       year_id : "p017",
       members : ["Président : Alban Berrube",
                 ],
-      prev_year_id : "#p016"
+      prev_year_id : "p016"
     },
     {
       year : "016",
@@ -48,7 +48,7 @@ export class MembersService {
       members : ["Président : Omar Mounir Alaoui",
                  "Réalisateur : Eliot Andres"
                 ],
-      prev_year_id : "#p015"
+      prev_year_id : "p015"
     },
     {
       year : "015",
@@ -56,7 +56,7 @@ export class MembersService {
       members : ["Président : Geoffroy Gallier",
                  "Membres : Mathieu Ramananarivo, Mickael Bergem, Chanh-Nghi Lam, Paul Chabas et Paul Boosz"
                 ],
-      prev_year_id : "#"
+      prev_year_id : ""
     },
   ]
 }

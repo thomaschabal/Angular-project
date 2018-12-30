@@ -1,21 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HomeService } from '../services/home.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   last_events : any[];
   love_pics : any[];
   adresse_1 : string;
   adresse_2 : string;
   adresse_3 : string;
+  private sub : Subscription;
 
-  constructor(private homeService : HomeService) { };
+  constructor(private homeService : HomeService,
+              private activeRoute : ActivatedRoute) {
+                this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
+              };
 
   ngOnInit() {
     this.last_events = this.homeService.last_events;
@@ -28,5 +35,9 @@ export class HomeComponent implements OnInit {
     const message = form.value['message'];
     console.log (name + ", dont le mail est " + email + ", vous dit : " + message);
   }
+
+  public ngOnDestroy(): void {
+      if(this.sub) this.sub.unsubscribe();
+    }
 
 }

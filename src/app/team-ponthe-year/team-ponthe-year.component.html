@@ -5,5 +5,5 @@
     </header>
     <p *ngFor = "let poste of members">{{ poste }}</p>
   </div>
-  <a href="{{ prev_year_id }}" class="button style2 down anchored">Next</a>
+  <a routerLink="/members" fragment="{{ prev_year_id }}" class="button style2 down anchored">Next</a>
 </section>
