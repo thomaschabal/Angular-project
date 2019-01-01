@@ -1,7 +1,9 @@
+<div class="spacer"></div>
+
 <!-- Main -->
   <div id="main">
-    <app-galerie-events *ngFor = "let event of galeries_events"
-                        [name] = "event.name"
-                        [routing] = "event.routing"
-                        [image] = "event.image"></app-galerie-events>
+    <article class="thumb" *ngFor = "let event of galeries_events">
+      <a routerLink = "{{ event.routing }}"><img src="{{ event.image }}" alt="" width=100% /></a>
+      <h2><a [routerLink] = "[event.routing]">{{ event.name }}</a></h2>
+    </article>
   </div>

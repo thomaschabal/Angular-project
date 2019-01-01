@@ -36,6 +36,22 @@ export class HomeComponent implements OnInit, OnDestroy {
     console.log (name + ", dont le mail est " + email + ", vous dit : " + message);
   }
 
+  placement_events(i : number) {
+    if (i%2 === 0) {
+      return "right";
+    } else {
+      return "left";
+    }
+  }
+
+  placement(i : number) {
+    if (i%2 === 0) {
+      return "from-left";
+    } else {
+      return "from-right";
+    }
+  }
+
   public ngOnDestroy(): void {
       if(this.sub) this.sub.unsubscribe();
     }

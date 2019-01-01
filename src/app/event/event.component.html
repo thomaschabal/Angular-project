@@ -1,3 +1,5 @@
+<div class="spacer"></div>
+
 <!-- Header -->
   <header id="header">
     <h1><a routerLink = "/galeries"><strong>{{ name }}</strong></a></h1>
@@ -10,10 +12,10 @@
 
 <!-- Main -->
   <div id="main">
-    <app-event-photo *ngFor = "let picture of pics"
-                [event] = "name"
-                [adresse] = "picture">
-    </app-event-photo>
+    <article class="thumb" *ngFor = "let picture of pics">
+      <a href="{{ picture }}" class="image"><img src="{{ picture }}" alt="" /></a>
+      <h2>{{ name }}</h2>
+    </article>
   </div>
 
 <!-- Footer -->

@@ -21,7 +21,7 @@ export class HomeService {
     {
       name : "Les voyages",
       resume : "Les Ponts ont beaucoup voyagé cette année, de Bruxelles à Budapest en passant par Dunkerque, Super Devoluy et Amsterdam.",
-      routing : "voyages",
+      routing : "voyage",
       event_id : "three",
       next_event_id : "coeur"
     }

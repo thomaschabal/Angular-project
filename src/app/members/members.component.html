@@ -11,9 +11,14 @@
     </div>
   </section>
 
-  <app-team-ponthe-year *ngFor = "let team of team_ponthe; let i = index"
-                        [year_id] = "team.year_id"
-                        [index_placement] = "i"
-                        [year] = "team.year"
-                        [members] = "team.members"
-                        [prev_year_id] = "team.prev_year_id"></app-team-ponthe-year>
+  <section *ngFor = "let team of team_ponthe; let i = index"
+            id="{{ team.year_id }}"
+            class="main style2 {{ placement(i) }} dark fullscreen">
+    <div class="content box style2">
+      <header>
+        <h2>Ponthé {{ team.year }}</h2>
+      </header>
+      <p *ngFor = "let poste of team.members">{{ poste }}</p>
+    </div>
+    <a routerLink="/members" fragment="{{ team.prev_year_id }}" class="button style2 down anchored">Next</a>
+  </section>

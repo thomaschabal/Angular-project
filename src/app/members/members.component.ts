@@ -23,6 +23,14 @@ export class MembersComponent implements OnInit, OnDestroy {
     this.team_ponthe = this.membersService.team_ponthe;
   }
 
+  placement(i : number) {
+    if (i%2 === 0) {
+      return "right";
+    } else {
+      return "left";
+    }
+  }
+
   public ngOnDestroy(): void {
       if(this.sub) this.sub.unsubscribe();
     }

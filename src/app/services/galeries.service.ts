@@ -212,8 +212,8 @@ export class GaleriesService {
     },
     {
       name : "Club Rock 2018",
-      pics : ["assets/images/rock2018/1.jpg",
-              "assets/images/rock2018/2.jpg",
+      pics : ["assets/images/rock2018/1.JPG",
+              "assets/images/rock2018/2.JPG",
               "assets/images/rock2018/3.jpg",
               "assets/images/rock2018/4.jpg",
               "assets/images/rock2018/5.jpg",
