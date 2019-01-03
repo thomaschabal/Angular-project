@@ -27,6 +27,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.last_events = this.homeService.last_events;
     this.love_pics = this.homeService.love_pics;
+    this.adresse_1 = this.last_events[0].fond;
+    this.adresse_2 = this.last_events[1].fond;
+    this.adresse_3 = this.last_events[2].fond;
   }
 
   onSubmit(form : ngForm) {
@@ -44,7 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  placement(i : number) {
+  placement_love_pics(i : number) {
     if (i%2 === 0) {
       return "from-left";
     } else {

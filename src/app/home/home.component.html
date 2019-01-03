@@ -19,7 +19,7 @@
 <section *ngFor = "let event of last_events; let i = index"
           id="{{ event.event_id }}"
           class="main style2 {{ placement_events(i) }} dark fullscreen">
-  <div class="content box style2">
+  <div class="content box style2" [style.width.%]="34">
     <header>
                   <h2><a routerLink="/galeries/{{ event.routing }}">{{ event.name }}</a></h2>
     </header>
@@ -27,6 +27,7 @@
   </div>
   <a routerLink="/home" fragment="{{ event.next_event_id }}" class="button style2 down anchored">Next</a>
 </section>
+
 
 <!-- Work -->
   <section id="coeur" class="main style3 primary">
@@ -38,7 +39,7 @@
       <!-- Favorite pics  -->
         <div class="gallery">
           <article *ngFor = "let pic of love_pics; let i = index"
-                    class="{{ placement(i) }}">
+                    class="{{ placement_love_pics(i) }}">
             <a href="{{ pic.address }}" class="image fit"><img src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}" /></a>
           </article>
         </div>

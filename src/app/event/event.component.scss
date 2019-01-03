@@ -4,7 +4,7 @@
   margin-top: 8vh;
 }
 
-body {
+html, body {
 		background: #242629;
 }
 
@@ -24,13 +24,3 @@ img {
 				top: 0;
 				width: 100%;
 			}
-
-#main .thumb > h2 {
-  pointer-events: none;
-				bottom: 1.875em;
-				font-size: 0.8em;
-				left: 2.1875em;
-				margin: 0;
-				position: absolute;
-				z-index: 1;
-}

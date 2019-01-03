@@ -1909,7 +1909,7 @@ input, select, textarea {
 
 		#header a #logo
 		{
-			display : block;
+			display : inline-block;
 		  width:2.8em;
 			position : relative;
 			top : 0.5em;
