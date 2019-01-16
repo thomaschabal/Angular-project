@@ -73,7 +73,7 @@ export class HomeService {
   }
 
   getLastEvents () {
-    this.httpClient.get<any[]>('https://http-client-ponthe.firebaseio.com/last_events.json', this.last_events)
+    this.httpClient.get<any[]>('https://http-client-ponthe.firebaseio.com/last_events.json')
     .subscribe(
       (response) => { this.last_events = response; },
       (error) => { console.log('Erreur à la récupération des évènements : ' + error);}

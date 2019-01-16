@@ -23,8 +23,8 @@ const routes: Routes = [
   { path : 'galeries', component : GaleriesComponent },
   { path : 'members', component : MembersComponent },
   { path : 'material', component : MaterialComponent },
-  { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent },
-  { path : 'not-found', canActivate : [AuthGuard], component : NotfoundComponent },
+  { path : 'galeries/:event', component : EventComponent },
+  { path : 'not-found', component : NotfoundComponent },
   { path : '**', redirectTo : '/not-found' }
 ];
 

@@ -14,16 +14,11 @@ import { NavComponent } from './nav/nav.component';
 import { AuthComponent } from './auth/auth.component';
 // Home page
 import { HomeComponent } from './home/home.component';
-import { LastEventComponent } from './last-event/last-event.component';
-import { LovePicsComponent } from './love-pics/love-pics.component';
 // Galeries
 import { GaleriesComponent } from './galeries/galeries.component';
-import { GalerieEventsComponent } from './galerie-events/galerie-events.component';
-import { EventPhotoComponent } from './event-photo/event-photo.component';
 import { EventComponent } from './event/event.component';
 // Members page
 import { MembersComponent } from './members/members.component';
-import { TeamPontheYearComponent } from './team-ponthe-year/team-ponthe-year.component';
 // Material page
 import { MaterialComponent } from './material/material.component';
 // Error 404 page
@@ -53,11 +48,6 @@ import { UserListComponent } from './user-list/user-list.component';
     HomeComponent,
     GaleriesComponent,
     MembersComponent,
-    TeamPontheYearComponent,
-    LastEventComponent,
-    LovePicsComponent,
-    GalerieEventsComponent,
-    EventPhotoComponent,
     MaterialComponent,
     EventComponent,
     NotfoundComponent,
