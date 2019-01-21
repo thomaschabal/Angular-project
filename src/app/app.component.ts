@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Galeries Ponthé';
+
+  fonction(){
+    console.log("on a cliqué ici");
+  }
 }
