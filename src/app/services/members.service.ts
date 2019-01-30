@@ -4,13 +4,14 @@ export class MembersService {
       year : "020",
       year_id : "p020",
       members : ["Président : Thomas Chabal",
+                 "Vice-Présidente : Félicie Levinton",
                  "Respo Images : Quentin Spinat",
                  "Respo Matériel : Martin Graive",
                  "Respos Communication : Candice Pichon et Nathan Godey",
-                 "Chefs monteur : Wissam Alami-Messaouidi, Félicie Levinton et Jeffrey Mahou",
+                 "Chefs monteur : Wissam Alami-Messaouidi et Jeffrey Mahou",
                  "Directeur Photo : Philippe d'Harcourt",
                  "Respo Web : Alexandre Perez",
-                 "Polaroid : Clémence Barillot",
+                 "Polaroïd : Clémence Barillot",
                  "Respo International : Rolando Saavedra"
                 ],
       prev_year_id : "p019"

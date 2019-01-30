@@ -10,11 +10,22 @@
     </nav>
   </header>
 
+<div class="moderation" *ngIf = "isAdmin">
+  <button type="button" name="button">Ajouter des fichiers</button>
+  <button type="button" name="button" (click)="modere()">Modérer</button>
+  <button type="button" name="button" *ngIf = "isPublic">Rendre privée</button>
+  <button type="button" name="button" *ngIf = "!isPublic">Rendre publique</button>
+  <button type="button" name="button" *ngIf = "enModeration">Supprimer la galerie</button>
+</div>
+<div class="privee" *ngIf = "!isPublic">
+  Cette galerie est privée : elle n'est visible que par les administrateurs et son auteur.
+</div>
 <!-- Main -->
   <div id="main">
     <article class="thumb" *ngFor = "let picture of pics">
       <a href="{{ picture }}" class="image"><img src="{{ picture }}" alt="" /></a>
       <h2>{{ name }}</h2>
+      <button type="button" name="button" *ngIf = "enModeration">Supprimer</button>
     </article>
   </div>
 

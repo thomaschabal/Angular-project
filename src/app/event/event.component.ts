@@ -16,6 +16,9 @@ export class EventComponent implements OnInit, OnDestroy {
   pics : any[];
   resume : string;
   private sub : Subscription;
+  isAdmin = false;
+  isPublic = true;
+  enModeration = false;
 
   constructor(private galeriesService : GaleriesService,
               private route : ActivatedRoute,
@@ -35,4 +38,7 @@ export class EventComponent implements OnInit, OnDestroy {
       if(this.sub) this.sub.unsubscribe();
     }
 
+  modere() {
+    this.enModeration = !this.enModeration;
+  }
 }

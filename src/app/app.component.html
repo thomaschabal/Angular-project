@@ -2,16 +2,16 @@
 
 		<!-- Header -->
 		  <header id="header" >
-		    <a routerLink = '/home'><img src="assets/images/logo-ponthe.png" alt="Le Ponthé" id="logo" /></a>
-		    <h1><a routerLink = '/home'>Le Ponthé - Club audiovisuel des Ponts</a></h1>
+		    <a routerLink = '/home' (click)="fonction()"><img src="assets/images/logo-ponthe.png" alt="Le Ponthé" id="logo" /></a>
+		    <h1><a routerLink = '/home' (click)="fonction()">Le Ponthé - Club audiovisuel des Ponts</a></h1>
 
 		    <nav>
 		      <ul>
 		        <li><a routerLink = '/galeries' (click)="fonction()">Galeries</a></li>
-		        <li><a href="board.html">Tableau de bord</a></li>
-		        <li><a routerLink = '/members'>Membres</a></li>
-		        <li><a routerLink = '/material'>Matériel</a></li>
-		        <li><a routerLink = '/auth' >Déconnexion</a></li>
+		        <li><a routerLink = '/dashboard' (click)="fonction()">Tableau de bord</a></li>
+		        <li><a routerLink = '/members' (click)="fonction()">Membres</a></li>
+		        <li><a routerLink = '/material' (click)="fonction()">Matériel</a></li>
+		        <li><a routerLink = '/auth' (click)="fonction()">Déconnexion</a></li>
 		      </ul>
 		    </nav>
 		  </header>

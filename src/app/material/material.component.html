@@ -1,11 +1,11 @@
 <!-- Contact -->
-  <section id="contact" class="main style3 secondary">
+  <section id="contact" class="main style3 secondary" (mouseenter) = "survoleForm('visible')" (mouseleave) = "survoleForm('hidden')">
     <div class="content">
       <header>
         <h2>Demande de prêt de matériel du Ponthé</h2>
         <p>Remplis ce formulaire pour emprunter du matériel au Ponthé ! Explique nous rapidement ton projet afin que l'on puisse te conseiller au mieux ;)</p>
       </header>
-      <div class="box">
+      <div class="box" [@formTrigger] = "formState">
         <form (ngSubmit) = "onSubmit(form_material)" #form_material = "ngForm">
           <div class="fields">
             <div class="field half"><input type="text" name="name" ngModel placeholder="Ton nom..." required/></div>
