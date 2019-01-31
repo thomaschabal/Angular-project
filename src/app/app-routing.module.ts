@@ -16,17 +16,17 @@ import { UserListComponent } from './user-list/user-list.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path : '', component : HomeComponent },
+  { path : '', canActivate : [AuthGuard], component : HomeComponent },
   { path : 'auth', component : AuthComponent },
   { path : 'new-account', component : NewAccountComponent },
   { path : 'users', component : UserListComponent },
-  { path : 'home', component : HomeComponent },
-  { path : 'galeries', component : GaleriesComponent },
-  { path : 'dashboard', component : DashboardComponent },
-  { path : 'members', component : MembersComponent },
-  { path : 'material', component : MaterialComponent },
-  { path : 'galeries/:event', component : EventComponent },
-  { path : 'not-found', component : NotfoundComponent },
+  { path : 'home', canActivate : [AuthGuard], component : HomeComponent },
+  { path : 'galeries', canActivate : [AuthGuard], component : GaleriesComponent },
+  { path : 'dashboard', canActivate : [AuthGuard], component : DashboardComponent },
+  { path : 'members', canActivate : [AuthGuard], component : MembersComponent },
+  { path : 'material', canActivate : [AuthGuard], component : MaterialComponent },
+  { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent },
+  { path : 'not-found', canActivate : [AuthGuard], component : NotfoundComponent },
   { path : '**', redirectTo : '/not-found' }
 ];
 

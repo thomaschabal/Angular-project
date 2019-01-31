@@ -1,18 +1,20 @@
 <!-- Intro -->
   <section id="intro" class="main style1 dark fullscreen">
-    <div class="content">
+    <div class="content" (mouseenter)="survoleAdmin('visible')" (mouseleave)="survoleAdmin('hidden')">
       <header>
         <h2>Zone d'administration</h2>
       </header>
-      <button type="button" name="button">Créer une année</button><br/>
-      <button type="button" name="button">Créer un évènement</button><br/>
-      <button type="button" name="button">Créer une galerie</button><br/>
-      <button type="button" name="button">Modérer</button>
+      <div [@buttonTrigger] = "adminState">
+        <button type="button" name="button">Créer une année</button><br/><br/>
+        <button type="button" name="button">Créer un évènement</button><br/><br/>
+        <button type="button" name="button">Créer une galerie</button><br/><br/>
+        <button type="button" name="button">Modérer</button>
+      </div>
     </div>
-    <div class="content">
+    <div class="content" (mouseenter)="survoleFiles('visible')" (mouseleave)="survoleFiles('hidden')">
       <header>
         <h2>Mes fichiers</h2>
       </header>
-      <button type="button" name="button">Ajouter des fichiers</button>
+      <button type="button" name="button" [@buttonTrigger] = "filesState">Ajouter des fichiers</button>
     </div>
   </section>

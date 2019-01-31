@@ -7,28 +7,30 @@ import { Router } from '@angular/router';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
+
 export class NavComponent implements OnInit {
 
   authStatus : boolean;
 
-  constructor(private authService : AuthService, private router : Router) { }
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.authStatus = this.authService.isAuth;
+    this.authStatus = (this.authService.token !== null);
   }
 
   isOnline() {
-    return (this.authService.isAuth === true);
+    return (this.authService.token !== null);
   }
 
   onSignIn() {
-    this.authService.signIn();
-    this.authStatus = this.authService.isAuth;
+    this.authService.signIn(null);  // FIXME
+    this.authStatus = (this.authService.token !== null);
   }
 
   onSignOut() {
     this.authService.signOut();
-    this.authStatus = this.authService.isAuth;
+    this.authStatus = (this.authService.token !== null);
     this.router.navigate(['auth']);
   }
 

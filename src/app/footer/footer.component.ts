@@ -16,7 +16,7 @@ export class FooterComponent implements OnInit {
   }
 
   isOnline() {
-    return (this.authService.isAuth && (this.router.snapshot._routerState.url).search('/galeries'));
+    return ((this.authService.token !== null) && (this.router.snapshot._routerState.url).search('/galeries'));
 
   }
 

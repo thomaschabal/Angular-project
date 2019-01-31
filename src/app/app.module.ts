@@ -38,6 +38,7 @@ import { MembersService } from './services/members.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
+import { ConfigService } from './services/config.service';
 
 
 
@@ -73,7 +74,8 @@ import { UserService } from './services/user.service';
     MembersService,
     AuthService,
     AuthGuard,
-    UserService
+    UserService,
+    ConfigService
   ],
   bootstrap: [AppComponent]
 })

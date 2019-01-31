@@ -1,8 +1,35 @@
-export class AuthService {
-  isAuth = true;
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { LoggingUser } from '../models/LoggingUser.model';
+import { Injectable } from '@angular/core';
+import { ConfigService } from './config.service';
 
-  signIn(){
-    this.isAuth = true;
+@Injectable()
+export class AuthService {
+  //isAuth = false;
+  token: string;
+  apiUrl: string;
+
+  constructor(private httpClient: HttpClient,
+              private configService: ConfigService) {
+    //this.apiUrl = this.configService.load().apiUrl;
+    this.apiUrl = 'https://ponthe-testing.enpc.org';
+  }
+
+  signIn(user: LoggingUser){
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*'
+      })
+    };
+    this.httpClient.post(this.apiUrl + '/api/login', user)
+    .subscribe(
+      (res) => {
+        console.log(res);
+        this.token = res.token;
+      },
+      (error) => {console.log(error);}
+    );
+    //this.isAuth = true;
     //return new Promise (
       //(resolve, reject) => {
         //setTimeout(
@@ -16,7 +43,9 @@ export class AuthService {
   }
 
   signOut() {
-    this.isAuth = false;
+    this.token = null;
   }
+
+
 
 }
