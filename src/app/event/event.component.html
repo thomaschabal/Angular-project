@@ -3,9 +3,9 @@
 <!-- Header -->
   <header id="header">
     <h1><a routerLink = "/galeries"><strong>{{ name }}</strong></a></h1>
-    <nav>
+    <nav (click)="changeStateFooter()">
       <ul>
-        <li><a routerLink = "{{ adresse }}" fragment="footer" class="icon fa-info-circle">A propos de l'album...</a></li>
+        <li><a class="icon fa-info-circle">A propos de l'album...</a></li>
       </ul>
     </nav>
   </header>
@@ -21,8 +21,9 @@
   Cette galerie est privée : elle n'est visible que par les administrateurs et son auteur.
 </div>
 <!-- Main -->
-  <div id="main">
-    <article class="thumb" *ngFor = "let picture of pics">
+  <div id="main" (mouseenter) = "survolePics('visible')"
+                 (mouseleave) = "survolePics('hidden')">
+    <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
       <a href="{{ picture }}" class="image"><img src="{{ picture }}" alt="" /></a>
       <h2>{{ name }}</h2>
       <button type="button" name="button" *ngIf = "enModeration">Supprimer</button>
@@ -30,7 +31,7 @@
   </div>
 
 <!-- Footer -->
-  <footer id="footer" class="panel">
+  <footer id="footer" class="panel" [@footerTrigger] = "footerState">
     <div class="inner split">
       <div>
         <section>
@@ -73,11 +74,3 @@
       </div>
     </div>
   </footer>
-
-<!-- Scripts -->
-<script src="../../assets/assets_g/js/jquery.min.js"></script>
-<script src="../../assets/assets_g/js/jquery.poptrox.min.js"></script>
-<script src="../../assets/assets_g/js/browser.min.js"></script>
-<script src="../../assets/assets_g/js/breakpoints.min.js"></script>
-<script src="../../assets/assets_g/js/util.js"></script>
-<script src="../../assets/assets_g/js/main.js"></script>

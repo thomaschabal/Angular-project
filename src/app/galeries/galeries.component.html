@@ -1,8 +1,9 @@
 <div class="spacer"></div>
 
 <!-- Main -->
-  <div id="main">
-    <article class="thumb" *ngFor = "let event of galeries_events">
+  <div id="main" (mouseenter) = "survoleGaleries('visible')"
+                 (mouseleave) = "survoleGaleries('hidden')">
+    <article class="thumb" *ngFor = "let event of galeries_events; let i = index" [@galeriesTrigger] = "state(i)">
       <a routerLink = "{{ event.routing }}"><img src="{{ event.image }}" alt="" width=100% /></a>
       <h2><a [routerLink] = "[event.routing]">{{ event.name }}</a></h2>
     </article>

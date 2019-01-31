@@ -6,7 +6,7 @@ import { ConfigService } from './config.service';
 @Injectable()
 export class AuthService {
   //isAuth = false;
-  token: string;
+  token = null;
   apiUrl: string;
 
   constructor(private httpClient: HttpClient,
@@ -21,7 +21,7 @@ export class AuthService {
         'Access-Control-Allow-Origin':'*'
       })
     };
-    this.httpClient.post(this.apiUrl + '/api/login', user)
+    this.httpClient.post(this.apiUrl + '/api/login', user, httpOptions)
     .subscribe(
       (res) => {
         console.log(res);
@@ -45,7 +45,5 @@ export class AuthService {
   signOut() {
     this.token = null;
   }
-
-
 
 }

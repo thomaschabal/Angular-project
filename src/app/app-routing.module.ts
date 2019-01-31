@@ -21,11 +21,11 @@ const routes: Routes = [
   { path : 'new-account', component : NewAccountComponent },
   { path : 'users', component : UserListComponent },
   { path : 'home', canActivate : [AuthGuard], component : HomeComponent },
-  { path : 'galeries', canActivate : [AuthGuard], component : GaleriesComponent },
+  { path : 'galeries', component : GaleriesComponent },
   { path : 'dashboard', canActivate : [AuthGuard], component : DashboardComponent },
   { path : 'members', canActivate : [AuthGuard], component : MembersComponent },
   { path : 'material', canActivate : [AuthGuard], component : MaterialComponent },
-  { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent },
+  { path : 'galeries/:event', component : EventComponent },
   { path : 'not-found', canActivate : [AuthGuard], component : NotfoundComponent },
   { path : '**', redirectTo : '/not-found' }
 ];
