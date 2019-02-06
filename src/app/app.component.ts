@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+<<<<<<< HEAD
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
+=======
+>>>>>>> initial commit
 
 @Component({
   selector: 'app-root',
@@ -8,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+<<<<<<< HEAD
   title = 'Galeries Ponthé';
 
   userAuth : boolean;
@@ -57,4 +61,7 @@ export class AppComponent {
   //
   //   });
   // }
+=======
+  title = 'app-ponthe';
+>>>>>>> initial commit
 }

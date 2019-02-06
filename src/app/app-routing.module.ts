@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+<<<<<<< HEAD
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { GaleriesComponent } from './galeries/galeries.component';
@@ -29,6 +30,9 @@ const routes: Routes = [
   { path : 'not-found', canActivate : [AuthGuard], component : NotfoundComponent },
   { path : '**', redirectTo : '/not-found' }
 ];
+=======
+const routes: Routes = [];
+>>>>>>> initial commit
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
