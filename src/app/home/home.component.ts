@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { HomeService } from '../services/home.service';
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -18,8 +20,8 @@ import { transition, trigger, style, animate, state } from "@angular/animations"
     ]),
     trigger('lastEventTrigger', [
       state('visible', style({})),
-      state('hidden-left', style({transform : 'translateX(40vw)'})),
-      state('hidden-right', style({transform : 'translateX(-40vw)'})),
+      state('hidden-left', style({transform : 'translateX(50vw)'})),
+      state('hidden-right', style({transform : 'translateX(-50vw)'})),
       transition('* => *', [ animate('20ms') ] ),
     ]),
     trigger('lovePicsTrigger', [
@@ -48,6 +50,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private sub : Subscription;
 
+  // Form to send a message to the admins of the site
+  messageForm : FormGroup;
+
   // State of various sections of the page (e.g. if the section is being hovered or not)
   introState = 'hidden';
   lastEventsState1 = 'hidden-left';
@@ -58,7 +63,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   formState = 'hidden';
 
   constructor(private homeService : HomeService,
-              private activeRoute : ActivatedRoute) {
+              private authService : AuthService,
+              private activeRoute : ActivatedRoute,
+              private formBuilder : FormBuilder,
+              private httpClient : HttpClient) {
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
               };
 
@@ -68,13 +76,30 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.adresse_1 = this.last_events[0].fond;
     this.adresse_2 = this.last_events[1].fond;
     this.adresse_3 = this.last_events[2].fond;
+    this.initForm();
   }
 
-  onSubmit(form : NgForm) {
-    const name = form.value['name'];
-    const email = form.value['email'];
-    const message = form.value['message'];
-    console.log (name + ", dont le mail est " + email + ", vous dit : " + message);
+  initForm() {
+    this.messageForm = this.formBuilder.group({
+      message : ['', Validators.required]
+    });
+  }
+
+  onSubmitMessage() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type':'application/json',
+        'Authorization':'Bearer '+this.authService.token
+      })
+    };
+    this.httpClient.post(this.authService.apiUrl + '/api/materiel', this.messageForm.value, httpOptions)
+    .subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (error) => { console.log("Erreur " + error); }
+    );
   }
 
   placement_events(i : number) {

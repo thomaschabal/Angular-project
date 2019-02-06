@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-<<<<<<< HEAD
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { GaleriesComponent } from './galeries/galeries.component';
@@ -21,18 +20,15 @@ const routes: Routes = [
   { path : 'auth', component : AuthComponent },
   { path : 'new-account', component : NewAccountComponent },
   { path : 'users', component : UserListComponent },
-  { path : 'home', canActivate : [AuthGuard], component : HomeComponent },
+  { path : 'home', component : HomeComponent },
   { path : 'galeries', component : GaleriesComponent },
   { path : 'dashboard', canActivate : [AuthGuard], component : DashboardComponent },
   { path : 'members', canActivate : [AuthGuard], component : MembersComponent },
-  { path : 'material', canActivate : [AuthGuard], component : MaterialComponent },
-  { path : 'galeries/:event', component : EventComponent },
+  { path : 'material', component : MaterialComponent },
+  { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent },
   { path : 'not-found', canActivate : [AuthGuard], component : NotfoundComponent },
   { path : '**', redirectTo : '/not-found' }
 ];
-=======
-const routes: Routes = [];
->>>>>>> initial commit
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

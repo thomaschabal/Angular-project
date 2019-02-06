@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { state, style, transition, animate, trigger } from '@angular/animations';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-material',
@@ -8,7 +10,7 @@ import { state, style, transition, animate, trigger } from '@angular/animations'
   styleUrls: ['./material.component.scss'],
   animations : [
     trigger('formTrigger', [
-      state('visible', style({opacity: 1})),
+      state('visible', style({opacity: 1, transform : 'translateY(0)'})),
       state('hidden', style({opacity: 0, transform : 'translateY(75vh)'})),
       transition('* => *', [ animate('20ms') ] ),
     ])
@@ -16,18 +18,38 @@ import { state, style, transition, animate, trigger } from '@angular/animations'
 })
 export class MaterialComponent implements OnInit {
 
-  constructor() { }
+  materialForm : FormGroup;
+
+  constructor(private formBuilder : FormBuilder,
+              private httpClient : HttpClient,
+              private authService : AuthService) { }
 
   ngOnInit() {
+    this.initForm();
   }
 
-  onSubmit(form : NgForm) {
-    console.log(form.value);
-    const name = form.value['name'];
-    const email = form.value['email'];
-    const matos = form.value['matos'];
-    const message = form.value['message'];
-    console.log(name + " a comme mail " + email + ", veut réserver " + matos + " parce que " + message);
+  initForm() {
+    this.materialForm = this.formBuilder.group({
+      matos : ['', Validators.required],
+      message : ['', Validators.required]
+    });
+  }
+
+  onSubmitMateriel() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type':'application/json',
+        'Authorization':'Bearer '+this.authService.token
+      })
+    };
+    this.httpClient.post(this.authService.apiUrl + '/api/materiel', this.materialForm.value, httpOptions)
+    .subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (error) => { console.log("Erreur " + error); }
+    );
   }
 
   // State of the form of the page (e.g. if the section is being hovered or not)

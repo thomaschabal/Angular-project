@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-<<<<<<< HEAD
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -78,19 +77,6 @@ import { ConfigService } from './services/config.service';
     UserService,
     ConfigService
   ],
-=======
-import { AppComponent } from './app.component';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
->>>>>>> initial commit
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2231,7 +2231,7 @@ input, select, textarea {
 
 	#intro {
 		margin-top: 3em;
-		height : 80vh;
+		height : 81vh;
 		background: url("images/overlay.png"), url("../../images/introP.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2242,7 +2242,7 @@ input, select, textarea {
 /* One */
 
 	#p020 {
-		height : 85vh;
+		height : 87.5vh;
 		background: url("images/overlay.png"), url("../../images/020.png");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2252,7 +2252,7 @@ input, select, textarea {
 /* Two */
 
 	#p019 {
-		height : 85vh;
+		height : 87.5vh;
 		background: url("images/overlay.png"), url("../../images/019.png");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2262,7 +2262,7 @@ input, select, textarea {
 /* Three */
 
 	#p018 {
-		height : 85vh;
+		height : 87.5vh;
 		background: url("images/overlay.png"), url("../../images/04.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2272,7 +2272,7 @@ input, select, textarea {
 /* Four */
 
 	#p017 {
-		height : 85vh;
+		height : 87.5vh;
 		background: url("images/overlay.png"), url("../../images/05.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2282,7 +2282,7 @@ input, select, textarea {
 /* Five */
 
 	#p016 {
-		height : 85vh;
+		height : 87.5vh;
 		background: url("images/overlay.png"), url("../../images/04.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2292,7 +2292,7 @@ input, select, textarea {
 /* Six */
 
 	#p015 {
-		height : 85vh;
+		height : 87.5vh;
 		background: url("images/overlay.png"), url("../../images/05.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2340,17 +2340,3 @@ input, select, textarea {
 			}
 
 		}
-
-
-
-
-		/* Intro */
-
-			#intro {
-				height : 80vh;
-				background: url("images/overlay.png"), url("../../images/introP.jpg");
-				background-size: 256px 256px, cover;
-				background-attachment: fixed, fixed;
-				background-position: top left, bottom center;
-				background-repeat: repeat, no-repeat;
-			}
