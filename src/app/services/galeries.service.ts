@@ -249,7 +249,7 @@ export class GaleriesService {
     .subscribe(
       (res) => {
         console.log(res);
-        this.all_galeries = res.data;
+        this.all_galeries = res["data"];
       },
       (error) => { console.log("Erreur " + error); }
     );

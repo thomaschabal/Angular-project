@@ -24,7 +24,7 @@ export class AuthService {
     this.httpClient.post(this.apiUrl + '/api/login', user, httpOptions)
     .subscribe(
       (res) => {
-        this.token = res.token;
+        this.token = res["token"];
       },
       (error) => {console.log(error);}
     );
