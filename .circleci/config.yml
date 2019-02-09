@@ -65,18 +65,14 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
       - run: node ./node_modules/@angular/cli/bin/ng build --prod
-      - save_cache:
-          key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}
-          paths:
-            - dist
+      - store_artifacts:
+          path: dist/galeries-ponthe
+          destination: front-build
 
   deploy:
     machine:
       enabled: true
     steps:
-      - restore_cache:
-          keys:
-            - v1-dist-{{ .Environment.CIRCLE_BRANCH }}
       - run:
           name: Deploy over SSH
           command: scp -r dist/galeries-ponthe/* $SSH_USER@$SSH_HOST:/srv/ponthe$([ "${CIRCLE_BRANCH}" == "master" ] || echo "-${CIRCLE_BRANCH}").enpc.org/volumes/static/
