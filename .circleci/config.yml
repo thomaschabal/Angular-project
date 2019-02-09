@@ -65,17 +65,10 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
       - run: node ./node_modules/@angular/cli/bin/ng build --prod
+      - run: tar -czvf front-build.tar.gz dist/galeries-ponthe
       - store_artifacts:
-          path: dist/galeries-ponthe
+          path: front-build.tar.gz
           destination: front-build
-
-  deploy:
-    machine:
-      enabled: true
-    steps:
-      - run:
-          name: Deploy over SSH
-          command: scp -r dist/galeries-ponthe/* $SSH_USER@$SSH_HOST:/srv/ponthe$([ "${CIRCLE_BRANCH}" == "master" ] || echo "-${CIRCLE_BRANCH}").enpc.org/volumes/static/
 
 workflows:
   version: 2
