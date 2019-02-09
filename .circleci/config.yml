@@ -79,11 +79,11 @@ workflows:
     jobs:
       - install
       - test:
-        requires:
-          - install
+          requires:
+            - install
       - build:
-        requires:
-          - test
+          requires:
+            - test
         filters:
           branches:
             only:
