@@ -77,18 +77,18 @@ workflows:
   main:
     jobs:
       - install
-      # - lint
+      # - lint:
       #  requires:
       #    - install
-      - test
+      - test:
         requires:
           - install
       - build:
-          requires:
-            # - lint
-            - test
-          filters:
-            branches:
-              only:
-                - master
-                - testing
+        requires:
+          # - lint
+          - test
+        filters:
+          branches:
+            only:
+              - master
+              - testing
