@@ -23,7 +23,7 @@ jobs:
 
   lint:
     docker:
-      - image: circleci/node:11
+      - image: circleci/node:8
     steps:
       - checkout
       - restore_cache:
@@ -34,7 +34,7 @@ jobs:
 
   test:
     docker:
-      - image: gnomeontherun/docker-node-chrome-headless:latest
+      - image: circleci/node:8-browsers
     steps:
       - checkout
       - restore_cache:
@@ -42,7 +42,8 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
       - run: |
-          node ./node_modules/@angular/cli/bin/ng test --browsers DockerChromeHeadless --watch=false --code-coverage
+          npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI --code-coverage
+          npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
           cat coverage/index.html | grep '% <\/span>' # display coverage result
 
   build:
@@ -54,7 +55,7 @@ jobs:
         keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-      - run: node ./node_modules/@angular/cli/bin/ng build --prod
+      - run: npm run build --prod
       - save_cache:
         key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}
         paths:
