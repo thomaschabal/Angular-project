@@ -22,7 +22,7 @@ section, summary, time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: "Courier" sans-serif;
+	font: inherit;
 	vertical-align: baseline;}
 
 article, aside, details, figcaption, figure,
@@ -503,10 +503,10 @@ input, select, textarea {
 
 /* Type */
 
-	body, input, textarea, select {
+	body, input, textarea, select, section, nav, #header {
 		font-family: "Source Sans Pro", "sans-serif";
 		font-weight: 300;
-		font-size: 18pt;
+		font-size: 1.25em;
 		line-height: 1.75em;
 		color: #39454b;
 		letter-spacing: 0.025em;
@@ -864,7 +864,7 @@ input, select, textarea {
 		transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		color: #39454b;
 		display: block;
-		width: 100%;
+		width: 92.5%;
 		padding: 0.65em 0.75em;
 		background: none;
 		border: solid 2px #e5e6e7;
@@ -1846,6 +1846,7 @@ input, select, textarea {
 					top: 0;
 					height: 3em;
 					line-height: 3em;
+					font-size: 1.15em;
 				}
 
 					#header nav ul {
@@ -2000,7 +2001,7 @@ input, select, textarea {
 				-ms-transform: translateZ(0);
 				transform: translateZ(0);
 				position: relative;
-				width: 35%;
+				width: 30%;
 				margin: 0;
 			}
 

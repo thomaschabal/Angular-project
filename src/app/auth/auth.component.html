@@ -23,6 +23,7 @@
 					<ul class="icons">
 						<li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 						<li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram"><span class="label">uPont</span></a></li>
+						<li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github"><span class="label">GitHub</span></a></li>
 						<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
 						<li><a href="mailto : ponthe@liste.enpc.fr" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
 					</ul>
@@ -30,5 +31,8 @@
 						<li>&copy; Ponthé - Club audiovisuel des Ponts et Chaussées</li>
 					</ul>
 				</footer>
+
+			<div id="bg" [@backgroundAnimation1]="state1" (@backgroundAnimation1.done)="changeFond1()">
+			</div>
 
 	</body>

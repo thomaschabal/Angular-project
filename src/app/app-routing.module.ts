@@ -19,16 +19,16 @@ import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path : '', canActivate : [AuthGuard], component : HomeComponent },
-  { path : 'auth', component : AuthComponent },
+  { path : 'auth', component : AuthComponent, data:{animation:'AuthPage'} },
   { path : 'new-account', component : NewAccountComponent },
   { path : 'cgu', component : CguComponent },
   { path : 'reset', component : ResetComponent },
   { path : 'users', component : UserListComponent },
-  { path : 'home', component : HomeComponent },
-  { path : 'galeries', component : GaleriesComponent },
+  { path : 'home', component : HomeComponent, data:{animation:'HomePage'} },
+  { path : 'galeries', component : GaleriesComponent, data:{animation:'GaleriesPage'} },
   { path : 'dashboard', canActivate : [AuthGuard], component : DashboardComponent },
-  { path : 'members', canActivate : [AuthGuard], component : MembersComponent },
-  { path : 'material', component : MaterialComponent },
+  { path : 'members', canActivate : [AuthGuard], component : MembersComponent, data:{animation:'MembersPage'} },
+  { path : 'material', component : MaterialComponent, data:{animation:'MaterialPage'} },
   { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent },
   { path : 'not-found', canActivate : [AuthGuard], component : NotfoundComponent },
   { path : '**', redirectTo : '/not-found' }

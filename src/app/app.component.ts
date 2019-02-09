@@ -1,11 +1,25 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
+import { animate, style, state, transition, trigger, query } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('routeAnimations', [
+      transition('HomePage => MembersPage', [
+        query(':enter', style({ opacity : 0})),
+        query(':leave', [
+          animate('5s', style({ opacity : 0}))
+        ]),
+        query(':enter', [
+          animate('5s', style({ opacity : 1}))
+        ]),
+      ])
+    ])
+  ]
 })
 export class AppComponent {
   title = 'Galeries Ponthé';
