@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,6 +13,6 @@ export class FooterComponent {
               private router : ActivatedRoute) { }
 
   get isOnline() {
-    return ((this.httpService.token !== null) && ('galeries' in this.router.snapshot.url));
+    return (this.httpService.token !== null) && ('galeries' in this.router.snapshot.url);
   }
 }
