@@ -31,6 +31,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-repo-{{ .Branch }}-{{ .Revision }}
+      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -43,6 +44,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-repo-{{ .Branch }}-{{ .Revision }}
+      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -58,6 +60,7 @@ jobs:
       - restore_cache:
           keys:
             - v1-repo-{{ .Branch }}-{{ .Revision }}
+      - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
@@ -83,9 +86,6 @@ workflows:
   main:
     jobs:
       - install
-      - test:
-          requires:
-            - install
       - build:
           requires:
-            - test
+            - install
