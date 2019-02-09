@@ -23,7 +23,7 @@ jobs:
 
   lint:
     docker:
-      - image: circleci/node:8
+      - image: circleci/node:11
     steps:
       - checkout
       - restore_cache:
@@ -34,7 +34,7 @@ jobs:
 
   test:
     docker:
-      - image: circleci/node:8-browsers
+      - image: circleci/node:11-browsers
     steps:
       - checkout
       - restore_cache:
@@ -71,23 +71,18 @@ jobs:
           - v1-dist-
       - run:
           name: Deploy over SSH
-          command: |
-            scp -r dist/galeries-ponthe/* $SSH_USER@$SSH_HOST:/srv/ponthe$([ "${CIRCLE_BRANCH}" == "master" ] || echo "-${CIRCLE_BRANCH}").enpc.org/volumes/static/
+          command: scp -r dist/galeries-ponthe/* $SSH_USER@$SSH_HOST:/srv/ponthe$([ "${CIRCLE_BRANCH}" == "master" ] || echo "-${CIRCLE_BRANCH}").enpc.org/volumes/static/
 
 workflows:
   version: 2
   main:
     jobs:
       - install
-      # - lint:
-      #  requires:
-      #    - install
       - test:
         requires:
           - install
       - build:
         requires:
-          # - lint
           - test
         filters:
           branches:
