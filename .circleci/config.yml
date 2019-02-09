@@ -78,14 +78,5 @@ workflows:
   main:
     jobs:
       - install
-      - test:
-          requires:
-            - install
-      - build:
-          requires:
-            - test
-        filters:
-          branches:
-            only:
-              - master
-              - testing
+      - test
+      - build
