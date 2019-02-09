@@ -12,24 +12,20 @@ import { EventComponent } from './event/event.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { UserListComponent } from './user-list/user-list.component';
-import { CguComponent } from './cgu/cgu.component';
-import { ResetComponent } from './reset/reset.component';
 
 import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   { path : '', canActivate : [AuthGuard], component : HomeComponent },
-  { path : 'auth', component : AuthComponent, data:{animation:'AuthPage'} },
+  { path : 'auth', component : AuthComponent },
   { path : 'new-account', component : NewAccountComponent },
-  { path : 'cgu', component : CguComponent },
-  { path : 'reset', component : ResetComponent },
   { path : 'users', component : UserListComponent },
-  { path : 'home', component : HomeComponent, data:{animation:'HomePage'} },
-  { path : 'galeries', component : GaleriesComponent, data:{animation:'GaleriesPage'} },
+  { path : 'home', canActivate : [AuthGuard], component : HomeComponent },
+  { path : 'galeries', component : GaleriesComponent },
   { path : 'dashboard', canActivate : [AuthGuard], component : DashboardComponent },
-  { path : 'members', canActivate : [AuthGuard], component : MembersComponent, data:{animation:'MembersPage'} },
-  { path : 'material', component : MaterialComponent, data:{animation:'MaterialPage'} },
-  { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent },
+  { path : 'members', canActivate : [AuthGuard], component : MembersComponent },
+  { path : 'material', canActivate : [AuthGuard], component : MaterialComponent },
+  { path : 'galeries/:event', component : EventComponent },
   { path : 'not-found', canActivate : [AuthGuard], component : NotfoundComponent },
   { path : '**', redirectTo : '/not-found' }
 ];

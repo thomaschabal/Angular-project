@@ -1,6 +1,6 @@
 export class LoggingUser {
-  firstName: string;
-  lastName: string;
+  firstname: string;
+  lastname: string;
   email: string;
   promotion: string;
   password: string;

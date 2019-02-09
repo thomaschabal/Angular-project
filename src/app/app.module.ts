@@ -39,8 +39,6 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
 import { ConfigService } from './services/config.service';
-import { CguComponent } from './cgu/cgu.component';
-import { ResetComponent } from './reset/reset.component';
 
 
 
@@ -60,9 +58,7 @@ import { ResetComponent } from './reset/reset.component';
     FooterComponent,
     NewAccountComponent,
     UserListComponent,
-    DashboardComponent,
-    CguComponent,
-    ResetComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

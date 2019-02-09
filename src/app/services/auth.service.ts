@@ -6,7 +6,7 @@ import { ConfigService } from './config.service';
 @Injectable()
 export class AuthService {
   //isAuth = false;
-  token : string;
+  token = null;
   apiUrl: string;
 
   constructor(private httpClient: HttpClient,
@@ -24,11 +24,11 @@ export class AuthService {
     this.httpClient.post(this.apiUrl + '/api/login', user, httpOptions)
     .subscribe(
       (res) => {
-        this.token = res["token"];
+        console.log(res);
+        this.token = res.token;
       },
       (error) => {console.log(error);}
     );
-
     //this.isAuth = true;
     //return new Promise (
       //(resolve, reject) => {
