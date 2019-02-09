@@ -42,8 +42,8 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
       - run: |
-          npm run test -- --watch=false --progress=false --browsers=ChromeHeadlessCI --code-coverage
-          npm run e2e -- --protractor-config=./e2e/protractor-ci.conf.js
+          node ./node_modules/@angular/cli/bin/ng test -- --watch=false --progress=false --browsers=ChromeHeadlessCI --code-coverage
+          node ./node_modules/@angular/cli/bin/ng e2e -- --protractor-config=./e2e/protractor-ci.conf.js
           cat coverage/index.html | grep '% <\/span>' # display coverage result
 
   build:
@@ -55,7 +55,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: npm run build --prod
+      - run: node ./node_modules/@angular/cli/bin/ng build --prod
       - save_cache:
           key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}
           paths:
@@ -78,5 +78,7 @@ workflows:
   main:
     jobs:
       - install
-      - test
+      - test:
+          requires:
+            - install
       - build
