@@ -54,7 +54,6 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
       - node ./node_modules/@angular/cli/bin/ng build --prod
-    # Cache the dist folder for the deploy job
       - save_cache:
         key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}
         paths:
@@ -78,15 +77,15 @@ workflows:
   main:
     jobs:
       - install
-      - lint
-        requires:
-          - install
+      # - lint
+      #  requires:
+      #    - install
       - test
         requires:
           - install
       - build:
           requires:
-            - lint
+            # - lint
             - test
           filters:
             branches:
