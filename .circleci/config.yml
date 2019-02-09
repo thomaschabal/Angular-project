@@ -1,0 +1,95 @@
+version: 2
+
+jobs:
+  install:
+    docker:
+      - image: circleci/node:11
+    steps:
+      - checkout
+    # Restore local dependencies from cache
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+    # Install project dependencies
+      - run:
+        name: Install local dependencies
+        command: npm ci
+    # Cache local dependencies if they don't exist
+      - save_cache:
+        key: v1-dependencies-{{ checksum "package.json" }}
+        paths:
+          - node_modules
+
+  lint:
+    docker:
+      - image: circleci/node:11
+    steps:
+      - checkout
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - node ./node_modules/@angular/cli/bin/ng lint
+
+  test:
+    docker:
+      - image: gnomeontherun/docker-node-chrome-headless:latest
+    steps:
+      - checkout
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - node ./node_modules/@angular/cli/bin/ng test --browsers DockerChromeHeadless --watch=false --code-coverage
+      - cat coverage/index.html | grep '% <\/span>' # display coverage result
+
+  build:
+    docker:
+      - image: circleci/node:11
+    steps:
+      - checkout
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - node ./node_modules/@angular/cli/bin/ng build --prod
+    # Cache the dist folder for the deploy job
+      - save_cache:
+        key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}
+        paths:
+          - dist
+
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - restore_cache:
+        keys:
+          - v1-dist-{{ .Environment.CIRCLE_BRANCH }}
+          - v1-dist-
+      - run:
+          name: Deploy over SSH
+          command: |
+            scp -r dist/galeries-ponthe/* $SSH_USER@$SSH_HOST:/srv/ponthe$([ "${CIRCLE_BRANCH}" == "master" ] || echo "-${CIRCLE_BRANCH}").enpc.org/volumes/static/
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - install
+      - lint
+        requires:
+          - install
+      - test
+        requires:
+          - install
+      - build:
+          requires:
+            - lint
+            - test
+          filters:
+            branches:
+              only:
+                - master
+                - testing
