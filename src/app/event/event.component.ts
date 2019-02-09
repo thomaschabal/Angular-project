@@ -48,8 +48,8 @@ export class EventComponent implements OnInit, OnDestroy {
              }
 
   ngOnInit() {
-    this.selected_route = this.route.snapshot.params['event']
-    this.pics = this.galeriesService.getEventByName(this.httpService,this.selected_route);
+    const selected_route = this.route.snapshot.params['event'];
+    this.pics = this.galeriesService.getEventByName(this.httpService, selected_route);
     this.adresse = this.activeRoute.snapshot.routeConfig.path;
     this.initForm();
     this.isAdmin = this.httpService.isAdmin;
