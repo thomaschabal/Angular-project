@@ -1,4 +1,5 @@
 # Galeries Ponthé
+[![CircleCI](https://circleci.com/gh/ENPC-Ponthe/Angular-project.svg?style=svg)](https://circleci.com/gh/ENPC-Ponthe/Angular-project)
 
 Front du site [Galeries Ponthé](https://ponthe.enpc.org)
 

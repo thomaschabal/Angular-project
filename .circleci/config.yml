@@ -30,7 +30,7 @@ jobs:
         keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-      - node ./node_modules/@angular/cli/bin/ng lint
+      - run: node ./node_modules/@angular/cli/bin/ng lint
 
   test:
     docker:
@@ -41,8 +41,9 @@ jobs:
         keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-      - node ./node_modules/@angular/cli/bin/ng test --browsers DockerChromeHeadless --watch=false --code-coverage
-      - cat coverage/index.html | grep '% <\/span>' # display coverage result
+      - run: |
+          node ./node_modules/@angular/cli/bin/ng test --browsers DockerChromeHeadless --watch=false --code-coverage
+          cat coverage/index.html | grep '% <\/span>' # display coverage result
 
   build:
     docker:
@@ -53,7 +54,7 @@ jobs:
         keys:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
-      - node ./node_modules/@angular/cli/bin/ng build --prod
+      - run: node ./node_modules/@angular/cli/bin/ng build --prod
       - save_cache:
         key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}
         paths:
