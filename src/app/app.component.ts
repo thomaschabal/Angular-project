@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http.service';
-import { Router, RouterOutlet } from '@angular/router';
-import { animate, style, state, transition, trigger, query } from '@angular/animations';
+import {Router, RouterOutlet} from '@angular/router';
+import { animate, style, transition, trigger, query } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +35,7 @@ export class AppComponent {
 
   onSignOut() {
     this.authService.signOut();
-    this.authStatus = (this.authService.isAuth);
+    this.authStatus = this.authService.isAuth;
     this.router.navigate(['auth']);
   }
 
@@ -44,40 +44,7 @@ export class AppComponent {
     return (this.authStatus);
   }
 
-  prepareRoute(outlet : RouterOutlet) {
+  prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
-
-  // fonction(){
-  //   console.log("on a cliqué ici");
-  //   let	$window = $(window),
-  // 		$body = $('body');
-  //
-  //   // Play initial animations on page load.
-	// 	$window.on('load', function() {
-	// 		console.log("test interne");
-	// 		setTimeout(function() {
-	// 			$body.removeClass('is-preload');
-	// 		}, 100);
-	// 	});
-  //
-  //   $window.on('load', function() {
-  //
-	// 		let $gallery = $('.gallery');
-  //
-	// 		$gallery.poptrox({
-	// 			baseZIndex: 10001,
-	// 			useBodyOverflow: false,
-	// 			usePopupEasyClose: false,
-	// 			overlayColor: '#1f2328',
-	// 			overlayOpacity: 0.65,
-	// 			usePopupDefaultStyling: false,
-	// 			usePopupCaption: true,
-	// 			popupLoaderText: '',
-	// 			windowMargin: 50,
-	// 			usePopupNav: true
-	// 		});
-  //
-  //   });
-  // }
 }
