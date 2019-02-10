@@ -13,8 +13,8 @@
 <div class="moderation" *ngIf = "isAdmin">
   <button type="button" name="button">Ajouter des fichiers</button>
   <button type="button" name="button" (click)="modere()">Modérer</button>
-  <button type="button" name="button" *ngIf = "isPublic">Rendre privée</button>
-  <button type="button" name="button" *ngIf = "!isPublic">Rendre publique</button>
+  <button type="button" name="button" *ngIf = "isPublic" (click)="publicPrivate()">Rendre privée</button>
+  <button type="button" name="button" *ngIf = "!isPublic" (click)="publicPrivate()">Rendre publique</button>
   <button type="button" name="button" *ngIf = "enModeration">Supprimer la galerie</button>
 </div>
 <div class="privee" *ngIf = "!isPublic">
@@ -54,10 +54,10 @@
       <div>
         <section>
           <h2>Contacte les pros du Ponthé</h2>
-          <form method="post" action="#">
+          <form method="post" [formGroup] = "messageForm" (ngSubmit)="onSubmitMessage()">
             <div class="fields">
               <div class="field">
-                <textarea name="message" id="message" rows="4" placeholder="Ton mot doux..."></textarea>
+                <textarea name="message" id="message" rows="4" placeholder="Ton mot doux..." formControlName="message"></textarea>
               </div>
             </div>
             <ul class="actions">
