@@ -10,7 +10,7 @@ import { state, trigger, animate, style, transition } from '@angular/animations'
     trigger('galeriesTrigger', [
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0})),
-      transition('* => *', [ animate('200ms') ] ),
+      transition(':enter', [ animate('200ms') ] ),
     ])
   ]
 })
@@ -18,7 +18,7 @@ export class GaleriesComponent implements OnInit {
 
   galeries_events : any[];
 
-  galeriesState = ["hidden", "hidden", "hidden", "hidden", "hidden", "hidden", "hidden", "hidden", "hidden"];
+  galeriesState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
 
   constructor(private galeriesService : GaleriesService) {
     this.galeriesService.getAllEvents();

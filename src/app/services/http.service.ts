@@ -7,6 +7,7 @@ export class HttpService {
 
   apiUrl : string;
   token : string;
+  isAdmin : boolean;
 
   constructor(private httpClient : HttpClient,
               private configService : ConfigService) {

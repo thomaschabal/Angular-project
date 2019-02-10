@@ -21,6 +21,12 @@ export class AuthService {
     this.httpService.post('/api/login', user).then(
       (res) => {
         this.httpService.token = res["token"];
+        this.httpService.get('/api/get-user-by-jwt').then(
+          (response) => {
+            this.httpService.isAdmin = response["admin"];
+          },
+          (err) => { console.log(err); }
+        );
       },
       (error) => { }
     );

@@ -15,7 +15,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     trigger('picsTrigger', [
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0})),
-      transition('* => *', [ animate('200ms') ] ),
+      transition(':enter', [ animate('200ms') ] ),
     ]),
     trigger('footerTrigger', [
       state('visible', style({opacity: 1, transform : 'translateY(2vh)'})),
@@ -36,7 +36,7 @@ export class EventComponent implements OnInit, OnDestroy {
   enModeration = false;
   messageForm : FormGroup;
 
-  picsState = ["hidden", "hidden", "hidden", "hidden", "hidden", "hidden", "hidden", "hidden", "hidden"];
+  picsState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
   footerState = "hidden";
 
   constructor(private galeriesService : GaleriesService,

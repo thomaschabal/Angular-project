@@ -10,13 +10,13 @@ import { animate, style, state, transition, trigger, query } from '@angular/anim
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routeAnimations', [
-      transition('HomePage => MembersPage', [
+      transition('* => *', [
         query(':enter', style({ opacity : 0})),
         query(':leave', [
-          animate('3s', style({ opacity : 0}))
+          animate('0.5s', style({ opacity : 0}))
         ]),
         query(':enter', [
-          animate('3s', style({ opacity : 1}))
+          animate('1.5s', style({ opacity : 1}))
         ]),
       ])
     ])

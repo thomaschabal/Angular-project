@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MembersService } from '../services/members.service';
+import { HttpService } from '../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -13,7 +14,7 @@ import { style, state, animate, transition, trigger } from "@angular/animations"
     trigger('introTrigger', [
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0})),
-      transition('* => *', [ animate('350ms') ] ),
+      transition(':enter', [ animate('350ms') ] ),
     ]),
     trigger('teamTrigger', [
       state('visible', style({})),
@@ -35,12 +36,18 @@ export class MembersComponent implements OnInit, OnDestroy {
   teamStateRight = 'hidden-right';
 
   constructor(private membersService : MembersService,
+              private httpService : HttpService,
               private activeRoute : ActivatedRoute) {
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({behavior : 'smooth'}));
               };
 
   ngOnInit() {
-    this.team_ponthe = this.membersService.team_ponthe;
+    this.httpService.get('/api/members').then(
+      (res) => {
+        this.team_ponthe = res["team_ponthe"];
+      },
+      (error) => { console.log(error); }
+    );
   }
 
   placement(i : number) {

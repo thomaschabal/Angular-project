@@ -11,7 +11,7 @@ import { HttpService } from '../services/http.service';
     trigger('formTrigger', [
       state('visible', style({opacity: 1, transform : 'translateY(0)'})),
       state('hidden', style({opacity: 0, transform : 'translateY(75vh)'})),
-      transition('* => *', [ animate('20ms') ] ),
+      transition(':enter', [ animate('20ms') ] )
     ])
   ]
 })
