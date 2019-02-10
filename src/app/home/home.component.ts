@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { HomeService } from '../services/home.service';
-import { AuthService } from '../services/auth.service';
+import { HttpService } from '../services/http.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
@@ -63,10 +62,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   formState = 'hidden';
 
   constructor(private homeService : HomeService,
-              private authService : AuthService,
+              private httpService : HttpService,
               private activeRoute : ActivatedRoute,
-              private formBuilder : FormBuilder,
-              private httpClient : HttpClient) {
+              private formBuilder : FormBuilder) {
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
               };
 
@@ -86,20 +84,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onSubmitMessage() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin':'*',
-        'Content-Type':'application/json',
-        'Authorization':'Bearer '+this.authService.token
-      })
-    };
-    this.httpClient.post(this.authService.apiUrl + '/api/materiel', this.messageForm.value, httpOptions)
-    .subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (error) => { console.log("Erreur " + error); }
-    );
+    this.httpService.post('/api/materiel', this.messageForm.value);
   }
 
   placement_events(i : number) {

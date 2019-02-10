@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { state, style, transition, animate, trigger } from '@angular/animations';
-import { AuthService } from '../services/auth.service';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-material',
@@ -21,8 +20,7 @@ export class MaterialComponent implements OnInit {
   materialForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder,
-              private httpClient : HttpClient,
-              private authService : AuthService) { }
+              private httpService : HttpService) { }
 
   ngOnInit() {
     this.initForm();
@@ -36,20 +34,7 @@ export class MaterialComponent implements OnInit {
   }
 
   onSubmitMateriel() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin':'*',
-        'Content-Type':'application/json',
-        'Authorization':'Bearer '+this.authService.token
-      })
-    };
-    this.httpClient.post(this.authService.apiUrl + '/api/materiel', this.materialForm.value, httpOptions)
-    .subscribe(
-      (res) => {
-        console.log(res);
-      },
-      (error) => { console.log("Erreur " + error); }
-    );
+    this.httpService.post('/api/materiel', this.materialForm.value);
   }
 
   // State of the form of the page (e.g. if the section is being hovered or not)

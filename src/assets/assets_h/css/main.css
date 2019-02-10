@@ -503,7 +503,7 @@ input, select, textarea {
 
 /* Type */
 
-	body, input, textarea, select, section, nav, #header {
+	body, input, textarea, select, section, nav, #header, #footer {
 		font-family: "Source Sans Pro", "sans-serif";
 		font-weight: 300;
 		font-size: 1.25em;

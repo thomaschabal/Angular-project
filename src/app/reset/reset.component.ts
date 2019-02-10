@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-reset',
@@ -14,9 +13,8 @@ export class ResetComponent implements OnInit {
   resetForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder,
-              private httpClient : HttpClient,
               private router : Router,
-              private authService : AuthService) { }
+              private httpService : HttpService) { }
 
   ngOnInit() {
     this.initForm();
@@ -30,17 +28,7 @@ export class ResetComponent implements OnInit {
 
   onSubmitForm() {
     this.resetForm.value["email"] = this.resetForm.value["email"] + '@eleves.enpc.fr';
-    const httpOptions = {
-      headers : new HttpHeaders({
-        'Allow-Control-Allow-Origin':'*',
-        'Content-Type':'application/json'
-      })
-    };
-    this.httpClient.post(this.authService.apiUrl + '/api/reset', this.resetForm.value, httpOptions)
-    .subscribe(
-      (res) => { console.log(res); },
-      (error) => { console.log(error); }
-    );
+    this.httpService.post('/api/reset', this.resetForm.value);
     this.router.navigate(['/auth']);
   }
 

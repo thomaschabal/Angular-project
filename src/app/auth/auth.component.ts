@@ -34,7 +34,6 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    console.log(this.pic1);
   }
 
   initForm() {

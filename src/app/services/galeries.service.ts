@@ -1,4 +1,4 @@
-import { AuthService } from '../services/auth.service';
+import { HttpService } from '../services/http.service';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -227,7 +227,7 @@ export class GaleriesService {
 
   all_galeries = [];
 
-  constructor(private authService : AuthService,
+  constructor(private httpService : HttpService,
               private httpClient : HttpClient) { }
 
   getEventByName(event : string) {
@@ -238,20 +238,7 @@ export class GaleriesService {
   }
 
   getAllEvents() {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Access-Control-Allow-Origin':'*',
-        'Content-Type':'application/json',
-        'Authorization':'Bearer '+this.authService.token
-      })
-    };
-    this.httpClient.get(this.authService.apiUrl + '/api/get-galleries-by-year', httpOptions)
-    .subscribe(
-      (res) => {
-        console.log(res);
-        this.all_galeries = res["data"];
-      },
-      (error) => { console.log("Erreur " + error); }
-    );
+    //this.all_galeries = this.httpService.get('/api/get-galleries-by-year')["data"];
+    console.log("coucou");
   }
 }

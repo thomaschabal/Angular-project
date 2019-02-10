@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-cgu',
@@ -11,18 +11,11 @@ export class CguComponent implements OnInit {
 
   articles = [];
 
-  constructor(private httpClient : HttpClient,
-              private authService : AuthService) { }
+  constructor(private authService : AuthService,
+              private httpService : HttpService) { }
 
   ngOnInit() {
-    const httpOptions = {
-      headers : new HttpHeaders({
-        'Access-Control-Allow-Origin':'*',
-        'Content-Type':'application/json'
-      })
-    };
-    this.httpClient.get(this.authService.apiUrl + '/api/cgu', httpOptions)
-    .subscribe(
+    this.httpService.get('/api/cgu').then(
       (res) => {
         let len = Object.keys(res["articles"]).length;
         for (let i=1; i<len+1; i++) {
