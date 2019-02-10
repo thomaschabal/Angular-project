@@ -9,19 +9,29 @@
 
   <!-- Signup Form -->
     <form id="signup-form" [formGroup]="userForm" (ngSubmit) = "onSubmitForm()">
-      <input type="text" name="firstName" placeholder="Prénom" formControlName="firstName"/><br/>
-      <input type="text" name="lastName" placeholder="Nom" formControlName="lastName"/><br/>
-      <input type="text" name="email" placeholder="Adresse mail" formControlName="email"/><p>@eleves.enpc.fr</p><br/>
-      <p>Promotion</p>
-      <select class="" name="promotion" formControlName="promotion">
-        <option value="021">021</option>
-        <option value="020">020</option>
-        <option value="019">019</option>
-        <option value="018">018</option>
-      </select>
-      <input type="password" name="password" placeholder="Mot de passe" formControlName="password"/>
-      <input type="password" name="password-check" placeholder="Confirmez votre mot de passe" />
-      <input type="submit" value="Créer mon compte" [disabled]="userForm.invalid"/>
+      <div class="form1">
+        <input type="text" name="firstName" placeholder="Prénom" formControlName="firstName"/>
+        <input type="text" name="email" placeholder="Adresse mail" formControlName="email"/>
+        <input type="password" name="password" placeholder="Mot de passe" formControlName="password"/>
+      </div>
+      <div class="form1">
+        <input type="text" name="lastName" placeholder="Nom" formControlName="lastName"/>
+        <p>@eleves.enpc.fr</p>
+        <input type="password" name="password-check" placeholder="Confirmez votre mot de passe" />
+      </div>
+      <div class="form1">
+        <p>Promotion</p>
+        <input style="opacity:0; width:0em" type="text"/>
+        <input class="submit" type="submit" value="Créer mon compte" [disabled]="userForm.invalid"/>
+      </div>
+      <div class="form1">
+        <select class="form1" name="promotion" formControlName="promotion">
+          <option value="021">021</option>
+          <option value="020">020</option>
+          <option value="019">019</option>
+          <option value="018">018</option>
+        </select>
+      </div>
     </form>
 
     <p><a routerLink = '/auth'>Retour à l'authentification</a>.<br/>
@@ -42,8 +52,9 @@
       </footer>
 
 
-  <!-- Scripts -->
+      <div id="background-auth" style="background: #000000"></div>
 
-    <script src="/src/assets/assets_c/js/main.js"></script>
+      <div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()">
+      </div>
 
 </body>
