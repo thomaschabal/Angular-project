@@ -9,31 +9,19 @@
 
   <!-- Signup Form -->
     <form id="signup-form" [formGroup]="userForm" (ngSubmit) = "onSubmitForm()">
-
-      <div class="form1">
-        <input type="text" name="firstname" placeholder="Prénom" formControlName="firstname"/>
-        <input type="text" name="email" placeholder="Adresse mail" formControlName="email"/>
-        <input type="password" name="password" placeholder="Mot de passe" formControlName="password"/>
-      </div>
-      <div class="form1">
-        <input type="text" name="lastname" placeholder="Nom" formControlName="lastname"/>
-        <p>@eleves.enpc.fr</p>
-        <input type="password" name="confirmation_password" placeholder="Confirmez votre mot de passe" formControlName="confirmation_password"/>
-      </div>
-      <div class="form1">
-        <p>Promotion</p>
-        <input style="opacity:0; width:0em" type="text"/>
-        <input class="submit" type="submit" value="Créer mon compte" [disabled]="userForm.invalid"/>
-      </div>
-      <div class="form1">
-        <select class="form1" name="promotion" formControlName="promotion">
-          <option value="021">021</option>
-          <option value="020">020</option>
-          <option value="019">019</option>
-          <option value="018">018</option>
-        </select>
-      </div>
-
+      <input type="text" name="firstname" placeholder="Prénom" formControlName="firstname"/>
+      <input type="text" name="lastname" placeholder="Nom" formControlName="lastname"/><br/>
+      <input type="text" name="email" placeholder="Adresse mail" formControlName="email"/><p>@eleves.enpc.fr</p><br/>
+      <p>Promotion</p>
+      <select class="" name="promotion" formControlName="promotion">
+        <option value="021">021</option>
+        <option value="020">020</option>
+        <option value="019">019</option>
+        <option value="018">018</option>
+      </select>
+      <input type="password" name="password" placeholder="Mot de passe" formControlName="password"/>
+      <input type="password" name="confirmation_password" placeholder="Confirmez votre mot de passe" formControlName="confirmation_password"/>
+      <input type="submit" value="Entrer dans les Galeries" [disabled]="userForm.invalid"/>
     </form>
 
     <!-- Footer -->
@@ -50,9 +38,8 @@
       </footer>
 
 
-      <div id="background-auth" style="background: #000000"></div>
+  <!-- Scripts -->
 
-      <div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()">
-      </div>
+    <script src="/src/assets/assets_c/js/main.js"></script>
 
 </body>

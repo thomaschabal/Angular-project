@@ -13,8 +13,7 @@ export class NavComponent implements OnInit {
   authStatus : boolean;
 
 
-  constructor(private authService: AuthService,
-              private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.authStatus = (this.authService.token !== null);

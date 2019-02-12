@@ -5,12 +5,9 @@
         <h2>Zone d'administration</h2>
       </header>
       <div [@buttonTrigger] = "adminState">
-        <button type="button" name="button" (click)="formVisibility()">Créer un évènement</button><br/><br/>
-        <form [formGroup]="eventForm" (ngSubmit)="onSubmitEvent()" *ngIf="eventCreationSelect">
-          <input type="text" name="name" placeholder="Nom de la galerie" formControlName="name" /><br/>
-          <textarea name="description" placeholder="Description de la galerie" rows="2" formControlName="description"></textarea><br/>
-          <input type="submit" value="Valider la création" [disabled]="eventForm.invalid" />
-        </form>
+        <button type="button" name="button">Créer une année</button><br/><br/>
+        <button type="button" name="button">Créer un évènement</button><br/><br/>
+        <button type="button" name="button">Créer une galerie</button><br/><br/>
         <button type="button" name="button">Modérer</button>
       </div>
     </div>
@@ -18,6 +15,6 @@
       <header>
         <h2>Mes fichiers</h2>
       </header>
-      <button type="file" name="button" accept="image/jpeg" [@buttonTrigger] = "filesState">Ajouter des fichiers</button>
+      <button type="button" name="button" [@buttonTrigger] = "filesState">Ajouter des fichiers</button>
     </div>
   </section>

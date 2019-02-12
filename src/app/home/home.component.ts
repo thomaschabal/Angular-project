@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HomeService } from '../services/home.service';
-import { HttpService } from '../services/http.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -59,11 +58,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   formState = 'hidden';
 
   constructor(private homeService : HomeService,
-
-              private httpService : HttpService,
-              private activeRoute : ActivatedRoute,
-              private formBuilder : FormBuilder) {
-
+              private activeRoute : ActivatedRoute) {
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
               };
 
@@ -75,9 +70,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.adresse_3 = this.last_events[2].fond;
   }
 
-  onSubmitMessage() {
-    this.httpService.post('/api/materiel', this.messageForm.value);
-
+  onSubmit(form : NgForm) {
+    const name = form.value['name'];
+    const email = form.value['email'];
+    const message = form.value['message'];
+    console.log (name + ", dont le mail est " + email + ", vous dit : " + message);
   }
 
   placement_events(i : number) {

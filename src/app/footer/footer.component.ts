@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from '../services/http.service';
+import { AuthService } from '../services/auth.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,14 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private httpService : HttpService,
+  constructor(private authService : AuthService,
               private router : ActivatedRoute) { }
 
   ngOnInit() {
   }
 
   isOnline() {
-    return ((this.httpService.token !== null) && (this.router.snapshot._routerState.url).search('/galeries'));
+    return ((this.authService.token !== null) && (this.router.snapshot._routerState.url).search('/galeries'));
 
   }
 
