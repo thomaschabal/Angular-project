@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
+
   styleUrls: ['./auth.component.scss'],
   animations : [
     trigger('backgroundAnimation', [
@@ -70,6 +70,7 @@ export class AuthComponent implements OnInit {
                     "visible3", "hidden3",
                     "visible4", "hidden4"];
 
+
   userForm : FormGroup;
 
   constructor(private authService : AuthService,
@@ -86,6 +87,7 @@ export class AuthComponent implements OnInit {
       password : ['', Validators.required]
     });
   }
+
 
   changeFond() {
     //this.state1 = this.state1 === "visible" ? "hidden" : "visible";

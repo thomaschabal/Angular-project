@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
+
 @Component({
   selector: 'app-new-account',
   templateUrl: './new-account.component.html',
@@ -83,11 +84,12 @@ export class NewAccountComponent implements OnInit {
 
   initForm() {
     this.userForm = this.formBuilder.group({
-      firstName : ['', Validators.required],
-      lastName : ['', Validators.required],
+      firstname : ['', Validators.required],
+      lastname : ['', Validators.required],
       email : ['', Validators.required],
       promotion : ['', Validators.required],
-      password : ['', Validators.required]
+      password : ['', Validators.required],
+      confirmation_password : ['', Validators.required],
     });
   }
 
@@ -103,13 +105,13 @@ export class NewAccountComponent implements OnInit {
 
   onSubmitForm() {
     const formValue = this.userForm.value;
-    const newUser = new User(formValue['firstName'],
-                             formValue['lastName'],
-                             formValue['email']+"@eleves.enpc.fr",
+    const newUser = new User(formValue['firstname'],
+                             formValue['lastname'],
+                             formValue['email'],
                              formValue['promotion'],
-                             formValue['password']);
+                             formValue['password'],
+                             formValue['confirmation_password']);
     this.userService.addUser(newUser);
     this.router.navigate(['/auth']);
   }
-
 }

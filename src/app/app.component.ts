@@ -4,9 +4,11 @@ import { HttpService } from './services/http.service';
 import { Router, RouterOutlet } from '@angular/router';
 import { animate, style, state, transition, trigger, query } from '@angular/animations';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+
   styleUrls: ['./app.component.scss'],
   animations: [
     trigger('routeAnimations', [
@@ -21,6 +23,7 @@ import { animate, style, state, transition, trigger, query } from '@angular/anim
       ])
     ])
   ]
+
 })
 export class AppComponent {
   title = 'Galeries Ponthé';

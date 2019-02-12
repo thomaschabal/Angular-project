@@ -7,7 +7,7 @@ import { HttpService } from './http.service';
 @Injectable()
 export class AuthService {
   //isAuth = false;
-  token : string;
+  token = null;
   apiUrl: string;
 
   constructor(private httpClient: HttpClient,
@@ -20,6 +20,7 @@ export class AuthService {
   signIn(user: LoggingUser){
     this.httpService.post('/api/login', user).then(
       (res) => {
+
         this.httpService.token = res["token"];
         this.httpService.get('/api/get-user-by-jwt').then(
           (response) => {
@@ -27,9 +28,11 @@ export class AuthService {
           },
           (err) => { console.log(err); }
         );
+
       },
       (error) => { }
     );
+
   }
 
   signOut() {

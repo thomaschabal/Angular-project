@@ -46,6 +46,7 @@ import { HttpService } from './services/http.service';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,9 +61,7 @@ import { HttpService } from './services/http.service';
     FooterComponent,
     NewAccountComponent,
     UserListComponent,
-    DashboardComponent,
-    CguComponent,
-    ResetComponent
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

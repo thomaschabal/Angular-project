@@ -9,7 +9,7 @@ import { HttpService } from '../services/http.service';
   styleUrls: ['./material.component.scss'],
   animations : [
     trigger('formTrigger', [
-      state('visible', style({opacity: 1, transform : 'translateY(0)'})),
+      state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0, transform : 'translateY(75vh)'})),
       transition(':enter', [ animate('20ms') ] )
     ])
@@ -17,24 +17,20 @@ import { HttpService } from '../services/http.service';
 })
 export class MaterialComponent implements OnInit {
 
+
   materialForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder,
               private httpService : HttpService) { }
 
+
   ngOnInit() {
-    this.initForm();
   }
 
-  initForm() {
-    this.materialForm = this.formBuilder.group({
-      matos : ['', Validators.required],
-      message : ['', Validators.required]
-    });
-  }
 
   onSubmitMateriel() {
     this.httpService.post('/api/materiel', this.materialForm.value);
+
   }
 
   // State of the form of the page (e.g. if the section is being hovered or not)

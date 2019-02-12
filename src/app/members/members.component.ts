@@ -18,8 +18,8 @@ import { style, state, animate, transition, trigger } from "@angular/animations"
     ]),
     trigger('teamTrigger', [
       state('visible', style({})),
-      state('hidden-left', style({transform : 'translateX(65vw)'})),
-      state('hidden-right', style({transform : 'translateX(-65vw)'})),
+      state('hidden-left', style({transform : 'translateX(45vw)'})),
+      state('hidden-right', style({transform : 'translateX(-45vw)'})),
       transition('* => *', [ animate('20ms') ] ),
     ])
   ]

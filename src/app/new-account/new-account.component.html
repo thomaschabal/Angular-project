@@ -3,21 +3,22 @@
   <!-- Header -->
     <header id="header">
       <h1>Création d'un nouveau compte</h1>
+      <a routerLink = "/users">Liste des utilisateurs</a>
       <p>Pour tout problème sur la création de compte ou pour des questions concernant le club, tu peux envoyer un mail à <em>ponthe@liste.enpc.fr</em></p>
-      <p>Les <a routerLink = "/cgu">Conditions Générales d'Utilisation</a> du site sont disponibles en cliquant <a routerLink = "/cgu">ici</a>.</p>
     </header>
 
   <!-- Signup Form -->
     <form id="signup-form" [formGroup]="userForm" (ngSubmit) = "onSubmitForm()">
+
       <div class="form1">
-        <input type="text" name="firstName" placeholder="Prénom" formControlName="firstName"/>
+        <input type="text" name="firstname" placeholder="Prénom" formControlName="firstname"/>
         <input type="text" name="email" placeholder="Adresse mail" formControlName="email"/>
         <input type="password" name="password" placeholder="Mot de passe" formControlName="password"/>
       </div>
       <div class="form1">
-        <input type="text" name="lastName" placeholder="Nom" formControlName="lastName"/>
+        <input type="text" name="lastname" placeholder="Nom" formControlName="lastname"/>
         <p>@eleves.enpc.fr</p>
-        <input type="password" name="password-check" placeholder="Confirmez votre mot de passe" />
+        <input type="password" name="confirmation_password" placeholder="Confirmez votre mot de passe" formControlName="confirmation_password"/>
       </div>
       <div class="form1">
         <p>Promotion</p>
@@ -32,17 +33,14 @@
           <option value="018">018</option>
         </select>
       </div>
-    </form>
 
-    <p><a routerLink = '/auth'>Retour à l'authentification</a>.<br/>
-    Mot de passe oublié ? <a routerLink = '/reset'>Clique ici</a> pour le réinitialiser.</p>
+    </form>
 
     <!-- Footer -->
       <footer id="footer">
         <ul class="icons">
           <li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
           <li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram"><span class="label">uPont</span></a></li>
-          <li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github"><span class="label">GitHub</span></a></li>
           <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
           <li><a href="mailto : ponthe@liste.enpc.fr" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
         </ul>
