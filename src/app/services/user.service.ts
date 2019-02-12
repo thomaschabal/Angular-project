@@ -33,16 +33,11 @@ export class UserService {
   }
 
   addUser(user: User) {
-    this.users.push(user);
-    this.saveUsersToServer();
-    this.emitUsers();
-  }
-
-  saveUsersToServer() {
-    this.httpClient.post('https://ponthe-testing.enpc.org/api/register', this.users[1], httpOptions)
+    this.httpClient.post('https://ponthe-testing.enpc.org/api/register', user, httpOptions)
     .subscribe(
       () => { console.log('Enregistrement terminé'); },
       (error) => { console.log('Erreur à l\'enregistrement : ' + error);}
     );
   }
+
 }
