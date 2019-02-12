@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { state, trigger, animate, style, transition } from '@angular/animations';
+import { HttpService } from '../services/http.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -13,7 +15,7 @@ import { state, trigger, animate, style, transition } from '@angular/animations'
     trigger('picsTrigger', [
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0})),
-      transition('* => *', [ animate('200ms') ] ),
+      transition(':enter', [ animate('200ms') ] ),
     ]),
     trigger('footerTrigger', [
       state('visible', style({opacity: 1, transform : 'translateY(2vh)'})),
@@ -29,16 +31,19 @@ export class EventComponent implements OnInit, OnDestroy {
   pics : any[];
   resume : string;
   private sub : Subscription;
-  isAdmin = false;
+  isAdmin = true;
   isPublic = true;
   enModeration = false;
+  messageForm : FormGroup;
 
-  picsState = ["hidden", "hidden", "hidden", "hidden", "hidden", "hidden", "hidden", "hidden", "hidden"];
+  picsState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
   footerState = "hidden";
 
   constructor(private galeriesService : GaleriesService,
               private route : ActivatedRoute,
-              private activeRoute : ActivatedRoute) {
+              private activeRoute : ActivatedRoute,
+              private httpService : HttpService,
+              private formBuilder : FormBuilder) {
               this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
              }
 
@@ -48,6 +53,7 @@ export class EventComponent implements OnInit, OnDestroy {
     this.pics = this.galeriesService.getEventByName(selected_route).pics;
     this.resume = this.galeriesService.getEventByName(selected_route).resume;
     this.adresse = this.activeRoute.snapshot._routerState.url;
+    this.initForm();
   }
 
   public ngOnDestroy(): void {
@@ -58,12 +64,14 @@ export class EventComponent implements OnInit, OnDestroy {
     this.enModeration = !this.enModeration;
   }
 
+  publicPrivate() {
+    this.isPublic = !this.isPublic;
+  }
+
   survolePics(state : string) {
     for (let pic = 0; pic < this.picsState.length; pic++) {
       this.picsState[pic] = state;
     }
-    console.log("survol" + state);
-    console.log(this.picsState);
   }
 
   state(i) {
@@ -76,5 +84,16 @@ export class EventComponent implements OnInit, OnDestroy {
     } else {
       this.footerState = "hidden";
     }
+  }
+
+  initForm() {
+    this.messageForm = this.formBuilder.group({
+      matos : '',
+      message : ['', Validators.required]
+    });
+  }
+
+  onSubmitMessage() {
+    this.httpService.post('/api/materiel', this.messageForm.value);
   }
 }

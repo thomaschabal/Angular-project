@@ -1,3 +1,15 @@
+<!-- Header -->
+<div>
+  <header id="header" >
+    <a routerLink = '/new-account'><img src="assets/images/logo-ponthe.svg" alt="Le Ponthé" id="logo" /></a>
+    <h1><a routerLink = '/new-account'>Retour à la création de compte</a></h1>
+  </header>
+</div>
+
+<section>
+  <h2 id="cgu-title">Conditions Générales d'Utilisation du site <em>ponthe.enpc.org</em></h2>
+</section>
+
 <section *ngFor="let article of articles">
   <h2>{{ article.title }}</h2>
   <p>{{ article.body }}</p>

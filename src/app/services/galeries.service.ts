@@ -1,3 +1,10 @@
+
+import { HttpService } from '../services/http.service';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable()
+
 export class GaleriesService {
   galeries_events = [
     {
@@ -220,10 +227,23 @@ export class GaleriesService {
     }
   ];
 
+
+  all_galeries = [];
+
+  constructor(private httpService : HttpService,
+              private httpClient : HttpClient) { }
+
+
   getEventByName(event : string) {
     const evenement = this.event_pics.find(
       (singleEvent) => { return singleEvent.event === event }
     );
     return evenement;
   }
+
+  getAllEvents() {
+    //this.all_galeries = this.httpService.get('/api/get-galleries-by-year')["data"];
+    console.log("coucou");
+  }
+
 }

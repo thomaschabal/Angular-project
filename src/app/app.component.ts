@@ -1,11 +1,29 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { Router } from '@angular/router';
+import { HttpService } from './services/http.service';
+import { Router, RouterOutlet } from '@angular/router';
+import { animate, style, state, transition, trigger, query } from '@angular/animations';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('routeAnimations', [
+      transition('* => *', [
+        query(':enter', style({ opacity : 0})),
+        query(':leave', [
+          animate('0.5s', style({ opacity : 0}))
+        ]),
+        query(':enter', [
+          animate('1.5s', style({ opacity : 1}))
+        ]),
+      ])
+    ])
+  ]
+
 })
 export class AppComponent {
   title = 'Galeries Ponthé';
@@ -13,16 +31,22 @@ export class AppComponent {
   userAuth : boolean;
   authStatus: boolean;
 
-  constructor(private authService : AuthService, private router : Router) { }
+  constructor(private authService : AuthService,
+              private httpService : HttpService,
+              private router : Router) { }
 
   onSignOut() {
     this.authService.signOut();
-    this.authStatus = (this.authService.token !== null);
+    this.authStatus = (this.httpService.token !== null);
     this.router.navigate(['auth']);
   }
 
   isOnline() {
-    return (this.authService.token !== null);
+    return (this.httpService.token !== null);
+  }
+
+  prepareRoute(outlet : RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 
   // fonction(){

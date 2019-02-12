@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { state, style, transition, animate, trigger } from '@angular/animations';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-material',
@@ -10,24 +11,26 @@ import { state, style, transition, animate, trigger } from '@angular/animations'
     trigger('formTrigger', [
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0, transform : 'translateY(75vh)'})),
-      transition('* => *', [ animate('20ms') ] ),
+      transition(':enter', [ animate('20ms') ] )
     ])
   ]
 })
 export class MaterialComponent implements OnInit {
 
-  constructor() { }
+
+  materialForm : FormGroup;
+
+  constructor(private formBuilder : FormBuilder,
+              private httpService : HttpService) { }
+
 
   ngOnInit() {
   }
 
-  onSubmit(form : NgForm) {
-    console.log(form.value);
-    const name = form.value['name'];
-    const email = form.value['email'];
-    const matos = form.value['matos'];
-    const message = form.value['message'];
-    console.log(name + " a comme mail " + email + ", veut réserver " + matos + " parce que " + message);
+
+  onSubmitMateriel() {
+    this.httpService.post('/api/materiel', this.materialForm.value);
+
   }
 
   // State of the form of the page (e.g. if the section is being hovered or not)

@@ -17,6 +17,8 @@ import { FooterComponent } from './footer/footer.component';
 import { AuthComponent } from './auth/auth.component';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { CguComponent } from './cgu/cgu.component';
+import { ResetComponent } from './reset/reset.component';
 // Home page
 import { HomeComponent } from './home/home.component';
 // Galeries
@@ -39,6 +41,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
 import { ConfigService } from './services/config.service';
+import { HttpService } from './services/http.service';
 
 
 
@@ -75,7 +78,8 @@ import { ConfigService } from './services/config.service';
     AuthService,
     AuthGuard,
     UserService,
-    ConfigService
+    ConfigService,
+    HttpService
   ],
   bootstrap: [AppComponent]
 })
