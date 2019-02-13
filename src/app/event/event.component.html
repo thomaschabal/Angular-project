@@ -43,7 +43,8 @@
           <ul class="icons">
 						<li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
 						<li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram"><span class="label">uPont</span></a></li>
-						<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+            <li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github"><span class="label">GitHub</span></a></li>
+            <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
 					</ul>
         </section>
         <p class="copyright">
@@ -55,12 +56,6 @@
           <h2>Contacte les pros du Ponthé</h2>
           <form method="post" [formGroup] = "messageForm" (ngSubmit)="onSubmitMessage()">
             <div class="fields">
-              <div class="field half">
-                <input type="text" name="name" id="name" placeholder="Ton petit nom..." />
-              </div>
-              <div class="field half">
-                <input type="text" name="email" id="email" placeholder="Ton mail..." />
-              </div>
               <div class="field">
                 <textarea name="message" id="message" rows="4" placeholder="Ton mot doux..." formControlName="message"></textarea>
               </div>
@@ -74,3 +69,10 @@
       </div>
     </div>
   </footer>
+
+  <script src="../../assets_g/js/jquery.min.js"></script>
+			<script src="../../assets_g/js/jquery.poptrox.min.js"></script>
+			<script src="../../assets_g/js/browser.min.js"></script>
+			<script src="../../assets_g/js/breakpoints.min.js"></script>
+			<script src="../../assets_g/js/util.js"></script>
+			<script src="../../assets_g/js/main.js"></script>

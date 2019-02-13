@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpService } from './auth.service';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class MessagesService {

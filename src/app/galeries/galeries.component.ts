@@ -20,9 +20,12 @@ export class GaleriesComponent implements OnInit {
 
   galeriesState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
 
-  constructor(private galeriesService : GaleriesService) { };
+  constructor(private galeriesService : GaleriesService) {
+    this.galeriesService.getAllEvents();
+  };
 
   ngOnInit() {
+    //this.galeries_events = this.galeriesService.all_galeries;
     this.galeries_events = this.galeriesService.galeries_events;
   }
 

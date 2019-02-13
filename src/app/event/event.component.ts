@@ -31,7 +31,7 @@ export class EventComponent implements OnInit, OnDestroy {
   pics : any[];
   resume : string;
   private sub : Subscription;
-  isAdmin = true;
+  isAdmin : boolean;
   isPublic = true;
   enModeration = false;
   messageForm : FormGroup;
@@ -54,6 +54,7 @@ export class EventComponent implements OnInit, OnDestroy {
     this.resume = this.galeriesService.getEventByName(selected_route).resume;
     this.adresse = this.activeRoute.snapshot._routerState.url;
     this.initForm();
+    this.isAdmin = this.httpService.isAdmin;
   }
 
   public ngOnDestroy(): void {

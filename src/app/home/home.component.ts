@@ -19,8 +19,8 @@ import { transition, trigger, style, animate, state } from "@angular/animations"
     ]),
     trigger('lastEventTrigger', [
       state('visible', style({})),
-      state('hidden-left', style({transform : 'translateX(40vw)'})),
-      state('hidden-right', style({transform : 'translateX(-40vw)'})),
+      state('hidden-left', style({transform : 'translateX(50vw)'})),
+      state('hidden-right', style({transform : 'translateX(-50vw)'})),
       transition('* => *', [ animate('20ms') ] ),
     ]),
     trigger('lovePicsTrigger', [
@@ -49,6 +49,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private sub : Subscription;
 
+  // Form to send a message to the admins of the site
+  messageForm : FormGroup;
+
   // State of various sections of the page (e.g. if the section is being hovered or not)
   introState = 'hidden';
   lastEventsState1 = 'hidden-left';
@@ -59,11 +62,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   formState = 'hidden';
 
   constructor(private homeService : HomeService,
-
               private httpService : HttpService,
               private activeRoute : ActivatedRoute,
               private formBuilder : FormBuilder) {
-
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
               };
 
@@ -73,11 +74,17 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.adresse_1 = this.last_events[0].fond;
     this.adresse_2 = this.last_events[1].fond;
     this.adresse_3 = this.last_events[2].fond;
+    this.initForm();
+  }
+
+  initForm() {
+    this.messageForm = this.formBuilder.group({
+      message : ['', Validators.required]
+    });
   }
 
   onSubmitMessage() {
     this.httpService.post('/api/materiel', this.messageForm.value);
-
   }
 
   placement_events(i : number) {

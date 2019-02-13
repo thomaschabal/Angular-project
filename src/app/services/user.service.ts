@@ -16,12 +16,12 @@ export class UserService {
 
   private users : User[] = [
     {
-    firstname : "guilhem",
-    lastname : "bonnieu",
-    email : "guilhem.bonnieu",
-    promotion : "020",
-    password : "J'alAMDBR9",
-    confirmation_password: "J'alAMDBR9"
+      firstname : 'John',
+      lastname : 'Doe',
+      email : 'john@doe.org',
+      promotion : '022',
+      password : 'motdepasse',
+      confirmation_password : 'motdepasse'
     }
   ];
   userSubject = new Subject<User[]>();
@@ -39,5 +39,4 @@ export class UserService {
       (error) => { console.log('Erreur à l\'enregistrement : ' + error);}
     );
   }
-
 }

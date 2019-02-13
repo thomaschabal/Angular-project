@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
-
 @Component({
   selector: 'app-new-account',
   templateUrl: './new-account.component.html',
@@ -114,4 +113,5 @@ export class NewAccountComponent implements OnInit {
     this.userService.addUser(newUser);
     this.router.navigate(['/auth']);
   }
+
 }
