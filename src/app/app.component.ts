@@ -34,12 +34,12 @@ export class AppComponent {
 
   onSignOut() {
     this.authService.signOut();
-    this.authStatus = (this.httpService.token !== null);
+    this.authStatus = (this.httpService.token !== null && this.httpService.token !=="" );
     this.router.navigate(['auth']);
   }
 
   isOnline() {
-    return (this.httpService.token !== null);
+    return (this.httpService.token !== null && this.httpService.token !=="");
   }
 
   prepareRoute(outlet : RouterOutlet) {

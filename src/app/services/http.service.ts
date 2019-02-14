@@ -12,6 +12,7 @@ export class HttpService {
   constructor(private httpClient : HttpClient,
               private configService : ConfigService) {
     this.apiUrl = 'https://ponthe-testing.enpc.org';
+    this.token = '';
     //this.apiUrl = this.configService.load().apiUrl;
   }
 

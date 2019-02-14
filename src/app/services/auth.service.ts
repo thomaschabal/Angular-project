@@ -27,10 +27,10 @@ export class AuthService {
           (response) => {
             this.httpService.isAdmin = response["admin"]; this.router.navigate(['/home']);
           },
-          (err) => { console.log(err); alert("Mauvais identifiant ou mauvais mot de passe");}
+          (err) => { console.log(err);}
         );
       },
-      (error) => {  alert("Mauvais identifiant ou mauvais mot de passe"); }
+      (error) => {  alert("Si tu as déjà validé ton compte : mauvais identifiant ou mauvais mot de passe"); }
     );
   }
 

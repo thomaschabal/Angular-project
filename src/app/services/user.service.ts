@@ -40,9 +40,8 @@ export class UserService {
     .subscribe(
       () => {
         console.log('Enregistrement terminé');
-        alert("Tu as bien réussi à t'inscrire");
         this.router.navigate(['/auth']);
-        ;
+        alert("Tu as bien réussi à t'inscrire, tu peux maintenant valider ton inscription dans tes mails")
       },
       (error) => { console.log('Erreur à l\'enregistrement : ' + error); alert("Tu as fait une erreur, vérifie ton email et ton mot de passe");}
     );
