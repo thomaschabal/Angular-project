@@ -3,6 +3,7 @@ import { LoggingUser } from '../models/LoggingUser.model';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
 import { HttpService } from './http.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
@@ -12,7 +13,8 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient,
               private configService: ConfigService,
-              private httpService : HttpService) {
+              private httpService : HttpService,
+              private router : Router) {
     //this.apiUrl = this.configService.load().apiUrl;
     this.apiUrl = 'https://ponthe-testing.enpc.org';
   }
@@ -23,12 +25,12 @@ export class AuthService {
         this.httpService.token = res["token"];
         this.httpService.get('/api/get-user-by-jwt').then(
           (response) => {
-            this.httpService.isAdmin = response["admin"];
+            this.httpService.isAdmin = response["admin"]; this.router.navigate(['/home']);
           },
-          (err) => { console.log(err); }
+          (err) => { console.log(err); alert("Mauvais identifiant ou mauvais mot de passe");}
         );
       },
-      (error) => { }
+      (error) => {  alert("Mauvais identifiant ou mauvais mot de passe"); }
     );
   }
 
