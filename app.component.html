@@ -1,0 +1,16 @@
+
+
+		<!-- Header -->
+		<app-nav></app-nav>
+
+
+
+		<div class="route-container" [@routeAnimations]="prepareRoute(outlet)">
+			<router-outlet #outlet="outlet"></router-outlet>
+		</div>
+
+
+
+
+
+		<app-footer></app-footer>
