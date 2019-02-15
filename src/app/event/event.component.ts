@@ -27,32 +27,30 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class EventComponent implements OnInit, OnDestroy {
 
   adresse : string;
-  name : string;
   pics : any[];
-  resume : string;
   private sub : Subscription;
   isAdmin : boolean;
   isPublic = true;
   enModeration = false;
+  selected_route = 'test'
   messageForm : FormGroup;
 
   picsState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
   footerState = "hidden";
-
   constructor(private galeriesService : GaleriesService,
               private route : ActivatedRoute,
               private activeRoute : ActivatedRoute,
               private httpService : HttpService,
               private formBuilder : FormBuilder) {
               this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
+
+
              }
 
   ngOnInit() {
-    const selected_route = this.route.snapshot.params['event'];
-    this.name = this.galeriesService.getEventByName(selected_route).name;
-    this.pics = this.galeriesService.getEventByName(selected_route).pics;
-    this.resume = this.galeriesService.getEventByName(selected_route).resume;
-    this.adresse = this.activeRoute.snapshot._routerState.url;
+    this.selected_route = this.route.snapshot.params['event']
+    this.pics = this.galeriesService.getEventByName(this.httpService,this.selected_route);
+    this.adresse = this.activeRoute.snapshot.routeConfig.path;
     this.initForm();
     this.isAdmin = this.httpService.isAdmin;
   }

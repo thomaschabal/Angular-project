@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../models/User.model';
+import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-account',
@@ -111,6 +111,7 @@ export class NewAccountComponent implements OnInit {
                              formValue['password'],
                              formValue['confirmation_password']);
     this.userService.addUser(newUser);
+    this.router.navigate(['/auth']);
   }
 
 }

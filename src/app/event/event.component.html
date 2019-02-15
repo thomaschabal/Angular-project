@@ -21,11 +21,9 @@
   Cette galerie est privée : elle n'est visible que par les administrateurs et son auteur.
 </div>
 <!-- Main -->
-  <div id="main" (mouseenter) = "survolePics('visible')"
-                 (mouseleave) = "survolePics('hidden')">
+  <div id="main" (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')">
     <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
-      <a href="{{ picture }}" class="image"><img src="{{ picture }}" alt="" /></a>
-      <h2>{{ name }}</h2>
+      <a href="{{ picture.file_path }}" class="image"><img src="{{ picture.base64 }}" alt="" width="100%"/></a>
       <button type="button" name="button" *ngIf = "enModeration">Supprimer</button>
     </article>
   </div>
@@ -54,7 +52,7 @@
       <div>
         <section>
           <h2>Contacte les pros du Ponthé</h2>
-          <form method="post" [formGroup] = "messageForm" (ngSubmit)="onSubmitMessage()">
+          <form *ngIf="message" method="post" [formGroup] = "messageForm" (ngSubmit)="onSubmitMessage()">
             <div class="fields">
               <div class="field">
                 <textarea name="message" id="message" rows="4" placeholder="Ton mot doux..." formControlName="message"></textarea>

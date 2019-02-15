@@ -38,7 +38,7 @@ export class MaterialComponent implements OnInit {
   }
 
   // State of the form of the page (e.g. if the section is being hovered or not)
-  formState = 'visible';
+  formState = 'hidden';
 
   survoleForm(state : string) {
     this.formState = state;

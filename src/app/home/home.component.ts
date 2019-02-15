@@ -3,9 +3,11 @@ import { HomeService } from '../services/home.service';
 import { HttpService } from '../services/http.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../services/auth.service'
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { transition, trigger, style, animate, state } from "@angular/animations";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -64,7 +66,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private homeService : HomeService,
               private httpService : HttpService,
               private activeRoute : ActivatedRoute,
-              private formBuilder : FormBuilder) {
+              private router : Router,
+              private formBuilder : FormBuilder,
+              private authService : AuthService) {
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
               };
 
@@ -75,6 +79,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.adresse_2 = this.last_events[1].fond;
     this.adresse_3 = this.last_events[2].fond;
     this.initForm();
+    if (this.authService.isAuth === false){
+      this.router.navigate(['auth']);
+    }
   }
 
   initForm() {

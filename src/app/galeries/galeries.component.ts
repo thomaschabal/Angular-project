@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GaleriesService } from '../services/galeries.service';
 import { state, trigger, animate, style, transition } from '@angular/animations';
-
+import { HttpService } from '../services/http.service'
 @Component({
   selector: 'app-galeries',
   templateUrl: './galeries.component.html',
@@ -20,13 +20,20 @@ export class GaleriesComponent implements OnInit {
 
   galeriesState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
 
-  constructor(private galeriesService : GaleriesService) {
-    this.galeriesService.getAllEvents();
+  constructor(private httpService : HttpService) {
+    httpService.get("/api/get-all-galleries").then(
+      (res) => {
+        this.galeries_events = res["galleries"];
+      },
+      (error) => { }
+    );
   };
 
   ngOnInit() {
     //this.galeries_events = this.galeriesService.all_galeries;
-    this.galeries_events = this.galeriesService.galeries_events;
+
+
+    console.log('coucou les copains')
   }
 
   survoleGaleries(state : string) {

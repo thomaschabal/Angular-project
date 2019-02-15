@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  //isAuth = false;
+  isAuth : boolean;
   token : string;
   apiUrl: string;
 
@@ -17,25 +17,31 @@ export class AuthService {
               private router : Router) {
     //this.apiUrl = this.configService.load().apiUrl;
     this.apiUrl = 'https://ponthe-testing.enpc.org';
+    this.isAuth = false;
   }
 
   signIn(user: LoggingUser){
     this.httpService.post('/api/login', user).then(
       (res) => {
         this.httpService.token = res["token"];
+        this.isAuth = true;
+        this.router.navigate(['home']);
+        console.log('in signIn '+ this.isAuth)
         this.httpService.get('/api/get-user-by-jwt').then(
           (response) => {
-            this.httpService.isAdmin = response["admin"]; this.router.navigate(['/home']);
+            this.httpService.isAdmin = response["admin"];
+
           },
-          (err) => { console.log(err);}
+          (err) => { console.log(err); }
         );
       },
-      (error) => {  alert("Si tu as déjà validé ton compte : mauvais identifiant ou mauvais mot de passe"); }
+      (error) => { }
     );
   }
 
   signOut() {
     this.httpService.token = null;
+    this.isAuth = false;
   }
 
 }
