@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfigService } from './config.service';
 
 @Injectable()
@@ -10,9 +11,9 @@ export class HttpService {
   isAdmin : boolean;
 
   constructor(private httpClient : HttpClient,
-              private configService : ConfigService) {
+              private configService : ConfigService,
+            private router : Router) {
     this.apiUrl = 'https://ponthe-testing.enpc.org';
-    this.token = '';
     //this.apiUrl = this.configService.load().apiUrl;
   }
 
@@ -33,7 +34,10 @@ export class HttpService {
             console.log(res);
             return resolve(res);
           },
-          (error) => { console.log("Erreur " + error);
+          (error) => { console.log("Erreur " + error.status);
+                        if (error.status === 403){
+                          this.router.navigate(['auth']);
+                        }
                         reject(error); }
         );
       }
