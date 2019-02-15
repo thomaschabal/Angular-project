@@ -32,6 +32,8 @@ import { MembersComponent } from './members/members.component';
 import { MaterialComponent } from './material/material.component';
 // Error 404 page
 import { NotfoundComponent } from './notfound/notfound.component';
+// Image viewer
+import { ImageViewerModule } from 'ngx-image-viewer';
 
 // Services to import
 import { HomeService } from './services/home.service';
@@ -70,7 +72,8 @@ import { HttpService } from './services/http.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ImageViewerModule.forRoot()
   ],
   providers: [
     HomeService,

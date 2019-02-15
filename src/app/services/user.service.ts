@@ -4,8 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import {NewAccountComponent} from '../new-account/new-account.component'
-import { Router } from '@angular/router';
-import { HttpService } from './http.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -28,22 +26,17 @@ export class UserService {
   ];
   userSubject = new Subject<User[]>();
 
-  constructor (private httpClient : HttpClient, private router : Router, private httpService : HttpService ) {}
+  constructor (private httpClient : HttpClient) {}
 
   emitUsers() {
     this.userSubject.next(this.users.slice());
   }
 
-
-
   addUser(user: User) {
-    this.httpService.post('/api/register', user).then(
-      (res) => {
-        console.log('Enregistrement terminé');
-        this.router.navigate(['/auth']);
-        alert("Tu as bien réussi à t'inscrire, tu peux maintenant valider ton inscription dans tes mails")
-      },
-      (error) => { console.log('Erreur à l\'enregistrement : ' + error); alert("Tu as fait une erreur, vérifie ton email et ton mot de passe");}
+    this.httpClient.post('https://ponthe-testing.enpc.org/api/register', user, httpOptions)
+    .subscribe(
+      () => { console.log('Enregistrement terminé'); },
+      (error) => { console.log('Erreur à l\'enregistrement : ' + error);}
     );
   }
 }

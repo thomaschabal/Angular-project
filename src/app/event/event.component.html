@@ -21,9 +21,12 @@
   Cette galerie est privée : elle n'est visible que par les administrateurs et son auteur.
 </div>
 <!-- Main -->
+<div id="image-viewer" *ngIf = "clicked">
+  <ngx-image-viewer [src] = "raw_pics"></ngx-image-viewer>
+</div>
   <div id="main" (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')">
     <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
-      <a href="{{ picture.file_path }}" class="image"><img src="{{ picture.base64 }}" alt="" width="100%"/></a>
+      <img (click)="onClick(i)" src="{{ picture.base64 }}" alt="" width="100%"/>
       <button type="button" name="button" *ngIf = "enModeration">Supprimer</button>
     </article>
   </div>

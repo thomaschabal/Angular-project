@@ -10,12 +10,11 @@ export class GaleriesService {
   event_pics: any[];
 
   all_galeries: any[];
-
+  pic : any;
   constructor(private httpService : HttpService,
               private httpClient : HttpClient) {
                 const request_result = httpService.get("/api/get-all-galleries").then()
                 this.galeries_events = request_result["galleries"]
-                console.log(this.galeries_events);
                 const requestResult = httpService.get("/api/get-all-galleries").then(
                   (res) => {
                     this.galeries_events = res["galleries"];
@@ -40,5 +39,18 @@ export class GaleriesService {
   getAllEvents() {
     //this.all_galeries = this.httpService.get('/api/get-galleries-by-year')["data"];
     return this.galeries_events;
+  }
+
+  getFullImage(path : string){
+
+    this.httpService.post("/api/get-full-image", {'file_path' : path}).then(
+      (res) => {
+        this.pic = res['base64'];
+        console.log(res);
+      },
+      (error) => { }
+    );
+
+    return this.pic;
   }
 }

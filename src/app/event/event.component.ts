@@ -28,13 +28,14 @@ export class EventComponent implements OnInit, OnDestroy {
 
   adresse : string;
   pics : any[];
+  raw_pics : any[];
   private sub : Subscription;
   isAdmin : boolean;
   isPublic = true;
   enModeration = false;
   selected_route = 'test'
   messageForm : FormGroup;
-
+  clicked : boolean
   picsState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
   footerState = "hidden";
   constructor(private galeriesService : GaleriesService,
@@ -53,6 +54,8 @@ export class EventComponent implements OnInit, OnDestroy {
     this.adresse = this.activeRoute.snapshot.routeConfig.path;
     this.initForm();
     this.isAdmin = this.httpService.isAdmin;
+    this.clicked = false;
+    this.raw_pics = [];
   }
 
   public ngOnDestroy(): void {
@@ -94,5 +97,15 @@ export class EventComponent implements OnInit, OnDestroy {
 
   onSubmitMessage() {
     this.httpService.post('/api/materiel', this.messageForm.value);
+  }
+
+  onClick(i_selected_pic) {
+    for (let i=i_selected_pic; i<this.pics.length; i++){
+      this.raw_pics.push(this.galeriesService.getFullImage(this.pics[i]['file_path']));
+    }
+    for (let i=0; i<i_selected_pic; i++){
+      this.raw_pics.push(this.galeriesService.getFullImage(this.pics[i]['file_path']));
+    }
+    this.clicked = true;
   }
 }

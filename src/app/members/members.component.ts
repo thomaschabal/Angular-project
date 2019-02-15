@@ -31,7 +31,7 @@ export class MembersComponent implements OnInit, OnDestroy {
   private sub : Subscription;
 
   // State of various sections of the page (e.g. if the section is being hovered or not)
-  introState = 'visible';
+  introState = 'hidden';
   teamStateLeft = 'hidden-left';
   teamStateRight = 'hidden-right';
 
