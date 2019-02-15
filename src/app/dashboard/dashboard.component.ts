@@ -22,8 +22,8 @@ import { HttpService } from '../services/http.service';
 })
 export class DashboardComponent implements OnInit {
 
-  adminState = "visible";
-  filesState = "visible";
+  adminState = "hidden";
+  filesState = "hidden";
   animEvent = "visible";
 
   eventCreationSelect = false;
@@ -47,8 +47,8 @@ export class DashboardComponent implements OnInit {
 
   initForm() {
     this.eventForm = this.formBuilder.group({
-      name : ['Nom', Validators.required],
-      description : ['Description', Validators.required],
+      name : ['', Validators.required],
+      description : ['', Validators.required],
       year_slug : ['2019', Validators.required],
       event_slug : 'event1',  //  /!\ Remplacer selon le back défini
       boolPrivate : ["on", Validators.required]
@@ -67,7 +67,5 @@ export class DashboardComponent implements OnInit {
   onSubmitEvent() {
     this.eventForm.value["private"] = this.eventForm.value["boolPrivate"];
     this.httpService.post('/api/create-gallery', this.eventForm.value);
-    alert("Tu as bien réussi à t'inscrire, tu peux maintenant valider ton inscription dans tes mails");
-
   }
 }

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import {NewAccountComponent} from '../new-account/new-account.component'
 import { Router } from '@angular/router';
+import { HttpService } from './http.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -27,7 +28,7 @@ export class UserService {
   ];
   userSubject = new Subject<User[]>();
 
-  constructor (private httpClient : HttpClient, private router : Router  ) {}
+  constructor (private httpClient : HttpClient, private router : Router, private httpService : HttpService ) {}
 
   emitUsers() {
     this.userSubject.next(this.users.slice());
@@ -36,9 +37,8 @@ export class UserService {
 
 
   addUser(user: User) {
-    this.httpClient.post('https://ponthe-testing.enpc.org/api/register', user, httpOptions)
-    .subscribe(
-      () => {
+    this.httpService.post('/api/register', user).then(
+      (res) => {
         console.log('Enregistrement terminé');
         this.router.navigate(['/auth']);
         alert("Tu as bien réussi à t'inscrire, tu peux maintenant valider ton inscription dans tes mails")

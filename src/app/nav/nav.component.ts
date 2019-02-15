@@ -14,24 +14,26 @@ export class NavComponent implements OnInit {
 
 
   constructor(private authService: AuthService,
-              private router: Router) { }
+              private router: Router) {
+                this.authStatus = this.authService.isAuth;
+              }
 
   ngOnInit() {
-    this.authStatus = (this.authService.token !== null);
+    //this.authStatus = (this.authService.isAuth);
   }
 
   isOnline() {
-    return (this.authService.token !== null);
+    return (this.authService.isAuth);
   }
 
   onSignIn() {
     this.authService.signIn(null);  // FIXME
-    this.authStatus = (this.authService.token !== null);
+    this.authStatus = (this.authService.isAuth);
   }
 
   onSignOut() {
     this.authService.signOut();
-    this.authStatus = (this.authService.token !== null);
+    this.authStatus = (this.authService.isAuth);
     this.router.navigate(['auth']);
   }
 

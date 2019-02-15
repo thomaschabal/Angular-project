@@ -1,9 +1,9 @@
 <!-- Header -->
-  <header id="header" *ngIf="isOnline()">
+  <header id="header">
     <a routerLink = '/home'><img src="assets/images/logo-ponthe.png" alt="Le Ponthé" id="logo" /></a>
     <h1><a routerLink = '/home'>Le Ponthé - Club audiovisuel des Ponts</a></h1>
 
-    <nav>
+    <nav *ngIf = "isOnline()">
       <ul>
         <li><a routerLink = '/galeries'>Galeries</a></li>
         <li><a routerLink = '/dashboard'>Tableau de bord</a></li>

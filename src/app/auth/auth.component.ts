@@ -99,7 +99,6 @@ export class AuthComponent implements OnInit {
 
   onSignIn() {
     this.authService.signIn(this.userForm.value);
-    
   }
 
 }

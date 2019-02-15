@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  //isAuth = false;
+  isAuth : boolean;
   token : string;
   apiUrl: string;
 
@@ -17,6 +17,7 @@ export class AuthService {
               private router : Router) {
     //this.apiUrl = this.configService.load().apiUrl;
     this.apiUrl = 'https://ponthe-testing.enpc.org';
+    this.isAuth = false;
   }
 
   signIn(user: LoggingUser){
@@ -36,6 +37,7 @@ export class AuthService {
 
   signOut() {
     this.httpService.token = null;
+    this.isAuth = false;
   }
 
 }

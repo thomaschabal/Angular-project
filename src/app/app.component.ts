@@ -25,21 +25,23 @@ import { animate, style, state, transition, trigger, query } from '@angular/anim
 export class AppComponent {
   title = 'Galeries Ponthé';
 
-  userAuth : boolean;
   authStatus: boolean;
 
   constructor(private authService : AuthService,
               private httpService : HttpService,
-              private router : Router) { }
+              private router : Router) {
+                this.authStatus = false;
+              }
 
   onSignOut() {
     this.authService.signOut();
-    this.authStatus = (this.httpService.token !== null && this.httpService.token !=="" );
+    this.authStatus = (this.authService.isAuth);
     this.router.navigate(['auth']);
   }
 
   isOnline() {
-    return (this.httpService.token !== null && this.httpService.token !=="");
+    console.log(this.authStatus);
+    return (this.authStatus);
   }
 
   prepareRoute(outlet : RouterOutlet) {
