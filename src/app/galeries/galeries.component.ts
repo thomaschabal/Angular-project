@@ -31,9 +31,6 @@ export class GaleriesComponent implements OnInit {
 
   ngOnInit() {
     //this.galeries_events = this.galeriesService.all_galeries;
-
-
-    console.log('coucou les copains')
   }
 
   survoleGaleries(state : string) {

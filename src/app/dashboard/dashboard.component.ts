@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { transition, trigger, style, animate, state } from "@angular/animations";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpService } from '../services/http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,10 +21,13 @@ import { HttpService } from '../services/http.service';
     ])
   ]
 })
+
+
+
 export class DashboardComponent implements OnInit {
 
-  adminState = "hidden";
-  filesState = "hidden";
+  adminState = "visible";
+  filesState = "visible";
   animEvent = "visible";
 
   eventCreationSelect = false;

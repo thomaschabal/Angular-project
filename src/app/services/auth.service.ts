@@ -24,14 +24,18 @@ export class AuthService {
     this.httpService.post('/api/login', user).then(
       (res) => {
         this.httpService.token = res["token"];
+        this.isAuth = true;
+        this.router.navigate(['/home']);
+        console.log('in signIn '+ this.isAuth)
         this.httpService.get('/api/get-user-by-jwt').then(
           (response) => {
-            this.httpService.isAdmin = response["admin"]; this.router.navigate(['/home']);
+            this.httpService.isAdmin = response["admin"];
+
           },
-          (err) => { console.log(err);}
+          (err) => { console.log(err); }
         );
       },
-      (error) => {  alert("Si tu as déjà validé ton compte : mauvais identifiant ou mauvais mot de passe"); }
+      (error) => { alert("Si tu as déjà validé ton compte : mauvais identifiant ou mauvais mot de passe") }
     );
   }
 

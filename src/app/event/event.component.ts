@@ -94,5 +94,6 @@ export class EventComponent implements OnInit, OnDestroy {
 
   onSubmitMessage() {
     this.httpService.post('/api/materiel', this.messageForm.value);
+    alert("Message envoyé");
   }
 }

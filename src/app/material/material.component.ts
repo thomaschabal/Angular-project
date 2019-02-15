@@ -9,9 +9,9 @@ import { HttpService } from '../services/http.service';
   styleUrls: ['./material.component.scss'],
   animations : [
     trigger('formTrigger', [
-      state('visible', style({opacity: 1, transform : 'translateY(0)'})),
+      state('visible', style({opacity: 1, transform : 'translateY(0vh)'})),
       state('hidden', style({opacity: 0, transform : 'translateY(75vh)'})),
-      transition(':enter', [ animate('20ms') ] )
+      transition(':enter', [ animate('70ms') ] )
     ])
   ]
 })
