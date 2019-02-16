@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   animations : [
+    // Hover animation
     trigger('buttonTrigger', [
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0})),
       transition('* => *', [ animate('150ms') ] ),
     ]),
+    // Create gallery form animation
     trigger('eventAnimation', [
       state('hidden', style({opacity: 0, height : '0em'})),
       state('visible', style({opacity : 1, height: '17em'})),
@@ -23,15 +25,17 @@ import { Router } from '@angular/router';
 })
 
 
-
 export class DashboardComponent implements OnInit {
 
+  // Display variables
   adminState = "visible";
   filesState = "visible";
   animEvent = "visible";
 
+  // Create gallery form initially hidden
   eventCreationSelect = false;
 
+  // Create gallery form defined here
   eventForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder,
@@ -41,14 +45,7 @@ export class DashboardComponent implements OnInit {
     this.initForm();
   }
 
-  survoleAdmin(state : string) {
-    this.adminState = state;
-  }
-
-  survoleFiles(state : string) {
-    this.filesState = state;
-  }
-
+  // Initialize create gallery form
   initForm() {
     this.eventForm = this.formBuilder.group({
       name : ['', Validators.required],
@@ -59,17 +56,27 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  formVisibility() {
-    this.eventCreationSelect = !this.eventCreationSelect;
-    // if (this.animEvent === "visible") {
-    //   this.animEvent = "hidden";
-    // } else {
-    //   this.animEvent = "visible";
-    // }
-  }
-
+  // Submission of gallery creation
   onSubmitEvent() {
     this.eventForm.value["private"] = this.eventForm.value["boolPrivate"];
     this.httpService.post('/api/create-gallery', this.eventForm.value);
   }
+
+
+  //// HOVER ANIMATIONS
+  // Hover administration area
+  survoleAdmin(state : string) {
+    this.adminState = state;
+  }
+
+  // Hover upload file area
+  survoleFiles(state : string) {
+    this.filesState = state;
+  }
+
+  // Create gallery form visibility
+  formVisibility() {
+    this.eventCreationSelect = !this.eventCreationSelect;
+  }
+
 }

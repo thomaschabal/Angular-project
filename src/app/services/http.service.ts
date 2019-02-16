@@ -6,6 +6,7 @@ import { ConfigService } from './config.service';
 @Injectable()
 export class HttpService {
 
+  // Variables containing the adress of the back, the user's token and his status (user or admin)
   apiUrl : string;
   token : string;
   isAdmin : boolean;
@@ -14,10 +15,10 @@ export class HttpService {
               private configService : ConfigService,
             private router : Router) {
     this.apiUrl = 'https://ponthe-testing.enpc.org';
-    //this.apiUrl = this.configService.load().apiUrl;
   }
 
 
+  // Méthod get : require the route from the API
   get(path : string) {
     return new Promise(
       (resolve, reject) => {

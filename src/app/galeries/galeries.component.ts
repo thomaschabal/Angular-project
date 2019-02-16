@@ -7,6 +7,7 @@ import { HttpService } from '../services/http.service'
   templateUrl: './galeries.component.html',
   styleUrls: ['./galeries.component.scss'],
   animations : [
+    // Hover animation
     trigger('galeriesTrigger', [
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0})),
@@ -16,12 +17,15 @@ import { HttpService } from '../services/http.service'
 })
 export class GaleriesComponent implements OnInit {
 
+  // List of events to display
   galeries_events : any[];
 
+  // Animation variables for 9 first pics
   galeriesState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
 
   constructor(private httpService : HttpService) {
-    httpService.get("/api/get-all-galleries").then(
+    // Request for getting all the public galeries
+    this.httpService.get("/api/get-all-galleries").then(
       (res) => {
         this.galeries_events = res["galleries"];
       },
@@ -33,6 +37,8 @@ export class GaleriesComponent implements OnInit {
     //this.galeries_events = this.galeriesService.all_galeries;
   }
 
+
+  // Display functions (hover and state)
   survoleGaleries(state : string) {
     for (let pic = 0; pic < this.galeriesState.length; pic++) {
       this.galeriesState[pic] = state;

@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   last_events : any[];
   love_pics : any[];
 
-  // Routes to galeries regarding main events
+  // Routes to galeries regarding 3 last events
   adresse_1 : string;
   adresse_2 : string;
   adresse_3 : string;
@@ -69,31 +69,44 @@ export class HomeComponent implements OnInit, OnDestroy {
               private router : Router,
               private formBuilder : FormBuilder,
               private authService : AuthService) {
+                // Smooth transitions on arrow clicks
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
               };
 
   ngOnInit() {
+    // Requests to the server, update of previous data
     this.last_events = this.homeService.last_events;
     this.love_pics = this.homeService.love_pics;
     this.adresse_1 = this.last_events[0].fond;
     this.adresse_2 = this.last_events[1].fond;
     this.adresse_3 = this.last_events[2].fond;
     this.initForm();
+    // Redirect unauthenticated users
     if (this.authService.isAuth === false){
       this.router.navigate(['auth']);
     }
   }
 
+  public ngOnDestroy(): void {
+      if(this.sub) this.sub.unsubscribe();
+    }
+
+  // Initialisation of the contact form
   initForm() {
     this.messageForm = this.formBuilder.group({
       message : ['', Validators.required]
     });
   }
 
+  // Submission of the contact form
   onSubmitMessage() {
     this.httpService.post('/api/materiel', this.messageForm.value);
   }
 
+
+  //// DISPLAY OF THE COMPONENTS, ANIMATIONS ON HOVER
+
+  // Information on the positioning of elements
   placement_events(i : number) {
     if (i%2 === 0) {
       return "right";
@@ -110,10 +123,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  public ngOnDestroy(): void {
-      if(this.sub) this.sub.unsubscribe();
-    }
 
+  // Update animations when hovering elements
   survoleIntro(state : string) {
     this.introState = state;
   }
@@ -144,6 +155,23 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  survoleCoeur(state : string){
+    if (state === "visible") {
+      this.lovePicsStateLeft = state;
+      this.lovePicsStateRight = state;
+    } else {
+      this.lovePicsStateLeft = "hidden-left";
+      this.lovePicsStateRight = "hidden-right";
+    }
+  }
+
+  survoleForm(state : string) {
+    this.formState = state;
+  }
+
+
+
+  // Return whether elements are being hovered or not
   currentStateEvent(i : number) {
     if (i === 0) {
       return this.lastEventsState1;
@@ -157,16 +185,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  survoleCoeur(state : string){
-    if (state === "visible") {
-      this.lovePicsStateLeft = state;
-      this.lovePicsStateRight = state;
-    } else {
-      this.lovePicsStateLeft = "hidden-left";
-      this.lovePicsStateRight = "hidden-right";
-    }
-  }
-
   currentStateLovePics(i : number) {
     if (i%2 === 0) {
       return this.lovePicsStateLeft;
@@ -175,7 +193,4 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  survoleForm(state : string) {
-    this.formState = state;
-  }
 }

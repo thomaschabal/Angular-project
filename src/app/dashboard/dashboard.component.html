@@ -1,9 +1,12 @@
 <!-- Intro -->
   <section id="intro" class="main style1 dark fullscreen">
+
+    <!-- Adminstration area -->
     <div class="content" (mouseenter)="survoleAdmin('visible')" >
       <header>
         <h2>Zone d'administration</h2>
       </header>
+      <!-- Creation of gallery form -->
       <div [@buttonTrigger] = "adminState">
         <button type="button" name="button" (click)="formVisibility()">Créer un évènement</button><br/><br/>
         <form [formGroup]="eventForm" (ngSubmit)="onSubmitEvent()" *ngIf="eventCreationSelect">
@@ -14,6 +17,8 @@
         <button type="button" name="button">Modérer</button>
       </div>
     </div>
+
+    <!-- File upload area -->
     <div class="content" (mouseenter)="survoleFiles('visible')" (mouseleave)="survoleFiles('hidden')">
       <header>
         <h2>Mes fichiers</h2>

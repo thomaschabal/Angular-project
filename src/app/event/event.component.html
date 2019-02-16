@@ -1,6 +1,6 @@
 <div class="spacer"></div>
 
-<!-- Header -->
+<!-- Header, displayed on the bottom -->
   <header id="header">
     <h1><a routerLink = "/galeries"><strong>{{ name }}</strong></a></h1>
     <nav (click)="changeStateFooter()">
@@ -21,9 +21,11 @@
   Cette galerie est privée : elle n'est visible que par les administrateurs et son auteur.
 </div>
 <!-- Main -->
+  <!-- Image viewer -->
 <div id="image-viewer" *ngIf = "clicked">
   <ngx-image-viewer [src] = "raw_pics"></ngx-image-viewer>
 </div>
+  <!-- Pictures of the event -->
   <div id="main" (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')">
     <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
       <img (click)="onClick(i)" src="{{ picture.base64 }}" alt="" width="100%"/>
@@ -31,9 +33,11 @@
     </article>
   </div>
 
-<!-- Footer -->
+<!-- Footer, revealed when clicking on "A propos de l'album" -->
   <footer id="footer" class="panel" [@footerTrigger] = "footerState">
     <div class="inner split">
+
+      <!-- General information on the album -->
       <div>
         <section>
           <h2>{{ name }}</h2>
@@ -52,6 +56,8 @@
           &copy; Ponthé - Club audiovisuel des Ponts et Chaussées.
         </p>
       </div>
+
+      <!-- Contact form -->
       <div>
         <section>
           <h2>Contacte les pros du Ponthé</h2>
@@ -68,12 +74,6 @@
           </form>
         </section>
       </div>
+
     </div>
   </footer>
-
-  <script src="../../assets_g/js/jquery.min.js"></script>
-			<script src="../../assets_g/js/jquery.poptrox.min.js"></script>
-			<script src="../../assets_g/js/browser.min.js"></script>
-			<script src="../../assets_g/js/breakpoints.min.js"></script>
-			<script src="../../assets_g/js/util.js"></script>
-			<script src="../../assets_g/js/main.js"></script>

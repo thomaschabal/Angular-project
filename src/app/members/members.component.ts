@@ -38,10 +38,12 @@ export class MembersComponent implements OnInit, OnDestroy {
   constructor(private membersService : MembersService,
               private httpService : HttpService,
               private activeRoute : ActivatedRoute) {
+                // Smooth transitions when clicking on the arrows
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({behavior : 'smooth'}));
               };
 
   ngOnInit() {
+    // Get the list of members
     this.httpService.get('/api/members').then(
       (res) => {
         this.team_ponthe = res["team_ponthe"];
@@ -50,6 +52,13 @@ export class MembersComponent implements OnInit, OnDestroy {
     );
   }
 
+  public ngOnDestroy(): void {
+      if(this.sub) this.sub.unsubscribe();
+    }
+
+
+
+  //// AFFICHAGE
   placement(i : number) {
     if (i%2 === 0) {
       return "right";
@@ -57,10 +66,6 @@ export class MembersComponent implements OnInit, OnDestroy {
       return "left";
     }
   }
-
-  public ngOnDestroy(): void {
-      if(this.sub) this.sub.unsubscribe();
-    }
 
   survoleIntro(state : string) {
     this.introState = state;

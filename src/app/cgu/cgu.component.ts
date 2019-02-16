@@ -15,6 +15,7 @@ export class CguComponent implements OnInit {
               private httpService : HttpService) { }
 
   ngOnInit() {
+    // Initial request for getting all the articles and storing them in "articles"
     this.httpService.get('/api/cgu').then(
       (res) => {
         let len = Object.keys(res["articles"]).length;

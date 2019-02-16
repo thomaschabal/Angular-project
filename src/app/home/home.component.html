@@ -15,7 +15,7 @@
   </section>
 
 
-<!-- Last Events -->
+<!-- 3 Last Events -->
 <section *ngFor = "let event of last_events; let i = index"
           id="{{ event.event_id }}"
           class="main style2 {{ placement_events(i) }} dark fullscreen"
@@ -31,14 +31,14 @@
 </section>
 
 
-<!-- Work -->
+<!-- Favorite pics -->
   <section id="coeur" class="main style3 primary" (mouseenter)='survoleCoeur("visible")' (mouseleave)='survoleCoeur("hidden")'>
     <div class="content">
       <header>
         <h2>Tes photos <em>Coup de coeur </em>  <3 !</h2>
       </header>
 
-      <!-- Favorite pics  -->
+      <!-- Pics  -->
         <div class="gallery">
           <article *ngFor = "let pic of love_pics; let i = index"
                     class="{{ placement_love_pics(i) }}"
@@ -49,7 +49,7 @@
     </div>
   </section>
 
-<!-- Contact -->
+<!-- Contact form-->
   <section id="contact" class="main style3 secondary" (mouseenter) = "survoleForm('visible')" (mouseleave) = "survoleForm('hidden')">
     <div class="content">
       <header>

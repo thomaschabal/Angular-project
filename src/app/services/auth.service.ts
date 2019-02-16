@@ -20,6 +20,7 @@ export class AuthService {
     this.isAuth = false;
   }
 
+  // Login : request to the server and update of the information on the user
   signIn(user: LoggingUser){
     this.httpService.post('/api/login', user).then(
       (res) => {
@@ -39,6 +40,7 @@ export class AuthService {
     );
   }
 
+  // Logout
   signOut() {
     this.httpService.token = null;
     this.isAuth = false;
