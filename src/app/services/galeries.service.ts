@@ -1,5 +1,5 @@
 import { HttpService } from '../services/http.service';
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -11,8 +11,8 @@ export class GaleriesService {
 
   all_galeries: any[];
 
-  constructor(private httpService : HttpService,
-              private httpClient : HttpClient) {
+  constructor(private httpService: HttpService,
+              private httpClient: HttpClient) {
                 const request_result = httpService.get("/api/get-all-galleries").then()
                 this.galeries_events = request_result["galleries"]
                 console.log(this.galeries_events);
@@ -25,7 +25,7 @@ export class GaleriesService {
 
               }
 
-  getEventByName(private httpService : HttpService, event : string) {
+  getEventByName(event: string) {
     this.httpService.post("/api/get-images/"+event, {"image-slug": event}).then(
       (res) => {
         this.event_pics = res["files"];
