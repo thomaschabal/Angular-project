@@ -54,7 +54,7 @@ export class HttpService {
         'Authorization':'Bearer ' + this.token
       })
     };
-    this.httpClient.get(this.apiUrl + path, httpOptions);
+    return this.httpClient.get(this.apiUrl + path, httpOptions);
   }
 
   // Méthode post, qui retourne une Promise afin de gérer le caractère asynchrone des échanges avec le serveur

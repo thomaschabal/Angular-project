@@ -38,6 +38,10 @@ export class EventComponent implements OnInit, OnDestroy {
   raw_pics : any[];
   clicked : boolean;
 
+  // About the event
+  name : string;
+  resume : string;
+
   // Index of the picture the user clicked on
   indexViewer : number;
 
@@ -68,6 +72,9 @@ export class EventComponent implements OnInit, OnDestroy {
     this.galeriesService.getEventByName(this.selected_route)
     .subscribe(
       (res) => { this.pics = res["files"];
+                 const gallery = res["gallery"];
+                 this.name = gallery["name"];
+                 this.resume = gallery["description"];
       console.log(res); },
       (error) => { console.error(error); }
     );
@@ -101,10 +108,23 @@ export class EventComponent implements OnInit, OnDestroy {
 
   // Change the state of the gallery to public or private
   publicPrivate() {
-    this.isPublic = !this.isPublic;
+    if (this.isPublic) {
+      this.galeriesService.makePrivate(this.adresse)
+      .subscribe(
+        (res) => { this.isPublic = !this.isPublic;
+          console.log(res); }
+      );
+    } else {
+      this.galeriesService.makePublic(this.adresse)
+      .subscribe(
+        (res) => { this.isPublic = !this.isPublic;
+          console.log(res); }
+      );
+    }
   }
 
 
+  // Image viewer activated on click
   onClick(i_selected_pic) {
     this.raw_pics = [];
     this.indexViewer = i_selected_pic;

@@ -13,7 +13,8 @@ export class GaleriesService {
   constructor(private httpService : HttpService,
               private httpClient : HttpClient) {
       // Request to get the list of all public events
-      const requestResult = httpService.get("/api/get-all-galleries").then(
+      const requestResult = httpService.get2("/api/get-all-galleries")
+      .subscribe(
         (res) => {
           this.galeries_events = res["galleries"];
         },
@@ -29,7 +30,22 @@ export class GaleriesService {
 
   // Get the list of all events
   getAllEvents() {
-    return this.galeries_events;
+    return this.httpService.get2("/api/get-all-galleries");
+  }
+
+  // Get the list of all private events
+  getPrivateEvents() {
+    return this.httpService.get2("/api/get-private-galleries");
+  }
+
+  // Turn a gallery to private
+  makePrivate(slug : string) {
+    return this.httpService.post2("/api/galleries/makeprivate", {"gallery_slug" : [slug]});
+  }
+
+  // Turn a gallery to public
+  makePublic(slug : string) {
+    return this.httpService.post2("/api/galleries/makepublic", {"gallery_slug" : [slug]});
   }
 
   // Get the full picture (not the thumbnail) associated to some path

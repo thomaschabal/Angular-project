@@ -19,22 +19,33 @@ export class GaleriesComponent implements OnInit {
 
   // List of events to display
   galeries_events : any[];
+  private_events : any[];
 
   // Animation variables for 9 first pics
   galeriesState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
 
-  constructor(private httpService : HttpService) {
-    // Request for getting all the public galeries
-    this.httpService.get("/api/get-all-galleries").then(
-      (res) => {
-        this.galeries_events = res["galleries"];
-      },
-      (error) => { }
-    );
+  constructor(private httpService : HttpService,
+              private galeriesService : GaleriesService) {
   };
 
   ngOnInit() {
-    //this.galeries_events = this.galeriesService.all_galeries;
+    // Request for getting all the public galeries
+    this.galeriesService.getAllEvents()
+    .subscribe(
+      (res) => {
+        this.galeries_events = res["galleries"];
+      },
+      (error) => { console.error(error); }
+    );
+
+    // If the user is an admin, private galleries are loaded and then displayed
+    if (this.httpService.isAdmin === true) {
+      this.galeriesService.getPrivateEvents()
+      .subscribe(
+        (res) => { this.private_events = res["galleries"]; },
+        (error) => { console.error(error); }
+      );
+    }
   }
 
 
