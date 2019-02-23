@@ -17,13 +17,11 @@
   <button type="button" name="button" *ngIf = "!isPublic" (click)="publicPrivate()">Rendre publique</button>
   <button type="button" name="button" *ngIf = "enModeration">Supprimer la galerie</button>
 </div>
-<div class="privee" *ngIf = "!isPublic">
-  Cette galerie est privée : elle n'est visible que par les administrateurs et son auteur.
-</div>
+
 <!-- Main -->
   <!-- Image viewer -->
 <div id="image-viewer" *ngIf = "clicked">
-  <ngx-image-viewer [src] = "raw_pics"></ngx-image-viewer>
+  <ngx-image-viewer [src] = "raw_pics" [index]= "indexViewer"></ngx-image-viewer>
 </div>
   <!-- Pictures of the event -->
   <div id="main" (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')">

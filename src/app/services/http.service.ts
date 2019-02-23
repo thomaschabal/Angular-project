@@ -46,6 +46,17 @@ export class HttpService {
 
   }
 
+  get2(path : string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type':'application/json',
+        'Authorization':'Bearer ' + this.token
+      })
+    };
+    this.httpClient.get(this.apiUrl + path, httpOptions);
+  }
+
   // Méthode post, qui retourne une Promise afin de gérer le caractère asynchrone des échanges avec le serveur
   post(path : string, body : any) {
     return new Promise(
@@ -69,5 +80,16 @@ export class HttpService {
       }
     );
 
+  }
+
+  post2(path : string, body : any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type':'application/json',
+        'Authorization':'Bearer ' + this.token
+      })
+    };
+    return this.httpClient.post(this.apiUrl + path, body, httpOptions);
   }
 }

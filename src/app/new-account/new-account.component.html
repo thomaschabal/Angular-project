@@ -8,7 +8,7 @@
     </header>
 
   <!-- Signup Form -->
-    <form id="signup-form" [formGroup]="userForm" (ngSubmit) = "onSubmitForm()">
+    <form class="signup-form" [formGroup]="userForm" (ngSubmit) = "onSubmitForm()">
       <div class="form1">
         <input type="text" name="firstname" placeholder="Prénom" formControlName="firstname"/>
         <input type="text" name="email" placeholder="Adresse mail" formControlName="email"/>

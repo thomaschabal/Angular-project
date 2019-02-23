@@ -7,7 +7,7 @@
     </header>
 
   <!-- Signup Form -->
-    <form id="signup-form" [formGroup]="resetForm" (ngSubmit) = "onSubmitForm()">
+    <form class="signup-form" [formGroup]="resetForm" (ngSubmit) = "onSubmitForm()">
       <input type="text" name="email" placeholder="Adresse mail" formControlName="email"/><p>@eleves.enpc.fr</p><br/>
       <input type="submit" value="Envoyer le mail de réinitialisation" [disabled]="resetForm.invalid"/>
     </form>

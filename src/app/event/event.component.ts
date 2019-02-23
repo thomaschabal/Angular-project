@@ -35,6 +35,11 @@ export class EventComponent implements OnInit, OnDestroy {
 
   adresse : string;
   pics : any[];
+  raw_pics : any[];
+  clicked : boolean;
+
+  // Index of the picture the user clicked on
+  indexViewer : number;
 
   // Variables about the user and the current operations on the event
   isAdmin : boolean;
@@ -58,8 +63,14 @@ export class EventComponent implements OnInit, OnDestroy {
              }
 
   ngOnInit() {
-    this.selected_route = this.activeRoute.snapshot.params['event']
-    this.pics = this.galeriesService.getEventByName(this.selected_route);
+    this.selected_route = this.activeRoute.snapshot.params['event'];
+    // Request of pictures of the event
+    this.galeriesService.getEventByName(this.selected_route)
+    .subscribe(
+      (res) => { this.pics = res["files"];
+      console.log(res); },
+      (error) => { console.error(error); }
+    );
     this.adresse = this.activeRoute.snapshot.routeConfig.path;
     this.initForm();
     this.isAdmin = this.httpService.isAdmin;
@@ -92,6 +103,22 @@ export class EventComponent implements OnInit, OnDestroy {
   publicPrivate() {
     this.isPublic = !this.isPublic;
   }
+
+
+  onClick(i_selected_pic) {
+    this.raw_pics = [];
+    this.indexViewer = i_selected_pic;
+
+    // Get the full images, then store them and display
+    for (let i=0; i<this.pics.length; i++){
+      this.galeriesService.getFullImage(this.pics[i]['file_path'])
+      .subscribe(
+        (res) => { this.raw_pics[i] = (res["base64"]); },
+        (error) => { console.error(error); }
+      );
+    }
+    this.clicked = true;
+}
 
 
 

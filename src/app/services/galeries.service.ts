@@ -23,15 +23,8 @@ export class GaleriesService {
 
   // Get the image associated to some event
   getEventByName(event : string) {
-    this.httpService.post("/api/get-images/"+event, {"image-slug": event}).then(
-      (res) => {
-        this.event_pics = res["files"];
-        console.log(res);
-      },
-      (error) => { }
-    );
+    return this.httpService.post2("/api/get-images/"+event, {"image-slug": event});
 
-    return this.event_pics;
   }
 
   // Get the list of all events
@@ -41,13 +34,6 @@ export class GaleriesService {
 
   // Get the full picture (not the thumbnail) associated to some path
   getFullImage(path : string){
-    this.httpService.post("/api/get-full-image", {'file_path' : path}).then(
-      (res) => {
-        this.pic = res['base64'];
-        console.log(res);
-      },
-      (error) => { }
-    );
-    return this.pic;
+    return this.httpService.post2("/api/get-full-image", {'file_path' : path});
   }
 }

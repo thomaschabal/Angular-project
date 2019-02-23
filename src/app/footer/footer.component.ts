@@ -18,7 +18,7 @@ export class FooterComponent implements OnInit {
 
   isOnline() {
     // Display the footer everywhere except on auth, reset, register pages and gallery page
-    return ((this.httpService.token !== null) && (this.router.snapshot._routerState.url).search('/galeries'));
+    return ((this.httpService.token !== null) );//&& (this.router.snapshot._routerState.url).search('/galeries'));
 
   }
 
