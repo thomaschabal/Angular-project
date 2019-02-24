@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpService } from '../services/http.service';
+import { UserService } from '../services/user.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -83,7 +83,7 @@ export class ResetComponent implements OnInit {
 
   constructor(private formBuilder : FormBuilder,
               private router : Router,
-              private httpService : HttpService) { }
+              private userService : UserService) { }
 
   ngOnInit() {
     this.initForm();
@@ -99,7 +99,10 @@ export class ResetComponent implements OnInit {
   // Submission of the reset form
   onSubmitForm() {
     this.resetForm.value["email"] = this.resetForm.value["email"] + '@eleves.enpc.fr';
-    this.httpService.post('/api/reset', this.resetForm.value);
+    this.userService.resetUser(this.resetForm.value).subscribe(
+      (res) => { alert("Un mail t'a été envoyé !"); },
+      (error) => { console.error(error); }
+    );
     this.router.navigate(['/auth']);
   }
 

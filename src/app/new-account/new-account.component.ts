@@ -123,6 +123,4 @@ export class NewAccountComponent implements OnInit {
     this.state = this.possibleStates[this.indState];
   }
 
-
-
 }

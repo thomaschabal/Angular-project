@@ -59,24 +59,6 @@ export class HomeService {
 
   constructor (private httpClient : HttpClient) {}
 
-  ngOnInit () {
-    this.postLastEvents();
-    this.getLastEvents();
-  }
-
-  postLastEvents () {
-    this.httpClient.post('https://http-client-ponthe.firebaseio.com/last_events.json', this.last_events)
-    .subscribe(
-      () => { console.log('Enregistrement terminé.'); },
-      (error) => { console.log('Erreur à l\'enregistrement : ' + error); }
-    );
-  }
-
-  getLastEvents () {
-    this.httpClient.get<any[]>('https://http-client-ponthe.firebaseio.com/last_events.json')
-    .subscribe(
-      (response) => { this.last_events = response; },
-      (error) => { console.log('Erreur à la récupération des évènements : ' + error);}
-    );
-  }
+  ngOnInit () { }
+  
 }

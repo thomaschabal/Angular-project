@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GaleriesService } from '../services/galeries.service';
+import { MessagesService } from '../services/messages.service';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -60,6 +61,7 @@ export class EventComponent implements OnInit, OnDestroy {
 
 
   constructor(private galeriesService : GaleriesService,
+              private messagesService : MessagesService,
               private activeRoute : ActivatedRoute,
               private httpService : HttpService,
               private formBuilder : FormBuilder) {
@@ -74,8 +76,7 @@ export class EventComponent implements OnInit, OnDestroy {
       (res) => { this.pics = res["files"];
                  const gallery = res["gallery"];
                  this.name = gallery["name"];
-                 this.resume = gallery["description"];
-      console.log(res); },
+                 this.resume = gallery["description"]; },
       (error) => { console.error(error); }
     );
     this.adresse = this.activeRoute.snapshot.routeConfig.path;
@@ -97,8 +98,10 @@ export class EventComponent implements OnInit, OnDestroy {
 
   // Submission of the footer form
   onSubmitMessage() {
-    this.httpService.post('/api/materiel', this.messageForm.value);
-    alert("Message envoyé");
+    this.messagesService.materialPost(this.messageForm.value).subscribe(
+      (res) => { alert("Message envoyé !"); },
+      (error) => { console.error(error); }
+    );
   }
 
   // Return whether the administrator is moderating the gallery or not

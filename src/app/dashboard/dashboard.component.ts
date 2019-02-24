@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { transition, trigger, style, animate, state } from "@angular/animations";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpService } from '../services/http.service';
+import { GaleriesService } from '../services/galeries.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
   eventForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder,
-              private httpService : HttpService) { }
+              private galeriesService : GaleriesService) { }
 
   ngOnInit() {
     this.initForm();
@@ -59,7 +59,10 @@ export class DashboardComponent implements OnInit {
   // Submission of gallery creation
   onSubmitEvent() {
     this.eventForm.value["private"] = this.eventForm.value["boolPrivate"];
-    this.httpService.post('/api/create-gallery', this.eventForm.value);
+    this.galeriesService.postEvent(this.eventForm.value).subscribe(
+      (res) => { alert("Galerie crée"); },
+      (error) => { console.error(error); }
+    );
   }
 
 

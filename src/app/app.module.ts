@@ -81,6 +81,7 @@ import { UserService } from './services/user.service';
     HomeService,
     GaleriesService,
     MembersService,
+    MessagesService,
     AuthService,
     AuthGuard,
     UserService,

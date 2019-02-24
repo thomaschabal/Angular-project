@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { state, style, transition, animate, trigger } from '@angular/animations';
-import { HttpService } from '../services/http.service';
+import { MessagesService } from '../services/messages.service';
 
 @Component({
   selector: 'app-material',
@@ -23,7 +23,7 @@ export class MaterialComponent implements OnInit {
   materialForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder,
-              private httpService : HttpService) { }
+              private messagesService : MessagesService) { }
 
   ngOnInit() {
     this.initForm();
@@ -39,7 +39,10 @@ export class MaterialComponent implements OnInit {
 
   // Submission of the form
   onSubmitMateriel() {
-    this.httpService.post('/api/materiel', this.materialForm.value);
+    this.messagesService.materialPost(this.materialForm.value).subscribe(
+      (res) => { alert("Message envoyé !"); },
+      (error) => { console.error(error); }
+    );
   }
 
   //// DISPLAYING THE FORM

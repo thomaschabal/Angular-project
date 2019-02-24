@@ -20,20 +20,25 @@ export class AuthService {
     this.isAuth = false;
   }
 
+
+  // Get the User Conditions
+  getCGU() {
+    return this.httpService.get('/api/cgu');
+  }
+
+
   // Login : request to the server and update of the information on the user
   signIn(user: LoggingUser){
-    this.httpService.post('/api/login', user).then(
+    this.httpService.post('/api/login', user).subscribe(
       (res) => {
         this.httpService.token = res["token"];
         this.isAuth = true;
         this.router.navigate(['/home']);
-        console.log('in signIn '+ this.isAuth)
-        this.httpService.get('/api/get-user-by-jwt').then(
+        this.httpService.get('/api/get-user-by-jwt').subscribe(
           (response) => {
             this.httpService.isAdmin = response["admin"];
-
           },
-          (err) => { console.log(err); }
+          (err) => { console.error(err); }
         );
       },
       (error) => { alert("Si tu as déjà validé ton compte : mauvais identifiant ou mauvais mot de passe") }

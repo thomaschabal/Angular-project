@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HomeService } from '../services/home.service';
 import { HttpService } from '../services/http.service';
+import { MessagesService } from '../services/messages.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service'
@@ -65,6 +66,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(private homeService : HomeService,
               private httpService : HttpService,
+              private messagesService : MessagesService,
               private activeRoute : ActivatedRoute,
               private router : Router,
               private formBuilder : FormBuilder,
@@ -100,7 +102,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // Submission of the contact form
   onSubmitMessage() {
-    this.httpService.post('/api/materiel', this.messageForm.value);
+    this.messagesService.materialPost(this.messageForm.value).subscribe(
+      (res) => { alert("Message envoyé !"); },
+      (error) => { console.error(error); }
+    );
   }
 
 

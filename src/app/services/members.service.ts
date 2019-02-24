@@ -5,4 +5,11 @@ import { Injectable } from '@angular/core';
 export class MembersService {
   team_ponthe = null;
 
+  constructor(private httpService : HttpService) { }
+
+
+  // Get the list of members
+  getMembers() {
+    return this.httpService.get('/api/members');
+  }
 }
