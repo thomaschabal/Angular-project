@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Module for HTTP requests
 import { HttpClientModule } from '@angular/common/http';
+// Upload file module
+import { FilePickerModule } from 'ngx-awesome-uploader';
 
 //// COMPONENTS
 import { AppComponent } from './app.component';
@@ -75,6 +77,7 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    FilePickerModule,
     ImageViewerModule.forRoot()
   ],
   providers: [

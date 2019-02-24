@@ -32,9 +32,18 @@ export class GaleriesService {
     return this.httpService.get("/api/get-all-galleries");
   }
 
+  getEventsOfYear(year : string) {
+    return this.httpService.get("/api/get-galleries-of-year/"+year);
+  }
+
   // Get the list of all private events
   getPrivateEvents() {
     return this.httpService.get("/api/get-private-galleries");
+  }
+
+  // Get a random image for some event
+  getImage(event : string) {
+    return this.httpService.get("/api/get-random-image/"+event);
   }
 
   // Turn a gallery to private

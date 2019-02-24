@@ -37,6 +37,7 @@ export class AuthService {
         this.httpService.get('/api/get-user-by-jwt').subscribe(
           (response) => {
             this.httpService.isAdmin = response["admin"];
+            this.httpService.promotion = response["promotion"];
           },
           (err) => { console.error(err); }
         );

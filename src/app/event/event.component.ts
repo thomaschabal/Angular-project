@@ -8,6 +8,7 @@ import { state, trigger, animate, style, transition } from '@angular/animations'
 import { HttpService } from '../services/http.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ImageViewerModule } from "ngx-image-viewer";
+// import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
 
 @Component({
   selector: 'app-event',
@@ -163,5 +164,9 @@ export class EventComponent implements OnInit, OnDestroy {
       this.footerState = "hidden";
     }
   }
+
+
+
+  // adapter = new DemoFilePickerAdapter(this.httpService);
 
 }

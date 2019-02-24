@@ -10,6 +10,7 @@ export class HttpService {
   apiUrl : string;
   token : string;
   isAdmin : boolean;
+  promotion : string;
 
   constructor(private httpClient : HttpClient,
               private configService : ConfigService,
