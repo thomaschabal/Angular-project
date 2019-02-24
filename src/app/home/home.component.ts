@@ -45,6 +45,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   last_events : any[];
   love_pics : any[];
 
+  pic_clicked = false;
+  wide_pic_ref : string;
+  caption_wide_pic: string;
+
   // Routes to galeries regarding 3 last events
   adresse_1 : string;
   adresse_2 : string;
@@ -110,6 +114,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
   //// DISPLAY OF THE COMPONENTS, ANIMATIONS ON HOVER
+
+  onClickFavPic(i : number) {
+    this.pic_clicked = true;
+    this.wide_pic_ref = this.love_pics[i]["address"];
+    this.caption_wide_pic = this.love_pics[i]["title"];
+  }
+
+  closeWidePic() {
+    this.pic_clicked = false;
+    this.wide_pic_ref = null;
+  }
 
   // Information on the positioning of elements
   placement_events(i : number) {

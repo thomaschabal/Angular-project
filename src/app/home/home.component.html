@@ -43,8 +43,14 @@
           <article *ngFor = "let pic of love_pics; let i = index"
                     class="{{ placement_love_pics(i) }}"
                     [@lovePicsTrigger]="currentStateLovePics(i)">
-            <a href="{{ pic.address }}" class="image fit"><img src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}" /></a>
+            <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}" (click)="onClickFavPic(i)" />
           </article>
+        </div>
+        <!-- Darken the background -->
+        <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()"></div>
+        <div class="wide-pic" *ngIf="pic_clicked">
+          <img [src]="wide_pic_ref" (click)="closeWidePic()"/>
+          <caption>{{ caption_wide_pic }}</caption>
         </div>
     </div>
   </section>
