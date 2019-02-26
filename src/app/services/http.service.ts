@@ -19,7 +19,7 @@ export class HttpService {
   }
 
 
-  // Méthod get : require the route from the API
+  // Method get : require the route from the API
   get(path : string) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -31,7 +31,7 @@ export class HttpService {
     return this.httpClient.get(this.apiUrl + path, httpOptions);
   }
 
-  // Méthode post, qui retourne une Promise afin de gérer le caractère asynchrone des échanges avec le serveur
+  // Méthode post
   post(path : string, body : any) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -41,5 +41,17 @@ export class HttpService {
       })
     };
     return this.httpClient.post(this.apiUrl + path, body, httpOptions);
+  }
+
+  // Méthode delete
+  delete(path : string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
+        'Content-Type':'application/json',
+        'Authorization':'Bearer ' + this.token
+      })
+    };
+    return this.httpClient.delete(this.apiUrl + path, httpOptions);
   }
 }

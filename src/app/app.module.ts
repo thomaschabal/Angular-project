@@ -49,6 +49,7 @@ import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
 import { UploadService } from './services/upload.service';
 import { UserService } from './services/user.service';
+import { ModerationComponent } from './moderation/moderation.component';
 
 
 
@@ -68,7 +69,8 @@ import { UserService } from './services/user.service';
     NewAccountComponent,
     DashboardComponent,
     CguComponent,
-    ResetComponent
+    ResetComponent,
+    ModerationComponent
   ],
   imports: [
     BrowserModule,

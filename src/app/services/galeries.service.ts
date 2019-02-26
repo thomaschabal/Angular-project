@@ -22,6 +22,12 @@ export class GaleriesService {
       );
     }
 
+
+  // Delete an event
+  deleteEvent(event : string) {
+    return this.httpService.delete("/api/galleries/"+event);
+  }
+
   // Get the image associated to some event
   getEventByName(event : string) {
     return this.httpService.post("/api/get-images/"+event, {"image-slug": event});
@@ -48,12 +54,12 @@ export class GaleriesService {
 
   // Turn a gallery to private
   makePrivate(slug : string) {
-    return this.httpService.post("/api/galleries/makeprivate", {"gallery_slug" : [slug]});
+    return this.httpService.post("/api/galleries/makeprivate", {"gallery_slugs" : [slug]});
   }
 
   // Turn a gallery to public
   makePublic(slug : string) {
-    return this.httpService.post("/api/galleries/makepublic", {"gallery_slug" : [slug]});
+    return this.httpService.post("/api/galleries/makepublic", {"gallery_slugs" : [slug]});
   }
 
   // Get the full picture (not the thumbnail) associated to some path
@@ -65,5 +71,9 @@ export class GaleriesService {
   //// DASHBOARD METHODS
   postEvent(event : any) {
     return this.httpService.post('/api/create-gallery', event);
+  }
+
+  getModerationFiles() {
+    return this.httpService.get("/api/files/not-moderated");
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GaleriesService } from '../services/galeries.service';
 import { MessagesService } from '../services/messages.service';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { state, trigger, animate, style, transition } from '@angular/animations';
@@ -49,9 +50,13 @@ export class EventComponent implements OnInit, OnDestroy {
 
   // Variables about the user and the current operations on the event
   isAdmin : boolean;
-  isPublic = true;
+  isPublic = false;
   enModeration = false;
-  selected_route = 'test'
+  selected_route : string;
+
+  // State of the pictures in moderation phase : true means the pic is going to be deleted
+  eventDeletionState = "nothing";
+  moderationState = [];
 
   // Contact form defined here
   messageForm : FormGroup;
@@ -64,6 +69,7 @@ export class EventComponent implements OnInit, OnDestroy {
   constructor(private galeriesService : GaleriesService,
               private messagesService : MessagesService,
               private activeRoute : ActivatedRoute,
+              private router : Router,
               private httpService : HttpService,
               private formBuilder : FormBuilder) {
       this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
@@ -77,12 +83,32 @@ export class EventComponent implements OnInit, OnDestroy {
       (res) => { this.pics = res["files"];
                  const gallery = res["gallery"];
                  this.name = gallery["name"];
-                 this.resume = gallery["description"]; },
+                 this.resume = gallery["description"];
+                 // Define the state of all pictures as not going to be deleted
+                 for (let pic=0; pic<res["files"].length; pic++) {
+                   this.moderationState.push(false);
+                 }
+               },
       (error) => { console.error(error); }
     );
     this.adresse = this.activeRoute.snapshot.routeConfig.path;
     this.initForm();
     this.isAdmin = this.httpService.isAdmin;
+
+    // Determine whether the gallery is public or private
+    this.galeriesService.getPrivateEvents().subscribe(
+      (res) => {
+        // Ask for the list of all private galleries, and if the event is not in this list then it is a public event
+        let isPublic = true;
+        let liste = res["galleries"];
+        for (let event=0; event<liste.length; event++) {
+          if (liste[event]["slug"] === this.selected_route) {
+            isPublic = false;
+          }
+        }
+        this.isPublic = isPublic;
+      }
+    );
   }
 
   public ngOnDestroy(): void {
@@ -113,17 +139,50 @@ export class EventComponent implements OnInit, OnDestroy {
   // Change the state of the gallery to public or private
   publicPrivate() {
     if (this.isPublic) {
-      this.galeriesService.makePrivate(this.adresse)
+      this.galeriesService.makePrivate(this.selected_route)
       .subscribe(
         (res) => { this.isPublic = !this.isPublic;
           console.log(res); }
       );
     } else {
-      this.galeriesService.makePublic(this.adresse)
+      this.galeriesService.makePublic(this.selected_route)
       .subscribe(
-        (res) => { this.isPublic = !this.isPublic;
-          console.log(res); }
+        (res) => { this.isPublic = !this.isPublic; }
       );
+    }
+  }
+
+  // Delete the event, in the moderation phase
+  deleteEvent() {
+    if (this.eventDeletionState === "nothing") {
+      this.eventDeletionState = "nearly deleted";
+      alert("Cette galerie est sur le point d'être supprimée. Cliquer une deuxième fois sur 'Supprimer la galerie' pour valider l'action.")
+    }
+    else {
+      this.galeriesService.deleteEvent(this.selected_route).subscribe(
+        (res) => { alert("La galerie a bien été supprimée."); this.router.navigate(['/galeries']); },
+        (error) => { console.error(error); }
+      );
+    }
+  }
+
+
+  // Tell if a picture is going to be deleted or not
+  deleteState(i) {
+    return this.moderationState[i];
+  }
+
+  // Change the state of moderation of a picture
+  moderePic(i : number) {
+    this.moderationState[i] = !this.moderationState[i];
+  }
+
+  // Validate the deletion of selected pictures
+  validateDeletionPics() {
+    for (let pic=0; pic<this.moderationState.length; pic++) {
+      if (this.moderationState[pic]) {
+        console.log(this.pics[pic]["file_path"]);
+      }
     }
   }
 

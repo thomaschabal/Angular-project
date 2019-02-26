@@ -29,7 +29,7 @@ img {
   height : 70vh;
 }
 
-#deleteButton {
+#acceptButton, #deleteButton {
   z-index: 5000;
   position: absolute;
   top: 1vh;
@@ -37,10 +37,21 @@ img {
   background: rgba(0,0,0,0.3);
 }
 
-#deleteButtonSelected {
+#acceptButtonSelected, #deleteButtonSelected {
   z-index: 5000;
   position: absolute;
   top: 1vh;
   left: 0.5vw;
+}
+
+#deleteButton, #deleteButtonSelected {
+  left: 14.5vw;
+}
+
+#acceptButtonSelected {
+  background: rgba(0,255,0,0.5);
+}
+
+#deleteButtonSelected {
   background: rgba(255,0,0,0.5);
 }

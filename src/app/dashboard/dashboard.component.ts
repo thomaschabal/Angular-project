@@ -39,7 +39,8 @@ export class DashboardComponent implements OnInit {
   eventForm : FormGroup;
 
   constructor(private formBuilder : FormBuilder,
-              private galeriesService : GaleriesService) { }
+              private galeriesService : GaleriesService,
+              private router : Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -63,6 +64,11 @@ export class DashboardComponent implements OnInit {
       (res) => { alert("Galerie crée"); },
       (error) => { console.error(error); }
     );
+  }
+
+  // On click on button "Modérer"
+  navigateToModeration() {
+    this.router.navigate(['/moderation']);
   }
 
 

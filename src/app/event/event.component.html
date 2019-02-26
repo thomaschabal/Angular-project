@@ -15,7 +15,8 @@
   <button type="button" name="button" (click)="modere()">Modérer</button>
   <button type="button" name="button" *ngIf = "isPublic" (click)="publicPrivate()">Rendre privée</button>
   <button type="button" name="button" *ngIf = "!isPublic" (click)="publicPrivate()">Rendre publique</button>
-  <button type="button" name="button" *ngIf = "enModeration">Supprimer la galerie</button>
+  <button type="button" name="button" *ngIf = "enModeration" (click)="deleteEvent()">Supprimer la galerie</button>
+  <button type="button" name="button" *ngIf = "enModeration" (click)="validateDeletionPics()">Supprimer les photos sélectionnées</button>
 </div>
 <!-- <ngx-file-picker [adapter] = "adapter">
 </ngx-file-picker> -->
@@ -29,7 +30,8 @@
   <div id="main" (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')">
     <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
       <img (click)="onClick(i)" src="{{ picture.base64 }}" alt="" width="100%"/>
-      <button type="button" name="button" *ngIf = "enModeration">Supprimer</button>
+      <button id="deleteButton" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && !deleteState(i)" (click)="moderePic(i)">Supprimer</button>
+      <button id="deleteButtonSelected" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && deleteState(i)" (click)="moderePic(i)">Supprimer</button>
     </article>
   </div>
 

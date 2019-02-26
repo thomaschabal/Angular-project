@@ -98,6 +98,23 @@ export class GaleriesComponent implements OnInit {
         (error) => { console.error(error); }
       );
     }
+
+    // We do the same for private events for administrators
+    for (let event=0; event<this.private_events.length; event++) {
+      this.galeriesService.getImage(this.private_events[event])
+      .subscribe(
+        (res) => {
+          const request_gallery = res["gallery"];
+          const image = res["thumbnail"];
+          this.galeries_events[event] = {
+            "name": request_gallery["name"],
+            "slug": request_gallery["slug"],
+            "image": image
+          };
+        },
+        (error) => { console.error(error); }
+      );
+    }
   }
 
 

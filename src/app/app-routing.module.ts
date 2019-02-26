@@ -17,6 +17,7 @@ import { MembersComponent } from './members/members.component';
 import { MaterialComponent } from './material/material.component';
 import { EventComponent } from './event/event.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ModerationComponent } from './moderation/moderation.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path : 'home', canActivate : [AuthGuard], component : HomeComponent, data:{animation:'HomePage'} },
   { path : 'galeries', canActivate : [AuthGuard], component : GaleriesComponent, data:{animation:'GaleriesPage'} },
   { path : 'dashboard', canActivate : [AuthGuard], component : DashboardComponent, data:{animation:'DashboardPage'} },
+  { path : 'moderation', canActivate : [AuthGuard], component : ModerationComponent, data:{animation:'ModerationPage'} },
   { path : 'members', canActivate : [AuthGuard], component : MembersComponent, data:{animation:'MembersPage'} },
   { path : 'material', canActivate : [AuthGuard], component : MaterialComponent, data:{animation:'MaterialPage'} },
   { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent, data:{animation:'EventPage'} },
