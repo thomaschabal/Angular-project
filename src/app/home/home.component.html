@@ -4,9 +4,9 @@
       <header>
         <h2>Le Ponthé</h2>
       </header>
-      <p>Bienvenue sur le site du <strong>Ponthé</strong>, le club Tournage et Réalisations des Ponts.<br/>
-      Ici, vous pourrez voir et télécharger les photos, vidéos et montages réalisés par les membres du club.
-      Vous pourrez également déposer vos propres photos et vidéos dans l'onglet <strong>Tableau de Bord</strong>. <br/>
+      <p>Bienvenue sur le site du <strong>Ponthé</strong>, le club audiovisuel des Ponts.<br/>
+      Ici, tu pourras voir et télécharger les photos et vidéos et montages réalisés par les membres du club.
+      Tu pourras également déposer tes propres photos et vidéos dans chaque <strong>galerie</strong>. <br/>
       Bon visionnage !</p>
       <footer>
         <a routerLink="/home" fragment = "one" class="button style2 down">More</a>
@@ -20,7 +20,8 @@
           id="{{ event.event_id }}"
           class="main style2 {{ placement_events(i) }} dark fullscreen"
           (mouseenter)='survoleEvent("visible", i)'
-          (mouseleave)='survoleEvent("hidden", i)'>
+          (mouseleave)='survoleEvent("hidden", i)'
+          [style.background-image]="image1">
   <div class="content box style2" [style.width.%]="34" [@lastEventTrigger]="currentStateEvent(i)">
     <header>
                   <h2><a routerLink="/galeries/{{ event.routing }}">{{ event.name }}</a></h2>
@@ -52,6 +53,8 @@
           <img [src]="wide_pic_ref" (click)="closeWidePic()"/>
           <caption>{{ caption_wide_pic }}</caption>
         </div>
+        <img id="right_arrow" src="../../assets/assets_h/css/images/poptrox-nav.svg" *ngIf="pic_clicked" alt="" (click)="navRight()"/>
+        <img id="left_arrow"  src="../../assets/assets_h/css/images/poptrox-nav.svg" *ngIf="pic_clicked" alt="" (click)="navLeft()"/>
     </div>
   </section>
 

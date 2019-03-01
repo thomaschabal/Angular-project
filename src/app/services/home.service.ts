@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class HomeService {
@@ -57,8 +57,12 @@ export class HomeService {
     }
   ];
 
-  constructor (private httpClient : HttpClient) {}
+  constructor (private httpService : HttpService) {}
 
   ngOnInit () { }
-  
+
+  getLatestGalleries() {
+    return this.httpService.post("/api/get-latest-galleries", {"page": 1, "page_size": 3});
+  }
+
 }

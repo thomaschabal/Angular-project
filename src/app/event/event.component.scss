@@ -42,5 +42,29 @@ img {
   position: absolute;
   top: 1vh;
   left: 0.5vw;
-  background: rgba(255,0,0,0.5);
+  background: rgba(255,0,0,0.7);
+}
+
+#addFiles, .publicprivate {
+  background: linear-gradient(15deg, red, #fc3 70%);
+}
+
+#modere {
+  background: linear-gradient(-165deg, red, #fc3 70%);
+}
+
+#deleteevent {
+  background: linear-gradient(35deg, red, #f99 90%);
+}
+
+#deletepics {
+  background: linear-gradient(35deg, #f99, red 90%);
+}
+
+#submit {
+  background: linear-gradient(45deg, red, #fc3);
+}
+
+#reset {
+  background: linear-gradient(45deg, #fc3, red);
 }

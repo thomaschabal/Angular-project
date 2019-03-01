@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { GaleriesService } from '../services/galeries.service';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 import { HttpService } from '../services/http.service'
@@ -29,6 +29,8 @@ export class GaleriesComponent implements OnInit {
   };
 
   ngOnInit() {
+    // Report the user is in the galleries
+    this.httpService.isInGalleries = true;
 
     // If the user is an admin, private galleries are loaded and then displayed
     if (this.httpService.isAdmin === true) {
@@ -79,6 +81,9 @@ export class GaleriesComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.httpService.isInGalleries = false;
+  }
 
   getImagesRestrictedGalleries() {
     // Only the slugs of the events are currently stored.

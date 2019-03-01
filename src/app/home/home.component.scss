@@ -17,7 +17,7 @@
 
 		#one {
 	    height : 100vh;
-			background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/wei.jpg");
+			//background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/wei.jpg");
 			background-size: 256px 256px, cover;
 			background-attachment: fixed, fixed;
 			background-position: top left, center center;
@@ -27,7 +27,7 @@
 
 		#two {
 	    height : 100vh;
-			background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/supponts.jpg");
+			//background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/supponts.jpg");
 			background-size: 256px 256px, cover;
 			background-attachment: fixed, fixed;
 			background-position: top left, center center;
@@ -37,7 +37,7 @@
 
 		#three {
 	    height : 100vh;
-			background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/voyage1.jpg");
+			//background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/voyage1.jpg");
 			background-size: 256px 256px, cover;
 			background-attachment: fixed, fixed;
 			background-position: top left, center center;
@@ -79,3 +79,24 @@
 			position: fixed;
 			z-index: 5000;
 		}
+
+		#right_arrow {
+			position: fixed;
+			z-index: 10000;
+			width: 7.5%;
+			right: 24vw;
+			top: 45vh;
+		}
+
+		#left_arrow {
+			-webkit-transform: scaleX(-1);
+  		transform: scaleX(-1);
+			position: fixed;
+			z-index: 10000;
+			width: 7.5%;
+			left: 24vw;
+			top: 45vh;
+		}
+	input {
+		background: linear-gradient(30deg, red, yellow);
+	}

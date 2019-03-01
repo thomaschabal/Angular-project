@@ -11,15 +11,33 @@
   </header>
 
 <div class="moderation" *ngIf = "isAdmin">
-  <button type="button" name="button">Ajouter des fichiers</button>
-  <button type="button" name="button" (click)="modere()">Modérer</button>
-  <button type="button" name="button" *ngIf = "isPublic" (click)="publicPrivate()">Rendre privée</button>
-  <button type="button" name="button" *ngIf = "!isPublic" (click)="publicPrivate()">Rendre publique</button>
-  <button type="button" name="button" *ngIf = "enModeration" (click)="deleteEvent()">Supprimer la galerie</button>
-  <button type="button" name="button" *ngIf = "enModeration" (click)="validateDeletionPics()">Supprimer les photos sélectionnées</button>
+  <button id="addFiles" type="button" name="button" (click)="prepareAddFiles()">Ajouter des fichiers</button>
+  <button id="modere" type="button" name="button" (click)="modere()">Modérer</button>
+  <button class="publicprivate" type="button" name="button" *ngIf = "isPublic" (click)="publicPrivate()">Rendre privée</button>
+  <button class="publicprivate" type="button" name="button" *ngIf = "!isPublic" (click)="publicPrivate()">Rendre publique</button>
+  <button id="deleteevent" type="button" name="button" *ngIf = "enModeration" (click)="deleteEvent()">Supprimer la galerie</button>
+  <button id="deletepics" type="button" name="button" *ngIf = "enModeration" (click)="validateDeletionPics()">Supprimer les photos sélectionnées</button>
+  <p *ngIf="!isPublic">Cette galerie est privée. Seuls les administrateurs peuvent y accéder.</p>
 </div>
-<!-- <ngx-file-picker [adapter] = "adapter">
-</ngx-file-picker> -->
+
+<ngx-file-picker #uploader
+    [totalMaxSize]="1000"
+    [fileMaxCount]="250"
+    [fileMaxSize]="1000"
+    [uploadType]="'multi'"
+    (validationError)= "onValidationError($event)"
+    [adapter]="adapter"
+    [fileExtensions]="['pdf', 'jpg', 'JPG', 'png', 'mp4', 'docx', 'mov']"
+    [enableCropper]="false"
+    (uploadSuccess)="onUploadSuccess($event)"
+    (removeSuccess)="onRemoveSuccess($event)"
+    [showeDragDropZone]="true"
+    [showPreviewContainer]="true"
+    (fileAdded)="onFileAdded($event)"
+    style="margin-bottom: 2vh;"
+    *ngIf = "clickAddFiles"
+>
+</ngx-file-picker>
 
 <!-- Main -->
   <!-- Image viewer -->
@@ -70,8 +88,8 @@
               </div>
             </div>
             <ul class="actions">
-              <li><input type="submit" value="Vive le Ponthé !" class="primary" /></li>
-              <li><input type="reset" value="Reset le message" /></li>
+              <li><input id="submit" type="submit" value="Vive le Ponthé !" class="primary" /></li>
+              <li><input id="reset" type="reset" value="Reset le message" /></li>
             </ul>
           </form>
         </section>

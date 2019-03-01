@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Upload file module
 import { FilePickerModule } from 'ngx-awesome-uploader';
 
+
 //// COMPONENTS
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';

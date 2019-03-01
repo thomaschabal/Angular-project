@@ -10,7 +10,7 @@
 			<form class="signup-form" [formGroup]="userForm" (ngSubmit) = "onSignIn()">
 				<input type="email" name="email" placeholder="Identifiant" formControlName = "email"/>
 				<input type="password" name="password" placeholder="Mot de passe" formControlName = "password"/>
-				<input type="submit" value="Entrer dans les Galeries" [disabled]="userForm.invalid"/>
+				<input id="submit" type="submit" value="Entrer dans les Galeries" [disabled]="userForm.invalid"/>
 			</form>
 
 		<!-- Useful links -->

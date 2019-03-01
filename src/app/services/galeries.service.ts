@@ -64,6 +64,7 @@ export class GaleriesService {
 
   // Get the full picture (not the thumbnail) associated to some path
   getFullImage(path : string){
+    console.log(path);
     return this.httpService.post("/api/get-full-image", {'file_path' : path});
   }
 

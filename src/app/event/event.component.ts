@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { GaleriesService } from '../services/galeries.service';
 import { MessagesService } from '../services/messages.service';
 import { ActivatedRoute } from '@angular/router';
@@ -9,7 +9,10 @@ import { state, trigger, animate, style, transition } from '@angular/animations'
 import { HttpService } from '../services/http.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ImageViewerModule } from "ngx-image-viewer";
-// import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
+
+import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
+import { HttpClient } from '@angular/common/http';
+import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
 
 @Component({
   selector: 'app-event',
@@ -53,6 +56,7 @@ export class EventComponent implements OnInit, OnDestroy {
   isPublic = false;
   enModeration = false;
   selected_route : string;
+  clickAddFiles = false;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
   eventDeletionState = "nothing";
@@ -71,7 +75,8 @@ export class EventComponent implements OnInit, OnDestroy {
               private activeRoute : ActivatedRoute,
               private router : Router,
               private httpService : HttpService,
-              private formBuilder : FormBuilder) {
+              private formBuilder : FormBuilder,
+              private httpClient : HttpClient) {
       this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
              }
 
@@ -109,10 +114,13 @@ export class EventComponent implements OnInit, OnDestroy {
         this.isPublic = isPublic;
       }
     );
+    // Report the user is in the galleries
+    this.httpService.isInGalleries = true;
   }
 
   public ngOnDestroy(): void {
       if(this.sub) this.sub.unsubscribe();
+      this.httpService.isInGalleries = false;
     }
 
   // Initialization of the footer form
@@ -186,6 +194,11 @@ export class EventComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Reveal the file uploader
+  prepareAddFiles() {
+    this.clickAddFiles = !this.clickAddFiles;
+  }
+
 
   // Image viewer activated on click
   onClick(i_selected_pic) {
@@ -226,6 +239,25 @@ export class EventComponent implements OnInit, OnDestroy {
 
 
 
-  // adapter = new DemoFilePickerAdapter(this.httpService);
+  @ViewChild('uploader') uploader: FilePickerComponent;
+  adapter = new DemoFilePickerAdapter(this.httpClient, this.selected_route);
+  myFiles: FilePreviewModel[] = [];
+
+  onValidationError(e: ValidationError) {
+    console.log(e);
+  }
+  onUploadSuccess(e: FilePreviewModel) {
+   console.log(e);
+   console.log(this.myFiles)
+  }
+  onRemoveSuccess(e: FilePreviewModel) {
+    console.log(e);
+  }
+  onFileAdded(file: FilePreviewModel) {
+    this.myFiles.push(file);
+  }
+  removeFile() {
+  this.uploader.removeFileFromList(this.myFiles[0].fileName);
+  }
 
 }

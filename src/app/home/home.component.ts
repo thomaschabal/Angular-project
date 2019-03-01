@@ -9,6 +9,7 @@ import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { transition, trigger, style, animate, state } from "@angular/animations";
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -54,6 +55,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   adresse_2 : string;
   adresse_3 : string;
 
+  image1 : SafeStyle;
+
   private sub : Subscription;
 
   // Form to send a message to the admins of the site
@@ -74,7 +77,8 @@ export class HomeComponent implements OnInit, OnDestroy {
               private activeRoute : ActivatedRoute,
               private router : Router,
               private formBuilder : FormBuilder,
-              private authService : AuthService) {
+              private authService : AuthService,
+              private sanitizer : DomSanitizer) {
                 // Smooth transitions on arrow clicks
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
               };
@@ -91,6 +95,27 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.authService.isAuth === false){
       this.router.navigate(['auth']);
     }
+    this.homeService.getLatestGalleries()
+    .subscribe(
+      (res) => {
+        const lastEvents = res["galleries"];
+        const idEvents = ["one", "two", "three", "coeur"];
+        for (let i=0; i<lastEvents.length; i++) {
+          this.last_events[i] = {
+            "name": lastEvents[i]["name"],
+            "fond": lastEvents[i]["image"],
+            "routing": lastEvents[i]["slug"],
+            "event_id": idEvents[i],
+            "next_event_id": idEvents[i+1],
+            "resume": "Pas de description pour l'instant."
+          };
+        }
+        console.log(this.last_events);
+        this.image1 = this.sanitizer.bypassSecurityTrustStyle('url("../../assets/assets_h/css/images/overlay.png)');
+        console.log(this.image1);
+     },
+      (error) => { console.error(error); }
+    );
   }
 
   public ngOnDestroy(): void {
@@ -114,17 +139,37 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
   //// DISPLAY OF THE COMPONENTS, ANIMATIONS ON HOVER
+  index_picture : number;
 
   onClickFavPic(i : number) {
     this.pic_clicked = true;
     this.wide_pic_ref = this.love_pics[i]["address"];
     this.caption_wide_pic = this.love_pics[i]["title"];
+    this.index_picture = i;
   }
 
   closeWidePic() {
     this.pic_clicked = false;
     this.wide_pic_ref = null;
+    this.index_picture = null;
   }
+
+  navLeft() {
+    this.index_picture = this.index_picture -1;
+    if (this.index_picture <0) {
+      this.index_picture += this.love_pics.length;
+    }
+    this.wide_pic_ref = this.love_pics[this.index_picture]["address"];
+    this.caption_wide_pic = this.love_pics[this.index_picture]["title"];
+  }
+
+  navRight() {
+    this.index_picture = (this.index_picture +1)%(this.love_pics.length);
+    this.wide_pic_ref = this.love_pics[this.index_picture]["address"];
+    this.caption_wide_pic = this.love_pics[this.index_picture]["title"];
+  }
+
+
 
   // Information on the positioning of elements
   placement_events(i : number) {

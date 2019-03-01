@@ -21,3 +21,14 @@ body {
 				top: 0;
 				width: 100%;
 			}
+
+#private {
+	width: 5em;
+	background: linear-gradient(30deg, red, yellow);
+	color: white;
+	text-align: center;
+	position: absolute;
+	top: 1vh;
+	left: 0.5vw;
+	border-radius: 10px;
+}

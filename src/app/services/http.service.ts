@@ -12,6 +12,8 @@ export class HttpService {
   isAdmin : boolean;
   promotion : string;
 
+  isInGalleries = false;
+
   constructor(private httpClient : HttpClient,
               private configService : ConfigService,
             private router : Router) {
