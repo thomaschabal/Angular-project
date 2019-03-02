@@ -1,10 +1,10 @@
 <div class="spacer"></div>
 
 <div class="moderation" *ngIf = "isAdmin">
-  <button type="button" name="button" (click)="acceptAllPics()">Tout accepter</button>
-  <button type="button" name="button" (click)="deleteAllPics()">Tout supprimer</button>
-  <button type="button" name="button" (click)="acceptSelectedPics()">Accepter les photos sélectionnées</button>
-  <button type="button" name="button" (click)="deleteSelectedPics()">Supprimer les photos sélectionnées</button>
+  <button id="acceptAll" type="button" name="button" (click)="acceptAllPics()">Tout accepter</button>
+  <button id="refuseAll" type="button" name="button" (click)="deleteAllPics()">Tout supprimer</button>
+  <button id="acceptSelection" type="button" name="button" (click)="acceptSelectedPics()">Accepter les photos sélectionnées</button>
+  <button id="refuseSelection"type="button" name="button" (click)="deleteSelectedPics()">Supprimer les photos sélectionnées</button>
 </div>
 
 <!-- Main -->

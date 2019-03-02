@@ -48,8 +48,16 @@ img {
   left: 14.5vw;
 }
 
+#acceptAll, #acceptSelection {
+  background: rgb(0,180,0);
+}
+
 #acceptButtonSelected {
   background: rgba(0,255,0,0.5);
+}
+
+#refuseAll, #refuseSelection {
+  background: rgb(210,0,0);
 }
 
 #deleteButtonSelected {

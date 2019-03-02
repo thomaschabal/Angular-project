@@ -84,7 +84,7 @@
 			position: fixed;
 			z-index: 10000;
 			width: 7.5%;
-			right: 24vw;
+			right: 23vw;
 			top: 45vh;
 		}
 
@@ -94,9 +94,18 @@
 			position: fixed;
 			z-index: 10000;
 			width: 7.5%;
-			left: 24vw;
+			left: 23.5vw;
 			top: 45vh;
 		}
+
+		#closer {
+			position: fixed;
+			z-index: 10000;
+			width: 5%;
+			top: 10vh;
+			right: 23vw;
+		}
+
 	input {
 		background: linear-gradient(30deg, red, yellow);
 	}

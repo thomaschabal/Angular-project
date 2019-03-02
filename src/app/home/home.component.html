@@ -5,7 +5,7 @@
         <h2>Le Ponthé</h2>
       </header>
       <p>Bienvenue sur le site du <strong>Ponthé</strong>, le club audiovisuel des Ponts.<br/>
-      Ici, tu pourras voir et télécharger les photos et vidéos et montages réalisés par les membres du club.
+      Ici, tu pourras voir et télécharger les photos, vidéos et montages réalisés par les membres du club.
       Tu pourras également déposer tes propres photos et vidéos dans chaque <strong>galerie</strong>. <br/>
       Bon visionnage !</p>
       <footer>
@@ -47,14 +47,22 @@
             <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}" (click)="onClickFavPic(i)" />
           </article>
         </div>
-        <!-- Darken the background -->
-        <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()"></div>
-        <div class="wide-pic" *ngIf="pic_clicked">
-          <img [src]="wide_pic_ref" (click)="closeWidePic()"/>
-          <caption>{{ caption_wide_pic }}</caption>
-        </div>
-        <img id="right_arrow" src="../../assets/assets_h/css/images/poptrox-nav.svg" *ngIf="pic_clicked" alt="" (click)="navRight()"/>
-        <img id="left_arrow"  src="../../assets/assets_h/css/images/poptrox-nav.svg" *ngIf="pic_clicked" alt="" (click)="navLeft()"/>
+        <!-- Image viewer -->
+          <!-- Darken the background -->
+          <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()"></div>
+
+          <!-- Image enlarged -->
+          <div class="wide-pic" *ngIf="pic_clicked">
+            <img [src]="wide_pic_ref" (click)="closeWidePic()"/>
+            <caption>{{ caption_wide_pic }}</caption>
+          </div>
+
+          <!-- Closer -->
+          <img id="closer" src="../../assets/assets_h/css/images/poptrox-closer.svg" *ngIf="pic_clicked" alt="" (click)="closeWidePic()"/>
+
+          <!-- Navigation arrows -->
+          <img id="right_arrow" src="../../assets/assets_h/css/images/poptrox-nav.svg" *ngIf="pic_clicked" alt="" (click)="navRight()"/>
+          <img id="left_arrow"  src="../../assets/assets_h/css/images/poptrox-nav.svg" *ngIf="pic_clicked" alt="" (click)="navLeft()"/>
     </div>
   </section>
 

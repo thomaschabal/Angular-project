@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { HomeService } from '../services/home.service';
 import { HttpService } from '../services/http.service';
 import { MessagesService } from '../services/messages.service';
@@ -10,6 +10,12 @@ import { Subscription } from 'rxjs';
 import { transition, trigger, style, animate, state } from "@angular/animations";
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+
+export enum KEY_CODE {
+  RIGHT_ARROW = 39,
+  LEFT_ARROW = 37,
+  ESCAPE = 27
+}
 
 @Component({
   selector: 'app-home',
@@ -152,6 +158,29 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.pic_clicked = false;
     this.wide_pic_ref = null;
     this.index_picture = null;
+  }
+
+
+  // Host Listener for the image viewer
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    console.log(event);
+
+    if (this.pic_clicked) {
+      if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+        this.navLeft();
+      }
+      else {
+        if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+          this.navRight();
+        }
+        else {
+          if (event.keyCode === KEY_CODE.ESCAPE) {
+            this.closeWidePic();
+          }
+        }
+      }
+    }
   }
 
   navLeft() {
