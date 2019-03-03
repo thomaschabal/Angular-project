@@ -17,11 +17,13 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
                                transform: 'translateX(0)',
                                backgroundImage : 'url("../../assets/images/wei.jpg")',
                                backgroundPosition : 'center center',
+                               width: '120%'
                                })),
       state('hidden1', style({opacity: 0.2,
                               transform: 'translateX(-14em)',
                               backgroundImage : 'url("../../assets/images/wei.jpg")',
                               backgroundPosition : 'center center',
+                              width: '120%'
                               })),
       state('visible2', style({opacity: 0.5,
                                transform: 'translateX(0)',

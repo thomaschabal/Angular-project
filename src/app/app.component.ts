@@ -92,7 +92,7 @@ export class AppComponent {
 
 
     // Shortcuts for administrators
-    if (this.httpService.isAdmin) {
+
       if (this.keys.search("home") !== -1) {
         this.router.navigate(['/home']);
         this.keys = "";
@@ -105,7 +105,7 @@ export class AppComponent {
         this.router.navigate(['/dashboard']);
         this.keys = "";
       }
-      if (this.keys.search("membres") !== -1) {
+      if (this.keys.search("membres") !== -1 || this.keys.search("members") !== -1) {
         this.router.navigate(['/members']);
         this.keys = "";
       }
@@ -113,16 +113,24 @@ export class AppComponent {
         this.router.navigate(['/material']);
         this.keys = "";
       }
-      if (this.keys.search("moderation") !== -1) {
-        this.router.navigate(['/moderation']);
-        this.keys = "";
+      if (this.httpService.isAdmin) {
+        if (this.keys.search("moderation") !== -1 || this.keys.search("modération") !== -1) {
+          this.router.navigate(['/moderation']);
+          this.keys = "";
+        }
+        if (this.keys.search("slack") !== -1) {
+          window.location.href = 'https://ponthe.slack.com';
+        }
+        if (this.keys.search("trello") !== -1) {
+          window.location.href = 'https://trello.com/b/WIQhzGmu/ev%C3%A8nements-et-communication';
+        }
       }
       if (this.keys.search("logout") !== -1) {
         this.authService.signOut();
         this.router.navigate(['/auth']);
         this.keys = "";
       }
-    }
+
   }
 
 }

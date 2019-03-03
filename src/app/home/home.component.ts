@@ -43,7 +43,12 @@ export enum KEY_CODE {
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0, transform : 'translateY(75vh)'})),
       transition('* => *', [ animate('20ms') ] ),
-    ])
+    ]),
+    trigger('widePicsAnimation', [
+      state('true', style({opacity: 1})),
+      state('false', style({opacity: 0})),
+      transition('*=>*', [ animate('200ms') ] ),
+    ]),
   ]
 })
 export class HomeComponent implements OnInit, OnDestroy {
@@ -76,6 +81,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   lovePicsStateLeft = 'hidden-left';
   lovePicsStateRight = 'hidden-right';
   formState = 'hidden';
+
+  showArrows = true;
 
   constructor(private homeService : HomeService,
               private httpService : HttpService,
@@ -152,12 +159,34 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.wide_pic_ref = this.love_pics[i]["address"];
     this.caption_wide_pic = this.love_pics[i]["title"];
     this.index_picture = i;
+
+    // Have a blurred background when the image viewer is active
+    document.getElementById('header').style.display = "none";
+    document.getElementById('intro').style.filter = "blur(8px)";
+    for (let event = 0; event<this.last_events.length; event++) {
+      document.getElementById(this.last_events[event]["event_id"]).style.filter = "blur(8px)";
+    }
+    document.getElementById('header-content').style.filter = "blur(8px)";
+    document.getElementById('gallery-pics').style.filter = "blur(8px)";
+    document.getElementById('contact').style.filter = "blur(8px)";
+    document.getElementById('footer').style.filter = "blur(8px)";
   }
 
   closeWidePic() {
     this.pic_clicked = false;
     this.wide_pic_ref = null;
     this.index_picture = null;
+
+    // Remove the blurred background
+    document.getElementById('header').style.display = "block";
+    document.getElementById('intro').style.filter = "none";
+    for (let event = 0; event<this.last_events.length; event++) {
+      document.getElementById(this.last_events[event]["event_id"]).style.filter = "none";
+    }
+    document.getElementById('header-content').style.filter = "none";
+    document.getElementById('gallery-pics').style.filter = "none";
+    document.getElementById('contact').style.filter = "none";
+    document.getElementById('footer').style.filter = "none";
   }
 
 
@@ -285,6 +314,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       return this.lovePicsStateRight;
     }
+  }
+
+  // Show or hide arrows for the enlarged pics when hovered
+  displayArrows() {
+    this.showArrows = true;
+  }
+
+  hideArrows() {
+    this.showArrows = false;
   }
 
 }

@@ -88,4 +88,9 @@ export class DashboardComponent implements OnInit {
     this.eventCreationSelect = !this.eventCreationSelect;
   }
 
+  // Navigation to a given url
+  navigateToAddress(url: string) {
+    window.location.href = url;
+  }
+
 }

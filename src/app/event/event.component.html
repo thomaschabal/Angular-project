@@ -1,23 +1,23 @@
 <div class="spacer"></div>
 
 <!-- Header, displayed on the bottom -->
-  <header id="header">
+  <header id="header" id="event-panel">
     <h1><a routerLink = "/galeries"><strong>{{ name }}</strong></a></h1>
     <nav (click)="changeStateFooter()">
       <ul>
-        <li><a class="icon fa-info-circle">A propos de l'album...</a></li>
+        <li><a class="icon fa-info-circle" style="cursor: pointer">A propos de l'album...</a></li>
       </ul>
     </nav>
   </header>
 
-<div class="moderation" *ngIf = "isAdmin">
+<div id="moderation" *ngIf = "isAdmin">
   <button id="addFiles" type="button" name="button" (click)="prepareAddFiles()">Ajouter des fichiers</button>
   <button id="modere" type="button" name="button" (click)="modere()">Modérer</button>
   <button class="publicprivate" type="button" name="button" *ngIf = "isPublic" (click)="publicPrivate()">Rendre privée</button>
   <button class="publicprivate" type="button" name="button" *ngIf = "!isPublic" (click)="publicPrivate()">Rendre publique</button>
   <button id="deleteevent" type="button" name="button" *ngIf = "enModeration" (click)="deleteEvent()">Supprimer la galerie</button>
   <button id="deletepics" type="button" name="button" *ngIf = "enModeration" (click)="validateDeletionPics()">Supprimer les photos sélectionnées</button>
-  <p *ngIf="!isPublic">Cette galerie est privée. Seuls les administrateurs peuvent y accéder.</p>
+  <p *ngIf="!isPublic" style="color: #fff">Cette galerie est privée. Seuls les administrateurs peuvent y accéder.</p>
 </div>
 
 <ngx-file-picker #uploader
@@ -40,18 +40,63 @@
 </ngx-file-picker>
 
 <!-- Main -->
-  <!-- Image viewer -->
-<div id="image-viewer" *ngIf = "clicked">
-  <ngx-image-viewer [src] = "raw_pics" [index]= "indexViewer"></ngx-image-viewer>
-</div>
+
   <!-- Pictures of the event -->
   <div id="main" (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')">
     <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
-      <img (click)="onClick(i)" src="{{ picture.base64 }}" alt="" width="100%"/>
+      <img (click)="onClickFavPic(i)" style="cursor: pointer" src="{{ picture.base64 }}" alt="" width="100%"/>
+      <caption>{{ name }}</caption>
       <button id="deleteButton" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && !deleteState(i)" (click)="moderePic(i)">Supprimer</button>
       <button id="deleteButtonSelected" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && deleteState(i)" (click)="moderePic(i)">Supprimer</button>
     </article>
   </div>
+
+  <!-- Dark background -->
+  <div id="fullBackground"
+       style="width: 100vw; height: 92vh; top:8vh; left:0; background: #242628; position: fixed; z-index: -1"
+       (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')"></div>
+
+
+  <!-- Image viewer -->
+    <!-- Darken the background -->
+    <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()">
+      <!-- Image enlarged -->
+      <div class="wide-pic"
+           *ngIf="pic_clicked"
+           (mouseenter)="displayArrows()"
+           (mouseleave)="hideArrows()">
+        <img [src]="wide_pic_ref" style="cursor: pointer"/>
+        <caption>{{ caption_wide_pic }}</caption>
+
+        <!-- Closer -->
+        <img id="closer"
+             src="../../assets/assets_h/css/images/poptrox-closer.svg"
+             *ngIf="pic_clicked"
+             (click)="closeWidePic()"
+             [@widePicsAnimation]="showArrows+''"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()"/>
+
+        <!-- Navigation arrows -->
+        <img id="right_arrow"
+             src="../../assets/assets_h/css/images/poptrox-nav.svg"
+             *ngIf="pic_clicked"
+             (click)="navRight()"
+             [@widePicsAnimation]="showArrows+''"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()"/>
+        <img id="left_arrow"
+             src="../../assets/assets_h/css/images/poptrox-nav.svg"
+             *ngIf="pic_clicked"
+             (click)="navLeft()"
+             [@widePicsAnimation]="showArrows+''"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()"/>
+      </div>
+    </div>
+
+
+
 
 <!-- Footer, revealed when clicking on "A propos de l'album" -->
   <footer id="footer" class="panel" [@footerTrigger] = "footerState">

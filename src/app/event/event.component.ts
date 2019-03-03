@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
 import { GaleriesService } from '../services/galeries.service';
 import { MessagesService } from '../services/messages.service';
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +13,13 @@ import { ImageViewerModule } from "ngx-image-viewer";
 import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
 import { HttpClient } from '@angular/common/http';
 import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
+
+
+export enum KEY_CODE {
+  RIGHT_ARROW = 39,
+  LEFT_ARROW = 37,
+  ESCAPE = 27
+}
 
 @Component({
   selector: 'app-event',
@@ -30,6 +37,11 @@ import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
       state('visible', style({opacity: 1, transform : 'translateY(2vh)'})),
       state('hidden', style({opacity : 0})),
       transition('* => *', [ animate('200ms') ] ),
+    ]),
+    trigger('widePicsAnimation', [
+      state('true', style({opacity: 1})),
+      state('false', style({opacity: 0})),
+      transition('*=>*', [ animate('200ms') ] ),
     ]),
   ]
 })
@@ -51,6 +63,11 @@ export class EventComponent implements OnInit, OnDestroy {
   // Index of the picture the user clicked on
   indexViewer : number;
 
+  pic_clicked = false;
+  wide_pic_ref : any;
+  caption_wide_pic: string;
+  index_picture = 0;
+
   // Variables about the user and the current operations on the event
   isAdmin : boolean;
   isPublic = false;
@@ -68,6 +85,8 @@ export class EventComponent implements OnInit, OnDestroy {
   // Animation variables
   picsState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
   footerState = "hidden";
+
+  showArrows = true;
 
 
   constructor(private galeriesService : GaleriesService,
@@ -258,6 +277,107 @@ export class EventComponent implements OnInit, OnDestroy {
   }
   removeFile() {
   this.uploader.removeFileFromList(this.myFiles[0].fileName);
+  }
+
+
+
+
+
+
+
+
+  onClickFavPic(i_selected_pic : number) {
+    this.raw_pics = [];
+    this.indexViewer = i_selected_pic;
+
+    // Get the full images, then store them and display
+    for (let i=i_selected_pic; i<this.pics.length; i++){
+      this.galeriesService.getFullImage(this.pics[i]['file_path'])
+      .subscribe(
+        (res) => { this.raw_pics[i] = (res["base64"]);
+        if (i === i_selected_pic) {
+          this.pic_clicked = true;
+          this.wide_pic_ref = this.raw_pics[i_selected_pic];
+          this.caption_wide_pic = this.name;
+          this.index_picture = i_selected_pic;
+        }
+       },
+        (error) => { console.error(error); }
+      );
+    }
+    for (let i=0; i<i_selected_pic; i++){
+      this.galeriesService.getFullImage(this.pics[i]['file_path'])
+      .subscribe(
+        (res) => { this.raw_pics[i] = (res["base64"]); },
+        (error) => { console.error(error); }
+      );
+    }
+
+    this.clicked = true;
+
+    //Have a blurred background when the image viewer is active
+    document.getElementById('header').style.display = "none";
+    document.getElementById('event-panel').style.display = "none";
+    document.getElementById('moderation').style.filter = "blur(8px)";
+    document.getElementById('main').style.filter = "blur(8px)";
+    document.getElementById('footer').style.display = "none";
+  }
+
+  closeWidePic() {
+    this.pic_clicked = false;
+    this.wide_pic_ref = null;
+    this.index_picture = null;
+
+    // Remove the blurred background
+    document.getElementById('header').style.display = "block";
+    document.getElementById('event-panel').style.display = "block";
+    document.getElementById('moderation').style.filter = "none";
+    document.getElementById('main').style.filter = "none";
+    document.getElementById('footer').style.display = "block";
+  }
+
+
+  // Host Listener for the image viewer
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+
+    if (this.pic_clicked) {
+      if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+        this.navLeft();
+      }
+      else {
+        if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+          this.navRight();
+        }
+        else {
+          if (event.keyCode === KEY_CODE.ESCAPE) {
+            this.closeWidePic();
+          }
+        }
+      }
+    }
+  }
+
+  navLeft() {
+    this.index_picture = this.index_picture -1;
+    if (this.index_picture <0) {
+      this.index_picture += this.raw_pics.length;
+    }
+    this.wide_pic_ref = this.raw_pics[this.index_picture];
+  }
+
+  navRight() {
+    this.index_picture = (this.index_picture +1)%(this.raw_pics.length);
+    this.wide_pic_ref = this.raw_pics[this.index_picture];
+  }
+
+  // Show or hide arrows for the enlarged pics when hovered
+  displayArrows() {
+    this.showArrows = true;
+  }
+
+  hideArrows() {
+    this.showArrows = false;
   }
 
 }

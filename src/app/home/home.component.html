@@ -1,5 +1,8 @@
   <!-- Intro -->
-  <section id="intro" class="main style1 dark fullscreen" (mouseenter)='survoleIntro("visible")' (mouseleave)='survoleIntro("hidden")'>
+  <section id="intro"
+           class="main style1 dark fullscreen"
+           (mouseenter)='survoleIntro("visible")'
+           (mouseleave)='survoleIntro("hidden")'>
     <div class="content" [@introTrigger]="introState">
       <header>
         <h2>Le Ponthé</h2>
@@ -35,34 +38,56 @@
 <!-- Favorite pics -->
   <section id="coeur" class="main style3 primary" (mouseenter)='survoleCoeur("visible")' (mouseleave)='survoleCoeur("hidden")'>
     <div class="content">
-      <header>
+      <header id="header-content">
         <h2>Tes photos <em>Coup de coeur </em>  <3 !</h2>
       </header>
 
       <!-- Pics  -->
-        <div class="gallery">
+        <div class="gallery" id="gallery-pics">
           <article *ngFor = "let pic of love_pics; let i = index"
                     class="{{ placement_love_pics(i) }}"
                     [@lovePicsTrigger]="currentStateLovePics(i)">
-            <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}" (click)="onClickFavPic(i)" />
+            <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}" (click)="onClickFavPic(i)" style="cursor: pointer"/>
           </article>
         </div>
-        <!-- Image viewer -->
-          <!-- Darken the background -->
-          <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()"></div>
 
-          <!-- Image enlarged -->
-          <div class="wide-pic" *ngIf="pic_clicked">
-            <img [src]="wide_pic_ref" (click)="closeWidePic()"/>
-            <caption>{{ caption_wide_pic }}</caption>
-          </div>
+      <!-- Image viewer -->
+        <!-- Darken the background -->
+        <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()"></div>
 
-          <!-- Closer -->
-          <img id="closer" src="../../assets/assets_h/css/images/poptrox-closer.svg" *ngIf="pic_clicked" alt="" (click)="closeWidePic()"/>
+        <!-- Image enlarged -->
+        <div class="wide-pic"
+             *ngIf="pic_clicked"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()">
+          <img [src]="wide_pic_ref" style="cursor: pointer"/>
+          <caption>{{ caption_wide_pic }}</caption>
+        </div>
 
-          <!-- Navigation arrows -->
-          <img id="right_arrow" src="../../assets/assets_h/css/images/poptrox-nav.svg" *ngIf="pic_clicked" alt="" (click)="navRight()"/>
-          <img id="left_arrow"  src="../../assets/assets_h/css/images/poptrox-nav.svg" *ngIf="pic_clicked" alt="" (click)="navLeft()"/>
+        <!-- Closer -->
+        <img id="closer"
+             src="../../assets/assets_h/css/images/poptrox-closer.svg"
+             *ngIf="pic_clicked"
+             (click)="closeWidePic()"
+             [@widePicsAnimation]="showArrows+''"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()"/>
+
+        <!-- Navigation arrows -->
+        <img id="right_arrow"
+             src="../../assets/assets_h/css/images/poptrox-nav.svg"
+             *ngIf="pic_clicked"
+             (click)="navRight()"
+             [@widePicsAnimation]="showArrows+''"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()"/>
+        <img id="left_arrow"
+             src="../../assets/assets_h/css/images/poptrox-nav.svg"
+             *ngIf="pic_clicked"
+             (click)="navLeft()"
+             [@widePicsAnimation]="showArrows+''"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()"/>
     </div>
   </section>
 
