@@ -53,7 +53,7 @@ export class EventComponent implements OnInit, OnDestroy {
 
   adresse : string;
   pics : any[];
-  raw_pics : any[];
+  raw_pics = [];
   clicked : boolean;
 
   // About the event
@@ -287,30 +287,37 @@ export class EventComponent implements OnInit, OnDestroy {
 
 
   onClickFavPic(i_selected_pic : number) {
-    this.raw_pics = [];
     this.indexViewer = i_selected_pic;
 
-    // Get the full images, then store them and display
-    for (let i=i_selected_pic; i<this.pics.length; i++){
-      this.galeriesService.getFullImage(this.pics[i]['file_path'])
-      .subscribe(
-        (res) => { this.raw_pics[i] = (res["base64"]);
-        if (i === i_selected_pic) {
-          this.pic_clicked = true;
-          this.wide_pic_ref = this.raw_pics[i_selected_pic];
-          this.caption_wide_pic = this.name;
-          this.index_picture = i_selected_pic;
-        }
-       },
-        (error) => { console.error(error); }
-      );
+    if (this.raw_pics.length === 0)
+    {
+      // Get the full images, then store them and display
+      for (let i=i_selected_pic; i<this.pics.length; i++){
+        this.galeriesService.getFullImage(this.pics[i]['file_path'])
+        .subscribe(
+          (res) => { this.raw_pics[i] = (res["base64"]);
+          if (i === i_selected_pic) {
+            this.pic_clicked = true;
+            this.wide_pic_ref = this.raw_pics[i_selected_pic];
+            this.caption_wide_pic = this.name;
+            this.index_picture = i_selected_pic;
+          }
+         },
+          (error) => { console.error(error); }
+        );
+      }
+      for (let i=0; i<i_selected_pic; i++){
+        this.galeriesService.getFullImage(this.pics[i]['file_path'])
+        .subscribe(
+          (res) => { this.raw_pics[i] = (res["base64"]); },
+          (error) => { console.error(error); }
+        );
+      }
     }
-    for (let i=0; i<i_selected_pic; i++){
-      this.galeriesService.getFullImage(this.pics[i]['file_path'])
-      .subscribe(
-        (res) => { this.raw_pics[i] = (res["base64"]); },
-        (error) => { console.error(error); }
-      );
+    else {
+      this.wide_pic_ref = this.raw_pics[i_selected_pic];
+      this.pic_clicked = true;
+      this.index_picture = i_selected_pic;
     }
 
     this.clicked = true;
@@ -322,6 +329,7 @@ export class EventComponent implements OnInit, OnDestroy {
     document.getElementById('main').style.filter = "blur(8px)";
     document.getElementById('footer').style.display = "none";
   }
+
 
   closeWidePic() {
     this.pic_clicked = false;
@@ -378,6 +386,16 @@ export class EventComponent implements OnInit, OnDestroy {
 
   hideArrows() {
     this.showArrows = false;
+  }
+
+  placePicLeft(img) {
+    console.log((window.innerWidth - img.clientWidth)/2, "left");
+    return ( (window.innerWidth - img.clientWidth)/2 );
+  }
+
+  placePicTop(img) {
+    console.log((window.innerHeight - img.clientHeight)/2, "top");
+    return ( (window.innerHeight - img.clientHeight)/2 );
   }
 
 }

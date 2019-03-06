@@ -122,6 +122,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             "next_event_id": idEvents[i+1],
             "resume": "Pas de description pour l'instant."
           };
+          console.log(lastEvents[i]["image"]);
         }
         console.log(this.last_events);
         this.image1 = this.sanitizer.bypassSecurityTrustStyle('url("../../assets/assets_h/css/images/overlay.png)');

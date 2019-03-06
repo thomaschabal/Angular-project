@@ -24,7 +24,8 @@
           class="main style2 {{ placement_events(i) }} dark fullscreen"
           (mouseenter)='survoleEvent("visible", i)'
           (mouseleave)='survoleEvent("hidden", i)'
-          [style.background-image]="image1">
+          [ngStyle] = "{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
+  <!-- <img src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
   <div class="content box style2" [style.width.%]="34" [@lastEventTrigger]="currentStateEvent(i)">
     <header>
                   <h2><a routerLink="/galeries/{{ event.routing }}">{{ event.name }}</a></h2>
@@ -48,6 +49,7 @@
                     class="{{ placement_love_pics(i) }}"
                     [@lovePicsTrigger]="currentStateLovePics(i)">
             <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}" (click)="onClickFavPic(i)" style="cursor: pointer"/>
+            <!-- <img class="image fit" src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;" alt="{{ pic.title }}" (click)="onClickFavPic(i)" style="cursor: pointer"/> -->
           </article>
         </div>
 
