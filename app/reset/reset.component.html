@@ -1,0 +1,40 @@
+<body class="is-preload">
+
+  <!-- Header -->
+    <header id="header">
+      <h1>Réinitialisation du mot de passe</h1>
+      <p>Pour tout problème sur la réinitialisation de mot de passe ou pour des questions concernant le club, tu peux envoyer un mail à <em>ponthe@liste.enpc.fr</em></p>
+    </header>
+
+  <!-- Signup Form -->
+    <form class="signup-form" [formGroup]="resetForm" (ngSubmit) = "onSubmitForm()">
+      <input type="text" name="email" placeholder="Adresse mail" formControlName="email"/><p>@eleves.enpc.fr</p><br/>
+      <input id="submit" type="submit" value="Envoyer le mail de réinitialisation" [disabled]="resetForm.invalid"/>
+    </form>
+
+  <!-- Useful links -->
+    <p><a routerLink = '/auth'>Retour à l'authentification</a>.<br/>
+    Tu n'as pas de compte ? <a routerLink = '/new-account'>Clique ici</a> pour le créer.</p>
+
+  <!-- Footer -->
+    <footer id="footer">
+      <ul class="icons">
+        <li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram"><span class="label">uPont</span></a></li>
+        <li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+        <li><a href="mailto : ponthe@liste.enpc.fr" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+      </ul>
+      <ul class="copyright">
+        <li>&copy; Ponthé - Club audiovisuel des Ponts et Chaussées</li>
+      </ul>
+    </footer>
+
+    <!-- Background animation -->
+      <!-- Black background -->
+      <div id="background-auth" style="background: #000000"></div>
+
+      <!-- Image translations -->
+      <div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()"></div>
+
+</body>

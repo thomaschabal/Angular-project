@@ -1,0 +1,114 @@
+  <!-- Intro -->
+  <section id="intro"
+           class="main style1 dark fullscreen"
+           (mouseenter)='survoleIntro("visible")'
+           (mouseleave)='survoleIntro("hidden")'>
+    <div class="content" [@introTrigger]="introState">
+      <header>
+        <h2>Le Ponthé</h2>
+      </header>
+      <p>Bienvenue sur le site du <strong>Ponthé</strong>, le club audiovisuel des Ponts.<br/>
+      Ici, tu pourras voir et télécharger les photos, vidéos et montages réalisés par les membres du club.
+      Tu pourras également déposer tes propres photos et vidéos dans chaque <strong>galerie</strong>. <br/>
+      Bon visionnage !</p>
+      <footer>
+        <a routerLink="/home" fragment = "one" class="button style2 down">More</a>
+      </footer>
+    </div>
+  </section>
+
+
+<!-- 3 Last Events -->
+<section *ngFor = "let event of last_events; let i = index"
+          id="{{ event.event_id }}"
+          class="main style2 {{ placement_events(i) }} dark fullscreen"
+          (mouseenter)='survoleEvent("visible", i)'
+          (mouseleave)='survoleEvent("hidden", i)'
+          [ngStyle] = "{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
+  <!-- <img src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
+  <div class="content box style2" [style.width.%]="34" [@lastEventTrigger]="currentStateEvent(i)">
+    <header>
+                  <h2><a routerLink="/galeries/{{ event.routing }}">{{ event.name }}</a></h2>
+    </header>
+              <p><a routerLink="/galeries/{{ event.routing }}">{{ event.resume }}</a></p>
+  </div>
+  <a routerLink="/home" fragment="{{ event.next_event_id }}" class="button style2 down anchored">Next</a>
+</section>
+
+
+<!-- Favorite pics -->
+  <section id="coeur" class="main style3 primary" (mouseenter)='survoleCoeur("visible")' (mouseleave)='survoleCoeur("hidden")'>
+    <div class="content">
+      <header id="header-content">
+        <h2>Tes photos <em>Coup de coeur </em>  <3 !</h2>
+      </header>
+
+      <!-- Pics  -->
+        <div class="gallery" id="gallery-pics">
+          <article *ngFor = "let pic of love_pics; let i = index"
+                    class="{{ placement_love_pics(i) }}"
+                    [@lovePicsTrigger]="currentStateLovePics(i)">
+            <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}" (click)="onClickFavPic(i)" style="cursor: pointer"/>
+            <!-- <img class="image fit" src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;" alt="{{ pic.title }}" (click)="onClickFavPic(i)" style="cursor: pointer"/> -->
+          </article>
+        </div>
+
+      <!-- Image viewer -->
+        <!-- Darken the background -->
+        <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()"></div>
+
+        <!-- Image enlarged -->
+        <div class="wide-pic"
+             *ngIf="pic_clicked"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()">
+          <img [src]="wide_pic_ref" style="cursor: pointer"/>
+          <caption>{{ caption_wide_pic }}</caption>
+        </div>
+
+        <!-- Closer -->
+        <img id="closer"
+             src="../../assets/assets_h/css/images/poptrox-closer.svg"
+             *ngIf="pic_clicked"
+             (click)="closeWidePic()"
+             [@widePicsAnimation]="showArrows+''"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()"/>
+
+        <!-- Navigation arrows -->
+        <img id="right_arrow"
+             src="../../assets/assets_h/css/images/poptrox-nav.svg"
+             *ngIf="pic_clicked"
+             (click)="navRight()"
+             [@widePicsAnimation]="showArrows+''"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()"/>
+        <img id="left_arrow"
+             src="../../assets/assets_h/css/images/poptrox-nav.svg"
+             *ngIf="pic_clicked"
+             (click)="navLeft()"
+             [@widePicsAnimation]="showArrows+''"
+             (mouseenter)="displayArrows()"
+             (mouseleave)="hideArrows()"/>
+    </div>
+  </section>
+
+<!-- Contact form-->
+  <section id="contact" class="main style3 secondary" (mouseenter) = "survoleForm('visible')" (mouseleave) = "survoleForm('hidden')">
+    <div class="content">
+      <header>
+        <h2>Contacter le Ponthé</h2>
+        <p>Envoie un doux message aux membres du Ponthé qui te font frémir à chaque nouvelle photo...</p>
+      </header>
+      <div class="box" [@formTrigger] = "formState">
+        <form method="post" [formGroup] = "messageForm" (ngSubmit) = "onSubmitMessage()">
+          <div class="fields">
+            <div class="field"><textarea name="message" placeholder="Ton doux message..." rows="6" formControlName = "message"></textarea></div>
+          </div>
+          <ul class="actions special">
+            <li><input type="submit" value="Vive le Ponthé" [disabled]="messageForm.invalid"/></li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,9 @@
+<a routerLink="/new-account">Retour vers la création de compte</a>
+<ul class = "list-group">
+  <li class="list-group-item" *ngFor="let user of users">
+    <h3> {{ user.firstName }} {{ user.lastName }}</h3>
+    <p>{{ user.email }}</p>
+    <p>Cette personne est issue de la promotion {{ user.promotion }}</p>
+    <p>Son mot de passe est : {{ user.password}}</p>
+  </li>
+</ul>

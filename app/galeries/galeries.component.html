@@ -1,0 +1,25 @@
+<div class="spacer"></div>
+
+<!-- Main -->
+  <!-- Private events, only visible for administrators -->
+  <div id="main" (mouseenter) = "survoleGaleries('visible')"
+                 (mouseleave) = "survoleGaleries('hidden')">
+    <article class="thumb"
+            *ngFor = "let event of private_events; let i = index"
+            [@galeriesTrigger] = "state(i)">
+      <a routerLink = "{{ event.slug }}"><img src="{{ event.image }}" alt="Event" width=100% style="min-width: 100%; min-height: 100%"/></a>
+      <h2><a [routerLink] = "[event.slug]">{{ event.name }}</a></h2>
+      <div id="private">PRIVEE</div>
+    </article>
+  </div>
+
+  <!-- Public galleries -->
+  <div id="main" (mouseenter) = "survoleGaleries('visible')"
+                 (mouseleave) = "survoleGaleries('hidden')">
+    <article class="thumb"
+            *ngFor = "let event of galeries_events; let i = index"
+            [@galeriesTrigger] = "state(i)">
+      <a routerLink = "{{ event.slug }}"><img src="{{ event.image }}" alt="" width=100%/></a>
+      <h2><a [routerLink] = "[event.slug]">{{ event.name }}</a></h2>
+    </article>
+  </div>
