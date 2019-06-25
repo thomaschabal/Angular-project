@@ -32,7 +32,6 @@ export class EventComponent implements OnInit, OnDestroy {
   isAdmin : boolean;
   isPublic = true;
   enModeration = false;
-  selected_route = 'test'
   messageForm : FormGroup;
 
   picsState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
@@ -48,8 +47,8 @@ export class EventComponent implements OnInit, OnDestroy {
              }
 
   ngOnInit() {
-    this.selected_route = this.route.snapshot.params['event']
-    this.pics = this.galeriesService.getEventByName(this.httpService,this.selected_route);
+    const selected_route = this.route.snapshot.params['event'] || "test";
+    this.pics = this.galeriesService.getEventByName(selected_route);
     this.adresse = this.activeRoute.snapshot.routeConfig.path;
     this.initForm();
     this.isAdmin = this.httpService.isAdmin;

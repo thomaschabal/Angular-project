@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -7,17 +7,12 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
   constructor(private httpService : HttpService,
               private router : ActivatedRoute) { }
 
-  ngOnInit() {
+  get isOnline() {
+    return (this.httpService.token !== null) && ('galeries' in this.router.snapshot.url);
   }
-
-  isOnline() {
-    return ((this.httpService.token !== null) && (this.router.snapshot._routerState.url).search('/galeries'));
-
-  }
-
 }

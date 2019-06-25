@@ -1,0 +1,80 @@
+version: 2
+
+jobs:
+  install:
+    docker:
+      - image: circleci/node:11
+    steps:
+      - checkout
+      - save_cache:
+          key: v1-repo-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - .git
+    # Restore local dependencies from cache
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+    # Install project dependencies
+      - run:
+          name: Install local dependencies
+          command: npm ci
+    # Cache local dependencies if they don't exist
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+  lint:
+    docker:
+      - image: circleci/node:11
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Branch }}-{{ .Revision }}
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+      - run: node ./node_modules/@angular/cli/bin/ng lint
+
+  test:
+    docker:
+      - image: circleci/node:11-browsers
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Branch }}-{{ .Revision }}
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+      - run: |
+          node ./node_modules/@angular/cli/bin/ng test -- --watch=false --progress=false --browsers=ChromeHeadlessCI --code-coverage
+          node ./node_modules/@angular/cli/bin/ng e2e -- --protractor-config=./e2e/protractor-ci.conf.js
+          cat coverage/index.html | grep '% <\/span>' # display coverage result
+
+  build:
+    docker:
+      - image: circleci/node:11
+    steps:
+      - restore_cache:
+          keys:
+            - v1-repo-{{ .Branch }}-{{ .Revision }}
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+      - run: node ./node_modules/@angular/cli/bin/ng build --prod
+      - run: tar -czvf front-build.tar.gz dist/galeries-ponthe
+      - store_artifacts:
+          path: front-build.tar.gz
+          destination: front-build
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - install
+      - build:
+          requires:
+            - install
