@@ -15,6 +15,8 @@ import { HttpClient } from '@angular/common/http';
 import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
 
 
+
+
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
   LEFT_ARROW = 37,
@@ -100,11 +102,13 @@ export class EventComponent implements OnInit, OnDestroy {
              }
 
   ngOnInit() {
-    this.selected_route = this.activeRoute.snapshot.params['event'];
+    const selected_route = this.activeRoute.snapshot.params['event'];
+    this.httpService.current_gallery = selected_route;
     // Request of pictures of the event
-    this.galeriesService.getEventByName(this.selected_route)
+    this.galeriesService.getEventByName(selected_route)
     .subscribe(
       (res) => { this.pics = res["files"];
+                 console.log(this.pics);
                  const gallery = res["gallery"];
                  this.name = gallery["name"];
                  this.resume = gallery["description"];
@@ -258,8 +262,12 @@ export class EventComponent implements OnInit, OnDestroy {
 
 
 
+
+
+  // FILE UPLOAD
+
   @ViewChild('uploader') uploader: FilePickerComponent;
-  adapter = new DemoFilePickerAdapter(this.httpClient, this.selected_route);
+  adapter = new DemoFilePickerAdapter(this.httpClient, this.httpService);
   myFiles: FilePreviewModel[] = [];
 
   onValidationError(e: ValidationError) {
@@ -277,6 +285,20 @@ export class EventComponent implements OnInit, OnDestroy {
   }
   removeFile() {
   this.uploader.removeFileFromList(this.myFiles[0].fileName);
+  }
+
+
+  uploadFilesToServer() {
+    console.log(this.myFiles);
+    for (let file=0; file < this.myFiles.length; file++) {
+      var form = new FormData();
+      form.append('file', this.myFiles[file].file);
+      this.httpService.postFiles("/api/file-upload/"+this.selected_route, form)
+      .subscribe(
+        (res) => { console.log(res); },
+        (error) => { console.error(error); }
+      );
+    }
   }
 
 
@@ -372,6 +394,7 @@ export class EventComponent implements OnInit, OnDestroy {
       this.index_picture += this.raw_pics.length;
     }
     this.wide_pic_ref = this.raw_pics[this.index_picture];
+    //document.getElementById('wide-pic').style.marginLeft.px=this.placePicLeft(imgWide);
   }
 
   navRight() {
@@ -389,12 +412,10 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   placePicLeft(img) {
-    console.log((window.innerWidth - img.clientWidth)/2, "left");
     return ( (window.innerWidth - img.clientWidth)/2 );
   }
 
   placePicTop(img) {
-    console.log((window.innerHeight - img.clientHeight)/2, "top");
     return ( (window.innerHeight - img.clientHeight)/2 );
   }
 

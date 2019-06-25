@@ -92,7 +92,8 @@ import { ModerationComponent } from './moderation/moderation.component';
     AuthGuard,
     UserService,
     ConfigService,
-    HttpService
+    HttpService,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

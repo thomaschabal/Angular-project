@@ -7,8 +7,9 @@
     <article class="thumb"
             *ngFor = "let event of private_events; let i = index"
             [@galeriesTrigger] = "state(i)">
-      <a routerLink = "{{ event.slug }}"><img src="{{ event.image }}" alt="" width=100%/></a>
+      <a routerLink = "{{ event.slug }}"><img src="{{ event.image }}" alt="Event" width=100% style="min-width: 100%; min-height: 100%"/></a>
       <h2><a [routerLink] = "[event.slug]">{{ event.name }}</a></h2>
+      <a routerLink = "{{ event.slug }}"><div class="private_background"></div></a>
       <div id="private">PRIVEE</div>
     </article>
   </div>

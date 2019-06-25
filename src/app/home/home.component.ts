@@ -122,11 +122,8 @@ export class HomeComponent implements OnInit, OnDestroy {
             "next_event_id": idEvents[i+1],
             "resume": "Pas de description pour l'instant."
           };
-          console.log(lastEvents[i]["image"]);
         }
         console.log(this.last_events);
-        this.image1 = this.sanitizer.bypassSecurityTrustStyle('url("../../assets/assets_h/css/images/overlay.png)');
-        console.log(this.image1);
      },
       (error) => { console.error(error); }
     );
@@ -145,10 +142,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   // Submission of the contact form
   onSubmitMessage() {
-    this.messagesService.materialPost(this.messageForm.value).subscribe(
-      (res) => { alert("Message envoyé !"); },
-      (error) => { console.error(error); }
-    );
+    console.log(this.messageForm);
+    if (this.messageForm.value["message"] !== '') {
+      this.messagesService.materialPost(this.messageForm.value).subscribe(
+        (res) => { alert("Message envoyé !"); },
+        (error) => { console.error(error); }
+      );
+    }
   }
 
 

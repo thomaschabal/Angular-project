@@ -3,7 +3,8 @@
     <!-- Logo -->
     <a routerLink = '/home'><img src="assets/images/logo-ponthe.svg" alt="Le Ponthé" id="logo" /></a>
     <!-- Title -->
-    <h1><a routerLink = '/home'>Le Ponthé - Club audiovisuel des Ponts</a></h1>
+    <h1 *ngIf="isWideEnough()"><a routerLink = '/home'>Le Ponthé - Club audiovisuel des Ponts</a></h1>
+    <h1 *ngIf="!isWideEnough()"><a routerLink = '/home'>Le Ponthé</a></h1>
 
     <!-- Navigation on the website -->
     <nav>

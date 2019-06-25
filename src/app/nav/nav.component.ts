@@ -33,4 +33,9 @@ export class NavComponent implements OnInit {
     this.router.navigate(['/auth']);
   }
 
+  // Display "Club audiovisuel des Ponts" or not in the header, depending on the window's width
+  isWideEnough() {
+    return (window.innerWidth >= 1080);
+  }
+
 }

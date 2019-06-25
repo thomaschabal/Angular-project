@@ -519,7 +519,7 @@ input, select, textarea {
 		@media screen and (max-width: 1680px) {
 
 			body, input, textarea, select {
-				font-size: 15pt;
+				font-size: 14.1pt;
 			}
 
 		}
@@ -527,7 +527,7 @@ input, select, textarea {
 		@media screen and (max-width: 1280px) {
 
 			body, input, textarea, select {
-				font-size: 13pt;
+				font-size: 12.1pt;
 			}
 
 		}
@@ -535,7 +535,8 @@ input, select, textarea {
 		@media screen and (max-width: 1000px) {
 
 			body, input, textarea, select {
-				font-size: 13pt;
+				font-size: 12pt;
+				width: 45%;
 			}
 
 		}
@@ -543,7 +544,7 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			body, input, textarea, select {
-				font-size: 12pt;
+				font-size: 13pt;
 				line-height: 1.5em;
 			}
 
@@ -2075,7 +2076,12 @@ input, select, textarea {
 		@media screen and (max-width: 1280px) {
 
 			.main.style2 .content {
-				width: 30%;
+				width: 35%;
+				padding: 3.5em 1em 3.5em 2em;
+			}
+
+			.main.style2 .content p {
+				margin-bottom: 0.6em;
 			}
 
 		}
@@ -2083,7 +2089,11 @@ input, select, textarea {
 		@media screen and (max-width: 1000px) {
 
 			.main.style2 .content {
-				width: 60%;
+				width: 40%;
+			}
+
+			.main.style2 .content p {
+				line-height: 1.5em;
 			}
 
 		}
@@ -2105,6 +2115,10 @@ input, select, textarea {
 				.main.style1 h2 {
 					font-size: 3em;
 				}
+
+			.main.style2 .content {
+				transform: translateX(100vw);
+			}
 
 			.main.style2 {
 				padding: 6em 15px 6em 15px;
@@ -2231,7 +2245,7 @@ input, select, textarea {
 
 	#intro {
 		margin-top: 3em;
-		height : 76.5vh;
+		height : 92.2vh;
 		background: url("images/overlay.png"), url("../../images/introP.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2242,7 +2256,7 @@ input, select, textarea {
 /* One */
 
 	#p020 {
-		height : 84.5vh;
+		height : 100vh;
 		background: url("images/overlay.png"), url("../../images/020.png");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2252,7 +2266,7 @@ input, select, textarea {
 /* Two */
 
 	#p019 {
-		height : 84.5vh;
+		height : 100vh;
 		background: url("images/overlay.png"), url("../../images/019.png");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2262,7 +2276,7 @@ input, select, textarea {
 /* Three */
 
 	#p018 {
-		height : 84.5vh;
+		height : 100vh;
 		background: url("images/overlay.png"), url("../../images/04.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2272,7 +2286,7 @@ input, select, textarea {
 /* Four */
 
 	#p017 {
-		height : 84.5vh;
+		height : 100vh;
 		background: url("images/overlay.png"), url("../../images/05.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2282,7 +2296,7 @@ input, select, textarea {
 /* Five */
 
 	#p016 {
-		height : 84.5vh;
+		height : 100vh;
 		background: url("images/overlay.png"), url("../../images/04.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
@@ -2292,7 +2306,7 @@ input, select, textarea {
 /* Six */
 
 	#p015 {
-		height : 84.5vh;
+		height : 100vh;
 		background: url("images/overlay.png"), url("../../images/05.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;

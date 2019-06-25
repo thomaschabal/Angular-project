@@ -181,7 +181,7 @@ input, select, textarea {
 
 /* Type */
 
-	body, input, select, textarea, section, #header, #footer, .privee {
+	body, input, select, textarea, section, #event-panel, #footer, .privee {
 		color: #a0a0a1;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 1em;
@@ -204,13 +204,13 @@ input, select, textarea {
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		border-bottom: dotted 1px;
-		color: #34a58e;
+		color: #fc3;
 		text-decoration: none;
 	}
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #34a58e !important;
+			color: #fc3 !important;
 		}
 
 	strong, b {
@@ -370,9 +370,9 @@ input, select, textarea {
 		background-color: transparent;
 		border: 0;
 		border-radius: 0;
-		box-shadow: inset 0 0 0 2px #34a58e;
+		box-shadow: inset 0 0 0 2px #fc3;
 		color: #ffffff !important;
-		background-color: #34a58e;
+		background-color: #fc3;
 		cursor: pointer;
 		display: inline-block;
 		font-size: 0.9em;
@@ -392,9 +392,9 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			box-shadow: inset 0 0 0 2px #34a58e;
-			color: #34a58e !important;
-			background-color: #ffffff;
+			box-shadow: inset 0 0 0 2px #fc3;
+			color: #ffffff !important;
+			background-color: #ffd558;
 		}
 
 			input[type="submit"]:hover:active,
@@ -403,7 +403,7 @@ input, select, textarea {
 			button:hover:active,
 			.button:hover:active {
 				background-color: rgba(52, 165, 142, 0.15);
-				color: #34a58e !important;
+				color: #fc3 !important;
 			}
 
 		input[type="submit"].icon,
@@ -451,7 +451,7 @@ input, select, textarea {
 		input[type="button"].primary,
 		button.primary,
 		.button.primary {
-			background-color: #34a58e;
+			background-color: #fc3;
 			box-shadow: none;
 		}
 
@@ -460,7 +460,7 @@ input, select, textarea {
 			input[type="button"].primary:hover,
 			button.primary:hover,
 			.button.primary:hover {
-				background-color: #47c5ab;
+				background-color: #ffd558;
 				color: #ffffff !important;
 			}
 
@@ -609,7 +609,7 @@ input, select, textarea {
 		input[type="url"]:focus,
 		select:focus,
 		textarea:focus {
-			box-shadow: inset 0 0 0 2px #34a58e;
+			box-shadow: inset 0 0 0 2px #fc3;
 		}
 
 	select {
@@ -1039,7 +1039,6 @@ input, select, textarea {
 		-webkit-overflow-scrolling: touch;
 		background: rgba(36, 38, 41, 0.975);
 		bottom: 4em;
-		left: -3em;
 		max-height: calc(80vh - 4em);
 		overflow-y: auto;
 		position: fixed;
@@ -1425,7 +1424,7 @@ input, select, textarea {
 
 /* Header de navigation sur le site */
 
-	#header_nav {
+	#event-panel_nav {
 		position: fixed;
 		z-index: 10000;
 		left: 0;
@@ -1437,7 +1436,7 @@ input, select, textarea {
 		box-shadow: 0 0 0.15em 0 rgba(0, 0, 0, 0.1);
 	}
 
-		#header_nav h1 {
+		#event-panel_nav h1 {
             color: inherit;
             font-family: FontAwesome;
 			position: absolute;
@@ -1449,11 +1448,11 @@ input, select, textarea {
             text-transform: none;
 		}
 
-			#header_nav h1 a {
+			#event-panel_nav h1 a {
 				font-size: 1.25em;
 			}
 
-		#header_nav nav {
+		#event-panel_nav nav {
 			position: absolute;
 			right: 0.5em;
 			top: 0;
@@ -1461,17 +1460,17 @@ input, select, textarea {
 			line-height: 3em;
 		}
 
-			#header_nav nav ul {
+			#event-panel_nav nav ul {
 				margin: 0;
 			}
 
-				#header_nav nav ul li {
+				#event-panel_nav nav ul li {
 					display: inline-block;
 					margin-left: 0.5em;
 					font-size: 0.9em;
 				}
 
-					#header_nav nav ul li a {
+					#event-panel_nav nav ul li a {
 						display: block;
 						color: inherit;
 						text-decoration: none;
@@ -1483,12 +1482,12 @@ input, select, textarea {
 
 		@media screen and (max-width: 736px) {
 
-			#header_nav {
+			#event-panel_nav {
 				height: 2.5em;
 				line-height: 2.5em;
 			}
 
-				#header_nav h1 {
+				#event-panel_nav h1 {
 					text-align: center;
 					position: relative;
 					left: 0;
@@ -1497,11 +1496,11 @@ input, select, textarea {
 					line-height: 2.5em;
 				}
 
-					#header_nav h1 a {
+					#event-panel_nav h1 a {
 						font-size: 1em;
 					}
 
-				#header_nav nav {
+				#event-panel_nav nav {
 					display: none;
 				}
 
@@ -1527,7 +1526,7 @@ input, select, textarea {
 
 /* Header */
 
-	#header {
+	#event-panel {
 		-moz-transform: translateY(0);
 		-webkit-transform: translateY(0);
 		-ms-transform: translateY(0);
@@ -1551,14 +1550,14 @@ input, select, textarea {
 		z-index: 10002;
 	}
 
-		body.is-preload #header {
+		body.is-preload #event-panel {
 			-moz-transform: translateY(4em);
 			-webkit-transform: translateY(4em);
 			-ms-transform: translateY(4em);
 			transform: translateY(4em);
 		}
 
-		#header h1 {
+		#event-panel h1 {
 			color: #a0a0a1;
 			display: inline-block;
 			font-size: 0.8em;
@@ -1567,22 +1566,22 @@ input, select, textarea {
 			vertical-align: middle;
 		}
 
-			#header h1 a {
+			#event-panel h1 a {
 				border: 0;
 				color: inherit;
 			}
 
-				#header h1 a:hover {
+				#event-panel h1 a:hover {
 					color: inherit !important;
 				}
 
-		#header nav {
+		#event-panel nav {
 			position: absolute;
 			right: 0;
 			top: 0;
 		}
 
-			#header nav > ul {
+			#event-panel nav > ul {
 				list-style: none;
 				margin: 0;
 				padding: 0;
@@ -1590,12 +1589,12 @@ input, select, textarea {
 				font-size: 0.8em;
 			}
 
-				#header nav > ul > li {
+				#event-panel nav > ul > li {
 					display: inline-block;
 					padding: 0;
 				}
 
-					#header nav > ul > li a {
+					#event-panel nav > ul > li a {
 						-moz-transition: background-color 0.5s ease;
 						-webkit-transition: background-color 0.5s ease;
 						-ms-transition: background-color 0.5s ease;
@@ -1608,17 +1607,17 @@ input, select, textarea {
 						text-transform: uppercase;
 					}
 
-						#header nav > ul > li a.icon:before {
+						#event-panel nav > ul > li a.icon:before {
 							color: #505051;
 							float: right;
 							margin-left: 0.75em;
 						}
 
-						#header nav > ul > li a:hover {
+						#event-panel nav > ul > li a:hover {
 							color: #ffffff !important;
 						}
 
-						#header nav > ul > li a.active {
+						#event-panel nav > ul > li a.active {
 							background-color: #242629;
 						}
 
@@ -1628,7 +1627,7 @@ input, select, textarea {
 			padding: 4em 0 0 0;
 		}
 
-		#header {
+		#event-panel {
 			-moz-transform: translateY(0);
 			-webkit-transform: translateY(0);
 			-ms-transform: translateY(0);
@@ -1639,18 +1638,18 @@ input, select, textarea {
 			top: 0;
 		}
 
-			body.is-preload #header {
+			body.is-preload #event-panel {
 				-moz-transform: translateY(-3.4em);
 				-webkit-transform: translateY(-3.4em);
 				-ms-transform: translateY(-3.4em);
 				transform: translateY(-3.4em);
 			}
 
-			#header h1 {
+			#event-panel h1 {
 				font-size: 0.9em;
 			}
 
-			#header nav > ul > li a {
+			#event-panel nav > ul > li a {
 				font-size: 0.9em;
 				padding: 0 1.15em;
 			}
@@ -1713,7 +1712,7 @@ input, select, textarea {
 				left: 0;
 				position: absolute;
 				top: 0;
-				width: 100%;
+				width: 33vw;
 			}
 
 			#main .thumb > h2 {
@@ -1777,7 +1776,7 @@ input, select, textarea {
 			-webkit-transition-delay: 2.525s;
 			-ms-transition-delay: 2.525s;
 			transition-delay: 2.525s;
-			height: 15em;
+			height: 40vh;
 			min-height: 5em;
 			width: 100%;
 			vertical-align: middle;
@@ -1874,7 +1873,7 @@ input, select, textarea {
 				-webkit-transition-delay: 2.075s;
 				-ms-transition-delay: 2.075s;
 				transition-delay: 2.075s;
-				height: 15em;
+				height: 40vh;
 				min-height: 5em;
 				width: 33.3333333333%;
 			}
@@ -1951,7 +1950,7 @@ input, select, textarea {
 				-webkit-transition-delay: 1.625s;
 				-ms-transition-delay: 1.625s;
 				transition-delay: 1.625s;
-				height: 15em;
+				height: 40vh;
 				min-height: 5em;
 				width: 50%;
 			}

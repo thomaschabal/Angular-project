@@ -20,6 +20,7 @@
   <p *ngIf="!isPublic" style="color: #fff">Cette galerie est privée. Seuls les administrateurs peuvent y accéder.</p>
 </div>
 
+
 <ngx-file-picker #uploader
     [totalMaxSize]="1000"
     [fileMaxCount]="250"
@@ -27,7 +28,7 @@
     [uploadType]="'multi'"
     (validationError)= "onValidationError($event)"
     [adapter]="adapter"
-    [fileExtensions]="['pdf', 'jpg', 'JPG', 'png', 'mp4', 'docx', 'mov']"
+    [fileExtensions]="['pdf', 'jpg', 'JPG', 'jpeg', 'png', 'mp4', 'docx', 'mov', 'avi']"
     [enableCropper]="false"
     (uploadSuccess)="onUploadSuccess($event)"
     (removeSuccess)="onRemoveSuccess($event)"
@@ -38,11 +39,14 @@
     *ngIf = "clickAddFiles"
 >
 </ngx-file-picker>
+<!-- <button type="button" name="button"
+        *ngIf="clickAddFiles"
+        (click)="uploadFilesToServer()">Uploader les fichiers</button> -->
 
 <!-- Main -->
 
   <!-- Pictures of the event -->
-  <div id="main" (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')">
+  <div id="main" (mouseenter) = "survolePics('visible')"> <!--(mouseleave) = "survolePics('hidden')">-->
     <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
       <img (click)="onClickFavPic(i)" style="cursor: pointer" src="{{ picture.base64 }}" alt="" width="100%"/>
       <caption>{{ name }}</caption>

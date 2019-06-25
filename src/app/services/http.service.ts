@@ -14,6 +14,8 @@ export class HttpService {
 
   isInGalleries = false;
 
+  current_gallery : string;
+
   constructor(private httpClient : HttpClient,
               private configService : ConfigService,
             private router : Router) {
@@ -44,6 +46,20 @@ export class HttpService {
     };
     return this.httpClient.post(this.apiUrl + path, body, httpOptions);
   }
+
+  // Méthode post pour des fichiers
+  postFiles(path : string, body : any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin':'*',
+        'Authorization':'Bearer ' + this.token,
+        'enctype':'multipart/form-data'
+      })
+    };
+    return this.httpClient.post(this.apiUrl + path, body, httpOptions);
+  }
+
+
 
   // Méthode delete
   delete(path : string) {

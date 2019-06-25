@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http.service';
 import { Router, RouterOutlet } from '@angular/router';
-import { animate, style, state, transition, trigger, query } from '@angular/animations';
+import { animate, style, transition, trigger, query } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
