@@ -86,11 +86,11 @@ export class EventComponent implements OnInit, OnDestroy {
   isAdmin: boolean;
   isPublic = false;
   enModeration = false;
-  selected_route : string;
+  selected_route: string;
   clickAddFiles = false;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
-  eventDeletionState = "nothing";
+  eventDeletionState = 'nothing';
   moderationState = [];
 
   // Contact form defined here
@@ -113,18 +113,18 @@ export class EventComponent implements OnInit, OnDestroy {
   myFiles: FilePreviewModel[] = [];
 
   ngOnInit() {
-    const selected_route = this.activeRoute.snapshot.params['event'];
+    const selected_route = this.activeRoute.snapshot.params.event;
     this.httpService.current_gallery = selected_route;
     // Request of pictures of the event
     this.galeriesService.getEventByName(selected_route)
     .subscribe(
-      (res) => { this.pics = res["files"];
-                 console.log(this.pics);
-                 const gallery = res["gallery"];
-                 this.name = gallery["name"];
-                 this.resume = gallery["description"];
+      (res: {files, gallery}) => { this.pics = res.files;
+                                   console.log(this.pics);
+                                   const gallery = res.gallery;
+                                   this.name = gallery.name;
+                                   this.resume = gallery.description;
                  // Define the state of all pictures as not going to be deleted
-                 for (let pic=0; pic<res["files"].length; pic++) {
+                                   for (const pic of res.files) {
                    this.moderationState.push(false);
                  }
                },
@@ -136,12 +136,12 @@ export class EventComponent implements OnInit, OnDestroy {
 
     // Determine whether the gallery is public or private
     this.galeriesService.getPrivateEvents().subscribe(
-      (res) => {
+      (res: {galleries}) => {
         // Ask for the list of all private galleries, and if the event is not in this list then it is a public event
         let isPublic = true;
         const liste = res.galleries;
-        for (let event = 0; event < liste.length; event++) {
-          if (liste[event].slug === this.selected_route) {
+        for (const event of liste) {
+          if (event.slug === this.selected_route) {
             isPublic = false;
           }
         }
@@ -242,7 +242,7 @@ export class EventComponent implements OnInit, OnDestroy {
     for (let i = 0; i < this.pics.length; i++) {
       this.galeriesService.getFullImage(this.pics[i].file_path)
       .subscribe(
-        (res) => { this.raw_pics[i] = (res.base64); },
+        (res: {base64}) => { this.raw_pics[i] = (res.base64); },
         (error) => { console.error(error); }
       );
     }
@@ -253,8 +253,8 @@ export class EventComponent implements OnInit, OnDestroy {
 
   //// HOVER ANIMATIONS
   survolePics(state: string) {
-    for (let pic = 0; pic < this.picsState.length; pic++) {
-      this.picsState[pic] = state;
+    for (let pic of this.picsState) {
+      pic = state;
     }
   }
 
@@ -290,9 +290,9 @@ export class EventComponent implements OnInit, OnDestroy {
 
   uploadFilesToServer() {
     console.log(this.myFiles);
-    for (let file = 0; file < this.myFiles.length; file++) {
+    for (const file of this.myFiles) {
       const form = new FormData();
-      form.append('file', this.myFiles[file].file);
+      form.append('file', file.file);
       this.httpService.postFiles('/api/file-upload/' + this.selected_route, form)
       .subscribe(
         (res) => { console.log(res); },
@@ -316,7 +316,7 @@ export class EventComponent implements OnInit, OnDestroy {
       for (let i = i_selected_pic; i < this.pics.length; i++) {
         this.galeriesService.getFullImage(this.pics[i].file_path)
         .subscribe(
-          (res) => { this.raw_pics[i] = (res.base64);
+          (res: { base64 }) => { this.raw_pics[i] = (res.base64);
                      if (i === i_selected_pic) {
             this.pic_clicked = true;
             this.wide_pic_ref = this.raw_pics[i_selected_pic];
@@ -330,7 +330,7 @@ export class EventComponent implements OnInit, OnDestroy {
       for (let i = 0; i < i_selected_pic; i++) {
         this.galeriesService.getFullImage(this.pics[i].file_path)
         .subscribe(
-          (res) => { this.raw_pics[i] = (res.base64); },
+          (res: { base64 }) => { this.raw_pics[i] = (res.base64); },
           (error) => { console.error(error); }
         );
       }
