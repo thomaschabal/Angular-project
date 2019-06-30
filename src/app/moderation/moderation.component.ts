@@ -5,7 +5,6 @@ import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 import { HttpService } from '../services/http.service';
-import { ImageViewerModule } from "ngx-image-viewer";
 
 @Component({
   selector: 'app-moderation',

@@ -29,9 +29,6 @@ export class GaleriesComponent implements OnInit {
   };
 
   ngOnInit() {
-    // Report the user is in the galleries
-    this.httpService.isInGalleries = true;
-
     // If the user is an admin, private galleries are loaded and then displayed
     if (this.httpService.isAdmin === true) {
       this.galeriesService.getPrivateEvents()
@@ -79,10 +76,6 @@ export class GaleriesComponent implements OnInit {
         }
       );
     }
-  }
-
-  ngOnDestroy() {
-    this.httpService.isInGalleries = false;
   }
 
   getImagesRestrictedGalleries() {
