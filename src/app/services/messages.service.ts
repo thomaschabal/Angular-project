@@ -7,12 +7,7 @@ export class MessagesService {
   constructor(private httpService : HttpService) {  }
 
   materialPost(stuff : object) {
-    this.httpService.post('/api/materiel', stuff).then(
-      (res) => {
-        console.log(res);
-      },
-      (error) => { }
-    );
+    return this.httpService.post('/api/materiel', stuff);
   }
 
 }

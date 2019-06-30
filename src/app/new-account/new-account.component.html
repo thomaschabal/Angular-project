@@ -8,7 +8,7 @@
     </header>
 
   <!-- Signup Form -->
-    <form id="signup-form" [formGroup]="userForm" (ngSubmit) = "onSubmitForm()">
+    <form class="signup-form" [formGroup]="userForm" (ngSubmit) = "onSubmitForm()">
       <div class="form1">
         <input type="text" name="firstname" placeholder="Prénom" formControlName="firstname"/>
         <input type="text" name="email" placeholder="Adresse mail" formControlName="email"/>
@@ -22,7 +22,7 @@
       <div class="form1">
         <q>Promotion</q>
         <input style="opacity:0; width:0em; height:74px" type="text"/>
-        <input class="submit" type="submit" value="Créer mon compte" [disabled]="userForm.invalid"/>
+        <input id="submit" class="submit" type="submit" value="Créer mon compte" [disabled]="userForm.invalid"/>
       </div>
       <div class="form1">
         <select class="form1" name="promotion" formControlName="promotion">
@@ -34,27 +34,29 @@
       </div>
     </form>
 
+  <!-- Useful links -->
     <p><a routerLink = '/auth'>Retour à l'authentification</a>.<br/>
     Mot de passe oublié ? <a routerLink = '/reset'>Clique ici</a> pour le réinitialiser.</p>
 
-    <!-- Footer -->
-      <footer id="footer">
-        <ul class="icons">
-          <li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-          <li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram"><span class="label">uPont</span></a></li>
-          <li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github"><span class="label">GitHub</span></a></li>
-          <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-          <li><a href="mailto : ponthe@liste.enpc.fr" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-        </ul>
-        <ul class="copyright">
-          <li>&copy; Ponthé - Club audiovisuel des Ponts et Chaussées</li>
-        </ul>
-      </footer>
+  <!-- Footer -->
+    <footer id="footer">
+      <ul class="icons">
+        <li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+        <li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram"><span class="label">uPont</span></a></li>
+        <li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github"><span class="label">GitHub</span></a></li>
+        <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+        <li><a href="mailto : ponthe@liste.enpc.fr" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+      </ul>
+      <ul class="copyright">
+        <li>&copy; Ponthé - Club audiovisuel des Ponts et Chaussées</li>
+      </ul>
+    </footer>
 
+  <!-- Background animation -->
+    <!-- Black background -->
+    <div id="background-auth" style="background: #000000"></div>
 
-      <div id="background-auth" style="background: #000000"></div>
-
-      <div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()">
-      </div>
+    <!-- Image translations -->
+    <div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()"></div>
 
 </body>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpService } from './http.service';
 
 @Injectable()
 export class HomeService {
@@ -57,26 +57,12 @@ export class HomeService {
     }
   ];
 
-  constructor (private httpClient : HttpClient) {}
+  constructor (private httpService : HttpService) {}
 
-  ngOnInit () {
-    this.postLastEvents();
-    this.getLastEvents();
+  ngOnInit () { }
+
+  getLatestGalleries() {
+    return this.httpService.post("/api/get-latest-galleries", {"page": 1, "page_size": 3});
   }
 
-  postLastEvents () {
-    this.httpClient.post('https://http-client-ponthe.firebaseio.com/last_events.json', this.last_events)
-    .subscribe(
-      () => { console.log('Enregistrement terminé.'); },
-      (error) => { console.log('Erreur à l\'enregistrement : ' + error); }
-    );
-  }
-
-  getLastEvents () {
-    this.httpClient.get<any[]>('https://http-client-ponthe.firebaseio.com/last_events.json')
-    .subscribe(
-      (response) => { this.last_events = response; },
-      (error) => { console.log('Erreur à la récupération des évènements : ' + error);}
-    );
-  }
 }

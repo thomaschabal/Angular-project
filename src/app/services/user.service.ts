@@ -37,13 +37,19 @@ export class UserService {
 
 
   addUser(user: User) {
-    this.httpService.post('/api/register', user).then(
+    this.httpService.post('/api/register', user).subscribe(
       (res) => {
-        console.log('Enregistrement terminé');
         this.router.navigate(['/auth']);
         alert("Tu as bien réussi à t'inscrire, tu peux maintenant valider ton inscription dans tes mails")
       },
-      (error) => { console.log('Erreur à l\'enregistrement : ' + error); alert("Tu as fait une erreur, vérifie ton email et ton mot de passe");}
+      (error) => { console.log('Erreur à l\'enregistrement : ' + error);
+                   alert("Tu as fait une erreur, vérifie ton email et ton mot de passe");}
     );
   }
+
+  resetUser(form : object) {
+    return this.httpService.post('/api/reset', form);
+  }
+
+
 }

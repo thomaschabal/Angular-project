@@ -15,14 +15,15 @@ export class CguComponent implements OnInit {
               private httpService : HttpService) { }
 
   ngOnInit() {
-    this.httpService.get('/api/cgu').then(
+    // Initial request for getting all the articles and storing them in "articles"
+    this.authService.getCGU().subscribe(
       (res) => {
         let len = Object.keys(res["articles"]).length;
         for (let i=1; i<len+1; i++) {
           this.articles.push(res["articles"][i]);
         }
       },
-      (error) => { console.log(error); }
+      (error) => { console.error(error); }
     )
   }
 

@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MembersService } from '../services/members.service';
-import { HttpService } from '../services/http.service';
 import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -36,13 +35,14 @@ export class MembersComponent implements OnInit, OnDestroy {
   teamStateRight = 'hidden-right';
 
   constructor(private membersService : MembersService,
-              private httpService : HttpService,
               private activeRoute : ActivatedRoute) {
+                // Smooth transitions when clicking on the arrows
                 this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({behavior : 'smooth'}));
               };
 
   ngOnInit() {
-    this.httpService.get('/api/members').then(
+    // Get the list of members
+    this.membersService.getMembers().subscribe(
       (res) => {
         this.team_ponthe = res["team_ponthe"];
       },
@@ -50,6 +50,13 @@ export class MembersComponent implements OnInit, OnDestroy {
     );
   }
 
+  public ngOnDestroy(): void {
+      if(this.sub) this.sub.unsubscribe();
+    }
+
+
+
+  //// AFFICHAGE
   placement(i : number) {
     if (i%2 === 0) {
       return "right";
@@ -57,10 +64,6 @@ export class MembersComponent implements OnInit, OnDestroy {
       return "left";
     }
   }
-
-  public ngOnDestroy(): void {
-      if(this.sub) this.sub.unsubscribe();
-    }
 
   survoleIntro(state : string) {
     this.introState = state;

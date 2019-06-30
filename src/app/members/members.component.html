@@ -11,11 +11,15 @@
     </div>
   </section>
 
+
+<!-- Teams per year -->
   <section *ngFor = "let team of team_ponthe; let i = index"
             id="{{ team.year_id }}"
             class="main style2 {{ placement(i) }} dark fullscreen"
             (mouseenter)='survoleTeam("visible", i)'
             (mouseleave)='survoleTeam("hidden", i)'>
+
+    <!-- Information box -->
     <div class="content box style2" [@teamTrigger]="currentStateTeam(i)">
       <header>
         <h2>Ponthé {{ team.year }}</h2>

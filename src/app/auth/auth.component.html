@@ -2,40 +2,44 @@
 
 		<!-- Header -->
 			<header id="header">
-				<h1>Bienvenue sur les Galeries Ponthé</h1>
+				<h1 style="color:#fc3">Bienvenue sur les Galeries Ponthé</h1>
 				<p>Connecte-toi à l'aide de tes identifiants DSI (comme sur uPont).</p>
 			</header>
 
 		<!-- Signup Form -->
-			<form id="signup-form" [formGroup]="userForm" (ngSubmit) = "onSignIn()">
-				<input type="email" name="email" id="email" placeholder="Identifiant" formControlName = "email"/>
-				<input type="password" name="password" id="email" placeholder="Mot de passe" formControlName = "password"/>
-				<input type="submit" value="Entrer dans les Galeries" [disabled]="userForm.invalid"/>
+			<form class="signup-form" [formGroup]="userForm" (ngSubmit) = "onSignIn()">
+				<input type="email" name="email" placeholder="Identifiant" formControlName = "email"/>
+				<input type="password" name="password" placeholder="Mot de passe" formControlName = "password"/>
+				<input id="submit" type="submit" value="Entrer dans les Galeries" [disabled]="userForm.invalid"/>
 			</form>
 
-			<a href="https://ponthe.enpc.org/cas/login">Connexion SSO</a>
+		<!-- Useful links -->
+			<a href="https://ponthe-testing.enpc.org/cas/login">Connexion SSO</a>
 
 			<p>Mot de passe oublié ? <a routerLink = '/reset'>Clique ici</a> pour le réinitialiser.<br/>
 			Tu n'as pas de compte ? <a routerLink = '/new-account'>Clique ici</a> pour t'enregistrer.</p>
 
-			<!-- Footer -->
-				<footer id="footer">
-					<ul class="icons">
-						<li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram"><span class="label">uPont</span></a></li>
-						<li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github"><span class="label">GitHub</span></a></li>
-						<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-						<li><a href="mailto : ponthe@liste.enpc.fr" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-					</ul>
-					<ul class="copyright">
-						<li>&copy; Ponthé - Club audiovisuel des Ponts et Chaussées</li>
-					</ul>
-				</footer>
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="icons">
+					<li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram"><span class="label">uPont</span></a></li>
+					<li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github"><span class="label">GitHub</span></a></li>
+					<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+					<li><a href="mailto : ponthe@liste.enpc.fr" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; Ponthé - Club audiovisuel des Ponts et Chaussées</li>
+				</ul>
+			</footer>
 
-			<div id="background-auth" style="background: #000000"></div>
+		<!-- Background animation -->
+			<video src="../../assets/images/video-auth.mp4" loop autoplay playsinline style="position:absolute; z-index:1"></video>
+			<!-- Black background -->
+			<!--<div id="background-auth" style="background: #000000"></div>-->
 
-			<div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()">
-			</div>
+			<!-- Image translations -->
+			<!--<div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()"></div>-->
 
 
 	</body>

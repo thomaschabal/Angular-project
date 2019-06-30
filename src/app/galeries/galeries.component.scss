@@ -13,6 +13,7 @@ body {
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: cover;
+				vertical-align: middle;
 				border: 0;
 				height: 100%;
 				left: 0;
@@ -20,3 +21,24 @@ body {
 				top: 0;
 				width: 100%;
 			}
+
+#private {
+	width: 5em;
+	background: linear-gradient(30deg, red, yellow);
+	color: white;
+	text-align: center;
+	position: absolute;
+	top: 1vh;
+	left: 0.5vw;
+	border-radius: 10px;
+}
+
+.private_background {
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(30deg, red, yellow);
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity:0.55;
+}
