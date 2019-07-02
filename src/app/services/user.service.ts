@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
-import {NewAccountComponent} from '../new-account/new-account.component'
+import {NewAccountComponent} from '../new-account/new-account.component';
 import { Router } from '@angular/router';
 import { HttpService } from './http.service';
 
@@ -16,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class UserService {
 
-  private users : User[] = [
+  private users: User[] = [
     {
       firstname : 'John',
       lastname : 'Doe',
@@ -28,7 +28,7 @@ export class UserService {
   ];
   userSubject = new Subject<User[]>();
 
-  constructor (private httpClient : HttpClient, private router : Router, private httpService : HttpService ) {}
+  constructor(private httpClient: HttpClient, private router: Router, private httpService: HttpService ) {}
 
   emitUsers() {
     this.userSubject.next(this.users.slice());
@@ -37,18 +37,18 @@ export class UserService {
 
 
   addUser(user: User) {
-    this.httpService.post('/api/register', user).subscribe(
+    this.httpService.post('/register', user).subscribe(
       (res) => {
         this.router.navigate(['/auth']);
-        alert("Tu as bien réussi à t'inscrire, tu peux maintenant valider ton inscription dans tes mails")
+        alert('Tu as bien réussi à t\'inscrire, tu peux maintenant valider ton inscription dans tes mails');
       },
-      (error) => { console.log('Erreur à l\'enregistrement : ' + error);
-                   alert("Tu as fait une erreur, vérifie ton email et ton mot de passe");}
+      (error) => { console.error('Erreur à l\'enregistrement : ' + error);
+                   alert('Tu as fait une erreur, vérifie ton email et ton mot de passe'); }
     );
   }
 
-  resetUser(form : object) {
-    return this.httpService.post('/api/reset', form);
+  resetUser(form: object) {
+    return this.httpService.post('/reset', form);
   }
 
 

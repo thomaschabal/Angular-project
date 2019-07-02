@@ -2,7 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 // Image Viewer module
-import { ImageViewerModule } from "ngx-image-viewer";
+import { ImageViewerModule } from 'ngx-image-viewer';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 // Module for all the various forms of the application
@@ -42,7 +42,6 @@ import { NotfoundComponent } from './notfound/notfound.component';
 // SERVICES
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
-import { ConfigService } from './services/config.service';
 import { GaleriesService } from './services/galeries.service';
 import { HomeService } from './services/home.service';
 import { HttpService } from './services/http.service';
@@ -93,7 +92,6 @@ import { UserListComponent } from './user-list/user-list.component';
     AuthService,
     AuthGuard,
     UserService,
-    ConfigService,
     HttpService,
     UploadService
   ],

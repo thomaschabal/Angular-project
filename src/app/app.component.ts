@@ -41,7 +41,7 @@ export class AppComponent {
               }
 
   // Function for page transitions
-  prepareRoute(outlet : RouterOutlet) {
+  prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
   }
 

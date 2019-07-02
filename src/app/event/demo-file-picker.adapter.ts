@@ -6,9 +6,6 @@ import { FilePickerAdapter } from 'ngx-awesome-uploader';
 import { HttpService } from '../services/http.service';
 
 export class DemoFilePickerAdapter extends FilePickerAdapter {
-
-  event_slug: string;
-
   constructor(private http: HttpClient, private httpService: HttpService) {
     super();
   }
@@ -16,7 +13,7 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   public uploadFile(fileItem: FilePreviewModel) {
     const form = new FormData();
     form.append('file', fileItem.file);
-    const api = this.httpService.apiUrl + '/api/file-upload/' + this.httpService.current_gallery;
+    const api = this.httpService.apiUrl + '/file-upload/' + this.httpService.currentGallery;
     const httpOptions = new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
         Authorization: 'Bearer ' + this.httpService.token,
@@ -36,8 +33,6 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   }
 
     public removeFile(fileItem: FilePreviewModel): Observable<any> {
-      console.log(fileItem.fileId);
-      const removeApi = 'https://ponthe-testing.enpc.org/api';
-      return this.http.post(removeApi, {id: fileItem.fileId});
+      return this.http.post(this.httpService.apiUrl, {id: fileItem.fileId});
     }
 }

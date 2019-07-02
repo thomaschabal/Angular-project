@@ -63,21 +63,21 @@
 
   <!-- Image viewer -->
     <!-- Darken the background -->
-      <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()"></div>
+      <div class="darkbg" *ngIf="picClicked" (click)="closeWidePic()"></div>
       <!-- Image enlarged -->
       <div class="wide-pic"
-           *ngIf="pic_clicked"
+           *ngIf="picClicked"
            [style.marginLeft.px]="placePicLeft(imgWide)"
            [style.marginTop.px]="placePicTop(imgWide)"
            (mouseenter)="displayArrows()"
            (mouseleave)="hideArrows()">
-        <img #imgWide [src]="wide_pic_ref" style="cursor: pointer"/>
-        <caption>{{ caption_wide_pic }}</caption>
+        <img #imgWide [src]="widePicRef" style="cursor: pointer"/>
+        <caption>{{ captionWidePic }}</caption>
 
         <!-- Closer -->
         <img id="closer"
              src="../../assets/assets_h/css/images/poptrox-closer.svg"
-             *ngIf="pic_clicked"
+             *ngIf="picClicked"
              (click)="closeWidePic()"
              [@widePicsAnimation]="showArrows+''"
              (mouseenter)="displayArrows()"
@@ -86,14 +86,14 @@
         <!-- Navigation arrows -->
         <img id="right_arrow"
              src="../../assets/assets_h/css/images/poptrox-nav.svg"
-             *ngIf="pic_clicked"
+             *ngIf="picClicked"
              (click)="navRight()"
              [@widePicsAnimation]="showArrows+''"
              (mouseenter)="displayArrows()"
              (mouseleave)="hideArrows()"/>
         <img id="left_arrow"
              src="../../assets/assets_h/css/images/poptrox-nav.svg"
-             *ngIf="pic_clicked"
+             *ngIf="picClicked"
              (click)="navLeft()"
              [@widePicsAnimation]="showArrows+''"
              (mouseenter)="displayArrows()"

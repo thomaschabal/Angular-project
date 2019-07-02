@@ -10,10 +10,10 @@ import { UserService } from '../services/user.service';
 })
 export class UserListComponent implements OnInit, OnDestroy {
 
-  users : User[];
-  userSubscription : Subscription;
+  users: User[];
+  userSubscription: Subscription;
 
-  constructor(private userService : UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.userSubscription = this.userService.userSubject.subscribe (

@@ -67,7 +67,7 @@ export class EventComponent implements OnInit, OnDestroy {
 
   adresse: string;
   pics: any[];
-  raw_pics = [];
+  rawPics = [];
   clicked: boolean;
 
   // About the event
@@ -77,16 +77,16 @@ export class EventComponent implements OnInit, OnDestroy {
   // Index of the picture the user clicked on
   indexViewer: number;
 
-  pic_clicked = false;
-  wide_pic_ref: any;
-  caption_wide_pic: string;
-  index_picture = 0;
+  picClicked = false;
+  widePicRef: any;
+  captionWidePic: string;
+  indexPicture = 0;
 
   // Variables about the user and the current operations on the event
   isAdmin: boolean;
   isPublic = false;
   enModeration = false;
-  selected_route: string;
+  selectedRoute: string;
   clickAddFiles = false;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
@@ -113,13 +113,12 @@ export class EventComponent implements OnInit, OnDestroy {
   myFiles: FilePreviewModel[] = [];
 
   ngOnInit() {
-    const selected_route = this.activeRoute.snapshot.params.event;
-    this.httpService.current_gallery = selected_route;
+    const selectedRoute = this.activeRoute.snapshot.params.event;
+    this.httpService.currentGallery = selectedRoute;
     // Request of pictures of the event
-    this.galeriesService.getEventByName(selected_route)
+    this.galeriesService.getEventByName(selectedRoute)
     .subscribe(
       (res: {files, gallery}) => { this.pics = res.files;
-                                   console.log(this.pics);
                                    const gallery = res.gallery;
                                    this.name = gallery.name;
                                    this.resume = gallery.description;
@@ -141,7 +140,7 @@ export class EventComponent implements OnInit, OnDestroy {
         let isPublic = true;
         const liste = res.galleries;
         for (const event of liste) {
-          if (event.slug === this.selected_route) {
+          if (event.slug === this.selectedRoute) {
             isPublic = false;
           }
         }
@@ -180,13 +179,12 @@ export class EventComponent implements OnInit, OnDestroy {
   // Change the state of the gallery to public or private
   publicPrivate() {
     if (this.isPublic) {
-      this.galeriesService.makePrivate(this.selected_route)
+      this.galeriesService.makePrivate(this.selectedRoute)
       .subscribe(
-        (res) => { this.isPublic = !this.isPublic;
-                   console.log(res); }
+        (res) => { this.isPublic = !this.isPublic; }
       );
     } else {
-      this.galeriesService.makePublic(this.selected_route)
+      this.galeriesService.makePublic(this.selectedRoute)
       .subscribe(
         (res) => { this.isPublic = !this.isPublic; }
       );
@@ -200,7 +198,7 @@ export class EventComponent implements OnInit, OnDestroy {
       alert('Cette galerie est sur le point d\'être supprimée. Cliquer une ' +
         'deuxième fois sur \'Supprimer la galerie\' pour valider l\'action.');
     } else {
-      this.galeriesService.deleteEvent(this.selected_route).subscribe(
+      this.galeriesService.deleteEvent(this.selectedRoute).subscribe(
         (res) => { alert('La galerie a bien été supprimée.'); this.router.navigate(['/galeries']); },
         (error) => { console.error(error); }
       );
@@ -222,7 +220,7 @@ export class EventComponent implements OnInit, OnDestroy {
   validateDeletionPics() {
     for (let pic = 0; pic < this.moderationState.length; pic++) {
       if (this.moderationState[pic]) {
-        console.log(this.pics[pic].file_path);
+        console.log(this.pics[pic].file_path);  // FIXME: replace with real request to the api
       }
     }
   }
@@ -234,15 +232,15 @@ export class EventComponent implements OnInit, OnDestroy {
 
 
   // Image viewer activated on click
-  onClick(i_selected_pic) {
-    this.raw_pics = [];
-    this.indexViewer = i_selected_pic;
+  onClick(iSelectedPic) {
+    this.rawPics = [];
+    this.indexViewer = iSelectedPic;
 
     // Get the full images, then store them and display
     for (let i = 0; i < this.pics.length; i++) {
       this.galeriesService.getFullImage(this.pics[i].file_path)
       .subscribe(
-        (res: {base64}) => { this.raw_pics[i] = (res.base64); },
+        (res: {base64}) => { this.rawPics[i] = (res.base64); },
         (error) => { console.error(error); }
       );
     }
@@ -252,9 +250,9 @@ export class EventComponent implements OnInit, OnDestroy {
 
 
   //// HOVER ANIMATIONS
-  survolePics(state: string) {
+  survolePics(currentState: string) {
     for (let pic of this.picsState) {
-      pic = state;
+      pic = currentState;
     }
   }
 
@@ -293,7 +291,7 @@ export class EventComponent implements OnInit, OnDestroy {
     for (const file of this.myFiles) {
       const form = new FormData();
       form.append('file', file.file);
-      this.httpService.postFiles('/api/file-upload/' + this.selected_route, form)
+      this.httpService.postFiles('/file-upload/' + this.selectedRoute, form)
       .subscribe(
         (res) => { console.log(res); },
         (error) => { console.error(error); }
@@ -308,36 +306,37 @@ export class EventComponent implements OnInit, OnDestroy {
 
 
 
-  onClickFavPic(i_selected_pic: number) {
-    this.indexViewer = i_selected_pic;
+  onClickFavPic(iSelectedPic: number) {
+    this.indexViewer = iSelectedPic;
 
-    if (this.raw_pics.length === 0) {
+    if (this.rawPics.length === 0) {
       // Get the full images, then store them and display
-      for (let i = i_selected_pic; i < this.pics.length; i++) {
+      for (let i = iSelectedPic; i < this.pics.length; i++) {
         this.galeriesService.getFullImage(this.pics[i].file_path)
         .subscribe(
-          (res: { base64 }) => { this.raw_pics[i] = (res.base64);
-                     if (i === i_selected_pic) {
-            this.pic_clicked = true;
-            this.wide_pic_ref = this.raw_pics[i_selected_pic];
-            this.caption_wide_pic = this.name;
-            this.index_picture = i_selected_pic;
+          (res: { base64 }) => {
+            this.rawPics[i] = (res.base64);
+            if (i === iSelectedPic) {
+              this.picClicked = true;
+              this.widePicRef = this.rawPics[iSelectedPic];
+              this.captionWidePic = this.name;
+              this.indexPicture = iSelectedPic;
           }
          },
           (error) => { console.error(error); }
         );
       }
-      for (let i = 0; i < i_selected_pic; i++) {
+      for (let i = 0; i < iSelectedPic; i++) {
         this.galeriesService.getFullImage(this.pics[i].file_path)
         .subscribe(
-          (res: { base64 }) => { this.raw_pics[i] = (res.base64); },
+          (res: { base64 }) => { this.rawPics[i] = (res.base64); },
           (error) => { console.error(error); }
         );
       }
     } else {
-      this.wide_pic_ref = this.raw_pics[i_selected_pic];
-      this.pic_clicked = true;
-      this.index_picture = i_selected_pic;
+      this.widePicRef = this.rawPics[iSelectedPic];
+      this.picClicked = true;
+      this.indexPicture = iSelectedPic;
     }
 
     this.clicked = true;
@@ -352,9 +351,9 @@ export class EventComponent implements OnInit, OnDestroy {
 
 
   closeWidePic() {
-    this.pic_clicked = false;
-    this.wide_pic_ref = null;
-    this.index_picture = null;
+    this.picClicked = false;
+    this.widePicRef = null;
+    this.indexPicture = null;
 
     // Remove the blurred background
     document.getElementById('header').style.display = 'block';
@@ -369,7 +368,7 @@ export class EventComponent implements OnInit, OnDestroy {
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
 
-    if (this.pic_clicked) {
+    if (this.picClicked) {
       if (event.keyCode === KEY_CODE.LEFT_ARROW) {
         this.navLeft();
       } else {
@@ -385,17 +384,17 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   navLeft() {
-    this.index_picture = this.index_picture - 1;
-    if (this.index_picture < 0) {
-      this.index_picture += this.raw_pics.length;
+    this.indexPicture = this.indexPicture - 1;
+    if (this.indexPicture < 0) {
+      this.indexPicture += this.rawPics.length;
     }
-    this.wide_pic_ref = this.raw_pics[this.index_picture];
+    this.widePicRef = this.rawPics[this.indexPicture];
     // document.getElementById('wide-pic').style.marginLeft.px=this.placePicLeft(imgWide);
   }
 
   navRight() {
-    this.index_picture = (this.index_picture + 1) % (this.raw_pics.length);
-    this.wide_pic_ref = this.raw_pics[this.index_picture];
+    this.indexPicture = (this.indexPicture + 1) % (this.rawPics.length);
+    this.widePicRef = this.rawPics[this.indexPicture];
   }
 
   // Show or hide arrows for the enlarged pics when hovered

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { transition, trigger, style, animate, state } from "@angular/animations";
+import { transition, trigger, style, animate, state } from '@angular/animations';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GaleriesService } from '../services/galeries.service';
 import { Router } from '@angular/router';
@@ -28,19 +28,19 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
 
   // Display variables
-  adminState = "visible";
-  filesState = "visible";
-  animEvent = "visible";
+  adminState = 'visible';
+  filesState = 'visible';
+  animEvent = 'visible';
 
   // Create gallery form initially hidden
   eventCreationSelect = false;
 
   // Create gallery form defined here
-  eventForm : FormGroup;
+  eventForm: FormGroup;
 
-  constructor(private formBuilder : FormBuilder,
-              private galeriesService : GaleriesService,
-              private router : Router) { }
+  constructor(private formBuilder: FormBuilder,
+              private galeriesService: GaleriesService,
+              private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -53,15 +53,15 @@ export class DashboardComponent implements OnInit {
       description : ['', Validators.required],
       year_slug : ['2019', Validators.required],
       event_slug : 'event1',  //  /!\ Remplacer selon le back défini
-      boolPrivate : ["on", Validators.required]
-    })
+      boolPrivate : ['on', Validators.required]
+    });
   }
 
   // Submission of gallery creation
   onSubmitEvent() {
-    this.eventForm.value["private"] = this.eventForm.value["boolPrivate"];
+    this.eventForm.value.private = this.eventForm.value.boolPrivate;
     this.galeriesService.postEvent(this.eventForm.value).subscribe(
-      (res) => { alert("Galerie crée"); },
+      (res) => { alert('Galerie crée'); },
       (error) => { console.error(error); }
     );
   }
@@ -74,13 +74,13 @@ export class DashboardComponent implements OnInit {
 
   //// HOVER ANIMATIONS
   // Hover administration area
-  survoleAdmin(state : string) {
-    this.adminState = state;
+  survoleAdmin(currentState: string) {
+    this.adminState = currentState;
   }
 
   // Hover upload file area
-  survoleFiles(state : string) {
-    this.filesState = state;
+  survoleFiles(currentState: string) {
+    this.filesState = currentState;
   }
 
   // Create gallery form visibility

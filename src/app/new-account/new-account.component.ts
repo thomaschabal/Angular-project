@@ -69,21 +69,21 @@ import { Router } from '@angular/router';
 export class NewAccountComponent implements OnInit {
 
   // Initial state
-  state = "visible1";
+  state = 'visible1';
   indState = 0;
   // Possible states to reach (used in changeFond() )
-  possibleStates = ["visible1", "hidden1",
-                    "visible2", "hidden2",
-                    "visible3", "hidden3",
-                    "visible4", "hidden4"];
+  possibleStates = ['visible1', 'hidden1',
+                    'visible2', 'hidden2',
+                    'visible3', 'hidden3',
+                    'visible4', 'hidden4'];
 
   // Register form defined here
-  userForm : FormGroup;
+  userForm: FormGroup;
 
 
-  constructor(private formBuilder : FormBuilder,
-              private userService : UserService,
-              private router : Router) { }
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -104,12 +104,12 @@ export class NewAccountComponent implements OnInit {
   // Submission of the registration form
   onSubmitForm() {
     const formValue = this.userForm.value;
-    const newUser = new User(formValue['firstname'],
-                             formValue['lastname'],
-                             formValue['email'],
-                             formValue['promotion'],
-                             formValue['password'],
-                             formValue['confirmation_password']);
+    const newUser = new User(formValue.firstname,
+                             formValue.lastname,
+                             formValue.email,
+                             formValue.promotion,
+                             formValue.password,
+                             formValue.confirmationPassword);
     this.userService.addUser(newUser);
   }
 

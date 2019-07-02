@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './services/auth-guard.service';
 
 //// COMPONENTS
-import { AppComponent } from './app.component';
 import { AuthComponent} from './auth/auth.component';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { CguComponent } from './cgu/cgu.component';
@@ -22,17 +21,17 @@ import { ModerationComponent } from './moderation/moderation.component';
 
 const routes: Routes = [
   { path : '', canActivate : [AuthGuard], component : HomeComponent },
-  { path : 'auth', component : AuthComponent, data:{animation:'AuthPage'} },
-  { path : 'new-account', component : NewAccountComponent, data:{animation: 'NewAccountPage'} },
-  { path : 'cgu', component : CguComponent, data:{animation:'CguPage'} },
-  { path : 'reset', component : ResetComponent, data:{animation:'ResetPage'} },
-  { path : 'home', canActivate : [AuthGuard], component : HomeComponent, data:{animation:'HomePage'} },
-  { path : 'galeries', canActivate : [AuthGuard], component : GaleriesComponent, data:{animation:'GaleriesPage'} },
-  { path : 'dashboard', canActivate : [AuthGuard], component : DashboardComponent, data:{animation:'DashboardPage'} },
-  { path : 'moderation', canActivate : [AuthGuard], component : ModerationComponent, data:{animation:'ModerationPage'} },
-  { path : 'members', canActivate : [AuthGuard], component : MembersComponent, data:{animation:'MembersPage'} },
-  { path : 'material', canActivate : [AuthGuard], component : MaterialComponent, data:{animation:'MaterialPage'} },
-  { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent, data:{animation:'EventPage'} },
+  { path : 'auth', component : AuthComponent, data: {animation: 'AuthPage'} },
+  { path : 'new-account', component : NewAccountComponent, data: {animation: 'NewAccountPage'} },
+  { path : 'cgu', component : CguComponent, data: {animation: 'CguPage'} },
+  { path : 'reset', component : ResetComponent, data: {animation: 'ResetPage'} },
+  { path : 'home', canActivate : [AuthGuard], component : HomeComponent, data: {animation: 'HomePage'} },
+  { path : 'galeries', canActivate : [AuthGuard], component : GaleriesComponent, data: {animation: 'GaleriesPage'} },
+  { path : 'dashboard', canActivate : [AuthGuard], component : DashboardComponent, data: {animation: 'DashboardPage'} },
+  { path : 'moderation', canActivate : [AuthGuard], component : ModerationComponent, data: {animation: 'ModerationPage'} },
+  { path : 'members', canActivate : [AuthGuard], component : MembersComponent, data: {animation: 'MembersPage'} },
+  { path : 'material', canActivate : [AuthGuard], component : MaterialComponent, data: {animation: 'MaterialPage'} },
+  { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent, data: {animation: 'EventPage'} },
   { path : 'not-found', canActivate : [AuthGuard], component : NotfoundComponent },
   { path : '**', redirectTo : '/not-found' }
 ];

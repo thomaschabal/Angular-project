@@ -1,48 +1,43 @@
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { LoggingUser } from '../models/LoggingUser.model';
 import { Injectable } from '@angular/core';
-import { ConfigService } from './config.service';
 import { HttpService } from './http.service';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  isAuth : boolean;
-  token : string;
-  apiUrl: string;
+  isAuth: boolean;
+  token: string;
 
   constructor(private httpClient: HttpClient,
-              private configService: ConfigService,
-              private httpService : HttpService,
-              private router : Router) {
-    //this.apiUrl = this.configService.load().apiUrl;
-    this.apiUrl = 'https://ponthe-testing.enpc.org';
+              private httpService: HttpService,
+              private router: Router) {
     this.isAuth = false;
   }
 
 
   // Get the User Conditions
   getCGU() {
-    return this.httpService.get('/api/cgu');
+    return this.httpService.get('/cgu');
   }
 
 
   // Login : request to the server and update of the information on the user
-  signIn(user: LoggingUser){
-    this.httpService.post('/api/login', user).subscribe(
-      (res) => {
-        this.httpService.token = res["token"];
+  signIn(user: LoggingUser) {
+    this.httpService.post('/login', user).subscribe(
+      (res: { token }) => {
+        this.httpService.token = res.token;
         this.isAuth = true;
         this.router.navigate(['/home']);
-        this.httpService.get('/api/get-user-by-jwt').subscribe(
-          (response) => {
-            this.httpService.isAdmin = response["admin"];
-            this.httpService.promotion = response["promotion"];
+        this.httpService.get('/get-user-by-jwt').subscribe(
+          (response: { admin, promotion }) => {
+            this.httpService.isAdmin = response.admin;
+            this.httpService.promotion = response.promotion;
           },
           (err) => { console.error(err); }
         );
       },
-      (error) => { alert("Si tu as déjà validé ton compte : mauvais identifiant ou mauvais mot de passe") }
+      (error) => { alert('Si tu as déjà validé ton compte : mauvais identifiant ou mauvais mot de passe'); }
     );
   }
 

@@ -21,47 +21,48 @@ import { HttpService } from '../services/http.service';
 })
 export class ModerationComponent implements OnInit, OnDestroy {
 
-  private sub : Subscription;
+  private sub: Subscription;
 
-  pics : any[];
-  raw_pics : any[];
-  clicked : boolean;
+  pics: any[];
+  rawPics: any[];
+  clicked: boolean;
 
   // Index of the picture the user clicked on
-  indexViewer : number;
+  indexViewer: number;
 
   // Variables about the user and the current operations on the event
-  isAdmin : boolean;
+  isAdmin: boolean;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
-  allAcceptState = "nothing";
-  allDeletionState = "nothing";
+  allAcceptState = 'nothing';
+  allDeletionState = 'nothing';
   validateState = []; // Accept
   delState = [];  // Delete
 
   // Animation variables
-  picsState = ["visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible", "visible"];
+  picsState = ['visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible'];
 
 
-  constructor(private galeriesService : GaleriesService,
-              private activeRoute : ActivatedRoute,
-              private httpService : HttpService) {
-      this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
-             }
+  constructor(private galeriesService: GaleriesService,
+              private activeRoute: ActivatedRoute,
+              private httpService: HttpService) {
+      this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(
+        f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
+      );
+  }
 
   ngOnInit() {
     // Request of pictures of the event
     this.galeriesService.getModerationFiles()
     .subscribe(
-      (res) => { this.pics = res["unaproved_files"];
-                 for (let pic=0; pic<this.pics.length; pic++) {
+      (res: { unaproved_files }) => { this.pics = res.unaproved_files;
+                                      for (let pic = 0; pic < this.pics.length; pic++) {
                    // Load all the pictures
-                   console.log(this.pics[pic]);
                    this.galeriesService.getFullImage(this.pics[pic]).subscribe(
-                     (response) => { this.raw_pics[pic] = response["base64"];
-                                this.pics[pic] = { "base64": response["base64"] };
-                                console.log(response["base64"]);
-                              },
+                     (response: { base64 }) => {
+                       this.rawPics[pic] = response.base64;
+                       this.pics[pic] = { base64: response.base64 };
+                       },
                      (error) => { console.error(error); }
                    );
                    // Define the state of all pictures as not going to be deleted
@@ -75,27 +76,25 @@ export class ModerationComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-      if(this.sub) this.sub.unsubscribe();
+      if (this.sub) { this.sub.unsubscribe(); }
     }
 
 
   // Delete the event, in the moderation phase
   acceptAllPics() {
-    if (this.allAcceptState === "nothing") {
-      this.allAcceptState = "nearly deleted";
-      alert("Tu es sur le point de tout accepter. Clique une deuxième fois sur 'Tout accepter' pour valider l'action.")
-    }
-    else {
+    if (this.allAcceptState === 'nothing') {
+      this.allAcceptState = 'nearly deleted';
+      alert('Tu es sur le point de tout accepter. Clique une deuxième fois sur \'Tout accepter\' pour valider l\'action.');
+    } else {
       /// A COMPLETER
     }
   }
 
   deleteAllPics() {
-    if (this.allDeletionState === "nothing") {
-      this.allDeletionState = "nearly deleted";
-      alert("Tu es sur le point de tout supprimer. Clique une deuxième fois sur 'Tout supprimer' pour valider l'action.")
-    }
-    else {
+    if (this.allDeletionState === 'nothing') {
+      this.allDeletionState = 'nearly deleted';
+      alert('Tu es sur le point de tout supprimer. Clique une deuxième fois sur \'Tout supprimer\' pour valider l\'action.');
+    } else {
       /// A COMPLETER
     }
   }
@@ -112,28 +111,28 @@ export class ModerationComponent implements OnInit, OnDestroy {
   }
 
   // Change the state of moderation of a picture
-  acceptPic(i : number) {
+  acceptPic(i: number) {
     this.validateState[i] = !this.validateState[i];
   }
 
-  deletePic(i : number) {
+  deletePic(i: number) {
     this.delState[i] = !this.delState[i];
   }
 
   // Validate the deletion of selected pictures
   acceptSelectedPics() {
-    for (let pic=0; pic<this.validateState.length; pic++) {
+    for (let pic = 0; pic < this.validateState.length; pic++) {
       if (this.validateState[pic]) {
-        console.log(this.pics[pic]["file_path"]);
+        console.log(this.pics[pic].file_path);
         /// A COMPLETER
       }
     }
   }
 
   deleteSelectedPics() {
-    for (let pic=0; pic<this.delState.length; pic++) {
+    for (let pic = 0; pic < this.delState.length; pic++) {
       if (this.delState[pic]) {
-        console.log(this.pics[pic]["file_path"]);
+        console.log(this.pics[pic].file_path);
         /// A COMPLETER
       }
     }
@@ -141,15 +140,15 @@ export class ModerationComponent implements OnInit, OnDestroy {
 
 
   // Image viewer activated on click
-  onClick(i_selected_pic) {
-    this.raw_pics = [];
-    this.indexViewer = i_selected_pic;
+  onClick(iSelectedPic) {
+    this.rawPics = [];
+    this.indexViewer = iSelectedPic;
 
     // Get the full images, then store them and display
-    for (let i=0; i<this.pics.length; i++){
-      this.galeriesService.getFullImage(this.pics[i]['file_path'])
+    for (let i = 0; i < this.pics.length; i++) {
+      this.galeriesService.getFullImage(this.pics[i].file_path)
       .subscribe(
-        (res) => { this.raw_pics[i] = (res["base64"]); },
+        (res: { base64 }) => { this.rawPics[i] = (res.base64); },
         (error) => { console.error(error); }
       );
     }
@@ -159,9 +158,9 @@ export class ModerationComponent implements OnInit, OnDestroy {
 
 
   //// HOVER ANIMATIONS
-  survolePics(state : string) {
+  survolePics(currentState: string) {
     for (let pic = 0; pic < this.picsState.length; pic++) {
-      this.picsState[pic] = state;
+      this.picsState[pic] = currentState;
     }
   }
 

@@ -6,12 +6,12 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor (private httpService : HttpService,
-              private router : Router) { }
+  constructor(private httpService: HttpService,
+              private router: Router) { }
 
-  canActivate (
-    route : ActivatedRouteSnapshot,
-    state : RouterStateSnapshot
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
     if (this.httpService.token) {
       return true;

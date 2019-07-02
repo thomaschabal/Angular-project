@@ -10,7 +10,7 @@
 <!-- Main -->
   <!-- Image viewer -->
 <div id="image-viewer" *ngIf = "clicked && isAdmin">
-  <ngx-image-viewer [src] = "raw_pics" [index]= "indexViewer"></ngx-image-viewer>
+  <ngx-image-viewer [src] = "rawPics" [index]= "indexViewer"></ngx-image-viewer>
 </div>
   <!-- Pictures of the event -->
   <div id="main" (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')" *ngIf="isAdmin">

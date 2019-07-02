@@ -10,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 
 export class FooterComponent {
 
-  constructor(private httpService : HttpService,
-              private router : ActivatedRoute) { }
+  constructor(private httpService: HttpService,
+              private router: ActivatedRoute) { }
 
   get isOnline() {
     return (this.httpService.token !== null) && ('galeries' in this.router.snapshot.url);

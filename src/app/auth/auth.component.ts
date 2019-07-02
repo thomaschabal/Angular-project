@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -72,21 +73,23 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class AuthComponent implements OnInit {
 
   // Initial state
-  state = "visible1";
+  state = 'visible1';
   indState = 0;
   // Possible states to reach (used in changeFond() )
-  possibleStates = ["visible1", "hidden1",
-                    "visible2", "hidden2",
-                    "visible3", "hidden3",
-                    "visible4", "hidden4"];
+  possibleStates = ['visible1', 'hidden1',
+                    'visible2', 'hidden2',
+                    'visible3', 'hidden3',
+                    'visible4', 'hidden4'];
 
   // Authentification form defined here
-  userForm : FormGroup;
+  userForm: FormGroup;
+
+  baseUrl = environment.baseUrl;
 
 
-  constructor(private authService : AuthService,
-              private router : Router,
-              private formBuilder : FormBuilder) { }
+  constructor(private authService: AuthService,
+              private router: Router,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.initForm();

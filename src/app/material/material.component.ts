@@ -19,11 +19,15 @@ import { MessagesService } from '../services/messages.service';
 
 export class MaterialComponent implements OnInit {
 
-  // Form for material booking
-  materialForm : FormGroup;
+  constructor(private formBuilder: FormBuilder,
+              private messagesService: MessagesService) { }
 
-  constructor(private formBuilder : FormBuilder,
-              private messagesService : MessagesService) { }
+  // Form for material booking
+  materialForm: FormGroup;
+
+  //// DISPLAYING THE FORM
+  // State of the form of the page (e.g. if the section is being hovered or not)
+  formState = 'visible';
 
   ngOnInit() {
     this.initForm();
@@ -40,17 +44,13 @@ export class MaterialComponent implements OnInit {
   // Submission of the form
   onSubmitMateriel() {
     this.messagesService.materialPost(this.materialForm.value).subscribe(
-      (res) => { alert("Message envoyé !"); },
+      (res) => { alert('Message envoyé !'); },
       (error) => { console.error(error); }
     );
   }
 
-  //// DISPLAYING THE FORM
-  // State of the form of the page (e.g. if the section is being hovered or not)
-  formState = 'visible';
-
-  survoleForm(state : string) {
-    this.formState = state;
+  survoleForm(currentState: string) {
+    this.formState = currentState;
   }
 
 }
