@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpService } from '../services/http.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
@@ -11,9 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 export class FooterComponent {
 
   constructor(private httpService : HttpService,
-              private router : ActivatedRoute) { }
+              private router : Router) { }
 
   get isOnline() {
-    return (this.httpService.token !== null) && ('galeries' in this.router.snapshot.url);
+    return (this.httpService.token !== null) && !(this.router.url.includes('galeries'));
   }
 }

@@ -19,7 +19,7 @@ html, body {
 				height: 100%;
 				left: 0;
 				position: absolute;
-				top: 0;
+				top: -20vh;
 				width: 100%;
 			}
 
@@ -90,7 +90,7 @@ html, body {
   position: relative;
   top: 5%;
   max-width: 95vw;
-  max-height: 90vh;
+  max-height: 97.5vh;
 }
 
 .wide-pic > caption {
@@ -106,6 +106,25 @@ html, body {
   letter-spacing: 0.1em;
   margin-bottom: 0.5em;
   text-transform: uppercase;
+}
+
+.wide-pic > #num_photo {
+  display: block;
+  text-align: center;
+  padding: 0.25em 0.5em;
+  position: fixed;
+  top: 0;
+  font-weight: 300;
+  color: white;
+  font-size: 0.9em;
+  line-height: 1.2em;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5em;
+  text-transform: none;
+  left: 0;
+  background: #324167;
+  height: 1.7em;
+  border-radius: 10px;
 }
 
 .thumb > caption {
