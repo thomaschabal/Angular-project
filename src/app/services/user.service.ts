@@ -23,7 +23,7 @@ export class UserService {
       email : 'john@doe.org',
       promotion : '022',
       password : 'motdepasse',
-      confirmation_password : 'motdepasse'
+      confirmationPassword : 'motdepasse'
     }
   ];
   userSubject = new Subject<User[]>();
