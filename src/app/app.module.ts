@@ -51,6 +51,7 @@ import { MessagesService } from './services/messages.service';
 import { UploadService } from './services/upload.service';
 import { UserService } from './services/user.service';
 import { ModerationComponent } from './moderation/moderation.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 
@@ -71,7 +72,8 @@ import { ModerationComponent } from './moderation/moderation.component';
     DashboardComponent,
     CguComponent,
     ResetComponent,
-    ModerationComponent
+    ModerationComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

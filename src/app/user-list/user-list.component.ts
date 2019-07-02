@@ -8,7 +8,7 @@ import { UserService } from '../services/user.service';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, OnDestroy {
 
   users : User[];
   userSubscription : Subscription;
