@@ -40,6 +40,10 @@
 			background-position: top left, center center;
 		}
 
+		.content .box .style2 {
+			width: 34%;
+		}
+
 		#gallery > img {
 			cursor: pointer;
 		}
@@ -260,6 +264,14 @@
 	}
 
 	@media screen and (max-width: 720px) {
+		#intro {
+			margin-top: 4em;
+		}
+
+		#one, #two, #three {
+			background-position: center center, center center;
+		}
+
 		.wide-pic {
 			width: 93vw;
 			margin-top: 2vh;

@@ -1140,7 +1140,7 @@ input, select, textarea {
 				transform: translateY(-100vh);
 				padding: 4em 2em 2em 2em ;
 				bottom: auto;
-				top: calc(4em - 1px);
+				bottom: calc(4em - 1px);
 			}
 
 				.panel.active {
@@ -1635,7 +1635,7 @@ input, select, textarea {
 			bottom: auto;
 			height: 4em;
 			padding: 0 1em;
-			top: 0;
+			bottom: 0;
 		}
 
 			body.is-preload #event-panel {

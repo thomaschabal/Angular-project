@@ -38,4 +38,9 @@ export class NavComponent implements OnInit {
     return (window.innerWidth >= 1080);
   }
 
+  // Display logos instead of text on smartphones
+  isNarrowWindow() {
+    return (window.innerWidth <= 720);
+  }
+
 }

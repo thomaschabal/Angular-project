@@ -29,8 +29,10 @@ export enum KEY_CODE {
     ]),
     trigger('lastEventTrigger', [
       state('visible', style({})),
-      state('hidden-left', style({transform : 'translateX(50vw)'})),
-      state('hidden-right', style({transform : 'translateX(-50vw)'})),
+      state('hidden-mid-left', style({transform : 'translateX(50vw)'})),
+      state('hidden-mid-right', style({transform : 'translateX(-50vw)'})),
+      state('hidden-left', style({transform : 'translateX(100vw)'})),
+      state('hidden-right', style({transform : 'translateX(-100vw)'})),
       transition('* => *', [ animate('20ms') ] ),
     ]),
     trigger('lovePicsTrigger', [
@@ -127,6 +129,11 @@ export class HomeComponent implements OnInit, OnDestroy {
      },
       (error) => { console.error(error); }
     );
+    if (window.innerWidth > 736) {
+      this.lastEventsState1 = "hidden-mid-left";
+      this.lastEventsState2 = "hidden-mid-right";
+      this.lastEventsState3 = "hidden-mid-left";
+    }
   }
 
   public ngOnDestroy(): void {
@@ -267,13 +274,25 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     } else {
       if (i === 0) {
-        this.lastEventsState1 = "hidden-left";
+        if (window.innerWidth<=736) {
+          this.lastEventsState1 = "hidden-left";
+        } else {
+          this.lastEventsState1 = "hidden-mid-left";
+        }
       } else {
         if (i === 1) {
-          this.lastEventsState2 = "hidden-right";
+          if (window.innerWidth<=736) {
+            this.lastEventsState2 = "hidden-right";
+          } else {
+            this.lastEventsState2 = "hidden-mid-right";
+          }
         }
         else {
-          this.lastEventsState3 = "hidden-left";
+          if (window.innerWidth<=736) {
+            this.lastEventsState3 = "hidden-left";
+          } else {
+            this.lastEventsState3 = "hidden-mid-left";
+          }
         }
       }
     }

@@ -26,7 +26,7 @@
           (mouseleave)='survoleEvent("hidden", i)'
           [ngStyle] = "{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
   <!-- <img src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
-  <div class="content box style2" [style.width.%]="34" [@lastEventTrigger]="currentStateEvent(i)">
+  <div class="content box style2" [@lastEventTrigger]="currentStateEvent(i)">
     <header>
                   <h2><a routerLink="/galeries/{{ event.routing }}">{{ event.name }}</a></h2>
     </header>
