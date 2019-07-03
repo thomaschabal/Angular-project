@@ -1,5 +1,9 @@
 <div class="spacer"></div>
 
+<div class="loading-spinner" *ngIf='display_spinner' [@spinnerTrigger]='state_spinner'>
+  <img src="assets/images/camera-fast-spinner.svg" alt="Loading..."/>
+</div>
+
 <!-- Main -->
   <!-- Private events, only visible for administrators -->
   <div id="main" (mouseenter) = "survoleGaleries('visible')"

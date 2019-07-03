@@ -1087,7 +1087,7 @@ input, select, textarea {
 			margin: 0 0 0 0;
 		}
 
-		@media screen and (max-width: 480px) {
+		@media screen and (max-width: 750px) {
 
 			.signup-form {
 				-moz-flex-direction: column;

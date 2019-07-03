@@ -1,5 +1,9 @@
 <div class="spacer"></div>
 
+<div class="loading-spinner" *ngIf='display_spinner' [@spinnerTrigger]='state_spinner'>
+  <img src="assets/images/camera-fast-spinner.svg" alt="Loading..."/>
+</div>
+
 <!-- Header, displayed on the bottom -->
   <header id="header" id="event-panel">
     <h1><a routerLink = "/galeries"><strong>{{ name }}</strong></a></h1>
@@ -48,7 +52,7 @@
   <!-- Pictures of the event -->
   <div id="main" (mouseenter) = "survolePics('visible')"> <!--(mouseleave) = "survolePics('hidden')">-->
     <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
-      <img (click)="onClickFavPic(i)" style="cursor: pointer; top: -15vh; position: absolute;" src="{{ picture.base64 }}" alt="" width="100%"/>
+      <img (click)="onClickFavPic(i)" style="cursor: pointer; position: absolute;" src="{{ picture.base64 }}" alt="" width="100%"/>
       <caption>{{ name }}</caption>
       <button id="deleteButton" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && !deleteState(i)" (click)="moderePic(i)">Supprimer</button>
       <button id="deleteButtonSelected" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && deleteState(i)" (click)="moderePic(i)">Supprimer</button>
@@ -64,6 +68,7 @@
   <!-- Image viewer -->
     <!-- Darken the background -->
       <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()"></div>
+      
       <!-- Image enlarged -->
       <div class="wide-pic"
            *ngIf="pic_clicked"

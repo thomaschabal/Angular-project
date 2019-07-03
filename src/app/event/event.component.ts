@@ -44,6 +44,11 @@ export enum KEY_CODE {
       state('false', style({opacity: 0})),
       transition('*=>*', [ animate('200ms') ] ),
     ]),
+    trigger('spinnerTrigger', [
+      state('visible', style({opacity: 1})),
+      state('hidden', style({opacity: 0})),
+      transition('* => *', [ animate('200ms') ] ),
+    ])
   ]
 })
 
@@ -62,6 +67,10 @@ export class EventComponent implements OnInit, OnDestroy {
       f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
     );
   }
+
+  // Loading Spinner
+  display_spinner : boolean = true;
+  state_spinner : string = 'visible';
 
   private sub: Subscription;
 
@@ -126,6 +135,8 @@ export class EventComponent implements OnInit, OnDestroy {
                  // Define the state of all pictures as not going to be deleted
                                    for (const pic of res.files) {
                    this.moderationState.push(false);
+                   this.state_spinner = 'hidden';
+                   setTimeout(()=> { this.display_spinner = false;}, 200);
                  }
                },
       (error) => { console.error(error); }
@@ -310,6 +321,8 @@ export class EventComponent implements OnInit, OnDestroy {
 
   onClickFavPic(i_selected_pic: number) {
     this.indexViewer = i_selected_pic;
+    this.display_spinner=true;
+    this.state_spinner='visible';
 
     if (this.raw_pics.length === 0) {
       // Get the full images, then store them and display
@@ -322,6 +335,8 @@ export class EventComponent implements OnInit, OnDestroy {
             this.wide_pic_ref = this.raw_pics[i_selected_pic];
             this.caption_wide_pic = this.name;
             this.index_picture = i_selected_pic;
+            this.state_spinner='hidden';
+            setTimeout(()=> { this.display_spinner = false;}, 200);
           }
          },
           (error) => { console.error(error); }
@@ -338,6 +353,8 @@ export class EventComponent implements OnInit, OnDestroy {
       this.wide_pic_ref = this.raw_pics[i_selected_pic];
       this.pic_clicked = true;
       this.index_picture = i_selected_pic;
+      this.state_spinner='hidden';
+      setTimeout(()=> { this.display_spinner = false;}, 200);
     }
 
     this.clicked = true;

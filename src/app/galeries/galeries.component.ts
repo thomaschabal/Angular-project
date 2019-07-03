@@ -12,10 +12,19 @@ import { HttpService } from '../services/http.service'
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0})),
       transition(':enter', [ animate('200ms') ] ),
+    ]),
+    trigger('spinnerTrigger', [
+      state('visible', style({opacity: 1})),
+      state('hidden', style({opacity: 0})),
+      transition('* => *', [ animate('200ms') ] ),
     ])
   ]
 })
 export class GaleriesComponent implements OnInit {
+
+  // Loading Spinner
+  display_spinner : boolean = false;
+  state_spinner : string = 'hidden';
 
   // List of events to display
   galeries_events : any[];
@@ -29,6 +38,9 @@ export class GaleriesComponent implements OnInit {
   };
 
   ngOnInit() {
+    this.display_spinner = true;
+    this.state_spinner = 'visible';
+
     // If the user is an admin, private galleries are loaded and then displayed
     if (this.httpService.isAdmin === true) {
       this.galeriesService.getPrivateEvents()
@@ -42,6 +54,8 @@ export class GaleriesComponent implements OnInit {
       .subscribe(
         (res) => {
           this.galeries_events = res["galleries"];
+          this.state_spinner = 'hidden';
+          setTimeout(()=> { this.display_spinner = false;}, 200);
         },
         (error) => { console.error(error); }
       );
@@ -70,6 +84,9 @@ export class GaleriesComponent implements OnInit {
             (response) => {
               this.galeries_events = this.galeries_events.concat(response["public_galleries"]);
               this.getImagesRestrictedGalleries();
+              //this.display_spinner = false;
+              this.state_spinner = 'hidden';
+              setTimeout(()=> { this.display_spinner = false;}, 200);
             },
             (err) => { console.error(err); }
           );
