@@ -153,3 +153,11 @@ video {
 	min-height:100vh;
 	width:100vw;
 }
+
+@media screen and (max-width: 520px) {
+	video {
+		width: auto;
+		height: 100vh;
+		left: -100vw;
+	}
+}

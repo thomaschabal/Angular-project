@@ -3,3 +3,9 @@
 input {
   background: linear-gradient(30deg, red, yellow);
 }
+
+@media screen and (max-width: 736px) {
+  #contact {
+    padding: 5em 10px 3em 10px;
+  }
+}

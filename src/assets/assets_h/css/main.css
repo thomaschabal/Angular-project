@@ -1923,7 +1923,7 @@ input, select, textarea {
 				@media screen and (max-width: 736px) {
 
 					#header {
-						height: 3.5em;
+						height: 4em;
 						line-height: 1.5em;
 					}
 
@@ -1931,7 +1931,7 @@ input, select, textarea {
 							text-align: center;
 							position: relative;
 							left: 0;
-							top: -2.5em;
+							top: -3em;
 							height: 2.5em;
 							line-height: 2.5em;
 						}
@@ -1971,6 +1971,13 @@ input, select, textarea {
 			position : relative;
 			top : 0.3em;
 			left : 0.3em;
+		}
+
+		@@media screen and (max-width: 736px) {
+			#header a #logo {
+				width: 3.75em;
+				top: 0.5em;
+			}
 		}
 
 /* Main */
@@ -2145,7 +2152,7 @@ input, select, textarea {
 		@media screen and (max-width: 1280px) {
 
 			.main.style2 .content {
-				width: 50%;
+				width: 34%;
 			}
 
 		}
@@ -2169,7 +2176,7 @@ input, select, textarea {
 			}
 
 			.main.style1 {
-				padding: 4em 15px 4em 15px;
+				padding: 4.6em 15px 4.6em 15px;
 			}
 
 				.main.style1 h2 {
@@ -2177,7 +2184,7 @@ input, select, textarea {
 				}
 
 			.main.style2 {
-				padding: 6em 15px 6em 15px;
+				padding: 40vh 15px 40vh 15px;
 			}
 
 				.main.style2:before, .main.style2:after {

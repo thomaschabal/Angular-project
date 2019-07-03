@@ -284,7 +284,7 @@ export class EventComponent implements OnInit, OnDestroy {
     this.myFiles.push(file);
   }
   removeFile() {
-  this.uploader.removeFileFromList(this.myFiles[0].fileName);
+    this.uploader.removeFileFromList(this.myFiles[0].fileName);
   }
 
 

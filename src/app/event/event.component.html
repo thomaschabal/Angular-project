@@ -48,7 +48,7 @@
   <!-- Pictures of the event -->
   <div id="main" (mouseenter) = "survolePics('visible')"> <!--(mouseleave) = "survolePics('hidden')">-->
     <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
-      <img (click)="onClickFavPic(i)" style="cursor: pointer" src="{{ picture.base64 }}" alt="" width="100%"/>
+      <img (click)="onClickFavPic(i)" style="cursor: pointer; top: -15vh; position: absolute;" src="{{ picture.base64 }}" alt="" width="100%"/>
       <caption>{{ name }}</caption>
       <button id="deleteButton" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && !deleteState(i)" (click)="moderePic(i)">Supprimer</button>
       <button id="deleteButtonSelected" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && deleteState(i)" (click)="moderePic(i)">Supprimer</button>
@@ -73,6 +73,7 @@
            (mouseleave)="hideArrows()">
         <img #imgWide [src]="wide_pic_ref" style="cursor: pointer"/>
         <caption>{{ caption_wide_pic }}</caption>
+        <caption id="num_photo">Pic {{ index_picture+1 }} / {{ pics.length }}</caption>
 
         <!-- Closer -->
         <img id="closer"

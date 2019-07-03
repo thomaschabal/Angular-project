@@ -2109,7 +2109,7 @@ input, select, textarea {
 			}
 
 			.main.style1 {
-				padding: 4em 15px 4em 15px;
+				padding: 6.6em 15px 6.6em 15px;
 			}
 
 				.main.style1 h2 {
@@ -2244,7 +2244,7 @@ input, select, textarea {
 /* Intro */
 
 	#intro {
-		margin-top: 3em;
+		margin-top: 4em;
 		height : 92.2vh;
 		background: url("images/overlay.png"), url("../../images/introP.jpg");
 		background-size: 256px 256px, cover;
