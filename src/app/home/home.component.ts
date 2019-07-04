@@ -106,14 +106,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.adresse_2 = this.last_events[1].fond;
     this.adresse_3 = this.last_events[2].fond;
     this.initForm();
-    // Redirect unauthenticated users
-    if (this.authService.isAuth === false){
-      this.router.navigate(['auth']);
-    }
     this.homeService.getLatestGalleries()
     .subscribe(
-      (res) => {
-        const lastEvents = res["galleries"];
+      (res : { galleries }) => {
+        const lastEvents = res.galleries;
         const idEvents = ["one", "two", "three", "coeur"];
         for (let i=0; i<lastEvents.length; i++) {
           this.last_events[i] = {
@@ -125,7 +121,6 @@ export class HomeComponent implements OnInit, OnDestroy {
             "resume": "Pas de description pour l'instant."
           };
         }
-        console.log(this.last_events);
      },
       (error) => { console.error(error); }
     );

@@ -1778,7 +1778,7 @@ input, select, textarea {
 			transition-delay: 2.525s;
 			height: 40vh;
 			min-height: 5em;
-			width: 100%;
+			width: 33.3333333%;
 			vertical-align: middle;
 		}
 

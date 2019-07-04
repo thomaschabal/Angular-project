@@ -1,8 +1,6 @@
 //// MODULES
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-// Image Viewer module
-import { ImageViewerModule } from "ngx-image-viewer";
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 // Module for all the various forms of the application
@@ -82,8 +80,7 @@ import { UserListComponent } from './user-list/user-list.component';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FilePickerModule,
-    ImageViewerModule.forRoot()
+    FilePickerModule
   ],
   providers: [
     HomeService,

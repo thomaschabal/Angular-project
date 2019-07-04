@@ -317,20 +317,14 @@ export class EventComponent implements OnInit, OnDestroy {
 
 
 
-
-
-  onClickFavPic(i_selected_pic: number) {
-    this.indexViewer = i_selected_pic;
-    this.display_spinner=true;
-    this.state_spinner='visible';
-
-    if (this.raw_pics.length === 0) {
-      // Get the full images, then store them and display
-      for (let i = i_selected_pic; i < this.pics.length; i++) {
-        this.galeriesService.getFullImage(this.pics[i].file_path)
-        .subscribe(
-          (res: { base64 }) => { this.raw_pics[i] = (res.base64);
-                     if (i === i_selected_pic) {
+  loadFullImage(i:number, i_selected_pic:number) {
+    if (this.raw_pics[i] === undefined) {
+      this.galeriesService.getFullImage(this.pics[i].file_path)
+      .subscribe(
+        (res: { base64 }) => {
+          this.raw_pics[i] = (res.base64);
+          if (i === i_selected_pic)
+          {
             this.pic_clicked = true;
             this.wide_pic_ref = this.raw_pics[i_selected_pic];
             this.caption_wide_pic = this.name;
@@ -338,24 +332,53 @@ export class EventComponent implements OnInit, OnDestroy {
             this.state_spinner='hidden';
             setTimeout(()=> { this.display_spinner = false;}, 200);
           }
-         },
-          (error) => { console.error(error); }
-        );
-      }
-      for (let i = 0; i < i_selected_pic; i++) {
-        this.galeriesService.getFullImage(this.pics[i].file_path)
-        .subscribe(
-          (res: { base64 }) => { this.raw_pics[i] = (res.base64); },
-          (error) => { console.error(error); }
-        );
-      }
-    } else {
-      this.wide_pic_ref = this.raw_pics[i_selected_pic];
-      this.pic_clicked = true;
-      this.index_picture = i_selected_pic;
-      this.state_spinner='hidden';
-      setTimeout(()=> { this.display_spinner = false;}, 200);
+       },
+        (error) => { console.error(error); }
+      );
     }
+    else {
+      if (i === i_selected_pic)
+      {
+        this.pic_clicked = true;
+        this.wide_pic_ref = this.raw_pics[i_selected_pic];
+        this.caption_wide_pic = this.name;
+        this.index_picture = i_selected_pic;
+        this.state_spinner='hidden';
+        setTimeout(()=> { this.display_spinner = false;}, 200);
+      }
+    }
+  }
+
+  loadSeveralFullImages(number_loaded_pictures:number, i_selected_pic:number) {
+    if (this.pics.length <= number_loaded_pictures) {
+      for (let i = 0; i < this.pics.length; i++) {
+        this.loadFullImage(i, i_selected_pic);
+      }
+    }
+    else {
+      for (let i=i_selected_pic; i<i_selected_pic+number_loaded_pictures/2; i++) {
+        if (i<this.pics.length) {
+          this.loadFullImage(i, i_selected_pic);
+        } else {
+          this.loadFullImage(i-this.pics.length, i_selected_pic);
+        }
+      }
+      for (let i=i_selected_pic-1; i>i_selected_pic-number_loaded_pictures/2; i--) {
+        if (i>=0) {
+          this.loadFullImage(i, i_selected_pic);
+        } else {
+          this.loadFullImage(i+this.pics.length, i_selected_pic);
+        }
+      }
+    }
+  }
+
+  onClickFavPic(i_selected_pic: number) {
+    this.indexViewer = i_selected_pic;
+    this.display_spinner=true;
+    this.state_spinner='visible';
+
+    this.loadSeveralFullImages(20, i_selected_pic);
 
     this.clicked = true;
 
@@ -403,15 +426,21 @@ export class EventComponent implements OnInit, OnDestroy {
 
   navLeft() {
     this.index_picture = this.index_picture - 1;
+
     if (this.index_picture < 0) {
       this.index_picture += this.raw_pics.length;
     }
+
+    this.loadSeveralFullImages(20, this.index_picture);
     this.wide_pic_ref = this.raw_pics[this.index_picture];
     // document.getElementById('wide-pic').style.marginLeft.px=this.placePicLeft(imgWide);
   }
 
   navRight() {
     this.index_picture = (this.index_picture + 1) % (this.raw_pics.length);
+
+    this.loadSeveralFullImages(20, this.index_picture);
+
     this.wide_pic_ref = this.raw_pics[this.index_picture];
   }
 

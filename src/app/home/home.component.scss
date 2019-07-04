@@ -4,7 +4,7 @@
 
 	#intro {
 		margin-top : 3em;
-		height : 92.2vh;
+		height : calc(100vh - 3em);
 		background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/introP.jpg");
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
