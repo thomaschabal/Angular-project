@@ -2,21 +2,26 @@
   <section id="intro" class="main style1 dark fullscreen">
 
     <!-- Adminstration area -->
-    <div class="content" (mouseenter)="survoleAdmin('visible')" >
-      <header>
+    <div class="content" id="admin_area" (mouseenter)="survoleAdmin('visible')" >
+      <header id="admin_header">
         <h2>Zone d'administration</h2>
       </header>
       <!-- Creation of gallery form -->
-      <div [@buttonTrigger] = "adminState">
-        <button type="button" name="button" (click)="formVisibility()">Créer un évènement</button><br/><br/>
+      <div id="col_admin_1"> <!--[@buttonTrigger] = "adminState"-->
+        <h3>Création d'une galerie</h3>
+        <!--<button type="button" name="button" (click)="formVisibility()">Créer un évènement</button><br/><br/>-->
         <form [formGroup]="eventForm" (ngSubmit)="onSubmitEvent()" *ngIf="eventCreationSelect">
-          <input type="text" name="name" placeholder="Nom de la galerie" formControlName="name" /><br/>
-          <textarea name="description" placeholder="Description de la galerie" rows="2" formControlName="description"></textarea><br/>
+          <input type="text" name="name" placeholder="Nom de la galerie" formControlName="name" style="background: white; color: #222222;"/><br/>
+          <textarea name="description" placeholder="Description de la galerie" rows="2" formControlName="description" style="background: white; color: #222222;"></textarea><br/>
           <input type="submit" value="Valider la création" [disabled]="eventForm.invalid" />
         </form>
-        <button type="button" name="button" (click)="navigateToModeration()">Modérer</button><br/>
-        <button type="button" name="button" (click)="navigateToAddress('https://ponthe.slack.com/messages')">Slack</button>
-        <button type="button" name="button" (click)="navigateToAddress('https://trello.com/b/WIQhzGmu/ev%C3%A8nements-et-communication')">Trello</button>
+      </div>
+
+      <div id="col_admin_2">
+        <button type="button" name="button" (click)="navigateToModeration()" style="width: 25vw">Modérer</button><br/>
+        <button type="button" name="button" (click)="navigateToAddress('https://ponthe.slack.com/messages')" style="width: 15vw">Slack</button><br/>
+        <button type="button" name="button" (click)="navigateToAddress('https://trello.com/b/WIQhzGmu/ev%C3%A8nements-et-communication')" style="width: 15vw">Trello</button><br/>
+        <button type="button" name="button" (click)="navigateToAddress('https://www.youtube.com/channel/UCxHf0yHnEezkhuhzuT2yaIg')" style="width: 15vw">YouTube</button><br/>
       </div>
     </div>
 

@@ -22,13 +22,16 @@ import { AuthComponent } from './auth/auth.component';
 import { NewAccountComponent } from './new-account/new-account.component';
 import { CguComponent } from './cgu/cgu.component';
 import { ResetComponent } from './reset/reset.component';
+import { UserListComponent } from './user-list/user-list.component';
 // Home page
 import { HomeComponent } from './home/home.component';
 // Galeries
 import { GaleriesComponent } from './galeries/galeries.component';
 import { EventComponent } from './event/event.component';
+import { VideoComponent } from './video/video.component';
 // Dashboard for uploading images and videos
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ModerationComponent } from './moderation/moderation.component';
 // Members page
 import { MembersComponent } from './members/members.component';
 // Material page
@@ -48,8 +51,7 @@ import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
 import { UploadService } from './services/upload.service';
 import { UserService } from './services/user.service';
-import { ModerationComponent } from './moderation/moderation.component';
-import { UserListComponent } from './user-list/user-list.component';
+
 
 
 
@@ -71,7 +73,8 @@ import { UserListComponent } from './user-list/user-list.component';
     CguComponent,
     ResetComponent,
     ModerationComponent,
-    UserListComponent
+    UserListComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

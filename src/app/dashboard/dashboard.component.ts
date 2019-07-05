@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
   animEvent = "visible";
 
   // Create gallery form initially hidden
-  eventCreationSelect = false;
+  eventCreationSelect = true;
 
   // Create gallery form defined here
   eventForm : FormGroup;

@@ -2171,9 +2171,9 @@ input, select, textarea {
 				display: none;
 			}
 
-			.main.fullscreen {
+			/* .main.fullscreen {
 				height: auto !important;
-			}
+			} */
 
 			.main.style1 {
 				padding: 4.6em 15px 4.6em 15px;

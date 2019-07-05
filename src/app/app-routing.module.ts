@@ -18,6 +18,7 @@ import { MaterialComponent } from './material/material.component';
 import { EventComponent } from './event/event.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ModerationComponent } from './moderation/moderation.component';
+import { VideoComponent } from './video/video.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
   { path : 'membres', redirectTo : '/members' },
   { path : 'material', canActivate : [AuthGuard], component : MaterialComponent, data:{animation:'MaterialPage'} },
   { path : 'matos', redirectTo : '/material' },
-  { path : 'galeries/:event', canActivate : [AuthGuard], component : EventComponent, data:{animation:'EventPage'} },
+  { path : 'galeries/video/:video', canActivate : [AuthGuard], component : VideoComponent, data:{animation:'VideoComponent'} },
+  { path : 'galeries/pics/:event', canActivate : [AuthGuard], component : EventComponent, data:{animation:'EventPage'} },
   { path : 'not-found', canActivate : [AuthGuard], component : NotfoundComponent },
   { path : '**', redirectTo : '/not-found' }
 ];
