@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MembersService } from '../services/members.service';
 import { ActivatedRoute } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { style, state, animate, transition, trigger } from '@angular/animations';
 import { Subscription } from 'rxjs';
-import { style, state, animate, transition, trigger } from "@angular/animations";
+import { filter } from 'rxjs/operators';
+
+import { MembersService } from '../services/members.service';
 
 @Component({
   selector: 'app-members',
@@ -23,70 +24,74 @@ import { style, state, animate, transition, trigger } from "@angular/animations"
     ])
   ]
 })
+
 export class MembersComponent implements OnInit, OnDestroy {
 
   // Data to show to the user
-  team_ponthe : any[];
-  private sub : Subscription;
+  teamPonthe: any[];
+  private sub: Subscription;
 
   // State of various sections of the page (e.g. if the section is being hovered or not)
   introState = 'visible';
   teamStateLeft = 'hidden-left';
   teamStateRight = 'hidden-right';
 
-  constructor(private membersService : MembersService,
-              private activeRoute : ActivatedRoute) {
-                // Smooth transitions when clicking on the arrows
-                this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({behavior : 'smooth'}));
-              };
+  constructor(private membersService: MembersService,
+              private activeRoute: ActivatedRoute) {
+    // Smooth transitions when clicking on the arrows
+    this.sub = activeRoute.fragment.pipe(filter(f => !!f))
+      .subscribe(
+        f => document.getElementById(f).scrollIntoView({behavior : 'smooth'})
+      );
+  }
 
   ngOnInit() {
     // Get the list of members
     this.membersService.getMembers().subscribe(
-      (res) => {
-        this.team_ponthe = res["team_ponthe"];
+      (res: { team_ponthe }) => {
+        this.teamPonthe = res.team_ponthe;
       },
       (error) => { console.log(error); }
     );
   }
 
   public ngOnDestroy(): void {
-      if(this.sub) this.sub.unsubscribe();
-    }
+    if (this.sub) { this.sub.unsubscribe(); }
+  }
 
 
 
   //// AFFICHAGE
-  placement(i : number) {
-    if (i%2 === 0) {
-      return "right";
+  placement(i: number) {
+    if (i % 2 === 0) {
+      return 'right';
     } else {
-      return "left";
+      return 'left';
     }
   }
 
-  survoleIntro(state : string) {
-    this.introState = state;
+  survoleIntro(stateIntro: string) {
+    this.introState = stateIntro;
   }
 
-  survoleTeam(state : string, i : number){
-    if (state === "visible") {
-      if (i%2 === 0) {
-        this.teamStateLeft = state;
+  survoleTeam(stateTeam: string, i: number) {
+    if (stateTeam === 'visible') {
+      if (i % 2 === 0) {
+        this.teamStateLeft = stateTeam;
       } else {
-        this.teamStateRight = state;
+        this.teamStateRight = stateTeam;
       }
     } else {
-      if (i%2 === 0) {
-        this.teamStateLeft = "hidden-left";
+      if (i % 2 === 0) {
+        this.teamStateLeft = 'hidden-left';
       } else {
-        this.teamStateRight = "hidden-right";
+        this.teamStateRight = 'hidden-right';
       }
     }
   }
 
-  currentStateTeam(i : number) {
-    if (i%2 === 0) {
+  currentStateTeam(i: number) {
+    if (i % 2 === 0) {
       return this.teamStateLeft;
     } else {
       return this.teamStateRight;

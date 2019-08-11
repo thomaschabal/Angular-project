@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { transition, trigger, style, animate, state } from "@angular/animations";
+import { transition, trigger, style, animate, state } from '@angular/animations';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { GaleriesService } from '../services/galeries.service';
 import { Router } from '@angular/router';
+import { Phrases } from '../Phrases';
+
+import { GaleriesService } from '../services/galeries.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,23 +26,22 @@ import { Router } from '@angular/router';
   ]
 })
 
-
 export class DashboardComponent implements OnInit {
 
   // Display variables
-  adminState = "visible";
-  filesState = "visible";
-  animEvent = "visible";
+  adminState = 'visible';
+  filesState = 'visible';
+  animEvent = 'visible';
 
   // Create gallery form initially hidden
   eventCreationSelect = true;
 
   // Create gallery form defined here
-  eventForm : FormGroup;
+  eventForm: FormGroup;
 
-  constructor(private formBuilder : FormBuilder,
-              private galeriesService : GaleriesService,
-              private router : Router) { }
+  constructor(private formBuilder: FormBuilder,
+              private galeriesService: GaleriesService,
+              private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -53,15 +54,15 @@ export class DashboardComponent implements OnInit {
       description : ['', Validators.required],
       year_slug : ['2019', Validators.required],
       event_slug : 'event1',  //  /!\ Remplacer selon le back défini
-      boolPrivate : ["on", Validators.required]
-    })
+      boolPrivate : ['on', Validators.required]
+    });
   }
 
   // Submission of gallery creation
   onSubmitEvent() {
-    this.eventForm.value["private"] = this.eventForm.value["boolPrivate"];
+    this.eventForm.value.private = this.eventForm.value.boolPrivate;
     this.galeriesService.postEvent(this.eventForm.value).subscribe(
-      (res) => { alert("Galerie crée"); },
+      (res) => { alert(Phrases['dashboard.createdGallery']); },
       (error) => { console.error(error); }
     );
   }
@@ -71,16 +72,15 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/moderation']);
   }
 
-
   //// HOVER ANIMATIONS
   // Hover administration area
-  survoleAdmin(state : string) {
-    this.adminState = state;
+  survoleAdmin(stateAdmin: string) {
+    this.adminState = stateAdmin;
   }
 
   // Hover upload file area
-  survoleFiles(state : string) {
-    this.filesState = state;
+  survoleFiles(stateFiles: string) {
+    this.filesState = stateFiles;
   }
 
   // Create gallery form visibility
@@ -92,5 +92,4 @@ export class DashboardComponent implements OnInit {
   navigateToAddress(url: string) {
     window.location.href = url;
   }
-
 }

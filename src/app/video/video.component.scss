@@ -90,41 +90,43 @@ background: linear-gradient(30deg, red, yellow);
 }
 
 video {
-  width: 70vw;
-  margin-left: 15vw;
-  position: absolute;
+  max-width: 70vw;
+  margin: 0 auto;
   top: 25vh;
   max-height: 62.5vh;
 }
 
-.triangle_top_left {
+.triangle_top_left, .triangle_bottom_left, .triangle_bottom_right, .triangle_bottom_right_wider {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 22vh 40vw 0 0;
-  border-color: #ffffff transparent transparent transparent;
   position: fixed;
 }
 
+.triangle_top_left {
+  border-width: 22vh 40vw 0 0;
+  border-color: #ffffff transparent transparent transparent;
+  z-index: 1;
+}
+
 .triangle_bottom_right {
-  width: 0;
-  height: 0;
-  border-style: solid;
   border-width: 0 0 37vh 12.5vw;
   border-color: transparent transparent #ffffff transparent;
-  position: fixed;
   right: 0;
   bottom: 3em;
   z-index: 1;
 }
 
 .triangle_bottom_right_wider {
-  width: 0;
-  height: 0;
-  border-style: solid;
   border-width: 0 0 70vh 12.5vw;
   border-color: transparent transparent #ffcd33 transparent;
-  position: fixed;
   right: 0;
+  bottom: 3em;
+}
+
+.triangle_bottom_left {
+  border-width: 0 15vw 75vh 0;
+  border-color: transparent transparent #ffcd33 transparent;
+  left: 0;
   bottom: 3em;
 }

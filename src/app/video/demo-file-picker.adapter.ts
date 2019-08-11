@@ -1,8 +1,8 @@
-import { FilePreviewModel } from 'ngx-awesome-uploader';
+import { FilePreviewModel, FilePickerAdapter } from 'ngx-awesome-uploader';
 import { HttpRequest, HttpClient, HttpEvent, HttpEventType, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { FilePickerAdapter } from 'ngx-awesome-uploader';
+import { map } from 'rxjs/operators';
+
 import { HttpService } from '../services/http.service';
 
 export class DemoFilePickerAdapter extends FilePickerAdapter {
@@ -14,7 +14,7 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   public uploadFile(fileItem: FilePreviewModel) {
     const form = new FormData();
     form.append('file', fileItem.file);
-    const api = this.httpService.apiUrl + '/api/file-upload/' + this.httpService.current_gallery;
+    const api = this.httpService.apiUrl + '/api/file-upload/' + this.httpService.currentGallery;
     const httpOptions = new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
         Authorization: 'Bearer ' + this.httpService.token,

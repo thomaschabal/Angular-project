@@ -11,7 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 // Upload file module
 import { FilePickerModule } from 'ngx-awesome-uploader';
-
+// Video module
+import { PlyrModule } from 'ngx-plyr';
 
 //// COMPONENTS
 import { AppComponent } from './app.component';
@@ -39,7 +40,6 @@ import { MaterialComponent } from './material/material.component';
 // Error 404 page
 import { NotfoundComponent } from './notfound/notfound.component';
 
-
 // SERVICES
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
@@ -51,10 +51,6 @@ import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
 import { UploadService } from './services/upload.service';
 import { UserService } from './services/user.service';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -83,7 +79,8 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FilePickerModule
+    FilePickerModule,
+    PlyrModule
   ],
   providers: [
     HomeService,

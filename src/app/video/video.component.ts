@@ -1,17 +1,19 @@
 import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { state, trigger, animate, style, transition } from '@angular/animations';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
+import { Plyr } from 'plyr';
+import { PlyrComponent } from 'ngx-plyr';
+
 import { GaleriesService } from '../services/galeries.service';
 import { MessagesService } from '../services/messages.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
-import { state, trigger, animate, style, transition } from '@angular/animations';
 import { HttpService } from '../services/http.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
-import { HttpClient } from '@angular/common/http';
 import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
-
+import { Phrases } from '../Phrases';
 
 @Component({
   selector: 'app-video',
@@ -32,9 +34,7 @@ import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
   ]
 })
 
-
 export class VideoComponent implements OnInit, OnDestroy {
-
 
   constructor(private galeriesService: GaleriesService,
               private messagesService: MessagesService,
@@ -49,8 +49,8 @@ export class VideoComponent implements OnInit, OnDestroy {
   }
 
   // Loading Spinner
-  display_spinner : boolean = true;
-  state_spinner : string = 'visible';
+  displaySpinner = true;
+  stateSpinner = 'visible';
 
   private sub: Subscription;
 
@@ -59,15 +59,14 @@ export class VideoComponent implements OnInit, OnDestroy {
   // About the film
   name: string;
   resume: string;
-  film_background: string;
-
+  filmBackground: string;
   footerState = 'hidden';
 
   // Variables about the user and the current operations on the event
   isAdmin: boolean;
   isPublic = false;
   enModeration = false;
-  selected_route: string;
+  selectedRoute: string;
   clickAddFiles = false;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
@@ -77,6 +76,18 @@ export class VideoComponent implements OnInit, OnDestroy {
   // Contact form defined here
   messageForm: FormGroup;
 
+  // get the component instance to have access to plyr instance
+  @ViewChild(PlyrComponent)
+  plyr: PlyrComponent;
+
+  player: Plyr;
+
+  videoSources: Plyr.Source[] = [
+    {
+      src: 'bTqVqk7FSmY',
+      provider: 'youtube',
+    },
+  ];
 
   // FILE UPLOAD
   @ViewChild('uploader') uploader: FilePickerComponent;
@@ -84,9 +95,8 @@ export class VideoComponent implements OnInit, OnDestroy {
   myFiles: FilePreviewModel[] = [];
 
   ngOnInit() {
-    const selected_route = this.activeRoute.snapshot.params.event;
-    this.httpService.current_gallery = selected_route;
-
+    const selectedRoute = this.activeRoute.snapshot.params.event;
+    this.httpService.currentGallery = selectedRoute;
     this.adresse = this.activeRoute.snapshot.routeConfig.path;
     this.initForm();
     this.isAdmin = this.httpService.isAdmin;
@@ -98,7 +108,7 @@ export class VideoComponent implements OnInit, OnDestroy {
         let isPublic = true;
         const liste = res.galleries;
         for (const event of liste) {
-          if (event.slug === this.selected_route) {
+          if (event.slug === this.selectedRoute) {
             isPublic = false;
           }
         }
@@ -107,17 +117,17 @@ export class VideoComponent implements OnInit, OnDestroy {
     );
 
     // MOCK VALUES, FOR DEVELOPMENT
-    this.display_spinner = false;
-    this.name = "Vidéo de test";
-    this.resume = "Ceci est une galerie de tests.";
-    this.film_background = "assets/images/font1.jpg";
+    this.displaySpinner = false;
+    this.name = 'Vidéo de test';
+    this.resume = 'Ceci est une galerie de tests.';
+    this.filmBackground = 'assets/images/font1.jpg';
   }
 
   public ngOnDestroy(): void {
-      if (this.sub) {
-        this.sub.unsubscribe();
-      }
+    if (this.sub) {
+      this.sub.unsubscribe();
     }
+  }
 
   // Initialization of the footer form
   initForm() {
@@ -130,7 +140,7 @@ export class VideoComponent implements OnInit, OnDestroy {
   // Submission of the footer form
   onSubmitMessage() {
     this.messagesService.materialPost(this.messageForm.value).subscribe(
-      (res) => { alert('Message envoyé !'); },
+      (res) => { alert(Phrases['messages.sent']); },
       (error) => { console.error(error); }
     );
   }
@@ -143,13 +153,12 @@ export class VideoComponent implements OnInit, OnDestroy {
   // Change the state of the gallery to public or private
   publicPrivate() {
     if (this.isPublic) {
-      this.galeriesService.makePrivate(this.selected_route)
+      this.galeriesService.makePrivate(this.selectedRoute)
       .subscribe(
-        (res) => { this.isPublic = !this.isPublic;
-                   console.log(res); }
+        (res) => { this.isPublic = !this.isPublic; }
       );
     } else {
-      this.galeriesService.makePublic(this.selected_route)
+      this.galeriesService.makePublic(this.selectedRoute)
       .subscribe(
         (res) => { this.isPublic = !this.isPublic; }
       );
@@ -160,16 +169,17 @@ export class VideoComponent implements OnInit, OnDestroy {
   deleteEvent() {
     if (this.eventDeletionState === 'nothing') {
       this.eventDeletionState = 'nearly deleted';
-      alert('Cette galerie est sur le point d\'être supprimée. Cliquer une ' +
-        'deuxième fois sur \'Supprimer la galerie\' pour valider l\'action.');
+      alert(Phrases['event.deleteGallery.galleryWillBeDeleted']);
     } else {
-      this.galeriesService.deleteEvent(this.selected_route).subscribe(
-        (res) => { alert('La galerie a bien été supprimée.'); this.router.navigate(['/galeries']); },
+      this.galeriesService.deleteEvent(this.selectedRoute).subscribe(
+        (res) => {
+          alert(Phrases['event.deleteGallery.galleryWasDeleted']);
+          this.router.navigate(['/galeries']);
+        },
         (error) => { console.error(error); }
       );
     }
   }
-
 
   // Tell if a picture is going to be deleted or not
   deleteState(i) {
@@ -212,13 +222,12 @@ export class VideoComponent implements OnInit, OnDestroy {
     this.uploader.removeFileFromList(this.myFiles[0].fileName);
   }
 
-
   uploadFilesToServer() {
     console.log(this.myFiles);
     for (const file of this.myFiles) {
       const form = new FormData();
       form.append('file', file.file);
-      this.httpService.postFiles('/api/file-upload/' + this.selected_route, form)
+      this.httpService.postFiles('/api/file-upload/' + this.selectedRoute, form)
       .subscribe(
         (res) => { console.log(res); },
         (error) => { console.error(error); }
@@ -233,5 +242,4 @@ export class VideoComponent implements OnInit, OnDestroy {
       this.footerState = 'hidden';
     }
   }
-
 }

@@ -1,29 +1,60 @@
 <div class="spacer"></div>
 
-<div class="loading-spinner" *ngIf='display_spinner' [@spinnerTrigger]='state_spinner'>
+<div *ngIf='displaySpinner'
+     class="loading-spinner"
+     [@spinnerTrigger]='stateSpinner'>
   <img src="assets/images/camera-fast-spinner.svg" alt="Loading..."/>
 </div>
 
 <!-- Header, displayed on the bottom -->
-  <header id="header" id="event-panel">
-    <h1><a routerLink = "/galeries"><strong>{{ name }}</strong></a></h1>
-    <nav (click)="changeStateFooter()">
-      <ul>
-        <li><a class="icon fa-info-circle" style="cursor: pointer">A propos de l'album...</a></li>
-      </ul>
-    </nav>
-  </header>
+<header id="header" id="event-panel">
+  <h1>
+    <a routerLink = "/galeries">
+      <strong>{{ name }}</strong>
+    </a>
+  </h1>
+  <nav (click)="changeStateFooter()">
+    <ul>
+      <li><a class="icon fa-info-circle" style="cursor: pointer">
+        A propos de l'album...
+      </a></li>
+    </ul>
+  </nav>
+</header>
 
 <div id="moderation" *ngIf = "isAdmin">
-  <button id="addFiles" type="button" name="button" (click)="prepareAddFiles()">Ajouter des fichiers</button>
-  <button id="modere" type="button" name="button" (click)="modere()">Modérer</button>
-  <button class="publicprivate" type="button" name="button" *ngIf = "isPublic" (click)="publicPrivate()">Rendre privée</button>
-  <button class="publicprivate" type="button" name="button" *ngIf = "!isPublic" (click)="publicPrivate()">Rendre publique</button>
-  <button id="deleteevent" type="button" name="button" *ngIf = "enModeration" (click)="deleteEvent()">Supprimer la galerie</button>
-  <button id="deletepics" type="button" name="button" *ngIf = "enModeration" (click)="validateDeletionPics()">Supprimer les photos sélectionnées</button>
-  <p *ngIf="!isPublic" style="color: #fff">Cette galerie est privée. Seuls les administrateurs peuvent y accéder.</p>
+  <button id="addFiles" type="button" name="button"
+          (click)="prepareAddFiles()">
+    Ajouter des fichiers
+  </button>
+  <button id="modere" type="button" name="button"
+          (click)="modere()">
+    Modérer
+  </button>
+  <button *ngIf="isPublic"
+          class="publicprivate" type="button" name="button"
+          (click)="publicPrivate()">
+    Rendre privée
+  </button>
+  <button *ngIf="!isPublic"
+          class="publicprivate" type="button" name="button"
+          (click)="publicPrivate()">
+    Rendre publique
+  </button>
+  <button *ngIf="enModeration"
+          id="deleteevent" type="button" name="button"
+          (click)="deleteEvent()">
+    Supprimer la galerie
+  </button>
+  <button *ngIf="enModeration"
+          id="deletepics" type="button" name="button"
+          (click)="validateDeletionPics()">
+    Supprimer les photos sélectionnées
+  </button>
+  <p *ngIf="!isPublic" style="color: #fff">
+    Cette galerie est privée. Seuls les administrateurs peuvent y accéder.
+  </p>
 </div>
-
 
 <ngx-file-picker #uploader
     [totalMaxSize]="1000"
@@ -49,107 +80,121 @@
 
 <!-- Main -->
 
-  <!-- Pictures of the event -->
-  <div id="main" (mouseenter) = "survolePics('visible')"> <!--(mouseleave) = "survolePics('hidden')">-->
-    <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
-      <img (click)="onClickFavPic(i)" style="cursor: pointer; position: absolute;" src="{{ picture.base64 }}" alt="" width="100%"/>
-      <caption>{{ name }}</caption>
-      <button id="deleteButton" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && !deleteState(i)" (click)="moderePic(i)">Supprimer</button>
-      <button id="deleteButtonSelected" type="button" name="button" style="color: #fc3" *ngIf = "enModeration && deleteState(i)" (click)="moderePic(i)">Supprimer</button>
-    </article>
-  </div>
+<!-- Pictures of the event -->
+<div id="main" (mouseenter) = "survolePics('visible')"> <!--(mouseleave) = "survolePics('hidden')">-->
+  <article class="thumb" *ngFor = "let picture of pics; let i = index" [@picsTrigger] = "state(i)">
+    <img (click)="onClickFavPic(i)" style="cursor: pointer; position: absolute;" src="{{ picture.base64 }}" alt="" width="100%"/>
+    <caption>{{ name }}</caption>
+    <button *ngIf="enModeration && !deleteState(i)"
+            id="deleteButton" type="button" name="button" style="color: #fc3"
+            (click)="moderePic(i)">
+      Supprimer
+    </button>
+    <button *ngIf="enModeration && deleteState(i)"
+            id="deleteButtonSelected" type="button" name="button" style="color: #fc3"
+            (click)="moderePic(i)">
+      Supprimer
+    </button>
+  </article>
+</div>
 
-  <!-- Dark background -->
-  <div id="fullBackground"
-       style="width: 100vw; height: 92vh; top:8vh; left:0; background: #242628; position: fixed; z-index: -1"
-       (mouseenter) = "survolePics('visible')" (mouseleave) = "survolePics('hidden')"></div>
+<!-- Dark background -->
+<div id="fullBackground"
+     style="width: 100vw; height: 92vh; top:8vh; left:0; background: #242628; position: fixed; z-index: -1"
+     (mouseenter) = "survolePics('visible')"
+     (mouseleave) = "survolePics('hidden')"></div>
 
 
-  <!-- Image viewer -->
-    <!-- Darken the background -->
-      <div class="darkbg" *ngIf="pic_clicked" (click)="closeWidePic()"></div>
-      
-      <!-- Image enlarged -->
-      <div class="wide-pic"
-           *ngIf="pic_clicked"
-           [style.marginLeft.px]="placePicLeft(imgWide)"
-           [style.marginTop.px]="placePicTop(imgWide)"
+<!-- Image viewer -->
+  <!-- Darken the background -->
+    <div *ngIf="picClicked" class="darkbg" (click)="closeWidePic()"></div>
+
+    <!-- Image enlarged -->
+    <div class="wide-pic"
+         *ngIf="picClicked"
+         [style.marginLeft.px]="placePicLeft(imgWide)"
+         [style.marginTop.px]="placePicTop(imgWide)"
+         (mouseenter)="displayArrows()"
+         (mouseleave)="hideArrows()">
+      <img #imgWide [src]="widePicRef" style="cursor: pointer"/>
+      <caption>{{ captionWidePic }}</caption>
+      <caption id="num_photo">Pic {{ indexPicture+1 }} / {{ pics.length }}</caption>
+
+      <!-- Closer -->
+      <img id="closer"
+           src="../../assets/assets_h/css/images/poptrox-closer.svg"
+           *ngIf="picClicked"
+           (click)="closeWidePic()"
+           [@widePicsAnimation]="showArrows+''"
            (mouseenter)="displayArrows()"
-           (mouseleave)="hideArrows()">
-        <img #imgWide [src]="wide_pic_ref" style="cursor: pointer"/>
-        <caption>{{ caption_wide_pic }}</caption>
-        <caption id="num_photo">Pic {{ index_picture+1 }} / {{ pics.length }}</caption>
+           (mouseleave)="hideArrows()"/>
 
-        <!-- Closer -->
-        <img id="closer"
-             src="../../assets/assets_h/css/images/poptrox-closer.svg"
-             *ngIf="pic_clicked"
-             (click)="closeWidePic()"
-             [@widePicsAnimation]="showArrows+''"
-             (mouseenter)="displayArrows()"
-             (mouseleave)="hideArrows()"/>
-
-        <!-- Navigation arrows -->
-        <img id="right_arrow"
-             src="../../assets/assets_h/css/images/poptrox-nav.svg"
-             *ngIf="pic_clicked"
-             (click)="navRight()"
-             [@widePicsAnimation]="showArrows+''"
-             (mouseenter)="displayArrows()"
-             (mouseleave)="hideArrows()"/>
-        <img id="left_arrow"
-             src="../../assets/assets_h/css/images/poptrox-nav.svg"
-             *ngIf="pic_clicked"
-             (click)="navLeft()"
-             [@widePicsAnimation]="showArrows+''"
-             (mouseenter)="displayArrows()"
-             (mouseleave)="hideArrows()"/>
-      </div>
-
-
-
+      <!-- Navigation arrows -->
+      <img id="right_arrow"
+           src="../../assets/assets_h/css/images/poptrox-nav.svg"
+           *ngIf="picClicked"
+           (click)="navRight()"
+           [@widePicsAnimation]="showArrows+''"
+           (mouseenter)="displayArrows()"
+           (mouseleave)="hideArrows()"/>
+      <img id="left_arrow"
+           src="../../assets/assets_h/css/images/poptrox-nav.svg"
+           *ngIf="picClicked"
+           (click)="navLeft()"
+           [@widePicsAnimation]="showArrows+''"
+           (mouseenter)="displayArrows()"
+           (mouseleave)="hideArrows()"/>
+    </div>
 
 <!-- Footer, revealed when clicking on "A propos de l'album" -->
-  <footer id="footer" class="panel" [@footerTrigger] = "footerState">
-    <div class="inner split">
+<footer id="footer" class="panel" [@footerTrigger] = "footerState">
+  <div class="inner split">
 
-      <!-- General information on the album -->
-      <div>
-        <section>
-          <h2>{{ name }}</h2>
-          <p>{{ resume }}</p>
-        </section>
-        <section>
-          <h2>Suis-nous sur...</h2>
-          <ul class="icons">
-						<li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram"><span class="label">uPont</span></a></li>
-            <li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github"><span class="label">GitHub</span></a></li>
-            <li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-					</ul>
-        </section>
-        <p class="copyright">
-          &copy; Ponthé - Club audiovisuel des Ponts et Chaussées.
-        </p>
-      </div>
-
-      <!-- Contact form -->
-      <div>
-        <section>
-          <h2>Contacte les pros du Ponthé</h2>
-          <form  method="post" [formGroup] = "messageForm" (ngSubmit)="onSubmitMessage()">
-            <div class="fields">
-              <div class="field">
-                <textarea name="message" id="message" rows="4" placeholder="Ton mot doux..." formControlName="message"></textarea>
-              </div>
-            </div>
-            <ul class="actions">
-              <li><input id="submit" type="submit" value="Vive le Ponthé !" class="primary" /></li>
-              <li><input id="reset" type="reset" value="Reset le message" /></li>
-            </ul>
-          </form>
-        </section>
-      </div>
-
+    <!-- General information on the album -->
+    <div>
+      <section>
+        <h2>{{ name }}</h2>
+        <p>{{ resume }}</p>
+      </section>
+      <section>
+        <h2>Suis-nous sur...</h2>
+        <ul class="icons">
+					<li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook">
+            <span class="label">Facebook</span>
+          </a></li>
+					<li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram">
+            <span class="label">uPont</span>
+          </a></li>
+          <li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github">
+            <span class="label">GitHub</span>
+          </a></li>
+          <li><a href="#" class="icon fa-linkedin">
+            <span class="label">LinkedIn</span>
+          </a></li>
+				</ul>
+      </section>
+      <p class="copyright">
+        &copy; Ponthé - Club audiovisuel des Ponts et Chaussées.
+      </p>
     </div>
-  </footer>
+
+    <!-- Contact form -->
+    <div>
+      <section>
+        <h2>Contacte les pros du Ponthé</h2>
+        <form  method="post" [formGroup] = "messageForm" (ngSubmit)="onSubmitMessage()">
+          <div class="fields">
+            <div class="field">
+              <textarea name="message" id="message" rows="4" placeholder="Ton mot doux..." formControlName="message"></textarea>
+            </div>
+          </div>
+          <ul class="actions">
+            <li><input id="submit" type="submit" value="Vive le Ponthé !" class="primary" /></li>
+            <li><input id="reset" type="reset" value="Reset le message" /></li>
+          </ul>
+        </form>
+      </section>
+    </div>
+
+  </div>
+</footer>

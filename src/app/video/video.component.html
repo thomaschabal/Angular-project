@@ -1,6 +1,6 @@
 <div class="spacer"></div>
 
-<div class="loading-spinner" *ngIf='display_spinner' [@spinnerTrigger]='state_spinner'>
+<div class="loading-spinner" *ngIf='displaySpinner' [@spinnerTrigger]='stateSpinner'>
   <img src="assets/images/camera-fast-spinner.svg" alt="Loading..."/>
 </div>
 
@@ -50,12 +50,16 @@
   <div id="main"
        [ngStyle]="{'background-image': 'url(' + film_background + ')', 'background-size': 'cover'}">
     <h2>{{ name }}</h2>
+    <plyr style="display: block; width: 640px;" plyrTitle="Video 1" [plyrSources]="videoSources" (plyrInit)="player = $event"
+ (plyrPlay)="played($event)"></plyr>
+ <div plyr style="width: 640px;" plyrTitle="Video 1" [plyrSources]="videoSources" (plyrInit)="player = $event" (plyrPlay)="played($event)"></div>
     <video src="assets/images/video-auth.mp4" controls poster="assets/images/font1.jpg"></video>
     <div class="triangle_top_left"></div>
     <div class="triangle_bottom_right"></div>
     <div class="triangle_bottom_right_wider"></div>
+    <div class="triangle_bottom_left"></div>
   </div>
-  
+
 
 <!-- Footer, revealed when clicking on "A propos du film" -->
   <footer id="footer" class="panel" [@footerTrigger] = "footerState">

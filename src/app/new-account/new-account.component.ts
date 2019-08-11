@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+
 import { User } from '../models/User.model';
 import { UserService } from '../services/user.service';
-import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-new-account',
@@ -66,24 +66,24 @@ import { Router } from '@angular/router';
     ])
   ]
 })
+
 export class NewAccountComponent implements OnInit {
 
   // Initial state
-  state = "visible1";
+  state = 'visible1';
   indState = 0;
   // Possible states to reach (used in changeFond() )
-  possibleStates = ["visible1", "hidden1",
-                    "visible2", "hidden2",
-                    "visible3", "hidden3",
-                    "visible4", "hidden4"];
+  possibleStates = ['visible1', 'hidden1',
+                    'visible2', 'hidden2',
+                    'visible3', 'hidden3',
+                    'visible4', 'hidden4'];
 
   // Register form defined here
-  userForm : FormGroup;
+  userForm: FormGroup;
 
-
-  constructor(private formBuilder : FormBuilder,
-              private userService : UserService,
-              private router : Router) { }
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
     this.initForm();
@@ -97,19 +97,19 @@ export class NewAccountComponent implements OnInit {
       email : ['', Validators.required],
       promotion : ['', Validators.required],
       password : ['', Validators.required],
-      confirmation_password : ['', Validators.required],
+      confirmationPassword : ['', Validators.required],
     });
   }
 
   // Submission of the registration form
   onSubmitForm() {
     const formValue = this.userForm.value;
-    const newUser = new User(formValue['firstname'],
-                             formValue['lastname'],
-                             formValue['email'],
-                             formValue['promotion'],
-                             formValue['password'],
-                             formValue['confirmation_password']);
+    const newUser = new User(formValue.firstname,
+                             formValue.lastname,
+                             formValue.email,
+                             formValue.promotion,
+                             formValue.password,
+                             formValue.confirmationPassword);
     this.userService.addUser(newUser);
   }
 
@@ -122,5 +122,4 @@ export class NewAccountComponent implements OnInit {
     }
     this.state = this.possibleStates[this.indState];
   }
-
 }

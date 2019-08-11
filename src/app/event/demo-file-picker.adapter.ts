@@ -1,8 +1,8 @@
-import { FilePreviewModel } from 'ngx-awesome-uploader';
+import { FilePreviewModel, FilePickerAdapter } from 'ngx-awesome-uploader';
 import { HttpRequest, HttpClient, HttpEvent, HttpEventType, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { FilePickerAdapter } from 'ngx-awesome-uploader';
+import { map } from 'rxjs/operators';
+
 import { HttpService } from '../services/http.service';
 
 export class DemoFilePickerAdapter extends FilePickerAdapter {
@@ -14,12 +14,12 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   public uploadFile(fileItem: FilePreviewModel) {
     const form = new FormData();
     form.append('file', fileItem.file);
-    const api = this.httpService.apiUrl + '/api/file-upload/' + this.httpService.current_gallery;
+    const api = this.httpService.apiUrl + '/api/file-upload/' + this.httpService.currentGallery;
     const httpOptions = new HttpHeaders({
-        'Access-Control-Allow-Origin': '*',
-        Authorization: 'Bearer ' + this.httpService.token,
-        enctype: 'multipart/form-data'
-      });
+      'Access-Control-Allow-Origin': '*',
+      Authorization: 'Bearer ' + this.httpService.token,
+      enctype: 'multipart/form-data'
+    });
     const req = new HttpRequest('POST', api, form, {headers: httpOptions, reportProgress: true});
     return this.http.request(req)
     .pipe(
@@ -30,12 +30,12 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
           return res;
         }
       })
-      );
+    );
   }
 
-    public removeFile(fileItem: FilePreviewModel): Observable<any> {
-      console.log(fileItem.fileId);
-      const removeApi = 'https://ponthe-testing.enpc.org/api';
-      return this.http.post(removeApi, {id: fileItem.fileId});
-    }
+  public removeFile(fileItem: FilePreviewModel): Observable<any> {
+    console.log(fileItem.fileId);
+    const removeApi = 'https://ponthe-testing.enpc.org/api';
+    return this.http.post(removeApi, {id: fileItem.fileId});
+  }
 }

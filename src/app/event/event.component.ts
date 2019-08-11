@@ -1,20 +1,17 @@
 import { Component, OnInit, OnDestroy, ViewChild, HostListener } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { state, trigger, animate, style, transition } from '@angular/animations';
+import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+
 import { GaleriesService } from '../services/galeries.service';
 import { MessagesService } from '../services/messages.service';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
-import { state, trigger, animate, style, transition } from '@angular/animations';
 import { HttpService } from '../services/http.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
-import { HttpClient } from '@angular/common/http';
 import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
-
-
-
+import { Phrases } from '../Phrases';
 
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
@@ -52,9 +49,7 @@ export enum KEY_CODE {
   ]
 })
 
-
 export class EventComponent implements OnInit, OnDestroy {
-
 
   constructor(private galeriesService: GaleriesService,
               private messagesService: MessagesService,
@@ -69,14 +64,14 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   // Loading Spinner
-  display_spinner : boolean = true;
-  state_spinner : string = 'visible';
+  displaySpinner = true;
+  stateSpinner = 'visible';
 
   private sub: Subscription;
 
   adresse: string;
   pics: any[];
-  raw_pics = [];
+  rawPics = [];
   clicked: boolean;
 
   // About the event
@@ -86,16 +81,16 @@ export class EventComponent implements OnInit, OnDestroy {
   // Index of the picture the user clicked on
   indexViewer: number;
 
-  pic_clicked = false;
-  wide_pic_ref: any;
-  caption_wide_pic: string;
-  index_picture = 0;
+  picClicked = false;
+  widePicRef: any;
+  captionWidePic: string;
+  indexPicture = 0;
 
   // Variables about the user and the current operations on the event
   isAdmin: boolean;
   isPublic = false;
   enModeration = false;
-  selected_route: string;
+  selectedRoute: string;
   clickAddFiles = false;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
@@ -111,35 +106,30 @@ export class EventComponent implements OnInit, OnDestroy {
 
   showArrows = true;
 
-
-
-
-
   // FILE UPLOAD
-
   @ViewChild('uploader') uploader: FilePickerComponent;
   adapter = new DemoFilePickerAdapter(this.httpClient, this.httpService);
   myFiles: FilePreviewModel[] = [];
 
   ngOnInit() {
-    const selected_route = this.activeRoute.snapshot.params.event;
-    this.httpService.current_gallery = selected_route;
+    const selectedRoute = this.activeRoute.snapshot.params.event;
+    this.httpService.currentGallery = selectedRoute;
     // Request of pictures of the event
-    this.galeriesService.getEventByName(selected_route)
+    this.galeriesService.getEventByName(selectedRoute)
     .subscribe(
-      (res: {files, gallery}) => { this.pics = res.files;
-                                   console.log(this.pics);
-                                   const gallery = res.gallery;
-                                   this.name = gallery.name;
-                                   this.resume = gallery.description;
-                 // Define the state of all pictures as not going to be deleted
-                                   for (const pic of res.files) {
-                   this.moderationState.push(false);
-                   this.state_spinner = 'hidden';
-                   setTimeout(()=> { this.display_spinner = false;}, 200);
-                 }
-               },
-      (error) => { console.error(error); }
+      (res: {files, gallery}) => {
+        this.pics = res.files;
+        const gallery = res.gallery;
+        this.name = gallery.name;
+        this.resume = gallery.description;
+        // Define the state of all pictures as not going to be deleted
+        for (const pic of res.files) {
+          this.moderationState.push(false);
+          this.stateSpinner = 'hidden';
+          setTimeout(() => { this.displaySpinner = false; }, 200);
+        }
+      },
+      (error) => { }
     );
     this.adresse = this.activeRoute.snapshot.routeConfig.path;
     this.initForm();
@@ -152,7 +142,7 @@ export class EventComponent implements OnInit, OnDestroy {
         let isPublic = true;
         const liste = res.galleries;
         for (const event of liste) {
-          if (event.slug === this.selected_route) {
+          if (event.slug === this.selectedRoute) {
             isPublic = false;
           }
         }
@@ -162,10 +152,10 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-      if (this.sub) {
-        this.sub.unsubscribe();
-      }
+    if (this.sub) {
+      this.sub.unsubscribe();
     }
+  }
 
   // Initialization of the footer form
   initForm() {
@@ -179,7 +169,7 @@ export class EventComponent implements OnInit, OnDestroy {
   onSubmitMessage() {
     this.messagesService.materialPost(this.messageForm.value).subscribe(
       (res) => { alert('Message envoyé !'); },
-      (error) => { console.error(error); }
+      (error) => { }
     );
   }
 
@@ -191,13 +181,12 @@ export class EventComponent implements OnInit, OnDestroy {
   // Change the state of the gallery to public or private
   publicPrivate() {
     if (this.isPublic) {
-      this.galeriesService.makePrivate(this.selected_route)
+      this.galeriesService.makePrivate(this.selectedRoute)
       .subscribe(
-        (res) => { this.isPublic = !this.isPublic;
-                   console.log(res); }
+        (res) => { this.isPublic = !this.isPublic; }
       );
     } else {
-      this.galeriesService.makePublic(this.selected_route)
+      this.galeriesService.makePublic(this.selectedRoute)
       .subscribe(
         (res) => { this.isPublic = !this.isPublic; }
       );
@@ -208,16 +197,17 @@ export class EventComponent implements OnInit, OnDestroy {
   deleteEvent() {
     if (this.eventDeletionState === 'nothing') {
       this.eventDeletionState = 'nearly deleted';
-      alert('Cette galerie est sur le point d\'être supprimée. Cliquer une ' +
-        'deuxième fois sur \'Supprimer la galerie\' pour valider l\'action.');
+      alert(Phrases['event.deleteGallery.galleryWillBeDeleted']);
     } else {
-      this.galeriesService.deleteEvent(this.selected_route).subscribe(
-        (res) => { alert('La galerie a bien été supprimée.'); this.router.navigate(['/galeries']); },
-        (error) => { console.error(error); }
+      this.galeriesService.deleteEvent(this.selectedRoute).subscribe(
+        (res) => {
+          alert(Phrases['event.deleteGallery.galleryWasDeleted']);
+          this.router.navigate(['/galeries']);
+        },
+        (error) => { }
       );
     }
   }
-
 
   // Tell if a picture is going to be deleted or not
   deleteState(i) {
@@ -243,29 +233,26 @@ export class EventComponent implements OnInit, OnDestroy {
     this.clickAddFiles = !this.clickAddFiles;
   }
 
-
   // Image viewer activated on click
-  onClick(i_selected_pic) {
-    this.raw_pics = [];
-    this.indexViewer = i_selected_pic;
+  onClick(iSelectedPic) {
+    this.rawPics = [];
+    this.indexViewer = iSelectedPic;
 
     // Get the full images, then store them and display
     for (let i = 0; i < this.pics.length; i++) {
       this.galeriesService.getFullImage(this.pics[i].file_path)
       .subscribe(
-        (res: {base64}) => { this.raw_pics[i] = (res.base64); },
-        (error) => { console.error(error); }
+        (res: {base64}) => { this.rawPics[i] = (res.base64); },
+        (error) => { }
       );
     }
     this.clicked = true;
-}
-
-
+  }
 
   //// HOVER ANIMATIONS
-  survolePics(state: string) {
+  survolePics(statePic: string) {
     for (let pic of this.picsState) {
-      pic = state;
+      pic = statePic;
     }
   }
 
@@ -298,13 +285,12 @@ export class EventComponent implements OnInit, OnDestroy {
     this.uploader.removeFileFromList(this.myFiles[0].fileName);
   }
 
-
   uploadFilesToServer() {
     console.log(this.myFiles);
     for (const file of this.myFiles) {
       const form = new FormData();
       form.append('file', file.file);
-      this.httpService.postFiles('/api/file-upload/' + this.selected_route, form)
+      this.httpService.postFiles('/api/file-upload/' + this.selectedRoute, form)
       .subscribe(
         (res) => { console.log(res); },
         (error) => { console.error(error); }
@@ -312,73 +298,64 @@ export class EventComponent implements OnInit, OnDestroy {
     }
   }
 
-
-
-
-
-
-  loadFullImage(i:number, i_selected_pic:number) {
-    if (this.raw_pics[i] === undefined) {
+  loadFullImage(i: number, iSelectedPic: number) {
+    if (this.rawPics[i] === undefined) {
       this.galeriesService.getFullImage(this.pics[i].file_path)
       .subscribe(
         (res: { base64 }) => {
-          this.raw_pics[i] = (res.base64);
-          if (i === i_selected_pic)
-          {
-            this.pic_clicked = true;
-            this.wide_pic_ref = this.raw_pics[i_selected_pic];
-            this.caption_wide_pic = this.name;
-            this.index_picture = i_selected_pic;
-            this.state_spinner='hidden';
-            setTimeout(()=> { this.display_spinner = false;}, 200);
+          this.rawPics[i] = (res.base64);
+          if (i === iSelectedPic) {
+            this.picClicked = true;
+            this.widePicRef = this.rawPics[iSelectedPic];
+            this.captionWidePic = this.name;
+            this.indexPicture = iSelectedPic;
+            this.stateSpinner = 'hidden';
+            setTimeout(() => { this.displaySpinner = false; }, 200);
           }
        },
         (error) => { console.error(error); }
       );
-    }
-    else {
-      if (i === i_selected_pic)
-      {
-        this.pic_clicked = true;
-        this.wide_pic_ref = this.raw_pics[i_selected_pic];
-        this.caption_wide_pic = this.name;
-        this.index_picture = i_selected_pic;
-        this.state_spinner='hidden';
-        setTimeout(()=> { this.display_spinner = false;}, 200);
+    } else {
+      if (i === iSelectedPic) {
+        this.picClicked = true;
+        this.widePicRef = this.rawPics[iSelectedPic];
+        this.captionWidePic = this.name;
+        this.indexPicture = iSelectedPic;
+        this.stateSpinner = 'hidden';
+        setTimeout(() => { this.displaySpinner = false; }, 200);
       }
     }
   }
 
-  loadSeveralFullImages(number_loaded_pictures:number, i_selected_pic:number) {
-    if (this.pics.length <= number_loaded_pictures) {
+  loadSeveralFullImages(numberLoadedPictures: number, iSelectedPic: number) {
+    if (this.pics.length <= numberLoadedPictures) {
       for (let i = 0; i < this.pics.length; i++) {
-        this.loadFullImage(i, i_selected_pic);
+        this.loadFullImage(i, iSelectedPic);
       }
-    }
-    else {
-      for (let i=i_selected_pic; i<i_selected_pic+number_loaded_pictures/2; i++) {
-        if (i<this.pics.length) {
-          this.loadFullImage(i, i_selected_pic);
+    } else {
+      for (let i = iSelectedPic; i < iSelectedPic + numberLoadedPictures / 2; i++) {
+        if (i < this.pics.length) {
+          this.loadFullImage(i, iSelectedPic);
         } else {
-          this.loadFullImage(i-this.pics.length, i_selected_pic);
+          this.loadFullImage(i - this.pics.length, iSelectedPic);
         }
       }
-      for (let i=i_selected_pic-1; i>i_selected_pic-number_loaded_pictures/2; i--) {
-        if (i>=0) {
-          this.loadFullImage(i, i_selected_pic);
+      for (let i = iSelectedPic - 1; i > iSelectedPic - numberLoadedPictures / 2; i--) {
+        if (i >= 0) {
+          this.loadFullImage(i, iSelectedPic);
         } else {
-          this.loadFullImage(i+this.pics.length, i_selected_pic);
+          this.loadFullImage(i + this.pics.length, iSelectedPic);
         }
       }
     }
   }
 
-  onClickFavPic(i_selected_pic: number) {
-    this.indexViewer = i_selected_pic;
-    this.display_spinner=true;
-    this.state_spinner='visible';
+  onClickFavPic(iSelectedPic: number) {
+    this.indexViewer = iSelectedPic;
+    this.displaySpinner = true;
+    this.stateSpinner = 'visible';
 
-    this.loadSeveralFullImages(20, i_selected_pic);
+    this.loadSeveralFullImages(20, iSelectedPic);
 
     this.clicked = true;
 
@@ -390,11 +367,10 @@ export class EventComponent implements OnInit, OnDestroy {
     document.getElementById('footer').style.display = 'none';
   }
 
-
   closeWidePic() {
-    this.pic_clicked = false;
-    this.wide_pic_ref = null;
-    this.index_picture = null;
+    this.picClicked = false;
+    this.widePicRef = null;
+    this.indexPicture = null;
 
     // Remove the blurred background
     document.getElementById('header').style.display = 'block';
@@ -404,12 +380,11 @@ export class EventComponent implements OnInit, OnDestroy {
     document.getElementById('footer').style.display = 'block';
   }
 
-
   // Host Listener for the image viewer
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
 
-    if (this.pic_clicked) {
+    if (this.picClicked) {
       if (event.keyCode === KEY_CODE.LEFT_ARROW) {
         this.navLeft();
       } else {
@@ -425,23 +400,19 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   navLeft() {
-    this.index_picture = this.index_picture - 1;
-
-    if (this.index_picture < 0) {
-      this.index_picture += this.raw_pics.length;
+    this.indexPicture = this.indexPicture - 1;
+    if (this.indexPicture < 0) {
+      this.indexPicture += this.rawPics.length;
     }
-
-    this.loadSeveralFullImages(20, this.index_picture);
-    this.wide_pic_ref = this.raw_pics[this.index_picture];
+    this.loadSeveralFullImages(20, this.indexPicture);
+    this.widePicRef = this.rawPics[this.indexPicture];
     // document.getElementById('wide-pic').style.marginLeft.px=this.placePicLeft(imgWide);
   }
 
   navRight() {
-    this.index_picture = (this.index_picture + 1) % (this.raw_pics.length);
-
-    this.loadSeveralFullImages(20, this.index_picture);
-
-    this.wide_pic_ref = this.raw_pics[this.index_picture];
+    this.indexPicture = (this.indexPicture + 1) % (this.rawPics.length);
+    this.loadSeveralFullImages(20, this.indexPicture);
+    this.widePicRef = this.rawPics[this.indexPicture];
   }
 
   // Show or hide arrows for the enlarged pics when hovered
@@ -460,5 +431,4 @@ export class EventComponent implements OnInit, OnDestroy {
   placePicTop(img) {
     return ( (window.innerHeight - img.clientHeight) / 2 );
   }
-
 }

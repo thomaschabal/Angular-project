@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -11,10 +12,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class AuthComponent implements OnInit {
 
   // Authentification form defined here
-  userForm : FormGroup;
+  userForm: FormGroup;
 
-  constructor(private authService : AuthService,
-              private formBuilder : FormBuilder) { }
+  constructor(private authService: AuthService,
+              private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.initForm();
@@ -32,5 +33,4 @@ export class AuthComponent implements OnInit {
   onSignIn() {
     this.authService.signIn(this.userForm.value);
   }
-
 }

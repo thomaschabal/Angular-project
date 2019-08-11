@@ -9,18 +9,18 @@ body {
 }
 
 #main .thumb > .image {
-				-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-				background-position: center;
-				background-repeat: no-repeat;
-				background-size: cover;
-				vertical-align: middle;
-				border: 0;
-				height: 100%;
-				left: 0;
-				position: absolute;
-				top: 0;
-				width: 100%;
-			}
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	vertical-align: middle;
+	border: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
 
 #private {
 	width: 5em;
@@ -51,6 +51,7 @@ body {
 	position: fixed;
 	background: rgb(36,38,41);
 }
+
 .loading-spinner img {
 	display: block;
 	position: fixed;

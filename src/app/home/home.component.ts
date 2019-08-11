@@ -1,15 +1,16 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { transition, trigger, style, animate, state } from '@angular/animations';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+
+import { AuthService } from '../services/auth.service';
 import { HomeService } from '../services/home.service';
 import { HttpService } from '../services/http.service';
 import { MessagesService } from '../services/messages.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../services/auth.service'
-import { filter } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
-import { transition, trigger, style, animate, state } from "@angular/animations";
-import { Router } from '@angular/router';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { Phrases } from '../Phrases';
 
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
@@ -53,27 +54,28 @@ export enum KEY_CODE {
     ]),
   ]
 })
+
 export class HomeComponent implements OnInit, OnDestroy {
 
   // Data to show to the user
-  last_events : any[];
-  love_pics : any[];
+  lastEvents: any[];
+  lovePics: any[];
 
-  pic_clicked = false;
-  wide_pic_ref : string;
-  caption_wide_pic: string;
+  picClicked = false;
+  widePicRef: string;
+  captionWidePic: string;
 
   // Routes to galeries regarding 3 last events
-  adresse_1 : string;
-  adresse_2 : string;
-  adresse_3 : string;
+  adresse1: string;
+  adresse2: string;
+  adresse3: string;
 
-  image1 : SafeStyle;
+  image1: SafeStyle;
 
-  private sub : Subscription;
+  private sub: Subscription;
 
   // Form to send a message to the admins of the site
-  messageForm : FormGroup;
+  messageForm: FormGroup;
 
   // State of various sections of the page (e.g. if the section is being hovered or not)
   introState = 'hidden';
@@ -86,54 +88,58 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   showArrows = true;
 
-  constructor(private homeService : HomeService,
-              private httpService : HttpService,
-              private messagesService : MessagesService,
-              private activeRoute : ActivatedRoute,
-              private router : Router,
-              private formBuilder : FormBuilder,
-              private authService : AuthService,
-              private sanitizer : DomSanitizer) {
+  indexPicture: number;
+
+  constructor(private homeService: HomeService,
+              private httpService: HttpService,
+              private messagesService: MessagesService,
+              private activeRoute: ActivatedRoute,
+              private router: Router,
+              private formBuilder: FormBuilder,
+              private authService: AuthService,
+              private sanitizer: DomSanitizer) {
                 // Smooth transitions on arrow clicks
-                this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' }));
-              };
+                this.sub = activeRoute.fragment.pipe(filter(f => !!f))
+                  .subscribe(
+                    f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
+                  );
+  }
 
   ngOnInit() {
     // Requests to the server, update of previous data
-    this.last_events = this.homeService.last_events;
-    this.love_pics = this.homeService.love_pics;
-    this.adresse_1 = this.last_events[0].fond;
-    this.adresse_2 = this.last_events[1].fond;
-    this.adresse_3 = this.last_events[2].fond;
+    this.lovePics = this.homeService.lovePics;
+    this.adresse1 = this.lastEvents[0].fond;
+    this.adresse2 = this.lastEvents[1].fond;
+    this.adresse3 = this.lastEvents[2].fond;
     this.initForm();
     this.homeService.getLatestGalleries()
-    .subscribe(
-      (res : { galleries }) => {
-        const lastEvents = res.galleries;
-        const idEvents = ["one", "two", "three", "coeur"];
-        for (let i=0; i<lastEvents.length; i++) {
-          this.last_events[i] = {
-            "name": lastEvents[i]["name"],
-            "fond": lastEvents[i]["image"],
-            "routing": lastEvents[i]["slug"],
-            "event_id": idEvents[i],
-            "next_event_id": idEvents[i+1],
-            "resume": "Pas de description pour l'instant."
-          };
-        }
+      .subscribe(
+        (res: { galleries }) => {
+          const lastEvents = res.galleries;
+          const idEvents = ['one', 'two', 'three', 'coeur'];
+          for (let i = 0; i < lastEvents.length; i++) {
+            this.lastEvents[i] = {
+              name: lastEvents[i].name,
+              fond: lastEvents[i].image,
+              routing: lastEvents[i].slug,
+              event_id: idEvents[i],
+              next_event_id: idEvents[i + 1],
+              resume: Phrases['home.noDescription']
+            };
+          }
      },
-      (error) => { console.error(error); }
+      (error) => { }
     );
     if (window.innerWidth > 736) {
-      this.lastEventsState1 = "hidden-mid-left";
-      this.lastEventsState2 = "hidden-mid-right";
-      this.lastEventsState3 = "hidden-mid-left";
+      this.lastEventsState1 = 'hidden-mid-left';
+      this.lastEventsState2 = 'hidden-mid-right';
+      this.lastEventsState3 = 'hidden-mid-left';
     }
   }
 
   public ngOnDestroy(): void {
-      if(this.sub) this.sub.unsubscribe();
-    }
+    if (this.sub) { this.sub.unsubscribe(); }
+  }
 
   // Initialisation of the contact form
   initForm() {
@@ -145,68 +151,61 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Submission of the contact form
   onSubmitMessage() {
     console.log(this.messageForm);
-    if (this.messageForm.value["message"] !== '') {
+    if (this.messageForm.value.message !== '') {
       this.messagesService.materialPost(this.messageForm.value).subscribe(
-        (res) => { alert("Message envoyé !"); },
-        (error) => { console.error(error); }
+        (res) => { alert(Phrases['messages.sent']); },
+        (error) => { }
       );
     }
   }
 
-
   //// DISPLAY OF THE COMPONENTS, ANIMATIONS ON HOVER
-  index_picture : number;
-
-  onClickFavPic(i : number) {
-    this.pic_clicked = true;
-    this.wide_pic_ref = this.love_pics[i]["address"];
-    this.caption_wide_pic = this.love_pics[i]["title"];
-    this.index_picture = i;
+  onClickFavPic(i: number) {
+    this.picClicked = true;
+    this.widePicRef = this.lovePics[i].address;
+    this.captionWidePic = this.lovePics[i].title;
+    this.indexPicture = i;
 
     // Have a blurred background when the image viewer is active
-    document.getElementById('header').style.display = "none";
-    document.getElementById('intro').style.filter = "blur(8px)";
-    for (let event = 0; event<this.last_events.length; event++) {
-      document.getElementById(this.last_events[event]["event_id"]).style.filter = "blur(8px)";
+    document.getElementById('header').style.display = 'none';
+    document.getElementById('intro').style.filter = 'blur(8px)';
+    for (let event = 0; event < this.lastEvents.length; event++) {
+      document.getElementById(this.lastEvents[event].event_id).style.filter = 'blur(8px)';
     }
-    document.getElementById('header-content').style.filter = "blur(8px)";
-    document.getElementById('gallery-pics').style.filter = "blur(8px)";
-    document.getElementById('contact').style.filter = "blur(8px)";
-    document.getElementById('footer').style.filter = "blur(8px)";
+    document.getElementById('header-content').style.filter = 'blur(8px)';
+    document.getElementById('gallery-pics').style.filter = 'blur(8px)';
+    document.getElementById('contact').style.filter = 'blur(8px)';
+    document.getElementById('footer').style.filter = 'blur(8px)';
   }
 
   closeWidePic() {
-    this.pic_clicked = false;
-    this.wide_pic_ref = null;
-    this.index_picture = null;
+    this.picClicked = false;
+    this.widePicRef = null;
+    this.indexPicture = null;
 
     // Remove the blurred background
-    document.getElementById('header').style.display = "block";
-    document.getElementById('intro').style.filter = "none";
-    for (let event = 0; event<this.last_events.length; event++) {
-      document.getElementById(this.last_events[event]["event_id"]).style.filter = "none";
+    document.getElementById('header').style.display = 'block';
+    document.getElementById('intro').style.filter = 'none';
+    for (let event = 0; event < this.lastEvents.length; event++) {
+      document.getElementById(this.lastEvents[event].event_id).style.filter = 'none';
     }
-    document.getElementById('header-content').style.filter = "none";
-    document.getElementById('gallery-pics').style.filter = "none";
-    document.getElementById('contact').style.filter = "none";
-    document.getElementById('footer').style.filter = "none";
+    document.getElementById('header-content').style.filter = 'none';
+    document.getElementById('gallery-pics').style.filter = 'none';
+    document.getElementById('contact').style.filter = 'none';
+    document.getElementById('footer').style.filter = 'none';
   }
 
 
   // Host Listener for the image viewer
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    console.log(event);
-
-    if (this.pic_clicked) {
+    if (this.picClicked) {
       if (event.keyCode === KEY_CODE.LEFT_ARROW) {
         this.navLeft();
-      }
-      else {
+      } else {
         if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
           this.navRight();
-        }
-        else {
+        } else {
           if (event.keyCode === KEY_CODE.ESCAPE) {
             this.closeWidePic();
           }
@@ -216,115 +215,108 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   navLeft() {
-    this.index_picture = this.index_picture -1;
-    if (this.index_picture <0) {
-      this.index_picture += this.love_pics.length;
+    this.indexPicture = this.indexPicture - 1;
+    if (this.indexPicture < 0) {
+      this.indexPicture += this.lovePics.length;
     }
-    this.wide_pic_ref = this.love_pics[this.index_picture]["address"];
-    this.caption_wide_pic = this.love_pics[this.index_picture]["title"];
+    this.widePicRef = this.lovePics[this.indexPicture].address;
+    this.captionWidePic = this.lovePics[this.indexPicture].title;
   }
 
   navRight() {
-    this.index_picture = (this.index_picture +1)%(this.love_pics.length);
-    this.wide_pic_ref = this.love_pics[this.index_picture]["address"];
-    this.caption_wide_pic = this.love_pics[this.index_picture]["title"];
+    this.indexPicture = (this.indexPicture + 1) % (this.lovePics.length);
+    this.widePicRef = this.lovePics[this.indexPicture].address;
+    this.captionWidePic = this.lovePics[this.indexPicture].title;
   }
 
-
-
   // Information on the positioning of elements
-  placement_events(i : number) {
-    if (i%2 === 0) {
-      return "right";
+  placement_events(i: number) {
+    if (i % 2 === 0) {
+      return 'right';
     } else {
-      return "left";
+      return 'left';
     }
   }
 
-  placement_love_pics(i : number) {
-    if (i%2 === 0) {
-      return "from-left";
+  placementLovePics(i: number) {
+    if (i % 2 === 0) {
+      return 'from-left';
     } else {
-      return "from-right";
+      return 'from-right';
     }
   }
 
 
   // Update animations when hovering elements
-  survoleIntro(state : string) {
-    this.introState = state;
+  survoleIntro(stateIntro: string) {
+    this.introState = stateIntro;
   }
 
-  survoleEvent(state : string, i : number){
-    if (state === "visible") {
+  survoleEvent(stateEvent: string, i: number) {
+    if (stateEvent === 'visible') {
       if (i === 0) {
-        this.lastEventsState1 = state;
+        this.lastEventsState1 = stateEvent;
       } else {
         if (i === 1) {
-          this.lastEventsState2 = state;
-        }
-        else {
-          this.lastEventsState3 = state;
-        }
-      }
-    } else {
-      if (i === 0) {
-        if (window.innerWidth<=736) {
-          this.lastEventsState1 = "hidden-left";
+          this.lastEventsState2 = stateEvent;
         } else {
-          this.lastEventsState1 = "hidden-mid-left";
+          this.lastEventsState3 = stateEvent;
+        }
+      }
+    } else {
+      if (i === 0) {
+        if (window.innerWidth <= 736) {
+          this.lastEventsState1 = 'hidden-left';
+        } else {
+          this.lastEventsState1 = 'hidden-mid-left';
         }
       } else {
         if (i === 1) {
-          if (window.innerWidth<=736) {
-            this.lastEventsState2 = "hidden-right";
+          if (window.innerWidth <= 736) {
+            this.lastEventsState2 = 'hidden-right';
           } else {
-            this.lastEventsState2 = "hidden-mid-right";
+            this.lastEventsState2 = 'hidden-mid-right';
           }
-        }
-        else {
-          if (window.innerWidth<=736) {
-            this.lastEventsState3 = "hidden-left";
+        } else {
+          if (window.innerWidth <= 736) {
+            this.lastEventsState3 = 'hidden-left';
           } else {
-            this.lastEventsState3 = "hidden-mid-left";
+            this.lastEventsState3 = 'hidden-mid-left';
           }
         }
       }
     }
   }
 
-  survoleCoeur(state : string){
-    if (state === "visible") {
-      this.lovePicsStateLeft = state;
-      this.lovePicsStateRight = state;
+  survoleCoeur(stateLovePics: string) {
+    if (stateLovePics === 'visible') {
+      this.lovePicsStateLeft = stateLovePics;
+      this.lovePicsStateRight = stateLovePics;
     } else {
-      this.lovePicsStateLeft = "hidden-left";
-      this.lovePicsStateRight = "hidden-right";
+      this.lovePicsStateLeft = 'hidden-left';
+      this.lovePicsStateRight = 'hidden-right';
     }
   }
 
-  survoleForm(state : string) {
-    this.formState = state;
+  survoleForm(stateForm: string) {
+    this.formState = stateForm;
   }
-
-
 
   // Return whether elements are being hovered or not
-  currentStateEvent(i : number) {
+  currentStateEvent(i: number) {
     if (i === 0) {
       return this.lastEventsState1;
     } else {
       if (i === 1) {
         return this.lastEventsState2;
-      }
-      else {
+      } else {
         return this.lastEventsState3;
       }
     }
   }
 
-  currentStateLovePics(i : number) {
-    if (i%2 === 0) {
+  currentStateLovePics(i: number) {
+    if (i % 2 === 0) {
       return this.lovePicsStateLeft;
     } else {
       return this.lovePicsStateRight;
@@ -339,5 +331,4 @@ export class HomeComponent implements OnInit, OnDestroy {
   hideArrows() {
     this.showArrows = false;
   }
-
 }

@@ -1,20 +1,25 @@
 <!-- Contact -->
-  <section id="contact" class="main style3 secondary" (mouseenter) = "survoleForm('visible')" (mouseleave) = "survoleForm('hidden')">
-    <div class="content">
-      <header>
-        <h2>Demande de prêt de matériel du Ponthé</h2>
-        <p>Remplis ce formulaire pour emprunter du matériel au Ponthé ! Explique nous rapidement ton projet afin que l'on puisse te conseiller au mieux ;)</p>
-      </header>
-      <div class="box" [@formTrigger] = "formState">
-        <form>
-          <div class="fields" [formGroup] = "materialForm" (ngSubmit) = "onSubmitMateriel()">
-            <div class="field"><input type="text" name="matos" placeholder="Tu souhaites ? L'appareil GH4, le micro, le trépied fixe, le stabilisateur, la GoPro, le drone..." formControlName = "matos"/></div>
-            <div class="field"><textarea name="message" placeholder="Explique nous brièvement ton projet..." rows="4" formControlName = "message"></textarea></div>
-          </div>
-          <ul class="actions special">
-            <li><input type="submit" value="Merci le Ponthé" (click) = "onSubmitMateriel()" [disabled]="materialForm.invalid"/></li>
-          </ul>
-        </form>
-      </div>
+<section id="contact" class="main style3 secondary"
+         (mouseenter) = "survoleForm('visible')"
+         (mouseleave) = "survoleForm('hidden')">
+  <div class="content">
+    <header>
+      <h2>Demande de prêt de matériel du Ponthé</h2>
+      <p>
+        Remplis ce formulaire pour emprunter du matériel au Ponthé !
+        Explique nous rapidement ton projet afin que l'on puisse te conseiller au mieux ;)
+      </p>
+    </header>
+    <div class="box" [@formTrigger] = "formState">
+      <form>
+        <div class="fields" [formGroup] = "materialForm" (ngSubmit) = "onSubmitMateriel()">
+          <div class="field"><input type="text" name="matos" placeholder="Tu souhaites ? L'appareil GH4, le micro, le trépied fixe, le stabilisateur, la GoPro, le drone..." formControlName = "matos"/></div>
+          <div class="field"><textarea name="message" placeholder="Explique nous brièvement ton projet..." rows="4" formControlName = "message"></textarea></div>
+        </div>
+        <ul class="actions special">
+          <li><input type="submit" value="Merci le Ponthé" (click) = "onSubmitMateriel()" [disabled]="materialForm.invalid"/></li>
+        </ul>
+      </form>
     </div>
-  </section>
+  </div>
+</section>

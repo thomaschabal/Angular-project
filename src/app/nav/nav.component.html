@@ -1,24 +1,34 @@
 <!-- Header -->
-  <header id="header" *ngIf = "isOnline()">
-    <!-- Logo -->
-    <a routerLink = '/home'><img src="assets/images/logo-ponthe.svg" alt="Le Ponthé" id="logo" /></a>
-    <!-- Title -->
-    <h1 *ngIf="isWideEnough()"><a routerLink = '/home'>Le Ponthé - Club audiovisuel des Ponts</a></h1>
-    <a routerLink = '/home'><h1 *ngIf="!isWideEnough()">Le Ponthé</h1></a>
+<header id="header" *ngIf = "isOnline()">
+  <!-- Logo -->
+  <a routerLink = '/home'><img src="assets/images/logo-ponthe.svg" alt="Le Ponthé" id="logo" /></a>
+  <!-- Title -->
+  <h1 *ngIf="isWideEnough()"><a routerLink = '/home'>Le Ponthé - Club audiovisuel des Ponts</a></h1>
+  <a routerLink = '/home'><h1 *ngIf="!isWideEnough()">Le Ponthé</h1></a>
 
-    <!-- Navigation on the website -->
-    <nav>
-      <ul>
-        <li *ngIf="!isNarrowWindow()"><a routerLink = '/galeries'>Galeries</a></li>
-        <li *ngIf="isNarrowWindow()"><a routerLink = '/galeries'><img src="assets/images/svg_pics.svg" alt="Galeries" class="svg_links"></a></li>
-        <li *ngIf="!isNarrowWindow()"><a routerLink = '/dashboard' *ngIf = "isAdmin()">Tableau de bord</a></li>
-        <li *ngIf="isNarrowWindow()"><a routerLink = '/dashboard' *ngIf = "isAdmin()"><img src="assets/images/svg_dashboard.svg" alt="Tableau de bord" class="svg_links"></a></li>
-        <li *ngIf="!isNarrowWindow()"><a routerLink = '/members'>Membres</a></li>
-        <li *ngIf="isNarrowWindow()"><a routerLink = '/members'><img src="assets/images/svg_members.svg" alt="Members" class="svg_links"></a></li>
-        <li *ngIf="!isNarrowWindow()"><a routerLink = '/material'>Matériel</a></li>
-        <li *ngIf="isNarrowWindow()"><a routerLink = '/material'><img src="assets/images/svg_matos.svg" alt="Matériel" class="svg_links"></a></li>
-        <li *ngIf="!isNarrowWindow()"><a routerLink = '/auth' (click) = "onSignOut()">Déconnexion</a></li>
-        <li *ngIf="isNarrowWindow()"><a routerLink = '/auth' (click) = "onSignOut()"><img src="assets/images/svg_logout.svg" alt="Déconnexion" class="svg_links"></a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Navigation on the website -->
+  <nav>
+    <ul>
+      <li *ngIf="!isNarrowWindow()"><a routerLink='/galeries'>Galeries</a></li>
+      <li *ngIf="isNarrowWindow()"><a routerLink='/galeries'>
+        <img src="assets/images/svg_pics.svg" alt="Galeries" class="svg_links" />
+      </a></li>
+      <li *ngIf="!isNarrowWindow()"><a routerLink='/dashboard' *ngIf = "isAdmin()">Tableau de bord</a></li>
+      <li *ngIf="isNarrowWindow()"><a routerLink='/dashboard' *ngIf = "isAdmin()">
+        <img src="assets/images/svg_dashboard.svg" alt="Tableau de bord" class="svg_links" />
+      </a></li>
+      <li *ngIf="!isNarrowWindow()"><a routerLink='/members'>Membres</a></li>
+      <li *ngIf="isNarrowWindow()"><a routerLink='/members'>
+        <img src="assets/images/svg_members.svg" alt="Members" class="svg_links" />
+      </a></li>
+      <li *ngIf="!isNarrowWindow()"><a routerLink='/material'>Matériel</a></li>
+      <li *ngIf="isNarrowWindow()"><a routerLink='/material'>
+        <img src="assets/images/svg_matos.svg" alt="Matériel" class="svg_links" />
+      </a></li>
+      <li *ngIf="!isNarrowWindow()"><a routerLink='/auth' (click) = "onSignOut()">Déconnexion</a></li>
+      <li *ngIf="isNarrowWindow()"><a routerLink='/auth' (click) = "onSignOut()">
+        <img src="assets/images/svg_logout.svg" alt="Déconnexion" class="svg_links" />
+      </a></li>
+    </ul>
+  </nav>
+</header>

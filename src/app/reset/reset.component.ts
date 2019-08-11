@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../services/user.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+
+import { UserService } from '../services/user.service';
+import { Phrases } from '../Phrases';
 
 @Component({
   selector: 'app-reset',
@@ -69,21 +71,21 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class ResetComponent implements OnInit {
 
   // Initial state
-  state = "visible1";
+  state = 'visible1';
   indState = 0;
   // Possible states to reach (used in changeFond() )
-  possibleStates = ["visible1", "hidden1",
-                    "visible2", "hidden2",
-                    "visible3", "hidden3",
-                    "visible4", "hidden4"];
+  possibleStates = ['visible1', 'hidden1',
+                    'visible2', 'hidden2',
+                    'visible3', 'hidden3',
+                    'visible4', 'hidden4'];
 
   // Reset form defined here
-  resetForm : FormGroup;
+  resetForm: FormGroup;
 
 
-  constructor(private formBuilder : FormBuilder,
-              private router : Router,
-              private userService : UserService) { }
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.initForm();
@@ -98,10 +100,10 @@ export class ResetComponent implements OnInit {
 
   // Submission of the reset form
   onSubmitForm() {
-    this.resetForm.value["email"] = this.resetForm.value["email"] + '@eleves.enpc.fr';
+    this.resetForm.value.email = this.resetForm.value.email + '@eleves.enpc.fr';
     this.userService.resetUser(this.resetForm.value).subscribe(
-      (res) => { alert("Un mail t'a été envoyé !"); },
-      (error) => { console.error(error); }
+      (res) => { alert(Phrases['reset.sentEmail']); },
+      (error) => { }
     );
     this.router.navigate(['/auth']);
   }
@@ -115,5 +117,4 @@ export class ResetComponent implements OnInit {
     }
     this.state = this.possibleStates[this.indState];
   }
-
 }

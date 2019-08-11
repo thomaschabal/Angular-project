@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { state, style, transition, animate, trigger } from '@angular/animations';
+
 import { MessagesService } from '../services/messages.service';
+import { Phrases } from '../Phrases';
 
 @Component({
   selector: 'app-material',
@@ -20,10 +22,11 @@ import { MessagesService } from '../services/messages.service';
 export class MaterialComponent implements OnInit {
 
   // Form for material booking
-  materialForm : FormGroup;
+  materialForm: FormGroup;
+  formState = 'visible';
 
-  constructor(private formBuilder : FormBuilder,
-              private messagesService : MessagesService) { }
+  constructor(private formBuilder: FormBuilder,
+              private messagesService: MessagesService) { }
 
   ngOnInit() {
     this.initForm();
@@ -40,17 +43,14 @@ export class MaterialComponent implements OnInit {
   // Submission of the form
   onSubmitMateriel() {
     this.messagesService.materialPost(this.materialForm.value).subscribe(
-      (res) => { alert("Message envoyé !"); },
+      (res) => { alert(Phrases['messages.sent']); },
       (error) => { console.error(error); }
     );
   }
 
   //// DISPLAYING THE FORM
   // State of the form of the page (e.g. if the section is being hovered or not)
-  formState = 'visible';
-
-  survoleForm(state : string) {
-    this.formState = state;
+  survoleForm(stateForm: string) {
+    this.formState = stateForm;
   }
-
 }
