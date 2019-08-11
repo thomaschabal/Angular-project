@@ -1,17 +1,16 @@
 import { HttpService } from './http.service';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class GaleriesService {
   galeriesEvents: any[];
+  privateGalleries: any[];
 
   eventPics: any[];
 
   pic: any;
 
-  constructor(private httpService: HttpService,
-              private httpClient: HttpClient) {
+  constructor(private httpService: HttpService) {
     // Request to get the list of all public events
     const requestResult = httpService.get('/api/get-all-galleries')
     .subscribe(
@@ -20,6 +19,22 @@ export class GaleriesService {
       },
       (error) => { }
     );
+    this.getPrivateEvents().subscribe(
+      (res: {galleries}) => {
+        this.privateGalleries = res.galleries;
+      }
+    );
+  }
+
+  // Determine whether the gallery is public or private
+  isPublicOrPrivate(routeGallery: string) {
+    let isPublic = true;
+    for (const event of this.privateGalleries) {
+      if (event.slug === routeGallery) {
+        isPublic = false;
+      }
+    }
+    return isPublic;
   }
 
   // Delete an event

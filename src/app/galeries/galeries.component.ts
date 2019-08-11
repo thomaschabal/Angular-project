@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
 import { GaleriesService } from '../services/galeries.service';
 import { HttpService } from '../services/http.service';
 

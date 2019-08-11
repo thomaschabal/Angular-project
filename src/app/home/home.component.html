@@ -12,25 +12,25 @@
     Tu pourras également déposer tes propres photos et vidéos dans chaque <strong>galerie</strong>. <br/>
     Bon visionnage !</p>
     <footer>
-      <a routerLink="/home" fragment = "one" class="button style2 down">More</a>
+      <a routerLink="/home" fragment="one" class="button style2 down">More</a>
     </footer>
   </div>
 </section>
 
 <!-- 3 Last Events -->
-<section *ngFor = "let event of lastEvents; let i = index"
+<section *ngFor="let event of lastEvents; let i = index"
           id="{{ event.event_id }}"
           class="main style2 {{ placement_events(i) }} dark fullscreen"
           (mouseenter)='survoleEvent("visible", i)'
           (mouseleave)='survoleEvent("hidden", i)'
-          [ngStyle] = "{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
+          [ngStyle]="{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
   <!-- <img src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
   <div class="content box style2"
        [@lastEventTrigger]="currentStateEvent(i)">
     <header>
-      <h2><a routerLink="/galeries/{{ event.routing }}">{{ event.name }}</a></h2>
+      <h2><a routerLink="/galeries/pics/{{ event.routing }}">{{ event.name }}</a></h2>
     </header>
-    <p><a routerLink="/galeries/{{ event.routing }}">{{ event.resume }}</a></p>
+    <p><a routerLink="/galeries/pics/{{ event.routing }}">{{ event.resume }}</a></p>
   </div>
   <a routerLink="/home" fragment="{{ event.next_event_id }}" class="button style2 down anchored">Next</a>
 </section>
@@ -45,7 +45,7 @@
     </header>
     <!-- Pics  -->
     <div class="gallery" id="gallery-pics">
-      <article *ngFor = "let pic of lovePics; let i = index"
+      <article *ngFor="let pic of lovePics; let i = index"
                 class="{{ placementLovePics(i) }}"
                 [@lovePicsTrigger]="currentStateLovePics(i)">
         <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}"

@@ -1,0 +1,20 @@
+<ngx-file-picker #uploader
+  [totalMaxSize]="1000"
+  [fileMaxCount]="250"
+  [fileMaxSize]="1000"
+  [uploadType]="'multi'"
+  (validationError)= "onValidationError($event)"
+  [adapter]="adapter"
+  [fileExtensions]="['pdf', 'jpg', 'JPG', 'jpeg', 'png', 'mp4', 'docx', 'mov', 'avi']"
+  [enableCropper]="false"
+  (uploadSuccess)="onUploadSuccess($event)"
+  (removeSuccess)="onRemoveSuccess($event)"
+  [showeDragDropZone]="true"
+  [showPreviewContainer]="true"
+  (fileAdded)="onFileAdded($event)"
+  style="margin-bottom: 2vh;"
+>
+</ngx-file-picker>
+<!-- <button type="button" name="button"
+        *ngIf="clickAddFiles"
+        (click)="uploadFilesToServer()">Uploader les fichiers</button> -->

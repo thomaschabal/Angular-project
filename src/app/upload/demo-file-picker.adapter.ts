@@ -30,12 +30,12 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
           return res;
         }
       })
-      );
+    );
   }
 
-    public removeFile(fileItem: FilePreviewModel): Observable<any> {
-      console.log(fileItem.fileId);
-      const removeApi = 'https://ponthe-testing.enpc.org/api';
-      return this.http.post(removeApi, {id: fileItem.fileId});
-    }
+  public removeFile(fileItem: FilePreviewModel): Observable<any> {
+    console.log(fileItem.fileId);
+    const removeApi = 'https://ponthe-testing.enpc.org/api';
+    return this.http.post(removeApi, {id: fileItem.fileId});
+  }
 }

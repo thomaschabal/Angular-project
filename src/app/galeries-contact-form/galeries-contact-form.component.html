@@ -1,0 +1,17 @@
+<!-- Contact form -->
+<div>
+  <section>
+    <h2>Contacte les pros du Ponthé</h2>
+    <form method="post" [formGroup]="messageForm" (ngSubmit)="onSubmitMessage()">
+      <div class="fields">
+        <div class="field">
+          <textarea name="message" id="message" rows="4" placeholder="Ton mot doux..." formControlName="message"></textarea>
+        </div>
+      </div>
+      <ul class="actions">
+        <li><input id="submit" type="submit" value="Vive le Ponthé !" class="primary" /></li>
+        <li><input id="reset" type="reset" value="Reset le message" /></li>
+      </ul>
+    </form>
+  </section>
+</div>

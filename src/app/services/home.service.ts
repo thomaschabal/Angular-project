@@ -4,6 +4,11 @@ import { HttpService } from './http.service';
 
 @Injectable()
 export class HomeService {
+  lastEvents = [
+    {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''},
+    {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''},
+    {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''}
+  ];
   lovePics = [
     {
       title : 'Rugby',

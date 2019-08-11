@@ -107,6 +107,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Requests to the server, update of previous data
+    this.lastEvents = this.homeService.lastEvents;
     this.lovePics = this.homeService.lovePics;
     this.adresse1 = this.lastEvents[0].fond;
     this.adresse2 = this.lastEvents[1].fond;

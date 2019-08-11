@@ -1,0 +1,21 @@
+@import url("../../assets/assets_g/css/main.css");
+
+section {
+  margin-left: 5vw;
+}
+
+textarea {
+  min-width: 35vw;
+}
+
+input {
+  background: linear-gradient(30deg, red, yellow);
+}
+
+#submit {
+  background: linear-gradient(45deg, red, #fc3);
+}
+
+#reset {
+  background: linear-gradient(45deg, #fc3, red);
+}

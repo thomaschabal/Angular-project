@@ -26,10 +26,17 @@ import { ResetComponent } from './reset/reset.component';
 import { UserListComponent } from './user-list/user-list.component';
 // Home page
 import { HomeComponent } from './home/home.component';
+// Loading spinner
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 // Galeries
 import { GaleriesComponent } from './galeries/galeries.component';
+import { GaleriesContactFormComponent } from './galeries-contact-form/galeries-contact-form.component';
+import { GaleriesFooterComponent } from './galeries-footer/galeries-footer.component';
+import { UploadComponent } from './upload/upload.component';
+import { GaleriesModerationButtonsComponent } from './galeries-moderation-buttons/galeries-moderation-buttons.component';
 import { EventComponent } from './event/event.component';
 import { VideoComponent } from './video/video.component';
+import { ImageViewerComponent } from './image-viewer/image-viewer.component';
 // Dashboard for uploading images and videos
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ModerationComponent } from './moderation/moderation.component';
@@ -51,6 +58,7 @@ import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
 import { UploadService } from './services/upload.service';
 import { UserService } from './services/user.service';
+import { PicsService } from './services/pics.service';
 
 @NgModule({
   declarations: [
@@ -70,7 +78,13 @@ import { UserService } from './services/user.service';
     ResetComponent,
     ModerationComponent,
     UserListComponent,
-    VideoComponent
+    VideoComponent,
+    LoadingSpinnerComponent,
+    GaleriesContactFormComponent,
+    GaleriesFooterComponent,
+    UploadComponent,
+    GaleriesModerationButtonsComponent,
+    ImageViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +106,8 @@ import { UserService } from './services/user.service';
     UserService,
     ConfigService,
     HttpService,
-    UploadService
+    UploadService,
+    PicsService
   ],
   bootstrap: [AppComponent]
 })
