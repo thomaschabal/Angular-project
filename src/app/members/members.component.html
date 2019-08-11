@@ -14,7 +14,7 @@
 </section>
 
 <!-- Teams per year -->
-<section *ngFor = "let team of team_ponthe; let i = index"
+<section *ngFor = "let team of teamPonthe; let i = index"
           id="{{ team.year_id }}"
           class="main style2 {{ placement(i) }} dark fullscreen"
           (mouseenter)='survoleTeam("visible", i)'

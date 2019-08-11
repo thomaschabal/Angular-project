@@ -48,11 +48,11 @@
 
   <!-- Film -->
   <div id="main"
-       [ngStyle]="{'background-image': 'url(' + film_background + ')', 'background-size': 'cover'}">
+       [ngStyle]="{'background-image': 'url(' + filmBackground + ')', 'background-size': 'cover'}">
     <h2>{{ name }}</h2>
     <plyr style="display: block; width: 640px;" plyrTitle="Video 1" [plyrSources]="videoSources" (plyrInit)="player = $event"
- (plyrPlay)="played($event)"></plyr>
- <div plyr style="width: 640px;" plyrTitle="Video 1" [plyrSources]="videoSources" (plyrInit)="player = $event" (plyrPlay)="played($event)"></div>
+ (plyrPlay)="player($event)"></plyr>
+ <div plyr style="width: 640px;" plyrTitle="Video 1" [plyrSources]="videoSources" (plyrInit)="player = $event" (plyrPlay)="player($event)"></div>
     <video src="assets/images/video-auth.mp4" controls poster="assets/images/font1.jpg"></video>
     <div class="triangle_top_left"></div>
     <div class="triangle_bottom_right"></div>
