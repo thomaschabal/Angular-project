@@ -1,0 +1,96 @@
+@import url("../../../assets/assets_g/css/main.css");
+
+.darkbg {
+  top:0;
+  left:0;
+  width: 100vw;
+  height:100vh;
+  background-color: rgba(0,0,0,0.25);
+  position: fixed;
+  z-index: 5000;
+}
+
+.wide-pic {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  position: fixed;
+  top:0;
+  z-index: 10000;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-top: 1.5vh;
+  max-height: 95vh;
+}
+
+.wide-pic > img {
+  display: block;
+  position: relative;
+  top: 5%;
+  max-width: 95vw;
+  max-height: 97.5vh;
+}
+
+.wide-pic > caption {
+  display: block;
+  text-align: center;
+  padding: 0.25% 2.5%;
+  position: absolute;
+  bottom: 0;
+  font-weight: 300;
+  color: white;
+  font-size: 1em;
+  line-height: 1.5em;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+
+.wide-pic > #num_photo {
+  display: block;
+  text-align: center;
+  padding: 0.25em 0.5em;
+  position: fixed;
+  top: 0;
+  font-weight: 300;
+  color: white;
+  font-size: 0.9em;
+  line-height: 1.2em;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5em;
+  text-transform: none;
+  left: 0;
+  background: #324167;
+  height: 1.7em;
+  border-radius: 10px;
+}
+
+#closer {
+  width: 6%;
+  top: 3%;
+  right: 2%;
+  border-radius: 100px;
+}
+
+#right_arrow, #left_arrow, #closer {
+  position: absolute;
+  z-index: 10000;
+  cursor: pointer;
+}
+
+#right_arrow, #left_arrow {
+  width: 10%;
+  top: 42.5%;
+}
+
+#right_arrow {
+  right: 0;
+  cursor: pointer;
+}
+
+#left_arrow {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  left: 0;
+  cursor: pointer;
+}

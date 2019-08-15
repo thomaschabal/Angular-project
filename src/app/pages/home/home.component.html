@@ -1,0 +1,115 @@
+<!-- Intro -->
+<section id="intro" class="main style1 dark fullscreen"
+         (mouseenter)='survoleIntro("visible")'
+         (mouseleave)='survoleIntro("hidden")'>
+  <div class="content"
+       [@introTrigger]="introState">
+    <header>
+      <h2>{{ phrases['home.header.title'] }}</h2>
+    </header>
+    <p [innerHTML]="phrases['home.header.introduction']"></p>
+    <footer>
+      <a routerLink="/home" fragment="one" class="button style2 down">More</a>
+    </footer>
+  </div>
+</section>
+
+<!-- 3 Last Events -->
+<section *ngFor="let event of lastEvents; let i = index"
+          id="{{ event.event_id }}"
+          class="main style2 {{ placement_events(i) }} dark fullscreen"
+          (mouseenter)='survoleEvent("visible", i)'
+          (mouseleave)='survoleEvent("hidden", i)'
+          [ngStyle]="{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
+  <!-- <img src="../../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
+  <div class="content box style2"
+       [@lastEventTrigger]="currentStateEvent(i)">
+    <header>
+      <h2><a routerLink="/galeries/pics/{{ event.routing }}">{{ event.name }}</a></h2>
+    </header>
+    <p><a routerLink="/galeries/pics/{{ event.routing }}">{{ event.resume }}</a></p>
+  </div>
+  <a routerLink="/home" fragment="{{ event.next_event_id }}" class="button style2 down anchored">Next</a>
+</section>
+
+<!-- Favorite pics -->
+<section id="coeur" class="main style3 primary"
+         (mouseenter)='survoleCoeur("visible")'
+         (mouseleave)='survoleCoeur("hidden")'>
+  <div class="content">
+    <header id="header-content">
+      <h2 [innerHTML]="phrases['home.favoritePics.title']"></h2>
+    </header>
+    <!-- Pics  -->
+    <div class="gallery" id="gallery-pics">
+      <article *ngFor="let pic of lovePics; let i = index"
+                class="{{ placementLovePics(i) }}"
+                [@lovePicsTrigger]="currentStateLovePics(i)">
+        <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}"
+             (click)="onClickFavPic(i)" style="cursor: pointer"/>
+        <!-- <img class="image fit" src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;" alt="{{ pic.title }}" (click)="onClickFavPic(i)" style="cursor: pointer"/> -->
+      </article>
+    </div>
+
+    <!-- Image viewer -->
+    <!-- Darken the background -->
+    <div *ngIf="picClicked" class="darkbg" (click)="closeWidePic()"></div>
+    <!-- Image enlarged -->
+    <div *ngIf="picClicked"
+         class="wide-pic"
+         (mouseenter)="displayArrows()"
+         (mouseleave)="hideArrows()">
+      <img [src]="widePicRef" style="cursor: pointer"/>
+      <caption>{{ captionWidePic }}</caption>
+    </div>
+
+    <!-- Closer -->
+    <img *ngIf="picClicked"
+         id="closer"
+         src="../../assets/assets_h/css/images/poptrox-closer.svg"
+         [@widePicsAnimation]="showArrows+''"
+         (click)="closeWidePic()"
+         (mouseenter)="displayArrows()"
+         (mouseleave)="hideArrows()"/>
+
+    <!-- Navigation arrows -->
+    <img *ngIf="picClicked"
+         id="right_arrow"
+         src="../../assets/assets_h/css/images/poptrox-nav.svg"
+         [@widePicsAnimation]="showArrows+''"
+         (click)="navRight()"
+         (mouseenter)="displayArrows()"
+         (mouseleave)="hideArrows()"/>
+    <img *ngIf="picClicked"
+         id="left_arrow"
+         src="../../assets/assets_h/css/images/poptrox-nav.svg"
+         [@widePicsAnimation]="showArrows+''"
+         (click)="navLeft()"
+         (mouseenter)="displayArrows()"
+         (mouseleave)="hideArrows()"/>
+  </div>
+</section>
+
+<!-- Contact form-->
+<section id="contact" class="main style3 secondary"
+         (mouseenter)="survoleForm('visible')"
+         (mouseleave)="survoleForm('hidden')">
+  <div class="content">
+    <header>
+      <h2 [innerHTML]="phrases['home.contact.title']"></h2>
+      <p [innerHTML]="phrases['home.contact.subtitle']"></p>
+    </header>
+    <div class="box" [@formTrigger]="formState">
+      <form method="post" [formGroup]="messageForm" (ngSubmit)="onSubmitMessage()">
+        <div class="fields">
+          <div class="field">
+            <textarea name="message" [placeholder]="phrases['home.contact.placeholder']" rows="6" formControlName="message"></textarea>
+          </div>
+        </div>
+        <ul class="actions special">
+          <li><input type="submit" [value]="phrases['home.contact.submitButton']" [disabled]="messageForm.invalid"/></li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</section>

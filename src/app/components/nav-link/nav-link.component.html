@@ -1,0 +1,8 @@
+<li *ngIf="!isNarrowWindow()">
+  <a [routerLink]='route'>{{ name }}</a>
+</li>
+<li *ngIf="isNarrowWindow()">
+  <a [routerLink]='route'>
+    <img [src]='imgSrc' [alt]='name' class="svg_links" />
+  </a>
+</li>

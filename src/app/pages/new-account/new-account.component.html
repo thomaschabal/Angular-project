@@ -1,0 +1,54 @@
+<body class="is-preload">
+
+  <!-- Header -->
+  <header id="header">
+    <h1>{{ phrases['newAccount.header.title'] }}</h1>
+    <p [innerHTML]="phrases['newAccount.header.subtitle']"></p>
+    <p>{{ phrases['newAccount.cgu.first'] }} <a [routerLink]="routes.cgu">{{ phrases['newAccount.cgu.cgu'] }}</a> {{ phrases['newAccount.cgu.second'] }} <a [routerLink]="routes.cgu">{{ phrases['newAccount.cgu.here'] }}</a>.</p>
+  </header>
+
+  <!-- Signup Form -->
+  <form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+    <div class="form1">
+      <input type="text" name="firstname" [placeholder]="phrases['newAccount.form.firstName']" formControlName="firstname"/>
+      <input type="text" name="email" [placeholder]="phrases['newAccount.form.email']" formControlName="email"/>
+      <input type="password" name="password" [placeholder]="phrases['newAccount.form.password']" formControlName="password"/>
+    </div>
+    <div class="form1">
+      <input type="text" name="lastname" [placeholder]="phrases['newAccount.form.familyName']" formControlName="lastname"/>
+      <p>{{ phrases['newAccount.form.email.extension'] }}</p>
+      <input type="password" name="confirmationPassword" [placeholder]="phrases['newAccount.form.passwordConfirmation']" formControlName="confirmationPassword"/>
+    </div>
+    <div class="form1">
+      <q>{{ phrases['newAccount.form.promotion'] }}</q>
+      <input style="opacity:0; width:0em; height:74px" type="text"/>
+      <input id="submit" class="submit" type="submit" [value]="phrases['newAccount.form.submitButton']" [disabled]="userForm.invalid"/>
+    </div>
+    <div class="form1">
+      <select class="form1" name="promotion" formControlName="promotion">
+        <option value="022">022</option>
+        <option value="021">021</option>
+        <option value="020">020</option>
+        <option value="019">019</option>
+        <option value="018">018</option>
+        <option value="017">017</option>
+        <option value="016">016</option>
+        <option value="015">015</option>
+      </select>
+    </div>
+  </form>
+
+  <!-- Useful links -->
+  <p><a [routerLink]='routes.auth'>{{ phrases['auth.backToAuth'] }}</a>.<br/>
+  {{ phrases['auth.forgottenPassword.question'] }} <a [routerLink]='routes.reset'>{{ phrases['auth.clickHere'] }}</a> {{ phrases['auth.forgottenPassword.reinitialize'] }}</p>
+
+  <!-- Footer -->
+  <app-auth-footer></app-auth-footer>
+  <!-- Background animation -->
+  <!-- Black background -->
+  <div id="background-auth" style="background: #000000"></div>
+
+  <!-- Image translations -->
+  <div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()"></div>
+
+</body>

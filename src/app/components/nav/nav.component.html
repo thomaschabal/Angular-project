@@ -1,0 +1,19 @@
+<!-- Header -->
+<header *ngIf="isOnline()" id="header">
+  <!-- Logo -->
+  <a [routerLink]='routes.home'><img src="assets/images/logo-ponthe.svg" [alt]="phrases['nav.title.short']" id="logo" /></a>
+  <!-- Title -->
+  <h1 *ngIf="isWideEnough()"><a [routerLink]='routes.home'>{{ phrases['nav.title.long'] }}</a></h1>
+  <h1 *ngIf="!isWideEnough()"><a [routerLink]='routes.home'>{{ phrases['nav.title.short'] }}</a></h1>
+
+  <!-- Navigation on the website -->
+  <nav>
+    <ul>
+      <app-nav-link [route]="routes.galeries" [name]="phrases['nav.galeries']" imgSrc="assets/images/svg_pics.svg"></app-nav-link>
+      <app-nav-link *ngIf="isAdmin()" [route]="routes.dashboard" [name]="phrases['nav.dashboard']" imgSrc="assets/images/svg_dashboard.svg"></app-nav-link>
+      <app-nav-link [route]="routes.members" [name]="phrases['nav.members']" imgSrc="assets/images/svg_members.svg"></app-nav-link>
+      <app-nav-link [route]="routes.material" [name]="phrases['nav.matos']" imgSrc="assets/images/svg_matos.svg"></app-nav-link>
+      <app-nav-link (click)="onSignOut()" [route]="routes.auth" [name]="phrases['nav.logout']" imgSrc="assets/images/svg_logout.svg"></app-nav-link>
+    </ul>
+  </nav>
+</header>

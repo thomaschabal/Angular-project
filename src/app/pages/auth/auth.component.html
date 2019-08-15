@@ -1,0 +1,28 @@
+<body class="is-preload">
+
+	<!-- Header -->
+		<header id="header">
+			<h1 style="color:#fc3">{{ phrases['auth.title'] }}</h1>
+		</header>
+
+	<!-- Signup Form -->
+		<form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSignIn()">
+			<input type="email" name="email" [placeholder]="phrases['auth.form.id']" formControlName="email"/>
+			<input type="password" name="password" [placeholder]="phrases['auth.form.password']" formControlName="password"/>
+			<input id="submit" type="submit" [value]="phrases['auth.form.submitButton']" [disabled]="userForm.invalid"/>
+		</form>
+
+	<!-- Useful links -->
+		<!--<a href="https://ponthe-testing.enpc.org/cas/login">Connexion SSO</a>-->
+
+		<p>{{ phrases['auth.forgottenPassword.question'] }} <a [routerLink]='routes.reset'>{{ phrases['auth.clickHere'] }}</a> {{ phrases['auth.forgottenPassword.reinitialize'] }}<br/>
+		{{ phrases['auth.noAccount.question'] }} <a [routerLink]='routes.newAccount'>{{ phrases['auth.clickHere'] }}</a> {{ phrases['auth.noAccount.register'] }}</p>
+
+		<app-auth-footer></app-auth-footer>
+
+	<!-- Background animation -->
+		<video src="../../../assets/images/video-auth.mp4" loop autoplay playsinline style="position:absolute; z-index:1"></video>
+		<!-- Black background -->
+		<!--<div id="background-auth" style="background: #000000"></div>-->
+
+</body>

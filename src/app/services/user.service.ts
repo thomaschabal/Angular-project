@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
 import { User } from '../models/User.model';
-import { NewAccountComponent } from '../new-account/new-account.component';
+import { NewAccountComponent } from '../pages/new-account/new-account.component';
 import { HttpService } from './http.service';
 import { Phrases } from '../Phrases';
 

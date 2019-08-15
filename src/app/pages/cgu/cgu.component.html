@@ -1,0 +1,18 @@
+<!-- Header -->
+<div>
+  <header id="header" >
+    <a [routerLink]='routes.newAccount'><img src="assets/images/logo-ponthe.svg" [alt]="phrases['nav.title.short']" id="logo" /></a>
+    <h1><a [routerLink]='routes.newAccount'>{{ phrases['cgu.backToRegister'] }}</a></h1>
+  </header>
+</div>
+
+<!-- h2 title -->
+<section>
+  <h2 id="cgu-title" [innerHTML]="phrases['cgu.title']"></h2>
+</section>
+
+<!-- Articles of the General terms and Conditions -->
+<section *ngFor="let article of articles">
+  <h2>{{ article.title }}</h2>
+  <p>{{ article.body }}</p>
+</section>
