@@ -13,12 +13,11 @@ import { routesAppFromRoot } from '../../Routes';
 export class CguComponent implements OnInit {
 
   articles = [];
-  routes: object;
+  routes = routesAppFromRoot;
   phrases: object;
 
   constructor(private authService: AuthService,
               private httpService: HttpService) {
-    this.routes = routesAppFromRoot;
     this.phrases = Phrases;
   }
 

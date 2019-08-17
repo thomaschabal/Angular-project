@@ -17,12 +17,11 @@ export class AuthComponent implements OnInit {
   // Authentification form defined here
   userForm: FormGroup;
   phrases: object;
-  routes: object;
+  routes = routesAppFromRoot;
 
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder) {
     this.phrases = Phrases;
-    this.routes = routesAppFromRoot;
   }
 
   ngOnInit() {

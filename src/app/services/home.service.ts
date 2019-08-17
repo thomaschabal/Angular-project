@@ -16,19 +16,19 @@ export class HomeService {
     },
     {
       title : 'OB de Février',
-      address : './assets/images/art_2018/5.jpg'
+      address : './assets/images/art_2018.jpg'
     },
     {
       title : 'Sushis à la Skult',
-      address : './assets/images/skult/21.JPG'
+      address : './assets/images/skult_sushis.JPG'
     },
     {
       title : 'Dimanche de lancement de campagne BDE',
-      address : './assets/images/dim_camp_2017/14.JPG'
+      address : './assets/images/dim_camp_2017.JPG'
     },
     {
       title : 'Club Rock 2018',
-      address : './assets/images/rock2018/5.jpg'
+      address : './assets/images/rock2018.jpg'
     },
     {
       title : 'Nuit de la Rentrée 2017',

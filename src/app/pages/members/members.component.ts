@@ -30,7 +30,7 @@ import { routesAppFromRoot } from '../../Routes';
 export class MembersComponent implements OnInit, OnDestroy {
 
   phrases: object;
-  routes: object;
+  routes = routesAppFromRoot;
   // Data to show to the user
   teamPonthe: any[];
   private sub: Subscription;
@@ -48,7 +48,6 @@ export class MembersComponent implements OnInit, OnDestroy {
         f => document.getElementById(f).scrollIntoView({behavior : 'smooth'})
       );
     this.phrases = Phrases;
-    this.routes = routesAppFromRoot;
   }
 
   ngOnInit() {

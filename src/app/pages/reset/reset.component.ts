@@ -72,7 +72,7 @@ import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.co
 
 export class ResetComponent implements OnInit {
 
-  routes: object;
+  routes = routesAppFromRoot;
   phrases: object;
   // Initial state
   state = 'visible1';
@@ -90,7 +90,6 @@ export class ResetComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private userService: UserService) {
-    this.routes = routesAppFromRoot;
     this.phrases = Phrases;
   }
 

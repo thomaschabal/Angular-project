@@ -23,11 +23,10 @@ export class GaleriesFooterComponent implements OnInit {
   @Input() resumeEvent: string;
   footerState = 'hidden';
   phrases: object;
-  routes: object;
+  routes = routesAppFromRoot;
 
   constructor() {
     this.phrases = Phrases;
-    this.routes = routesAppFromRoot;
   }
 
   ngOnInit() {

@@ -73,7 +73,7 @@ import { routesAppFromRoot } from '../../Routes';
 export class NewAccountComponent implements OnInit {
 
   phrases: object;
-  routes: object;
+  routes = routesAppFromRoot;
   // Initial state
   state = 'visible1';
   indState = 0;
@@ -89,7 +89,6 @@ export class NewAccountComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
               private router: Router) {
-    this.routes = routesAppFromRoot;
     this.phrases = Phrases;
   }
 
