@@ -16,13 +16,12 @@ import { routesAppFromRoot } from '../../Routes';
 export class NavComponent {
 
   phrases: object;
-  routes: object;
+  routes = routesAppFromRoot;
 
   constructor(private authService: AuthService,
               private httpService: HttpService,
               private router: Router) {
     this.phrases = Phrases;
-    this.routes = routesAppFromRoot;
   }
 
   // Boolean showing if the user is authenticated or not

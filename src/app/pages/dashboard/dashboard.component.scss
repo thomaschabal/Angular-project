@@ -3,7 +3,7 @@
 /* Intro */
 #intro {
 	margin-top : 3em;
-	height : calc(100vh - 8em);
+	height : calc(100vh - 3em);
 	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/introP.jpg");
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
@@ -46,12 +46,9 @@
 	margin-bottom: 2vh;
 }
 
-#col_admin_1 form {
-	margin: 0;
-}
-
-#col_admin_1 form:last-child {
-	margin-bottom: 2vh;
+#col_admin_1 h3:hover {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 #col_admin_2 {
@@ -64,8 +61,4 @@
 
 button {
   background: linear-gradient(30deg, red, yellow);
-}
-
-input {
-  background: linear-gradient(210deg, red, yellow);
 }

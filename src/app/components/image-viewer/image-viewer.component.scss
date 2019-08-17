@@ -47,17 +47,11 @@
 }
 
 .wide-pic > #num_photo {
-  display: block;
-  text-align: center;
   padding: 0.25em 0.5em;
   position: fixed;
   top: 0;
-  font-weight: 300;
-  color: white;
   font-size: 0.9em;
   line-height: 1.2em;
-  letter-spacing: 0.1em;
-  margin-bottom: 0.5em;
   text-transform: none;
   left: 0;
   background: #324167;
@@ -80,17 +74,15 @@
 
 #right_arrow, #left_arrow {
   width: 10%;
-  top: 42.5%;
+  top: 45%;
 }
 
 #right_arrow {
   right: 0;
-  cursor: pointer;
 }
 
 #left_arrow {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   left: 0;
-  cursor: pointer;
 }

@@ -21,6 +21,10 @@ export class FooterComponent {
   }
 
   get isOnline() {
-    return (this.httpService.token !== null) && !(this.router.url.includes('galeries'));
+    return (
+      (this.httpService.token !== null) &&
+      !(this.router.url.includes('galeries')) &&
+      !(this.router.url.includes('dashboard'))
+    );
   }
 }

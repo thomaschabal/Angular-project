@@ -4,6 +4,7 @@ import { animate, style, transition, trigger, query } from '@angular/animations'
 
 import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http.service';
+import { routesAppFromRoot } from './Routes';
 
 @Component({
   selector: 'app-root',
@@ -37,7 +38,7 @@ export class AppComponent {
   constructor(private authService: AuthService,
               private httpService: HttpService,
               private router: Router) {
-                // Initially, the user is redirected to the Auth page and is offline
+    // Initially, the user is redirected to the Auth page and is offline
     this.authStatus = this.authService.isAuth;
   }
 
@@ -93,28 +94,28 @@ export class AppComponent {
 
     // Shortcuts for administrators
     if (this.keys.search('home') !== -1) {
-      this.router.navigate(['/home']);
+      this.router.navigate([routesAppFromRoot.home]);
       this.keys = '';
     }
     if (this.keys.search('pics') !== -1) {
-      this.router.navigate(['/galeries']);
+      this.router.navigate([routesAppFromRoot.galeries]);
       this.keys = '';
     }
     if (this.keys.search('dashboard') !== -1) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate([routesAppFromRoot.dashboard]);
       this.keys = '';
     }
     if (this.keys.search('membres') !== -1 || this.keys.search('members') !== -1) {
-      this.router.navigate(['/members']);
+      this.router.navigate([routesAppFromRoot.members]);
       this.keys = '';
     }
     if (this.keys.search('matos') !== -1) {
-      this.router.navigate(['/material']);
+      this.router.navigate([routesAppFromRoot.material]);
       this.keys = '';
     }
     if (this.httpService.isAdmin) {
       if (this.keys.search('moderation') !== -1 || this.keys.search('modération') !== -1) {
-        this.router.navigate(['/moderation']);
+        this.router.navigate([routesAppFromRoot.moderation]);
         this.keys = '';
       }
       if (this.keys.search('slack') !== -1) {
@@ -126,7 +127,7 @@ export class AppComponent {
     }
     if (this.keys.search('logout') !== -1) {
       this.authService.signOut();
-      this.router.navigate(['/auth']);
+      this.router.navigate([routesAppFromRoot.auth]);
       this.keys = '';
     }
   }

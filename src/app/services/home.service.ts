@@ -35,8 +35,13 @@ export class HomeService {
       address : './assets/images/love_pics/soiree2.jpg'
     }
   ];
+  lovePicsSrc = Object.assign({}, this.lovePics);
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService) {
+    Object.keys(this.lovePicsSrc).map(
+      (key, pic) => { this.lovePicsSrc[key] = this.lovePicsSrc[key].address; }
+    );
+  }
 
   getLatestGalleries() {
     return this.httpService.post('/api/get-latest-galleries', {page: 1, page_size: 3});

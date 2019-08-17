@@ -10,26 +10,20 @@
      (mouseleave)="hideArrows()">
   <img #imgWide [src]="widePicRef" style="cursor: pointer"/>
   <caption>{{ captionWidePic }}</caption>
-  <caption id="num_photo">{{ phrases['imageViewer.pic'] }} {{ indexPicture+1 }} / {{ rawPics.length }}</caption>
+  <caption *ngIf="isGallery" id="num_photo">{{ phrases['imageViewer.pic'] }} {{ indexPicture+1 }} / {{ rawPics.length }}</caption>
 
   <!-- Closer -->
   <img id="closer"
-       src="../../assets/assets_h/css/images/poptrox-closer.svg"
+       src="../../../assets/assets_h/css/images/poptrox-closer.svg"
        (click)="closeWidePic()"
-       [@widePicsAnimation]="showArrows+''"
-       (mouseenter)="displayArrows()"
-       (mouseleave)="hideArrows()"/>
+       [@widePicsAnimation]="showArrows+''"/>
   <!-- Navigation arrows -->
   <img id="right_arrow"
-       src="../../assets/assets_h/css/images/poptrox-nav.svg"
+       src="../../../assets/assets_h/css/images/poptrox-nav.svg"
        (click)="navRight()"
-       [@widePicsAnimation]="showArrows+''"
-       (mouseenter)="displayArrows()"
-       (mouseleave)="hideArrows()"/>
+       [@widePicsAnimation]="showArrows+''"/>
   <img id="left_arrow"
-       src="../../assets/assets_h/css/images/poptrox-nav.svg"
+       src="../../../assets/assets_h/css/images/poptrox-nav.svg"
        (click)="navLeft()"
-       [@widePicsAnimation]="showArrows+''"
-       (mouseenter)="displayArrows()"
-       (mouseleave)="hideArrows()"/>
+       [@widePicsAnimation]="showArrows+''"/>
 </div>

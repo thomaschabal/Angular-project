@@ -1,25 +1,25 @@
 <div class="spacer"></div>
 
 <!-- Moderation buttons -->
-<app-galeries-moderation-buttons *ngIf="isAdmin" [selectedRoute]="selectedRoute" [moderationState]="moderationState"></app-galeries-moderation-buttons>
+<app-galeries-moderation-buttons *ngIf="isAdmin" [selectedRoute]="selectedRoute" [moderationState]="moderationState" (moderating)="modere()"></app-galeries-moderation-buttons>
 <!-- Upload for random users -->
 <app-upload *ngIf="!isAdmin"></app-upload>
 
 <!-- Main -->
 <!-- Pictures of the event -->
 <div id="main" (mouseenter)="survolePics('visible')"> <!--(mouseleave) = "survolePics('hidden')">-->
-  <article class="thumb" *ngFor="let picture of pics; let i = index" [@picsTrigger]="state(i)">
+  <article *ngFor="let picture of pics; let i = index" class="thumb" [@picsTrigger]="state(i)">
     <img (click)="onClickPic(i)" style="cursor: pointer; position: absolute;" src="{{ picture.base64 }}" alt="" width="100%"/>
     <caption>{{ name }}</caption>
     <button *ngIf="enModeration && !deleteState(i)"
             id="deleteButton" type="button" name="button" style="color: #fc3"
             (click)="moderePic(i)">
-      Supprimer
+      {{ phrases['moderation.delete'] }}
     </button>
     <button *ngIf="enModeration && deleteState(i)"
             id="deleteButtonSelected" type="button" name="button" style="color: #fc3"
             (click)="moderePic(i)">
-      Supprimer
+      {{ phrases['moderation.delete'] }}
     </button>
   </article>
 </div>

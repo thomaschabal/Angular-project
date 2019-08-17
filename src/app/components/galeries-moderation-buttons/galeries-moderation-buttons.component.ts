@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UploadComponent } from '../upload/upload.component';
@@ -15,6 +15,7 @@ export class GaleriesModerationButtonsComponent implements OnInit {
 
   isPublic = false;
   clickAddFiles = false;
+  @Output() moderating = new EventEmitter<boolean>();
   enModeration = false;
   eventDeletionState = 'nothing';
   @Input() selectedRoute: string;
@@ -33,6 +34,7 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   // Return whether the administrator is moderating the gallery or not
   modere() {
     this.enModeration = !this.enModeration;
+    this.moderating.emit(this.enModeration);
   }
 
   // Change the state of the gallery to public or private

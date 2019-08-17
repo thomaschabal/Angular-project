@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { state, style, transition, animate, trigger } from '@angular/animations';
 
-import { MessagesService } from '../../services/messages.service';
+import { MaterialBookingFormComponent } from '../../components/material-booking-form/material-booking-form.component';
 import { Phrases } from '../../Phrases';
 
 @Component({
@@ -23,33 +22,13 @@ export class MaterialComponent implements OnInit {
 
   phrases: object;
   // Form for material booking
-  materialForm: FormGroup;
   formState = 'visible';
 
-  constructor(private formBuilder: FormBuilder,
-              private messagesService: MessagesService) {
+  constructor() {
     this.phrases = Phrases;
   }
 
-  ngOnInit() {
-    this.initForm();
-  }
-
-  // Initialisation of the form
-  initForm() {
-    this.materialForm = this.formBuilder.group({
-      matos : ['', Validators.required],
-      message : ['', Validators.required]
-    });
-  }
-
-  // Submission of the form
-  onSubmitMateriel() {
-    this.messagesService.materialPost(this.materialForm.value).subscribe(
-      (res) => { alert(Phrases['messages.sent']); },
-      (error) => { console.error(error); }
-    );
-  }
+  ngOnInit() { }
 
   //// DISPLAYING THE FORM
   // State of the form of the page (e.g. if the section is being hovered or not)

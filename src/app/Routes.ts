@@ -1,5 +1,5 @@
 // These are the application's routes
-// Change the valeues to change the urls
+// Change the values to change the urls
 export const routesApp = {
   auth: 'auth',
   newAccount: 'new-account',
@@ -7,6 +7,8 @@ export const routesApp = {
   reset: 'reset',
   home: 'home',
   galeries: 'galeries',
+  pics: 'galeries/pics/',
+  videos: 'galeries/videos/',
   dashboard: 'dashboard',
   members: 'members',
   material: 'material',

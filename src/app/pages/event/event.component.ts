@@ -12,6 +12,7 @@ import { ImageViewerComponent } from '../../components/image-viewer/image-viewer
 import { GaleriesService } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
 import { PicsService } from '../../services/pics.service';
+import { Phrases } from '../../Phrases';
 
 @Component({
   selector: 'app-event',
@@ -34,6 +35,8 @@ import { PicsService } from '../../services/pics.service';
 
 export class EventComponent implements OnInit, OnDestroy {
 
+  phrases: object;
+
   constructor(private galeriesService: GaleriesService,
               private activeRoute: ActivatedRoute,
               private httpService: HttpService,
@@ -41,6 +44,7 @@ export class EventComponent implements OnInit, OnDestroy {
     this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(
       f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
     );
+    this.phrases = Phrases;
   }
 
   // Loading Spinner
@@ -67,6 +71,7 @@ export class EventComponent implements OnInit, OnDestroy {
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
   moderationState = [];
+  enModeration = false;
 
   // Animation variables
   picsState = ['visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible'];
@@ -104,6 +109,10 @@ export class EventComponent implements OnInit, OnDestroy {
     if (this.sub) {
       this.sub.unsubscribe();
     }
+  }
+
+  modere() {
+    this.enModeration = !this.enModeration;
   }
 
   // Tell if a picture is going to be deleted or not

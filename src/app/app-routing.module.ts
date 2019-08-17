@@ -40,8 +40,8 @@ const routes: Routes = [
   { path: 'membres', redirectTo: routesApp.members },
   { path: routesApp.material, canActivate: [AuthGuard], component: MaterialComponent, data: {animation: 'MaterialPage'} },
   { path: 'matos', redirectTo: routesApp.material },
-  { path: routesApp.galeries + '/video/:video', canActivate: [AuthGuard], component: VideoComponent, data: {animation: 'VideoComponent'} },
-  { path: routesApp.galeries + '/pics/:event', canActivate: [AuthGuard], component: EventComponent, data: {animation: 'EventPage'} },
+  { path: routesApp.videos + ':video', canActivate: [AuthGuard], component: VideoComponent, data: {animation: 'VideoComponent'} },
+  { path: routesApp.pics + ':event', canActivate: [AuthGuard], component: EventComponent, data: {animation: 'EventPage'} },
   { path: routesApp.notFound, canActivate: [AuthGuard], component: NotfoundComponent },
   { path: '**', redirectTo: routesApp.notFound }
 ];

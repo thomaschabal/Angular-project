@@ -25,10 +25,12 @@ export enum KEY_CODE {
 
 export class ImageViewerComponent implements OnInit {
 
-  widePicRef: any;
+  widePicRef: string;
   @Input() captionWidePic: string;
   @Input() indexPicture = 0;
+  @Input() isGallery = true;
   rawPics: any[];
+  @Output() changeIndexPicture = new EventEmitter<number>();
   @Output() closeViewer = new EventEmitter<boolean>();
   showArrows = true;
   phrases: object;
@@ -58,18 +60,23 @@ export class ImageViewerComponent implements OnInit {
     }
   }
 
+  updateWidePic() {
+    this.widePicRef = this.rawPics[this.indexPicture];
+    this.changeIndexPicture.emit(this.indexPicture);
+  }
+
   navLeft() {
     this.indexPicture = this.indexPicture - 1;
     if (this.indexPicture < 0) {
-      this.indexPicture += this.rawPics.length;
+      this.indexPicture += (this.rawPics.length || Object.keys(this.rawPics).length);
     }
-    this.widePicRef = this.rawPics[this.indexPicture];
+    this.updateWidePic();
     // document.getElementById('wide-pic').style.marginLeft.px=this.placePicLeft(imgWide);
   }
 
   navRight() {
-    this.indexPicture = (this.indexPicture + 1) % (this.rawPics.length);
-    this.widePicRef = this.rawPics[this.indexPicture];
+    this.indexPicture = (this.indexPicture + 1) % (this.rawPics.length || Object.keys(this.rawPics).length);
+    this.updateWidePic();
   }
 
   closeWidePic() {

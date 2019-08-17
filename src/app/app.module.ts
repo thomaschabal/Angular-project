@@ -15,18 +15,24 @@ import { FilePickerModule } from 'ngx-awesome-uploader';
 import { PlyrModule } from 'ngx-plyr';
 
 import { AppComponent } from './app.component';
+
 //// COMPONENTS
 import { AuthFooterComponent } from './components/auth-footer/auth-footer.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GaleriesContactFormComponent } from './components/galeries-contact-form/galeries-contact-form.component';
 import { GaleriesFooterComponent } from './components/galeries-footer/galeries-footer.component';
 import { GaleriesModerationButtonsComponent } from './components/galeries-moderation-buttons/galeries-moderation-buttons.component';
+import { GalleryCreationFormComponent } from './components/gallery-creation-form/gallery-creation-form.component';
+import { HomeFormComponent } from './components/home-form/home-form.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NavLinkComponent } from './components/nav-link/nav-link.component';
+import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 import { PicThumbComponent } from './components/pic-thumb/pic-thumb.component';
 import { UploadComponent } from './components/upload/upload.component';
+
 //// PAGES
 import { AuthComponent } from './pages/auth/auth.component';
 import { NewAccountComponent } from './pages/new-account/new-account.component';
@@ -64,10 +70,14 @@ import { UserService } from './services/user.service';
     GaleriesContactFormComponent,
     GaleriesFooterComponent,
     GaleriesModerationButtonsComponent,
+    GalleryCreationFormComponent,
+    HomeFormComponent,
     ImageViewerComponent,
     LoadingSpinnerComponent,
+    MaterialBookingFormComponent,
     NavComponent,
     NavLinkComponent,
+    NavigationButtonComponent,
     PicThumbComponent,
     UploadComponent,
     AuthComponent,

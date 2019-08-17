@@ -14,13 +14,15 @@ export class PicsService {
   constructor(private galeriesService: GaleriesService) { }
 
   initRawPics() {
-    this.rawPics = [];
-    this.fullSizeLoadedPics = [];
-    for (const pic of this.pics) {
-      this.rawPics.push(pic.base64);
-      this.fullSizeLoadedPics.push(false);
+    if (!this.allPicturesLoaded) {
+      this.rawPics = [];
+      this.fullSizeLoadedPics = [];
+      for (const pic of this.pics) {
+        this.rawPics.push(pic.base64);
+        this.fullSizeLoadedPics.push(false);
+      }
+      this.loadFullImage(0);
     }
-    this.loadFullImage(0);
   }
 
   onChangeCurrentGallery(newCurrentGallery: string) {

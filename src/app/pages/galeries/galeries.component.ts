@@ -4,6 +4,8 @@ import { state, trigger, animate, style, transition } from '@angular/animations'
 import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
 import { GaleriesService } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
+import { Phrases } from '../../Phrases';
+import { routesAppFromRoot } from '../../Routes';
 
 @Component({
   selector: 'app-galeries',
@@ -26,13 +28,16 @@ import { HttpService } from '../../services/http.service';
 
 export class GaleriesComponent implements OnInit {
 
+  phrases: object;
+  routes = routesAppFromRoot;
+
   // Loading Spinner
   displaySpinner = false;
   stateSpinner = 'hidden';
 
   // List of events to display
-  galeriesEvents: any[];
-  privateEvents: any[];
+  galeriesEvents = [];
+  privateEvents = [];
 
   // Animation variables for 9 first pics
   galeriesState = ['visible', 'visible', 'visible',
@@ -41,14 +46,14 @@ export class GaleriesComponent implements OnInit {
 
   constructor(private httpService: HttpService,
               private galeriesService: GaleriesService) {
+    this.phrases = Phrases;
   }
 
   ngOnInit() {
     this.displaySpinner = true;
     this.stateSpinner = 'visible';
-
     // If the user is an admin, private galleries are loaded and then displayed
-    if (this.httpService.isAdmin === true) {
+    if (!this.httpService.isAdmin === true) {
       this.galeriesService.getPrivateEvents()
       .subscribe(
         (res: { galleries }) => { this.privateEvents = res.galleries; },
@@ -79,7 +84,7 @@ export class GaleriesComponent implements OnInit {
               this.galeriesEvents = this.galeriesEvents.concat(response.public_galleries);
               this.getImagesRestrictedGalleries();
             },
-            (err) => { }
+            (err) => { console.error(err); }
           );
         },
         (error) => {
@@ -91,7 +96,7 @@ export class GaleriesComponent implements OnInit {
               this.stateSpinner = 'hidden';
               setTimeout(() => { this.displaySpinner = false; }, 200);
             },
-            (err) => { }
+            (err) => { console.error(err); }
           );
         }
       );
@@ -106,27 +111,10 @@ export class GaleriesComponent implements OnInit {
       .subscribe(
         (res: { gallery, thumbnail }) => {
           const requestGallery = res.gallery;
-          const image = res.thumbnail;
           this.galeriesEvents[event] = {
             name: requestGallery.name,
             slug: requestGallery.slug,
-            image: ('{image}')
-          };
-        },
-        (error) => { }
-      );
-    }
-    // We do the same for private events for administrators
-    for (let event = 0; event < this.privateEvents.length; event++) {
-      this.galeriesService.getImage(this.privateEvents[event])
-      .subscribe(
-        (res: { gallery, thumbnail }) => {
-          const requestGallery = res.gallery;
-          const image = res.thumbnail;
-          this.galeriesEvents[event] = {
-            name: requestGallery.name,
-            slug: requestGallery.slug,
-            image: ('{image}')
+            image: res.thumbnail,
           };
         },
         (error) => { }

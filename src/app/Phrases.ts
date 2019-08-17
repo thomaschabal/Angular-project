@@ -14,7 +14,16 @@ export const Phrases = {
   'cgu.backToRegister': 'Retour à la création de compte',
   'cgu.title': 'Conditions Générales d\'Utilisation du site <em>ponthe.enpc.org</em>',
 
+  'dashboard.header.title': 'Zone d\'administration',
+  'dashboard.form.title': 'Création d\'une galerie',
+  'dashboard.form.name': 'Nom de la galerie',
+  'dashboard.form.description': 'Description de la galerie',
+  'dashboard.form.submitButton': 'Valider la création',
   'dashboard.createdGallery': 'Galerie crée',
+  'dashboard.links.moderation': 'Modérer',
+  'dashboard.links.slack': 'Slack',
+  'dashboard.links.trello': 'Trello',
+  'dashboard.links.youtube': 'Youtube',
 
   'event.deleteGallery.galleryWillBeDeleted':
     'Cette galerie est sur le point d\'être supprimée. Cliquer une deuxième fois sur \'Supprimer la galerie\' pour valider l\'action.',
@@ -22,6 +31,7 @@ export const Phrases = {
 
   'footer.copyright': 'Ponthé 020 - Club audiovisuel de l\'Ecole des Ponts',
 
+  'galeries.gallery.private': 'PRIVEE',
   'galeries.footer.title': 'A propos de l\'album...',
   'galeries.about.title': 'Suis-nous sur...',
   'galeries.about.copyright': 'Ponthé - Club audiovisuel des Ponts et Chaussées.',

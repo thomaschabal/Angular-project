@@ -23,6 +23,10 @@ export class AuthService {
     // this.apiUrl = this.configService.load().apiUrl;
     this.apiUrl = 'https://ponthe-testing.enpc.org';
     this.isAuth = false;
+    this.getUserInfos();
+  }
+
+  getUserInfos() {
     this.getToken();
     if (this.httpService.token) {
       this.getUserByJWT();
