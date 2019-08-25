@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
+import { GalleryCreationFormComponent } from '../../components/gallery-creation-form/gallery-creation-form.component';
+import { NavigationButtonComponent } from '../../components/navigation-button/navigation-button.component';
 
 @Component({
   selector: 'app-dashboard',

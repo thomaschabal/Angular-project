@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
-import { HttpService } from '../../services/http.service';
 import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 
@@ -16,8 +15,7 @@ export class CguComponent implements OnInit {
   routes = routesAppFromRoot;
   phrases: object;
 
-  constructor(private authService: AuthService,
-              private httpService: HttpService) {
+  constructor(private authService: AuthService) {
     this.phrases = Phrases;
   }
 
