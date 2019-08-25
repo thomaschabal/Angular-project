@@ -83,6 +83,8 @@ export class GaleriesComponent implements OnInit {
             (response: { public_galleries }) => {
               this.galeriesEvents = this.galeriesEvents.concat(response.public_galleries);
               this.getImagesRestrictedGalleries();
+              this.stateSpinner = 'hidden';
+              setTimeout(() => { this.displaySpinner = false; }, 200);
             },
             (err) => { console.error(err); }
           );

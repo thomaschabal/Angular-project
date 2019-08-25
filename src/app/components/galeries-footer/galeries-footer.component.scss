@@ -1,1 +1,10 @@
 @import url("../../../assets/assets_g/css/main.css");
+
+@media screen and (max-width: 736px) {
+  #footer {
+    top: 4em;
+    max-height: none;
+    height: calc(100vh - 8em);
+    padding: 2em;
+  }
+}

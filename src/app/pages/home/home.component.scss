@@ -55,12 +55,19 @@
 	z-index: 5000;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 736px) {
 	#intro {
 		margin-top: 4em;
+	}
+	#intro header {
+		margin-top: 1em;
 	}
 
 	#one, #two, #three {
 		background-position: center center, center center;
+	}
+
+	.main.style1 {
+		padding: 0.6em 15px 0.6em 15px;
 	}
 }

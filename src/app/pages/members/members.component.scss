@@ -95,7 +95,19 @@
 }
 
 @media screen and (max-width: 736px) {
+	#intro {
+		margin-top: 4em;
+	}
+
   .style2 .content {
     width: 100% !important;
   }
+
+	.style2 .content p {
+		line-height: 1.35em;
+	}
+
+	.main.style1 {
+		padding: 0.6em 15px 0.6em 15px;
+	}
 }

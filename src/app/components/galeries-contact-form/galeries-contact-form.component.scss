@@ -19,3 +19,13 @@ input {
 #reset {
   background: linear-gradient(45deg, #fc3, red);
 }
+
+@media screen and (max-width: 736px) {
+  section {
+    margin-left: 0;
+  }
+
+  textarea {
+    width: 100%;
+  }
+}

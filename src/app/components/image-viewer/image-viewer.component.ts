@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output, HostListener } from '@angular/core';
 import { state, trigger, animate, style, transition } from '@angular/animations';
-
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PicsService } from '../../services/pics.service';
 import { Phrases } from '../../Phrases';
 
@@ -25,7 +25,7 @@ export enum KEY_CODE {
 
 export class ImageViewerComponent implements OnInit {
 
-  widePicRef: string;
+  widePicRef: SafeUrl;
   @Input() captionWidePic: string;
   @Input() indexPicture = 0;
   @Input() isGallery = true;
@@ -35,13 +35,14 @@ export class ImageViewerComponent implements OnInit {
   showArrows = true;
   phrases: object;
 
-  constructor(private picsService: PicsService) {
+  constructor(private picsService: PicsService,
+              private sanitizer: DomSanitizer) {
     this.phrases = Phrases;
   }
 
   ngOnInit() {
     this.rawPics = this.picsService.rawPics;
-    this.widePicRef = this.rawPics[this.indexPicture];
+    this.widePicRef = this.sanitizer.bypassSecurityTrustUrl(this.rawPics[this.indexPicture]);
   }
 
   // Host Listener for the image viewer
@@ -61,7 +62,7 @@ export class ImageViewerComponent implements OnInit {
   }
 
   updateWidePic() {
-    this.widePicRef = this.rawPics[this.indexPicture];
+    this.widePicRef = this.sanitizer.bypassSecurityTrustUrl(this.rawPics[this.indexPicture]);
     this.changeIndexPicture.emit(this.indexPicture);
   }
 

@@ -118,10 +118,15 @@ export class HomeComponent implements OnInit, OnDestroy {
      },
       (error) => { }
     );
-    if (window.innerWidth > 736) {
+    if (this.isDesktop()) {
       this.lastEventsState1 = 'hidden-mid-left';
       this.lastEventsState2 = 'hidden-mid-right';
       this.lastEventsState3 = 'hidden-mid-left';
+    } else {
+      this.introState = 'visible';
+      this.lovePicsStateLeft = 'visible';
+      this.lovePicsStateRight = 'visible';
+      this.formState = 'visible';
     }
   }
 
@@ -232,5 +237,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   currentStateLovePics(i: number) {
     return (i % 2 === 0 ? this.lovePicsStateLeft : this.lovePicsStateRight);
+  }
+
+  isDesktop() {
+    return (window.innerWidth >= 736);
   }
 }

@@ -20,8 +20,10 @@ import { routesAppFromRoot } from '../../Routes';
     ]),
     trigger('teamTrigger', [
       state('visible', style({})),
-      state('hidden-left', style({transform : 'translateX(65vw)'})),
-      state('hidden-right', style({transform : 'translateX(-65vw)'})),
+      state('hidden-mid-left', style({transform : 'translateX(65vw)'})),
+      state('hidden-mid-right', style({transform : 'translateX(-65vw)'})),
+      state('hidden-left', style({transform : 'translateX(100vw)'})),
+      state('hidden-right', style({transform : 'translateX(-100vw)'})),
       transition('* => *', [ animate('20ms') ] ),
     ])
   ]
@@ -86,9 +88,9 @@ export class MembersComponent implements OnInit, OnDestroy {
       }
     } else {
       if (i % 2 === 0) {
-        this.teamStateLeft = 'hidden-left';
+        this.teamStateLeft = (window.innerWidth <= 736 ? 'hidden-left' : 'hidden-mid-left');
       } else {
-        this.teamStateRight = 'hidden-right';
+        this.teamStateRight = (window.innerWidth <= 736 ? 'hidden-right' : 'hidden-mid-right');
       }
     }
   }

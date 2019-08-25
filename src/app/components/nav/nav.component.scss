@@ -91,15 +91,27 @@
 
 	#header h1 {
 		text-align: center;
-		position: relative;
+		position: absolute;
 		left: 0;
-		top: -3em;
+		top: -0.25em;
 		height: 2.5em;
 		line-height: 2.5em;
+		width: 100vw;
 	}
 
 	#header h1 a {
 		font-size: 1em;
+		width: 100vw;
+		left: 0;
+		height: 2em;
+	}
+
+	#header a {
+		top: 0;
+		height: 4em;
+		width: 4em;
+		position: absolute;
+		z-index: 2;
 	}
 
   #header a #logo {

@@ -52,3 +52,19 @@ html, body {
   text-transform: uppercase;
   z-index: 1;
 }
+
+#fullBackground {
+  width: 100vw;
+  height: 92vh;
+  top: 8vh;
+  left: 0;
+  background: #242628;
+  position: fixed;
+  z-index: -1;
+}
+
+@media screen and (max-width: 736px) {
+  #fullBackground {
+    top: 5em;
+  }
+}
