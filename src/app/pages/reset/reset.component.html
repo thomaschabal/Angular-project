@@ -1,0 +1,29 @@
+<body class="is-preload">
+
+  <!-- Header -->
+  <header id="header">
+    <h1>{{ phrases['reset.header.title'] }}</h1>
+    <p [innerHTML]="phrases['reset.header.subtitle']"></p>
+  </header>
+
+  <!-- Signup Form -->
+  <form class="signup-form" [formGroup]="resetForm" (ngSubmit) = "onSubmitForm()">
+    <input type="text" name="email" [placeholder]="phrases['reset.form.email.placeholder']" formControlName="email"/><p>{{ phrases['reset.form.email.extension'] }}</p><br/>
+    <input id="submit" type="submit" [value]="phrases['reset.form.submitButton']" [disabled]="resetForm.invalid"/>
+  </form>
+
+  <!-- Useful links -->
+  <p><a [routerLink]='routes.auth'>{{ phrases['auth.backToAuth'] }}</a>.<br/>
+  {{ phrases['auth.noAccount.question'] }} <a [routerLink]='routes.newAccount'>{{ phrases['auth.clickHere'] }}</a> {{ phrases['auth.noAccount.register'] }}</p>
+
+  <!-- Footer -->
+  <app-auth-footer></app-auth-footer>
+
+  <!-- Background animation -->
+  <!-- Black background -->
+  <div id="background-auth" style="background: #000000"></div>
+
+  <!-- Image translations -->
+  <div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()"></div>
+
+</body>

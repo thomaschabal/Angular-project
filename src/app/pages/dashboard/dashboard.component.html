@@ -1,0 +1,27 @@
+<!-- Intro -->
+<section id="intro" class="main style1 dark fullscreen">
+
+  <!-- Adminstration area -->
+  <div class="content" id="admin_area">
+    <header id="admin_header">
+      <h2>{{ phrases['dashboard.header.title'] }}</h2>
+    </header>
+
+    <!-- Creation of gallery form -->
+    <div id="col_admin_1">
+      <h3 (click)="formVisibility()">{{ phrases['dashboard.form.title'] }}</h3>
+      <app-gallery-creation-form *ngIf="eventCreationSelect"></app-gallery-creation-form>
+    </div>
+
+    <div id="col_admin_2">
+      <button id="moderation_button" type="button" name="button"
+              (click)="navigateToModeration()">
+        {{ phrases['dashboard.links.moderation'] }}
+      </button><br/>
+      <span *ngFor="let link of buttonLinks">
+        <app-navigation-button [name]="link.name" [address]="link.address"></app-navigation-button>
+      </span>
+    </div>
+  </div>
+
+</section>

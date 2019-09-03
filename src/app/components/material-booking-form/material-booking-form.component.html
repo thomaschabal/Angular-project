@@ -1,0 +1,9 @@
+<form>
+  <div class="fields" [formGroup]="materialForm" (ngSubmit)="onSubmitMateriel()">
+    <div class="field"><input type="text" name="matos" [placeholder]="phrases['material.form.matos']" formControlName="matos"/></div>
+    <div class="field"><textarea name="message" [placeholder]="phrases['material.form.message']" rows="4" formControlName="message"></textarea></div>
+  </div>
+  <ul class="actions special">
+    <li><input type="submit" [value]="phrases['material.form.submitButton']" (click)="onSubmitMateriel()" [disabled]="materialForm.invalid"/></li>
+  </ul>
+</form>

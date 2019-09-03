@@ -9,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class FooterComponent {
-
   constructor(private httpService: HttpService,
               private router: ActivatedRoute) { }
 

@@ -1,0 +1,73 @@
+@import url("../../../assets/assets_h/css/main.css");
+
+/* Intro */
+	#intro {
+		margin-top : 3em;
+		height : calc(100vh - 3em);
+		background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/introP.jpg");
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, bottom center;
+		background-repeat: repeat, no-repeat;
+	}
+
+/* 3 Last events */
+	#one, #two, #three {
+		height: 100vh;
+	}
+
+/* One */
+	#one {
+		//background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/wei.jpg");
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+
+/* Two */
+	#two {
+		//background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/supponts.jpg");
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+
+/* Three */
+	#three {
+		//background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/voyage1.jpg");
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+	}
+
+.content .box .style2 {
+	width: 34%;
+}
+
+#gallery > img {
+	cursor: pointer;
+}
+
+.darkbg {
+	top:0;
+	left:0;
+	width: 100vw;
+	height:100vh;
+	background-color: rgba(0,0,0,0.25);
+	position: fixed;
+	z-index: 5000;
+}
+
+@media screen and (max-width: 736px) {
+	#intro {
+		margin-top: 4em;
+	}
+	#intro header {
+		margin-top: 1em;
+	}
+
+	#one, #two, #three {
+		background-position: center center, center center;
+	}
+
+	.main.style1 {
+		padding: 0.6em 15px 0.6em 15px;
+	}
+}

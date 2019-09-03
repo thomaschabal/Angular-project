@@ -4,8 +4,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class HttpService {
-
-  // Variables containing the adress of the back, the user's token and his status (user or admin)
+  // Variables containing the address of the back, the user's token and his status (user or admin)
   apiUrl: string;
   token: string;
   isAdmin: boolean;
@@ -16,7 +15,6 @@ export class HttpService {
   constructor(private httpClient: HttpClient) {
     this.apiUrl = environment.apiUrl;
   }
-
 
   // Method get : require the route from the API
   get(path: string) {
@@ -53,8 +51,6 @@ export class HttpService {
     };
     return this.httpClient.post(this.apiUrl + path, body, httpOptions);
   }
-
-
 
   // Méthode delete
   delete(path: string) {

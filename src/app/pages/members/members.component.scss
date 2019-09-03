@@ -1,0 +1,113 @@
+@import url("../../../assets/assets_h/css/main.css");
+
+/* Intro */
+#intro {
+	margin-top: 3em;
+	height : calc(100vh - 3em);
+	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/introP.jpg");
+	background-size: 256px 256px, cover;
+	background-attachment: fixed, fixed;
+	background-position: top left, bottom center;
+	background-repeat: repeat, no-repeat;
+}
+
+#p020, #p019, #p018, #p017, #p016, #p015 {
+	height: 100vh;
+}
+
+/* One */
+#p020 {
+	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/ponthe_teams/020.png");
+	background-size: 256px 256px, cover;
+	background-attachment: fixed, fixed;
+	background-position: top left, center center;
+}
+
+/* Two */
+#p019 {
+	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/ponthe_teams/019.png");
+	background-size: 256px 256px, cover;
+	background-attachment: fixed, fixed;
+	background-position: top left, center center;
+}
+
+/* Three */
+#p018 {
+	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/04.jpg");
+	background-size: 256px 256px, cover;
+	background-attachment: fixed, fixed;
+	background-position: top left, center center;
+}
+
+/* Four */
+#p017 {
+	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/05.jpg");
+	background-size: 256px 256px, cover;
+	background-attachment: fixed, fixed;
+	background-position: top left, center center;
+}
+
+/* Five */
+#p016 {
+	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/04.jpg");
+	background-size: 256px 256px, cover;
+	background-attachment: fixed, fixed;
+	background-position: top left, center center;
+}
+
+/* Six */
+#p015 {
+	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/05.jpg");
+	background-size: 256px 256px, cover;
+	background-attachment: fixed, fixed;
+	background-position: top left, center center;
+}
+
+.style2 .content {
+  opacity: 0.95;
+}
+
+@media screen and (max-width: 1920px) {
+  .style2 .content {
+    width: 30% !important;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .style2 .content {
+    width: 35% !important;
+    padding: 3.5em 1em 3.5em 2em;
+  }
+
+  .style2 .content p {
+    margin-bottom: 0.6em;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .style2 .content {
+    width: 40% !important;
+  }
+
+  .style2 .content p {
+    line-height: 1.5em;
+  }
+}
+
+@media screen and (max-width: 736px) {
+	#intro {
+		margin-top: 4em;
+	}
+
+  .style2 .content {
+    width: 100% !important;
+  }
+
+	.style2 .content p {
+		line-height: 1.35em;
+	}
+
+	.main.style1 {
+		padding: 0.6em 15px 0.6em 15px;
+	}
+}

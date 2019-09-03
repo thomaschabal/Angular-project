@@ -1,0 +1,27 @@
+@import url("../../../assets/assets_c/css/main.css");
+
+body {
+  margin-top: -8em;
+}
+
+.form1 > input, select, p ,q {
+  margin-bottom: 1em;
+}
+
+p {
+  margin-top: 23px;
+}
+
+.form1 > .submit {
+  width: 10em;
+}
+
+#submit {
+	background: linear-gradient(35deg, red, #fc3 65%);
+}
+
+@media screen and (max-width: 736px) {
+  body {
+    margin-top: -2em;
+  }
+}

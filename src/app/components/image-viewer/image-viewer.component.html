@@ -1,0 +1,29 @@
+<!-- Image viewer -->
+<!-- Darken the background -->
+<div class="darkbg" (click)="closeWidePic()"></div>
+
+<!-- Image enlarged -->
+<div class="wide-pic"
+     [style.marginLeft.px]="placePicLeft(imgWide)"
+     [style.marginTop.px]="placePicTop(imgWide)"
+     (mouseenter)="displayArrows()"
+     (mouseleave)="hideArrows()">
+  <img #imgWide [src]="widePicRef" style="cursor: pointer"/>
+  <caption>{{ captionWidePic }}</caption>
+  <caption *ngIf="isGallery" id="num_photo">{{ phrases['imageViewer.pic'] }} {{ indexPicture+1 }} / {{ rawPics.length }}</caption>
+
+  <!-- Closer -->
+  <img id="closer"
+       src="../../../assets/assets_h/css/images/poptrox-closer.svg"
+       (click)="closeWidePic()"
+       [@widePicsAnimation]="showArrows+''"/>
+  <!-- Navigation arrows -->
+  <img id="right_arrow"
+       src="../../../assets/assets_h/css/images/poptrox-nav.svg"
+       (click)="navRight()"
+       [@widePicsAnimation]="showArrows+''"/>
+  <img id="left_arrow"
+       src="../../../assets/assets_h/css/images/poptrox-nav.svg"
+       (click)="navLeft()"
+       [@widePicsAnimation]="showArrows+''"/>
+</div>

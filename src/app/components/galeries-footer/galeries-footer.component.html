@@ -1,0 +1,48 @@
+<!-- Header, displayed on the bottom -->
+<header id="header" id="event-panel">
+  <h1>
+    <a [routerLink]="routes.galeries"><strong>{{ nameEvent }}</strong></a>
+  </h1>
+  <nav (click)="changeStateFooter()">
+    <ul>
+      <li><a class="icon fa-info-circle" style="cursor: pointer">{{ phrases['galeries.footer.title'] }}</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Footer, revealed when clicking on "A propos de l'album" -->
+<footer id="footer" class="panel" [@footerTrigger]="footerState">
+  <div class="inner split">
+
+    <!-- General information on the album -->
+    <div>
+      <section>
+        <h2>{{ nameEvent }}</h2>
+        <p>{{ resumeEvent }}</p>
+      </section>
+      <section>
+        <h2>{{ phrases['galeries.about.title'] }}</h2>
+        <ul class="icons">
+					<li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook">
+            <span class="label">Facebook</span>
+          </a></li>
+					<li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram">
+            <span class="label">uPont</span>
+          </a></li>
+          <li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github">
+            <span class="label">GitHub</span>
+          </a></li>
+          <li><a href="#" class="icon fa-linkedin">
+            <span class="label">LinkedIn</span>
+          </a></li>
+				</ul>
+      </section>
+      <p class="copyright">
+        &copy; {{ phrases['galeries.about.copyright'] }}
+      </p>
+    </div>
+
+    <!-- Contact form -->
+    <app-galeries-contact-form></app-galeries-contact-form>
+  </div>
+</footer>

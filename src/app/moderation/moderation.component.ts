@@ -20,7 +20,6 @@ import { HttpService } from '../services/http.service';
   ]
 })
 export class ModerationComponent implements OnInit, OnDestroy {
-
   private sub: Subscription;
 
   pics: any[];

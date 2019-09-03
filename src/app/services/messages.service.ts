@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { HttpService } from './http.service';
 
 @Injectable()
@@ -9,5 +10,4 @@ export class MessagesService {
   materialPost(stuff: object) {
     return this.httpService.post('/materiel', stuff);
   }
-
 }

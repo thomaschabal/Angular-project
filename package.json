@@ -19,11 +19,13 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "core-js": "^2.5.4",
+    "jwt-decode": "^2.2.0",
+    "ngx-awesome-uploader": "^8.0.0",
+    "ngx-plyr": "^1.2.2",
+    "plyr": "^3.5.6",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
-    "zone.js": "~0.8.26",
-    "ngx-image-viewer": "latest",
-    "ngx-awesome-uploader": "latest"
+    "zone.js": "~0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.13.0",
