@@ -11,10 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
 import { HttpClient } from '@angular/common/http';
-import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
-
-
-
+import { DemoFilePickerAdapter } from '../components/upload/demo-file-picker.adapter';
 
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
@@ -49,8 +46,6 @@ export enum KEY_CODE {
 
 
 export class EventComponent implements OnInit, OnDestroy {
-
-
   constructor(private galeriesService: GaleriesService,
               private messagesService: MessagesService,
               private activeRoute: ActivatedRoute,
@@ -101,10 +96,6 @@ export class EventComponent implements OnInit, OnDestroy {
   footerState = 'hidden';
 
   showArrows = true;
-
-
-
-
 
   // FILE UPLOAD
 
