@@ -92,15 +92,15 @@ workflows:
       - build:
           requires:
             - install
-      - test:
-          requires:
-            - build
+#      - test:
+#          requires:
+#            - build
       - lint:
           requires:
             - build
       - deploy:
           requires:
-            - test
+#            - test
             - lint
           filters:
             branches:

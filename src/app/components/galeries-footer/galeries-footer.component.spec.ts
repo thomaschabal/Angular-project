@@ -3,7 +3,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { GaleriesFooterComponent } from './galeries-footer.component';
 import { GaleriesContactFormComponent } from '../galeries-contact-form/galeries-contact-form.component';
-import { routesAppFromRoot } from '../../Routes';
 import { Phrases } from '../../Phrases';
 import { routes } from '../../app-routing.module';
 

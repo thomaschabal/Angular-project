@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
+import {HttpService} from "../../services/http.service";
+import {HttpClientModule} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -8,7 +11,14 @@ describe('FooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
+      imports: [
+        HttpClientModule,
+        RouterModule.forRoot([])
+      ],
+      declarations: [ FooterComponent ],
+      providers: [
+        HttpService,
+      ]
     })
     .compileComponents();
   }));

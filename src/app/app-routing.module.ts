@@ -6,7 +6,6 @@ import { routesApp } from './Routes';
 import { AuthGuard } from './services/auth-guard.service';
 
 //// COMPONENTS
-import { AppComponent } from './app.component';
 import { AuthComponent} from './pages/auth/auth.component';
 import { NewAccountComponent } from './pages/new-account/new-account.component';
 import { CguComponent } from './pages/cgu/cgu.component';
@@ -21,7 +20,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ModerationComponent } from './pages/moderation/moderation.component';
 import { VideoComponent } from './pages/video/video.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', canActivate: [AuthGuard], component: HomeComponent },
   { path: routesApp.auth, component: AuthComponent, data: {animation: 'AuthPage'} },
   { path: routesApp.newAccount, component: NewAccountComponent, data: {animation: 'NewAccountPage'} },

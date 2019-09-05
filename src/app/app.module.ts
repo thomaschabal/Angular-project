@@ -91,7 +91,6 @@ import { UserService } from './services/user.service';
     NotfoundComponent,
     ResetComponent,
     VideoComponent,
-
     UserListComponent,
   ],
   imports: [
@@ -114,7 +113,6 @@ import { UserService } from './services/user.service';
     MessagesService,
     PicsService,
     UserService,
-    HttpService,
   ],
   bootstrap: [AppComponent]
 })

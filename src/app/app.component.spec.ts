@@ -4,17 +4,27 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
+import {AuthService} from "./services/auth.service";
+import {HttpService} from "./services/http.service";
+import {HttpClientModule} from "@angular/common/http";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientModule,
+        BrowserAnimationsModule
       ],
       declarations: [
         AppComponent,
         NavComponent,
         FooterComponent
+      ],
+      providers: [
+        AuthService,
+        HttpService,
       ],
       schemas: [ NO_ERRORS_SCHEMA ]
     }).compileComponents();
