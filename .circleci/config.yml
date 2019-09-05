@@ -73,15 +73,11 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            echo $CIRCLE_TOKEN;
             ssh $SSH_USER@$SSH_HOST << EOF
             cd /srv/ponthe$([ "${CIRCLE_BRANCH}" == "master" ] || echo "-${CIRCLE_BRANCH}").enpc.org
             mkdir -p /tmp/ponthe-front
             rm -R /tmp/ponthe-front/*
-            echo $CIRCLE_TOKEN
-            echo "ok"
-            echo "${CIRCLE_TOKEN}"
-            curl https://circleci.com/api/v1.1/project/gh/ENPC-Ponthe/Angular-project/latest/artifacts?circle-token=${CIRCLE_TOKEN} | grep -o 'https://[^"]*'    | sed -e 's/$/?circle-token=$CIRCLE_TOKEN/' | wget -v -i - -O /tmp/ponthe-front/front-build.tar.gz
+            curl https://circleci.com/api/v1.1/project/gh/ENPC-Ponthe/Angular-project/latest/artifacts?circle-token=${CIRCLE_TOKEN} | grep -o 'https://[^"]*'    | sed -e "s/$/?circle-token=${CIRCLE_TOKEN}/" | wget -v -i - -O /tmp/ponthe-front/front-build.tar.gz
             tar -zxvf /tmp/ponthe-front/front-build.tar.gz
             rm -R front/
             mv /tmp/ponthe-front/dist/galeries-ponthe/ front/
@@ -93,19 +89,19 @@ workflows:
   main:
     jobs:
       - install
-      - build:
+      - lint:
           requires:
             - install
 #      - test:
 #          requires:
-#            - build
-      - lint:
+#            - install
+      - build:
           requires:
-            - build
+            - lint
+#            - test
       - deploy:
           requires:
-#            - test
-            - lint
+            - build
           filters:
             branches:
               only:
