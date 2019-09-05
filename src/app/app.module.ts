@@ -52,14 +52,12 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 // SERVICES
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
-import { ConfigService } from './services/config.service';
 import { GaleriesService } from './services/galeries.service';
 import { HomeService } from './services/home.service';
 import { HttpService } from './services/http.service';
 import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
 import { PicsService } from './services/pics.service';
-import { UploadService } from './services/upload.service';
 import { UserService } from './services/user.service';
 
 @NgModule({
@@ -93,7 +91,6 @@ import { UserService } from './services/user.service';
     NotfoundComponent,
     ResetComponent,
     VideoComponent,
-
     UserListComponent,
   ],
   imports: [
@@ -109,14 +106,12 @@ import { UserService } from './services/user.service';
   providers: [
     AuthGuard,
     AuthService,
-    ConfigService,
     GaleriesService,
     HomeService,
     HttpService,
     MembersService,
     MessagesService,
     PicsService,
-    UploadService,
     UserService,
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { state, style, transition, animate, trigger } from '@angular/animations';
 
-import { MaterialBookingFormComponent } from '../../components/material-booking-form/material-booking-form.component';
 import { Phrases } from '../../Phrases';
 
 @Component({
@@ -19,7 +18,6 @@ import { Phrases } from '../../Phrases';
 })
 
 export class MaterialComponent implements OnInit {
-
   phrases: object;
   // Form for material booking
   formState = 'visible';

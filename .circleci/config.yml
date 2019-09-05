@@ -23,7 +23,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-
   lint:
     docker:
       - image: circleci/node:11
@@ -36,7 +35,6 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
       - run: node ./node_modules/@angular/cli/bin/ng lint
-
   test:
     docker:
       - image: circleci/node:11-browsers
@@ -52,7 +50,6 @@ jobs:
           node ./node_modules/@angular/cli/bin/ng test -- --watch=false --progress=false --browsers=ChromeHeadlessCI --code-coverage
           node ./node_modules/@angular/cli/bin/ng e2e -- --protractor-config=./e2e/protractor-ci.conf.js
           cat coverage/index.html | grep '% <\/span>' # display coverage result
-
   build:
     docker:
       - image: circleci/node:11
@@ -69,6 +66,23 @@ jobs:
       - store_artifacts:
           path: front-build.tar.gz
           destination: front-build
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST << EOF
+            cd /srv/ponthe$([ "${CIRCLE_BRANCH}" == "master" ] || echo "-${CIRCLE_BRANCH}").enpc.org
+            mkdir -p /tmp/ponthe-front
+            rm -R /tmp/ponthe-front/*
+            curl https://circleci.com/api/v1.1/project/gh/ENPC-Ponthe/Angular-project/latest/artifacts?circle-token=$CIRCLE_TOKEN | grep -o 'https://[^"]*'    | sed -e "s/$/?circle-token=$CIRCLE_TOKEN/" | wget -v -i - -O /tmp/ponthe-front/front-build.tar.gz
+            tar -zxvf /tmp/ponthe-front/front-build.tar.gz
+            rm -R front/
+            mv /tmp/ponthe-front/dist/galeries-ponthe/ front/
+            EOF
+
 
 workflows:
   version: 2
@@ -78,3 +92,18 @@ workflows:
       - build:
           requires:
             - install
+#      - test:
+#          requires:
+#            - build
+      - lint:
+          requires:
+            - build
+      - deploy:
+          requires:
+#            - test
+            - lint
+          filters:
+            branches:
+              only:
+                - master
+                - testing

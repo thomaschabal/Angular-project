@@ -44,6 +44,6 @@ export class HomeService {
   }
 
   getLatestGalleries() {
-    return this.httpService.post('/api/get-latest-galleries', {page: 1, page_size: 3});
+    return this.httpService.post('/get-latest-galleries', {page: 1, page_size: 3});
   }
 }

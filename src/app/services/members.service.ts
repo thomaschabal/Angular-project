@@ -9,6 +9,6 @@ export class MembersService {
 
   // Get the list of members
   getMembers() {
-    return this.httpService.get('/api/members');
+    return this.httpService.get('/members');
   }
 }

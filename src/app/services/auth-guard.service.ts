@@ -7,13 +7,12 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-
   constructor(private httpService: HttpService,
               private authService: AuthService,
-              private router: Router) { }
+              private router: Router) {}
 
   getUserByJWT() {
-    return this.httpService.get('/api/get-user-by-jwt').subscribe(
+    return this.httpService.get('/get-user-by-jwt').subscribe(
       (response: {admin, promotion}) => {
         this.httpService.isAdmin = response.admin;
         this.httpService.promotion = response.promotion;

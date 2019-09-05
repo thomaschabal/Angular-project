@@ -6,7 +6,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { UserService } from '../../services/user.service';
 import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
-import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.component';
 
 @Component({
   selector: 'app-reset',

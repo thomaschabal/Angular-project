@@ -1,11 +1,10 @@
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { LoggingUser } from '../models/LoggingUser.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 
-import { ConfigService } from './config.service';
 import { HttpService } from './http.service';
-import { LoggingUser } from '../models/LoggingUser.model';
 import { Phrases } from '../Phrases';
 
 export const TOKEN_NAME = 'jwt_token';
@@ -13,15 +12,10 @@ export const TOKEN_NAME = 'jwt_token';
 @Injectable()
 export class AuthService {
   isAuth: boolean;
-  token: string;
-  apiUrl: string;
 
   constructor(private httpClient: HttpClient,
-              private configService: ConfigService,
               private httpService: HttpService,
               private router: Router) {
-    // this.apiUrl = this.configService.load().apiUrl;
-    this.apiUrl = 'https://ponthe-testing.enpc.org';
     this.isAuth = false;
     this.getUserInfos();
   }
@@ -44,7 +38,7 @@ export class AuthService {
   }
 
   getUserByJWT() {
-    this.httpService.get('/api/get-user-by-jwt').subscribe(
+    this.httpService.get('/get-user-by-jwt').subscribe(
       (response: {admin, promotion}) => {
         this.httpService.isAdmin = response.admin;
         this.httpService.promotion = response.promotion;
@@ -81,13 +75,13 @@ export class AuthService {
 
   // Get the User Conditions
   getCGU() {
-    return this.httpService.get('/api/cgu');
+    return this.httpService.get('/cgu');
   }
 
   // Login : request to the server and update of the information on the user
   signIn(user: LoggingUser) {
-    this.httpService.post('/api/login', user).subscribe(
-      (res: {token}) => {
+    this.httpService.post('/login', user).subscribe(
+      (res: { token }) => {
         this.setToken(res.token);
         this.isAuth = true;
         this.router.navigate(['/home']);

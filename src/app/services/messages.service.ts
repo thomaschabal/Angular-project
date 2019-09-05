@@ -8,6 +8,6 @@ export class MessagesService {
   constructor(private httpService: HttpService) {  }
 
   materialPost(stuff: object) {
-    return this.httpService.post('/api/materiel', stuff);
+    return this.httpService.post('/materiel', stuff);
   }
 }

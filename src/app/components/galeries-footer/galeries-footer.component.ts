@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 
-import { GaleriesContactFormComponent } from '../galeries-contact-form/galeries-contact-form.component';
 import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 

@@ -1,13 +1,10 @@
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { ConfigService } from './config.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class HttpService {
-
-  // Variables containing the adress of the back, the user's token and his status (user or admin)
+  // Variables containing the address of the back, the user's token and his status (user or admin)
   apiUrl: string;
   token: string;
   isAdmin: boolean;
@@ -15,12 +12,9 @@ export class HttpService {
 
   currentGallery: string;
 
-  constructor(private httpClient: HttpClient,
-              private configService: ConfigService,
-              private router: Router) {
-    this.apiUrl = 'https://ponthe-testing.enpc.org';
+  constructor(private httpClient: HttpClient) {
+    this.apiUrl = environment.apiUrl;
   }
-
 
   // Method get : require the route from the API
   get(path: string) {

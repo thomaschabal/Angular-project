@@ -25,8 +25,8 @@ export const Phrases = {
   'dashboard.links.trello': 'Trello',
   'dashboard.links.youtube': 'Youtube',
 
-  'event.deleteGallery.galleryWillBeDeleted':
-    'Cette galerie est sur le point d\'être supprimée. Cliquer une deuxième fois sur \'Supprimer la galerie\' pour valider l\'action.',
+  'event.deleteGallery.galleryWillBeDeleted': 'Cette galerie est sur le point d\'être supprimée. Cliquer une deuxième' +
+    ' fois sur \'Supprimer la galerie\' pour valider l\'action.',
   'event.deleteGallery.galleryWasDeleted': 'La galerie a bien été supprimée',
 
   'footer.copyright': 'Ponthé 020 - Club audiovisuel de l\'Ecole des Ponts',
@@ -41,8 +41,9 @@ export const Phrases = {
   'galeries.contactForm.reset': 'Reset le message',
 
   'home.header.title': 'Le Ponthé',
-  'home.header.introduction':
-    'Bienvenue sur le site du <strong>Ponthé</strong>, le club audiovisuel des Ponts.<br/> Ici, tu pourras voir et télécharger les photos, vidéos et montages réalisés par les membres du club. Tu pourras également déposer tes propres photos et vidéos dans chaque <strong>galerie</strong>. <br/> Bon visionnage !',
+  'home.header.introduction': 'Bienvenue sur le site du <strong>Ponthé</strong>, le club audiovisuel des Ponts.<br/> ' +
+    'Ici, tu pourras voir et télécharger les photos, vidéos et montages réalisés par les membres du club. Tu pourras ' +
+    'également déposer tes propres photos et vidéos dans chaque <strong>galerie</strong>. <br/> Bon visionnage !',
   'home.noDescription': 'Pas de description pour l\'instant.',
   'home.favoritePics.title': 'Tes photos <em>Coup de coeur </em>  <3 !',
   'home.contact.title': 'Contacter le Ponthé',
@@ -56,13 +57,16 @@ export const Phrases = {
 
   'material.header.title': 'Demande de prêt de matériel du Ponthé',
   'material.header.subtitle':
-    'Remplis ce formulaire pour emprunter du matériel au Ponthé ! Explique nous rapidement ton projet afin que l\'on puisse te conseiller au mieux ;)',
-  'material.form.matos': 'Tu souhaites ? L\'appareil GH4, le micro, le trépied fixe, le stabilisateur, la GoPro, le drone...',
+    'Remplis ce formulaire pour emprunter du matériel au Ponthé ! Explique nous rapidement ton projet afin que l\'on ' +
+    'puisse te conseiller au mieux ;)',
+  'material.form.matos': 'Tu souhaites ? L\'appareil GH4, le micro, le trépied fixe, le stabilisateur, la GoPro, le ' +
+    'drone...',
   'material.form.message': 'Explique nous brièvement ton projet...',
   'material.form.submitButton': 'Merci le Ponthé',
 
   'members.header.title': 'Les membres du Ponthé',
-  'members.header.subtitle': 'Créé par un 013, Thomas Chevrier, le Ponthé a vu se succéder des générations de cinéastes et photographes...',
+  'members.header.subtitle': 'Créé par un 013, Thomas Chevrier, le Ponthé a vu se succéder des générations de ' +
+    'cinéastes et photographes...',
 
   'messages.sent': 'Message envoyé !',
 
@@ -92,8 +96,8 @@ export const Phrases = {
   'nav.logout': 'Déconnexion',
 
   'newAccount.header.title': 'Création d\'un nouveau compte',
-  'newAccount.header.subtitle':
-    'Pour tout problème sur la création de compte ou pour des questions concernant le club, tu peux envoyer un mail à <em>ponthe@liste.enpc.fr</em>',
+  'newAccount.header.subtitle': 'Pour tout problème sur la création de compte ou pour des questions concernant le ' +
+    'club, tu peux envoyer un mail à <em>ponthe@liste.enpc.fr</em>',
   'newAccount.cgu.first': 'Les',
   'newAccount.cgu.cgu': 'Conditions Générales d\'Utilisation',
   'newAccount.cgu.second': 'du site sont disponibles en cliquant',
@@ -108,12 +112,12 @@ export const Phrases = {
   'newAccount.form.submitButton': 'Créer mon compte',
 
   'notFound.title': 'Erreur 404',
-  'notFound.text':
-    'La route que vous avez recherchée n\'existe pas ou son accès ne vous est pas autorisé.<br/> Merci de circuler, il n\'y a donc rien à voir !',
+  'notFound.text': 'La route que vous avez recherchée n\'existe pas ou son accès ne vous est pas autorisé.<br/> Merci' +
+    ' de circuler, il n\'y a donc rien à voir !',
 
   'reset.header.title': 'Réinitialisation du mot de passe',
-  'reset.header.subtitle':
-    'Pour tout problème sur la réinitialisation de mot de passe ou pour des questions concernant le club, tu peux envoyer un mail à <em>ponthe@liste.enpc.fr</em>',
+  'reset.header.subtitle': 'Pour tout problème sur la réinitialisation de mot de passe ou pour des questions ' +
+    'concernant le club, tu peux envoyer un mail à <em>ponthe@liste.enpc.fr</em>',
   'reset.form.email.placeholder': 'Adresse mail',
   'reset.form.email.extension': '@eleves.enpc.fr',
   'reset.form.submitButton': 'Envoyer le mail de réinitialisation',

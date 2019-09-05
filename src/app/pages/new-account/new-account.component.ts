@@ -5,7 +5,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 
 import { User } from '../../models/User.model';
 import { UserService } from '../../services/user.service';
-import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.component';
 import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 
@@ -87,8 +86,7 @@ export class NewAccountComponent implements OnInit {
   userForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService,
-              private router: Router) {
+              private userService: UserService) {
     this.phrases = Phrases;
   }
 
