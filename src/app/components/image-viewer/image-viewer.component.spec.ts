@@ -1,6 +1,5 @@
 import { Component, ViewChild, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Observable, of } from 'rxjs';
 import { PicsService } from '../../services/pics.service';
 import { ImageViewerComponent } from './image-viewer.component';
 
