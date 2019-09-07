@@ -16,3 +16,21 @@ form textarea, form .input_field {
 input {
   background: linear-gradient(210deg, red, yellow);
 }
+
+h3 {
+	text-align: left;
+	font-size: 1.25em;
+	margin-bottom: 2vh;
+}
+
+h3:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.admin_form {
+	padding: 2vh 2vw 2vh 2vw;
+	background: linear-gradient(30deg, rgba(255,0,0,0.75), rgba(255,255,0,0.95));
+	border-radius: 0em 1.5em 1.5em 1.5em;
+	margin-bottom: 2vh;
+}

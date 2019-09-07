@@ -1,0 +1,10 @@
+<div class="admin_form">
+  <h3 (click)="formVisibility()">{{ phrases['dashboard.csv_account_creation.add_csv'] }}</h3>
+  <div *ngIf="displayForm">
+    <input type="file" accept=".csv"
+           id="csv_account_creation" name="csv_account_creation">
+    <input type="submit"
+           [value]="phrases['dashboard.csv_account_creation.submit']"
+           (click)="upload_csv()" />
+  </div>
+</div>

@@ -21,9 +21,6 @@ export class DashboardComponent implements OnInit {
     { name: this.phrases['dashboard.links.youtube'], address: 'https://www.youtube.com/channel/UCxHf0yHnEezkhuhzuT2yaIg' },
   ];
 
-  // Create gallery form initially hidden
-  eventCreationSelect = false;
-
   constructor(private router: Router) { }
 
   ngOnInit() { }
@@ -31,10 +28,5 @@ export class DashboardComponent implements OnInit {
   // On click on button "Modérer"
   navigateToModeration() {
     this.router.navigate([routesAppFromRoot.moderation]);
-  }
-
-  // Create gallery form visibility
-  formVisibility() {
-    this.eventCreationSelect = !this.eventCreationSelect;
   }
 }

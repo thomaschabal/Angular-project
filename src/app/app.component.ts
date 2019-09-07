@@ -5,6 +5,7 @@ import { animate, style, transition, trigger, query } from '@angular/animations'
 import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http.service';
 import { routesAppFromRoot } from './Routes';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -56,7 +57,7 @@ export class AppComponent {
     }
 
     if (this.keys.search('logoponthe') !== -1 || this.keys.search('logoponthé') !== -1) {
-      window.location.href = 'http://localhost:4200/assets/images/logo-ponthe.svg';
+      window.location.href = environment.baseUrl + '/assets/images/logo-ponthe.svg';
     }
     if (this.keys.search('ponthe') !== -1 || this.keys.search('ponthé') !== -1) {
       alert('Merci le Ponthéééé !!! On t\'aime <3 Bisous <3');

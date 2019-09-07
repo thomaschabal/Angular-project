@@ -20,6 +20,8 @@ export const Phrases = {
   'dashboard.form.description': 'Description de la galerie',
   'dashboard.form.submitButton': 'Valider la création',
   'dashboard.createdGallery': 'Galerie crée',
+  'dashboard.csv_account_creation.add_csv': 'Ajouter des comptes par CSV',
+  'dashboard.csv_account_creation.submit': 'Créer les comptes',
   'dashboard.links.moderation': 'Modérer',
   'dashboard.links.slack': 'Slack',
   'dashboard.links.trello': 'Trello',

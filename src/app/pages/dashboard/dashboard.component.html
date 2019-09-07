@@ -9,8 +9,8 @@
 
     <!-- Creation of gallery form -->
     <div id="col_admin_1">
-      <h3 (click)="formVisibility()">{{ phrases['dashboard.form.title'] }}</h3>
-      <app-gallery-creation-form *ngIf="eventCreationSelect"></app-gallery-creation-form>
+      <app-gallery-creation-form></app-gallery-creation-form>
+      <app-csv-import-form></app-csv-import-form>
     </div>
 
     <div id="col_admin_2">
