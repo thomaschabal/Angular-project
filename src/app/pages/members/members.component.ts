@@ -34,6 +34,7 @@ export class MembersComponent implements OnInit, OnDestroy {
   phrases: object;
   routes = routesAppFromRoot;
   // Data to show to the user
+  fragmentIntro = '';
   teamPonthe: any[];
   private sub: Subscription;
 
@@ -57,6 +58,7 @@ export class MembersComponent implements OnInit, OnDestroy {
     this.membersService.getMembers().subscribe(
       (res: { team_ponthe }) => {
         this.teamPonthe = res.team_ponthe;
+        this.fragmentIntro = this.teamPonthe[0].year_id;
       },
       (error) => { console.log(error); }
     );

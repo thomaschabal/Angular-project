@@ -3,30 +3,21 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class GaleriesService {
-  galeriesEvents: any[];
-  privateGalleries: any[];
+  galeriesEvents = [];
+  areGaleriesEventsLoaded = false;
+  privateEvents = [];
+  arePrivateEventsLoaded = false;
   eventPics: any[];
   pic: any;
+  displaySpinner = false;
+  stateSpinner = 'hidden';
 
-  constructor(private httpService: HttpService) {
-      // Request to get the list of all public events
-      httpService.get('/get-all-galleries').subscribe(
-        (res: { galleries }) => {
-          this.galeriesEvents = res.galleries;
-        },
-        (error) => { }
-      );
-      this.getPrivateEvents().subscribe(
-        (res: {galleries}) => {
-          this.privateGalleries = res.galleries;
-        }
-      );
-    }
+  constructor(private httpService: HttpService) {}
 
   // Determine whether the gallery is public or private
   isPublicOrPrivate(routeGallery: string) {
     let isPublic = true;
-    for (const event of this.privateGalleries) {
+    for (const event of this.privateEvents) {
       if (event.slug === routeGallery) {
         isPublic = false;
       }
@@ -46,7 +37,16 @@ export class GaleriesService {
 
   // Get the list of all events
   getAllEvents() {
-    return this.httpService.get('/get-all-galleries');
+    return this.httpService.get('/get-all-galleries')
+      .subscribe(
+        (res: { galleries }) => {
+          this.galeriesEvents = res.galleries;
+          this.stateSpinner = 'hidden';
+          setTimeout(() => { this.displaySpinner = false; }, 200);
+          this.areGaleriesEventsLoaded = true;
+        },
+        (error) => { }
+      );
   }
 
   getEventsOfYear(year: string) {
@@ -55,7 +55,14 @@ export class GaleriesService {
 
   // Get the list of all private events
   getPrivateEvents() {
-    return this.httpService.get('/get-private-galleries');
+    return this.httpService.get('/get-private-galleries')
+      .subscribe(
+        (res: { galleries }) => {
+          this.privateEvents = res.galleries;
+          this.arePrivateEventsLoaded = true;
+        },
+        (error) => { }
+      );
   }
 
   // Get a random image for some event
@@ -85,5 +92,65 @@ export class GaleriesService {
 
   getModerationFiles() {
     return this.httpService.get('/files/not-moderated');
+  }
+
+  //// METHODS FOR GALERIES COMPONENT
+  loadEvents() {
+    // Get Private Events
+    if (this.httpService.isAdmin === true) {
+      if (!this.arePrivateEventsLoaded) {
+        this.getPrivateEvents();
+      }
+    }
+
+    // Get public events
+    if (!this.areGaleriesEventsLoaded) {
+      if (this.httpService.isAdmin) {
+          this.getAllEvents();
+      } else {
+        // Define the years regarding the user
+        const userProm1A = ( +('2' + this.httpService.promotion) - 3) + '';
+        const userProm2A = ( +('2' + this.httpService.promotion) - 2) + '';
+        // Get the events of both years
+        this.getEventsOfYear(userProm1A).subscribe(
+          (res: { public_galleries }) => {
+            this.galeriesEvents = res.public_galleries;
+            this.getEventsOfYear2A(userProm2A);
+          },
+          (error) => {
+            this.getEventsOfYear2A(userProm2A);
+          }
+        );
+      }
+    }
+  }
+
+  getEventsOfYear2A(userProm2A) {
+    this.getEventsOfYear(userProm2A).subscribe(
+      (response: { public_galleries }) => {
+        this.galeriesEvents = this.galeriesEvents.concat(response.public_galleries);
+        this.getImagesRestrictedGalleries();
+      },
+      (err) => { }
+    );
+  }
+
+  getImagesRestrictedGalleries() {
+    // Only the slugs of the events are currently stored.
+    // We therefore look for thumbnails and names
+    for (let event = 0; event < this.galeriesEvents.length; event++) {
+      this.getImage(this.galeriesEvents[event])
+      .subscribe(
+        (res: { gallery, thumbnail }) => {
+          const requestGallery = res.gallery;
+          this.galeriesEvents[event] = {
+            name: requestGallery.name,
+            slug: requestGallery.slug,
+            image: res.thumbnail,
+          };
+        },
+        (error) => { }
+      );
+    }
   }
 }

@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
 import { LoggingUser } from '../models/LoggingUser.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 
 import { HttpService } from './http.service';
+import { HomeService } from './home.service';
 import { Phrases } from '../Phrases';
 
 export const TOKEN_NAME = 'jwt_token';
@@ -13,8 +13,8 @@ export const TOKEN_NAME = 'jwt_token';
 export class AuthService {
   isAuth: boolean;
 
-  constructor(private httpClient: HttpClient,
-              private httpService: HttpService,
+  constructor(private httpService: HttpService,
+              private homeService: HomeService,
               private router: Router) {
     this.isAuth = false;
     this.getUserInfos();
@@ -86,6 +86,8 @@ export class AuthService {
         this.isAuth = true;
         this.router.navigate(['/home']);
         this.getUserByJWT();
+        this.homeService.getLatestGalleries();
+        this.homeService.getLovePics();
       },
       (error) => { alert(Phrases['login.error']); }
     );

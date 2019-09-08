@@ -93,31 +93,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     // Get text
     this.phrases = Phrases;
     // Requests to the server, update of previous data
+    this.homeService.loadLatestGalleries();
     this.lastEvents = this.homeService.lastEvents;
+    this.homeService.loadLovePics();
     this.lovePics = this.homeService.lovePics;
     // Transfer pics for image viewer
     this.picsService.rawPics = this.homeService.lovePicsSrc;
     this.adresse1 = this.lastEvents[0].fond;
     this.adresse2 = this.lastEvents[1].fond;
     this.adresse3 = this.lastEvents[2].fond;
-    this.homeService.getLatestGalleries()
-      .subscribe(
-        (res: { galleries }) => {
-          const lastEvents = res.galleries;
-          const idEvents = ['one', 'two', 'three', 'coeur'];
-          for (let i = 0; i < lastEvents.length; i++) {
-            this.lastEvents[i] = {
-              name: lastEvents[i].name,
-              fond: lastEvents[i].image,
-              routing: lastEvents[i].slug,
-              event_id: idEvents[i],
-              next_event_id: idEvents[i + 1],
-              resume: Phrases['home.noDescription']
-            };
-          }
-     },
-      (error) => { }
-    );
+
     if (this.isDesktop()) {
       this.lastEventsState1 = 'hidden-mid-left';
       this.lastEventsState2 = 'hidden-mid-right';
