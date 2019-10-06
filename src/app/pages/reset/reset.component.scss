@@ -3,3 +3,9 @@
 #submit {
 	background: linear-gradient(35deg, red, #fc3 65%);
 }
+
+@media screen and (max-width: 750px) {
+	#header, #header p, .signup-form {
+			margin: 0 0 0.5em 0;
+	}
+}

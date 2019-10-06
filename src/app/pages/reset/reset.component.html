@@ -7,7 +7,7 @@
   </header>
 
   <!-- Signup Form -->
-  <form class="signup-form" [formGroup]="resetForm" (ngSubmit) = "onSubmitForm()">
+  <form class="signup-form" [formGroup]="resetForm" (ngSubmit)="onSubmitForm()">
     <input type="text" name="email" [placeholder]="phrases['reset.form.email.placeholder']" formControlName="email"/><p>{{ phrases['reset.form.email.extension'] }}</p><br/>
     <input id="submit" type="submit" [value]="phrases['reset.form.submitButton']" [disabled]="resetForm.invalid"/>
   </form>
