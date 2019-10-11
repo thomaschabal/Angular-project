@@ -20,6 +20,8 @@ export class CguComponent implements OnInit {
   }
 
   ngOnInit() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     // Initial request for getting all the articles and storing them in "articles"
     this.authService.getCGU().subscribe(
       (res: { articles }) => {

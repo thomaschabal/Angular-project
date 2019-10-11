@@ -54,6 +54,8 @@ export class MembersComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     // Get the list of members
     this.membersService.getMembers().subscribe(
       (res: { team_ponthe }) => {

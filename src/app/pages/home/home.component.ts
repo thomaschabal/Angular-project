@@ -90,6 +90,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     // Get text
     this.phrases = Phrases;
     // Requests to the server, update of previous data

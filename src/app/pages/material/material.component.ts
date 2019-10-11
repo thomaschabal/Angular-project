@@ -26,7 +26,10 @@ export class MaterialComponent implements OnInit {
     this.phrases = Phrases;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
 
   //// DISPLAYING THE FORM
   // State of the form of the page (e.g. if the section is being hovered or not)

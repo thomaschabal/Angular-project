@@ -77,6 +77,8 @@ export class EventComponent implements OnInit, OnDestroy {
   picsState = ['visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible'];
 
   ngOnInit() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     const selectedRoute = this.activeRoute.snapshot.params.event;
     this.httpService.currentGallery = selectedRoute;
     this.picsService.onChangeCurrentGallery(selectedRoute);

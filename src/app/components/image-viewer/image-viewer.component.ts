@@ -97,4 +97,9 @@ export class ImageViewerComponent implements OnInit {
   placePicTop(img) {
     return ( (window.innerHeight - img.clientHeight) / 2 );
   }
+
+  // Download picture
+  downloadedDocumentName() {
+    return this.captionWidePic + '-' + (this.indexPicture + 1) + '.jpg';
+  }
 }
