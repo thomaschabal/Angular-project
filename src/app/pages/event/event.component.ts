@@ -134,9 +134,7 @@ export class EventComponent implements OnInit, OnDestroy {
   }
 
   clickInsideArea($event: Event) {
-    console.log("inside click",$event);
     if (this.showUploadArea) {
-      console.log('inside');
       this.justDisplayedArea = true;
       $event.preventDefault();
       $event.stopPropagation();
@@ -147,7 +145,6 @@ export class EventComponent implements OnInit, OnDestroy {
   @HostListener('document:click', ['$event'])
   clickedOutsideArea($event: Event) {
     if (this.showUploadArea && !this.justDisplayedArea) {
-      console.log('outside');
       this.showUploadArea = false;
     }
   }
