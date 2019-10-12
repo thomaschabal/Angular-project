@@ -23,18 +23,11 @@
       <section>
         <h2>{{ phrases['galeries.about.title'] }}</h2>
         <ul class="icons">
-					<li><a href="https://www.facebook.com/club.ponthe" class="icon fa-facebook">
-            <span class="label">Facebook</span>
-          </a></li>
-					<li><a href="https://upont.enpc.fr/assos/ponthe" class="icon fa-instagram">
-            <span class="label">uPont</span>
-          </a></li>
-          <li><a href="https://github.com/ENPC-Ponthe/Angular-project" class="icon fa-github">
-            <span class="label">GitHub</span>
-          </a></li>
-          <li><a href="#" class="icon fa-linkedin">
-            <span class="label">LinkedIn</span>
-          </a></li>
+          <li *ngFor="let link of links">
+            <a href="{{ link.href }}" class="icon {{ link.class }}">
+              <span class="label">{{ link.name }}</span>
+            </a>
+          </li>
 				</ul>
       </section>
       <p class="copyright">

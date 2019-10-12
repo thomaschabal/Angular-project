@@ -1,10 +1,11 @@
 @import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
 
 /* Intro */
 #intro {
 	margin-top: 3em;
 	height : calc(100vh - 3em);
-	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/introP.jpg");
+	background: $INTRO-IMAGE;
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top left, bottom center;
@@ -17,7 +18,7 @@
 
 /* Ponthé 021 */
 #p021 {
-	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/ponthe_teams/021.jpg");
+	background: $OVERLAY-IMAGE, url("../../../assets/images/ponthe_teams/021.jpg");
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top left, center top;
@@ -25,7 +26,7 @@
 
 /* One */
 #p020 {
-	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/ponthe_teams/020.jpg");
+	background: $OVERLAY-IMAGE, url("../../../assets/images/ponthe_teams/020.jpg");
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top left, center center;
@@ -33,7 +34,7 @@
 
 /* Two */
 #p019 {
-	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/ponthe_teams/019.jpg");
+	background: $OVERLAY-IMAGE, url("../../../assets/images/ponthe_teams/019.jpg");
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top left, center center;
@@ -41,7 +42,7 @@
 
 /* Three */
 #p018 {
-	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/04.jpg");
+	background: $OVERLAY-IMAGE, url("../../../assets/images/04.jpg");
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top left, center center;
@@ -49,7 +50,7 @@
 
 /* Four */
 #p017 {
-	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/05.jpg");
+	background: $OVERLAY-IMAGE, url("../../../assets/images/05.jpg");
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top left, center center;
@@ -57,7 +58,7 @@
 
 /* Five */
 #p016 {
-	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/04.jpg");
+	background: $OVERLAY-IMAGE, url("../../../assets/images/04.jpg");
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top left, center center;
@@ -65,7 +66,7 @@
 
 /* Six */
 #p015 {
-	background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/05.jpg");
+	background: $OVERLAY-IMAGE, url("../../../assets/images/05.jpg");
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top left, center center;

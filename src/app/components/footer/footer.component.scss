@@ -1,11 +1,12 @@
 @import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
 
 #footer {
   font-family: "Source Sans Pro", "sans-serif";
   font-weight: 300;
   font-size: 1.25em;
   line-height: 1.75em;
-  color: #39454b;
+  color: $PONTHE-DARK-DARK-GREY;
   letter-spacing: 0.025em;
 }
 
@@ -26,7 +27,7 @@
 	margin: 0;
 	line-height: 1em;
 	padding: 1.5em;
-	background: #39454b;
+	background: $PONTHE-DARK-DARK-GREY;
 	color: rgba(185, 186, 187, 0.5);
 	overflow: hidden;
 }

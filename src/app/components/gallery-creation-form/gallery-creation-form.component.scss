@@ -1,4 +1,5 @@
 @import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
 
 form {
 	margin: 0;
@@ -9,12 +10,12 @@ form:last-child {
 }
 
 form textarea, form .input_field {
-	background: #fff;
-	color: #222222;
+	background: $PONTHE-WHITE;
+	color: $INPUT-TEXT-DARK-GREY;
 }
 
 input {
-  background: linear-gradient(210deg, red, yellow);
+  background: $BUTTON-BACKGROUND-GRADIENT;
 }
 
 h3 {
@@ -30,7 +31,7 @@ h3:hover {
 
 .admin_form {
 	padding: 2vh 2vw 2vh 2vw;
-	background: linear-gradient(30deg, rgba(255,0,0,0.75), rgba(255,255,0,0.95));
+	background: $DASHBOARD-FORM-BACKGROUND;
 	border-radius: 0em 1.5em 1.5em 1.5em;
-	margin-bottom: 2vh;
+  margin-bottom: 2vh;
 }

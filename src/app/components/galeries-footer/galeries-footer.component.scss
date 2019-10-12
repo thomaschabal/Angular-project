@@ -1,5 +1,9 @@
 @import url("../../../assets/assets_g/css/main.css");
 
+#event-panel {
+  position: sticky;
+}
+
 @media screen and (max-width: 736px) {
   #footer {
     top: 4em;

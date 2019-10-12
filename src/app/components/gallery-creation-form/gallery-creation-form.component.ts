@@ -30,7 +30,7 @@ export class GalleryCreationFormComponent implements OnInit {
       name : ['', Validators.required],
       description : ['', Validators.required],
       year_slug : ['2019', Validators.required],
-      event_slug : 'event1',  //  /!\ Remplacer selon le back défini
+      event_slug : 'vap-2019',  //  /!\ Remplacer selon le back défini
       boolPrivate : ['on', Validators.required]
     });
   }

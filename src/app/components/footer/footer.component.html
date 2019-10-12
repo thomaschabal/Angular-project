@@ -1,13 +1,7 @@
 <!-- Footer -->
 <footer *ngIf="isOnline" id="footer">
   <!-- Icons -->
-  <ul class="icons">
-    <li *ngFor="let link of links">
-      <a href="{{ link.href }}" class="icon {{ link.class }}">
-        <span class="label">{{ link.name }}</span>
-      </a>
-    </li>
-  </ul>
+  <app-icon-links></app-icon-links>
   <!-- Menu -->
   <ul class="menu">
     <li>&copy; {{ phrases['footer.copyright'] }}</li>

@@ -25,6 +25,7 @@ import { GaleriesFooterComponent } from './components/galeries-footer/galeries-f
 import { GaleriesModerationButtonsComponent } from './components/galeries-moderation-buttons/galeries-moderation-buttons.component';
 import { GalleryCreationFormComponent } from './components/gallery-creation-form/gallery-creation-form.component';
 import { HomeFormComponent } from './components/home-form/home-form.component';
+import { IconLinksComponent } from './components/icon-links/icon-links.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
@@ -94,6 +95,7 @@ import { UserService } from './services/user.service';
     ResetComponent,
     VideoComponent,
     UserListComponent,
+    IconLinksComponent,
   ],
   imports: [
     BrowserModule,

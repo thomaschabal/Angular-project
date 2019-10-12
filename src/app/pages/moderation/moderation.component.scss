@@ -1,11 +1,12 @@
 @import url("../../../assets/assets_g/css/main.css");
+@import "../../PontheStyle.scss";
 
 .spacer {
   margin-top: 8vh;
 }
 
 html, body {
-	background: #242629;
+	background: $PONTHE-DARK-GREY;
 }
 
 img {
@@ -13,7 +14,7 @@ img {
 }
 
 #main .thumb > .image {
-	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+	-webkit-tap-highlight-color: $PONTHE-WHITE;
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -34,7 +35,7 @@ img {
   position: absolute;
   top: 1vh;
   left: 0.5vw;
-  background: rgba(0,0,0,0.3);
+  background: $BUTTON-BACKGROUND-NONE;
 }
 
 #acceptButtonSelected, #deleteButtonSelected {
@@ -49,17 +50,17 @@ img {
 }
 
 #acceptAll, #acceptSelection {
-  background: rgb(0,180,0);
+  background: $BUTTON-BACKGROUND-ACCEPT;
 }
 
 #acceptButtonSelected {
-  background: rgba(0,255,0,0.5);
+  background: $BUTTON-BACKGROUND-ACCEPT-SELECTED;
 }
 
 #refuseAll, #refuseSelection {
-  background: rgb(210,0,0);
+  background: $BUTTON-BACKGROUND-REFUSE;
 }
 
 #deleteButtonSelected {
-  background: rgba(255,0,0,0.5);
+  background: $BUTTON-BACKGROUND-REFUSE-SELECTED;
 }

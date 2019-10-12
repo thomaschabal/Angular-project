@@ -3,6 +3,7 @@ import { state, trigger, animate, style, transition } from '@angular/animations'
 
 import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
+import { LINKS } from '../icon-links/icon-links.component';
 
 @Component({
   selector: 'app-galeries-footer',
@@ -17,7 +18,7 @@ import { routesAppFromRoot } from '../../Routes';
   ]
 })
 export class GaleriesFooterComponent implements OnInit {
-
+  links = LINKS;
   @Input() nameEvent: string;
   @Input() resumeEvent: string;
   footerState = 'hidden';

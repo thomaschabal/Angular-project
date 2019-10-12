@@ -1,10 +1,11 @@
 @import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
 
 /* Intro */
 	#intro {
 		margin-top : 3em;
 		height : calc(100vh - 3em);
-		background: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/introP.jpg");
+		background: $INTRO-IMAGE;
 		background-size: 256px 256px, cover;
 		background-attachment: fixed, fixed;
 		background-position: top left, bottom center;
@@ -18,21 +19,18 @@
 
 /* One */
 	#one {
-		//background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/wei.jpg");
 		background-attachment: fixed, fixed;
 		background-position: top left, center center;
 	}
 
 /* Two */
 	#two {
-		//background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/supponts.jpg");
 		background-attachment: fixed, fixed;
 		background-position: top left, center center;
 	}
 
 /* Three */
 	#three {
-		//background: url("../../assets/assets_h/css/images/overlay.png"), url("../../assets/images/voyage1.jpg");
 		background-attachment: fixed, fixed;
 		background-position: top left, center center;
 	}
@@ -50,7 +48,7 @@
 	left:0;
 	width: 100vw;
 	height:100vh;
-	background-color: rgba(0,0,0,0.25);
+	background-color: $HOME-OVERLAY;
 	position: fixed;
 	z-index: 5000;
 }

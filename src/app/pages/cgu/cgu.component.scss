@@ -1,11 +1,12 @@
 @import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
 
 #header {
 	font-family: "Source Sans Pro", "sans-serif";
 	font-weight: 300;
 	font-size: 1.25em;
 	line-height: 1.75em;
-	color: #39454b;
+	color: $PONTHE-DARK-DARK-GREY;
 	letter-spacing: 0.025em;
 }
 
@@ -112,6 +113,6 @@ section, #cgu-title {
   margin-top: 3em;
   margin-bottom: 2.5em;
   text-align: center;
-  color: #fc3;
+  color: $PONTHE-YELLOW;
   text-decoration: underline;
 }

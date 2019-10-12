@@ -1,4 +1,18 @@
 @import url("../../../assets/assets_c/css/main.css");
+@import "../../PontheStyle.scss";
+
+#header h1 {
+	color: $PONTHE-YELLOW;
+	text-shadow: $AUTH-TEXT-SHADOW;
+}
+
+.signup-form input {
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-NONE;
+}
+
+.signup-form input:focus {
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHFT-FOCUS;
+}
 
 /* Background parameters */
 

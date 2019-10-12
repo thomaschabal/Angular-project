@@ -1,7 +1,8 @@
 @import url("../../../assets/assets_c/css/main.css");
+@import "../../PontheStyle.scss";
 
 #submit {
-	background: linear-gradient(35deg, red, #fc3 65%);
+	background: $BUTTON-BACKGROUND-GRADIENT-YELLOWER;
 }
 
 @media screen and (max-width: 750px) {

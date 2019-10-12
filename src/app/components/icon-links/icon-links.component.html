@@ -1,0 +1,8 @@
+<!-- Icons -->
+<ul class="icons">
+  <li *ngFor="let link of links">
+    <a href="{{ link.href }}" class="icon {{ link.class }}">
+      <span class="label">{{ link.name }}</span>
+    </a>
+  </li>
+</ul>
