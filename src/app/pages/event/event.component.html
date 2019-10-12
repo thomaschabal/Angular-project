@@ -3,7 +3,13 @@
 <!-- Moderation buttons -->
 <app-galeries-moderation-buttons *ngIf="isAdmin" [selectedRoute]="selectedRoute" [moderationState]="moderationState" (moderating)="modere()"></app-galeries-moderation-buttons>
 <!-- Upload for random users -->
-<app-upload *ngIf="!isAdmin"></app-upload>
+<div *ngIf="!isAdmin" id="uploadBanner">
+  <a class="icon fa fa-upload fa-lg"
+    (click)="activateUploadArea()"></a>
+</div>
+<div *ngIf="!isAdmin && showUploadArea" id="userUploadArea">
+  <app-upload (click)="clickInsideArea()"></app-upload>
+</div>
 
 <!-- Main -->
 <!-- Pictures of the event -->

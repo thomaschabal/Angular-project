@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 import { Subscription } from 'rxjs';
@@ -13,6 +13,10 @@ import { GaleriesService } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
 import { PicsService } from '../../services/pics.service';
 import { Phrases } from '../../Phrases';
+
+export enum KEY_CODE {
+  ESCAPE = 27
+}
 
 @Component({
   selector: 'app-event',
@@ -68,6 +72,8 @@ export class EventComponent implements OnInit, OnDestroy {
   isAdmin: boolean;
   isPublic = false;
   selectedRoute: string;
+  showUploadArea = false;
+  justDisplayedArea = false;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
   moderationState = [];
@@ -110,6 +116,39 @@ export class EventComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     if (this.sub) {
       this.sub.unsubscribe();
+    }
+  }
+
+  activateUploadArea() {
+    this.showUploadArea = true;
+    this.justDisplayedArea = true;
+    setTimeout(() => this.justDisplayedArea = false, 50);
+  }
+
+  // Host Listener for the image viewer
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.keyCode === KEY_CODE.ESCAPE && this.showUploadArea) {
+      this.showUploadArea = false;
+    }
+  }
+
+  clickInsideArea($event: Event) {
+    console.log("inside click",$event);
+    if (this.showUploadArea) {
+      console.log('inside');
+      this.justDisplayedArea = true;
+      $event.preventDefault();
+      $event.stopPropagation();
+      setTimeout(() => this.justDisplayedArea = false, 50);
+    }
+  }
+
+  @HostListener('document:click', ['$event'])
+  clickedOutsideArea($event: Event) {
+    if (this.showUploadArea && !this.justDisplayedArea) {
+      console.log('outside');
+      this.showUploadArea = false;
     }
   }
 

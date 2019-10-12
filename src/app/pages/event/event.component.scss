@@ -63,6 +63,46 @@ html, body {
   z-index: -1;
 }
 
+#uploadBanner {
+  width: 3.5em;
+  right: 0;
+  top: 12.5vh;
+  position: fixed;
+  transform: translateX(1em);
+  background: linear-gradient(30deg, rgb(255, 0, 0), rgb(255, 255, 0));
+  padding: 10px;
+  border-radius: 12px;
+  transition: width 0.5s ease-in-out;
+  z-index: 1;
+}
+#uploadBanner:hover {
+  width: 4.5em;
+}
+#uploadBanner > a {
+  color: white;
+  transition: padding-left 0.5s ease-in-out;
+  cursor: pointer;
+}
+#uploadBanner:hover > a {
+  padding-left: 0.5em;
+}
+#uploadBanner:hover > a:hover {
+  color: #ddd !important;
+}
+
+#userUploadArea {
+  position: fixed;
+  background: rgba(0,0,0,0.85);
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  padding-left: 35vw;
+  padding-right: 35vw;
+  padding-top: 25vh;
+  z-index: 2;
+}
+
 @media screen and (max-width: 736px) {
   #fullBackground {
     top: 5em;
