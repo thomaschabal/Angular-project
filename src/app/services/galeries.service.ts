@@ -9,8 +9,8 @@ export class GaleriesService {
   arePrivateEventsLoaded = false;
   eventPics: any[];
   pic: any;
-  displaySpinner = false;
-  stateSpinner = 'hidden';
+  displaySpinner = true;
+  stateSpinner = 'visible';
 
   constructor(private httpService: HttpService) {}
 
@@ -37,16 +37,19 @@ export class GaleriesService {
 
   // Get the list of all events
   getAllEvents() {
-    return this.httpService.get('/get-all-galleries')
-      .subscribe(
-        (res: { galleries }) => {
-          this.galeriesEvents = res.galleries;
-          this.stateSpinner = 'hidden';
-          setTimeout(() => { this.displaySpinner = false; }, 200);
-          this.areGaleriesEventsLoaded = true;
-        },
-        (error) => { }
-      );
+    if (!this.areGaleriesEventsLoaded && this.httpService.isAdmin) {
+      return this.httpService.get('/get-all-galleries')
+        .toPromise()
+        .then(
+          (res: { galleries }) => {
+            this.galeriesEvents = res.galleries;
+            this.stateSpinner = 'hidden';
+            setTimeout(() => { this.displaySpinner = false; }, 200);
+            this.areGaleriesEventsLoaded = true;
+          },
+          (error) => { }
+        );
+    }
   }
 
   getEventsOfYear(year: string) {
@@ -55,14 +58,17 @@ export class GaleriesService {
 
   // Get the list of all private events
   getPrivateEvents() {
-    return this.httpService.get('/get-private-galleries')
-      .subscribe(
-        (res: { galleries }) => {
-          this.privateEvents = res.galleries;
-          this.arePrivateEventsLoaded = true;
-        },
-        (error) => { }
-      );
+    if (this.httpService.isAdmin === true && !this.arePrivateEventsLoaded) {
+      return this.httpService.get('/get-private-galleries')
+        .toPromise()
+        .then(
+          (res: { galleries }) => {
+            this.privateEvents = res.galleries;
+            this.arePrivateEventsLoaded = true;
+          },
+          (error) => { }
+        );
+    }
   }
 
   // Get a random image for some event
@@ -95,34 +101,14 @@ export class GaleriesService {
   }
 
   //// METHODS FOR GALERIES COMPONENT
-  loadEvents() {
-    // Get Private Events
-    if (this.httpService.isAdmin === true) {
-      if (!this.arePrivateEventsLoaded) {
-        this.getPrivateEvents();
-      }
-    }
+  loadEvents = async () => {
+    await this.getPrivateEvents();
+    // Restricted to admins
+    await this.getAllEvents();
+    // Restricted to not admin users
+    await this.getRestrictedEvents();
 
-    // Get public events
-    if (!this.areGaleriesEventsLoaded) {
-      if (this.httpService.isAdmin) {
-          this.getAllEvents();
-      } else {
-        // Define the years regarding the user
-        const userProm1A = ( +('2' + this.httpService.promotion) - 3) + '';
-        const userProm2A = ( +('2' + this.httpService.promotion) - 2) + '';
-        // Get the events of both years
-        this.getEventsOfYear(userProm1A).subscribe(
-          (res: { public_galleries }) => {
-            this.galeriesEvents = res.public_galleries;
-            this.getEventsOfYear2A(userProm2A);
-          },
-          (error) => {
-            this.getEventsOfYear2A(userProm2A);
-          }
-        );
-      }
-    }
+    return Promise.resolve();
   }
 
   getEventsOfYear2A(userProm2A) {
@@ -133,6 +119,31 @@ export class GaleriesService {
       },
       (err) => { }
     );
+  }
+
+  getRestrictedEvents = async () => {
+    // Define the years regarding the user
+    const userProm1A = ( +('2' + this.httpService.promotion) - 3) + '';
+    const userProm2A = ( +('2' + this.httpService.promotion) - 2) + '';
+
+    if (!this.areGaleriesEventsLoaded && !this.httpService.isAdmin) {
+      // Get the events of both years
+      this.getEventsOfYear(userProm1A)
+        .toPromise()
+        .then(
+          async (res: { public_galleries }) => {
+            this.galeriesEvents = res.public_galleries;
+            await this.getEventsOfYear2A(userProm2A);
+            this.stateSpinner = 'hidden';
+            setTimeout(() => { this.displaySpinner = false; }, 200);
+          },
+          async (error) => {
+            await this.getEventsOfYear2A(userProm2A);
+            this.stateSpinner = 'hidden';
+            setTimeout(() => { this.displaySpinner = false; }, 200);
+          }
+        );
+    }
   }
 
   getImagesRestrictedGalleries() {

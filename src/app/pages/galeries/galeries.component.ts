@@ -32,8 +32,8 @@ export class GaleriesComponent implements OnInit {
   routes = routesAppFromRoot;
 
   // Loading Spinner
-  displaySpinner = false;
-  stateSpinner = 'hidden';
+  displaySpinner = true;
+  stateSpinner = 'visible';
 
   // List of events to display
   galeriesEvents = [];
@@ -50,13 +50,19 @@ export class GaleriesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.displaySpinner = this.galeriesService.displaySpinner;
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     // this.displaySpinner = true;
     // this.stateSpinner = 'visible';
-    this.galeriesService.loadEvents();
-    this.privateEvents = this.galeriesService.privateEvents;
-    this.galeriesEvents = this.galeriesService.galeriesEvents;
+    this.galeriesService.loadEvents().then(
+      () => {
+      this.privateEvents = this.galeriesService.privateEvents;
+      this.galeriesEvents = this.galeriesService.galeriesEvents;
+      this.stateSpinner = this.galeriesService.stateSpinner;
+      setTimeout(() => { this.displaySpinner = this.galeriesService.displaySpinner; }, 200);
+    });
+
   }
 
 
