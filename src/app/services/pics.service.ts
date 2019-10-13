@@ -9,6 +9,7 @@ export class PicsService {
   pics: any[];
   rawPics: any[];
   fullSizeLoadedPics: any[];
+  requestStartedForPics: any[];
   allPicturesLoaded = false;
 
   constructor(private galeriesService: GaleriesService) { }
@@ -17,11 +18,12 @@ export class PicsService {
     if (!this.allPicturesLoaded) {
       this.rawPics = [];
       this.fullSizeLoadedPics = [];
+      this.requestStartedForPics = [];
       for (const pic of this.pics) {
         this.rawPics.push(pic.base64);
         this.fullSizeLoadedPics.push(false);
+        this.requestStartedForPics.push(false);
       }
-      this.loadFullImage(0);
     }
   }
 
@@ -32,31 +34,39 @@ export class PicsService {
     this.allPicturesLoaded = false;
   }
 
-  loadFullImage(i: number) {
-    if (!this.allPicturesLoaded) {
-      if (!this.fullSizeLoadedPics[i]) {
-        this.galeriesService.getFullImage(this.pics[i].file_path)
-        .subscribe(
-          (res: { base64 }) => {
-            this.rawPics[i] = res.base64;
-            this.fullSizeLoadedPics[i] = true;
-            this.areAllPicturesLoaded();
-            if (i + 1 < this.rawPics.length) {
-              this.loadFullImage(i + 1);
-            } else {
-              this.loadFullImage(0);
-            }
-          },
-          (error) => { console.error(error); }
-        );
-      } else {
-        if (i + 1 < this.rawPics.length) {
-          this.loadFullImage(i + 1);
-        } else {
-          this.loadFullImage(0);
-        }
-      }
+  getSingleFullImage(index: number) {
+    if (!this.allPicturesLoaded
+        && !this.fullSizeLoadedPics[index]
+        && !this.requestStartedForPics[index]) {
+      this.requestStartedForPics[index] = true;
+      return this.galeriesService.getFullImage(this.pics[index].file_path)
+      .toPromise()
+      .then(
+        (res: { base64 }) => {
+          this.rawPics[index] = res.base64;
+          this.fullSizeLoadedPics[index] = true;
+          this.areAllPicturesLoaded();
+        },
+        (error) => { console.error(error); }
+      );
     }
+  }
+
+  loadFullImage = async (i: number) => {
+    // Load pics i, i-1 and i+1 (except if they are already loaded)
+    const nbPics = this.fullSizeLoadedPics.length;
+    const picPrevPrev = (i <= 1 ? i - 2 + nbPics : i - 2);
+    const picPrev = (i <= 0 ? i - 1 + nbPics : i - 1);
+    const picNext = (i + 1 >= nbPics ? (i + 1) - nbPics : i + 1);
+    const picNextNext = (i + 2 >= nbPics ? (i + 2) - nbPics : i + 2);
+
+    await this.getSingleFullImage(i);
+    await this.getSingleFullImage(picNext);
+    await this.getSingleFullImage(picPrev);
+    await this.getSingleFullImage(picNextNext);
+    await this.getSingleFullImage(picPrevPrev);
+
+    return Promise.resolve();
   }
 
   areAllPicturesLoaded() {

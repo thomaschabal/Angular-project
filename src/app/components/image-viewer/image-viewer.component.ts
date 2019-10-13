@@ -42,7 +42,7 @@ export class ImageViewerComponent implements OnInit {
 
   ngOnInit() {
     this.rawPics = this.picsService.rawPics;
-    this.widePicRef = this.sanitizer.bypassSecurityTrustUrl(this.rawPics[this.indexPicture]);
+    this.updateWidePic();
   }
 
   // Host Listener for the image viewer
@@ -62,8 +62,11 @@ export class ImageViewerComponent implements OnInit {
   }
 
   updateWidePic() {
-    this.widePicRef = this.sanitizer.bypassSecurityTrustUrl(this.rawPics[this.indexPicture]);
+    this.widePicRef = this.sanitizer.bypassSecurityTrustUrl(this.picsService.rawPics[this.indexPicture]);
     this.changeIndexPicture.emit(this.indexPicture);
+    this.picsService.loadFullImage(this.indexPicture).then(
+      () => this.widePicRef = this.sanitizer.bypassSecurityTrustUrl(this.picsService.rawPics[this.indexPicture])
+    );
   }
 
   navLeft() {

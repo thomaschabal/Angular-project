@@ -1,6 +1,20 @@
 import { HttpService } from './http.service';
 import { Injectable } from '@angular/core';
 
+const API_ROUTES = {
+  galleries: '/galleries/',
+  getImages: '/get-images/',
+  getAllGalleries: '/get-all-galleries',
+  getGalleriesOfYear: '/get-galleries-of-year/',
+  getPrivateGalleries: '/get-private-galleries',
+  getRandomImage: '/get-random-image/',
+  makePrivate: '/galleries/makeprivate',
+  makePublic: '/galleries/makepublic',
+  getFullImage: '/get-full-image',
+  createGallery: '/create-gallery',
+  filesNotModerated: '/files/not-moderated',
+};
+
 @Injectable()
 export class GaleriesService {
   galeriesEvents = [];
@@ -27,18 +41,18 @@ export class GaleriesService {
 
   // Delete an event
   deleteEvent(event: string) {
-    return this.httpService.delete('/galleries/' + event);
+    return this.httpService.delete(API_ROUTES.galleries + event);
   }
 
   // Get the image associated to some event
   getEventByName(event: string) {
-    return this.httpService.post('/get-images/' + event, {'image-slug': event});
+    return this.httpService.post(API_ROUTES.getImages + event, {'image-slug': event});
   }
 
   // Get the list of all events
   getAllEvents() {
     if (!this.areGaleriesEventsLoaded && this.httpService.isAdmin) {
-      return this.httpService.get('/get-all-galleries')
+      return this.httpService.get(API_ROUTES.getAllGalleries)
         .toPromise()
         .then(
           (res: { galleries }) => {
@@ -53,13 +67,13 @@ export class GaleriesService {
   }
 
   getEventsOfYear(year: string) {
-    return this.httpService.get('/get-galleries-of-year/' + year);
+    return this.httpService.get(API_ROUTES.getGalleriesOfYear + year);
   }
 
   // Get the list of all private events
   getPrivateEvents() {
     if (this.httpService.isAdmin === true && !this.arePrivateEventsLoaded) {
-      return this.httpService.get('/get-private-galleries')
+      return this.httpService.get(API_ROUTES.getPrivateGalleries)
         .toPromise()
         .then(
           (res: { galleries }) => {
@@ -73,31 +87,31 @@ export class GaleriesService {
 
   // Get a random image for some event
   getImage(event: string) {
-    return this.httpService.get('/get-random-image/' + event);
+    return this.httpService.get(API_ROUTES.getRandomImage + event);
   }
 
   // Turn a gallery to private
   makePrivate(slug: string) {
-    return this.httpService.post('/galleries/makeprivate', {gallery_slugs : [slug]});
+    return this.httpService.post(API_ROUTES.makePrivate, {gallery_slugs : [slug]});
   }
 
   // Turn a gallery to public
   makePublic(slug: string) {
-    return this.httpService.post('/galleries/makepublic', {gallery_slugs : [slug]});
+    return this.httpService.post(API_ROUTES.makePublic, {gallery_slugs : [slug]});
   }
 
   // Get the full picture (not the thumbnail) associated to some path
   getFullImage(path: string) {
-    return this.httpService.post('/get-full-image', {file_path : path});
+    return this.httpService.post(API_ROUTES.getFullImage, {file_path : path});
   }
 
   //// DASHBOARD METHODS
   postEvent(event: any) {
-    return this.httpService.post('/create-gallery', event);
+    return this.httpService.post(API_ROUTES.createGallery, event);
   }
 
   getModerationFiles() {
-    return this.httpService.get('/files/not-moderated');
+    return this.httpService.get(API_ROUTES.filesNotModerated);
   }
 
   //// METHODS FOR GALERIES COMPONENT
