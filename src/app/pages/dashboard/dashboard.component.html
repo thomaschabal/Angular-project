@@ -19,7 +19,7 @@
         {{ phrases['dashboard.links.moderation'] }}
       </button><br/>
       <span *ngFor="let link of buttonLinks">
-        <app-navigation-button [name]="link.name" [address]="link.address"></app-navigation-button>
+        <a [href]="link.address" class="icons fa {{ link.class }} fa-3x"></a>
       </span>
     </div>
   </div>

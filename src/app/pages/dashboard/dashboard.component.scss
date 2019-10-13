@@ -46,12 +46,21 @@
 	margin-bottom: 3vh;
 }
 
+#col_admin_2 a {
+	margin-right: 2vw;
+}
+
+#col_admin_2 a:hover {
+	color: $PONTHE-YELLOW;
+}
+
 button {
   background: $BUTTON-BACKGROUND-GRADIENT;
 }
 
 #moderation_button {
-	width: 25vw;
+	width: 20vw;
+	font-weight: bold;
 }
 
 @media screen and (max-width: 736px) {

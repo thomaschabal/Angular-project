@@ -12,6 +12,7 @@ form:last-child {
 form textarea, form .input_field {
 	background: $PONTHE-WHITE;
 	color: $INPUT-TEXT-DARK-GREY;
+	max-width: 100%;
 }
 
 input {

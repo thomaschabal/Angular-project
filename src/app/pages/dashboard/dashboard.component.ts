@@ -6,6 +6,21 @@ import { routesAppFromRoot } from '../../Routes';
 import { GalleryCreationFormComponent } from '../../components/gallery-creation-form/gallery-creation-form.component';
 import { NavigationButtonComponent } from '../../components/navigation-button/navigation-button.component';
 
+const BUTTON_LINKS = [
+  { name: Phrases['dashboard.links.slack'],
+    address: 'https://ponthe.slack.com/messages',
+    class: 'fa-slack',
+  },
+  { name: Phrases['dashboard.links.trello'],
+    address: 'https://trello.com/b/WIQhzGmu/ev%C3%A8nements-et-communication',
+    class: 'fa-trello',
+  },
+  { name: Phrases['dashboard.links.youtube'],
+    address: 'https://www.youtube.com/channel/UCxHf0yHnEezkhuhzuT2yaIg',
+    class: 'fa-youtube',
+  },
+];
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,13 +28,8 @@ import { NavigationButtonComponent } from '../../components/navigation-button/na
 })
 
 export class DashboardComponent implements OnInit {
-
   phrases = Phrases;
-  buttonLinks = [
-    { name: this.phrases['dashboard.links.slack'], address: 'https://ponthe.slack.com/messages' },
-    { name: this.phrases['dashboard.links.trello'], address: 'https://trello.com/b/WIQhzGmu/ev%C3%A8nements-et-communication' },
-    { name: this.phrases['dashboard.links.youtube'], address: 'https://www.youtube.com/channel/UCxHf0yHnEezkhuhzuT2yaIg' },
-  ];
+  buttonLinks = BUTTON_LINKS;
 
   constructor(private router: Router) { }
 
