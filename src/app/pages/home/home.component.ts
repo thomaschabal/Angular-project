@@ -229,4 +229,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   isDesktop() {
     return (window.innerWidth >= 736);
   }
+
+  clickOnNextArrow(fragment: string) {
+    document.getElementById(fragment).scrollIntoView({ behavior : 'smooth' });
+  }
 }

@@ -1,4 +1,10 @@
 @import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
+
+#contact .box {
+  border-radius: $FORM-BORDER-RADIUS;
+  box-shadow: $BOX-SHADOW-FORM-BASE $BOX-SHADOW-FORM-SHIFT-BASE;
+}
 
 @media screen and (max-width: 736px) {
   #contact {

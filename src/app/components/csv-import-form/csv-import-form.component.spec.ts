@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CsvImportFormComponent } from './csv-import-form.component';
+import { DashboardFormComponent } from '../dashboard-form/dashboard-form.component';
 
 describe('CsvImportFormComponent', () => {
   let component: CsvImportFormComponent;
@@ -8,7 +9,7 @@ describe('CsvImportFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CsvImportFormComponent ]
+      declarations: [ CsvImportFormComponent, DashboardFormComponent ]
     })
     .compileComponents();
   }));

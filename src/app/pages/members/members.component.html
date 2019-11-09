@@ -8,7 +8,7 @@
     </header>
     <p>{{ phrases['members.header.subtitle'] }}</p>
     <footer>
-      <a [routerLink]="routes.members" [fragment]="fragmentIntro" class="button style2 down">More</a>
+      <a class="button style2 down" (click)="onClickNext(fragmentIntro)">More</a>
     </footer>
   </div>
 </section>
@@ -26,5 +26,5 @@
     </header>
     <p *ngFor="let poste of team.members">{{ poste }}</p>
   </div>
-  <a [routerLink]="routes.members" fragment="{{ team.prev_year_id }}" class="button style2 down anchored">Next</a>
+  <a class="button style2 down anchored" (click)="onClickNext(team.prev_year_id)">Next</a>
 </section>

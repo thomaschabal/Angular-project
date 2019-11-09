@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GaleriesModerationButtonsComponent } from './galeries-moderation-buttons.component';
+import { UploadComponent } from '../upload/upload.component';
 
 describe('GaleriesModerationButtonsComponent', () => {
   let component: GaleriesModerationButtonsComponent;
@@ -8,7 +9,7 @@ describe('GaleriesModerationButtonsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GaleriesModerationButtonsComponent ]
+      declarations: [ GaleriesModerationButtonsComponent, UploadComponent ]
     })
     .compileComponents();
   }));

@@ -1,6 +1,9 @@
 @import url("../../../assets/assets_h/css/main.css");
 @import "../../PontheStyle.scss";
 
+$ARTICLE-BOX-RADIUS: 20px;
+$GALLERY-PICS-MARGIN: 8px;
+
 /* Intro */
 	#intro {
 		margin-top : 3em;
@@ -35,12 +38,31 @@
 		background-position: top left, center center;
 	}
 
+
+.right > .box {
+	right: -20px;
+}
+
+.left > .box {
+	left: -20px;
+}
+
 .content .box .style2 {
 	width: 34%;
 }
 
-#gallery > img {
+.box {
+	border-radius: $ARTICLE-BOX-RADIUS;
+}
+
+#gallery-pics > article {
+	margin: $GALLERY-PICS-MARGIN;
+	max-width: calc(50% - 2 * #{$GALLERY-PICS-MARGIN});
+}
+
+#gallery-pics > article > img {
 	cursor: pointer;
+	border-radius: $IMAGE-RADIUS-MEDIUM-THUMBNAIL;
 }
 
 .darkbg {
@@ -51,6 +73,11 @@
 	background-color: $HOME-OVERLAY;
 	position: fixed;
 	z-index: 5000;
+}
+
+#contact .box {
+	border-radius: $FORM-BORDER-RADIUS;
+  box-shadow: $BOX-SHADOW-FORM-BASE $BOX-SHADOW-FORM-SHIFT-BASE;
 }
 
 @media screen and (max-width: 736px) {

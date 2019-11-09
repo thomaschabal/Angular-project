@@ -40,7 +40,7 @@ describe('GalleryCreationFormComponent', () => {
   });
 
   it('creates form', () => {
-    const testForm = { name: '', description: '', year_slug: '2019', event_slug: 'event1', boolPrivate: 'on'};
+    const testForm = { name: '', description: '', year_slug: '2019', event_slug: 'vap-2019', boolPrivate: 'on'};
     component.initForm();
     expect(component.eventForm.value).toEqual(testForm);
   });

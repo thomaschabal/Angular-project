@@ -1,26 +1,9 @@
 @import url("../../../assets/assets_h/css/main.css");
 @import "../../PontheStyle.scss";
 
-.admin_form {
-	padding: 2vh 2vw 2vh 2vw;
-	background: $DASHBOARD-FORM-BACKGROUND;
-	border-radius: 0em 1.5em 1.5em 1.5em;
-  margin-bottom: 2vh;
-}
-
-h3 {
-	text-align: left;
-	font-size: 1.25em;
-	margin-bottom: 2vh;
-}
-
-h3:hover {
-	text-decoration: underline;
-	cursor: pointer;
-}
-
 input[type="submit"] {
   background: $BUTTON-BACKGROUND-GRADIENT;
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS-LIGHT;
 }
 
 input {

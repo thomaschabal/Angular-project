@@ -1,7 +1,5 @@
-<div class="admin_form">
-  <h3 (click)="formVisibility()">{{ phrases['dashboard.form.title'] }}</h3>
-  <form *ngIf="eventCreationSelect"
-        [formGroup]="eventForm"
+<app-dashboard-form [title]="phrases['dashboard.form.title']">
+  <form [formGroup]="eventForm"
         (ngSubmit)="onSubmitEvent()">
     <input type="text" name="name"
            [placeholder]="phrases['dashboard.form.name']"
@@ -14,4 +12,4 @@
            [value]="phrases['dashboard.form.submitButton']"
            [disabled]="eventForm.invalid" />
   </form>
-</div>
+</app-dashboard-form>

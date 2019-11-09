@@ -106,4 +106,8 @@ export class MembersComponent implements OnInit, OnDestroy {
       return this.teamStateRight;
     }
   }
+
+  onClickNext(fragment: string) {
+    document.getElementById(fragment).scrollIntoView({ behavior: 'smooth' });
+  }
 }

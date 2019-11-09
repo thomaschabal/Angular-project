@@ -7,17 +7,11 @@ import { Phrases } from '../../Phrases';
   styleUrls: ['./csv-import-form.component.scss']
 })
 export class CsvImportFormComponent implements OnInit {
-  displayForm = false;
   phrases = Phrases;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  // Create gallery form visibility
-  formVisibility() {
-    this.displayForm = !this.displayForm;
   }
 
   upload_csv() {

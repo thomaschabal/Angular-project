@@ -9,7 +9,7 @@
     </header>
     <p [innerHTML]="phrases['home.header.introduction']"></p>
     <footer>
-      <a [routerLink]="routes.home" fragment="one" class="button style2 down">More</a>
+      <a class="button style2 down" (click)="clickOnNextArrow('one')">More</a>
     </footer>
   </div>
 </section>
@@ -22,14 +22,14 @@
           (mouseleave)='survoleEvent("hidden", i)'
           [ngStyle]="{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
   <!-- <img src="../../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
-  <div class="content box style2"
-       [@lastEventTrigger]="currentStateEvent(i)">
+  <div [@lastEventTrigger]="currentStateEvent(i)"
+       class="content box style2">
     <header>
       <h2><a [routerLink]="routes.pics + event.routing">{{ event.name }}</a></h2>
     </header>
     <p><a [routerLink]="routes.pics + event.routing">{{ event.resume }}</a></p>
   </div>
-  <a [routerLink]="routes.home" fragment="{{ event.next_event_id }}" class="button style2 down anchored">Next</a>
+  <a class="button style2 down anchored" (click)="clickOnNextArrow(event.next_event_id)">Next</a>
 </section>
 
 <!-- Favorite pics -->
@@ -46,11 +46,12 @@
                 class="{{ placementLovePics(i) }}"
                 [@lovePicsTrigger]="currentStateLovePics(i)">
         <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}"
-             (click)="onClickFavPic(i)" style="cursor: pointer"/>
+             (click)="onClickFavPic(i)"/>
         <!-- <img class="image fit" src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;" alt="{{ pic.title }}" (click)="onClickFavPic(i)" style="cursor: pointer"/> -->
       </article>
     </div>
   </div>
+  <a class="button style2 down anchored" (click)="clickOnNextArrow('contact')">Next</a>
 </section>
 
 <!-- Image Viewer -->

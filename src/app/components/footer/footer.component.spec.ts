@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
+import { IconLinksComponent } from '../icon-links/icon-links.component';
 import {HttpService} from '../../services/http.service';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
@@ -15,7 +16,7 @@ describe('FooterComponent', () => {
         HttpClientModule,
         RouterModule.forRoot([])
       ],
-      declarations: [ FooterComponent ],
+      declarations: [ FooterComponent, IconLinksComponent ],
       providers: [
         HttpService,
       ]

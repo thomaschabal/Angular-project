@@ -6,6 +6,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {AuthService} from './services/auth.service';
 import {HttpService} from './services/http.service';
+import {HomeService} from './services/home.service';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -24,6 +25,7 @@ describe('AppComponent', () => {
       ],
       providers: [
         AuthService,
+        HomeService,
         HttpService,
       ],
       schemas: [ NO_ERRORS_SCHEMA ]

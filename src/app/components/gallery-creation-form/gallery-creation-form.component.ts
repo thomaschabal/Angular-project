@@ -15,7 +15,6 @@ export class GalleryCreationFormComponent implements OnInit {
 
   // Create gallery form defined here
   eventForm: FormGroup;
-  eventCreationSelect = false;
 
   constructor(private formBuilder: FormBuilder,
               private galeriesService: GaleriesService) { }
@@ -33,11 +32,6 @@ export class GalleryCreationFormComponent implements OnInit {
       event_slug : 'vap-2019',  //  /!\ Remplacer selon le back défini
       boolPrivate : ['on', Validators.required]
     });
-  }
-
-  // Create gallery form visibility
-  formVisibility() {
-    this.eventCreationSelect = !this.eventCreationSelect;
   }
 
   // Submission of gallery creation

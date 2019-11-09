@@ -1,5 +1,10 @@
 @import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
 
 input {
   background: linear-gradient(30deg, red, yellow);
+}
+
+input:focus, textarea:focus {
+  box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS-LIGHT;
 }

@@ -19,6 +19,7 @@ import { AppComponent } from './app.component';
 //// COMPONENTS
 import { AuthFooterComponent } from './components/auth-footer/auth-footer.component';
 import { CsvImportFormComponent } from './components/csv-import-form/csv-import-form.component';
+import { DashboardFormComponent } from './components/dashboard-form/dashboard-form.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GaleriesContactFormComponent } from './components/galeries-contact-form/galeries-contact-form.component';
 import { GaleriesFooterComponent } from './components/galeries-footer/galeries-footer.component';
@@ -67,6 +68,7 @@ import { UserService } from './services/user.service';
     AppComponent,
     AuthFooterComponent,
     CsvImportFormComponent,
+    DashboardFormComponent,
     FooterComponent,
     GaleriesContactFormComponent,
     GaleriesFooterComponent,
