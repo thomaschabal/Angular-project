@@ -4,9 +4,9 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PicsService } from '../../services/pics.service';
 
 export enum KEY_CODE {
-  RIGHT_ARROW = 39,
-  LEFT_ARROW = 37,
-  ESCAPE = 27
+  RIGHT_ARROW = 'ArrowLeft',
+  LEFT_ARROW = 'ArrowRight',
+  ESCAPE = 'Escape'
 }
 
 @Component({
@@ -45,13 +45,13 @@ export class ImageViewerComponent implements OnInit {
   // Host Listener for the image viewer
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+    if (event.code === KEY_CODE.LEFT_ARROW) {
       this.navLeft();
     } else {
-      if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+      if (event.code === KEY_CODE.RIGHT_ARROW) {
         this.navRight();
       } else {
-        if (event.keyCode === KEY_CODE.ESCAPE) {
+        if (event.code === KEY_CODE.ESCAPE) {
           this.closeWidePic();
         }
       }

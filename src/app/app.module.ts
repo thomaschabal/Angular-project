@@ -68,7 +68,7 @@ import { TranslatePipe } from './services/translate.pipe';
 import { UserService } from './services/user.service';
 
 export function setupTranslateFactory(
-  service: TranslateService): Function {
+  service: TranslateService): () => void {
   return () => service.use('fr');
 }
 
