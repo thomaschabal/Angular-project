@@ -1,4 +1,7 @@
 @import url("../../../assets/assets_g/css/main.css");
+@import "../../PontheStyle.scss";
+
+$DURATION-HOVER-BUTTON: 0.4s;
 
 section {
   margin-left: 5vw;
@@ -6,18 +9,37 @@ section {
 
 textarea {
   min-width: 35vw;
+  border-radius: $BORDER-RADIUS-BUTTON;
+}
+
+textarea:focus {
+  box-shadow: $BOX-SHADOW-INPUT-BASE-LIGHT $BOX-SHADOW-INPUT-SHIFT-FOCUS-LIGHT;
 }
 
 input {
-  background: linear-gradient(30deg, red, yellow);
+  transition: background $DURATION-HOVER-BUTTON ease,
+              color $DURATION-HOVER-BUTTON ease,
+              box-shadow $DURATION-HOVER-BUTTON ease;
 }
 
 #submit {
-  background: linear-gradient(45deg, red, #fc3);
+  background: $PONTHE-WHITE;
+  color: $PONTHE-DARK-DARK-GREY !important;
+  border-radius: $BORDER-RADIUS-BUTTON;
 }
 
 #reset {
-  background: linear-gradient(45deg, #fc3, red);
+  background: $PONTHE-LIGHT-GREY;
+  border: 0;
+  color: $PONTHE-DARK-DARK-GREY !important;
+  border-radius: $BORDER-RADIUS-BUTTON;
+  box-shadow: none;
+}
+
+#submit:hover, #reset:hover {
+  background: $PONTHE-DARK;
+  color: $PONTHE-WHITE !important;
+  box-shadow: $BOX-SHADOW-INPUT-BASE-LIGHT $BOX-SHADOW-INPUT-SHIFT-FOCUS-LIGHT;
 }
 
 @media screen and (max-width: 736px) {

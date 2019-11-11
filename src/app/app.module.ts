@@ -28,6 +28,7 @@ import { GalleryCreationFormComponent } from './components/gallery-creation-form
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { IconLinksComponent } from './components/icon-links/icon-links.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
+import { LoadingPointsComponent } from './components/loading-points/loading-points.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -76,6 +77,7 @@ import { UserService } from './services/user.service';
     GalleryCreationFormComponent,
     HomeFormComponent,
     ImageViewerComponent,
+    LoadingPointsComponent,
     LoadingSpinnerComponent,
     MaterialBookingFormComponent,
     NavComponent,

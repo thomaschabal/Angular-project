@@ -4,6 +4,18 @@
   position: sticky;
 }
 
+.footer-panel {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+#footer-visible {
+  opacity: 1;
+  transform: translateY(2vh) !important;
+}
+#footer-hidden {
+  opacity: 0;
+}
+
 @media screen and (max-width: 736px) {
   #footer {
     top: 4em;

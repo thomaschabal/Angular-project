@@ -1,36 +1,42 @@
 <!-- Intro -->
 <section id="intro" class="main style1 dark fullscreen"
-         (mouseenter)='survoleIntro("visible")'
-         (mouseleave)='survoleIntro("hidden")'>
+         (mouseenter)='survoleIntro(true)'
+         (mouseleave)='survoleIntro(false)'>
   <div class="content"
-       [@introTrigger]="introState">
+       [id]="introVisible ? 'intro-hovered' : 'intro-none'">
     <header>
       <h2>{{ phrases['home.header.title'] }}</h2>
     </header>
     <p [innerHTML]="phrases['home.header.introduction']"></p>
-    <footer>
+    <app-loading-points *ngIf="!homeService.areLastEventsLoaded"></app-loading-points>
+    <footer *ngIf="homeService.areLastEventsLoaded">
       <a class="button style2 down" (click)="clickOnNextArrow('one')">More</a>
     </footer>
   </div>
 </section>
 
 <!-- 3 Last Events -->
-<section *ngFor="let event of lastEvents; let i = index"
-          id="{{ event.event_id }}"
-          class="main style2 {{ placement_events(i) }} dark fullscreen"
-          (mouseenter)='survoleEvent("visible", i)'
-          (mouseleave)='survoleEvent("hidden", i)'
-          [ngStyle]="{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
-  <!-- <img src="../../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
-  <div [@lastEventTrigger]="currentStateEvent(i)"
-       class="content box style2">
-    <header>
-      <h2><a [routerLink]="routes.pics + event.routing">{{ event.name }}</a></h2>
-    </header>
-    <p><a [routerLink]="routes.pics + event.routing">{{ event.resume }}</a></p>
-  </div>
-  <a class="button style2 down anchored" (click)="clickOnNextArrow(event.next_event_id)">Next</a>
-</section>
+<div id="loading-events" *ngIf="!homeService.areLastEventsLoaded">
+  <app-loading-points></app-loading-points>
+</div>
+<div *ngIf="homeService.areLastEventsLoaded">
+  <section  *ngFor="let event of lastEvents; let i = index"
+            id="{{ event.event_id }}"
+            class="main style2 {{ placement_events(i) }} dark fullscreen"
+            (mouseenter)='survoleEvent("visible", i)'
+            (mouseleave)='survoleEvent("hidden", i)'
+            [ngStyle]="{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
+    <!-- <img src="../../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
+    <div [@lastEventTrigger]="currentStateEvent(i)"
+        class="content box style2">
+      <header>
+        <h2><a [routerLink]="routes.pics + event.routing">{{ event.name }}</a></h2>
+      </header>
+      <p><a [routerLink]="routes.pics + event.routing">{{ event.resume }}</a></p>
+    </div>
+    <a class="button style2 down anchored" (click)="clickOnNextArrow(event.next_event_id)">Next</a>
+  </section>
+</div>
 
 <!-- Favorite pics -->
 <section id="coeur" class="main style3 primary"
@@ -44,7 +50,7 @@
     <div class="gallery" id="gallery-pics">
       <article *ngFor="let pic of lovePics; let i = index"
                 class="{{ placementLovePics(i) }}"
-                [@lovePicsTrigger]="currentStateLovePics(i)">
+                [id]="i%2 === 0 ? lovePicsStateLeft : lovePicsStateRight">
         <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}"
              (click)="onClickFavPic(i)"/>
         <!-- <img class="image fit" src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;" alt="{{ pic.title }}" (click)="onClickFavPic(i)" style="cursor: pointer"/> -->
@@ -66,14 +72,14 @@
 
 <!-- Contact form-->
 <section id="contact" class="main style3 secondary"
-         (mouseenter)="survoleForm('visible')"
-         (mouseleave)="survoleForm('hidden')">
+         (mouseenter)="survoleForm(true)"
+         (mouseleave)="survoleForm(false)">
   <div class="content">
     <header>
       <h2 [innerHTML]="phrases['home.contact.title']"></h2>
       <p [innerHTML]="phrases['home.contact.subtitle']"></p>
     </header>
-    <div class="box" [@formTrigger]="formState">
+    <div class="box" [id]="formVisible ? 'home-form-visible' : 'home-form-hidden'">
       <app-home-form></app-home-form>
     </div>
   </div>

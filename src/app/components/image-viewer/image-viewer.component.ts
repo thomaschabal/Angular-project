@@ -94,9 +94,6 @@ export class ImageViewerComponent implements OnInit {
   hideArrows() {
     this.showArrows = false;
   }
-  placePicLeft(img) {
-    return ( (window.innerWidth - img.clientWidth) / 2 );
-  }
   placePicTop(img) {
     return ( (window.innerHeight - img.clientHeight) / 2 );
   }

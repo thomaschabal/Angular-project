@@ -13,7 +13,7 @@ import { LINKS } from '../icon-links/icon-links.component';
     trigger('footerTrigger', [
       state('visible', style({opacity: 1, transform : 'translateY(2vh)'})),
       state('hidden', style({opacity : 0})),
-      transition('* => *', [ animate('200ms') ] ),
+      transition('* => *', [] ),
     ])
   ]
 })
@@ -33,10 +33,6 @@ export class GaleriesFooterComponent implements OnInit {
   }
 
   changeStateFooter() {
-    if (this.footerState === 'hidden') {
-      this.footerState = 'visible';
-    } else {
-      this.footerState = 'hidden';
-    }
+    this.footerState = (this.footerState === 'hidden' ? 'visible' : 'hidden');
   }
 }

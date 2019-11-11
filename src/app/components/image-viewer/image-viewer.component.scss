@@ -1,5 +1,11 @@
 @import url("../../../assets/assets_g/css/main.css");
 
+#image-viewer {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+}
+
 .darkbg {
   top:0;
   left:0;
@@ -21,7 +27,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin-top: 1.5vh;
   max-height: 95vh;
-  transition: margin-left 0.5s ease, margin-top 0.5s ease;
+  transition: margin-top 0.5s ease;
 }
 
 .wide-pic > img {

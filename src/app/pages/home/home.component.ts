@@ -21,28 +21,12 @@ export enum KEY_CODE {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   animations : [
-    trigger('introTrigger', [
-      state('visible', style({opacity: 1})),
-      state('hidden', style({opacity: 0})),
-      transition('* => *', [ animate('350ms') ] ),
-    ]),
     trigger('lastEventTrigger', [
       state('visible', style({})),
       state('hidden-mid-left', style({transform : 'translateX(50vw)'})),
       state('hidden-mid-right', style({transform : 'translateX(-50vw)'})),
       state('hidden-left', style({transform : 'translateX(100vw)'})),
       state('hidden-right', style({transform : 'translateX(-100vw)'})),
-      transition('* => *', [ animate('20ms') ] ),
-    ]),
-    trigger('lovePicsTrigger', [
-      state('visible', style({opacity: 1})),
-      state('hidden-left', style({opacity: 0, transform : 'translateX(-14em)'})),
-      state('hidden-right', style({opacity: 0, transform : 'translateX(14em)'})),
-      transition('* => *', [ animate('20ms') ] ),
-    ]),
-    trigger('formTrigger', [
-      state('visible', style({opacity: 1})),
-      state('hidden', style({opacity: 0, transform : 'translateY(75vh)'})),
       transition('* => *', [ animate('20ms') ] ),
     ]),
   ]
@@ -69,13 +53,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   private sub: Subscription;
 
   // State of various sections of the page (e.g. if the section is being hovered or not)
-  introState = 'hidden';
+  introVisible = false;
   lastEventsState1 = 'hidden-left';
   lastEventsState2 = 'hidden-right';
   lastEventsState3 = 'hidden-left';
   lovePicsStateLeft = 'hidden-left';
   lovePicsStateRight = 'hidden-right';
-  formState = 'hidden';
+  formVisible = false;
 
   indexPicture: number;
 
@@ -110,10 +94,10 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.lastEventsState2 = 'hidden-mid-right';
       this.lastEventsState3 = 'hidden-mid-left';
     } else {
-      this.introState = 'visible';
+      this.introVisible = true;
       this.lovePicsStateLeft = 'visible';
       this.lovePicsStateRight = 'visible';
-      this.formState = 'visible';
+      this.formVisible = true;
     }
   }
 
@@ -174,8 +158,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   // Update animations when hovering elements
-  survoleIntro(stateIntro: string) {
-    this.introState = stateIntro;
+  survoleIntro(stateIntro: boolean) {
+    this.introVisible = stateIntro;
   }
 
   survoleEvent(stateEvent: string, i: number) {
@@ -212,18 +196,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  survoleForm(stateForm: string) {
-    this.formState = stateForm;
+  survoleForm(stateForm: boolean) {
+    this.formVisible = stateForm;
   }
 
   // Return whether elements are being hovered or not
   currentStateEvent(i: number) {
     return (i === 0 ? this.lastEventsState1
                     : (i === 1 ? this.lastEventsState2 : this.lastEventsState3));
-  }
-
-  currentStateLovePics(i: number) {
-    return (i % 2 === 0 ? this.lovePicsStateLeft : this.lovePicsStateRight);
   }
 
   isDesktop() {
