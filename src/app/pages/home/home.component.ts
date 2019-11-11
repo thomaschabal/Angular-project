@@ -63,7 +63,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   indexPicture: number;
 
-  constructor(private homeService: HomeService,
+  constructor(public homeService: HomeService,
               private activeRoute: ActivatedRoute,
               private picsService: PicsService) {
     // Smooth transitions on arrow clicks
