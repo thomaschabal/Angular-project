@@ -23,6 +23,7 @@
     "jwt-decode": "^2.2.0",
     "ngx-awesome-uploader": "^8.0.0",
     "ngx-plyr": "^1.2.2",
+    "node-sass": "^4.13.0",
     "plyr": "^3.5.6",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
