@@ -2,13 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 import { TranslateService } from '../../services/translate.service';
 
-const LANGUAGES = ['fr', 'en', 'es', 'pt', 'zh'];
+const LANGUAGES = ['fr', 'en', 'es'];
 const FLAGS_BY_LANG = {
   fr: 'fr',
   en: 'gb',
   es: 'es',
-  pt: 'pt',
-  zh: 'cn',
 };
 
 @Component({
