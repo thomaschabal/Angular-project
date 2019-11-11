@@ -4,8 +4,8 @@
          (mouseleave)="survoleForm('hidden')">
   <div class="content">
     <header>
-      <h2>{{ phrases['material.header.title'] }}</h2>
-      <p>{{ phrases['material.header.subtitle'] }}</p>
+      <h2>{{ 'material.header.title' | translate }}</h2>
+      <p>{{ 'material.header.subtitle' | translate }}</p>
     </header>
     <div class="box" [@formTrigger]="formState">
       <app-material-booking-form></app-material-booking-form>

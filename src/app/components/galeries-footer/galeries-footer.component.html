@@ -5,7 +5,7 @@
   </h1>
   <nav (click)="changeStateFooter()">
     <ul>
-      <li><a class="icon fa-info-circle" style="cursor: pointer">{{ phrases['galeries.footer.title'] }}</a></li>
+      <li><a class="icon fa-info-circle" style="cursor: pointer">{{ 'galeries.footer.title' | translate }}</a></li>
     </ul>
   </nav>
 </header>
@@ -21,7 +21,7 @@
         <p>{{ resumeEvent }}</p>
       </section>
       <section>
-        <h2>{{ phrases['galeries.about.title'] }}</h2>
+        <h2>{{ 'galeries.about.title' | translate }}</h2>
         <ul class="icons">
           <li *ngFor="let link of links">
             <a href="{{ link.href }}" class="icon {{ link.class }}">
@@ -31,7 +31,7 @@
 				</ul>
       </section>
       <p class="copyright">
-        &copy; {{ phrases['galeries.about.copyright'] }}
+        &copy; {{ 'galeries.about.copyright' | translate }}
       </p>
     </div>
 

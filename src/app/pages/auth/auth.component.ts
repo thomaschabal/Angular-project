@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
 import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.component';
-import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 
 @Component({
@@ -16,12 +15,10 @@ export class AuthComponent implements OnInit {
 
   // Authentification form defined here
   userForm: FormGroup;
-  phrases: object;
   routes = routesAppFromRoot;
 
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder) {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

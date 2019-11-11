@@ -1,6 +1,6 @@
 //// MODULES
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 // Module for all the various forms of the application
@@ -28,6 +28,7 @@ import { GalleryCreationFormComponent } from './components/gallery-creation-form
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { IconLinksComponent } from './components/icon-links/icon-links.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
+import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { LoadingPointsComponent } from './components/loading-points/loading-points.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
@@ -62,7 +63,14 @@ import { HttpService } from './services/http.service';
 import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
 import { PicsService } from './services/pics.service';
+import { TranslateService } from './services/translate.service';
+import { TranslatePipe } from './services/translate.pipe';
 import { UserService } from './services/user.service';
+
+export function setupTranslateFactory(
+  service: TranslateService): Function {
+  return () => service.use('fr');
+}
 
 @NgModule({
   declarations: [
@@ -77,6 +85,7 @@ import { UserService } from './services/user.service';
     GalleryCreationFormComponent,
     HomeFormComponent,
     ImageViewerComponent,
+    LanguageSelectionComponent,
     LoadingPointsComponent,
     LoadingSpinnerComponent,
     MaterialBookingFormComponent,
@@ -100,6 +109,7 @@ import { UserService } from './services/user.service';
     VideoComponent,
     UserListComponent,
     IconLinksComponent,
+    TranslatePipe,
   ],
   imports: [
     BrowserModule,
@@ -120,6 +130,15 @@ import { UserService } from './services/user.service';
     MembersService,
     MessagesService,
     PicsService,
+    TranslateService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: setupTranslateFactory,
+      deps: [
+        TranslateService
+      ],
+      multi: true
+    },
     UserService,
   ],
   bootstrap: [AppComponent]

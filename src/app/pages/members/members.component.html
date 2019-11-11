@@ -4,9 +4,9 @@
          (mouseleave)='survoleIntro("hidden")'>
   <div class="content" [@introTrigger]="introState">
     <header>
-      <h2>{{ phrases['members.header.title'] }}</h2>
+      <h2>{{ 'members.header.title' | translate }}</h2>
     </header>
-    <p>{{ phrases['members.header.subtitle'] }}</p>
+    <p>{{ 'members.header.subtitle' | translate }}</p>
     <footer>
       <a class="button style2 down" (click)="onClickNext(fragmentIntro)">More</a>
     </footer>

@@ -20,11 +20,9 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   eventDeletionState = 'nothing';
   @Input() selectedRoute: string;
   @Input() moderationState: any[];
-  phrases: object;
 
   constructor(private galeriesService: GaleriesService,
               private router: Router) {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

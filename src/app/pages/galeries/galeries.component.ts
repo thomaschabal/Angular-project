@@ -4,7 +4,6 @@ import { state, trigger, animate, style, transition } from '@angular/animations'
 import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
 import { GaleriesService } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
-import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 
 @Component({
@@ -28,7 +27,6 @@ import { routesAppFromRoot } from '../../Routes';
 
 export class GaleriesComponent implements OnInit {
 
-  phrases: object;
   routes = routesAppFromRoot;
 
   // Loading Spinner
@@ -46,7 +44,6 @@ export class GaleriesComponent implements OnInit {
 
   constructor(private httpService: HttpService,
               private galeriesService: GaleriesService) {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

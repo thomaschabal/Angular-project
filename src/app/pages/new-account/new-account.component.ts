@@ -5,7 +5,6 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 
 import { User } from '../../models/User.model';
 import { UserService } from '../../services/user.service';
-import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 
 @Component({
@@ -55,7 +54,6 @@ import { routesAppFromRoot } from '../../Routes';
 
 export class NewAccountComponent implements OnInit {
   availablePromotions = ['015', '016', '017', '018', '019', '020', '021', '022'];
-  phrases: object;
   routes = routesAppFromRoot;
   // Initial state
   state = 'visible1';
@@ -71,7 +69,6 @@ export class NewAccountComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService) {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

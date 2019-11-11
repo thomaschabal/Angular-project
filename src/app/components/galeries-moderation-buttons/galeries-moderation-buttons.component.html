@@ -1,31 +1,31 @@
 <div id="moderation">
   <button id="addFiles" type="button" name="button" (click)="prepareAddFiles()">
-    {{ phrases['moderation.addFiles'] }}
+    {{ 'moderation.addFiles' | translate }}
   </button>
   <button id="modere" type="button" name="button" (click)="modere()">
-    {{ phrases['moderation.moderate'] }}
+    {{ 'moderation.moderate' | translate }}
   </button>
   <button *ngIf="isPublic"
           class="publicprivate" type="button" name="button"
           (click)="publicPrivate()">
-    {{ phrases['moderation.setPrivate'] }}
+    {{ 'moderation.setPrivate' | translate }}
   </button>
   <button *ngIf="!isPublic"
           class="publicprivate" type="button" name="button"
           (click)="publicPrivate()">
-    {{ phrases['moderation.setPublic'] }}
+    {{ 'moderation.setPublic' | translate }}
   </button>
   <button *ngIf="enModeration"
           id="deleteevent" type="button" name="button"
           (click)="deleteEvent()">
-    {{ phrases['moderation.deleteGallery'] }}
+    {{ 'moderation.deleteGallery' | translate }}
   </button>
   <button *ngIf="enModeration"
           id="deletepics" type="button" name="button"
           (click)="validateDeletionPics()">
-    {{ phrases['moderation.deleteAllSelectedPics'] }}
+    {{ 'moderation.deleteAllSelectedPics' | translate }}
   </button>
-  <p *ngIf="!isPublic" style="color: #fff">{{ phrases['moderation.galleryIsPrivate'] }}</p>
+  <p *ngIf="!isPublic" style="color: #fff">{{ 'moderation.galleryIsPrivate' | translate }}</p>
 </div>
 
 <app-upload *ngIf="clickAddFiles"></app-upload>

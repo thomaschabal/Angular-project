@@ -2,22 +2,22 @@
 
   <!-- Header -->
   <header id="header">
-    <h1>{{ phrases['reset.header.title'] }}</h1>
-    <p [innerHTML]="phrases['reset.header.subtitle']"></p>
+    <h1>{{ 'reset.header.title' | translate }}</h1>
+    <p [innerHTML]="'reset.header.subtitle' | translate"></p>
   </header>
 
   <!-- Signup Form -->
   <form class="signup-form" [formGroup]="resetForm" (ngSubmit)="onSubmitForm()">
     <div id="email">
-      <input type="text" name="email" [placeholder]="phrases['reset.form.email.placeholder']" formControlName="email"/><p>{{ phrases['reset.form.email.extension'] }}</p>
+      <input type="text" name="email" [placeholder]="'reset.form.email.placeholder' | translate" formControlName="email"/><p>{{ 'reset.form.email.extension' | translate }}</p>
     </div>
-    <input id="submit" type="submit" [value]="phrases['reset.form.submitButton']" [disabled]="resetForm.invalid"/>
+    <input id="submit" type="submit" [value]="'reset.form.submitButton' | translate" [disabled]="resetForm.invalid"/>
   </form>
 
   <!-- Useful links -->
   <p id="redirections">
-    <a [routerLink]='routes.auth'>{{ phrases['auth.backToAuth'] }}</a>.<br/>
-    {{ phrases['auth.noAccount.question'] }} <a [routerLink]='routes.newAccount'>{{ phrases['auth.clickHere'] }}</a> {{ phrases['auth.noAccount.register'] }}
+    <a [routerLink]='routes.auth'>{{ 'auth.backToAuth' | translate }}</a>.<br/>
+    {{ 'auth.noAccount.question' | translate }} <a [routerLink]='routes.newAccount'>{{ 'auth.clickHere' | translate }}</a> {{ 'auth.noAccount.register' | translate }}
   </p>
 
   <!-- Footer -->

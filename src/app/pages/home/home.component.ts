@@ -7,7 +7,6 @@ import { filter } from 'rxjs/operators';
 import { HomeService } from '../../services/home.service';
 import { PicsService } from '../../services/pics.service';
 import { HomeFormComponent } from '../../components/home-form/home-form.component';
-import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 
 export enum KEY_CODE {
@@ -35,7 +34,6 @@ export enum KEY_CODE {
 export class HomeComponent implements OnInit, OnDestroy {
 
   // Text to display in the HTML file
-  phrases: object;
   routes = routesAppFromRoot;
 
   // Data to show to the user
@@ -77,7 +75,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     // Get text
-    this.phrases = Phrases;
     // Requests to the server, update of previous data
     this.homeService.loadLatestGalleries();
     this.lastEvents = this.homeService.lastEvents;

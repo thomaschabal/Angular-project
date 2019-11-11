@@ -5,9 +5,9 @@
   <div class="content"
        [id]="introVisible ? 'intro-hovered' : 'intro-none'">
     <header>
-      <h2>{{ phrases['home.header.title'] }}</h2>
+      <h2>{{ 'home.header.title' | translate }}</h2>
     </header>
-    <p [innerHTML]="phrases['home.header.introduction']"></p>
+    <p [innerHTML]="'home.header.introduction' | translate"></p>
     <app-loading-points *ngIf="!homeService.areLastEventsLoaded"></app-loading-points>
     <footer *ngIf="homeService.areLastEventsLoaded">
       <a class="button style2 down" (click)="clickOnNextArrow('one')">More</a>
@@ -44,7 +44,7 @@
          (mouseleave)='survoleCoeur("hidden")'>
   <div class="content">
     <header id="header-content">
-      <h2 [innerHTML]="phrases['home.favoritePics.title']"></h2>
+      <h2 [innerHTML]="'home.favoritePics.title' | translate"></h2>
     </header>
     <!-- Pics  -->
     <div class="gallery" id="gallery-pics">
@@ -76,8 +76,8 @@
          (mouseleave)="survoleForm(false)">
   <div class="content">
     <header>
-      <h2 [innerHTML]="phrases['home.contact.title']"></h2>
-      <p [innerHTML]="phrases['home.contact.subtitle']"></p>
+      <h2 [innerHTML]="'home.contact.title' | translate"></h2>
+      <p [innerHTML]="'home.contact.subtitle' | translate"></p>
     </header>
     <div class="box" [id]="formVisible ? 'home-form-visible' : 'home-form-hidden'">
       <app-home-form></app-home-form>

@@ -3,19 +3,19 @@
 <div *ngIf="isAdmin" class="moderation">
   <button id="acceptAll" type="button" name="button"
           (click)="acceptAllPics()">
-    {{ phrases['moderation.acceptAll'] }}
+    {{ 'moderation.acceptAll' | translate }}
   </button>
   <button id="refuseAll" type="button" name="button"
           (click)="deleteAllPics()">
-    {{ phrases['moderation.deleteAll'] }}
+    {{ 'moderation.deleteAll' | translate }}
   </button>
   <button id="acceptSelection" type="button" name="button"
           (click)="acceptSelectedPics()">
-    {{ phrases['moderation.acceptAllSelectedPics'] }}
+    {{ 'moderation.acceptAllSelectedPics' | translate }}
   </button>
   <button id="refuseSelection"type="button" name="button"
           (click)="deleteSelectedPics()">
-    {{ phrases['moderation.deleteAllSelectedPics'] }}
+    {{ 'moderation.deleteAllSelectedPics' | translate }}
   </button>
 </div>
 
@@ -33,22 +33,22 @@
       <button *ngIf="!acceptState(i)"
               id="acceptButton" type="button" name="button"
               (click)="acceptPic(i)">
-        {{ phrases['moderation.accept'] }}
+        {{ 'moderation.accept' | translate }}
       </button>
       <button *ngIf="acceptState(i)"
               id="acceptButtonSelected" type="button" name="button"
               (click)="acceptPic(i)">
-        {{ phrases['moderation.accept'] }}
+        {{ 'moderation.accept' | translate }}
       </button>
       <button *ngIf="!deleteState(i)"
               id="deleteButton" type="button" name="button"
               (click)="deletePic(i)">
-        {{ phrases['moderation.delete'] }}
+        {{ 'moderation.delete' | translate }}
       </button>
       <button *ngIf="deleteState(i)"
               id="deleteButtonSelected" type="button" name="button"
               (click)="deletePic(i)">
-        {{ phrases['moderation.delete'] }}
+        {{ 'moderation.delete' | translate }}
       </button>
     </article>
   </div>

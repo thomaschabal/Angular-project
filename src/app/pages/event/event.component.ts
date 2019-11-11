@@ -12,7 +12,6 @@ import { ImageViewerComponent } from '../../components/image-viewer/image-viewer
 import { GaleriesService } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
 import { PicsService } from '../../services/pics.service';
-import { Phrases } from '../../Phrases';
 
 export enum KEY_CODE {
   ESCAPE = 27
@@ -39,7 +38,6 @@ export enum KEY_CODE {
 
 export class EventComponent implements OnInit, OnDestroy {
 
-  phrases: object;
 
   constructor(private galeriesService: GaleriesService,
               private activeRoute: ActivatedRoute,
@@ -48,7 +46,6 @@ export class EventComponent implements OnInit, OnDestroy {
     this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(
       f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
     );
-    this.phrases = Phrases;
   }
 
   // Loading Spinner

@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { HttpService } from '../../services/http.service';
-import { Phrases } from '../../Phrases';
 
 @Component({
   selector: 'app-footer',
@@ -12,11 +11,9 @@ import { Phrases } from '../../Phrases';
 })
 
 export class FooterComponent {
-  phrases: object;
 
   constructor(private httpService: HttpService,
               private router: Router) {
-    this.phrases = Phrases;
   }
 
   get isOnline() {

@@ -2,7 +2,6 @@ import { Component, OnInit, EventEmitter, Input, Output, HostListener } from '@a
 import { state, trigger, animate, style, transition } from '@angular/animations';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PicsService } from '../../services/pics.service';
-import { Phrases } from '../../Phrases';
 
 export enum KEY_CODE {
   RIGHT_ARROW = 39,
@@ -33,11 +32,9 @@ export class ImageViewerComponent implements OnInit {
   @Output() changeIndexPicture = new EventEmitter<number>();
   @Output() closeViewer = new EventEmitter<boolean>();
   showArrows = true;
-  phrases: object;
 
   constructor(private picsService: PicsService,
               private sanitizer: DomSanitizer) {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

@@ -11,7 +11,6 @@ import { Phrases } from '../../Phrases';
 })
 export class MaterialBookingFormComponent implements OnInit {
 
-  phrases = Phrases;
   materialForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder,

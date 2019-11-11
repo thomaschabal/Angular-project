@@ -11,8 +11,6 @@ import { Phrases } from '../../Phrases';
 })
 export class GalleryCreationFormComponent implements OnInit {
 
-  phrases = Phrases;
-
   // Create gallery form defined here
   eventForm: FormGroup;
 

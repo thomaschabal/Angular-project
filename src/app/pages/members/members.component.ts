@@ -5,7 +5,6 @@ import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { MembersService } from '../../services/members.service';
-import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 
 @Component({
@@ -31,7 +30,6 @@ import { routesAppFromRoot } from '../../Routes';
 
 export class MembersComponent implements OnInit, OnDestroy {
 
-  phrases: object;
   routes = routesAppFromRoot;
   // Data to show to the user
   fragmentIntro = '';
@@ -50,7 +48,6 @@ export class MembersComponent implements OnInit, OnDestroy {
       .subscribe(
         f => document.getElementById(f).scrollIntoView({behavior : 'smooth'})
       );
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { state, style, transition, animate, trigger } from '@angular/animations';
 
-import { Phrases } from '../../Phrases';
-
 @Component({
   selector: 'app-material',
   templateUrl: './material.component.html',
@@ -18,12 +16,10 @@ import { Phrases } from '../../Phrases';
 })
 
 export class MaterialComponent implements OnInit {
-  phrases: object;
   // Form for material booking
   formState = 'visible';
 
   constructor() {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

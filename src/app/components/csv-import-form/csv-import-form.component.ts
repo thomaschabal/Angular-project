@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Phrases } from '../../Phrases';
 
 @Component({
   selector: 'app-csv-import-form',
@@ -7,7 +6,6 @@ import { Phrases } from '../../Phrases';
   styleUrls: ['./csv-import-form.component.scss']
 })
 export class CsvImportFormComponent implements OnInit {
-  phrases = Phrases;
 
   constructor() { }
 

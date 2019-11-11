@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 
-import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 import { LINKS } from '../icon-links/icon-links.component';
 
@@ -22,11 +21,9 @@ export class GaleriesFooterComponent implements OnInit {
   @Input() nameEvent: string;
   @Input() resumeEvent: string;
   footerState = 'hidden';
-  phrases: object;
   routes = routesAppFromRoot;
 
   constructor() {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

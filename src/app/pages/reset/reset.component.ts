@@ -56,7 +56,6 @@ import { routesAppFromRoot } from '../../Routes';
 export class ResetComponent implements OnInit {
 
   routes = routesAppFromRoot;
-  phrases: object;
   // Initial state
   state = 'visible1';
   indState = 0;
@@ -73,7 +72,6 @@ export class ResetComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private userService: UserService) {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

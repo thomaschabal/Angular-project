@@ -9,8 +9,6 @@ import { Phrases } from '../../Phrases';
   styleUrls: ['./home-form.component.scss']
 })
 export class HomeFormComponent implements OnInit {
-
-  phrases = Phrases;
   // Form to send a message to the admins of the site
   messageForm: FormGroup;
 

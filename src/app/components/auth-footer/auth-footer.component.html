@@ -4,8 +4,10 @@
       <a href="{{ link.href }}" class="icon {{ link.class }}">
         <span class="label">{{ link.name }}</span>
       </a>
-    </li>  </ul>
+    </li>
+    <li><app-language-selection id="languages"></app-language-selection></li>
+  </ul>
   <ul class="copyright">
-    <li>&copy; {{ phrases['auth.footer.copyright'] }}</li>
+    <li>&copy; {{ 'auth.footer.copyright' | translate }}</li>
   </ul>
 </footer>

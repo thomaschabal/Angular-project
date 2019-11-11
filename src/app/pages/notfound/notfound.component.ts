@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Phrases } from '../../Phrases';
-
 @Component({
   selector: 'app-notfound',
   templateUrl: './notfound.component.html',
@@ -10,10 +8,7 @@ import { Phrases } from '../../Phrases';
 
 export class NotfoundComponent implements OnInit {
 
-  phrases: object;
-
   constructor() {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

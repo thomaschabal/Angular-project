@@ -28,7 +28,6 @@ const BUTTON_LINKS = [
 })
 
 export class DashboardComponent implements OnInit {
-  phrases = Phrases;
   buttonLinks = BUTTON_LINKS;
 
   constructor(private router: Router) { }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Phrases } from '../../Phrases';
 import { LINKS } from '../icon-links/icon-links.component';
 
 @Component({
@@ -8,11 +7,9 @@ import { LINKS } from '../icon-links/icon-links.component';
   styleUrls: ['./auth-footer.component.scss']
 })
 export class AuthFooterComponent implements OnInit {
-  phrases: object;
   links = LINKS;
 
   constructor() {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

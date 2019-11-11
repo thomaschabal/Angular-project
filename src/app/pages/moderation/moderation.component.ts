@@ -24,8 +24,6 @@ import { Phrases } from '../../Phrases';
 
 export class ModerationComponent implements OnInit, OnDestroy {
 
-  phrases: object;
-
   private sub: Subscription;
 
   pics: any[];
@@ -55,7 +53,6 @@ export class ModerationComponent implements OnInit, OnDestroy {
       .subscribe(
         f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
       );
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

@@ -20,12 +20,12 @@
     <button *ngIf="enModeration && !deleteState(i)"
             id="deleteButton" type="button" name="button" style="color: #fc3"
             (click)="moderePic(i)">
-      {{ phrases['moderation.delete'] }}
+      {{ 'moderation.delete' | translate }}
     </button>
     <button *ngIf="enModeration && deleteState(i)"
             id="deleteButtonSelected" type="button" name="button" style="color: #fc3"
             (click)="moderePic(i)">
-      {{ phrases['moderation.delete'] }}
+      {{ 'moderation.delete' | translate }}
     </button>
   </article>
 </div>

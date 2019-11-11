@@ -2,34 +2,34 @@
 
   <!-- Header -->
   <header id="header">
-    <h1>{{ phrases['newAccount.header.title'] }}</h1>
-    <p [innerHTML]="phrases['newAccount.header.subtitle']"></p>
-    <p>{{ phrases['newAccount.cgu.first'] }} <a [routerLink]="routes.cgu">{{ phrases['newAccount.cgu.cgu'] }}</a> {{ phrases['newAccount.cgu.second'] }} <a [routerLink]="routes.cgu">{{ phrases['newAccount.cgu.here'] }}</a>.</p>
+    <h1>{{ 'newAccount.header.title' | translate }}</h1>
+    <p [innerHTML]="'newAccount.header.subtitle' | translate"></p>
+    <p>{{ 'newAccount.cgu.first' | translate }} <a [routerLink]="routes.cgu">{{ 'newAccount.cgu.cgu' | translate }}</a> {{ 'newAccount.cgu.second' | translate }} <a [routerLink]="routes.cgu">{{ 'newAccount.cgu.here' | translate }}</a>.</p>
   </header>
 
   <!-- Signup Form -->
   <form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
-    <input id="firstName" type="text" name="firstname" [placeholder]="phrases['newAccount.form.firstName']" formControlName="firstname"/>
-    <input id="lastName" type="text" name="lastname" [placeholder]="phrases['newAccount.form.familyName']" formControlName="lastname"/>
+    <input id="firstName" type="text" name="firstname" [placeholder]="'newAccount.form.firstName' | translate" formControlName="firstname"/>
+    <input id="lastName" type="text" name="lastname" [placeholder]="'newAccount.form.familyName' | translate" formControlName="lastname"/>
     <div id="promotion">
-      <q>{{ phrases['newAccount.form.promotion'] }}</q>
+      <q>{{ 'newAccount.form.promotion' | translate }}</q>
       <select class="form1" name="promotion" formControlName="promotion">
         <option *ngFor="let prom of availablePromotions" value="prom">{{ prom }}</option>
       </select>
     </div>
     <div id="email">
-      <input type="text" name="email" [placeholder]="phrases['newAccount.form.email']" formControlName="email"/>
-      <p>{{ phrases['newAccount.form.email.extension'] }}</p>
+      <input type="text" name="email" [placeholder]="'newAccount.form.email' | translate" formControlName="email"/>
+      <p>{{ 'newAccount.form.email.extension' | translate }}</p>
     </div>
-    <input id="password" type="password" name="password" [placeholder]="phrases['newAccount.form.password']" formControlName="password"/>
-    <input id="confirmPassword" type="password" name="confirmationPassword" [placeholder]="phrases['newAccount.form.passwordConfirmation']" formControlName="confirmationPassword"/>
-    <input id="submit" class="submit" type="submit" [value]="phrases['newAccount.form.submitButton']" [disabled]="userForm.invalid"/>
+    <input id="password" type="password" name="password" [placeholder]="'newAccount.form.password' | translate" formControlName="password"/>
+    <input id="confirmPassword" type="password" name="confirmationPassword" [placeholder]="'newAccount.form.passwordConfirmation' | translate" formControlName="confirmationPassword"/>
+    <input id="submit" class="submit" type="submit" [value]="'newAccount.form.submitButton' | translate" [disabled]="userForm.invalid"/>
   </form>
 
   <!-- Useful links -->
   <p id="redirections">
-    <a [routerLink]='routes.auth'>{{ phrases['auth.backToAuth'] }}</a>.<br/>
-    {{ phrases['auth.forgottenPassword.question'] }} <a [routerLink]='routes.reset'>{{ phrases['auth.clickHere'] }}</a> {{ phrases['auth.forgottenPassword.reinitialize'] }}
+    <a [routerLink]='routes.auth'>{{ 'auth.backToAuth' | translate }}</a>.<br/>
+    {{ 'auth.forgottenPassword.question' | translate }} <a [routerLink]='routes.reset'>{{ 'auth.clickHere' | translate }}</a> {{ 'auth.forgottenPassword.reinitialize' | translate }}
   </p>
 
   <!-- Footer -->

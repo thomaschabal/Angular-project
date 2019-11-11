@@ -13,7 +13,7 @@
     </a>
     <h2><a [routerLink]="routes.pics + event.slug">{{ event.name }}</a></h2>
     <a [routerLink]="routes.pics + event.slug"><div class="private_background"></div></a>
-    <div id="private">{{ phrases['galeries.gallery.private'] }}</div>
+    <div id="private">{{ 'galeries.gallery.private' | translate }}</div>
   </article>
   <!--<article class="thumb">
     <a [routerLink]="routes.videos + 'test'">

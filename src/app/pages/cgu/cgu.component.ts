@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService } from '../../services/auth.service';
-import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 
 @Component({
@@ -13,10 +12,8 @@ export class CguComponent implements OnInit {
 
   articles = [];
   routes = routesAppFromRoot;
-  phrases: object;
 
   constructor(private authService: AuthService) {
-    this.phrases = Phrases;
   }
 
   ngOnInit() {

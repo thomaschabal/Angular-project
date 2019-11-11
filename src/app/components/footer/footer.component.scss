@@ -29,7 +29,6 @@
 	padding: 1.5em;
 	background: $PONTHE-DARK-DARK-GREY;
 	color: rgba(185, 186, 187, 0.5);
-	overflow: hidden;
 }
 
 #footer > * {
@@ -51,6 +50,13 @@
 #footer ul.menu li {
   border-left-color: rgba(185, 186, 187, 0.2);
   font-size: 0.9em;
+}
+
+#languages {
+	display: flex;
+	flex-direction: column-reverse;
+	position: absolute;
+	bottom: 2em;
 }
 
 @media screen and (max-width: 1000px) {

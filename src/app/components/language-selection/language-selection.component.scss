@@ -1,0 +1,53 @@
+@import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
+
+$FLAG-SIZE: 1.25em;
+$SECTION-PADDING: 2px;
+$SECTION-MARGIN: 2px;
+$NUMBER-OF-LANGUAGES: 5;
+$NUMBER-OF-LANGUAGES-TO-ANIMATE: $NUMBER-OF-LANGUAGES - 1;
+
+#flags-section {
+    border-radius: 4px;
+    width: calc(#{$FLAG-SIZE} + 2 * #{$SECTION-PADDING});
+    height: calc(#{$FLAG-SIZE} + 2 * #{$SECTION-PADDING});
+    transition: height 0.5s ease;
+    display: flex;
+    flex-direction: column-reverse;
+    position: absolute;
+}
+
+#flags-section:hover {
+    height: 100%;
+}
+
+.flag-icon {
+	border-radius: 4px;
+	width: $FLAG-SIZE;
+    height: $FLAG-SIZE;
+    line-height: $FLAG-SIZE;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.selected {
+    margin-top: 0;
+}
+
+span {
+    display: grid;
+}
+
+.flag-visible {
+    opacity: 1;
+}
+
+.flag-hidden {
+    opacity: 0;
+}
+
+@for $i from 1 through $NUMBER-OF-LANGUAGES-TO-ANIMATE {
+    .flag#{$i} {
+        transition-delay: $i * 0.3s;
+    }
+}

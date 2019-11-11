@@ -4,7 +4,7 @@
   <!-- Adminstration area -->
   <div class="content" id="admin_area">
     <header id="admin_header">
-      <h2>{{ phrases['dashboard.header.title'] }}</h2>
+      <h2>{{ 'dashboard.header.title' | translate }}</h2>
     </header>
 
     <!-- Creation of gallery form -->
@@ -16,7 +16,7 @@
     <div id="col_admin_2">
       <button id="moderation_button" type="button" name="button"
               (click)="navigateToModeration()">
-        {{ phrases['dashboard.links.moderation'] }}
+        {{ 'dashboard.links.moderation' | translate }}
       </button><br/>
       <span *ngFor="let link of buttonLinks">
         <a [href]="link.address" class="icons fa {{ link.class }} fa-3x"></a>
