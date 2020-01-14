@@ -18,5 +18,5 @@ export const routesApp = {
 
 export const routesAppFromRoot = Object.assign({}, routesApp);
 Object.keys(routesAppFromRoot).map(
-  (key, route) => { routesAppFromRoot[key] = '/' + routesAppFromRoot[key]; }
+  (key) => { routesAppFromRoot[key] = '/' + routesAppFromRoot[key]; }
 );

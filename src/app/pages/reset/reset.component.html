@@ -1,33 +1,19 @@
 <body class="is-preload">
-
-  <!-- Header -->
-  <header id="header">
-    <h1>{{ 'reset.header.title' | translate }}</h1>
+  <app-auth-card [title]="'reset.header.title' | translate">
     <p [innerHTML]="'reset.header.subtitle' | translate"></p>
-  </header>
 
-  <!-- Signup Form -->
-  <form class="signup-form" [formGroup]="resetForm" (ngSubmit)="onSubmitForm()">
-    <div id="email">
-      <input type="text" name="email" [placeholder]="'reset.form.email.placeholder' | translate" formControlName="email"/><p>{{ 'reset.form.email.extension' | translate }}</p>
-    </div>
-    <input id="submit" type="submit" [value]="'reset.form.submitButton' | translate" [disabled]="resetForm.invalid"/>
-  </form>
-
-  <!-- Useful links -->
-  <p id="redirections">
-    <a [routerLink]='routes.auth'>{{ 'auth.backToAuth' | translate }}</a>.<br/>
-    {{ 'auth.noAccount.question' | translate }} <a [routerLink]='routes.newAccount'>{{ 'auth.clickHere' | translate }}</a> {{ 'auth.noAccount.register' | translate }}
-  </p>
+    <!-- Signup Form -->
+    <form class="signup-form" [formGroup]="resetForm" (ngSubmit)="onSubmitForm()">
+      <div id="email">
+        <input type="text" name="email" [placeholder]="'reset.form.email.placeholder' | translate" formControlName="email"/><p>{{ 'reset.form.email.extension' | translate }}</p>
+      </div>
+      <input id="submit" type="submit" [value]="'reset.form.submitButton' | translate" [disabled]="resetForm.invalid"/>
+    </form>
+  </app-auth-card>
 
   <!-- Footer -->
   <app-auth-footer></app-auth-footer>
 
   <!-- Background animation -->
-  <!-- Black background -->
-  <div id="background-auth" style="background: #000000"></div>
-
-  <!-- Image translations -->
-  <div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()"></div>
-
+  <app-auth-bg-slider class="bg"></app-auth-bg-slider>
 </body>

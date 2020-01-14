@@ -1,28 +1,27 @@
 @import url("../../../assets/assets_c/css/main.css");
 @import "../../PontheStyle.scss";
 
+p, q {
+  // line-height: 1.5em;
+  margin-bottom: 16px;
+}
 body {
-  margin-top: -9em;
+  margin-top: -5em;
 }
 
 form {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 24px;
-  box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
-  background: $OVERLAY-MEDIUM-GREY;
-  padding: 24px;
-  border-radius: 20px;
+  width: 70vw;
 }
 
-input, select {
-  box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-NONE;
-}
-input:focus, select:focus {
-  box-shadow: $BOX-SHADOW-INPUT-BASE-LIGHT $BOX-SHADOW-INPUT-SHIFT-FOCUS;
-}
 input {
   width: 100% !important;
+}
+
+#auth-card input[type="text"], #auth-card input[type="password"] {
+  width: 240px;
 }
 
 .signup-form {
@@ -32,7 +31,6 @@ input {
   margin: 0;
 }
 
-
 #firstName {
   grid-column: 1;
   grid-row: 1;
@@ -41,33 +39,31 @@ input {
   grid-column: 2;
   grid-row: 1;
 }
-#promotion {
+#email {
   grid-column: 3;
   grid-row: 1;
 }
-#email {
+#email input {
+  width: calc(70vw / 4 - 200px) !important;
+}
+#promotion {
+  grid-column: 4;
+  grid-row: 1;
+}
+#password {
   grid-column: 1;
   grid-row: 2;
 }
-#password {
+#confirmPassword {
   grid-column: 2;
   grid-row: 2;
 }
-#confirmPassword {
-  grid-column: 3;
+#submit {
+  grid-column: 4;
   grid-row: 2;
 }
-#submit {
-	background: linear-gradient(35deg, red, #fc3 65%);
-  grid-column: 3;
-  grid-row: 3;
-}
 
-p {
-  margin-top: 23px;
-}
 #email input[type="text"] {
-  width: calc(100% - #{$AUTH-EMAIL-WIDTH} - 16px - 4em) !important;
   display: inline-block;
   margin-right: 16px;
 }
@@ -75,25 +71,15 @@ p {
   margin: 0;
   display: inline-block;
   width: $AUTH-EMAIL-WIDTH;
+  font-size: 1em !important;
 }
 
-select {
-  display: inline-block;
-  width: 60%;
-}
-q {
-  display: inline-block;
-  width: 40%;
+a {
+  color: $PONTHE-YELLOW !important;
 }
 
-#redirections {
-  margin: 0;
-  margin-top: 10px;
-}
-
-#bg {
-  width: 120%;
-  background-position: center center;
+.bg {
+  z-index: 1 !important;
 }
 
 @media screen and (max-width: 736px) {

@@ -17,7 +17,10 @@ import { PlyrModule } from 'ngx-plyr';
 import { AppComponent } from './app.component';
 
 //// COMPONENTS
+import { AuthBgSliderComponent } from './components/auth-bg-slider/auth-bg-slider.component';
+import { AuthCardComponent } from './components/auth-card/auth-card.component';
 import { AuthFooterComponent } from './components/auth-footer/auth-footer.component';
+import { AuthNavComponent } from './components/auth-nav/auth-nav.component';
 import { CsvImportFormComponent } from './components/csv-import-form/csv-import-form.component';
 import { DashboardFormComponent } from './components/dashboard-form/dashboard-form.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -75,7 +78,10 @@ export function setupTranslateFactory(
 @NgModule({
   declarations: [
     AppComponent,
+    AuthBgSliderComponent,
+    AuthCardComponent,
     AuthFooterComponent,
+    AuthNavComponent,
     CsvImportFormComponent,
     DashboardFormComponent,
     FooterComponent,

@@ -1,0 +1,120 @@
+@import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
+
+#header {
+	font-family: "Roboto", "sans-serif";
+	font-weight: 300;
+	font-size: 1.25em;
+	line-height: 1.75em;
+	color: $PONTHE-YELLOW;
+	letter-spacing: 0.025em;
+	position: fixed;
+	z-index: 10000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	line-height: 3em;
+	transition: background 0.5s ease-in-out, color 0.3s ease;
+	color: $PONTHE-YELLOW;
+	text-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+}
+#header:hover {
+	background: $PONTHE-WHITE;
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+	color: $PONTHE-DARK-DARK-GREY;
+	text-shadow: none;
+}
+
+.link {
+	display: inline-block;
+	margin-right: 40px;
+	font-size: 1.35em;
+	font-weight: 600;
+	transition: color 0.3s ease;
+}
+.link:hover {
+	color: $PONTHE-YELLOW;
+	// -webkit-text-stroke: 1px $PONTHE-DARK-DARK-GREY;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.link:focus {
+	outline: none;
+}
+
+// .link a {
+// 	color: $PONTHE-YELLOW;
+// 	font-size: 1.35em;
+// 	font-weight: 600;
+// 	text-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+// }
+// .link a:hover {
+// 	text-decoration: underline;
+// }
+
+#header ul {
+	padding: 1.5em 0 0 5.5em;
+}
+
+@media screen and (max-width: 1680px) {
+	#header h1 {
+		font-size: 1.1em;
+	}
+
+	#header h1 a {
+		font-size: 1.15em;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	#header h1 {
+		font-size: 1.1em;
+	}
+
+	#header h1 a {
+		font-size: 1.05em;
+	}
+}
+
+@media screen and (max-width: 736px) {
+
+	#header {
+		height: 4em;
+		line-height: 1.5em;
+	}
+
+  #header nav {
+		display: flex;
+		margin-top: 7.5%;
+	}
+
+	#header h1 {
+		text-align: center;
+		position: absolute;
+		left: 0;
+		top: -0.25em;
+		height: 2.5em;
+		line-height: 2.5em;
+		width: 100vw;
+	}
+
+	#header h1 a {
+		font-size: 1em;
+		width: 100vw;
+		left: 0;
+		height: 2em;
+	}
+
+	#header a {
+		top: 0;
+		height: 4em;
+		width: 4em;
+		position: absolute;
+		z-index: 2;
+	}
+
+  #header a #logo {
+    width: 3.75em;
+    top: 0.5em;
+  }
+}

@@ -1,44 +1,30 @@
 <body class="is-preload">
-
-  <!-- Header -->
-  <header id="header">
-    <h1>{{ 'newAccount.header.title' | translate }}</h1>
+  <app-auth-card [title]="'newAccount.header.title' | translate">
     <p [innerHTML]="'newAccount.header.subtitle' | translate"></p>
     <p>{{ 'newAccount.cgu.first' | translate }} <a [routerLink]="routes.cgu">{{ 'newAccount.cgu.cgu' | translate }}</a> {{ 'newAccount.cgu.second' | translate }} <a [routerLink]="routes.cgu">{{ 'newAccount.cgu.here' | translate }}</a>.</p>
-  </header>
 
-  <!-- Signup Form -->
-  <form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
-    <input id="firstName" type="text" name="firstname" [placeholder]="'newAccount.form.firstName' | translate" formControlName="firstname"/>
-    <input id="lastName" type="text" name="lastname" [placeholder]="'newAccount.form.familyName' | translate" formControlName="lastname"/>
-    <div id="promotion">
-      <q>{{ 'newAccount.form.promotion' | translate }}</q>
-      <select class="form1" name="promotion" formControlName="promotion">
-        <option *ngFor="let prom of availablePromotions" value="prom">{{ prom }}</option>
-      </select>
-    </div>
-    <div id="email">
-      <input type="text" name="email" [placeholder]="'newAccount.form.email' | translate" formControlName="email"/>
-      <p>{{ 'newAccount.form.email.extension' | translate }}</p>
-    </div>
-    <input id="password" type="password" name="password" [placeholder]="'newAccount.form.password' | translate" formControlName="password"/>
-    <input id="confirmPassword" type="password" name="confirmationPassword" [placeholder]="'newAccount.form.passwordConfirmation' | translate" formControlName="confirmationPassword"/>
-    <input id="submit" class="submit" type="submit" [value]="'newAccount.form.submitButton' | translate" [disabled]="userForm.invalid"/>
-  </form>
-
-  <!-- Useful links -->
-  <p id="redirections">
-    <a [routerLink]='routes.auth'>{{ 'auth.backToAuth' | translate }}</a>.<br/>
-    {{ 'auth.forgottenPassword.question' | translate }} <a [routerLink]='routes.reset'>{{ 'auth.clickHere' | translate }}</a> {{ 'auth.forgottenPassword.reinitialize' | translate }}
-  </p>
+    <!-- Signup Form -->
+    <form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+      <input id="firstName" type="text" name="firstname" [placeholder]="'newAccount.form.firstName' | translate" formControlName="firstname"/>
+      <input id="lastName" type="text" name="lastname" [placeholder]="'newAccount.form.familyName' | translate" formControlName="lastname"/>
+      <div id="email">
+        <input type="text" name="email" [placeholder]="'newAccount.form.email' | translate" formControlName="email"/>
+        <p>{{ 'newAccount.form.email.extension' | translate }}</p>
+      </div>
+      <div id="promotion">
+        <q>{{ 'newAccount.form.promotion' | translate }}</q>
+        <select class="form1" name="promotion" formControlName="promotion">
+          <option *ngFor="let prom of availablePromotions" value="prom">{{ prom }}</option>
+        </select>
+      </div>
+      <input id="password" type="password" name="password" [placeholder]="'newAccount.form.password' | translate" formControlName="password"/>
+      <input id="confirmPassword" type="password" name="confirmationPassword" [placeholder]="'newAccount.form.passwordConfirmation' | translate" formControlName="confirmationPassword"/>
+      <input id="submit" class="submit" type="submit" [value]="'newAccount.form.submitButton' | translate" [disabled]="userForm.invalid"/>
+    </form>
+  </app-auth-card>
 
   <!-- Footer -->
   <app-auth-footer></app-auth-footer>
   <!-- Background animation -->
-  <!-- Black background -->
-  <div id="background-auth" style="background: #000000"></div>
-
-  <!-- Image translations -->
-  <div id="bg" [@backgroundAnimation]="state" (@backgroundAnimation.done)="changeFond()"></div>
-
+  <app-auth-bg-slider class="bg"></app-auth-bg-slider>
 </body>

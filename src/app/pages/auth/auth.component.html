@@ -1,28 +1,19 @@
 <body class="is-preload">
-
-	<!-- Header -->
-		<header id="header">
-			<h1>{{ 'auth.title' | translate }}</h1>
-		</header>
-
-	<!-- Signup Form -->
+	<app-auth-card [title]="'auth.title' | translate">
+		<!-- Signup Form -->
 		<form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSignIn()">
 			<input type="email" name="email" [placeholder]="'auth.form.id' | translate" formControlName="email"/>
 			<input type="password" name="password" [placeholder]="'auth.form.password' | translate" formControlName="password"/>
 			<input id="submit" type="submit" [value]="'auth.form.submitButton' | translate" [disabled]="userForm.invalid"/>
 		</form>
+		<!-- <div id="sso">
+			<a href="https://ponthe-testing.enpc.org/cas/login">{{ 'auth.sso' | translate }}</a>
+		</div> -->
+	</app-auth-card>
 
 	<!-- Useful links -->
-		<!--<a href="https://ponthe-testing.enpc.org/cas/login">Connexion SSO</a>-->
-
-		<p>{{ 'auth.forgottenPassword.question' | translate }} <a [routerLink]='routes.reset'>{{ 'auth.clickHere' | translate }}</a> {{ 'auth.forgottenPassword.reinitialize' | translate }}<br/>
-		{{ 'auth.noAccount.question' | translate }} <a [routerLink]='routes.newAccount'>{{ 'auth.clickHere' | translate }}</a> {{ 'auth.noAccount.register' | translate }}</p>
-
-		<app-auth-footer></app-auth-footer>
+	<app-auth-footer></app-auth-footer>
 
 	<!-- Background animation -->
-		<video src="../../../assets/images/video-auth.mp4" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
-		<!-- Black background -->
-		<!--<div id="background-auth" style="background: #000000"></div>-->
-
+	<video src="../../../assets/images/video-auth.mp4" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
 </body>

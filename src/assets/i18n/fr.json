@@ -4,6 +4,7 @@
     "auth.form.password": "Mot de passe",
     "auth.form.submitButton": "Entrer dans les Galeries",
     "auth.clickHere": "Clique ici",
+    "auth.sso": "Connexion SSO",
     "auth.forgottenPassword.question": "Mot de passe oublié ?",
     "auth.forgottenPassword.reinitialize": "pour le réinitialiser.",
     "auth.noAccount.question": "Tu n'as pas de compte ?",
@@ -85,6 +86,9 @@
   
     "nav.title.long": "Le Ponthé - Club audiovisuel des Ponts",
     "nav.title.short": "Le Ponthé",
+    "nav.title_auth.auth": "Connexion",
+    "nav.title_auth.reset": "Mot de passe oublié ?",
+    "nav.title_auth.register": "Inscription",
     "nav.galeries": "Galeries",
     "nav.dashboard": "Tableau de bord",
     "nav.members": "Membres",
