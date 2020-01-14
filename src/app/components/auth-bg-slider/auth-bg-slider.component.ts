@@ -14,16 +14,16 @@ const NUMBER_PICS = 4;
   trigger('backgroundAnimation', [
     transition('hidden => visible', [
       animate(DURATION_ANIMATION, keyframes([
-        style({opacity:0, transform: 'translateX(0)', offset: 0}),
-        style({opacity:0.5, transform: 'translateX(-1%) scale(1)', offset: 0.1}),
-        style({transform: 'translateX(-9%) scale(1.05)', offset: 1}),
+        style({ opacity: 0, transform: 'translateX(0)', offset: 0 }),
+        style({ opacity: 0.5, transform: 'translateX(-1%) scale(1)', offset: 0.1 }),
+        style({ transform: 'translateX(-9%) scale(1.05)', offset: 1 }),
       ]))
     ]),
     transition('visible => hidden', [
       animate(3 * DURATION_ANIMATION, keyframes([
-        style({opacity:0.5, transform: 'translateX(-9%) scale(1.05)', offset: 0}),
-        style({opacity:0, transform: 'translateX(-10%) scale(1.06)', offset: 0.1}),
-        style({opacity:0, transform: 'translateX(0) scale(1)', offset: 1}),
+        style({ opacity: 0.5, transform: 'translateX(-9%) scale(1.05)', offset: 0 }),
+        style({ opacity: 0, transform: 'translateX(-10%) scale(1.06)', offset: 0.1 }),
+        style({ opacity: 0, transform: 'translateX(0) scale(1)', offset: 1 }),
       ]))
     ]),
   ]),
