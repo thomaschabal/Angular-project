@@ -40,6 +40,25 @@ video {
 		left: -20vw;
 	}
 }
+
+@media screen and (max-width: map-get($breakpoints, small)) {
+	#app-auth-card {
+		margin-top: 96px;
+		z-index: 3;
+	}
+	#video-wrapper {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+	}
+	#auth-footer {
+		z-index: 3;
+	}
+}
+
 @media screen and (max-width: 520px) {
 	video {
 		width: auto;

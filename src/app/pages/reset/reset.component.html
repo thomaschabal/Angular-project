@@ -1,6 +1,6 @@
 <body class="is-preload">
   <app-auth-card [title]="'reset.header.title' | translate">
-    <p [innerHTML]="'reset.header.subtitle' | translate"></p>
+    <p [innerHTML]="'reset.header.subtitle' | translate" id="inner-text"></p>
 
     <!-- Signup Form -->
     <form class="signup-form" [formGroup]="resetForm" (ngSubmit)="onSubmitForm()">

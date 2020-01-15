@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.component';
 import { routesAppFromRoot } from '../../Routes';
+import { BREAKPOINTS } from '../../Constants';
 
 @Component({
   selector: 'app-auth',
@@ -16,6 +17,7 @@ export class AuthComponent implements OnInit {
   // Authentification form defined here
   userForm: FormGroup;
   routes = routesAppFromRoot;
+  isMobile: boolean;
 
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder) {
@@ -25,6 +27,11 @@ export class AuthComponent implements OnInit {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     this.initForm();
+    this.getBreakpoint();
+  }
+
+  getBreakpoint() {
+    this.isMobile = window.innerWidth <= BREAKPOINTS.SMALL;
   }
 
   // Initialisation of the form when the page is initially loaded

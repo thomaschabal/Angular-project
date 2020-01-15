@@ -25,11 +25,18 @@
   }
 }
 
-@media screen and (max-width: 750px) {
-}
+@media screen and (max-width: map-get($breakpoints, small)) {
+	#background-auth {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
 
-//https://animista.net/play/background/bg-pan
-//https://storybook.js.org/docs/guides/guide-angular/
-//https://www.learnstorybook.com/intro-to-storybook/react/en/simple-component/
-//https://www.ableton.com/en/trial/
-//https://www.youtube.com/watch?v=0ALKGR0I5MA
+  @each $image in $AUTH-BG-SLIDER-IMAGES {
+    $ind: index($AUTH-BG-SLIDER-IMAGES, $image);
+    #bg#{$ind} {
+      background: $image;
+      box-shadow: inset 0px 0px 100px 80px #000;
+    }
+  }
+}

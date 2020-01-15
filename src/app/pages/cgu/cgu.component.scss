@@ -16,3 +16,9 @@ section, #cgu-title {
   color: $PONTHE-YELLOW;
   text-decoration: underline;
 }
+
+@media screen and (max-width: map-get($breakpoints, small)) {
+	#cgu-title {
+		margin: 0;
+	}
+}

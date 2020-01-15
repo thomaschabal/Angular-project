@@ -1,5 +1,5 @@
 <body class="is-preload">
-	<app-auth-card [title]="'auth.title' | translate">
+	<app-auth-card [title]="'auth.title' | translate" id="app-auth-card">
 		<!-- Signup Form -->
 		<form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSignIn()">
 			<input type="email" name="email" [placeholder]="'auth.form.id' | translate" formControlName="email"/>
@@ -12,8 +12,11 @@
 	</app-auth-card>
 
 	<!-- Useful links -->
-	<app-auth-footer></app-auth-footer>
+	<app-auth-footer id="auth-footer"></app-auth-footer>
 
 	<!-- Background animation -->
-	<video src="../../../assets/images/video-auth.mp4" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+	<div id="video-wrapper" *ngIf="isMobile">
+		<video src="../../../assets/images/video-auth.mp4" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+	</div>
+	<video *ngIf="!isMobile" src="../../../assets/images/video-auth.mp4" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
 </body>

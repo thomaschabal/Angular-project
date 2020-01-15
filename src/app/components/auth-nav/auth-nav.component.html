@@ -1,8 +1,29 @@
+<button
+  *ngIf="isMobile"
+  [class]="isHamburgerActive ? 'hamburger hamburger--spin is-active' : 'hamburger hamburger--spin'"
+  id="burger_menu"
+  type="button"
+  (click)="activateHamburger()"
+>
+  <span class="hamburger-box">
+    <span class="hamburger-inner"></span>
+  </span>
+</button>
 <!-- Header -->
-<header id="header">
+<header *ngIf="!isMobile" id="header">
   <ul>
     <li class="link" [routerLink]='routes.auth'>{{ 'nav.title_auth.auth' | translate}}</li>
     <li class="link" [routerLink]='routes.newAccount'>{{ 'nav.title_auth.register' | translate}}</li>
     <li class="link" [routerLink]='routes.reset'>{{ 'nav.title_auth.reset' | translate}}</li>
   </ul>
+</header>
+
+<header *ngIf="isMobile" id="header" [class]="isHamburgerActive ? 'visible_menu' : ''">
+  <div id="mobile_menu">
+    <ul>
+      <li class="link" [routerLink]='routes.auth' (click)="activateHamburger()">{{ 'nav.title_auth.auth' | translate}}</li>
+      <li class="link" [routerLink]='routes.newAccount' (click)="activateHamburger()">{{ 'nav.title_auth.register' | translate}}</li>
+      <li class="link" [routerLink]='routes.reset' (click)="activateHamburger()">{{ 'nav.title_auth.reset' | translate}}</li>
+    </ul>
+  </div>
 </header>

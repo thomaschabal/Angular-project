@@ -1,3 +1,8 @@
+/* RESPONSIVE SIZES */
+$breakpoints: (
+    small: 736px,
+);
+
 /* BACKGROUND IMAGES */
 $INTRO-IMAGE: url("../../../assets/assets_h/css/images/overlay.png"), url("../../../assets/images/introP.jpg");
 $OVERLAY-IMAGE: url("../../../assets/assets_h/css/images/overlay.png");
@@ -67,3 +72,6 @@ $HOME-OVERLAY: rgba(0,0,0,0.25);
 
 /* AUTH */
 $BOX-SHADOW-CARD: $BOX-SHADOW-INPUT-BASE 64px;
+
+/* IMAGE VIEWER */
+$BOX-SHADOW-INNER-LARGE: inset 0 0 200px 25px #000;

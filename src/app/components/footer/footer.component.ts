@@ -20,7 +20,10 @@ export class FooterComponent {
     return (
       (this.httpService.token !== null) &&
       !(this.router.url.includes('galeries')) &&
-      !(this.router.url.includes('dashboard'))
+      !(this.router.url.includes('dashboard')) &&
+      !(this.router.url.includes('reset')) &&
+      !(this.router.url.includes('auth')) &&
+      !(this.router.url.includes('new-account'))
     );
   }
 }

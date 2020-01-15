@@ -29,6 +29,15 @@ form {
   z-index: 1 !important;
 }
 
+@media screen and (max-width: map-get($breakpoints, small)) {
+	#email p {
+		font-size: 16px !important;
+	}
+	input[type="text"] {
+		width: 50% !important;
+	}
+}
+
 @media screen and (max-width: 750px) {
 	form {
 		grid-gap: 16px;
