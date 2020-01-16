@@ -1,0 +1,32 @@
+/* BACKGROUND IMAGES */
+$INTRO-IMAGE: url("/assets/assets_h/css/images/overlay.png"), url("/assets/images/introP.jpg");
+$OVERLAY-IMAGE: url("/assets/assets_h/css/images/overlay.png");
+$AUTH-BG-SLIDER-IMAGES-LARGE:
+    url("/assets/images/auth_pics/wei.jpg")
+    url("/assets/images/auth_pics/font1.jpg")
+    url("/assets/images/auth_pics/pom.jpg")
+    url("/assets/images/auth_pics/voyage1.jpg");
+$AUTH-BG-SLIDER-IMAGES-SMALL:
+    url("/assets/images/auth_pics/wei_mobile.jpg")
+    url("/assets/images/auth_pics/font1_mobile.jpg")
+    url("/assets/images/auth_pics/pom_mobile.jpg")
+    url("/assets/images/auth_pics/voyage1_mobile.jpg");
+
+$PONTHE-PROMO-IMAGES-LARGE: (
+    015: url("/assets/images/05.jpg"),
+    016: url("/assets/images/04.jpg"),
+    017: url("/assets/images/05.jpg"),
+    018: url("/assets/images/04.jpg"),
+    019: url("/assets/images/ponthe_teams/019.jpg"),
+    020: url("/assets/images/ponthe_teams/020.jpg"),
+    021: url("/assets/images/ponthe_teams/021.jpg")
+);
+$PONTHE-PROMO-IMAGES-SMALL: (
+    015: url("/assets/images/05.jpg"),
+    016: url("/assets/images/04.jpg"),
+    017: url("/assets/images/05.jpg"),
+    018: url("/assets/images/04.jpg"),
+    019: url("/assets/images/ponthe_teams/019_mobile.jpg"),
+    020: url("/assets/images/ponthe_teams/020_mobile.jpg"),
+    021: url("/assets/images/ponthe_teams/021_mobile.jpg")
+);

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { HttpService } from '../../services/http.service';
+import { routesApp } from 'src/app/Routes';
 
 @Component({
   selector: 'app-footer',
@@ -19,11 +20,11 @@ export class FooterComponent {
   get isOnline() {
     return (
       (this.httpService.token !== null) &&
-      !(this.router.url.includes('galeries')) &&
-      !(this.router.url.includes('dashboard')) &&
-      !(this.router.url.includes('reset')) &&
-      !(this.router.url.includes('auth')) &&
-      !(this.router.url.includes('new-account'))
+      !(this.router.url.includes(routesApp.galeries)) &&
+      !(this.router.url.includes(routesApp.dashboard)) &&
+      !(this.router.url.includes(routesApp.reset)) &&
+      !(this.router.url.includes(routesApp.auth)) &&
+      !(this.router.url.includes(routesApp.newAccount))
     );
   }
 }

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { User } from '../../models/User.model';
 import { UserService } from '../../services/user.service';
 import { routesAppFromRoot } from '../../Routes';
+import { AVAILABLE_PROMOTIONS } from '../../Constants';
 
 @Component({
   selector: 'app-new-account',
@@ -12,7 +13,7 @@ import { routesAppFromRoot } from '../../Routes';
 })
 
 export class NewAccountComponent implements OnInit {
-  availablePromotions = ['015', '016', '017', '018', '019', '020', '021', '022'];
+  availablePromotions = AVAILABLE_PROMOTIONS;
   routes = routesAppFromRoot;
   // Register form defined here
   userForm: FormGroup;

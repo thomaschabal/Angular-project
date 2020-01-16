@@ -3,6 +3,10 @@
 
 .signup-form input {
 	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-NONE;
+
+	@include md {
+		margin: 0 !important;
+	}
 }
 
 .signup-form input:focus {
@@ -10,6 +14,11 @@
 }
 form {
 	margin: 0;
+
+	@include md {
+		display: grid !important;
+		grid-gap: 16px;
+	}
 }
 
 #sso {
@@ -18,35 +27,30 @@ form {
 	margin-top: 32px;
 	text-shadow: $AUTH-TEXT-SHADOW-LIGHT;
 }
+#sso a {
+	@include sm {
+		color: $PONTHE-YELLOW !important;
+	}
+	@include md {
+		color: $PONTHE-YELLOW !important;
+	}
+}
 #sso a:hover {
 	text-decoration: underline;
 }
 
-video {
-	top:0;
-	right:0;
-	min-height: 100vh;
-	min-width:100vw;
-}
-
-@media screen and (max-width: 1280px) {
-	video {
-		height: 100vh;
-		min-width: 100vw;
-	}
-}
-@media screen and (max-width: 980px) {
-	video {
-		left: -20vw;
-	}
-}
-
-@media screen and (max-width: map-get($breakpoints, small)) {
-	#app-auth-card {
-		margin-top: 96px;
+#app-auth-card {
+	@include sm {
+		margin-top: 72px;
 		z-index: 3;
 	}
-	#video-wrapper {
+	@include md {
+		z-index: 3;
+	}
+}
+
+#video-wrapper {
+	@include sm {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -54,15 +58,37 @@ video {
 		width: 100vw;
 		overflow: hidden;
 	}
-	#auth-footer {
+	@include md {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+	}
+}
+
+#auth-footer {
+	@include sm {
+		z-index: 3;
+	}
+	@include md {
 		z-index: 3;
 	}
 }
 
-@media screen and (max-width: 520px) {
-	video {
-		width: auto;
+video {
+	top: 0;
+	right: 0;
+	min-height: 100vh;
+	min-width: 100vw;
+
+	@include sm {
 		height: 100vh;
+		width: auto;
 		left: -100vw;
+	}
+	@include md {
+		left: -60vw;
 	}
 }

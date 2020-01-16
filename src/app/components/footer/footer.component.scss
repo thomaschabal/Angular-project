@@ -2,15 +2,10 @@
 @import "../../PontheStyle.scss";
 
 #footer {
-  font-family: "Source Sans Pro", "sans-serif";
-  font-weight: 300;
-  font-size: 1.25em;
-  line-height: 1.75em;
-  color: $PONTHE-DARK-DARK-GREY;
-  letter-spacing: 0.025em;
-}
-
-#footer {
+	font-family: "Source Sans Pro", "sans-serif";
+	font-weight: 300;
+	font-size: 1.25em;
+	letter-spacing: 0.025em;
 	display: -moz-flex;
 	display: -webkit-flex;
 	display: -ms-flex;
@@ -40,16 +35,31 @@
 }
 
 #footer a:hover {
-  color: #b9babb;
+	color: #b9babb;
 }
 
 #footer ul.menu {
-  margin: 0;
+	margin: 0;
 }
 
 #footer ul.menu li {
-  border-left-color: rgba(185, 186, 187, 0.2);
-  font-size: 0.9em;
+	border-left-color: rgba(185, 186, 187, 0.2);
+	font-size: 0.9em;
+
+	@include sm {
+		border-left: none;
+		display: block;
+		line-height: inherit;
+		margin: 0.25em 0 0 0;
+		padding: 0.25em 0 0 0;
+	}
+}
+
+#footer ul.menu li:first-child {
+	@include sm {
+		margin-top: 0;
+		padding-top: 0;
+	}
 }
 
 #languages {
@@ -57,6 +67,13 @@
 	flex-direction: column-reverse;
 	position: absolute;
 	bottom: 2em;
+
+	@include sm {
+		position: absolute;
+		top: 60px;
+		left: 24px;
+		height: 10px;
+	}
 }
 
 @media screen and (max-width: 1000px) {
@@ -76,29 +93,5 @@
 
 	#footer > * {
 		margin: 0 0 0.25em 0;
-	}
-}
-
-@media screen and (max-width: map-get($breakpoints, small)) {
-	#languages {
-		position: absolute;
-		top: 60px;
-		left: 24px;
-		height: 10px;
-	}
-}
-
-@media screen and (max-width: 736px) {
-	#footer ul.menu li {
-		border-left: none;
-		display: block;
-		line-height: inherit;
-		margin: 0.25em 0 0 0;
-		padding: 0.25em 0 0 0;
-	}
-
-	#footer ul.menu li:first-child {
-		margin-top: 0;
-		padding-top: 0;
 	}
 }

@@ -5,6 +5,14 @@ import { AuthService } from '../../services/auth.service';
 import { HttpService } from '../../services/http.service';
 import { NavLinkComponent } from '../nav-link/nav-link.component';
 import { routesAppFromRoot } from '../../Routes';
+import {
+  PATH_LOGO_PONTHE_SVG,
+  PATH_GALERIES_SVG,
+  PATH_DASHBOARD_SVG,
+  PATH_MEMBERS_SVG,
+  PATH_MATOS_SVG,
+  PATH_LOGOUT_SVG
+} from 'src/app/Constants';
 
 @Component({
   selector: 'app-nav',
@@ -13,6 +21,13 @@ import { routesAppFromRoot } from '../../Routes';
 })
 
 export class NavComponent {
+  pathLogo = PATH_LOGO_PONTHE_SVG;
+  svgGaleries = PATH_GALERIES_SVG;
+  svgDashboard = PATH_DASHBOARD_SVG;
+  svgMembers = PATH_MEMBERS_SVG;
+  svgMatos = PATH_MATOS_SVG;
+  svgLogout = PATH_LOGOUT_SVG;
+
   routes = routesAppFromRoot;
 
   constructor(private authService: AuthService,

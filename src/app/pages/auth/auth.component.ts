@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.component';
 import { routesAppFromRoot } from '../../Routes';
-import { BREAKPOINTS } from '../../Constants';
+import { BREAKPOINTS, PATH_AUTH_VIDEO } from '../../Constants';
 
 @Component({
   selector: 'app-auth',
@@ -13,11 +13,12 @@ import { BREAKPOINTS } from '../../Constants';
 })
 
 export class AuthComponent implements OnInit {
+  pathAuthVideo = PATH_AUTH_VIDEO;
 
   // Authentification form defined here
   userForm: FormGroup;
   routes = routesAppFromRoot;
-  isMobile: boolean;
+  isMobileOrTablet: boolean;
 
   constructor(private authService: AuthService,
               private formBuilder: FormBuilder) {
@@ -31,7 +32,7 @@ export class AuthComponent implements OnInit {
   }
 
   getBreakpoint() {
-    this.isMobile = window.innerWidth <= BREAKPOINTS.SMALL;
+    this.isMobileOrTablet = window.innerWidth <= BREAKPOINTS.MEDIUM;
   }
 
   // Initialisation of the form when the page is initially loaded

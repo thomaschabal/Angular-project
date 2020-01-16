@@ -1,38 +1,8 @@
 @import url("../../../assets/assets_c/css/main.css");
 @import "../../PontheStyle.scss";
 
-#header h1 {
-	color: $PONTHE-YELLOW;
-	text-shadow: $AUTH-TEXT-SHADOW;
-}
-
-input, select {
-	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-NONE;
-}
-
-input:focus, select:focus {
-	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
-}
-form {
-	margin: 0;
-}
-p, q {
-  max-width: 60vw;
-  transition: color 0.5s ease;
-  line-height: 1.5em;
-  font-size: 1.25em !important;
-}
-q {
-  display: inline-block;
-  width: 40%;
-}
-select {
-  display: inline-block !important;
-  width: 60% !important;
-}
-a {
-  color: $PONTHE-YELLOW !important;
-}
+$MAX-WIDTH-CARD-MOBILE: 70vw;
+$MAX-WIDTH-CARD-TABLET: 60vw;
 
 #auth-card {
 	padding: 48px;
@@ -40,11 +10,78 @@ a {
 	width: max-content;
 	margin: auto;
 	transition: background 0.5s ease, box-shadow 0.5s ease !important;
+
+	@include sm {
+		padding: 24px;
+		border-radius: 24px;
+	}
 }
 
 #auth-card:hover {
 	background: $PONTHE-WHITE;
 	box-shadow: $BOX-SHADOW-CARD;
+}
+
+#header {
+	@include sm {
+		max-width: $MAX-WIDTH-CARD-MOBILE !important;
+	}
+	@include md {
+		max-width: $MAX-WIDTH-CARD-TABLET !important;
+	}
+}
+
+#header h1 {
+	color: $PONTHE-YELLOW;
+	text-shadow: $AUTH-TEXT-SHADOW;
+}
+
+input, select {
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-NONE;
+
+	@include sm {
+		margin-bottom: 8px !important;
+		width: 100% !important;
+		font-size: 16px !important;
+	}
+	@include md {
+		width: 100% !important;
+	}
+}
+
+input:focus, select:focus {
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+}
+
+form {
+	margin: 0;
+
+	@include sm {
+		max-width: $MAX-WIDTH-CARD-MOBILE !important;
+	}
+	@include md {
+		max-width: $MAX-WIDTH-CARD-TABLET !important;
+	}
+}
+
+p, q {
+	max-width: 60vw;
+	transition: color 0.5s ease;
+	line-height: 1.5em;
+	font-size: 1.25em !important;
+
+	@include sm {
+		font-size: 1.1em !important;
+	}
+}
+
+q {
+	display: inline-block;
+	width: 40%;
+}
+
+a {
+	color: $PONTHE-YELLOW !important;
 }
 
 input[type="password"],
@@ -63,7 +100,15 @@ input[type="text"] {
   width: 240px;
 }
 input[type="submit"] {
-  background: $BUTTON-BACKGROUND-GRADIENT-YELLOWER !important;
+	background: $BUTTON-BACKGROUND-GRADIENT-YELLOWER !important;
+
+	@include sm {
+		margin: 0 !important;
+	}
+}
+select {
+	display: inline-block !important;
+	width: 60% !important;
 }
 
 #auth-card:hover input[type="password"],
@@ -71,53 +116,27 @@ input[type="submit"] {
 #auth-card:hover input[type="text"],
 #auth-card:hover select,
 a {
-  transition: color 0.5s ease;
-  color: $PONTHE-DARK-DARK-GREY !important;
+	transition: color 0.5s ease;
+	color: $PONTHE-DARK-DARK-GREY !important;
 }
 #auth-card:hover p, #auth-card:hover #email p, #auth-card:hover q {
-  color: $PONTHE-DARK-DARK-GREY !important;
+	color: $PONTHE-DARK-DARK-GREY !important;
 }
 
 input[type="password"]:focus,
 input[type="email"]:focus,
 input[type="text"]:focus,
 select:focus {
-  background: rgba(0,0,0,0.1) !important;
+	background: rgba(0,0,0,0.1) !important;
 }
 
 input[type="password"]::placeholder,
 input[type="email"]::placeholder,
 input[type="text"]::placeholder {
-  transition: color 0.5s ease;
+	transition: color 0.5s ease;
 }
 #auth-card:hover input[type="password"]::placeholder,
 #auth-card:hover input[type="email"]::placeholder,
 #auth-card:hover input[type="text"]::placeholder {
-  color: rgba(57, 69, 75, 0.5) !important;
-}
-
-// SMARTPHONE
-@media screen and (max-width: map-get($breakpoints, small)) {
-	#auth-card {
-		padding: 24px;
-		border-radius: 24px;
-	}
-	#header {
-		max-width: 70vw !important;
-	}
-	form {
-		max-width: 70vw !important;
-	}
-	input {
-		// max-width: 80vw !important;
-		margin-bottom: 8px !important;
-		width: 100% !important;
-		font-size: 16px !important;
-	}
-	input[type="submit"] {
-		margin: 0 !important;
-	}
-	p,q {
-		font-size: 1.1em !important;
-	}
+	color: rgba(57, 69, 75, 0.5) !important;
 }

@@ -10,71 +10,35 @@
 	background-attachment: fixed, fixed;
 	background-position: top left, bottom center;
 	background-repeat: repeat, no-repeat;
+
+	@include sm {
+		margin-top: 4em;
+	}
 }
 
-#p020, #p019, #p018, #p017, #p016, #p015 {
-	height: 100vh;
-}
-
-/* Ponthé 021 */
-#p021 {
-	background: $OVERLAY-IMAGE, url("../../../assets/images/ponthe_teams/021.jpg");
-	background-size: 256px 256px, cover;
-	background-attachment: fixed, fixed;
-	background-position: top left, center top;
-}
-
-/* One */
-#p020 {
-	background: $OVERLAY-IMAGE, url("../../../assets/images/ponthe_teams/020.jpg");
+/* Background pictures of proms */
+@mixin shared-background-props($pic) {
+	background: $OVERLAY-IMAGE, $pic;
 	background-size: 256px 256px, cover;
 	background-attachment: fixed, fixed;
 	background-position: top left, center center;
 }
+@each $promo, $image in $PONTHE-PROMO-IMAGES-LARGE {
+	$image-small: map-get($PONTHE-PROMO-IMAGES-SMALL, $promo);
+	#p0#{$promo} {
+		height: 100vh;
+		@include shared-background-props ($image);
 
-/* Two */
-#p019 {
-	background: $OVERLAY-IMAGE, url("../../../assets/images/ponthe_teams/019.jpg");
-	background-size: 256px 256px, cover;
-	background-attachment: fixed, fixed;
-	background-position: top left, center center;
-}
-
-/* Three */
-#p018 {
-	background: $OVERLAY-IMAGE, url("../../../assets/images/04.jpg");
-	background-size: 256px 256px, cover;
-	background-attachment: fixed, fixed;
-	background-position: top left, center center;
-}
-
-/* Four */
-#p017 {
-	background: $OVERLAY-IMAGE, url("../../../assets/images/05.jpg");
-	background-size: 256px 256px, cover;
-	background-attachment: fixed, fixed;
-	background-position: top left, center center;
-}
-
-/* Five */
-#p016 {
-	background: $OVERLAY-IMAGE, url("../../../assets/images/04.jpg");
-	background-size: 256px 256px, cover;
-	background-attachment: fixed, fixed;
-	background-position: top left, center center;
-}
-
-/* Six */
-#p015 {
-	background: $OVERLAY-IMAGE, url("../../../assets/images/05.jpg");
-	background-size: 256px 256px, cover;
-	background-attachment: fixed, fixed;
-	background-position: top left, center center;
+		@include sm {
+			@include shared-background-props($image-small);
+		}
+	}
 }
 
 .style2 .content {
   opacity: 0.95;
 }
+
 
 @media screen and (max-width: 1920px) {
   .style2 .content {
@@ -103,20 +67,22 @@
   }
 }
 
-@media screen and (max-width: 736px) {
-	#intro {
-		margin-top: 4em;
+.style2 .content {
+	@include sm {
+		width: 100% !important;
 	}
-
-  .style2 .content {
-    width: 100% !important;
   }
-
-	.style2 .content p {
-		line-height: 1.35em;
-	}
-
-	.main.style1 {
-		padding: 0.6em 15px 0.6em 15px;
-	}
-}
+  
+  .style2 .content p {
+	  @include sm {
+		  line-height: 1.35em;
+		  font-size: 18px;
+	  }
+  }
+  
+  .main.style1 {
+	  @include sm {
+		  padding: 0.6em 15px 0.6em 15px;
+	  }
+  }
+  

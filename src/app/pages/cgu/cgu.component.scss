@@ -1,12 +1,16 @@
 @import url("../../../assets/assets_h/css/main.css");
 @import "../../PontheStyle.scss";
 
-section {
-  text-align: justify;
-}
-
 section, #cgu-title {
   margin: 3.5em;
+}
+
+section {
+  text-align: justify;
+
+  @include sm {
+    margin: 2em;
+  }
 }
 
 #cgu-title {
@@ -15,10 +19,9 @@ section, #cgu-title {
   text-align: center;
   color: $PONTHE-YELLOW;
   text-decoration: underline;
-}
 
-@media screen and (max-width: map-get($breakpoints, small)) {
-	#cgu-title {
-		margin: 0;
-	}
+  @include sm {
+    margin: 0;
+    margin-top: 80px;
+  }
 }

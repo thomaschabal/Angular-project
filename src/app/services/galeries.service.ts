@@ -1,19 +1,7 @@
 import { HttpService } from './http.service';
 import { Injectable } from '@angular/core';
 
-const API_ROUTES = {
-  galleries: '/galleries/',
-  getImages: '/get-images/',
-  getAllGalleries: '/get-all-galleries',
-  getGalleriesOfYear: '/get-galleries-of-year/',
-  getPrivateGalleries: '/get-private-galleries',
-  getRandomImage: '/get-random-image/',
-  makePrivate: '/galleries/makeprivate',
-  makePublic: '/galleries/makepublic',
-  getFullImage: '/get-full-image',
-  createGallery: '/create-gallery',
-  filesNotModerated: '/files/not-moderated',
-};
+import API_ROUTES from './Api';
 
 @Injectable()
 export class GaleriesService {

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { state, trigger, animate, style, transition } from '@angular/animations';
+import { state, trigger, style, transition } from '@angular/animations';
 
 import { routesAppFromRoot } from '../../Routes';
-import { LINKS } from '../icon-links/icon-links.component';
+import { LINKS } from '../../Constants';
 
 @Component({
   selector: 'app-galeries-footer',

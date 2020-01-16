@@ -4,8 +4,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PicsService } from '../../services/pics.service';
 
 export enum KEY_CODE {
-  RIGHT_ARROW = 'ArrowLeft',
-  LEFT_ARROW = 'ArrowRight',
+  RIGHT_ARROW = 'ArrowRight',
+  LEFT_ARROW = 'ArrowLeft',
   ESCAPE = 'Escape'
 }
 

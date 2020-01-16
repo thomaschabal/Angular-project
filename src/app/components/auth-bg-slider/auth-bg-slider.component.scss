@@ -15,28 +15,38 @@
   background: #000;
   width: 100vw;
   height: 100vh;
-}
 
-@each $image in $AUTH-BG-SLIDER-IMAGES {
-  $ind: index($AUTH-BG-SLIDER-IMAGES, $image);
-  #bg#{$ind} {
-    background: $image;
-    box-shadow: inset 0px 0px 350px 120px #000;
-  }
-}
-
-@media screen and (max-width: map-get($breakpoints, small)) {
-	#background-auth {
+  @include sm {
     position: fixed;
     top: 0;
     left: 0;
   }
+  @include md {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
 
-  @each $image in $AUTH-BG-SLIDER-IMAGES {
-    $ind: index($AUTH-BG-SLIDER-IMAGES, $image);
-    #bg#{$ind} {
-      background: $image;
+@each $image in $AUTH-BG-SLIDER-IMAGES-LARGE {
+  $ind: index($AUTH-BG-SLIDER-IMAGES-LARGE, $image);
+  #bg#{$ind} {
+    background: $image;
+    background-size: cover;
+    box-shadow: inset 0px 0px 350px 120px #000;
+
+    @include sm {
       box-shadow: inset 0px 0px 100px 80px #000;
+    }
+  }
+}
+
+@each $image in $AUTH-BG-SLIDER-IMAGES-SMALL {
+  $ind: index($AUTH-BG-SLIDER-IMAGES-SMALL, $image);
+  #bg#{$ind} {
+    @include sm {
+      background: $image;
+      background-size: cover;
     }
   }
 }

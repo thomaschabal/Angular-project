@@ -64,6 +64,10 @@ html, body {
   background: $PONTHE-DARK-GREY;
   position: fixed;
   z-index: -1;
+
+  @include sm {
+    top: 5em;
+  }
 }
 
 #uploadBanner {
@@ -104,10 +108,4 @@ html, body {
   padding-right: 35vw;
   padding-top: 25vh;
   z-index: 2;
-}
-
-@media screen and (max-width: 736px) {
-  #fullBackground {
-    top: 5em;
-  }
 }

@@ -6,6 +6,8 @@ import { Subject } from 'rxjs';
 import { User } from '../models/User.model';
 import { HttpService } from './http.service';
 import { Phrases } from '../Phrases';
+import { routesAppFromRoot } from '../Routes';
+import API_ROUTES from './Api';
 
 @Injectable()
 export class UserService {
@@ -31,9 +33,9 @@ export class UserService {
   }
 
   addUser(user: User) {
-    this.httpService.post('/register', user).subscribe(
+    this.httpService.post(API_ROUTES.register, user).subscribe(
       (res) => {
-        this.router.navigate(['/auth']);
+        this.router.navigate([routesAppFromRoot.auth]);
         alert(Phrases['signup.successSignup']);
       },
       (error) => {
@@ -43,6 +45,6 @@ export class UserService {
   }
 
   resetUser(form: object) {
-    return this.httpService.post('/reset', form);
+    return this.httpService.post(API_ROUTES.reset, form);
   }
 }

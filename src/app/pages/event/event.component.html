@@ -1,7 +1,13 @@
 <div class="spacer"></div>
 
 <!-- Moderation buttons -->
-<app-galeries-moderation-buttons *ngIf="isAdmin" [selectedRoute]="selectedRoute" [moderationState]="moderationState" (moderating)="modere()"></app-galeries-moderation-buttons>
+<app-galeries-moderation-buttons
+  *ngIf="isAdmin"
+  [selectedRoute]="selectedRoute"
+  [moderationState]="moderationState"
+  (moderating)="modere()"
+></app-galeries-moderation-buttons>
+
 <!-- Upload for random users -->
 <div *ngIf="!isAdmin" id="uploadBanner">
   <a class="icon fa fa-upload fa-lg"

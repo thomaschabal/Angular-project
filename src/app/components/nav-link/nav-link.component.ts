@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { BREAKPOINTS } from '../../Constants';
 
 @Component({
   selector: 'app-nav-link',
@@ -19,6 +20,6 @@ export class NavLinkComponent implements OnInit {
 
   // Display logos instead of text on smartphones
   isNarrowWindow() {
-    return (window.innerWidth <= 736);
+    return (window.innerWidth <= BREAKPOINTS.SMALL);
   }
 }

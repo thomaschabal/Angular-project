@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 
 import { HttpService } from './http.service';
+import { LOVE_PICS, NUMBER_OF_LAST_EVENTS_HOME } from '../Constants';
+import API_ROUTES from './Api';
+
+const EMPTY_EVENT = {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''};
 
 @Injectable()
 export class HomeService {
-  lastEvents = [
-    {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''},
-    {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''},
-    {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''}
-  ];
+  lastEvents = Array(NUMBER_OF_LAST_EVENTS_HOME).fill(EMPTY_EVENT);
   areLastEventsLoaded = false;
   lovePics: any;
   areLovePicsLoaded = false;
@@ -17,7 +17,7 @@ export class HomeService {
   constructor(private httpService: HttpService) {}
 
   getLatestGalleries() {
-    return this.httpService.post('/get-latest-galleries', {page: 1, page_size: 3})
+    return this.httpService.post(API_ROUTES.getLatestGalleries, { page: 1, page_size: NUMBER_OF_LAST_EVENTS_HOME })
       .subscribe(
         (res: { galleries }) => {
           const lastEvents = res.galleries;
@@ -45,32 +45,7 @@ export class HomeService {
   }
 
   getLovePics() {
-    this.lovePics = [
-      {
-        title : 'Rugby',
-        address : './assets/images/love_pics/sport4.jpg'
-      },
-      {
-        title : 'OB de Février',
-        address : './assets/images/love_pics/art_2018.jpg'
-      },
-      {
-        title : 'Sushis à la Skult',
-        address : './assets/images/love_pics/skult_sushis.JPG'
-      },
-      {
-        title : 'Dimanche de lancement de campagne BDE',
-        address : './assets/images/love_pics/dim_camp_2017.JPG'
-      },
-      {
-        title : 'Club Rock 2018',
-        address : './assets/images/love_pics/rock2018.jpg'
-      },
-      {
-        title : 'Nuit de la Rentrée 2017',
-        address : './assets/images/love_pics/soiree2.jpg'
-      }
-    ];
+    this.lovePics = LOVE_PICS;
     this.lovePicsSrc = Object.assign({}, this.lovePics);
     Object.keys(this.lovePicsSrc).map(
       (key, pic) => { this.lovePicsSrc[key] = this.lovePicsSrc[key].address; }

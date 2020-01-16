@@ -15,8 +15,8 @@
 	<app-auth-footer id="auth-footer"></app-auth-footer>
 
 	<!-- Background animation -->
-	<div id="video-wrapper" *ngIf="isMobile">
-		<video src="../../../assets/images/video-auth.mp4" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+	<div id="video-wrapper" *ngIf="isMobileOrTablet">
+		<video [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
 	</div>
-	<video *ngIf="!isMobile" src="../../../assets/images/video-auth.mp4" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+	<video *ngIf="!isMobileOrTablet" [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
 </body>

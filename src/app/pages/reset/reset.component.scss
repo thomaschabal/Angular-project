@@ -3,52 +3,67 @@
 
 form {
 	margin: 0;
+
+	@include sm {
+		grid-gap: 16px;
+	}
 }
 
 .signup-form {
-  margin: 0;
+	margin: 0;
+
+	@include sm {
+		display: flex !important;
+		margin-bottom: 0.5em;
+	}
+	@include md {
+		display: grid !important;
+		grid-template-rows: repeat(1, 1fr);
+	}
 }
 .signup-form > * {
-  margin: 0;
+	margin: 0;
+}
+
+#email {
+	@include md {
+		grid-row: 1;
+		margin-bottom: 20px;
+	}
 }
 
 #email input[type="text"] {
-  display: inline-block;
-  margin-right: 16px;
+	display: inline-block;
+	margin-right: 16px;
+
+	@include sm {
+		width: 50% !important;
+	}
+	@include md {
+		width: 60% !important;
+	}
 }
 #email p {
-  margin: 0;
-  display: inline-block;
+	margin: 0;
+	display: inline-block;
+
+	@include sm {
+		font-size: 14px !important;
+	}
+	@include md {
+		font-size: 20px !important;
+	}
 }
 
 #submit {
 	margin-left: 64px;
+	
+	@include md {
+		grid-row: 2;
+		margin: 0;
+	}
 }
 
 .bg {
-  z-index: 1 !important;
-}
-
-@media screen and (max-width: map-get($breakpoints, small)) {
-	#email p {
-		font-size: 16px !important;
-	}
-	input[type="text"] {
-		width: 50% !important;
-	}
-}
-
-@media screen and (max-width: 750px) {
-	form {
-		grid-gap: 16px;
-	}
-	#header, #header p, .signup-form {
-			margin: 0 0 0.5em 0;
-	}
-	.signup-form {
-		display: flex !important;
-	}
-	#email p {
-		font-size: 0.75em;
-	}
+	z-index: 1 !important;
 }

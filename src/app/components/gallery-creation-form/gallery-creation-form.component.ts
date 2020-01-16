@@ -10,12 +10,13 @@ import { Phrases } from '../../Phrases';
   styleUrls: ['./gallery-creation-form.component.scss']
 })
 export class GalleryCreationFormComponent implements OnInit {
-
   // Create gallery form defined here
   eventForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,
-              private galeriesService: GaleriesService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private galeriesService: GaleriesService
+  ) { }
 
   ngOnInit() {
     this.initForm();
@@ -24,11 +25,11 @@ export class GalleryCreationFormComponent implements OnInit {
   // Initialize create gallery form
   initForm() {
     this.eventForm = this.formBuilder.group({
-      name : ['', Validators.required],
-      description : ['', Validators.required],
-      year_slug : ['2019', Validators.required],
-      event_slug : 'vap-2019',  //  /!\ Remplacer selon le back défini
-      boolPrivate : ['on', Validators.required]
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      year_slug: ['2019', Validators.required],
+      event_slug: 'vap-2019', //  /!\ Remplacer selon le back défini
+      boolPrivate: ['on', Validators.required]
     });
   }
 
@@ -37,8 +38,12 @@ export class GalleryCreationFormComponent implements OnInit {
     console.log(this.eventForm);
     this.eventForm.value.private = this.eventForm.value.boolPrivate;
     this.galeriesService.postEvent(this.eventForm.value).subscribe(
-      (res) => { alert(Phrases['dashboard.createdGallery']); },
-      (error) => { console.error(error); }
+      res => {
+        alert(Phrases['dashboard.createdGallery']);
+      },
+      error => {
+        console.error(error);
+      }
     );
   }
 }

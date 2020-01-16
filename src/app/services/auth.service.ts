@@ -6,6 +6,8 @@ import * as jwt_decode from 'jwt-decode';
 import { HttpService } from './http.service';
 import { HomeService } from './home.service';
 import { Phrases } from '../Phrases';
+import { routesAppFromRoot } from '../Routes';
+import API_ROUTES from './Api';
 
 export const TOKEN_NAME = 'jwt_token';
 
@@ -38,7 +40,7 @@ export class AuthService {
   }
 
   getUserByJWT() {
-    this.httpService.get('/get-user-by-jwt').subscribe(
+    this.httpService.get(API_ROUTES.getUserByJwt).subscribe(
       (response: {admin, promotion}) => {
         this.httpService.isAdmin = response.admin;
         this.httpService.promotion = response.promotion;
@@ -48,7 +50,7 @@ export class AuthService {
         this.httpService.isAdmin = false;
         this.httpService.promotion = '';
         this.isAuth = false;
-        this.router.navigate(['/auth']);
+        this.router.navigate([routesAppFromRoot.auth]);
        }
     );
   }
@@ -75,16 +77,16 @@ export class AuthService {
 
   // Get the User Conditions
   getCGU() {
-    return this.httpService.get('/cgu');
+    return this.httpService.get(API_ROUTES.cgu);
   }
 
   // Login : request to the server and update of the information on the user
   signIn(user: LoggingUser) {
-    this.httpService.post('/login', user).subscribe(
+    this.httpService.post(API_ROUTES.login, user).subscribe(
       (res: { token }) => {
         this.setToken(res.token);
         this.isAuth = true;
-        this.router.navigate(['/home']);
+        this.router.navigate([routesAppFromRoot.home]);
         this.getUserByJWT();
         this.homeService.getLatestGalleries();
         this.homeService.getLovePics();

@@ -1,12 +1,12 @@
 @import url("../../../assets/assets_c/css/main.css");
 @import "../../PontheStyle.scss";
 
-p, q {
-  // line-height: 1.5em;
-  margin-bottom: 16px;
-}
 body {
   margin-top: -5em;
+
+  @include sm {
+    margin-top: -2em;
+  }
 }
 
 form {
@@ -14,6 +14,13 @@ form {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 24px;
   width: 70vw;
+
+  @include sm {
+    grid-gap: 8px;
+  }
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 input {
@@ -26,6 +33,10 @@ input {
 
 .signup-form {
   margin: 0;
+
+  @include sm {
+    display: flex !important;
+  }
 }
 .signup-form > * {
   margin: 0;
@@ -42,6 +53,11 @@ input {
 #email {
   grid-column: 3;
   grid-row: 1;
+
+  @include md {
+    grid-column: 1;
+    grid-row: 2;
+  }
 }
 #email input {
   width: calc(70vw / 4 - 200px) !important;
@@ -49,29 +65,79 @@ input {
 #promotion {
   grid-column: 4;
   grid-row: 1;
+
+  @include md {
+    grid-column: 2;
+    grid-row: 2;
+  }
 }
 #password {
   grid-column: 1;
   grid-row: 2;
+
+  @include md {
+    grid-column: 1;
+    grid-row: 3;
+  }
 }
 #confirmPassword {
   grid-column: 2;
   grid-row: 2;
+
+  @include md {
+    grid-column: 2;
+    grid-row: 3;
+  }
 }
 #submit {
   grid-column: 4;
   grid-row: 2;
+
+  @include md {
+    grid-column: 1/3;
+    grid-row: 4;
+  }
 }
 
 #email input[type="text"] {
   display: inline-block;
   margin-right: 16px;
+
+  @include sm {
+    width: 50% !important;
+  }
+  @include md {
+    width: 35% !important;
+  }
+}
+
+p, q {
+  margin-bottom: 16px;
+
+  @include md {
+    font-size: 16px !important;
+  }
 }
 #email p {
   margin: 0;
   display: inline-block;
   width: $AUTH-EMAIL-WIDTH;
   font-size: 1em !important;
+
+  @include sm {
+    font-size: 16px !important;
+  }
+  @include md {
+    font-size: 16px !important;
+  }
+}
+#email q {
+  @include sm {
+    font-size: 16px !important;
+  }
+  @include md {
+    font-size: 16px !important;
+  }
 }
 
 a {
@@ -82,32 +148,14 @@ a {
   z-index: 1 !important;
 }
 
-@media screen and (max-width: map-get($breakpoints, small)) {
-	#email p, q {
-		font-size: 16px !important;
-  }
-  #email input[type="text"] {
-    width: 50% !important;
-  }
-  #app-auth-card {
+#app-auth-card {
+  @include sm {
     margin-top: 64px;
     max-height: 65vh;
     overflow: scroll;
   }
-}
-
-@media screen and (max-width: 736px) {
-  body {
-    margin-top: -2em;
-  }
-  form {
-		grid-gap: 8px;
-	}
-  .signup-form {
-    display: flex !important;
-  }
-
-  #email p {
-    font-size: 0.75em;
+  @include md {
+    max-height: 55vh;
+    overflow: scroll;
   }
 }

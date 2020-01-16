@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LINKS } from '../icon-links/icon-links.component';
+import { LINKS } from '../../Constants';
 
 @Component({
   selector: 'app-auth-footer',

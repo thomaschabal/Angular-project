@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { TranslateService } from '../../services/translate.service';
-
-const LANGUAGES = ['fr', 'en', 'es'];
-const FLAGS_BY_LANG = {
-  fr: 'fr',
-  en: 'gb',
-  es: 'es',
-};
+import { LANGUAGES, FLAGS_BY_LANG } from '../../Constants';
 
 @Component({
   selector: 'app-language-selection',

@@ -1,5 +1,7 @@
-import { HttpService } from './http.service';
 import { Injectable } from '@angular/core';
+
+import { HttpService } from './http.service';
+import API_ROUTES from './Api';
 
 @Injectable()
 export class MembersService {
@@ -9,6 +11,6 @@ export class MembersService {
 
   // Get the list of members
   getMembers() {
-    return this.httpService.get('/members');
+    return this.httpService.get(API_ROUTES.members);
   }
 }

@@ -1,0 +1,44 @@
+/* RESPONSIVE SIZES */
+$breakpoints: (
+    small: 736,
+    medium: 1200,
+    large: 1920
+);
+
+$small: map-get($breakpoints, small) + 'px';
+$medium: map-get($breakpoints, medium) + 'px';
+$large: map-get($breakpoints, large) + 'px';
+
+// Do not use following constants
+$above-small: (map-get($breakpoints, small) + 1) + 'px';
+$above-medium: (map-get($breakpoints, medium) + 1) + 'px';
+
+@mixin sm {
+    @media screen and (max-width: #{$small}) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media screen and (min-width: #{$above-small}) and (max-width: #{$medium}) {
+        @content;
+    }
+}
+
+@mixin mdAndAbove {
+    @media screen and (min-width: #{$above-small}) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media screen and (min-width: #{$above-medium}) and (max-width: #{$large}) {
+        @content;
+    }
+}
+
+@mixin lgAndAbove {
+    @media screen and (min-width: #{$above-medium}) {
+        @content;
+    }
+}

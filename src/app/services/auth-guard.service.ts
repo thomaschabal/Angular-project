@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 import { HttpService } from './http.service';
 import { AuthService } from './auth.service';
+import { routesAppFromRoot } from '../Routes';
+import API_ROUTES from './Api';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -12,7 +14,7 @@ export class AuthGuard implements CanActivate {
               private router: Router) {}
 
   getUserByJWT() {
-    return this.httpService.get('/get-user-by-jwt').subscribe(
+    return this.httpService.get(API_ROUTES.getUserByJwt).subscribe(
       (response: {admin, promotion}) => {
         this.httpService.isAdmin = response.admin;
         this.httpService.promotion = response.promotion;
@@ -32,7 +34,7 @@ export class AuthGuard implements CanActivate {
     if (this.httpService.token && this.getUserByJWT()) {
       return true;
     } else {
-      this.router.navigate(['/auth']);
+      this.router.navigate([routesAppFromRoot.auth]);
     }
   }
 }

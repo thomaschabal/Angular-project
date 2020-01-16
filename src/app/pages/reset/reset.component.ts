@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
+import { EXTENSION_MAILS_ENPC } from '../../Constants';
 
 @Component({
   selector: 'app-reset',
@@ -37,7 +38,7 @@ export class ResetComponent implements OnInit {
 
   // Submission of the reset form
   onSubmitForm() {
-    this.resetForm.value.email = this.resetForm.value.email + '@eleves.enpc.fr';
+    this.resetForm.value.email = this.resetForm.value.email + EXTENSION_MAILS_ENPC;
     this.userService.resetUser(this.resetForm.value).subscribe(
       (res) => { alert(Phrases['reset.sentEmail']); },
       (error) => { }
