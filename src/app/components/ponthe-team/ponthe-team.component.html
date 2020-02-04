@@ -3,7 +3,7 @@
           (mouseenter)='survoleTeam("visible")'
           (mouseleave)='survoleTeam("hidden")'>
   <!-- Information box -->
-  <div class="content box style2" [@teamTrigger]="currentStateTeam()" (click)="changeBg()">
+  <div class="content box style2" [@teamTrigger]="currentStateTeam()">
     <header>
       <h2>Ponthé {{ team.year }}</h2>
     </header>
