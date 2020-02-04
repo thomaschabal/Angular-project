@@ -39,3 +39,13 @@ export const LOVE_PICS = [
       address : 'assets/images/love_pics/soiree2.jpg'
     }
   ];
+
+export const NUMBER_PICS_BY_PONTHE_TEAM = {
+  '015': 1,
+  '016': 1,
+  '017': 1,
+  '018': 1,
+  '019': 1,
+  '020': 1,
+  '021': 2,
+};

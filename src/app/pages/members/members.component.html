@@ -14,17 +14,4 @@
 </section>
 
 <!-- Teams per year -->
-<section *ngFor = "let team of teamPonthe; let i = index"
-          id="{{ team.year_id }}"
-          class="main style2 {{ placement(i) }} dark fullscreen"
-          (mouseenter)='survoleTeam("visible", i)'
-          (mouseleave)='survoleTeam("hidden", i)'>
-  <!-- Information box -->
-  <div class="content box style2" [@teamTrigger]="currentStateTeam(i)">
-    <header>
-      <h2>Ponthé {{ team.year }}</h2>
-    </header>
-    <p *ngFor="let poste of team.members">{{ poste }}</p>
-  </div>
-  <a class="button style2 down anchored" (click)="onClickNext(team.prev_year_id)">Next</a>
-</section>
+<app-ponthe-team *ngFor="let team of teamPonthe; let i=index" [team]="team" [index]="i"></app-ponthe-team>

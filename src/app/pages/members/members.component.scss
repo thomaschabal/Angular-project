@@ -16,25 +16,6 @@
 	}
 }
 
-/* Background pictures of proms */
-@mixin shared-background-props($pic) {
-	background: $OVERLAY-IMAGE, $pic;
-	background-size: 256px 256px, cover;
-	background-attachment: fixed, fixed;
-	background-position: top left, center center;
-}
-@each $promo, $image in $PONTHE-PROMO-IMAGES-LARGE {
-	$image-small: map-get($PONTHE-PROMO-IMAGES-SMALL, $promo);
-	#p0#{$promo} {
-		height: 100vh;
-		@include shared-background-props ($image);
-
-		@include sm {
-			@include shared-background-props($image-small);
-		}
-	}
-}
-
 .style2 .content {
   opacity: 0.95;
 }

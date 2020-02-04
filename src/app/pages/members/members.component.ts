@@ -16,14 +16,6 @@ import { routesAppFromRoot } from '../../Routes';
       state('visible', style({opacity: 1})),
       state('hidden', style({opacity: 0})),
       transition(':enter', [ animate('350ms') ] ),
-    ]),
-    trigger('teamTrigger', [
-      state('visible', style({})),
-      state('hidden-mid-left', style({transform : 'translateX(65vw)'})),
-      state('hidden-mid-right', style({transform : 'translateX(-65vw)'})),
-      state('hidden-left', style({transform : 'translateX(100vw)'})),
-      state('hidden-right', style({transform : 'translateX(-100vw)'})),
-      transition('* => *', [ animate('20ms') ] ),
     ])
   ]
 })
@@ -38,8 +30,6 @@ export class MembersComponent implements OnInit, OnDestroy {
 
   // State of various sections of the page (e.g. if the section is being hovered or not)
   introState = 'visible';
-  teamStateLeft = 'hidden-left';
-  teamStateRight = 'hidden-right';
 
   constructor(private membersService: MembersService,
               private activeRoute: ActivatedRoute) {
@@ -67,44 +57,11 @@ export class MembersComponent implements OnInit, OnDestroy {
     if (this.sub) { this.sub.unsubscribe(); }
   }
 
-  //// AFFICHAGE
-  placement(i: number) {
-    if (i % 2 === 0) {
-      return 'right';
-    } else {
-      return 'left';
-    }
-  }
-
   survoleIntro(stateIntro: string) {
     this.introState = stateIntro;
   }
 
-  survoleTeam(stateTeam: string, i: number) {
-    if (stateTeam === 'visible') {
-      if (i % 2 === 0) {
-        this.teamStateLeft = stateTeam;
-      } else {
-        this.teamStateRight = stateTeam;
-      }
-    } else {
-      if (i % 2 === 0) {
-        this.teamStateLeft = (window.innerWidth <= 736 ? 'hidden-left' : 'hidden-mid-left');
-      } else {
-        this.teamStateRight = (window.innerWidth <= 736 ? 'hidden-right' : 'hidden-mid-right');
-      }
-    }
-  }
-
-  currentStateTeam(i: number) {
-    if (i % 2 === 0) {
-      return this.teamStateLeft;
-    } else {
-      return this.teamStateRight;
-    }
-  }
-
   onClickNext(fragment: string) {
-    document.getElementById(fragment).scrollIntoView({ behavior: 'smooth' });
+    document.getElementsByClassName(fragment)[0].scrollIntoView({ behavior: 'smooth' });
   }
 }

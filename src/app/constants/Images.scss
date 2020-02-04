@@ -1,32 +1,44 @@
+$ASSETS-FOLDER: "/assets/images/";
+
 /* BACKGROUND IMAGES */
-$INTRO-IMAGE: url("/assets/assets_h/css/images/overlay.png"), url("/assets/images/introP.jpg");
+$INTRO-IMAGE: url("/assets/assets_h/css/images/overlay.png"), url($ASSETS-FOLDER + "introP.jpg");
 $OVERLAY-IMAGE: url("/assets/assets_h/css/images/overlay.png");
 $AUTH-BG-SLIDER-IMAGES-LARGE:
-    url("/assets/images/auth_pics/wei.jpg")
-    url("/assets/images/auth_pics/font1.jpg")
-    url("/assets/images/auth_pics/pom.jpg")
-    url("/assets/images/auth_pics/voyage1.jpg");
+    url($ASSETS-FOLDER + "auth_pics/wei.jpg")
+    url($ASSETS-FOLDER + "auth_pics/font1.jpg")
+    url($ASSETS-FOLDER + "auth_pics/pom.jpg")
+    url($ASSETS-FOLDER + "auth_pics/voyage1.jpg");
 $AUTH-BG-SLIDER-IMAGES-SMALL:
-    url("/assets/images/auth_pics/wei_mobile.jpg")
-    url("/assets/images/auth_pics/font1_mobile.jpg")
-    url("/assets/images/auth_pics/pom_mobile.jpg")
-    url("/assets/images/auth_pics/voyage1_mobile.jpg");
+    url($ASSETS-FOLDER + "auth_pics/wei_mobile.jpg")
+    url($ASSETS-FOLDER + "auth_pics/font1_mobile.jpg")
+    url($ASSETS-FOLDER + "auth_pics/pom_mobile.jpg")
+    url($ASSETS-FOLDER + "auth_pics/voyage1_mobile.jpg");
 
 $PONTHE-PROMO-IMAGES-LARGE: (
-    015: url("/assets/images/05.jpg"),
-    016: url("/assets/images/04.jpg"),
-    017: url("/assets/images/05.jpg"),
-    018: url("/assets/images/04.jpg"),
-    019: url("/assets/images/ponthe_teams/019.jpg"),
-    020: url("/assets/images/ponthe_teams/020.jpg"),
-    021: url("/assets/images/ponthe_teams/021.jpg")
+    015: url($ASSETS-FOLDER + "05.jpg"),
+    016: url($ASSETS-FOLDER + "04.jpg"),
+    017: url($ASSETS-FOLDER + "05.jpg"),
+    018: url($ASSETS-FOLDER + "04.jpg"),
+    019: url($ASSETS-FOLDER + "ponthe_teams/019.jpg"),
+    020: url($ASSETS-FOLDER + "ponthe_teams/020.jpg"),
+    021: url($ASSETS-FOLDER + "ponthe_teams/021.jpg") url($ASSETS-FOLDER + "ponthe_teams/021_trombi.jpg")
 );
 $PONTHE-PROMO-IMAGES-SMALL: (
-    015: url("/assets/images/05.jpg"),
-    016: url("/assets/images/04.jpg"),
-    017: url("/assets/images/05.jpg"),
-    018: url("/assets/images/04.jpg"),
-    019: url("/assets/images/ponthe_teams/019_mobile.jpg"),
-    020: url("/assets/images/ponthe_teams/020_mobile.jpg"),
-    021: url("/assets/images/ponthe_teams/021_mobile.jpg")
+    015: url($ASSETS-FOLDER + "05.jpg"),
+    016: url($ASSETS-FOLDER + "04.jpg"),
+    017: url($ASSETS-FOLDER + "05.jpg"),
+    018: url($ASSETS-FOLDER + "04.jpg"),
+    019: url($ASSETS-FOLDER + "ponthe_teams/019_mobile.jpg"),
+    020: url($ASSETS-FOLDER + "ponthe_teams/020_mobile.jpg"),
+    021: url($ASSETS-FOLDER + "ponthe_teams/021_mobile.jpg") url($ASSETS-FOLDER + "ponthe_teams/021_trombi.jpg")
+);
+
+$INDEX-PONTHE-TROMBI: (
+    015: -1,
+    016: -1,
+    017: -1,
+    018: -1,
+    019: -1,
+    020: -1,
+    021: 1
 );

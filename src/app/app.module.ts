@@ -39,6 +39,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { NavLinkComponent } from './components/nav-link/nav-link.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 import { PicThumbComponent } from './components/pic-thumb/pic-thumb.component';
+import { PontheTeamComponent } from './components/ponthe-team/ponthe-team.component';
 import { UploadComponent } from './components/upload/upload.component';
 
 //// PAGES
@@ -99,6 +100,7 @@ export function setupTranslateFactory(
     NavLinkComponent,
     NavigationButtonComponent,
     PicThumbComponent,
+    PontheTeamComponent,
     UploadComponent,
     AuthComponent,
     CguComponent,

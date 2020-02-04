@@ -1,0 +1,21 @@
+<section [id]="teamId"
+          class="main style2 {{ placement }} dark fullscreen {{ team.year_id }}"
+          (mouseenter)='survoleTeam("visible")'
+          (mouseleave)='survoleTeam("hidden")'>
+  <!-- Information box -->
+  <div class="content box style2" [@teamTrigger]="currentStateTeam()" (click)="changeBg()">
+    <header>
+      <h2>Ponthé {{ team.year }}</h2>
+    </header>
+    <p *ngFor="let poste of team.members">{{ poste }}</p>
+  </div>
+  <a class="button style2 down anchored" (click)="onClickNext(team.prev_year_id)">Next</a>
+  <div *ngIf="numberOfPics > 1">
+    <img id="left_arrow"
+      src="../../../assets/assets_h/css/images/poptrox-nav-thick.svg"
+      (click)="changeBg(-1)"/>
+    <img id="right_arrow"
+      src="../../../assets/assets_h/css/images/poptrox-nav-thick.svg"
+      (click)="changeBg(1)"/>
+  </div>     
+</section>
