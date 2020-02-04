@@ -1,18 +1,128 @@
 @import url("../../../assets/assets_g/css/main.css");
 @import "../../PontheStyle.scss";
 
-#addFiles, .publicprivate {
-  background: $BUTTON-MODERATION-ADDFILES;
+h1 {
+  color: $PONTHE-DARK-GREY;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  padding-bottom: 16px;
+  text-align: center;
+  border-bottom: 1px solid $PONTHE-LIGHT-GREY;
 }
 
-#modere {
-  background: $BUTTON-MODERATION-MODERE;
+button {
+  border-radius: 24px;
+  box-shadow: none;
+  border: 1px solid $PONTHE-DARK;
+  margin-bottom: 12px;
+  color: $PONTHE-DARK !important;
+  background-color: $PONTHE-WHITE !important;
+  transition: background-color 0.3s ease, border 0.3s ease;
+}
+button:hover {
+  box-shadow: none;
+  border: none;
+  color: $PONTHE-DARK !important;
+  background-color: $PONTHE-LIGHT-GREY !important;
 }
 
-#deleteevent {
-  background: $BUTTON-MODERATION-DELETEEVENT;
+#moderationBanner {
+  width: 48px;
+  right: 0;
+  top: 12.5vh;
+  position: fixed;
+  transform: translateX(1em);
+  background: $BUTTON-BACKGROUND-GRADIENT;
+  padding: 10px;
+  border-radius: 12px;
+  transition: width 0.5s ease-in-out;
+  z-index: 1;
+}
+#moderationBanner:hover {
+  width: 80px;
+}
+#moderationBanner > img {
+  cursor: pointer;
+  width: 40px;
 }
 
-#deletepics {
-  background: $BUTTON-MODERATION-DELETEPICS;
+$MODERATION-PADDING: 48px;
+#moderation {
+  position: fixed;
+  top: 15vh;
+  left: 25vw;
+  width: 50vw;
+  z-index: 3;
+  background: $PONTHE-WHITE;
+  padding: $MODERATION-PADDING - 16px $MODERATION-PADDING;
+  border-radius: 32px;
+  margin: auto;
+  transition: visibility 0.3s ease;
+}
+
+#moderation > h1, #moderation > footer {
+  margin-left: -$MODERATION-PADDING;
+  margin-right: -$MODERATION-PADDING;
+}
+
+.visible {
+  visibility: visible;
+}
+.hidden {
+  visibility: hidden;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 2;
+  background: $PONTHE-DARK;
+  opacity: 0.65;
+}
+
+p {
+  font-size: 20px;
+}
+
+#moderation > footer {
+  padding-top: 16px;
+  padding-right: $MODERATION-PADDING;
+  text-align: center;
+  width: calc(100% + 2 * $MODERATION-PADDING);
+  border-top: 1px solid $PONTHE-LIGHT-GREY;
+}
+
+.close {
+  color: $PONTHE-DARK !important;
+  background-color: $PONTHE-WHITE !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  border-radius: 24px;
+  transition: background 0.3s ease;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+.close:hover {
+  color: $PONTHE-DARK !important;
+  background-color: $PONTHE-LIGHT-GREY !important;
+  box-shadow: none !important;
+}
+.close:focus, .close:active {
+  color: $PONTHE-DARK !important;
+}
+
+#bodyModeration {
+  display: flex;
+}
+
+#leftColumn, #rightColumn {
+  width: 48.5%;
+}
+#leftColumn {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3%;
 }

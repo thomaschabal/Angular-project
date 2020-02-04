@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UploadComponent } from '../upload/upload.component';
+import { HttpService } from '../../services/http.service';
 import { GaleriesService } from '../../services/galeries.service';
 import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
@@ -12,21 +13,23 @@ import { routesAppFromRoot } from '../../Routes';
   styleUrls: ['./galeries-moderation-buttons.component.scss']
 })
 export class GaleriesModerationButtonsComponent implements OnInit {
-
+  isAdmin: boolean;
   isPublic = false;
-  clickAddFiles = false;
   @Output() moderating = new EventEmitter<boolean>();
   enModeration = false;
   eventDeletionState = 'nothing';
   @Input() selectedRoute: string;
   @Input() moderationState: any[];
+  moderationVisibility = 'hidden';
 
   constructor(private galeriesService: GaleriesService,
+              private httpService: HttpService,
               private router: Router) {
   }
 
   ngOnInit() {
     this.isPublic = this.galeriesService.isPublicOrPrivate(this.selectedRoute);
+    this.isAdmin = this.httpService.isAdmin;
   }
 
   // Return whether the administrator is moderating the gallery or not
@@ -68,11 +71,6 @@ export class GaleriesModerationButtonsComponent implements OnInit {
     }
   }
 
-  // Reveal the file uploader
-  prepareAddFiles() {
-    this.clickAddFiles = !this.clickAddFiles;
-  }
-
   // Validate the deletion of selected pictures
   validateDeletionPics() {
     for (let pic = 0; pic < this.moderationState.length; pic++) {
@@ -81,5 +79,12 @@ export class GaleriesModerationButtonsComponent implements OnInit {
         console.log(pic);
       }
     }
+  }
+
+  displayModerationArea() {
+    this.moderationVisibility = 'visible';
+  }
+  hideModerationArea() {
+    this.moderationVisibility = 'hidden';
   }
 }

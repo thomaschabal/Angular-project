@@ -1,31 +1,44 @@
-<div id="moderation">
-  <button id="addFiles" type="button" name="button" (click)="prepareAddFiles()">
-    {{ 'moderation.addFiles' | translate }}
-  </button>
-  <button id="modere" type="button" name="button" (click)="modere()">
-    {{ 'moderation.moderate' | translate }}
-  </button>
-  <button *ngIf="isPublic"
-          class="publicprivate" type="button" name="button"
-          (click)="publicPrivate()">
-    {{ 'moderation.setPrivate' | translate }}
-  </button>
-  <button *ngIf="!isPublic"
-          class="publicprivate" type="button" name="button"
-          (click)="publicPrivate()">
-    {{ 'moderation.setPublic' | translate }}
-  </button>
-  <button *ngIf="enModeration"
-          id="deleteevent" type="button" name="button"
-          (click)="deleteEvent()">
-    {{ 'moderation.deleteGallery' | translate }}
-  </button>
-  <button *ngIf="enModeration"
-          id="deletepics" type="button" name="button"
-          (click)="validateDeletionPics()">
-    {{ 'moderation.deleteAllSelectedPics' | translate }}
-  </button>
-  <p *ngIf="!isPublic" style="color: #fff">{{ 'moderation.galleryIsPrivate' | translate }}</p>
-</div>
+<div id="moderation" [class]="moderationVisibility">
+  <h1>{{ 'moderation.moderationArea.title' | translate }}</h1>
+  <p *ngIf="!isPublic">{{ 'moderation.galleryIsPrivate' | translate }}</p>
 
-<app-upload *ngIf="clickAddFiles"></app-upload>
+  <div id="bodyModeration">
+    <div id="leftColumn">
+      <button id="modere" type="button" name="button" (click)="modere()">
+        {{ 'moderation.moderate' | translate }}
+      </button>
+      <button *ngIf="isPublic"
+              class="publicprivate" type="button" name="button"
+              (click)="publicPrivate()">
+        {{ 'moderation.setPrivate' | translate }}
+      </button>
+      <button *ngIf="!isPublic"
+              class="publicprivate" type="button" name="button"
+              (click)="publicPrivate()">
+        {{ 'moderation.setPublic' | translate }}
+      </button>
+      <button *ngIf="enModeration"
+              id="deleteevent" type="button" name="button"
+              (click)="deleteEvent()">
+        {{ 'moderation.deleteGallery' | translate }}
+      </button>
+      <button *ngIf="enModeration"
+              id="deletepics" type="button" name="button"
+              (click)="validateDeletionPics()">
+        {{ 'moderation.deleteAllSelectedPics' | translate }}
+      </button>      
+    </div>
+    <app-upload id="rightColumn"></app-upload>
+  </div>
+
+  <footer>
+    <button class="close" type="button" name="button" (click)="hideModerationArea()">
+      {{ 'close' | translate }}
+    </button>
+  </footer>
+</div>
+<div [class]="moderationVisibility" id="overlay" (click)="hideModerationArea()"></div>
+
+<div *ngIf="isAdmin" id="moderationBanner" (click)="displayModerationArea()">
+  <img src="../../../assets/images/settings.svg" />
+</div>

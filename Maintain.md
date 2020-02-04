@@ -16,6 +16,10 @@ Change them directly in the [cgu.json](https://github.com/ENPC-Ponthe/Galeries/b
 3. Go in [Languages file](https://github.com/ENPC-Ponthe/Angular-project/blob/testing/src/app/constants/Languages.ts)
 4. Add in both LANGUAGES and FLAGS_BY_LANG the digraph of the language you just added. The first array will use the translations of the file and the second array will display the little flag used for selecting the language.
 
+## Add a sentence on the website
+1. Add the sentence and all its translations in the i18n folder.
+2. Use the pipe *| translation* after the key every time you need to add this sentence to a component.
+
 ## Add external links
 1. You can add external links in the footers by adding them to the [External Links file](https://github.com/ENPC-Ponthe/Angular-project/blob/testing/src/app/constants/ExternalLinks.ts)
 

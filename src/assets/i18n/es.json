@@ -67,6 +67,7 @@
   
     "messages.sent": "Mensaje enviado!",
   
+    "moderation.moderationArea.title": "Área de administración de la galería",
     "moderation.accept": "Aceptar",
     "moderation.delete": "Eliminar",
     "moderation.acceptAll": "Aceptar todo",
@@ -121,6 +122,8 @@
     "reset.sentEmail": "Se le envió un correo electrónico!",
   
     "signup.successSignup": "Usted se ha registrado con éxito, ahora puede validar su registro en sus correos electrónicos",
-    "signup.error": "Usted cometió un error, verifique su correo electrónico y contraseña"
+    "signup.error": "Usted cometió un error, verifique su correo electrónico y contraseña",
+
+    "close": "Cerrar"
   }
   

@@ -67,6 +67,7 @@
   
     "messages.sent": "Message sent!",
   
+    "moderation.moderationArea.title": "Administration area of the gallery",
     "moderation.accept": "Accept",
     "moderation.delete": "Delete",
     "moderation.acceptAll": "Accept all",
@@ -121,6 +122,8 @@
     "reset.sentEmail": "An email was sent to you!",
   
     "signup.successSignup": "You have successfully registered, you can now validate your registration in your emails",
-    "signup.error": "You made a mistake, check your email and password"
+    "signup.error": "You made a mistake, check your email and password",
+
+    "close": "Close"
   }
   
