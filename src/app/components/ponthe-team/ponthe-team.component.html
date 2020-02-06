@@ -10,7 +10,9 @@
     <p *ngFor="let poste of team.members">{{ poste }}</p>
   </div>
   <a class="button style2 down anchored" (click)="onClickNext(team.prev_year_id)">Next</a>
-  <div *ngIf="numberOfPics > 1">
+  <div *ngIf="numberOfPics > 1"
+      (mouseenter)='survoleTeam("hidden")'
+      (mouseleave)='survoleTeam("visible")'>
     <img id="left_arrow"
       src="../../../assets/assets_h/css/images/poptrox-nav-thick.svg"
       (click)="changeBg(-1)"/>

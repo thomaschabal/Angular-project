@@ -97,15 +97,6 @@ html, body {
   color: $PONTHE-LIGHT-GREY !important;
 }
 
-#userUploadArea {
-  position: fixed;
-  background: $OVERLAY-DARK-GREY;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  padding-left: 35vw;
-  padding-right: 35vw;
-  padding-top: 25vh;
-  z-index: 2;
+app-upload {
+  width: 100%;
 }

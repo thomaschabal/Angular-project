@@ -3,17 +3,24 @@
 
 /* Background pictures of proms */
 @mixin shared-background-props($pic) {
+  background: $pic;
+  background-color: $PONTHE-DARK-GREY;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+}
+@mixin shared-background-props-overlay($pic) {
     background: $OVERLAY-IMAGE, $pic;
     background-color: $PONTHE-DARK-GREY;
-	background-size: 256px 256px, cover;
-	background-attachment: fixed, fixed;
+    background-size: 256px 256px, cover;
+    background-attachment: fixed, fixed;
     background-position: top left, center center;
 }
 @mixin shared-background-props-trombi($pic) {
     background: $pic;
     background-color: $PONTHE-DARK-GREY;
-	background-size: contain;
-	background-attachment: fixed, fixed;
+    background-size: contain;
+    background-attachment: fixed, fixed;
     background-position: center center, center center;
     background-repeat: no-repeat;
     transition: background 0.5s ease-in-out;
@@ -87,11 +94,13 @@
 @media screen and (max-width: 1280px) {
   .style2 .content {
     width: 35% !important;
-    padding: 3.5em 1em 3.5em 2em;
+    padding: 2em 1em 2em 2em;
   }
 
   .style2 .content p {
     margin-bottom: 0.6em;
+    font-size: 16px;
+    line-height: 1.35em;
   }
 }
 

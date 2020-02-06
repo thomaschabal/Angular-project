@@ -35,6 +35,7 @@ import { LanguageSelectionComponent } from './components/language-selection/lang
 import { LoadingPointsComponent } from './components/loading-points/loading-points.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
+import { ModalComponent } from './components/modal/modal.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NavLinkComponent } from './components/nav-link/nav-link.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
@@ -96,6 +97,7 @@ export function setupTranslateFactory(
     LoadingPointsComponent,
     LoadingSpinnerComponent,
     MaterialBookingFormComponent,
+    ModalComponent,
     NavComponent,
     NavLinkComponent,
     NavigationButtonComponent,

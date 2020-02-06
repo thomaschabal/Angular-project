@@ -64,7 +64,7 @@ export class PontheTeamComponent implements OnInit {
 
   changeBg(increment: number) {
     const idCurrentPic = this.teamId.slice(-1)[0];
-    const newIndex = (parseInt(idCurrentPic, 10) + 2 + increment) % this.numberOfPics;
+    const newIndex = (parseInt(idCurrentPic, 10) + this.numberOfPics + increment) % this.numberOfPics;
     this.teamId = this.teamId.slice(0, -1) + newIndex;
   }
 }

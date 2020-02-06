@@ -41,7 +41,8 @@
     "galeries.contactForm.placeholder": "Your sweet word....",
     "galeries.contactForm.submit": "Long live the Ponthé",
     "galeries.contactForm.reset": "Reset the message",
-  
+    "galeries.upload.title": "Upload your pics and videos",
+
     "home.header.title": "Le Ponthé",
     "home.header.introduction": "Welcome to the website of the <strong>Ponthé</strong>, the audiovisual club of Les Ponts.<br/>Here, you will be able to see and download the photos and videos made by the members of the club. You will also be able to upload your own photos and videos in each <strong>gallery</strong>. <br/> Enjoy the viewing!",
     "home.noDescription": "No description for the moment.",

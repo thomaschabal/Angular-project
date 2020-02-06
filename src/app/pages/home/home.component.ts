@@ -9,11 +9,6 @@ import { PicsService } from '../../services/pics.service';
 import { HomeFormComponent } from '../../components/home-form/home-form.component';
 import { routesAppFromRoot } from '../../Routes';
 
-export enum KEY_CODE {
-  RIGHT_ARROW = 39,
-  LEFT_ARROW = 37,
-  ESCAPE = 27
-}
 
 @Component({
   selector: 'app-home',

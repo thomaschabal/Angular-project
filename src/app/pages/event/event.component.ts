@@ -12,10 +12,7 @@ import { ImageViewerComponent } from '../../components/image-viewer/image-viewer
 import { GaleriesService } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
 import { PicsService } from '../../services/pics.service';
-
-export enum KEY_CODE {
-  ESCAPE = 27
-}
+import KEY_CODE from '../../constants/KeyCode';
 
 @Component({
   selector: 'app-event',
@@ -70,7 +67,6 @@ export class EventComponent implements OnInit, OnDestroy {
   isPublic = false;
   selectedRoute: string;
   showUploadArea = false;
-  justDisplayedArea = false;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
   moderationState = [];
@@ -118,30 +114,15 @@ export class EventComponent implements OnInit, OnDestroy {
 
   activateUploadArea() {
     this.showUploadArea = true;
-    this.justDisplayedArea = true;
-    setTimeout(() => this.justDisplayedArea = false, 50);
+  }
+  hideUploadArea() {
+    this.showUploadArea = false;
   }
 
   // Host Listener for the image viewer
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     if (event.keyCode === KEY_CODE.ESCAPE && this.showUploadArea) {
-      this.showUploadArea = false;
-    }
-  }
-
-  clickInsideArea($event: Event) {
-    if (this.showUploadArea) {
-      this.justDisplayedArea = true;
-      $event.preventDefault();
-      $event.stopPropagation();
-      setTimeout(() => this.justDisplayedArea = false, 50);
-    }
-  }
-
-  @HostListener('document:click', ['$event'])
-  clickedOutsideArea($event: Event) {
-    if (this.showUploadArea && !this.justDisplayedArea) {
       this.showUploadArea = false;
     }
   }

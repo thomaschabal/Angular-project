@@ -13,9 +13,15 @@
   <a class="icon fa fa-upload fa-lg"
     (click)="activateUploadArea()"></a>
 </div>
-<div *ngIf="!isAdmin && showUploadArea" id="userUploadArea">
-  <app-upload (click)="clickInsideArea()"></app-upload>
-</div>
+<app-modal
+  *ngIf="!isAdmin && showUploadArea"
+  [title]="'galeries.upload.title' | translate"
+  [closeText]="'close' | translate"
+  [visible]="showUploadArea"
+  (close)="hideUploadArea()"
+>
+  <app-upload></app-upload>
+</app-modal>
 
 <!-- Main -->
 <!-- Pictures of the event -->

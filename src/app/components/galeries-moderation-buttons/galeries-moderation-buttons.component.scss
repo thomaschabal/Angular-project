@@ -1,15 +1,6 @@
 @import url("../../../assets/assets_g/css/main.css");
 @import "../../PontheStyle.scss";
 
-h1 {
-  color: $PONTHE-DARK-GREY;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  padding-bottom: 16px;
-  text-align: center;
-  border-bottom: 1px solid $PONTHE-LIGHT-GREY;
-}
-
 button {
   border-radius: 24px;
   box-shadow: none;
@@ -18,6 +9,10 @@ button {
   color: $PONTHE-DARK !important;
   background-color: $PONTHE-WHITE !important;
   transition: background-color 0.3s ease, border 0.3s ease;
+
+  @include sm {
+    font-size: 10px;
+  }
 }
 button:hover {
   box-shadow: none;
@@ -47,84 +42,32 @@ button:hover {
 }
 
 $MODERATION-PADDING: 48px;
-#moderation {
-  position: fixed;
-  top: 15vh;
-  left: 25vw;
-  width: 50vw;
-  z-index: 3;
-  background: $PONTHE-WHITE;
-  padding: $MODERATION-PADDING - 16px $MODERATION-PADDING;
-  border-radius: 32px;
-  margin: auto;
-  transition: visibility 0.3s ease;
-}
-
-#moderation > h1, #moderation > footer {
-  margin-left: -$MODERATION-PADDING;
-  margin-right: -$MODERATION-PADDING;
-}
-
-.visible {
-  visibility: visible;
-}
-.hidden {
-  visibility: hidden;
-}
-
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  z-index: 2;
-  background: $PONTHE-DARK;
-  opacity: 0.65;
-}
+$MODERATION-PADDING-MOBILE: 16px;
 
 p {
   font-size: 20px;
-}
-
-#moderation > footer {
-  padding-top: 16px;
-  padding-right: $MODERATION-PADDING;
-  text-align: center;
-  width: calc(100% + 2 * $MODERATION-PADDING);
-  border-top: 1px solid $PONTHE-LIGHT-GREY;
-}
-
-.close {
-  color: $PONTHE-DARK !important;
-  background-color: $PONTHE-WHITE !important;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  border-radius: 24px;
-  margin: 0 !important;
-  border: none !important;
-  transition: background 0.3s ease;
-  box-shadow: none !important;
-  opacity: 1 !important;
-}
-.close:hover {
-  color: $PONTHE-DARK !important;
-  background-color: $PONTHE-LIGHT-GREY !important;
-  box-shadow: none !important;
-}
-.close:focus, .close:active {
-  color: $PONTHE-DARK !important;
-}
-
-#bodyModeration {
-  display: flex;
+  margin-bottom: 1em;
 }
 
 #leftColumn, #rightColumn {
   width: 48.5%;
+  overflow-y: scroll;
+  max-height: 50vh;
+
+  @include sm {
+    width: 100%;
+    max-height: none;
+    overflow-y: visible;
+  }
 }
 #leftColumn {
   display: flex;
   flex-direction: column;
   margin-right: 3%;
+}
+
+@media screen and (max-width: 1280px) {
+  p {
+    font-size: 16px;
+  }
 }

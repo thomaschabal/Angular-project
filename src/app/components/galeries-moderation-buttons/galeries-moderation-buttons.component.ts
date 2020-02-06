@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UploadComponent } from '../upload/upload.component';
@@ -6,6 +6,7 @@ import { HttpService } from '../../services/http.service';
 import { GaleriesService } from '../../services/galeries.service';
 import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
+import KEY_CODE from '../../constants/KeyCode';
 
 @Component({
   selector: 'app-galeries-moderation-buttons',
@@ -87,4 +88,11 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   hideModerationArea() {
     this.moderationVisibility = 'hidden';
   }
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.keyCode === KEY_CODE.ESCAPE && this.moderationVisibility === 'visible') {
+      this.hideModerationArea();
+    }
+  }
+
 }

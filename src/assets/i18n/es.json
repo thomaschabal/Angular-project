@@ -41,7 +41,8 @@
     "galeries.contactForm.placeholder": "Tu dulce palabra......",
     "galeries.contactForm.submit": "¡Viva el Ponthé!",
     "galeries.contactForm.reset": "Reiniciar el mensaje",
-  
+    "galeries.upload.title": "Sube tus fotos y videos",
+
     "home.header.title": "Le Ponthé",
     "home.header.introduction": "Bienvenidos a la página web del <strong>Ponthé</strong>, el club audiovisual de los Ponts.<br/>Aquí, podrás ver y descargar las fotos, los vídeos y los montajes realizados por los miembros del club. También podrás subir tus propias fotos y videos en cada <strong>galería</strong>.<br/> Buena visualización!",
     "home.noDescription": "No hay descripción por el momento.",
