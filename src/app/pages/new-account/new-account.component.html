@@ -5,20 +5,33 @@
 
     <!-- Signup Form -->
     <form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
-      <input id="firstName" type="text" name="firstname" [placeholder]="'newAccount.form.firstName' | translate" formControlName="firstname"/>
-      <input id="lastName" type="text" name="lastname" [placeholder]="'newAccount.form.familyName' | translate" formControlName="lastname"/>
-      <div id="email">
-        <input type="text" name="email" [placeholder]="'newAccount.form.email' | translate" formControlName="email"/>
+      <div class="field" id="firstName">
+        <label for="firstName-input">{{ 'newAccount.form.firstName' | translate }}</label>
+        <input id="firstName-input" type="text" name="firstname" [placeholder]="'newAccount.form.firstName' | translate" formControlName="firstname"/>
+      </div>
+      <div class="field" id="lastName">
+        <label for="lastName-input">{{ 'newAccount.form.familyName' | translate }}</label>
+        <input id="lastName-input" type="text" name="lastname" [placeholder]="'newAccount.form.familyName' | translate" formControlName="lastname"/>
+      </div>
+      <div class="field" id="email">
+        <label for="email-input">{{ 'newAccount.form.email' | translate }}</label>
+        <input id="email-input" type="text" name="email" [placeholder]="'newAccount.form.email' | translate" formControlName="email"/>
         <p>{{ 'newAccount.form.email.extension' | translate }}</p>
       </div>
-      <div id="promotion">
-        <q>{{ 'newAccount.form.promotion' | translate }}</q>
-        <select class="form1" name="promotion" formControlName="promotion">
+      <div class="field" id="promotion">
+        <label for="promotion-select">{{ 'newAccount.form.promotion' | translate }}</label>
+        <select id="promotion-select" class="form1" name="promotion" formControlName="promotion">
           <option *ngFor="let prom of availablePromotions" value="prom">{{ prom }}</option>
         </select>
       </div>
-      <input id="password" type="password" name="password" [placeholder]="'newAccount.form.password' | translate" formControlName="password"/>
-      <input id="confirmPassword" type="password" name="confirmationPassword" [placeholder]="'newAccount.form.passwordConfirmation' | translate" formControlName="confirmationPassword"/>
+      <div class="field" id="password">
+        <label for="password-input">{{ 'newAccount.form.password' | translate }}</label>
+        <input id="password-input" type="password" name="password" [placeholder]="'newAccount.form.password' | translate" formControlName="password"/>
+      </div>
+      <div class="field" id="confirmPassword">
+        <label for="confirmPassword-input">{{ 'newAccount.form.passwordConfirmation' | translate }}</label>
+        <input id="confirmPassword-input" type="password" name="confirmationPassword" [placeholder]="'newAccount.form.passwordConfirmation' | translate" formControlName="confirmationPassword"/>
+      </div>
       <input id="submit" class="submit" type="submit" [value]="'newAccount.form.submitButton' | translate" [disabled]="userForm.invalid"/>
     </form>
   </app-auth-card>

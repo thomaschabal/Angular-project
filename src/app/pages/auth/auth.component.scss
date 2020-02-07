@@ -9,30 +9,41 @@
 	}
 }
 
+.signup-form input[type=email],
+.signup-form input[type=password] {
+	width: units(40);
+}
+
 .signup-form input:focus {
 	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
 }
 form {
 	margin: 0;
+	align-items: flex-end;
+
+	@include sm {
+		align-items: normal;
+	}
 
 	@include md {
 		display: grid !important;
-		grid-gap: 16px;
+		grid-gap: units(2);
+		align-items: normal;
 	}
 }
 
 #sso {
 	font-weight: 600;
 	font-size: 1.25em;
-	margin-top: 32px;
+	margin-top: units(4);
 	text-shadow: $AUTH-TEXT-SHADOW-LIGHT;
 }
 #sso a {
 	@include sm {
-		color: $PONTHE-YELLOW !important;
+		color: color(YELLOW) !important;
 	}
 	@include md {
-		color: $PONTHE-YELLOW !important;
+		color: color(YELLOW) !important;
 	}
 }
 #sso a:hover {
@@ -41,11 +52,31 @@ form {
 
 #app-auth-card {
 	@include sm {
-		margin-top: 72px;
+		margin-top: units(9);
 		z-index: 3;
 	}
 	@include md {
 		z-index: 3;
+	}
+}
+
+#submit {
+	@include lg {
+		height: units(7);
+	}
+}
+
+.field {
+	@include md {
+		margin: 0 !important;
+	}
+}
+
+.field > label {
+	margin-bottom: units(0.5);
+
+	@include sm {
+		margin-bottom: 0;
 	}
 }
 

@@ -18,7 +18,35 @@ import { BREAKPOINTS } from './constants/Breakpoints';
 
 
 export const EXTENSION_MAILS_ENPC = '@eleves.enpc.fr';
-export const AVAILABLE_PROMOTIONS = ['015', '016', '017', '018', '019', '020', '021', '022'];
+
+// The oldest promotion allowed to create an account is Prom 013.
+// Change this value for allowing older promotions.
+const FIRST_PROMO = 13;
+// Update the current promotion every year
+const CURRENT_PROMO = 22;
+
+const AVAILABLE_PROMOTIONS = [];
+for (let promo = FIRST_PROMO; promo <= CURRENT_PROMO; promo++) {
+  AVAILABLE_PROMOTIONS.push('0' + promo);
+}
+AVAILABLE_PROMOTIONS.reverse();
+
+// Randomly defined first year of all events.
+// You can't create an event before 2010 unless you change the following value.
+const FIRST_YEAR_EVENTS = 2010;
+const currentDate = new Date();
+const currentYear = currentDate.getFullYear();
+// The school year is changed on August 1st
+export const CURRENT_YEAR = (currentDate.getMonth() > 7) ? currentYear : currentYear - 1;
+
+const YEARS_SLUGS = [];
+const SCHOOL_YEARS_SLUGS = [];
+for (let year = FIRST_YEAR_EVENTS; year <= CURRENT_YEAR; year++) {
+  SCHOOL_YEARS_SLUGS.push(year + '-' + (year + 1));
+  YEARS_SLUGS.push(year);
+}
+SCHOOL_YEARS_SLUGS.reverse();
+YEARS_SLUGS.reverse();
 
 
 export {
@@ -39,4 +67,7 @@ export {
   LANGUAGES,
   FLAGS_BY_LANG,
   BREAKPOINTS,
+  AVAILABLE_PROMOTIONS,
+  YEARS_SLUGS,
+  SCHOOL_YEARS_SLUGS
 };

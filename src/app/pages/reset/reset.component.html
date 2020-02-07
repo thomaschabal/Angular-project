@@ -5,7 +5,8 @@
     <!-- Signup Form -->
     <form class="signup-form" [formGroup]="resetForm" (ngSubmit)="onSubmitForm()">
       <div id="email">
-        <input type="text" name="email" [placeholder]="'reset.form.email.placeholder' | translate" formControlName="email"/><p>{{ 'reset.form.email.extension' | translate }}</p>
+        <label for="email-input">{{ 'reset.form.email.placeholder' | translate }}</label>
+        <input id="email-input" type="text" name="email" placeholder="prenom.nom" formControlName="email"/><p>{{ 'reset.form.email.extension' | translate }}</p>
       </div>
       <input id="submit" type="submit" [value]="'reset.form.submitButton' | translate" [disabled]="resetForm.invalid"/>
     </form>

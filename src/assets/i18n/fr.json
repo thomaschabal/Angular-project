@@ -20,7 +20,8 @@
     "dashboard.form.name": "Nom de la galerie",
     "dashboard.form.description": "Description de la galerie",
     "dashboard.form.submitButton": "Valider la création",
-    "dashboard.createdGallery": "Galerie crée",
+    "dashboard.createdGallery": "Galerie créée",
+    "dashboard.failureCreationGallery": "Echec à la création",
     "dashboard.csv_account_creation.add_csv": "Ajouter des comptes par CSV",
     "dashboard.csv_account_creation.submit": "Créer les comptes",
     "dashboard.links.moderation": "Modérer",
@@ -59,7 +60,9 @@
     "material.header.title": "Demande de prêt de matériel du Ponthé",
     "material.header.subtitle":
       "Remplis ce formulaire pour emprunter du matériel au Ponthé ! Explique nous rapidement ton projet afin que l'on puisse te conseiller au mieux ;)",
-    "material.form.matos": "Tu souhaites ? L'appareil GH4, le micro, le trépied fixe, le stabilisateur, la GoPro, le drone...",
+    "material.form.matos.title": "Tu souhaites ?",    
+    "material.form.matos": "L'appareil GH4, le micro, le trépied fixe, le stabilisateur, la GoPro, le drone...",
+    "material.form.message.title": "Ton projet ?",
     "material.form.message": "Explique nous brièvement ton projet...",
     "material.form.submitButton": "Merci le Ponthé",
   
@@ -67,6 +70,7 @@
     "members.header.subtitle": "Créé par un 013, Thomas Chevrier, le Ponthé a vu se succéder des générations de cinéastes et photographes...",
   
     "messages.sent": "Message envoyé !",
+    "messages.fail": "Echec de l'envoi.",
   
     "moderation.moderationArea.title": "Zone d'administration de la galerie",
     "moderation.accept": "Accepter",

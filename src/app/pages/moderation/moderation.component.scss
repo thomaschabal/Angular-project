@@ -6,7 +6,7 @@
 }
 
 html, body {
-	background: $PONTHE-DARK-GREY;
+	background: color(DARK_GREY);
 }
 
 img {
@@ -14,7 +14,7 @@ img {
 }
 
 #main .thumb > .image {
-	-webkit-tap-highlight-color: $PONTHE-WHITE;
+	-webkit-tap-highlight-color: color(WHITE);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;

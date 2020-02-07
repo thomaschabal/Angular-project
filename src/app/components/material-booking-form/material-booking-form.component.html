@@ -1,12 +1,22 @@
 <form>
   <div class="fields" [formGroup]="materialForm" (ngSubmit)="onSubmitMateriel()">
     <div class="field">
-      <input type="text" name="matos" [placeholder]="'material.form.matos' | translate" formControlName="matos"/>
+      <label for="matos">{{ 'material.form.matos.title' | translate }}</label>
+      <input id="matos" type="text" name="matos" [placeholder]="'material.form.matos' | translate" formControlName="matos"/>
     </div>
     <div class="field">
-      <textarea name="message" [placeholder]="'material.form.message' | translate" rows="4" formControlName="message"></textarea>
+      <label for="message">{{ 'material.form.message.title' | translate }}</label>
+      <textarea id="message" name="message" [placeholder]="'material.form.message' | translate" rows="4" formControlName="message"></textarea>
     </div>
   </div>
+  <p id="success" [class]="successMessage ? 'visible' : 'hidden'">
+    <span class="icon fa fa-check-circle fa-lg"></span>
+    {{ 'messages.sent' | translate }}
+  </p>
+  <p id="failure" [class]="failureMessage ? 'visible' : 'hidden'">
+    <span class="icon fa fa-times-circle fa-lg"></span>
+    {{ 'dashboard.failureCreationGallery' | translate }}
+  </p>
   <ul class="actions special">
     <li>
       <input type="submit" [value]="'material.form.submitButton' | translate" (click)="onSubmitMateriel()" [disabled]="materialForm.invalid"/>

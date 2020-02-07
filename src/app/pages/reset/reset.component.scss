@@ -1,16 +1,21 @@
 @import url("../../../assets/assets_c/css/main.css");
 @import "../../PontheStyle.scss";
 
+#inner-text {
+	margin-bottom: units(2.5);
+}
+
 form {
 	margin: 0;
 
 	@include sm {
-		grid-gap: 16px;
+		grid-gap: units(2);
 	}
 }
 
 .signup-form {
 	margin: 0;
+	align-items: flex-end;
 
 	@include sm {
 		display: flex !important;
@@ -28,35 +33,38 @@ form {
 #email {
 	@include md {
 		grid-row: 1;
-		margin-bottom: 20px;
+		margin-bottom: units(2.5);
 	}
+}
+
+#email label {
+	margin-bottom: units(0.5);
 }
 
 #email input[type="text"] {
 	display: inline-block;
-	margin-right: 16px;
+	margin-right: units(2);
 
 	@include sm {
 		width: 50% !important;
 	}
 	@include md {
-		width: 60% !important;
+		width: 55% !important;
 	}
 }
 #email p {
 	margin: 0;
 	display: inline-block;
+	font-size: font-size(XLARGE) !important;
 
 	@include sm {
-		font-size: 14px !important;
-	}
-	@include md {
-		font-size: 20px !important;
+		font-size: font-size(SMALL) !important;
 	}
 }
 
 #submit {
-	margin-left: 64px;
+	margin-left: units(5);
+	margin-bottom: units(1);
 	
 	@include md {
 		grid-row: 2;

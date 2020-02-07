@@ -17,11 +17,11 @@ section {
   margin-top: 3em;
   margin-bottom: 2.5em;
   text-align: center;
-  color: $PONTHE-YELLOW;
+  color: color(YELLOW);
   text-decoration: underline;
 
   @include sm {
     margin: 0;
-    margin-top: 80px;
+    margin-top: units(10);
   }
 }

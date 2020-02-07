@@ -25,7 +25,7 @@
   top:0;
   z-index: 10000;
   background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 units(0.5) units(1) 0 rgba(0, 0, 0, 0.2), 0 units(0.75) units(2.5) 0 rgba(0, 0, 0, 0.19);
   margin-top: 1.5vh;
   max-height: 95vh;
   transition: margin-top 0.5s ease;
@@ -64,14 +64,14 @@
   left: 0;
   background: #324167;
   height: 1.7em;
-  border-radius: 10px;
+  border-radius: units(1.25);
 }
 
 #closer {
   width: 6%;
   top: 3%;
   right: 2%;
-  border-radius: 100px;
+  border-radius: units(12.5);
 }
 
 #right_arrow, #left_arrow, #closer {
@@ -99,5 +99,5 @@
   position: absolute;
   right: 3.5%;
   bottom: 0.35em;
-  color: white;
+  color: color(WHITE);
 }

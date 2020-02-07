@@ -2,69 +2,69 @@
 @import "../../PontheStyle.scss";
 
 h1 {
-  color: $PONTHE-DARK-GREY;
+  color: color(DARK_GREY);
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  padding-bottom: 16px;
+  padding-bottom: units(2);
   text-align: center;
-  border-bottom: 1px solid $PONTHE-LIGHT-GREY;
+  border-bottom: 1px solid color(LIGHT_GREY);
 
   @include sm {
-    font-size: 12px !important;
+    font-size: font-size(SMALL) !important;
   }
 }
 
 button {
-  border-radius: 24px;
+  border-radius: units(3);
   box-shadow: none;
-  border: 1px solid $PONTHE-DARK;
-  margin-bottom: 12px;
-  color: $PONTHE-DARK !important;
-  background-color: $PONTHE-WHITE !important;
+  border: 1px solid color(DARK);
+  margin-bottom: units(1.5);
+  color: color(DARK) !important;
+  background-color: color(WHITE) !important;
   transition: background-color 0.3s ease, border 0.3s ease;
 
   @include sm {
-    font-size: 10px;
+    font-size: font-size(XSMALL);
   }
 }
 button:hover {
   box-shadow: none;
   border: none;
-  color: $PONTHE-DARK !important;
-  background-color: $PONTHE-LIGHT-GREY !important;
+  color: color(DARK) !important;
+  background-color: color(LIGHT_GREY) !important;
 }
 
 #moderationBanner {
-  width: 48px;
+  width: units(6);
   right: 0;
   top: 12.5vh;
   position: fixed;
   transform: translateX(1em);
   background: $BUTTON-BACKGROUND-GRADIENT;
-  padding: 10px;
-  border-radius: 12px;
+  padding: units(1.25);
+  border-radius: units(1.5);
   transition: width 0.5s ease-in-out;
   z-index: 1;
 }
 #moderationBanner:hover {
-  width: 80px;
+  width: units(10);
 }
 #moderationBanner > img {
   cursor: pointer;
-  width: 40px;
+  width: units(5);
 }
 
-$MODERATION-PADDING: 48px;
-$MODERATION-PADDING-MOBILE: 16px;
+$MODERATION-PADDING: units(6);
+$MODERATION-PADDING-MOBILE: units(2);
 #moderation {
   position: fixed;
   top: 15vh;
   left: 20vw;
   width: 60vw;
   z-index: 3;
-  background: $PONTHE-WHITE;
-  padding: $MODERATION-PADDING - 16px $MODERATION-PADDING;
-  border-radius: 32px;
+  background: color(WHITE);
+  padding: $MODERATION-PADDING - units(2) $MODERATION-PADDING;
+  border-radius: units(4);
   margin: auto;
   transition: visibility 0.3s ease;
 
@@ -99,28 +99,28 @@ $MODERATION-PADDING-MOBILE: 16px;
   height: 100vh;
   width: 100vw;
   z-index: 2;
-  background: $PONTHE-DARK;
+  background: color(DARK);
   opacity: 0.65;
 }
 
 #moderation > footer {
-  padding-top: 16px;
+  padding-top: units(2);
   padding-right: $MODERATION-PADDING;
   text-align: center;
   width: calc(100% + 2 * $MODERATION-PADDING);
-  border-top: 1px solid $PONTHE-LIGHT-GREY;
+  border-top: 1px solid color(LIGHT_GREY);
 
   @include sm {
-    padding-right: 8px;
+    padding-right: units(1);
   }
 }
 
 .close {
-  color: $PONTHE-DARK !important;
-  background-color: $PONTHE-WHITE !important;
+  color: color(DARK) !important;
+  background-color: color(WHITE) !important;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  border-radius: 24px;
+  border-radius: units(3);
   margin: 0 !important;
   border: none !important;
   transition: background 0.3s ease;
@@ -128,12 +128,12 @@ $MODERATION-PADDING-MOBILE: 16px;
   opacity: 1 !important;
 }
 .close:hover {
-  color: $PONTHE-DARK !important;
-  background-color: $PONTHE-LIGHT-GREY !important;
+  color: color(DARK) !important;
+  background-color: color(LIGHT_GREY) !important;
   box-shadow: none !important;
 }
 .close:focus, .close:active {
-  color: $PONTHE-DARK !important;
+  color: color(DARK) !important;
 }
 
 #bodyModeration {
@@ -165,6 +165,6 @@ $MODERATION-PADDING-MOBILE: 16px;
 
 @media screen and (max-width: 1280px) {
   h1 {
-    font-size: 20px;
+    font-size: font-size(XLARGE);
   }
 }

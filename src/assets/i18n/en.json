@@ -21,6 +21,7 @@
     "dashboard.form.description": "Description of the gallery",
     "dashboard.form.submitButton": "Validate the creation",
     "dashboard.createdGallery": "Gallery created",
+    "dashboard.failureCreationGallery": "Failed creation",
     "dashboard.csv_account_creation.add_csv": "Add accounts by CSV",
     "dashboard.csv_account_creation.submit": "Create accounts",
     "dashboard.links.moderation": "Moderate",
@@ -59,7 +60,9 @@
     "material.header.title": "Loan request of equipment from the Ponthé",
     "material.header.subtitle":
       "Fill out this form to borrow equipment from the Ponthé! Explain your project to us quickly so that we can advise you as well as possible ;)",
-    "material.form.matos": "What do you want? The GH4 camera, microphone, fixed tripod, stabilizer, GoPro, drone....",
+    "material.form.matos.title": "You wish ?",    
+    "material.form.matos": "The GH4 camera, microphone, fixed tripod, stabilizer, GoPro, drone....",
+    "material.form.message.title": "Your project ?",
     "material.form.message": "Explain us briefly your project....",
     "material.form.submitButton": "Thank you Le Ponthé",
   
@@ -67,7 +70,8 @@
     "members.header.subtitle": "Created by a 013, Thomas Chevrier, the Ponthé has seen generations of filmmakers and photographers succeed one another...",
   
     "messages.sent": "Message sent!",
-  
+    "messages.fail": "Failed to send.",
+
     "moderation.moderationArea.title": "Administration area of the gallery",
     "moderation.accept": "Accept",
     "moderation.delete": "Delete",

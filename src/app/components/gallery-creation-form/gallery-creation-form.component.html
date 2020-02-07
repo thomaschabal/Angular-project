@@ -1,13 +1,33 @@
 <app-dashboard-form [title]="'dashboard.form.title' | translate">
   <form [formGroup]="eventForm"
         (ngSubmit)="onSubmitEvent()">
+
+    <label for="name">{{ 'dashboard.form.name' | translate }}</label>
     <input type="text" name="name"
-           [placeholder]="'dashboard.form.name' | translate"
+           placeholder="WEI 2021"
            formControlName="name"
-           class="input_field" /><br/>
+           class="input_field"
+           id="name" />
+
+    <label for="description">{{ 'dashboard.form.description' | translate }}</label>
     <textarea name="description" rows="2"
-              [placeholder]="'dashboard.form.description' | translate"
-              formControlName="description"></textarea><br/>
+              placeholder="Le WEI de l'Ecole des Ponts s'est déroulé du 32 Août au 33 Septembre 2021. 200 2A, 300 1A, c'était SPARTAAA ! 3 jours de pur bonheur, maillot du meilleur 1A pour le Prez BDE, maillot de la meilleure intégratrice pour Jeannine et son bonjour."
+              formControlName="description"
+              id="description"></textarea>
+
+    <label for="year_slug">Année de l'évènement</label>
+    <select name="year_slug" id="year_slug" (change)="onChangeYear($event)">
+       <option *ngFor="let year_slug of SLUGS; let i = index" [value]="YEARS[i]">{{ year_slug }}</option>
+    </select>
+
+    <p id="success" [class]="successCreation ? 'visible' : 'hidden'">
+       <span class="icon fa fa-check-circle fa-lg"></span>
+       {{ 'dashboard.createdGallery' | translate }}
+    </p>
+    <p id="failure" [class]="failureCreation ? 'visible' : 'hidden'">
+       <span class="icon fa fa-times-circle fa-lg"></span>
+       {{ 'dashboard.failureCreationGallery' | translate }}
+    </p>
     <input type="submit"
            [value]="'dashboard.form.submitButton' | translate"
            [disabled]="eventForm.invalid" />

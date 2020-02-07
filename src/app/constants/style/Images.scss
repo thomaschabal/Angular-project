@@ -34,7 +34,6 @@ $PONTHE-PROMO-IMAGES-LARGE: (
         url($TEAM-FOLDER + "021_passa.jpg")
         url($TEAM-FOLDER + "021_pulls.jpg")
 );
-@debug $PONTHE-PROMO-IMAGES-LARGE;
 $PONTHE-PROMO-IMAGES-SMALL: (
     015: url($ASSETS-FOLDER + "05.jpg"),
     016: url($ASSETS-FOLDER + "04.jpg"),

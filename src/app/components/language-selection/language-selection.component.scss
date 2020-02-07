@@ -2,12 +2,12 @@
 @import "../../PontheStyle.scss";
 
 $FLAG-SIZE: 1.25em;
-$SECTION-PADDING: 2px;
-$SECTION-MARGIN: 2px;
+$SECTION-PADDING: units(0.25);
+$SECTION-MARGIN: units(0.25);
 $NUMBER-OF-LANGUAGES-TO-ANIMATE: $NUMBER-OF-LANGUAGES - 1;
 
 #flags-section {
-    border-radius: 4px;
+    border-radius: units(0.5);
     width: calc(#{$FLAG-SIZE} + 2 * #{$SECTION-PADDING});
     height: calc(#{$FLAG-SIZE} + 2 * #{$SECTION-PADDING});
     transition: height 0.5s ease;
@@ -21,7 +21,7 @@ $NUMBER-OF-LANGUAGES-TO-ANIMATE: $NUMBER-OF-LANGUAGES - 1;
 }
 
 .flag-icon {
-	border-radius: 4px;
+	border-radius: units(0.5);
 	width: $FLAG-SIZE;
     height: $FLAG-SIZE;
     line-height: $FLAG-SIZE;

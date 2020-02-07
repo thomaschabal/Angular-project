@@ -1,8 +1,8 @@
 @import url("../../../assets/assets_h/css/main.css");
 @import "../../PontheStyle.scss";
 
-$ARTICLE-BOX-RADIUS: 20px;
-$GALLERY-PICS-MARGIN: 8px;
+$ARTICLE-BOX-RADIUS: units(2.5);
+$GALLERY-PICS-MARGIN: units(1);
 
 /* Intro */
 	#intro {
@@ -13,6 +13,16 @@ $GALLERY-PICS-MARGIN: 8px;
 		background-attachment: fixed, fixed;
 		background-position: top left, bottom center;
 		background-repeat: repeat, no-repeat;
+
+		@include sm {
+			margin-top: 4em;
+		}
+	}
+
+	#intro header {
+		@include sm {
+			margin-top: 1em;
+		}
 	}
 
 	#intro > .content {
@@ -28,24 +38,12 @@ $GALLERY-PICS-MARGIN: 8px;
 /* 3 Last events */
 	#one, #two, #three {
 		height: 100vh;
-	}
-
-/* One */
-	#one {
 		background-attachment: fixed, fixed;
 		background-position: top left, center center;
-	}
 
-/* Two */
-	#two {
-		background-attachment: fixed, fixed;
-		background-position: top left, center center;
-	}
-
-/* Three */
-	#three {
-		background-attachment: fixed, fixed;
-		background-position: top left, center center;
+		@include sm {
+			background-position: center center, center center;
+		}
 	}
 
 #loading-events {
@@ -93,6 +91,7 @@ $GALLERY-PICS-MARGIN: 8px;
 }
 
 #gallery-pics > article {
+	display: flex;
 	margin: $GALLERY-PICS-MARGIN;
 	max-width: calc(50% - 2 * #{$GALLERY-PICS-MARGIN});
 }
@@ -100,6 +99,17 @@ $GALLERY-PICS-MARGIN: 8px;
 #gallery-pics > article > img {
 	cursor: pointer;
 	border-radius: $IMAGE-RADIUS-MEDIUM-THUMBNAIL;
+
+	@include lg {
+		border-radius: units(3.5);
+	}
+}
+
+.gallery {
+	@include sm {
+		flex-direction: unset;
+		flex-wrap: wrap;
+	}
 }
 
 .darkbg {
@@ -107,29 +117,18 @@ $GALLERY-PICS-MARGIN: 8px;
 	left:0;
 	width: 100vw;
 	height:100vh;
-	background-color: $HOME-OVERLAY;
+	background-color: overlay(HOME);
 	position: fixed;
 	z-index: 5000;
 }
 
 #contact .box {
 	border-radius: $FORM-BORDER-RADIUS;
-  box-shadow: $BOX-SHADOW-FORM-BASE $BOX-SHADOW-FORM-SHIFT-BASE;
+	box-shadow: $BOX-SHADOW-FORM-BASE $BOX-SHADOW-FORM-SHIFT-BASE;
 }
 
-@media screen and (max-width: 736px) {
-	#intro {
-		margin-top: 4em;
-	}
-	#intro header {
-		margin-top: 1em;
-	}
-
-	#one, #two, #three {
-		background-position: center center, center center;
-	}
-
-	.main.style1 {
+.main.style1 {
+	@include sm {
 		padding: 0.6em 15px 0.6em 15px;
 	}
 }

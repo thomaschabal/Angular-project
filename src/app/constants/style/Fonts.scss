@@ -1,0 +1,14 @@
+$FONT-SIZES: (
+    XSMALL: 10px,
+    SMALL: 12px,
+    MEDIUM: 16px,
+    LARGE: 18px,
+    XLARGE: 20px,
+    XXLARGE: 24px,
+);
+
+@function font-size($size) {
+    @if map-has-key($FONT-SIZES, $size) {
+        @return map-get($FONT-SIZES, $size);
+    }
+}

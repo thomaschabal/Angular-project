@@ -57,7 +57,7 @@
   .style2 .content p {
 	  @include sm {
 		  line-height: 1.35em;
-		  font-size: 18px;
+		  font-size: font-size(LARGE);
 	  }
   }
   

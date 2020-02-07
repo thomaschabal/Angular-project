@@ -5,20 +5,20 @@ $MAX-WIDTH-CARD-MOBILE: 70vw;
 $MAX-WIDTH-CARD-TABLET: 60vw;
 
 #auth-card {
-	padding: 48px;
-	border-radius: 48px;
+	padding: units(6);
+	border-radius: units(6);
 	width: max-content;
 	margin: auto;
 	transition: background 0.5s ease, box-shadow 0.5s ease !important;
 
 	@include sm {
-		padding: 24px;
-		border-radius: 24px;
+		padding: units(3);
+		border-radius: units(3);
 	}
 }
 
 #auth-card:hover {
-	background: $PONTHE-WHITE;
+	background: color(WHITE);
 	box-shadow: $BOX-SHADOW-CARD;
 }
 
@@ -32,7 +32,7 @@ $MAX-WIDTH-CARD-TABLET: 60vw;
 }
 
 #header h1 {
-	color: $PONTHE-YELLOW;
+	color: color(YELLOW);
 	text-shadow: $AUTH-TEXT-SHADOW;
 }
 
@@ -40,9 +40,9 @@ input, select {
 	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-NONE;
 
 	@include sm {
-		margin-bottom: 8px !important;
+		margin-bottom: units(1) !important;
 		width: 100% !important;
-		font-size: 16px !important;
+		font-size: font-size(MEDIUM) !important;
 	}
 	@include md {
 		width: 100% !important;
@@ -64,7 +64,20 @@ form {
 	}
 }
 
-p, q {
+label {
+	font-size: font-size(XLARGE);
+	transition: color 0.5s ease;
+	font-size: font-size(LARGE) !important;
+
+	@include sm {
+		font-size: font-size(MEDIUM) !important;
+	}
+}
+#auth-card:hover label {
+	color: color(DARK_DARK_GREY) !important;
+}
+
+p {
 	max-width: 60vw;
 	transition: color 0.5s ease;
 	line-height: 1.5em;
@@ -75,13 +88,8 @@ p, q {
 	}
 }
 
-q {
-	display: inline-block;
-	width: 40%;
-}
-
 a {
-	color: $PONTHE-YELLOW !important;
+	color: color(YELLOW) !important;
 }
 
 input[type="password"],
@@ -90,14 +98,14 @@ input[type="text"],
 select {
 	color: rgba(255, 255, 255, 0.75);
 	font-family: "Roboto", sans-serif;
-	font-size: 16pt;
+	font-size: font-size(XLARGE) !important;
 	font-weight: 400;
 	letter-spacing: -0.01em;
 	line-height: 1.65em;
 	transition: color 0.5s ease;
 }
 input[type="text"] {
-  width: 240px;
+  width: units(30);
 }
 input[type="submit"] {
 	background: $BUTTON-BACKGROUND-GRADIENT-YELLOWER !important;
@@ -108,7 +116,8 @@ input[type="submit"] {
 }
 select {
 	display: inline-block !important;
-	width: 60% !important;
+	height: 59px;
+	// width: 60% !important;
 }
 
 #auth-card:hover input[type="password"],
@@ -117,10 +126,10 @@ select {
 #auth-card:hover select,
 a {
 	transition: color 0.5s ease;
-	color: $PONTHE-DARK-DARK-GREY !important;
+	color: color(DARK_DARK_GREY) !important;
 }
 #auth-card:hover p, #auth-card:hover #email p, #auth-card:hover q {
-	color: $PONTHE-DARK-DARK-GREY !important;
+	color: color(DARK_DARK_GREY) !important;
 }
 
 input[type="password"]:focus,

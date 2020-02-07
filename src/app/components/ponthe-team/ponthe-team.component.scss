@@ -4,21 +4,21 @@
 /* Background pictures of proms */
 @mixin shared-background-props($pic) {
   background: $pic;
-  background-color: $PONTHE-DARK-GREY;
+  background-color: color(DARK_GREY);
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
 }
 @mixin shared-background-props-overlay($pic) {
     background: $OVERLAY-IMAGE, $pic;
-    background-color: $PONTHE-DARK-GREY;
+    background-color: color(DARK_GREY);
     background-size: 256px 256px, cover;
     background-attachment: fixed, fixed;
     background-position: top left, center center;
 }
 @mixin shared-background-props-trombi($pic) {
     background: $pic;
-    background-color: $PONTHE-DARK-GREY;
+    background-color: color(DARK_GREY);
     background-size: contain;
     background-attachment: fixed, fixed;
     background-position: center center, center center;
@@ -50,13 +50,21 @@
 }
 
 .box {
-    box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+  box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
 }
 .right > .box {
-    border-radius: 32px 0 0 32px;
+  border-radius: units(4) 0 0 units(4);
+
+  @include sm {
+    border-radius: units(4);
+  }
 }
 .left > .box {
-    border-radius: 0 32px 32px 0;
+  border-radius: 0 units(4) units(4) 0;
+
+  @include sm {
+    border-radius: units(4);
+  }
 }
 
 .style2 .content {
@@ -69,19 +77,19 @@
 }
   
 #right_arrow, #left_arrow {
-    width: 48px;
-    bottom: 40px;
+    width: units(6);
+    bottom: units(5);
     right: 0;
 }
   
 #right_arrow {
-    margin-right: 40px;
+  margin-right: units(5);
 }
   
 #left_arrow {
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    margin-right: 96px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  margin-right: units(12);
 }
 
 
@@ -99,7 +107,7 @@
 
   .style2 .content p {
     margin-bottom: 0.6em;
-    font-size: 16px;
+    font-size: font-size(MEDIUM);
     line-height: 1.35em;
   }
 }
@@ -123,7 +131,7 @@
   .style2 .content p {
 	  @include sm {
 		  line-height: 1.35em;
-		  font-size: 18px;
+		  font-size: font-size(LARGE);
 	  }
   }
   

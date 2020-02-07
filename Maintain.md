@@ -7,6 +7,10 @@
 4. Update the *NUMBER_PICS_BY_PONTHE_TEAM* constant in src/app/constants/Images.ts with the number of pics added.
 You're done!
 
+## Enable a new promotion of students to access the website
+1. All students can log in with CAS (like uPont).
+2. Change the value of CURRENT_PROMO in [Constants.ts](https://github.com/ENPC-Ponthe/Angular-project/blob/testing/src/app/Constants.ts).
+
 ## Update General terms and conditions of use of the website
 Change them directly in the [cgu.json](https://github.com/ENPC-Ponthe/Galeries/blob/testing/web/app/instance/assets/data/cgu.json) file
 

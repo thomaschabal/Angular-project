@@ -9,13 +9,48 @@ form:last-child {
 	margin-bottom: 2vh;
 }
 
-form textarea, form .input_field {
-	background: $PONTHE-WHITE;
+#name, #description, #year_slug {
+	margin-bottom: units(2);
+}
+
+form textarea, form .input_field, select {
+	background: color(WHITE);
 	color: $INPUT-TEXT-DARK-GREY;
 	max-width: 100%;
 }
 
 input[type="submit"] {
-  background: $BUTTON-BACKGROUND-GRADIENT;
+  	background: $BUTTON-BACKGROUND-GRADIENT;
 	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS-LIGHT;
+}
+
+label {
+	color: color(DARK_GREY);
+	text-align: left;
+	font-size: font-size(MEDIUM);
+}
+
+#success, #failure {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	font-size: font-size(MEDIUM);
+	text-align: left;
+	display: block;
+	transition: visibility 0.3s ease;
+}
+#success::before, #failure::before {
+	padding-right: units(1);
+}
+#success {
+	color: color(SUCCESS);
+}
+#failure {
+	color: color(FAILURE);
+}
+
+.visible {
+	visibility: visible;
+}
+.hidden {
+	visibility: hidden;
 }

@@ -22,7 +22,7 @@
 	margin: 0;
 	line-height: 1em;
 	padding: 1.5em;
-	background: $PONTHE-DARK-DARK-GREY;
+	background: color(DARK_DARK_GREY);
 	color: rgba(185, 186, 187, 0.5);
 }
 
@@ -70,9 +70,9 @@
 
 	@include sm {
 		position: absolute;
-		top: 60px;
-		left: 24px;
-		height: 10px;
+		top: units(7.5);
+		left: units(3);
+		height: units(1.25);
 	}
 }
 

@@ -1,0 +1,5 @@
+$UNIT: 8px;
+
+@function units($number) {
+    @return $number * $UNIT;
+}

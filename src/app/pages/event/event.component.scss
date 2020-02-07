@@ -6,11 +6,11 @@
 }
 
 html, body {
-	background: $PONTHE-DARK-GREY;
+	background: color(DARK_GREY);
 }
 
 #main .thumb > .image {
-	-webkit-tap-highlight-color: $PONTHE-WHITE;
+	-webkit-tap-highlight-color: color(WHITE);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -31,8 +31,8 @@ html, body {
   position: absolute;
   top: 1vh;
   left: 0.5vw;
-  background: $OVERLAY-LIGHT-GREY;
-  border-radius: 16px;
+  background: overlay(LIGHT_GREY);
+  border-radius: units(2);
 }
 
 #deleteButtonSelected {
@@ -41,7 +41,7 @@ html, body {
   top: 1vh;
   left: 0.5vw;
   background: $BUTTON-BACKGROUND-DANGER;
-  border-radius: 16px;
+  border-radius: units(2);
 }
 
 .thumb > caption {
@@ -61,7 +61,7 @@ html, body {
   height: 92vh;
   top: 8vh;
   left: 0;
-  background: $PONTHE-DARK-GREY;
+  background: color(DARK_GREY);
   position: fixed;
   z-index: -1;
 
@@ -77,8 +77,8 @@ html, body {
   position: fixed;
   transform: translateX(1em);
   background: $BUTTON-BACKGROUND-GRADIENT;
-  padding: 10px;
-  border-radius: 12px;
+  padding: units(1.25);
+  border-radius: units(1.5);
   transition: width 0.5s ease-in-out;
   z-index: 1;
 }
@@ -86,7 +86,7 @@ html, body {
   width: 4.5em;
 }
 #uploadBanner > a {
-  color: $PONTHE-WHITE;
+  color: color(WHITE);
   transition: padding-left 0.5s ease-in-out;
   cursor: pointer;
 }
@@ -94,7 +94,7 @@ html, body {
   padding-left: 0.5em;
 }
 #uploadBanner:hover > a:hover {
-  color: $PONTHE-LIGHT-GREY !important;
+  color: color(LIGHT_GREY) !important;
 }
 
 app-upload {

@@ -23,22 +23,22 @@ input {
 }
 
 #submit {
-  background: $PONTHE-WHITE;
-  color: $PONTHE-DARK-DARK-GREY !important;
+  background: color(WHITE);
+  color: color(DARK_DARK_GREY) !important;
   border-radius: $BORDER-RADIUS-BUTTON;
 }
 
 #reset {
-  background: $PONTHE-LIGHT-GREY;
+  background: color(LIGHT_GREY);
   border: 0;
-  color: $PONTHE-DARK-DARK-GREY !important;
+  color: color(DARK_DARK_GREY) !important;
   border-radius: $BORDER-RADIUS-BUTTON;
   box-shadow: none;
 }
 
 #submit:hover, #reset:hover {
-  background: $PONTHE-DARK;
-  color: $PONTHE-WHITE !important;
+  background: color(DARK);
+  color: color(WHITE) !important;
   box-shadow: $BOX-SHADOW-INPUT-BASE-LIGHT $BOX-SHADOW-INPUT-SHIFT-FOCUS-LIGHT;
 }
 
