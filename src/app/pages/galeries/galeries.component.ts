@@ -3,7 +3,6 @@ import { state, trigger, animate, style, transition } from '@angular/animations'
 
 import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
 import { GaleriesService } from '../../services/galeries.service';
-import { HttpService } from '../../services/http.service';
 import { routesAppFromRoot } from '../../Routes';
 
 @Component({
@@ -42,16 +41,13 @@ export class GaleriesComponent implements OnInit {
                    'visible', 'visible', 'visible',
                    'visible', 'visible', 'visible'];
 
-  constructor(private httpService: HttpService,
-              private galeriesService: GaleriesService) {
+  constructor(private galeriesService: GaleriesService) {
   }
 
   ngOnInit() {
     this.displaySpinner = this.galeriesService.displaySpinner;
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    // this.displaySpinner = true;
-    // this.stateSpinner = 'visible';
     this.galeriesService.loadEvents().then(
       () => {
       this.privateEvents = this.galeriesService.privateEvents;

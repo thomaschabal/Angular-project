@@ -40,12 +40,16 @@
       {{ 'moderation.delete' | translate }}
     </button>
   </article>
+  <div *ngIf="isLoadingMore" id="reload-boundary" >
+    <app-loading-points></app-loading-points>
+  </div>
 </div>
 
 <!-- Dark background -->
 <div id="fullBackground"
-     (mouseenter)="survolePics('visible')"
-     (mouseleave)="survolePics('hidden')"></div>
+    (scroll)="loadMorePics()"
+    (mouseenter)="survolePics('visible')"
+    (mouseleave)="survolePics('hidden')"></div>
 
 <!-- Image Viewer -->
 <app-image-viewer *ngIf="picClicked" [captionWidePic]="name" [indexPicture]="indexViewer" (closeViewer)="closePic($event)"></app-image-viewer>

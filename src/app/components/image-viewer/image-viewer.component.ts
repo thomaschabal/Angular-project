@@ -46,10 +46,14 @@ export class ImageViewerComponent implements OnInit {
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     if (event.code === KEY_CODE.LEFT_ARROW) {
-      this.navLeft();
+      if (this.indexPicture > 0) {
+        this.navLeft();
+      };
     } else {
       if (event.code === KEY_CODE.RIGHT_ARROW) {
-        this.navRight();
+        if (this.indexPicture < this.picsService.numberOfPics - 1) {
+          this.navRight();
+        }
       } else {
         if (event.code === KEY_CODE.ESCAPE) {
           this.closeWidePic();

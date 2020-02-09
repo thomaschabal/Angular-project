@@ -21,11 +21,13 @@
           (click)="closeWidePic()"
           [@widePicsAnimation]="showArrows+''"/>
      <!-- Navigation arrows -->
-     <img id="right_arrow"
+     <img *ngIf="indexPicture < rawPics.length - 1"
+          id="right_arrow"
           src="../../../assets/assets_h/css/images/poptrox-nav.svg"
           (click)="navRight()"
           [@widePicsAnimation]="showArrows+''"/>
-     <img id="left_arrow"
+     <img *ngIf="indexPicture > 0"
+          id="left_arrow"
           src="../../../assets/assets_h/css/images/poptrox-nav.svg"
           (click)="navLeft()"
           [@widePicsAnimation]="showArrows+''"/>

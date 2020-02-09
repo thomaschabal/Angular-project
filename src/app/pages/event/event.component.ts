@@ -9,7 +9,7 @@ import { GaleriesFooterComponent } from '../../components/galeries-footer/galeri
 import { UploadComponent } from '../../components/upload/upload.component';
 import { GaleriesModerationButtonsComponent } from '../../components/galeries-moderation-buttons/galeries-moderation-buttons.component';
 import { ImageViewerComponent } from '../../components/image-viewer/image-viewer.component';
-import { GaleriesService } from '../../services/galeries.service';
+import { GaleriesService, DEFAULT_PAGE_SIZE } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
 import { PicsService } from '../../services/pics.service';
 import KEY_CODE from '../../constants/KeyCode';
@@ -34,25 +34,17 @@ import KEY_CODE from '../../constants/KeyCode';
 })
 
 export class EventComponent implements OnInit, OnDestroy {
-
-
-  constructor(private galeriesService: GaleriesService,
-              private activeRoute: ActivatedRoute,
-              private httpService: HttpService,
-              private picsService: PicsService) {
-    this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(
-      f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
-    );
-  }
-
   // Loading Spinner
   displaySpinner = true;
   stateSpinner = 'visible';
 
   private sub: Subscription;
+  picsSubscription: Subscription;
+  isLoadingMoreSubscription: Subscription;
 
   adresse: string;
   pics: any[];
+  totalNumberOfFiles: number;
 
   // About the event
   name: string;
@@ -75,9 +67,31 @@ export class EventComponent implements OnInit, OnDestroy {
   // Animation variables
   picsState = ['visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible', 'visible'];
 
+  // Load following images
+  isLoadingMore = false;
+  page = 1;
+
+
+  constructor(private galeriesService: GaleriesService,
+              private activeRoute: ActivatedRoute,
+              private httpService: HttpService,
+              private picsService: PicsService) {
+    this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(
+      f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
+    );
+  }
+
   ngOnInit() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+    this.picsSubscription = this.picsService.picsStream.subscribe(pics => {
+      this.pics = pics;
+    });
+    this.isLoadingMoreSubscription = this.picsService.isLoadingMoreStream.subscribe(isLoadingMore => {
+      this.isLoadingMore = isLoadingMore;
+    });
+
     const selectedRoute = this.activeRoute.snapshot.params.event;
     this.httpService.currentGallery = selectedRoute;
     this.picsService.onChangeCurrentGallery(selectedRoute);
@@ -85,19 +99,18 @@ export class EventComponent implements OnInit, OnDestroy {
     // Request of pictures of the event
     this.galeriesService.getEventByName(selectedRoute)
     .subscribe(
-      (res: {files, gallery}) => {
-        this.pics = res.files;
+      (res: {files, number_of_files, gallery}) => {
         this.picsService.pics = res.files;
-        this.picsService.initRawPics();
+        this.picsService.numberOfPics = res.number_of_files;
+        this.picsService.initRawPics(res.number_of_files);
         const gallery = res.gallery;
         this.name = gallery.name;
         this.resume = gallery.description;
         // Define the state of all pictures as not going to be deleted
-        for (const pic of res.files) {
-          this.moderationState.push(false);
-          this.stateSpinner = 'hidden';
-          setTimeout(() => { this.displaySpinner = false; }, 200);
-        }
+        this.moderationState = Array(res.number_of_files).fill(false);
+        this.stateSpinner = 'hidden';
+        setTimeout(() => { this.displaySpinner = false; }, 200);
+        this.picsService.updatePics();
       },
       (error) => { }
     );
@@ -111,6 +124,18 @@ export class EventComponent implements OnInit, OnDestroy {
       this.sub.unsubscribe();
     }
   }
+
+  @HostListener('window:scroll', ['$event'])
+    scrollHandler() {
+      const articles = document.getElementsByClassName('thumb');
+      const articleHeight = articles[0].clientHeight;
+      const boundary = articles[articles.length - 1];
+      const boundaryTop = boundary.getBoundingClientRect().top;
+
+      if (boundaryTop - 3 * articleHeight < window.innerHeight) {
+        this.picsService.loadMorePics();
+      }
+    }
 
   activateUploadArea() {
     this.showUploadArea = true;
