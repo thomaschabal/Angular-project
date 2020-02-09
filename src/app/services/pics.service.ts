@@ -9,7 +9,7 @@ export class PicsService {
   currentGallery: string;
 
   pics: any[];
-  picsSource = new BehaviorSubject([])
+  picsSource = new BehaviorSubject([]);
   picsStream = this.picsSource.asObservable();
 
   numberOfPics: number;

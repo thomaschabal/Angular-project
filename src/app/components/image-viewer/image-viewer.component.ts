@@ -48,7 +48,7 @@ export class ImageViewerComponent implements OnInit {
     if (event.code === KEY_CODE.LEFT_ARROW) {
       if (this.indexPicture > 0) {
         this.navLeft();
-      };
+      }
     } else {
       if (event.code === KEY_CODE.RIGHT_ARROW) {
         if (this.indexPicture < this.picsService.numberOfPics - 1) {
