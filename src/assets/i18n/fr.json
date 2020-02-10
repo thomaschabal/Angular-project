@@ -86,6 +86,7 @@
     "moderation.setPrivate": "Rendre privée",
     "moderation.setPublic": "Rendre publique",
     "moderation.deleteGallery": "Supprimer la galerie",
+    "moderation.deleteGallery.confirm": "Confirme la suppression",
     "moderation.acceptAllSelectedPics": "Accepter les photos sélectionnées",
     "moderation.deleteAllSelectedPics": "Supprimer les photos sélectionnées",
     "moderation.galleryIsPrivate": "Cette galerie est privée. Seuls les administrateurs peuvent y accéder.",
@@ -128,6 +129,9 @@
   
     "signup.successSignup": "Tu as bien réussi à t'inscrire, tu peux maintenant valider ton inscription dans tes mails",
     "signup.error": "Tu as fait une erreur, vérifie ton email et ton mot de passe",
+
+    "upload.filesUploaded": "fichiers téléchargés",
+    "upload.remainingFiles": "Fichiers restant à enregistrer",
 
     "close": "Fermer"
   }

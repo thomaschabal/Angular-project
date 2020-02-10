@@ -18,10 +18,11 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   isPublic = false;
   @Output() moderating = new EventEmitter<boolean>();
   enModeration = false;
-  eventDeletionState = 'nothing';
   @Input() selectedRoute: string;
   @Input() moderationState: any[];
   moderationVisibility = 'hidden';
+  galleryDeletionModal = 'hidden';
+  galleryDeletedModal = 'hidden';
 
   constructor(private galeriesService: GaleriesService,
               private httpService: HttpService,
@@ -54,22 +55,25 @@ export class GaleriesModerationButtonsComponent implements OnInit {
     }
   }
 
+  openGalleryDeletionModal() {
+    this.galleryDeletionModal = 'visible';
+  }
+  closeGalleryDeletionModal() {
+    this.galleryDeletionModal = 'hidden';
+  }
+
+  finalRedirection() {
+    this.router.navigate([routesAppFromRoot.galeries]);
+  }
+
   // Delete the event, in the moderation phase
   deleteEvent() {
-    if (this.eventDeletionState === 'nothing') {
-      this.eventDeletionState = 'nearly deleted';
-      alert(Phrases['event.deleteGallery.galleryWillBeDeleted']);
-      // If the deletion confirmation didn't take place within 15s, then the gallery won't be deleted now
-      setTimeout(() => this.eventDeletionState = 'nothing', 15000);
-    } else {
-      this.galeriesService.deleteEvent(this.selectedRoute).subscribe(
-        (res) => {
-          alert(Phrases['event.deleteGallery.galleryWasDeleted']);
-          this.router.navigate([routesAppFromRoot.galeries]);
-        },
-        (error) => { }
-      );
-    }
+    this.galeriesService.deleteEvent(this.selectedRoute).subscribe(
+      (res) => {
+        this.galleryDeletedModal = 'visible';
+      },
+      (error) => { }
+    );
   }
 
   // Validate the deletion of selected pictures
@@ -91,8 +95,11 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     if (event.keyCode === KEY_CODE.ESCAPE && this.moderationVisibility === 'visible') {
-      this.hideModerationArea();
+      if (this.galleryDeletionModal === 'visible') {
+        this.closeGalleryDeletionModal();
+      } else {
+        this.hideModerationArea();
+      }
     }
   }
-
 }

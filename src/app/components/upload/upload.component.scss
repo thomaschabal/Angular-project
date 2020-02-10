@@ -1,0 +1,12 @@
+@import "../../PontheStyle.scss";
+
+h3 {
+    font-weight: bold;
+    font-size: font-size(MEDIUM);
+    margin-bottom: units(1);
+}
+
+ul {
+    padding-left: units(3);
+    list-style: none;
+}

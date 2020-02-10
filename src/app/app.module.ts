@@ -17,6 +17,7 @@ import { PlyrModule } from 'ngx-plyr';
 import { AppComponent } from './app.component';
 
 //// COMPONENTS
+import { AlertComponent } from './components/alert/alert.component';
 import { AuthBgSliderComponent } from './components/auth-bg-slider/auth-bg-slider.component';
 import { AuthCardComponent } from './components/auth-card/auth-card.component';
 import { AuthFooterComponent } from './components/auth-footer/auth-footer.component';
@@ -80,6 +81,7 @@ export function setupTranslateFactory(
 @NgModule({
   declarations: [
     AppComponent,
+    AlertComponent,
     AuthBgSliderComponent,
     AuthCardComponent,
     AuthFooterComponent,

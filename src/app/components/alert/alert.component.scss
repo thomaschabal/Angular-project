@@ -5,10 +5,13 @@ h1 {
   color: color(DARK_GREY);
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  padding-bottom: units(2);
   text-align: center;
-  border-bottom: 1px solid color(LIGHT_GREY);
   font-size: font-size(LARGE);
+  margin-bottom: units(1);
+  overflow: hidden;
+  text-transform: inherit;
+  padding-left: units(1);
+  padding-right: units(1);
 
   @include sm {
     font-size: font-size(SMALL) !important;
@@ -33,26 +36,6 @@ button:hover {
   border: none;
   color: color(DARK) !important;
   background-color: color(LIGHT_GREY) !important;
-}
-
-#moderationBanner {
-  width: units(6);
-  right: 0;
-  top: 12.5vh;
-  position: fixed;
-  transform: translateX(1em);
-  background: $BUTTON-BACKGROUND-GRADIENT;
-  padding: units(1.25);
-  border-radius: units(1.5);
-  transition: width 0.5s ease-in-out;
-  z-index: 1;
-}
-#moderationBanner:hover {
-  width: units(10);
-}
-#moderationBanner > img {
-  cursor: pointer;
-  width: units(5);
 }
 
 $MODERATION-PADDING: units(6);
@@ -105,11 +88,9 @@ $MODERATION-PADDING-MOBILE: units(2);
 }
 
 #moderation > footer {
-  padding-top: units(2);
   padding-right: $MODERATION-PADDING;
   text-align: center;
   width: calc(100% + 2 * $MODERATION-PADDING);
-  border-top: 1px solid color(LIGHT_GREY);
 
   @include sm {
     padding-right: units(1);
@@ -135,33 +116,6 @@ $MODERATION-PADDING-MOBILE: units(2);
 }
 .close:focus, .close:active {
   color: color(DARK) !important;
-}
-
-#bodyModeration {
-  display: flex;
-
-  @include sm {
-    flex-direction: column;
-    max-height: 55vh;
-    overflow: scroll;
-  }
-}
-
-#leftColumn, #rightColumn {
-  width: 48.5%;
-  overflow-y: scroll;
-  max-height: 50vh;
-
-  @include sm {
-    width: 100%;
-    max-height: none;
-    overflow-y: visible;
-  }
-}
-#leftColumn {
-  display: flex;
-  flex-direction: column;
-  margin-right: 3%;
 }
 
 @media screen and (max-width: 1280px) {

@@ -5,6 +5,7 @@ import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awes
 
 import { HttpService } from '../../services/http.service';
 import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-upload',
@@ -19,6 +20,14 @@ export class UploadComponent implements OnInit {
   myFiles: FilePreviewModel[] = [];
   selectedRoute: string;
 
+  filesToUploadSubscription: Subscription;
+  filesUploadedSubscription: Subscription;
+  filesUploadingSubscription: Subscription;
+
+  filesToUpload: number;
+  filesUploaded: number;
+  filesUploading = [];
+
   constructor(private httpService: HttpService,
               private httpClient: HttpClient,
               private activeRoute: ActivatedRoute) { }
@@ -27,6 +36,21 @@ export class UploadComponent implements OnInit {
     const selectedRoute = this.activeRoute.snapshot.params.event;
     this.selectedRoute = selectedRoute;
     this.httpService.currentGallery = selectedRoute;
+
+    this.filesToUploadSubscription = this.adapter.filesToUploadStream.subscribe(nbOfFiles => {
+      this.filesToUpload = nbOfFiles;
+    });
+    this.filesUploadedSubscription = this.adapter.filesUploadedStream.subscribe(nbOfFiles => {
+      this.filesUploaded = nbOfFiles;
+    });
+    this.filesUploadingSubscription = this.adapter.filesUploadingStream.subscribe(files => {
+      this.filesUploading = Object.keys(files);
+    });
+  }
+
+  ngOnDestroy() {
+    this.filesToUploadSubscription.unsubscribe();
+    this.filesUploadedSubscription.unsubscribe();
   }
 
   onValidationError(e: ValidationError) {

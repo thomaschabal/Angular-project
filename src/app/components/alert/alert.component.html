@@ -2,13 +2,9 @@
 <div id="moderation" [class]="visible">
   <h1>{{ title }}</h1>
 
-  <div id="bodyModeration">
-    <ng-content></ng-content>
-  </div>
-
   <footer>
     <button class="close" type="button" name="button" (click)="onCloseModal()">
-      {{ closeText }}
+      {{ 'close' | translate }}
     </button>
   </footer>
 </div>

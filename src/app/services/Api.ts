@@ -6,7 +6,7 @@ export default {
     cgu: '/cgu',
     login: '/login',
     register: '/register',
-    reset: '/reset',
+    reset: '/reset/',
 
     /* Home */
     getLatestGalleries: '/get-latest-galleries',

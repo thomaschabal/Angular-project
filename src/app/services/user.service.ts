@@ -33,15 +33,7 @@ export class UserService {
   }
 
   addUser(user: User) {
-    this.httpService.post(API_ROUTES.register, user).subscribe(
-      (res) => {
-        this.router.navigate([routesAppFromRoot.auth]);
-        alert(Phrases['signup.successSignup']);
-      },
-      (error) => {
-        alert(Phrases['signup.error']);
-      }
-    );
+    return this.httpService.post(API_ROUTES.register, user);
   }
 
   resetUser(form: object) {

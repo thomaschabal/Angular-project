@@ -12,6 +12,12 @@
     </form>
   </app-auth-card>
 
+  <app-alert
+		[title]="'reset.sentEmail' | translate"
+		[visible]="alertVisible"
+		(close)="closeAlert()"
+	></app-alert>
+
   <!-- Footer -->
   <app-auth-footer></app-auth-footer>
 

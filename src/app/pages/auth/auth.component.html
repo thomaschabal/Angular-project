@@ -20,6 +20,12 @@
 		</div> -->
 	</app-auth-card>
 
+	<app-alert
+		[title]="'login.error' | translate"
+		[visible]="isLoginError"
+		(close)="closeAlert()"
+	></app-alert>
+
 	<!-- Useful links -->
 	<app-auth-footer id="auth-footer"></app-auth-footer>
 

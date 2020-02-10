@@ -8,12 +8,17 @@ import { HomeService } from './home.service';
 import { Phrases } from '../Phrases';
 import { routesAppFromRoot } from '../Routes';
 import API_ROUTES from './Api';
+import { BehaviorSubject } from 'rxjs';
 
 export const TOKEN_NAME = 'jwt_token';
 
 @Injectable()
 export class AuthService {
   isAuth: boolean;
+  
+  loginError = false;
+  loginErrorSource = new BehaviorSubject(false);
+  loginErrorStream = this.loginErrorSource.asObservable();
 
   constructor(private httpService: HttpService,
               private homeService: HomeService,
@@ -80,6 +85,11 @@ export class AuthService {
     return this.httpService.get(API_ROUTES.cgu);
   }
 
+  updateLoginError(newState: boolean) {
+    this.loginError = newState;
+    this.loginErrorSource.next(newState);
+  }
+
   // Login : request to the server and update of the information on the user
   signIn(user: LoggingUser) {
     this.httpService.post(API_ROUTES.login, user).subscribe(
@@ -91,7 +101,7 @@ export class AuthService {
         this.homeService.getLatestGalleries();
         this.homeService.getLovePics();
       },
-      (error) => { alert(Phrases['login.error']); }
+      (error) => { this.updateLoginError(true); }
     );
   }
 

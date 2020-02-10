@@ -18,7 +18,7 @@ export class ResetComponent implements OnInit {
   routes = routesAppFromRoot;
   // Reset form defined here
   resetForm: FormGroup;
-
+  alertVisible = 'hidden';
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -40,9 +40,13 @@ export class ResetComponent implements OnInit {
   onSubmitForm() {
     this.resetForm.value.email = this.resetForm.value.email + EXTENSION_MAILS_ENPC;
     this.userService.resetUser(this.resetForm.value).subscribe(
-      (res) => { alert(Phrases['reset.sentEmail']); },
+      (res) => { this.alertVisible = 'visible'; },
       (error) => { }
     );
+  }
+
+  closeAlert() {
+    this.alertVisible = 'hidden';
     this.router.navigate([routesAppFromRoot.auth]);
   }
 }

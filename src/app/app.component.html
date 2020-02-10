@@ -8,3 +8,9 @@
 
 <!-- Footer -->
 <app-footer></app-footer>
+
+<app-alert
+	[title]="titleEasterEgg"
+	[visible]="easterEggVisible"
+	(close)="closeEasterEgg()"
+	></app-alert>

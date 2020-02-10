@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessagesService } from '../../services/messages.service';
 import { Phrases } from '../../Phrases';
 
+const DURATION_DISPLAYING = 6000;
+
 @Component({
   selector: 'app-home-form',
   templateUrl: './home-form.component.html',
@@ -11,6 +13,8 @@ import { Phrases } from '../../Phrases';
 export class HomeFormComponent implements OnInit {
   // Form to send a message to the admins of the site
   messageForm: FormGroup;
+  successMessage = false;
+  failureMessage = false;
 
   constructor(private formBuilder: FormBuilder,
               private messagesService: MessagesService) { }
@@ -26,15 +30,25 @@ export class HomeFormComponent implements OnInit {
     });
   }
 
+  resetForm() {
+    this.messageForm.reset();
+    this.initForm();
+  }
+
   // Submission of the contact form
   onSubmitMessage() {
-    console.log(this.messageForm);
     if (this.messageForm.value.message !== '') {
       this.messagesService.materialPost(this.messageForm.value).subscribe(
-        (res) => { alert(Phrases['messages.sent']); },
-        (error) => { }
+        (res) => {
+          this.successMessage = true;
+          this.resetForm();
+          setTimeout(() => this.successMessage = false, DURATION_DISPLAYING);
+        },
+        (error) => {
+          this.failureMessage = true;
+          setTimeout(() => this.failureMessage = false, DURATION_DISPLAYING);
+        }
       );
     }
   }
-
 }

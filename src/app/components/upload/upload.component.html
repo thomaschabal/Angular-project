@@ -1,3 +1,10 @@
+<h3 *ngIf="filesToUpload > 0">{{ filesUploaded }} / {{ filesToUpload }} {{ 'upload.filesUploaded' | translate }}</h3>
+<div *ngIf="filesUploading.length > 0">
+  <h3>{{ 'upload.remainingFiles' }} :</h3>
+  <ul>
+    <li *ngFor="let file of filesUploading">{{ file }}</li>
+  </ul>
+</div>
 <ngx-file-picker #uploader
   [totalMaxSize]="1000"
   [fileMaxCount]="250"
@@ -15,6 +22,3 @@
   style="margin-bottom: 2vh;"
 >
 </ngx-file-picker>
-<!-- <button type="button" name="button"
-        *ngIf="clickAddFiles"
-        (click)="uploadFilesToServer()">Uploader les fichiers</button> -->

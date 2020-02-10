@@ -1,15 +1,43 @@
 import { FilePreviewModel, FilePickerAdapter } from 'ngx-awesome-uploader';
 import { HttpRequest, HttpClient, HttpEvent, HttpEventType, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpService } from '../../services/http.service';
 
 export class DemoFilePickerAdapter extends FilePickerAdapter {
+  filesUploading = {};
+  filesUploadingSource = new BehaviorSubject({});
+  filesUploadingStream = this.filesUploadingSource.asObservable();
+
+  numberOfFilesToUpload = 0;
+  filesToUploadSource = new BehaviorSubject(0);
+  filesToUploadStream = this.filesToUploadSource.asObservable();
+
+  numberOfFilesUploaded = 0;
+  filesUploadedSource = new BehaviorSubject(0);
+  filesUploadedStream = this.filesUploadedSource.asObservable();
+
   constructor(private http: HttpClient, private httpService: HttpService) {
     super();
   }
 
+  updateFilesUploading() {
+    this.filesUploadingSource.next(this.filesUploading);
+  }
+  updateFilesToUpload(nb: number) {
+    this.numberOfFilesToUpload = nb;
+    this.updateFilesUploading();
+    this.filesToUploadSource.next(nb);
+  }
+  updateFilesUploaded(nb: number) {
+    this.numberOfFilesUploaded = nb;
+    this.updateFilesUploading();
+    this.filesUploadedSource.next(nb);
+  }
+
   public uploadFile(fileItem: FilePreviewModel) {
+    this.filesUploading[fileItem.fileName] = true;
+    this.updateFilesToUpload(this.numberOfFilesToUpload + 1);
     const form = new FormData();
     form.append('file', fileItem.file);
     const api = this.httpService.apiUrl + '/file-upload/' + this.httpService.currentGallery;
@@ -23,6 +51,8 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
     .pipe(
       map( (res: HttpEvent<any>) => {
         if (res.type === HttpEventType.Response) {
+          delete this.filesUploading[fileItem.fileName];
+          this.updateFilesUploaded(this.numberOfFilesUploaded + 1);
           return res.body.id;
         } else {
           return res;

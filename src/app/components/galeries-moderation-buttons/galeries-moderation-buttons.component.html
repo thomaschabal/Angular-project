@@ -23,9 +23,8 @@
             (click)="publicPrivate()">
       {{ 'moderation.setPublic' | translate }}
     </button>
-    <button *ngIf="enModeration"
-            id="deleteevent" type="button" name="button"
-            (click)="deleteEvent()">
+    <button id="deleteevent" type="button" name="button"
+            (click)="openGalleryDeletionModal()">
       {{ 'moderation.deleteGallery' | translate }}
     </button>
     <button *ngIf="enModeration"
@@ -37,3 +36,21 @@
 
   <app-upload id="rightColumn"></app-upload>
 </app-modal>
+
+<app-modal
+  id="confirm-delete-gallery"
+  [title]="'moderation.deleteGallery.confirm' | translate"
+  [visible]="galleryDeletionModal"
+  [closeText]="'close' | translate"
+  (close)="closeGalleryDeletionModal()">
+  <h3>{{ 'event.deleteGallery.galleryWillBeDeleted' | translate }}</h3>
+  <button id="deleteevent" type="button" name="button"
+            (click)="deleteEvent()">
+      {{ 'moderation.deleteGallery' | translate }}
+    </button>
+</app-modal>
+
+<app-alert
+  [title]="'event.deleteGallery.galleryWasDeleted' | translate"
+  [visible]="galleryDeletedModal"
+  (close)="finalRedirection()"></app-alert>

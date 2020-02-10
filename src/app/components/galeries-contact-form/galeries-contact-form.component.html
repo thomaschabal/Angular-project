@@ -38,3 +38,9 @@
     </form>
   </section>
 </div>
+
+<app-alert
+	[title]="'messages.sent' | translate"
+	[visible]="alertVisible"
+	(close)="closeAlert()"
+	></app-alert>

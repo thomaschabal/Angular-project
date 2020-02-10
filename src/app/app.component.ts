@@ -35,6 +35,8 @@ export class AppComponent {
 
   // Easter egg for redirection
   keys = '';
+  titleEasterEgg = '';
+  easterEggVisible = 'hidden';
 
   constructor(private authService: AuthService,
               private httpService: HttpService,
@@ -46,6 +48,19 @@ export class AppComponent {
   // Function for page transitions
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
+
+  showEasterEgg(phrase: string) {
+    this.titleEasterEgg = phrase;
+    this.easterEggVisible = 'visible';
+    this.keys = '';
+  }
+  closeEasterEgg() {
+    this.easterEggVisible = 'hidden';
+  }
+  redirectEasterEgg(redirection: string[]) {
+    this.router.navigate(redirection);
+    this.keys = '';
   }
 
   // Easter egg
@@ -60,8 +75,7 @@ export class AppComponent {
       window.location.href = environment.baseUrl + '/assets/images/logo-ponthe.svg';
     }
     if (this.keys.search('ponthe') !== -1 || this.keys.search('ponthé') !== -1) {
-      alert('Merci le Ponthéééé !!! On t\'aime <3 Bisous <3');
-      this.keys = '';
+      this.showEasterEgg('Merci le Ponthéééé !!! On t\'aime <3 Bisous <3');
     }
     if (this.keys.search('facebook') !== -1) {
       window.location.href = 'https://www.facebook.com';
@@ -82,12 +96,10 @@ export class AppComponent {
       window.location.href = 'https://github.com/ENPC-Ponthe/Angular-project';
     }
     if (this.keys.search('foyer') !== -1) {
-      alert('Foyer daubé !');
-      this.keys = '';
+      this.showEasterEgg('Foyer daubé !');
     }
     if (this.keys.search('42') !== -1) {
-      alert('Bonne réponse !');
-      this.keys = '';
+      this.showEasterEgg('Bonne réponse !');
     }
     if (this.keys.search('tartine') !== -1) {
       window.location.href = 'https://www.youtube.com/watch?v=iLE1qaQBjxA';
@@ -95,29 +107,23 @@ export class AppComponent {
 
     // Shortcuts for administrators
     if (this.keys.search('home') !== -1) {
-      this.router.navigate([routesAppFromRoot.home]);
-      this.keys = '';
+      this.redirectEasterEgg([routesAppFromRoot.home]);
     }
     if (this.keys.search('pics') !== -1) {
-      this.router.navigate([routesAppFromRoot.galeries]);
-      this.keys = '';
+      this.redirectEasterEgg([routesAppFromRoot.galeries]);
     }
     if (this.keys.search('dashboard') !== -1) {
-      this.router.navigate([routesAppFromRoot.dashboard]);
-      this.keys = '';
+      this.redirectEasterEgg([routesAppFromRoot.dashboard]);
     }
     if (this.keys.search('membres') !== -1 || this.keys.search('members') !== -1) {
-      this.router.navigate([routesAppFromRoot.members]);
-      this.keys = '';
+      this.redirectEasterEgg([routesAppFromRoot.members]);
     }
     if (this.keys.search('matos') !== -1) {
-      this.router.navigate([routesAppFromRoot.material]);
-      this.keys = '';
+      this.redirectEasterEgg([routesAppFromRoot.material]);
     }
     if (this.httpService.isAdmin) {
       if (this.keys.search('moderation') !== -1 || this.keys.search('modération') !== -1) {
-        this.router.navigate([routesAppFromRoot.moderation]);
-        this.keys = '';
+        this.redirectEasterEgg([routesAppFromRoot.moderation]);
       }
       if (this.keys.search('slack') !== -1) {
         window.location.href = 'https://ponthe.slack.com';
@@ -128,8 +134,7 @@ export class AppComponent {
     }
     if (this.keys.search('logout') !== -1) {
       this.authService.signOut();
-      this.router.navigate([routesAppFromRoot.auth]);
-      this.keys = '';
+      this.redirectEasterEgg([routesAppFromRoot.auth]);
     }
   }
 }

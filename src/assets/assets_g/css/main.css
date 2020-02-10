@@ -970,7 +970,7 @@ table.alt tfoot {
 	overflow-y: auto;
 	position: fixed;
 	width: 100%;
-	z-index: 10001;
+	z-index: 2;
 }
 
 .panel.active {

@@ -21,7 +21,7 @@
       <div class="field" id="promotion">
         <label for="promotion-select">{{ 'newAccount.form.promotion' | translate }}</label>
         <select id="promotion-select" class="form1" name="promotion" formControlName="promotion">
-          <option *ngFor="let prom of availablePromotions" value="prom">{{ prom }}</option>
+          <option *ngFor="let prom of availablePromotions" [value]="prom">{{ prom }}</option>
         </select>
       </div>
       <div class="field" id="password">
@@ -30,11 +30,23 @@
       </div>
       <div class="field" id="confirmPassword">
         <label for="confirmPassword-input">{{ 'newAccount.form.passwordConfirmation' | translate }}</label>
-        <input id="confirmPassword-input" type="password" name="confirmationPassword" [placeholder]="'newAccount.form.passwordConfirmation' | translate" formControlName="confirmationPassword"/>
+        <input id="confirmPassword-input" type="password" name="confirmation_password" [placeholder]="'newAccount.form.passwordConfirmation' | translate" formControlName="confirmation_password"/>
       </div>
       <input id="submit" class="submit" type="submit" [value]="'newAccount.form.submitButton' | translate" [disabled]="userForm.invalid"/>
     </form>
   </app-auth-card>
+
+  <app-alert
+		[title]="'signup.successSignup' | translate"
+		[visible]="alertSuccessVisible"
+		(close)="closeAlertSuccess()"
+  ></app-alert>
+  
+  <app-alert
+		[title]="'signup.error' | translate"
+		[visible]="alertErrorVisible"
+		(close)="closeAlertError()"
+	></app-alert>
 
   <!-- Footer -->
   <app-auth-footer></app-auth-footer>

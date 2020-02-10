@@ -86,6 +86,7 @@
     "moderation.setPrivate": "Make private",
     "moderation.setPublic": "Make public",
     "moderation.deleteGallery": "Delete the gallery",
+    "moderation.deleteGallery.confirm": "Confirm deletion",
     "moderation.acceptAllSelectedPics": "Accept selected photos",
     "moderation.deleteAllSelectedPics": "Delete selected photos",
     "moderation.galleryIsPrivate": "This gallery is private. Only administrators can access it.",
@@ -128,6 +129,9 @@
   
     "signup.successSignup": "You have successfully registered, you can now validate your registration in your emails",
     "signup.error": "You made a mistake, check your email and password",
+
+    "upload.filesUploaded": "uploaded files",
+    "upload.remainingFiles": "Files still to be saved",
 
     "close": "Close"
   }

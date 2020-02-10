@@ -4,5 +4,6 @@ export class User {
               public email: string,
               public promotion: string,
               public password: string,
-              public confirmationPassword: string) {}
+              // @ts-ignore
+              public confirmation_password: string) {}
 }
