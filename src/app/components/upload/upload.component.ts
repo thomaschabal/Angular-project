@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.scss']
 })
-export class UploadComponent implements OnInit {
+export class UploadComponent implements OnInit, OnDestroy {
 
   // FILE UPLOAD
   @ViewChild('uploader') uploader: FilePickerComponent;

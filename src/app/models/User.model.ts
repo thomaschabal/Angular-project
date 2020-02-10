@@ -4,6 +4,6 @@ export class User {
               public email: string,
               public promotion: string,
               public password: string,
-              // @ts-ignore
+              // tslint:disable-next-line: variable-name
               public confirmation_password: string) {}
 }

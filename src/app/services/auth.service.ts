@@ -15,7 +15,7 @@ export const TOKEN_NAME = 'jwt_token';
 @Injectable()
 export class AuthService {
   isAuth: boolean;
-  
+
   loginError = false;
   loginErrorSource = new BehaviorSubject(false);
   loginErrorStream = this.loginErrorSource.asObservable();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../../services/auth.service';
@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./auth.component.scss'],
 })
 
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
   pathAuthVideo = PATH_AUTH_VIDEO;
 
   // Authentification form defined here
