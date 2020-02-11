@@ -25,7 +25,7 @@ $PONTHE-PROMO-IMAGES-LARGE: (
     020: 
         url($TEAM-FOLDER + "020.jpg")
         url($TEAM-FOLDER + "020_pulls.jpg")
-        url($TEAM-FOLDER + "020_trombi.png")
+        url($TEAM-FOLDER + "020_trombi.jpg")
         url($TEAM-FOLDER + "020_completed.jpg") 
         url($TEAM-FOLDER + "020_021.jpg"),
     021: 
@@ -33,6 +33,7 @@ $PONTHE-PROMO-IMAGES-LARGE: (
         url($TEAM-FOLDER + "021_trombi.jpg")
         url($TEAM-FOLDER + "021_passa.jpg")
         url($TEAM-FOLDER + "021_pulls.jpg")
+        url($TEAM-FOLDER + "020_021_gala.jpeg")
 );
 $PONTHE-PROMO-IMAGES-SMALL: (
     015: url($ASSETS-FOLDER + "05.jpg"),
@@ -43,14 +44,15 @@ $PONTHE-PROMO-IMAGES-SMALL: (
     020: 
         url($TEAM-FOLDER + "020_mobile.jpg")
         url($TEAM-FOLDER + "020_pulls_mobile.jpg")
-        url($TEAM-FOLDER + "020_trombi.png")
+        url($TEAM-FOLDER + "020_trombi.jpg")
         url($TEAM-FOLDER + "020_completed.jpg")
-        url($TEAM-FOLDER + "020_021_mobile.jpg"),
+        url($TEAM-FOLDER + "020_021_mobile.jpeg"),
     021: 
         url($TEAM-FOLDER + "021_mobile.jpg")
         url($TEAM-FOLDER + "021_trombi.jpg")
         url($TEAM-FOLDER + "021_passa.jpg")
         url($TEAM-FOLDER + "021_pulls_mobile.jpg")
+        url($TEAM-FOLDER + "020_021_gala.jpg")
 );
 
 $INDEX-PONTHE-TROMBI: (
