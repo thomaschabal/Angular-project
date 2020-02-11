@@ -2,7 +2,16 @@
   <div class="fields" [formGroup]="materialForm" (ngSubmit)="onSubmitMateriel()">
     <div class="field">
       <label for="matos">{{ 'material.form.matos.title' | translate }}</label>
-      <input id="matos" type="text" name="matos" [placeholder]="'material.form.matos' | translate" formControlName="matos"/>
+      <!-- <input id="matos" type="text" name="matos" [placeholder]="'material.form.matos' | translate" formControlName="matos"/> -->
+    </div>
+    <div id="items">
+      <div *ngFor="let item of listMatos" class="itemCard" (click)="onClickItem(item)" [id]="selectedItems[item.name] ? 'selected' : 'none'">
+        <div class="itemPic">
+          <img [src]="item.img" />
+        </div>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.descriptif }}</p>
+      </div>
     </div>
     <div class="field">
       <label for="message">{{ 'material.form.message.title' | translate }}</label>

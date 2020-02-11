@@ -1,0 +1,22 @@
+@import "./Colors.scss";
+
+$BOX-SHADOW-INPUT-BASE: color(DARK) 0px 0px;
+$BOX-SHADOW-INPUT-BASE-LIGHT: color(WHITE) 0px 0px;
+
+$BOX-SHADOW: (
+    NONE: 2px,
+    LIGHT: 4px,
+    LARGE: 10px,
+);
+
+@function box-shadow($key) {
+    @if map-has-key($BOX-SHADOW, $key ) {
+        @return $BOX-SHADOW-INPUT-BASE map-get($BOX-SHADOW, $key);
+    }
+}
+
+@function box-shadow-light($key) {
+    @if map-has-key($BOX-SHADOW, $key ) {
+        @return $BOX-SHADOW-INPUT-BASE-LIGHT map-get($BOX-SHADOW, $key);
+    }
+}

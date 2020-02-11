@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { MessagesService } from '../../services/messages.service';
+import MATERIAL from '../../constants/Material';
 import { Phrases } from '../../Phrases';
 
 const DURATION_DISPLAYING = 6000;
@@ -19,6 +20,9 @@ export class MaterialBookingFormComponent implements OnInit {
   successMessage = false;
   failureMessage = false;
   materialForm: FormGroup;
+  listMatos = MATERIAL;
+  allAccessories = MATERIAL.map(item => item.name);
+  selectedItems = {};
 
   constructor(private formBuilder: FormBuilder,
               private messagesService: MessagesService) { }
@@ -30,6 +34,17 @@ export class MaterialBookingFormComponent implements OnInit {
   // Initialisation of the form
   initForm() {
     this.materialForm = this.formBuilder.group(EMPTY_FORM);
+  }
+
+  onClickItem(item: any) {
+    if (this.selectedItems[item.name]) {
+      delete this.selectedItems[item.name];
+    } else {
+      this.selectedItems[item.name] = true;
+    }
+    let matosString = '';
+    Object.keys(this.selectedItems).map(it => matosString += it + ', ');
+    this.materialForm.controls.matos.setValue(matosString);
   }
 
   resetForm() {

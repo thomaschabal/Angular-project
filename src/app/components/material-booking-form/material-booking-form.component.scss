@@ -40,3 +40,92 @@ label {
 .hidden {
 	visibility: hidden;
 }
+
+#items {
+	width: 100%;
+	display: ruby;
+	overflow-x: scroll;
+	margin: 0 1.5em;
+	margin-top: units(2);
+
+	@include sm {
+		margin: 0 units(2);
+	}
+}
+
+.itemCard {
+	width: units(30);
+	height: units(47.5);
+	padding: units(3) + 3;
+	border: 1px solid color(LIGHT_GREY);
+	border-radius: units(3);
+	margin: units(1);
+	vertical-align: top;
+	transition: background 0.3s ease, box-shadow 0.3s ease;
+
+	@include sm {
+		padding: units(1) + 3;
+		height: units(33);
+		width: units(22);
+	}
+	@include md {
+		padding: units(1) + 3;
+		height: units(42.5);
+		width: units(25);
+	}
+}
+.itemCard:hover {
+	background: color(LIGHT_GREY);
+	box-shadow: box-shadow(LIGHT);
+	cursor: pointer;
+}
+
+.itemPic {
+	max-width: 100%;
+	height: units(22);
+
+	@include sm {
+		height: units(15);
+	}
+}
+.itemCard img {
+	max-width: 100%;
+	max-height: units(20);
+	margin: auto;
+
+	@include sm {
+		height: units(13);
+	}
+}
+
+.itemCard h2 {
+	font-size: font-size(XXLARGE);
+	margin-bottom: units(1);
+
+	@include sm {
+		font-size: font-size(LARGE);
+	}
+}
+.itemCard p {
+	font-size: font-size(XLARGE);
+	line-height: 1.5em;
+
+	@include sm {
+		font-size: 14px;
+	}
+	@include md {
+		font-size: font-size(MEDIUM);
+	}
+}
+
+#selected {
+	border: 4px solid color(SUCCESS);
+	padding: units(3);
+
+	@include sm {
+		padding: units(1);
+	}
+	@include md {
+		padding: units(1);
+	}
+}
