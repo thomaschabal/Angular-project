@@ -22,6 +22,8 @@ export class DashboardComponent implements OnInit {
 
   // On click on button "Modérer"
   navigateToModeration() {
-    this.router.navigate([routesAppFromRoot.moderation]);
+    // TODO : implement moderation on this Angular version
+    // this.router.navigate([routesAppFromRoot.moderation]);
+    window.location.href = 'https://ponthe-testing.enpc.org/v1/moderation';
   }
 }
