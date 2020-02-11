@@ -56,7 +56,7 @@ label {
 .itemCard {
 	width: units(30);
 	height: units(47.5);
-	padding: units(3) + 3;
+	padding: units(2) + 3;
 	border: 1px solid color(LIGHT_GREY);
 	border-radius: units(3);
 	margin: units(1);
@@ -120,7 +120,7 @@ label {
 
 #selected {
 	border: 4px solid color(SUCCESS);
-	padding: units(3);
+	padding: units(2);
 
 	@include sm {
 		padding: units(1);
