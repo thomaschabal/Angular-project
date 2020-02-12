@@ -14,6 +14,10 @@
     </div>
 
     <div id="col_admin_2">
+        <button id="tutos" type="button" name="button"
+              (click)="displayTutorials()">
+        {{ 'dashboard.links.tutorials' | translate }}
+      </button><br/>
       <button id="moderation_button" type="button" name="button"
               (click)="navigateToModeration()">
         {{ 'dashboard.links.moderation' | translate }}
@@ -25,3 +29,5 @@
   </div>
 
 </section>
+
+<app-tutorials *ngIf="tutorialsVisible" (close)="displayTutorials()"></app-tutorials>

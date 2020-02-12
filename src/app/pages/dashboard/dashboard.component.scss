@@ -58,6 +58,20 @@ button {
   background: $BUTTON-BACKGROUND-GRADIENT;
 }
 
+#tutos {
+	width: 20vw;
+	font-weight: bold;
+	background: color(WHITE);
+	color: color(DARK_DARK_GREY);
+	padding: units(0.5);
+	transition: border 0.2s ease, box-shadow 0.2s ease, padding 0.2s ease;
+}
+#tutos:hover {
+	border: units(0.5) solid color(DARK_DARK_GREY);
+	padding: 0;
+	box-shadow: box-shadow-light(LARGE);
+}
+
 #moderation_button {
 	width: 20vw;
 	font-weight: bold;

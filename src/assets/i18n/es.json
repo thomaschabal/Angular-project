@@ -24,10 +24,12 @@
     "dashboard.failureCreationGallery": "Creación fallida",
     "dashboard.csv_account_creation.add_csv": "Añadir cuentas por CSV",
     "dashboard.csv_account_creation.submit": "Crear cuentas",
+    "dashboard.links.tutorials": "Tutoriales",
     "dashboard.links.moderation": "Moderado",
     "dashboard.links.slack": "Slack",
     "dashboard.links.trello": "Trello",
     "dashboard.links.youtube": "Youtube",
+    "dashboard.tutos.title": "Tutorials ponthe.enpc.org",
   
     "event.deleteGallery.galleryWillBeDeleted": "Esta galería está a punto de ser eliminada. Haz clic por segunda vez en \"Eliminar galería\" para validar la acción.",
     "event.deleteGallery.galleryWasDeleted": "La galería ha sido eliminada",

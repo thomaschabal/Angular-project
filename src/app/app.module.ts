@@ -42,6 +42,8 @@ import { NavLinkComponent } from './components/nav-link/nav-link.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 import { PicThumbComponent } from './components/pic-thumb/pic-thumb.component';
 import { PontheTeamComponent } from './components/ponthe-team/ponthe-team.component';
+import { TutorialSubjectComponent } from './components/tutorial-subject/tutorial-subject.component';
+import { TutorialsComponent } from './components/tutorials/tutorials.component';
 import { UploadComponent } from './components/upload/upload.component';
 
 //// PAGES
@@ -72,6 +74,7 @@ import { PicsService } from './services/pics.service';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './services/translate.pipe';
 import { UserService } from './services/user.service';
+
 
 export function setupTranslateFactory(
   service: TranslateService): () => void {
@@ -105,6 +108,8 @@ export function setupTranslateFactory(
     NavigationButtonComponent,
     PicThumbComponent,
     PontheTeamComponent,
+    TutorialSubjectComponent,
+    TutorialsComponent,
     UploadComponent,
     AuthComponent,
     CguComponent,

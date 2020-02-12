@@ -1,0 +1,5 @@
+<div class="tuto">
+  <h3 (click)="onClickTuto()" [innerHTML]="tuto.question"></h3>
+  <!-- <p *ngIf="isOpen" [innerHTML]="tuto.answer"></p> -->
+  <p [class]="isOpen ? 'visible' : 'none'" [innerHTML]="tuto.answer"></p>
+</div>
