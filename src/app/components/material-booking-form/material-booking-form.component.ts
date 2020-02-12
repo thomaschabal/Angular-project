@@ -4,11 +4,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MessagesService } from '../../services/messages.service';
 import MATERIAL from '../../constants/Material';
 import { Phrases } from '../../Phrases';
+import { BREAKPOINTS } from 'src/app/constants/Breakpoints';
 
+const UNIT = 8;
 const DURATION_DISPLAYING = 6000;
 const EMPTY_FORM = {
-  matos : ['', Validators.required],
-  message : ['', Validators.required]
+  device : ['', Validators.required],
+  message : ['', Validators.required],
+  date: ['', Validators.required]
 };
 
 @Component({
@@ -31,6 +34,16 @@ export class MaterialBookingFormComponent implements OnInit {
     this.initForm();
   }
 
+  sizeMatosContainer() {
+    if (window.innerWidth < BREAKPOINTS.SMALL) {
+      return this.listMatos.length * (22 * UNIT + 2 * UNIT);
+    } else if (window.innerWidth < BREAKPOINTS.MEDIUM) {
+      return this.listMatos.length * (25 * UNIT + 2 * UNIT);
+    } else {
+      return this.listMatos.length * (30 * UNIT + 2 * UNIT);
+    }
+  }
+
   // Initialisation of the form
   initForm() {
     this.materialForm = this.formBuilder.group(EMPTY_FORM);
@@ -44,17 +57,32 @@ export class MaterialBookingFormComponent implements OnInit {
     }
     let matosString = '';
     Object.keys(this.selectedItems).map(it => matosString += it + ', ');
-    this.materialForm.controls.matos.setValue(matosString);
+    this.materialForm.controls.device.setValue(Object.keys(this.selectedItems).join(', '));
   }
 
   resetForm() {
     this.materialForm.reset();
+    this.selectedItems = {};
     this.initForm();
+  }
+
+  formattedForm() {
+    const formValue = this.materialForm.value;
+
+    const stuffAsked = 'Matériel demandé : \n' + Object.keys(this.selectedItems).map(item => '- ' + item).join('\n');
+    const dateAsked = 'Dates souhaitées : ' + formValue.date;
+    const userMessage = 'Le projet : ' + formValue.message;
+
+    const formattedForm = this.formBuilder.group(formValue);
+    formattedForm.controls.message.setValue(stuffAsked + '\n\n' + dateAsked + '\n\n' + userMessage);
+    formattedForm.removeControl('date');
+
+    return formattedForm.value;
   }
 
   // Submission of the form
   onSubmitMateriel() {
-    this.messagesService.materialPost(this.materialForm.value).subscribe(
+    this.messagesService.materialPost(this.formattedForm()).subscribe(
       (res) => {
         this.successMessage = true;
         this.resetForm();

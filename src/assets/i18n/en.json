@@ -62,6 +62,8 @@
       "Fill out this form to borrow equipment from the Ponthé! Explain your project to us quickly so that we can advise you as well as possible ;)",
     "material.form.matos.title": "You wish ?",    
     "material.form.matos": "The GH4 camera, microphone, fixed tripod, stabilizer, GoPro, drone....",
+    "material.form.date.title": "From when to when?",
+    "material.form.date": "How long do you need it for and when?",
     "material.form.message.title": "Your project ?",
     "material.form.message": "Explain us briefly your project....",
     "material.form.submitButton": "Thank you Le Ponthé",

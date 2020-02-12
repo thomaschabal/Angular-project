@@ -62,6 +62,8 @@
       "Llene este formulario para pedir prestado el equipo del Ponthé! Explíquenos rápidamente su proyecto para que podamos asesorarle lo mejor posible. ;)",
     "material.form.matos.title": "¿Deseas?",
     "material.form.matos": "La cámara GH4, micrófono, trípode fijo, estabilizador, GoPro, drone...",
+    "material.form.date.title": "¿De cuándo a cuándo?",
+    "material.form.date": "¿Cuánto tiempo lo necesitas y cuándo?",
     "material.form.message.title": "Tu proyecto.....",
     "material.form.message": "Explíquenos brevemente su proyecto.....",
     "material.form.submitButton": "Gracias el Ponthé",

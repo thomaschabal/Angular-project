@@ -41,16 +41,19 @@ label {
 	visibility: hidden;
 }
 
-#items {
+#container {
 	width: 100%;
-	display: ruby;
 	overflow-x: scroll;
 	margin: 0 1.5em;
-	margin-top: units(2);
 
 	@include sm {
 		margin: 0 units(2);
 	}
+}
+
+#items {
+	display: flex;
+	overflow-x: scroll;
 }
 
 .itemCard {
