@@ -1,6 +1,7 @@
 //// MODULES
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { ServiceWorkerModule } from '@angular/service-worker';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 // Module for all the various forms of the application
@@ -13,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilePickerModule } from 'ngx-awesome-uploader';
 // Video module
 import { PlyrModule } from 'ngx-plyr';
+
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 
@@ -137,7 +140,8 @@ export function setupTranslateFactory(
     HttpClientModule,
     BrowserAnimationsModule,
     FilePickerModule,
-    PlyrModule
+    PlyrModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     AuthGuard,

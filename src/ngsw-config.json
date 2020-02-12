@@ -1,0 +1,48 @@
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/images/fav-logo.ico",
+          "/index.html",
+          "/*.css",
+          "/*.js",
+          "/*.ts",
+          "/*.scss"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/**"
+        ]
+      }
+    }, {
+      "name": "assets",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**",
+          "/*.(eot|svg|cur|jpg|JPG|png|webp|gif|otf|ttf|woff|woff2|ani|mp4|json)"
+        ]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "members",
+      "urls": [
+        "https://ponthe-testing.enpc.org/api/members",
+        "https://ponthe-testing.enpc.org/api/cgu",
+        "https://ponthe-testing.enpc.org/api/get-all-galleries",
+        "https://ponthe-testing.enpc.org/api/get-private-galleries",
+        "https://ponthe-testing.enpc.org/api/get-images/**"
+      ],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 20,
+        "maxAge": "5d"
+      }
+    }
+  ]
+}

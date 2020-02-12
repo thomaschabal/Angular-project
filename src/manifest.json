@@ -1,19 +1,25 @@
 {
-    "name": "Galeries Ponthé",
-    "short_name": "Ponthé",
-    "icons": [{
-        "src": "/assets/images/logo-128.png",
-        "sizes": "128x128",
-        "type": "image/png"
-    },
-    {
-        "src": "/assets/images/logo-384.png",
-        "sizes": "384x384",
-        "type": "image/png"
-    }],
-    "start_url": "/index.html",
-    "display": "standalone",
-    "orientation": "portrait",
-    "background_color": "#fc3",
-    "theme_color": "#fc3"
+  "name": "Galeries Ponthé",
+  "short_name": "Ponthé",
+  "icons": [{
+      "src": "/assets/images/logo-128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+  },
+  {
+      "src": "/assets/images/logo-384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+  },
+  {
+    "src": "/assets/images/logo.png",
+    "sizes": "640x640",
+    "type": "image/png"
+  }],
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fc3",
+  "theme_color": "#fc3"
 }
