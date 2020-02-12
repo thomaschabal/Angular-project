@@ -1,0 +1,14 @@
+{ 
+    "name": "Galeries Ponthé",
+    "short_name": "Ponthé",
+    "icons": [{
+        "src": "assets/images/logo.png",
+        "sizes": "512x512",
+        "type": "image/png"
+    }],
+    "start_url": "/index.html",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#fc3",
+    "theme_color": "#fc3"
+}
