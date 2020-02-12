@@ -44,7 +44,7 @@ export default {
             '<li>Modifier le fichier <a href="https://github.com/ENPC-Ponthe/Galeries/tree/testing/web/app/instance/assets/data"><i>' +
             'members.json</i></a> en y ajoutant les nouveaux membres et la nouvelle promo</li>' +
             '<li>Ajouter la nouvelle promotion dans le fichier <a href="https://github.com/ENPC-Ponthe/Angular-project/blob/' +
-            'testing/src/app/constants/style/Images.scss"><i>Images.scss</i></a> en y ajoutant des photos représentant l\'équipe, '+
+            'testing/src/app/constants/style/Images.scss"><i>Images.scss</i></a> en y ajoutant des photos représentant l\'équipe, ' +
             'à la fois dans les variables <i>$PONTHE-PROMO-IMAGES-LARGE</i> et <i>$PONTHE-PROMO-IMAGES-SMALL</i> (i.e. pour web et ' +
             'mobile).</li>' +
             '<li>Mettre à jour la constante <i>$INDEX-PONTHE-TROMBI</i> dans le même fichier, en indiquand l\'index du trombi dans ' +
@@ -148,7 +148,7 @@ export default {
             'notamment la partie back-end du site, i.e. la gestion de la base de données et l\'API. C\'est principalement du ' +
             'Python (Flask)</li>' +
             '<li><a href="https://github.com/ENPC-Ponthe/Angular-project">Angular-project</a> : c\'est la partie front-end du ' +
-            'site, chargée donc par ton navigateur quand tu te connectes sur le site. C\'est développé en Angular 7, et il faut '+
+            'site, chargée donc par ton navigateur quand tu te connectes sur le site. C\'est développé en Angular 7, et il faut ' +
             'bien sûr connaître HTML, CSS et éventuellement SCSS;</li>'
       }
     ]
