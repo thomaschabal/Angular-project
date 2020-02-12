@@ -6,6 +6,7 @@ import { AuthService } from './services/auth.service';
 import { HttpService } from './services/http.service';
 import { routesAppFromRoot } from './Routes';
 import { environment } from '../environments/environment';
+import { PwaService } from './services/Pwa.service';
 
 @Component({
   selector: 'app-root',
@@ -40,6 +41,7 @@ export class AppComponent {
 
   constructor(private authService: AuthService,
               private httpService: HttpService,
+              public Pwa: PwaService,
               private router: Router) {
     // Initially, the user is redirected to the Auth page and is offline
     this.authStatus = this.authService.isAuth;
@@ -136,5 +138,9 @@ export class AppComponent {
       this.authService.signOut();
       this.redirectEasterEgg([routesAppFromRoot.auth]);
     }
+  }
+
+  installPwa(): void {
+    this.Pwa.installPwa();
   }
 }

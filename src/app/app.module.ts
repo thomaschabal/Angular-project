@@ -71,6 +71,7 @@ import { HttpService } from './services/http.service';
 import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
 import { PicsService } from './services/pics.service';
+import { PwaService } from './services/Pwa.service';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './services/translate.pipe';
 import { UserService } from './services/user.service';
@@ -147,6 +148,7 @@ export function setupTranslateFactory(
     MembersService,
     MessagesService,
     PicsService,
+    PwaService,
     TranslateService,
     {
       provide: APP_INITIALIZER,
