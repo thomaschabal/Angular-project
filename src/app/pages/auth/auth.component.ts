@@ -40,7 +40,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.isLoginErrorSubscription = this.authService.loginErrorStream.subscribe(state => {
       this.isLoginError = (state === true) ? 'visible' : 'hidden';
     });
-    this.ssoPath = CAS_BASE_URL + encodeURI(location.origin + '/v1');
+    this.ssoPath = CAS_BASE_URL + encodeURI(location.origin);
   }
 
   ngOnDestroy() {
