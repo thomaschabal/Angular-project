@@ -90,6 +90,15 @@ export class AuthService {
     this.loginErrorSource.next(newState);
   }
 
+  casAuthentication(ticket: string) {
+    console.log(ticket);
+    this.httpService.get(API_ROUTES.casAuthenticate + '?ticket=' + ticket).subscribe(
+      (res) => {
+        console.log('res', res);
+      }
+    );
+  }
+
   // Login : request to the server and update of the information on the user
   signIn(user: LoggingUser) {
     this.httpService.post(API_ROUTES.login, user).subscribe(

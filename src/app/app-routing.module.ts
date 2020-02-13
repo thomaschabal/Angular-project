@@ -22,6 +22,7 @@ import { VideoComponent } from './pages/video/video.component';
 
 export const routes: Routes = [
   { path: '', canActivate: [AuthGuard], component: HomeComponent },
+  { path: routesApp.sso, canActivate: [AuthGuard], redirectTo: '' },
   { path: routesApp.auth, component: AuthComponent, data: {animation: 'AuthPage'} },
   { path: routesApp.newAccount, component: NewAccountComponent, data: {animation: 'NewAccountPage'} },
   { path: routesApp.cgu, component: CguComponent, data: {animation: 'CguPage'} },
