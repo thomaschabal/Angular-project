@@ -21,7 +21,6 @@ export class PwaService {
     }
 
     installPwa() {
-        console.log(this.promptEvent)
         this.promptEvent.prompt();
         this.promptEvent.userChoice.then((choiceResult) => {
             if (choiceResult.outcome === 'accepted') {
