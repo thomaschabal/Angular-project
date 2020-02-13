@@ -3,7 +3,7 @@ version: 2
 jobs:
   install:
     docker:
-      - image: circleci/node:11
+      - image: circleci/node:12
     steps:
       - checkout
       - save_cache:
@@ -25,7 +25,7 @@ jobs:
             - node_modules
   lint:
     docker:
-      - image: circleci/node:11
+      - image: circleci/node:12
     steps:
       - restore_cache:
           keys:
@@ -37,7 +37,7 @@ jobs:
       - run: node ./node_modules/@angular/cli/bin/ng lint
   test:
     docker:
-      - image: circleci/node:11-browsers
+      - image: circleci/node:12-browsers
     steps:
       - restore_cache:
           keys:
@@ -52,7 +52,7 @@ jobs:
           cat coverage/index.html | grep '% <\/span>' # display coverage result
   build:
     docker:
-      - image: circleci/node:11
+      - image: circleci/node:12
     steps:
       - restore_cache:
           keys:
