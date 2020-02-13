@@ -57,6 +57,11 @@
   
     "imageViewer.pic": "Pic",
   
+    "install.install": "¡Ponga la aplicación!",
+    "install.later": "Más tarde",
+    "install.downloading": "La aplicación está siendo instalada...",
+    "install.installed": "¡La aplicación está instalada!",
+
     "login.error": "Si ya ha validado su cuenta: nombre de usuario o contraseña incorrectos.",
   
     "material.header.title": "Solicitud de préstamo de material al Ponthé",

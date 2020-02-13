@@ -15,9 +15,9 @@
 			<input id="submit" type="submit" [value]="'auth.form.submitButton' | translate" [disabled]="userForm.invalid"/>
 		</div>
 		</form>
-		<!-- <div id="sso">
+		<div id="sso">
 			<a href="https://ponthe-testing.enpc.org/cas/login">{{ 'auth.sso' | translate }}</a>
-		</div> -->
+		</div>
 	</app-auth-card>
 
 	<app-alert
@@ -34,4 +34,12 @@
 		<video [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
 	</div>
 	<video *ngIf="!isMobileOrTablet" [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+
+	<div id="bandeau" *ngIf="Pwa.promptEvent">
+		<button id="installation" (click)="installPwa()">
+			{{ 'install.install' | translate }}
+		</button>
+	</div>
+	<div id="bandeau-install" *ngIf="Pwa.downloading">{{ 'install.downloading' | translate }}</div>
+	<div id="bandeau-installed" *ngIf="Pwa.installed">{{ 'install.installed' | translate }}</div>
 </body>

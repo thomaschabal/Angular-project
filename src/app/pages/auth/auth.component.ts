@@ -6,6 +6,7 @@ import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.co
 import { routesAppFromRoot } from '../../Routes';
 import { BREAKPOINTS, PATH_AUTH_VIDEO } from '../../Constants';
 import { Subscription } from 'rxjs';
+import { PwaService } from '../../services/Pwa.service';
 
 @Component({
   selector: 'app-auth',
@@ -25,6 +26,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   isLoginError = 'hidden';
 
   constructor(private authService: AuthService,
+              public Pwa: PwaService,
               private formBuilder: FormBuilder) {
   }
 
@@ -62,5 +64,9 @@ export class AuthComponent implements OnInit, OnDestroy {
 
   closeAlert() {
     this.authService.updateLoginError(false);
+  }
+
+  installPwa(): void {
+    this.Pwa.installPwa();
   }
 }

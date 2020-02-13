@@ -36,7 +36,6 @@ form {
 	font-weight: 600;
 	font-size: 1.25em;
 	margin-top: units(4);
-	text-shadow: $AUTH-TEXT-SHADOW-LIGHT;
 }
 #sso a {
 	@include sm {
@@ -122,4 +121,50 @@ video {
 	@include md {
 		left: -60vw;
 	}
+}
+
+
+// Download app on mobile
+#bandeau {
+    position: fixed;
+    left: 5vw;
+    top: units(11);
+    width: 90vw;
+    z-index: 10;
+    border-radius: units(2);
+    box-shadow: box-shadow(LARGE);
+}
+
+#installation, #later {
+    font-weight: 600;
+	border-radius: units(2);
+	width: 100%;
+	font-size: font-size(MEDIUM);
+}
+
+#installation {
+    background: color(GRADIENT_RED_YELLOW);
+}
+
+#later {
+    background: color(WHITE);
+    color: color(DARK_DARK_GREY) !important;
+    border: 1px solid color(DARK_DARK_GREY);
+    position: absolute;
+    right: units(1);
+}
+
+#bandeau-install, #bandeau-installed {
+    position: fixed;
+    left: 5vw;
+    top: units(10);
+    width: 90vw;
+    z-index: 10;
+    background: color(GRADIENT_RED_YELLOW);
+    padding: units(2);
+    border-radius: units(2);
+	box-shadow: box-shadow(LARGE);
+	color: color(WHITE) !important;
+	font-weight: 600;
+	font-size: font-size(LARGE);
 }

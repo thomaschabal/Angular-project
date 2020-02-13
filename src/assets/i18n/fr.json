@@ -56,6 +56,11 @@
     "home.contact.submitButton": "Vive le Ponthé",
   
     "imageViewer.pic": "Pic",
+
+    "install.install": "Installe l'app !",
+    "install.later": "Plus tard",
+    "install.downloading": "L'application est en cours d'installation...",
+    "install.installed": "L'application est installée !",
   
     "login.error": "Si tu as déjà validé ton compte : mauvais identifiant ou mauvais mot de passe.",
   

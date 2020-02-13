@@ -57,6 +57,11 @@
   
     "imageViewer.pic": "Pic",
   
+    "install.install": "Get the app !",
+    "install.later": "Later",
+    "install.downloading": "The application is being installed...",
+    "install.installed": "The application is installed!",
+
     "login.error": "If you have already validated your account: wrong username or password.",
   
     "material.header.title": "Loan request of equipment from the Ponthé",
