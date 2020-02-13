@@ -2,19 +2,23 @@
 
 <div *ngIf="isAdmin" class="moderation">
   <button id="acceptAll" type="button" name="button"
-          (click)="acceptAllPics()">
+          (click)="acceptAllPics()"
+          [attr.aria-label]="'moderation.acceptAll' | translate">
     {{ 'moderation.acceptAll' | translate }}
   </button>
   <button id="refuseAll" type="button" name="button"
-          (click)="deleteAllPics()">
+          (click)="deleteAllPics()"
+          [attr.aria-label]="'moderation.deleteAll' | translate">
     {{ 'moderation.deleteAll' | translate }}
   </button>
   <button id="acceptSelection" type="button" name="button"
-          (click)="acceptSelectedPics()">
+          (click)="acceptSelectedPics()"
+          [attr.aria-label]="'moderation.acceptAllSelectedPics' | translate">
     {{ 'moderation.acceptAllSelectedPics' | translate }}
   </button>
   <button id="refuseSelection"type="button" name="button"
-          (click)="deleteSelectedPics()">
+          (click)="deleteSelectedPics()"
+          [attr.aria-label]="'moderation.deleteAllSelectedPics' | translate">
     {{ 'moderation.deleteAllSelectedPics' | translate }}
   </button>
 </div>
@@ -32,22 +36,26 @@
       <img (click)="onClick(i)" src="{{ picture.base64 }}" alt="" width="100%"/>
       <button *ngIf="!acceptState(i)"
               id="acceptButton" type="button" name="button"
-              (click)="acceptPic(i)">
+              (click)="acceptPic(i)"
+              [attr.aria-label]="'moderation.accept' | translate">
         {{ 'moderation.accept' | translate }}
       </button>
       <button *ngIf="acceptState(i)"
               id="acceptButtonSelected" type="button" name="button"
-              (click)="acceptPic(i)">
+              (click)="acceptPic(i)"
+              [attr.aria-label]="'moderation.accept' | translate">
         {{ 'moderation.accept' | translate }}
       </button>
       <button *ngIf="!deleteState(i)"
               id="deleteButton" type="button" name="button"
-              (click)="deletePic(i)">
+              (click)="deletePic(i)"
+              [attr.aria-label]="'moderation.delete' | translate">
         {{ 'moderation.delete' | translate }}
       </button>
       <button *ngIf="deleteState(i)"
               id="deleteButtonSelected" type="button" name="button"
-              (click)="deletePic(i)">
+              (click)="deletePic(i)"
+              [attr.aria-label]="'moderation.delete' | translate">
         {{ 'moderation.delete' | translate }}
       </button>
     </article>

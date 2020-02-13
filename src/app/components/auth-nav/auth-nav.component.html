@@ -3,6 +3,7 @@
   id="burger_menu"
   type="button"
   (click)="activateHamburger()"
+  aria-label="Burger menu"
 >
   <span class="hamburger-box">
     <span class="hamburger-inner"></span>
@@ -11,18 +12,18 @@
 <!-- Header -->
 <header *ngIf="!isMobile" id="header">
   <ul>
-    <li class="link" [routerLink]='routes.auth'>{{ 'nav.title_auth.auth' | translate}}</li>
-    <li class="link" [routerLink]='routes.newAccount'>{{ 'nav.title_auth.register' | translate}}</li>
-    <li class="link" [routerLink]='routes.reset'>{{ 'nav.title_auth.reset' | translate}}</li>
+    <li class="link" [routerLink]='routes.auth' [aria-label]="'nav.title_auth.auth' | translate">{{ 'nav.title_auth.auth' | translate}}</li>
+    <li class="link" [routerLink]='routes.newAccount' [aria-label]="'nav.title_auth.register' | translate">{{ 'nav.title_auth.register' | translate}}</li>
+    <li class="link" [routerLink]='routes.reset' [aria-label]="'nav.title_auth.reset' | translate">{{ 'nav.title_auth.reset' | translate}}</li>
   </ul>
 </header>
 
 <header *ngIf="isMobile" id="header" [class]="isHamburgerActive ? 'visible_menu' : ''">
   <div id="mobile_menu">
     <ul>
-      <li class="link" [routerLink]='routes.auth' (click)="activateHamburger()">{{ 'nav.title_auth.auth' | translate}}</li>
-      <li class="link" [routerLink]='routes.newAccount' (click)="activateHamburger()">{{ 'nav.title_auth.register' | translate}}</li>
-      <li class="link" [routerLink]='routes.reset' (click)="activateHamburger()">{{ 'nav.title_auth.reset' | translate}}</li>
+      <li class="link" [routerLink]='routes.auth' (click)="activateHamburger()" [aria-label]="'nav.title_auth.auth' | translate">{{ 'nav.title_auth.auth' | translate}}</li>
+      <li class="link" [routerLink]='routes.newAccount' (click)="activateHamburger()" [aria-label]="'nav.title_auth.register' | translate">{{ 'nav.title_auth.register' | translate}}</li>
+      <li class="link" [routerLink]='routes.reset' (click)="activateHamburger()" [aria-label]="'nav.title_auth.reset' | translate">{{ 'nav.title_auth.reset' | translate}}</li>
     </ul>
   </div>
 </header>

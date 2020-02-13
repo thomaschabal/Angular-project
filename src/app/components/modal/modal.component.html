@@ -7,7 +7,8 @@
   </div>
 
   <footer>
-    <button class="close" type="button" name="button" (click)="onCloseModal()">
+    <button class="close" type="button" name="button" (click)="onCloseModal()"
+      [attr.aria-label]="closeText">
       {{ closeText }}
     </button>
   </footer>

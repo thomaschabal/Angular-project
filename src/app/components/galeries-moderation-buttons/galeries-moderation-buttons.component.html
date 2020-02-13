@@ -10,26 +10,31 @@
 
   <div id="leftColumn">
     <p *ngIf="!isPublic">{{ 'moderation.galleryIsPrivate' | translate }}</p>
-    <button id="modere" type="button" name="button" (click)="modere()">
+    <button id="modere" type="button" name="button" (click)="modere()"
+            [attr.aria-label]="'moderation.moderate' | translate">
       {{ 'moderation.moderate' | translate }}
     </button>
     <button *ngIf="isPublic"
             class="publicprivate" type="button" name="button"
-            (click)="publicPrivate()">
+            (click)="publicPrivate()"
+            [attr.aria-label]="'moderation.setPrivate' | translate">
       {{ 'moderation.setPrivate' | translate }}
     </button>
     <button *ngIf="!isPublic"
             class="publicprivate" type="button" name="button"
-            (click)="publicPrivate()">
+            (click)="publicPrivate()"
+            [attr.aria-label]="'moderation.setPublic' | translate">
       {{ 'moderation.setPublic' | translate }}
     </button>
     <button id="deleteevent" type="button" name="button"
-            (click)="openGalleryDeletionModal()">
+            (click)="openGalleryDeletionModal()"
+            [attr.aria-label]="'moderation.deleteGallery' | translate">
       {{ 'moderation.deleteGallery' | translate }}
     </button>
     <button *ngIf="enModeration"
             id="deletepics" type="button" name="button"
-            (click)="validateDeletionPics()">
+            (click)="validateDeletionPics()"
+            [attr.aria-label]="'moderation.deleteAllSelectedPics' | translate">
       {{ 'moderation.deleteAllSelectedPics' | translate }}
     </button>      
   </div>
@@ -45,7 +50,8 @@
   (close)="closeGalleryDeletionModal()">
   <h3>{{ 'event.deleteGallery.galleryWillBeDeleted' | translate }}</h3>
   <button id="deleteevent" type="button" name="button"
-            (click)="deleteEvent()">
+            (click)="deleteEvent()"
+            [attr.aria-label]="'moderation.deleteGallery' | translate">
       {{ 'moderation.deleteGallery' | translate }}
     </button>
 </app-modal>

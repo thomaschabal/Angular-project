@@ -16,7 +16,7 @@
 		</div>
 		</form>
 		<div id="sso">
-			<a href="https://ponthe-testing.enpc.org/cas/login">{{ 'auth.sso' | translate }}</a>
+			<a href="https://ponthe-testing.enpc.org/cas/login" [attr.aria-label]="'auth.sso' | translate">{{ 'auth.sso' | translate }}</a>
 		</div>
 	</app-auth-card>
 
@@ -36,7 +36,7 @@
 	<video *ngIf="!isMobileOrTablet" [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
 
 	<div id="bandeau" *ngIf="Pwa.promptEvent">
-		<button id="installation" (click)="installPwa()">
+		<button id="installation" (click)="installPwa()" [attr.aria-label]="'install.install' | translate">
 			{{ 'install.install' | translate }}
 		</button>
 	</div>

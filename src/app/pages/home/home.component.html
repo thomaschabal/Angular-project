@@ -10,7 +10,7 @@
     <p [innerHTML]="'home.header.introduction' | translate"></p>
     <app-loading-points *ngIf="!homeService.areLastEventsLoaded"></app-loading-points>
     <footer *ngIf="homeService.areLastEventsLoaded">
-      <a class="button style2 down" (click)="clickOnNextArrow('one')">More</a>
+      <a class="button style2 down" (click)="clickOnNextArrow('one')" aria-label="More">More</a>
     </footer>
   </div>
 </section>
@@ -30,11 +30,11 @@
     <div [@lastEventTrigger]="currentStateEvent(i)"
         class="content box style2">
       <header>
-        <h2><a [routerLink]="routes.pics + event.routing">{{ event.name }}</a></h2>
+        <h2><a [routerLink]="routes.pics + event.routing" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
       </header>
-      <p><a [routerLink]="routes.pics + event.routing">{{ event.resume }}</a></p>
+      <p><a [routerLink]="routes.pics + event.routing" [attr.aria-label]="event.resume">{{ event.resume }}</a></p>
     </div>
-    <a class="button style2 down anchored" (click)="clickOnNextArrow(event.next_event_id)">Next</a>
+    <a class="button style2 down anchored" (click)="clickOnNextArrow(event.next_event_id)" aria-label="Next">Next</a>
   </section>
 </div>
 
@@ -57,7 +57,7 @@
       </article>
     </div>
   </div>
-  <a class="button style2 down anchored" (click)="clickOnNextArrow('contact')">Next</a>
+  <a class="button style2 down anchored" (click)="clickOnNextArrow('contact')" aria-label="Next">Next</a>
 </section>
 
 <!-- Image Viewer -->

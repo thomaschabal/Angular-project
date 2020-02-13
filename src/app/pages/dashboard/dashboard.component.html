@@ -15,15 +15,17 @@
 
     <div id="col_admin_2">
         <button id="tutos" type="button" name="button"
-              (click)="displayTutorials()">
+              (click)="displayTutorials()"
+              [attr.aria-label]="'dashboard.links.tutorials' | translate">
         {{ 'dashboard.links.tutorials' | translate }}
       </button><br/>
       <button id="moderation_button" type="button" name="button"
-              (click)="navigateToModeration()">
+              (click)="navigateToModeration()"
+              [attr.aria-label]="'dashboard.links.moderation' | translate">
         {{ 'dashboard.links.moderation' | translate }}
       </button><br/>
       <span *ngFor="let link of buttonLinks">
-        <a [href]="link.address" class="icons fa {{ link.class }} fa-3x"></a>
+        <a [href]="link.address" class="icons fa {{ link.class }} fa-3x" [attr.aria-label]="link.address"></a>
       </span>
     </div>
   </div>

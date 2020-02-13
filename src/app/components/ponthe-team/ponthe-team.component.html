@@ -9,7 +9,7 @@
     </header>
     <p *ngFor="let poste of team.members">{{ poste }}</p>
   </div>
-  <a class="button style2 down anchored" (click)="onClickNext(team.prev_year_id)">Next</a>
+  <a class="button style2 down anchored" (click)="onClickNext(team.prev_year_id)" aria-label="next">Next</a>
   <div *ngIf="numberOfPics > 1"
       (mouseenter)='survoleTeam("hidden")'
       (mouseleave)='survoleTeam("visible")'>

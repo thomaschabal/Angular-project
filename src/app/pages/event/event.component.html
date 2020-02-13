@@ -11,7 +11,8 @@
 <!-- Upload for random users -->
 <div *ngIf="!isAdmin" id="uploadBanner">
   <a class="icon fa fa-upload fa-lg"
-    (click)="activateUploadArea()"></a>
+    (click)="activateUploadArea()"
+    aria-label="upload banner"></a>
 </div>
 <app-modal
   *ngIf="!isAdmin && showUploadArea"
@@ -31,12 +32,14 @@
     <caption>{{ name }}</caption>
     <button *ngIf="enModeration && !deleteState(i)"
             id="deleteButton" type="button" name="button" style="color: #fc3"
-            (click)="moderePic(i)">
+            (click)="moderePic(i)"
+            [attr.aria-label]="'moderation.delete' | translate">
       {{ 'moderation.delete' | translate }}
     </button>
     <button *ngIf="enModeration && deleteState(i)"
             id="deleteButtonSelected" type="button" name="button" style="color: #fc3"
-            (click)="moderePic(i)">
+            (click)="moderePic(i)"
+            [attr.aria-label]="'moderation.delete' | translate">
       {{ 'moderation.delete' | translate }}
     </button>
   </article>

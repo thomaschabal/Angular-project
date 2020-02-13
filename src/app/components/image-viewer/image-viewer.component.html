@@ -10,7 +10,7 @@
           (mouseleave)="hideArrows()">
      <img #imgWide [src]="widePicRef" style="cursor: pointer"/>
      <caption>{{ captionWidePic }}</caption>
-     <a [href]="widePicRef" [download]="downloadedDocumentName()" class="icon fa fa-download fa-2x" id="downloadButton" [@widePicsAnimation]="showArrows+''"></a>
+     <a [href]="widePicRef" [download]="downloadedDocumentName()" class="icon fa fa-download fa-2x" id="downloadButton" [@widePicsAnimation]="showArrows+''" aria-label="download button"></a>
      <caption *ngIf="isGallery" id="num_photo" [@widePicsAnimation]="showArrows+''">
      {{ 'imageViewer.pic' | translate }} {{ indexPicture+1 }} / {{ rawPics.length }}
      </caption>
