@@ -1,12 +1,17 @@
 {
   "name": "galeries-ponthe",
+  "main": "main.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "electron": "electron .",
+    "electron-build": "ng build --prod && electron .",
+    "electron-linux": "electron-packager . --platform=linux",
+    "electron-windows": "electron-packager . --platform=win32"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +25,7 @@
     "@angular/router": "^9.0.1",
     "@angular/service-worker": "^9.0.1",
     "core-js": "^2.6.11",
+    "electron-packager": "^14.2.1",
     "flag-icon-css": "^3.4.6",
     "jwt-decode": "^2.2.0",
     "ngx-awesome-uploader": "^8.1.2",
@@ -39,6 +45,7 @@
     "@types/jasminewd2": "^2.0.8",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "electron": "^8.0.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.1.1",
