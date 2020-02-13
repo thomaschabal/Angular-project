@@ -108,7 +108,7 @@ $MODERATION-PADDING-MOBILE: units(2);
   padding-top: units(2);
   padding-right: $MODERATION-PADDING;
   text-align: center;
-  width: calc(100% + 2 * $MODERATION-PADDING);
+  width: calc(100% + 2 * #{$MODERATION-PADDING});
   border-top: 1px solid color(LIGHT_GREY);
 
   @include sm {

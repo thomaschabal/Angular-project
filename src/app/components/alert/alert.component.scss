@@ -90,7 +90,7 @@ $MODERATION-PADDING-MOBILE: units(2);
 #moderation > footer {
   padding-right: $MODERATION-PADDING;
   text-align: center;
-  width: calc(100% + 2 * $MODERATION-PADDING);
+  width: calc(100% + 2 * #{$MODERATION-PADDING});
 
   @include sm {
     padding-right: units(1);
