@@ -31,7 +31,7 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    console.log(route, state)
+    console.log(route, state);
     const ticket = route.queryParams.ticket;
     if (this.httpService.token && this.getUserByJWT()) {
       return true;
