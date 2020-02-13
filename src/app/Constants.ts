@@ -16,6 +16,7 @@ import { LINKS, BUTTON_LINKS_ADMIN } from './constants/ExternalLinks';
 import { LANGUAGES, FLAGS_BY_LANG } from './constants/Languages';
 import { BREAKPOINTS } from './constants/Breakpoints';
 
+export const CAS_BASE_URL = 'https://cas.enpc.fr/cas/login?service=';
 
 export const EXTENSION_MAILS_ENPC = '@eleves.enpc.fr';
 

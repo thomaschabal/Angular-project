@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.component';
 import { routesAppFromRoot } from '../../Routes';
-import { BREAKPOINTS, PATH_AUTH_VIDEO } from '../../Constants';
+import { BREAKPOINTS, PATH_AUTH_VIDEO, CAS_BASE_URL } from '../../Constants';
 import { Subscription } from 'rxjs';
 import { PwaService } from '../../services/Pwa.service';
 
@@ -16,6 +16,7 @@ import { PwaService } from '../../services/Pwa.service';
 
 export class AuthComponent implements OnInit, OnDestroy {
   pathAuthVideo = PATH_AUTH_VIDEO;
+  ssoPath: string;
 
   // Authentification form defined here
   userForm: FormGroup;
@@ -39,6 +40,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.isLoginErrorSubscription = this.authService.loginErrorStream.subscribe(state => {
       this.isLoginError = (state === true) ? 'visible' : 'hidden';
     });
+    this.ssoPath = CAS_BASE_URL + encodeURI(location.origin);
   }
 
   ngOnDestroy() {
