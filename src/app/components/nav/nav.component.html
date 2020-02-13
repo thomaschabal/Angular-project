@@ -1,10 +1,10 @@
 <!-- Header -->
 <header *ngIf="isOnline()" id="header">
   <!-- Logo -->
-  <a [routerLink]='routes.home' [aria-label]="'nav.title.short' | translate"><img [src]="pathLogo" [alt]="'nav.title.short' | translate" id="logo" /></a>
+  <a [routerLink]='routes.home' [attr.aria-label]="'nav.title.short' | translate"><img [src]="pathLogo" [alt]="'nav.title.short' | translate" id="logo" /></a>
   <!-- Title -->
-  <h1 *ngIf="isWideEnough()"><a [routerLink]='routes.home' [aria-label]="'nav.title.long' | translate">{{ 'nav.title.long' | translate }}</a></h1>
-  <h1 *ngIf="!isWideEnough()"><a [routerLink]='routes.home' [aria-label]="'nav.title.short' | translate">{{ 'nav.title.short' | translate }}</a></h1>
+  <h1 *ngIf="isWideEnough()"><a [routerLink]='routes.home' [attr.aria-label]="'nav.title.long' | translate">{{ 'nav.title.long' | translate }}</a></h1>
+  <h1 *ngIf="!isWideEnough()"><a [routerLink]='routes.home' [attr.aria-label]="'nav.title.short' | translate">{{ 'nav.title.short' | translate }}</a></h1>
 
   <!-- Navigation on the website -->
   <nav>

@@ -1,7 +1,7 @@
 <footer id="footer">
   <ul class="icons">
     <li *ngFor="let link of links">
-      <a href="{{ link.href }}" class="icon {{ link.class }}" [aria-label]="link.name">
+      <a href="{{ link.href }}" class="icon {{ link.class }}" [attr.aria-label]="link.name">
         <span class="label">{{ link.name }}</span>
       </a>
     </li>
