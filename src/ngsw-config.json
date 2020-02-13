@@ -11,7 +11,8 @@
           "/*.css",
           "/*.js",
           "/*.ts",
-          "/*.scss"
+          "/*.scss",
+          "/manifest.webmanifest"
         ],
         "urls": [
           "https://fonts.googleapis.com/**"

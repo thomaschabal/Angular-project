@@ -11,7 +11,7 @@ import { ImageViewerComponent } from './image-viewer.component';
              </app-image-viewer>`
 })
 export class ParentComponent {
-  @ViewChild(ImageViewerComponent) child;
+  @ViewChild(ImageViewerComponent, /* TODO: add static flag */ {}) child;
   indexPicture = 3;
   isGallery = true;
   captionWidePic = 'image test';

@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { Plyr } from 'plyr';
-import { PlyrComponent } from 'ngx-plyr';
+// import { Plyr } from 'plyr';
+// import { PlyrComponent } from 'ngx-plyr';
 
 import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
 import { GaleriesFooterComponent } from '../../components/galeries-footer/galeries-footer.component';
@@ -55,17 +55,17 @@ export class VideoComponent implements OnInit, OnDestroy {
   moderationState = [];
 
   // get the component instance to have access to plyr instance
-  @ViewChild(PlyrComponent)
-  plyr: PlyrComponent;
+  // @ViewChild(PlyrComponent)
+  // plyr: PlyrComponent;
 
-  player: Plyr;
+  // player: Plyr;
 
-  videoSources: Plyr.Source[] = [
-    {
-      src: 'bTqVqk7FSmY',
-      provider: 'youtube',
-    },
-  ];
+  // videoSources: Plyr.Source[] = [
+  //   {
+  //     src: 'bTqVqk7FSmY',
+  //     provider: 'youtube',
+  //   },
+  // ];
 
   ngOnInit() {
     const selectedRoute = this.activeRoute.snapshot.params.event;

@@ -68,9 +68,9 @@ export class UploadComponent implements OnInit, OnDestroy {
   }
 
   // DOESN'T WORK FOR NOW
-  removeFile() {
-    this.uploader.removeFileFromList(this.myFiles[0].fileName);
-  }
+  // removeFile() {
+  //   this.uploader.removeFileFromList(this.myFiles[0].fileName);
+  // }
 
   // USELESS FOR THE MOMENT
   /* uploadFilesToServer() {

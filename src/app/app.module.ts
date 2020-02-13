@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 // Upload file module
 import { FilePickerModule } from 'ngx-awesome-uploader';
 // Video module
-import { PlyrModule } from 'ngx-plyr';
+// import { PlyrModule } from 'ngx-plyr';
 
 import { environment } from '../environments/environment';
 
@@ -58,7 +58,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { HomeComponent } from './pages/home/home.component';
 import { GaleriesComponent } from './pages/galeries/galeries.component';
 import { EventComponent } from './pages/event/event.component';
-import { VideoComponent } from './pages/video/video.component';
+// import { VideoComponent } from './pages/video/video.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ModerationComponent } from './pages/moderation/moderation.component';
 import { MembersComponent } from './pages/members/members.component';
@@ -127,7 +127,7 @@ export function setupTranslateFactory(
     NewAccountComponent,
     NotfoundComponent,
     ResetComponent,
-    VideoComponent,
+    // VideoComponent,
     UserListComponent,
     IconLinksComponent,
     TranslatePipe,
@@ -140,7 +140,7 @@ export function setupTranslateFactory(
     HttpClientModule,
     BrowserAnimationsModule,
     FilePickerModule,
-    PlyrModule,
+    // PlyrModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
