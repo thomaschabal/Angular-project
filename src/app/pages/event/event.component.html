@@ -29,7 +29,6 @@
 <div id="main" (mouseenter)="survolePics('visible')"> <!--(mouseleave) = "survolePics('hidden')">-->
   <article *ngFor="let picture of pics; let i = index" class="thumb" [@picsTrigger]="state(i)">
     <img (click)="onClickPic(i)" style="cursor: pointer; position: absolute;" src="{{ picture.base64 }}" alt="" width="100%"/>
-    <caption>{{ name }}</caption>
     <button *ngIf="enModeration && !deleteState(i)"
             id="deleteButton" type="button" name="button" style="color: #fc3"
             (click)="moderePic(i)"
