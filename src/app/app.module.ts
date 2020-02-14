@@ -20,6 +20,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
 //// COMPONENTS
+import { AdminUsefulLinksComponent } from './components/admin-useful-links/admin-useful-links.component';
 import { AlertComponent } from './components/alert/alert.component';
 import { AuthBgSliderComponent } from './components/auth-bg-slider/auth-bg-slider.component';
 import { AuthCardComponent } from './components/auth-card/auth-card.component';
@@ -88,6 +89,7 @@ export function setupTranslateFactory(
 @NgModule({
   declarations: [
     AppComponent,
+    AdminUsefulLinksComponent,
     AlertComponent,
     AuthBgSliderComponent,
     AuthCardComponent,

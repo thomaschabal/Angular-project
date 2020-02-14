@@ -16,6 +16,7 @@ import { BUTTON_LINKS_ADMIN } from 'src/app/Constants';
 export class DashboardComponent implements OnInit {
   buttonLinks = BUTTON_LINKS_ADMIN;
   tutorialsVisible = false;
+  adminUsefulLinksVisible = false;
 
   constructor(private router: Router) { }
 
@@ -30,5 +31,9 @@ export class DashboardComponent implements OnInit {
 
   displayTutorials() {
     this.tutorialsVisible = !this.tutorialsVisible;
+  }
+
+  displayUsefulLinks() {
+    this.adminUsefulLinksVisible = !this.adminUsefulLinksVisible;
   }
 }

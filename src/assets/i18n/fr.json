@@ -25,11 +25,13 @@
     "dashboard.csv_account_creation.add_csv": "Ajouter des comptes par CSV",
     "dashboard.csv_account_creation.submit": "Créer les comptes",
     "dashboard.links.tutorials": "Tutoriels",
+    "dashboard.links.usefulLinks": "Liens utiles",
     "dashboard.links.moderation": "Modérer",
     "dashboard.links.slack": "Slack",
     "dashboard.links.trello": "Trello",
     "dashboard.links.youtube": "Youtube",
     "dashboard.tutos.title": "Tutoriels ponthe.enpc.org",
+    "dashboard.usefulLinks.title": "Liens utiles pour admins",
   
     "event.deleteGallery.galleryWillBeDeleted": "Cette galerie est sur le point d'être supprimée. Cliquer une deuxième fois sur 'Supprimer la galerie' pour valider l'action.",
     "event.deleteGallery.galleryWasDeleted": "La galerie a bien été supprimée",

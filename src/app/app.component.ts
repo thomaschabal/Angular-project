@@ -44,13 +44,13 @@ const SHORTCUTS = {
     // Page transition : fade to white
     trigger('routeAnimations', [
       transition('* => *', [
-        query(':enter', style({ opacity : 0})),
+        query(':enter', style({ opacity : 0}), { optional: true }),
         query(':leave', [
           animate('0.5s', style({ opacity : 0}))
-        ]),
+        ], { optional: true }),
         query(':enter', [
           animate('1.5s', style({ opacity : 1}))
-        ]),
+        ], { optional: true }),
       ])
     ])
   ]

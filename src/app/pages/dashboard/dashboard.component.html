@@ -14,10 +14,15 @@
     </div>
 
     <div id="col_admin_2">
-        <button id="tutos" type="button" name="button"
-              (click)="displayTutorials()"
-              [attr.aria-label]="'dashboard.links.tutorials' | translate">
+      <button id="tutos" type="button" name="button"
+            (click)="displayTutorials()"
+            [attr.aria-label]="'dashboard.links.tutorials' | translate">
         {{ 'dashboard.links.tutorials' | translate }}
+      </button><br/>
+      <button id="tutos" type="button" name="button"
+            (click)="displayUsefulLinks()"
+            [attr.aria-label]="'dashboard.links.usefulLinks' | translate">
+        {{ 'dashboard.links.usefulLinks' | translate }}
       </button><br/>
       <button id="moderation_button" type="button" name="button"
               (click)="navigateToModeration()"
@@ -33,3 +38,5 @@
 </section>
 
 <app-tutorials [visible]="tutorialsVisible" (close)="displayTutorials()"></app-tutorials>
+
+<app-admin-useful-links [visible]="adminUsefulLinksVisible" (close)="displayUsefulLinks()"></app-admin-useful-links>
