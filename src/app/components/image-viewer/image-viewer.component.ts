@@ -64,7 +64,7 @@ export class ImageViewerComponent implements OnInit, OnDestroy {
       if (index === this.indexPicture) {
         this.updateWidePic();
       }
-    })
+    });
     this.rawPics = this.picsService.rawPics;
     this.updateWidePic();
   }
