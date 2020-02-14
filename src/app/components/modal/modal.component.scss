@@ -106,6 +106,7 @@ $MODERATION-PADDING-MOBILE: units(2);
 
   @include sm {
     padding-right: units(1);
+    width: calc(100% + 2 * #{$MODERATION-PADDING-MOBILE});
   }
 }
 
