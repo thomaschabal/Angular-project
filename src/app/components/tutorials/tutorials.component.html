@@ -1,7 +1,7 @@
 <app-modal
   [title]="'dashboard.tutos.title' | translate"
   [closeText]="'close' | translate"
-  visible="visible"
+  [visible]="visible"
   (close)="closeTutos()">
   <div id="container">
     <div *ngFor="let subjects of tutorials" class="subject">

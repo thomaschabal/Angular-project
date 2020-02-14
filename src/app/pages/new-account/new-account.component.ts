@@ -20,8 +20,8 @@ export class NewAccountComponent implements OnInit {
   userForm: FormGroup;
 
   alertTitle = '';
-  alertSuccessVisible = 'hidden';
-  alertErrorVisible = 'hidden';
+  alertSuccessVisible = false;
+  alertErrorVisible = false;
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -55,19 +55,19 @@ export class NewAccountComponent implements OnInit {
                              formValue.confirmation_password);
     this.userService.addUser(newUser).subscribe(
       (res) => {
-        this.alertSuccessVisible = 'visible';
+        this.alertSuccessVisible = true;
       },
       (error) => {
-        this.alertErrorVisible = 'visible';
+        this.alertErrorVisible = true;
       }
     );
   }
 
   closeAlertSuccess() {
-    this.alertSuccessVisible = 'hidden';
+    this.alertSuccessVisible = false;
     this.router.navigate([routesAppFromRoot.auth]);
   }
   closeAlertError() {
-    this.alertErrorVisible = 'hidden';
+    this.alertErrorVisible = false;
   }
 }

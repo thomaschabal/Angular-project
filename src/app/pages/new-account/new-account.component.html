@@ -39,14 +39,14 @@
   </app-auth-card>
 
   <app-alert
+    [visible]="alertSuccessVisible"
 		[title]="'signup.successSignup' | translate"
-		[visible]="alertSuccessVisible"
 		(close)="closeAlertSuccess()"
   ></app-alert>
   
   <app-alert
+    [visible]="alertErrorVisible"
 		[title]="'signup.error' | translate"
-		[visible]="alertErrorVisible"
 		(close)="closeAlertError()"
 	></app-alert>
 

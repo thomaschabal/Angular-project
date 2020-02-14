@@ -1,5 +1,5 @@
-<div [class]="visible" id="overlay" (click)="onCloseModal()"></div>
-<div id="moderation" [class]="visible">
+<div *ngIf="visible" id="overlay" (click)="onCloseModal()" @overlay></div>
+<div id="moderation" *ngIf="visible" @modal>
   <h1>{{ title }}</h1>
 
   <div id="bodyModeration">

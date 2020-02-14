@@ -3,9 +3,38 @@ import { Router, RouterOutlet } from '@angular/router';
 import { animate, style, transition, trigger, query } from '@angular/animations';
 
 import { AuthService } from './services/auth.service';
-import { HttpService } from './services/http.service';
 import { routesAppFromRoot } from './Routes';
 import { environment } from '../environments/environment';
+
+const REDIRECTIONS = {
+  upont: 'https://upont.enpc.fr',
+  facebook: 'https://www.facebook.com',
+  useless: 'https://theuselessweb.com',
+  sitedesponts: 'https://www.enpc.fr',
+  pageblanche: 'https://hyris.tv/video/3886',
+  github: 'https://github.com/ENPC-Ponthe/Angular-project',
+  tartine: 'https://www.youtube.com/watch?v=iLE1qaQBjxA',
+  slack: 'https://ponthe.slack.com',
+  trello: 'https://trello.com/b/WIQhzGmu/ev%C3%A8nements-et-communication',
+  logoponthe: environment.baseUrl + '/assets/images/logo-ponthe.svg',
+  logoponthé: environment.baseUrl + '/assets/images/logo-ponthe.svg'
+};
+const SHOW_EASTER_EGG = {
+  ponthe: 'Merci le Ponthéééé !!! On t\'aime <3 Bisous <3',
+  ponthé: 'Merci le Ponthéééé !!! On t\'aime <3 Bisous <3',
+  foyer: 'Foyer daubé !',
+  42: 'Bonne réponse !'
+};
+const SHORTCUTS = {
+  home: [routesAppFromRoot.home],
+  pics: [routesAppFromRoot.galeries],
+  dashboard: [routesAppFromRoot.dashboard],
+  membres: [routesAppFromRoot.members],
+  members: [routesAppFromRoot.members],
+  matos: [routesAppFromRoot.material],
+  moderation: [routesAppFromRoot.moderation],
+  modération: [routesAppFromRoot.moderation]
+};
 
 @Component({
   selector: 'app-root',
@@ -36,10 +65,9 @@ export class AppComponent {
   // Easter egg for redirection
   keys = '';
   titleEasterEgg = '';
-  easterEggVisible = 'hidden';
+  visible = false;
 
   constructor(private authService: AuthService,
-              private httpService: HttpService,
               private router: Router) {
     // Initially, the user is redirected to the Auth page and is offline
     this.authStatus = this.authService.isAuth;
@@ -52,11 +80,11 @@ export class AppComponent {
 
   showEasterEgg(phrase: string) {
     this.titleEasterEgg = phrase;
-    this.easterEggVisible = 'visible';
     this.keys = '';
+    this.visible = true;
   }
   closeEasterEgg() {
-    this.easterEggVisible = 'hidden';
+    this.visible = false;
   }
   redirectEasterEgg(redirection: string[]) {
     this.router.navigate(redirection);
@@ -70,68 +98,22 @@ export class AppComponent {
       this.keys += event.key;
       this.keys = this.keys.toLowerCase();
     }
-
-    if (this.keys.search('logoponthe') !== -1 || this.keys.search('logoponthé') !== -1) {
-      window.location.href = environment.baseUrl + '/assets/images/logo-ponthe.svg';
+    for (const key of Object.keys(REDIRECTIONS)) {
+      if (this.keys.search(key) !== -1) {
+        window.location.href = REDIRECTIONS[key];
+      }
     }
-    if (this.keys.search('ponthe') !== -1 || this.keys.search('ponthé') !== -1) {
-      this.showEasterEgg('Merci le Ponthéééé !!! On t\'aime <3 Bisous <3');
+    for (const key of Object.keys(SHOW_EASTER_EGG)) {
+      if (this.keys.search(key) !== -1) {
+        this.showEasterEgg(SHOW_EASTER_EGG[key]);
+      }
     }
-    if (this.keys.search('facebook') !== -1) {
-      window.location.href = 'https://www.facebook.com';
-    }
-    if (this.keys.search('upont') !== -1) {
-      window.location.href = 'https://upont.enpc.fr';
-    }
-    if (this.keys.search('useless') !== -1) {
-      window.location.href = 'https://theuselessweb.com';
-    }
-    if (this.keys.search('sitedesponts') !== -1) {
-      window.location.href = 'https://www.enpc.fr';
-    }
-    if (this.keys.search('pageblanche') !== -1) {
-      window.location.href = 'https://hyris.tv/video/3886';
-    }
-    if (this.keys.search('github') !== -1) {
-      window.location.href = 'https://github.com/ENPC-Ponthe/Angular-project';
-    }
-    if (this.keys.search('foyer') !== -1) {
-      this.showEasterEgg('Foyer daubé !');
-    }
-    if (this.keys.search('42') !== -1) {
-      this.showEasterEgg('Bonne réponse !');
-    }
-    if (this.keys.search('tartine') !== -1) {
-      window.location.href = 'https://www.youtube.com/watch?v=iLE1qaQBjxA';
+    for (const key of Object.keys(SHORTCUTS)) {
+      if (this.keys.search(key) !== -1) {
+        this.redirectEasterEgg(SHORTCUTS[key]);
+      }
     }
 
-    // Shortcuts for administrators
-    if (this.keys.search('home') !== -1) {
-      this.redirectEasterEgg([routesAppFromRoot.home]);
-    }
-    if (this.keys.search('pics') !== -1) {
-      this.redirectEasterEgg([routesAppFromRoot.galeries]);
-    }
-    if (this.keys.search('dashboard') !== -1) {
-      this.redirectEasterEgg([routesAppFromRoot.dashboard]);
-    }
-    if (this.keys.search('membres') !== -1 || this.keys.search('members') !== -1) {
-      this.redirectEasterEgg([routesAppFromRoot.members]);
-    }
-    if (this.keys.search('matos') !== -1) {
-      this.redirectEasterEgg([routesAppFromRoot.material]);
-    }
-    if (this.httpService.isAdmin) {
-      if (this.keys.search('moderation') !== -1 || this.keys.search('modération') !== -1) {
-        this.redirectEasterEgg([routesAppFromRoot.moderation]);
-      }
-      if (this.keys.search('slack') !== -1) {
-        window.location.href = 'https://ponthe.slack.com';
-      }
-      if (this.keys.search('trello') !== -1) {
-        window.location.href = 'https://trello.com/b/WIQhzGmu/ev%C3%A8nements-et-communication';
-      }
-    }
     if (this.keys.search('logout') !== -1) {
       this.authService.signOut();
       this.redirectEasterEgg([routesAppFromRoot.auth]);

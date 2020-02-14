@@ -20,7 +20,7 @@
   <app-loading-points></app-loading-points>
 </div>
 <div *ngIf="homeService.areLastEventsLoaded">
-  <section  *ngFor="let event of lastEvents; let i = index"
+  <section  *ngFor="let event of homeService.lastEvents; let i = index"
             id="{{ event.event_id }}"
             class="main style2 {{ placement_events(i) }} dark fullscreen"
             (mouseenter)='survoleEvent("visible", i)'
@@ -48,7 +48,7 @@
     </header>
     <!-- Pics  -->
     <div class="gallery" id="gallery-pics">
-      <article *ngFor="let pic of lovePics; let i = index"
+      <article *ngFor="let pic of homeService.lovePics; let i = index"
                 class="{{ placementLovePics(i) }}"
                 [id]="i%2 === 0 ? lovePicsStateLeft : lovePicsStateRight">
         <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}"

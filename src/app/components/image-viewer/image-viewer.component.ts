@@ -1,12 +1,16 @@
-import { Component, OnInit, EventEmitter, Input, Output, HostListener } from '@angular/core';
-import { state, trigger, animate, style, transition } from '@angular/animations';
+import { Component, OnInit, EventEmitter, Input, Output, HostListener, OnDestroy } from '@angular/core';
+import { state, trigger, animate, style, transition, keyframes } from '@angular/animations';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+
 import { PicsService } from '../../services/pics.service';
+import { pulse, fadeOut } from 'src/app/constants/Animations';
 
 export enum KEY_CODE {
   RIGHT_ARROW = 'ArrowRight',
   LEFT_ARROW = 'ArrowLeft',
-  ESCAPE = 'Escape'
+  ESCAPE = 'Escape',
+  ENTER = 'Enter'
 }
 
 @Component({
@@ -18,11 +22,27 @@ export enum KEY_CODE {
       state('true', style({opacity: 1})),
       state('false', style({opacity: 0})),
       transition('*=>*', [ animate('200ms') ] ),
+    ]),
+    trigger('changePicAnimation', [
+      transition(':enter', [pulse()]),
+      transition(':leave', [fadeOut(500)]),
+      transition('* => *', [
+        animate(200, keyframes([
+          style({ offset: 0, opacity: 0 }),
+          style({ offset: 1, opacity: 1 }),
+        ]))
+        // animate(500, keyframes([
+        //   style({ offset: 0, transform: 'translateX(0)', opacity: 1 }),
+        //   style({ offset: 0.5, transform: 'translateX(50vw)', opacity: 0 }),
+        //   style({ offset: 0.51, transform: 'translateX(-50vw)', opacity: 0 }),
+        //   style({ offset: 1, transform: 'translateX(0)', opacity: 1 }),
+        // ]))
+      ])
     ])
   ]
 })
 
-export class ImageViewerComponent implements OnInit {
+export class ImageViewerComponent implements OnInit, OnDestroy {
 
   widePicRef: SafeUrl;
   @Input() captionWidePic: string;
@@ -33,13 +53,24 @@ export class ImageViewerComponent implements OnInit {
   @Output() closeViewer = new EventEmitter<boolean>();
   showArrows = true;
 
+  indexNewPicLoaded: Subscription;
+
   constructor(private picsService: PicsService,
               private sanitizer: DomSanitizer) {
   }
 
   ngOnInit() {
+    this.indexNewPicLoaded = this.picsService.rawPicsIndexStream.subscribe(index => {
+      if (index === this.indexPicture) {
+        this.updateWidePic();
+      }
+    })
     this.rawPics = this.picsService.rawPics;
     this.updateWidePic();
+  }
+
+  ngOnDestroy() {
+    this.indexNewPicLoaded.unsubscribe();
   }
 
   // Host Listener for the image viewer
@@ -62,12 +93,12 @@ export class ImageViewerComponent implements OnInit {
     }
   }
 
-  updateWidePic() {
+  updateWidePic = async () => {
     this.widePicRef = this.sanitizer.bypassSecurityTrustUrl(this.picsService.rawPics[this.indexPicture]);
     this.changeIndexPicture.emit(this.indexPicture);
-    this.picsService.loadFullImage(this.indexPicture).then(
-      () => this.widePicRef = this.sanitizer.bypassSecurityTrustUrl(this.picsService.rawPics[this.indexPicture])
-    );
+    if (this.isGallery) {
+      this.picsService.loadFullImage(this.indexPicture);
+    }
   }
 
   navLeft() {
@@ -76,7 +107,6 @@ export class ImageViewerComponent implements OnInit {
       this.indexPicture += (this.rawPics.length || Object.keys(this.rawPics).length);
     }
     this.updateWidePic();
-    // document.getElementById('wide-pic').style.marginLeft.px=this.placePicLeft(imgWide);
   }
 
   navRight() {
@@ -94,9 +124,6 @@ export class ImageViewerComponent implements OnInit {
   }
   hideArrows() {
     this.showArrows = false;
-  }
-  placePicTop(img) {
-    return ( (window.innerHeight - img.clientHeight) / 2 );
   }
 
   // Download picture

@@ -31,17 +31,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   // Text to display in the HTML file
   routes = routesAppFromRoot;
 
-  // Data to show to the user
-  lastEvents: any[];
-  lovePics: any[];
-
   picClicked = false;
   captionWidePic: string;
-
-  // Routes to galeries regarding 3 last events
-  adresse1: string;
-  adresse2: string;
-  adresse3: string;
 
   private sub: Subscription;
 
@@ -69,17 +60,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    this.picsService.onChangeCurrentGallery('');
     // Get text
     // Requests to the server, update of previous data
     this.homeService.loadLatestGalleries();
-    this.lastEvents = this.homeService.lastEvents;
     this.homeService.loadLovePics();
-    this.lovePics = this.homeService.lovePics;
     // Transfer pics for image viewer
     this.picsService.rawPics = this.homeService.lovePicsSrc;
-    this.adresse1 = this.lastEvents[0].fond;
-    this.adresse2 = this.lastEvents[1].fond;
-    this.adresse3 = this.lastEvents[2].fond;
+    this.picsService.numberOfPics = this.homeService.lovePicsSrc.length;
 
     if (this.isDesktop()) {
       this.lastEventsState1 = 'hidden-mid-left';
@@ -100,13 +88,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   //// DISPLAY OF THE COMPONENTS, ANIMATIONS ON HOVER
   onClickFavPic(i: number) {
     this.picClicked = true;
-    this.captionWidePic = this.lovePics[i].title;
+    this.captionWidePic = this.homeService.lovePics[i].title;
     this.indexPicture = i;
 
     // Have a blurred background when the image viewer is active
     document.getElementById('header').style.display = 'none';
     document.getElementById('intro').style.filter = 'blur(8px)';
-    for (const event of this.lastEvents) {
+    for (const event of this.homeService.lastEvents) {
       document.getElementById(event.event_id).style.filter = 'blur(8px)';
     }
     document.getElementById('header-content').style.filter = 'blur(8px)';
@@ -122,7 +110,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     // Remove the blurred background
     document.getElementById('header').style.display = 'block';
     document.getElementById('intro').style.filter = 'none';
-    for (const event of this.lastEvents) {
+    for (const event of this.homeService.lastEvents) {
       document.getElementById(event.event_id).style.filter = 'none';
     }
     document.getElementById('header-content').style.filter = 'none';
@@ -133,7 +121,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   onChangeIndexPicture(index: number) {
     this.indexPicture = index;
-    this.captionWidePic = this.lovePics[this.indexPicture].title;
+    this.captionWidePic = this.homeService.lovePics[this.indexPicture].title;
   }
 
   closePic() {

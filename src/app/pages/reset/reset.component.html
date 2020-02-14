@@ -13,8 +13,8 @@
   </app-auth-card>
 
   <app-alert
+    [visible]="alertVisible"
 		[title]="'reset.sentEmail' | translate"
-		[visible]="alertVisible"
 		(close)="closeAlert()"
 	></app-alert>
 

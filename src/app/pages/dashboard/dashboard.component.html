@@ -32,4 +32,4 @@
 
 </section>
 
-<app-tutorials *ngIf="tutorialsVisible" (close)="displayTutorials()"></app-tutorials>
+<app-tutorials [visible]="tutorialsVisible" (close)="displayTutorials()"></app-tutorials>

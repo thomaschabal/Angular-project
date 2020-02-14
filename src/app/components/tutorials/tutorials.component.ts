@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import TUTORIALS from '../../constants/Tutoriels';
 
 @Component({
@@ -8,6 +8,7 @@ import TUTORIALS from '../../constants/Tutoriels';
 })
 export class TutorialsComponent implements OnInit {
   tutorials = Object.keys(TUTORIALS).map(key => TUTORIALS[key]);
+  @Input() visible: boolean;
   @Output() close = new EventEmitter<{}>();
 
   constructor() { }

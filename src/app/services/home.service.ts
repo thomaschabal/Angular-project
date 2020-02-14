@@ -46,9 +46,8 @@ export class HomeService {
 
   getLovePics() {
     this.lovePics = LOVE_PICS;
-    this.lovePicsSrc = Object.assign({}, this.lovePics);
-    Object.keys(this.lovePicsSrc).map(
-      (key, pic) => { this.lovePicsSrc[key] = this.lovePicsSrc[key].address; }
+    this.lovePicsSrc = Object.values(this.lovePics).map(
+      (pic: any) => pic.address
     );
     this.areLovePicsLoaded = true;
   }

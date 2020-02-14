@@ -24,7 +24,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   isMobileOrTablet: boolean;
 
   isLoginErrorSubscription: Subscription;
-  isLoginError = 'hidden';
+  isLoginError = false;
 
   constructor(private authService: AuthService,
               public Pwa: PwaService,
@@ -38,9 +38,9 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.getBreakpoint();
 
     this.isLoginErrorSubscription = this.authService.loginErrorStream.subscribe(state => {
-      this.isLoginError = (state === true) ? 'visible' : 'hidden';
+      this.isLoginError = state;
     });
-    this.ssoPath = CAS_BASE_URL + encodeURI('https://ponthe-testing.enpc.org/#/sso');
+    this.ssoPath = CAS_BASE_URL + encodeURI('https://ponthe-testing.enpc.org/');
   }
 
   ngOnDestroy() {

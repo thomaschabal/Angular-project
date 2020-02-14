@@ -1,5 +1,5 @@
-<div [class]="visible" id="overlay" (click)="onCloseModal()"></div>
-<div id="moderation" [class]="visible">
+<div id="overlay" (click)="onCloseModal()" @overlay *ngIf="visible"></div>
+<div id="moderation" @alert *ngIf="visible">
   <h1>{{ title }}</h1>
 
   <footer>

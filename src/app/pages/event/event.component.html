@@ -15,7 +15,7 @@
     aria-label="upload banner"></a>
 </div>
 <app-modal
-  *ngIf="!isAdmin && showUploadArea"
+  [visible]="!isAdmin && showUploadArea"
   [title]="'galeries.upload.title' | translate"
   [closeText]="'close' | translate"
   [visible]="showUploadArea"

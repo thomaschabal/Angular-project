@@ -51,6 +51,7 @@ $MODERATION-PADDING-MOBILE: units(2);
   border-radius: units(4);
   margin: auto;
   transition: visibility 0.3s ease;
+  box-shadow: box-shadow(LARGE);
 
   @include sm {
     left: 10vw;
@@ -69,13 +70,6 @@ $MODERATION-PADDING-MOBILE: units(2);
   }
 }
 
-.visible {
-  visibility: visible;
-}
-.hidden {
-  visibility: hidden;
-}
-
 #overlay {
   position: fixed;
   top: 0;
@@ -89,7 +83,7 @@ $MODERATION-PADDING-MOBILE: units(2);
 
 #moderation > footer {
   padding-right: $MODERATION-PADDING;
-  text-align: center;
+  text-align: right;
   width: calc(100% + 2 * #{$MODERATION-PADDING});
 
   @include sm {

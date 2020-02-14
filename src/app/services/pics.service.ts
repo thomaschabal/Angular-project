@@ -20,6 +20,9 @@ export class PicsService {
   isLoadingMoreStream = this.isLoadingMoreSource.asObservable();
 
   rawPics: any[];
+  rawPicsIndexSource = new BehaviorSubject(-1);
+  rawPicsIndexStream = this.rawPicsIndexSource.asObservable();
+
   fullSizeLoadedPics: any[];
   requestStartedForPics: any[];
   allPicturesLoaded = false;
@@ -32,6 +35,9 @@ export class PicsService {
   updateIsLoadingMore(loading: boolean) {
     this.isLoadingMore = loading;
     this.isLoadingMoreSource.next(loading);
+  }
+  updateRawPicsIndex(index: number) {
+    this.rawPicsIndexSource.next(index);
   }
 
   // GALLERY INITIALIZATION
@@ -69,6 +75,7 @@ export class PicsService {
   // GET FULL IMAGES
 
   getSingleFullImage(index: number) {
+    const currentGallery = this.currentGallery;
     if (!this.allPicturesLoaded
         && !this.fullSizeLoadedPics[index]
         && !this.requestStartedForPics[index]) {
@@ -77,9 +84,13 @@ export class PicsService {
       .toPromise()
       .then(
         (res: { base64 }) => {
-          this.rawPics[index] = res.base64;
-          this.fullSizeLoadedPics[index] = true;
-          this.areAllPicturesLoaded();
+          // Prevent from overriding pics when changing galleries while some pics are being fetched from backend
+          if (currentGallery === this.currentGallery) {
+            this.rawPics[index] = res.base64;
+            this.fullSizeLoadedPics[index] = true;
+            this.areAllPicturesLoaded();
+            this.updateRawPicsIndex(index);
+          }
         },
         (error) => { console.error(error); }
       );
@@ -96,15 +107,13 @@ export class PicsService {
       this.loadMorePics();
     }
 
-    await this.getSingleFullImage(i);
+    this.getSingleFullImage(i);
     if (i > 0) {
-      await this.getSingleFullImage(picPrev);
+      this.getSingleFullImage(picPrev);
     }
     if (i < this.numberOfPics) {
-      await this.getSingleFullImage(picNext);
+      this.getSingleFullImage(picNext);
     }
-
-    return Promise.resolve();
   }
 
   // CHECKING

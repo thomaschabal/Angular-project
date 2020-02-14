@@ -14,7 +14,7 @@ export class GaleriesContactFormComponent implements OnInit {
   // Contact form defined here
   messageForm: FormGroup;
   phrases: object;
-  alertVisible = 'hidden';
+  alertVisible = false;
 
   constructor(private messagesService: MessagesService,
               private formBuilder: FormBuilder) {
@@ -34,12 +34,12 @@ export class GaleriesContactFormComponent implements OnInit {
 
   onSubmitMessage() {
     this.messagesService.materialPost(this.messageForm.value).subscribe(
-      (res) => { this.alertVisible = 'visible'; },
+      (res) => { this.alertVisible = true; },
       (error) => { }
     );
   }
 
   closeAlert() {
-    this.alertVisible = 'hidden';
+    this.alertVisible = false;
   }
 }

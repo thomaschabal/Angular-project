@@ -20,9 +20,9 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   enModeration = false;
   @Input() selectedRoute: string;
   @Input() moderationState: any[];
-  moderationVisibility = 'hidden';
-  galleryDeletionModal = 'hidden';
-  galleryDeletedModal = 'hidden';
+  moderationVisibility = false;
+  galleryDeletionModal = false;
+  galleryDeletedModal = false;
 
   constructor(private galeriesService: GaleriesService,
               private httpService: HttpService,
@@ -56,10 +56,10 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   }
 
   openGalleryDeletionModal() {
-    this.galleryDeletionModal = 'visible';
+    this.galleryDeletionModal = true;
   }
   closeGalleryDeletionModal() {
-    this.galleryDeletionModal = 'hidden';
+    this.galleryDeletionModal = false;
   }
 
   finalRedirection() {
@@ -70,7 +70,7 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   deleteEvent() {
     this.galeriesService.deleteEvent(this.selectedRoute).subscribe(
       (res) => {
-        this.galleryDeletedModal = 'visible';
+        this.galleryDeletedModal = true;
       },
       (error) => { }
     );
@@ -87,15 +87,15 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   }
 
   displayModerationArea() {
-    this.moderationVisibility = 'visible';
+    this.moderationVisibility = true;
   }
   hideModerationArea() {
-    this.moderationVisibility = 'hidden';
+    this.moderationVisibility = false;
   }
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (event.keyCode === KEY_CODE.ESCAPE && this.moderationVisibility === 'visible') {
-      if (this.galleryDeletionModal === 'visible') {
+    if (event.keyCode === KEY_CODE.ESCAPE && this.moderationVisibility === true) {
+      if (this.galleryDeletionModal === true) {
         this.closeGalleryDeletionModal();
       } else {
         this.hideModerationArea();
