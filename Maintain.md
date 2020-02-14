@@ -2,7 +2,7 @@
 
 ## Add a new Ponthé team
 1. Change the members.json in the [Galeries](https://github.com/ENPC-Ponthe/Galeries) repo. The json file is available [here](https://github.com/ENPC-Ponthe/Galeries/tree/testing/web/app/instance/assets/data).
-2. Add the new promotion in src/app/constants/Images.scss, with the pictures representing this team in both *$PONTHE-PROMO-IMAGES-LARGE* and *$PONTHE-PROMO-IMAGES-SMALL* (i.e. pics on desktop and mobile).
+2. Add the new promotion in src/app/constants/Images.scss, with the pictures representing this team in *$PONTHE-PROMO-IMAGES*.
 3. Update the *$INDEX-PONTHE-TROMBI* constant in the same file with the index of the trombinoscope (set it to -1 if there is no trombinoscope).
 4. Update the *NUMBER_PICS_BY_PONTHE_TEAM* constant in src/app/constants/Images.ts with the number of pics added.
 You're done!

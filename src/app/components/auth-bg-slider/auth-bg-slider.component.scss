@@ -28,25 +28,15 @@
   }
 }
 
-@each $image in $AUTH-BG-SLIDER-IMAGES-LARGE {
-  $ind: index($AUTH-BG-SLIDER-IMAGES-LARGE, $image);
+@each $image in $AUTH-BG-SLIDER-IMAGES {
+  $ind: index($AUTH-BG-SLIDER-IMAGES, $image);
   #bg#{$ind} {
     background: $image;
     background-size: cover;
     box-shadow: inset 0 0 units(20) units(15) #000;
 
     @include sm {
-      box-shadow: inset 0 0 units(12.5) units(10) #000;
-    }
-  }
-}
-
-@each $image in $AUTH-BG-SLIDER-IMAGES-SMALL {
-  $ind: index($AUTH-BG-SLIDER-IMAGES-SMALL, $image);
-  #bg#{$ind} {
-    @include sm {
-      background: $image;
-      background-size: cover;
+      box-shadow: inset 0 0 units(10) units(6) #000;
     }
   }
 }

@@ -45,10 +45,9 @@ export default {
             'members.json</i></a> en y ajoutant les nouveaux membres et la nouvelle promo</li>' +
             '<li>Ajouter la nouvelle promotion dans le fichier <a href="https://github.com/ENPC-Ponthe/Angular-project/blob/' +
             'testing/src/app/constants/style/Images.scss"><i>Images.scss</i></a> en y ajoutant des photos représentant l\'équipe, ' +
-            'à la fois dans les variables <i>$PONTHE-PROMO-IMAGES-LARGE</i> et <i>$PONTHE-PROMO-IMAGES-SMALL</i> (i.e. pour web et ' +
-            'mobile).</li>' +
+            'dans la constante <i>$PONTHE-PROMO-IMAGES</i>.</li>' +
             '<li>Mettre à jour la constante <i>$INDEX-PONTHE-TROMBI</i> dans le même fichier, en indiquand l\'index du trombi dans ' +
-            'les images $PONTHE-PROMO-IMAGES-X (mettre l\'index à -1 s\'il n\'y a pas de trombi).</li>' +
+            'les images $PONTHE-PROMO-IMAGES (mettre l\'index à -1 s\'il n\'y a pas de trombi).</li>' +
             '<li>Mettre à jour la constante <i>NUMBER_PICS_BY_PONTHE_TEAM</i> présente dans le fichier <a href="https://github.com/' +
             'ENPC-Ponthe/Angular-project/blob/testing/src/app/constants/Images.ts"><i>Images.ts</i></a> avec le nombre de photos ' +
             'ajoutées.</li></ol>' +
@@ -61,9 +60,8 @@ export default {
             'Tout simple : <ol>' +
             '<li>Ajouter les photos dans <a href="https://github.com/ENPC-Ponthe/Angular-project/tree/testing/src/assets/images/' +
             'ponthe_teams"><i>ce dossier</i></a></li>' +
-            '<li>Ajouter ces photos dans les constantes <i>$PONTHE-PROMO-IMAGES-LARGE</i> et <i>$PONTHE-PROMO-IMAGES-SMALL</i> de ' +
-            '<a href="https://github.com/ENPC-Ponthe/Angular-project/blobtesting/src/app/constants/style/Images.scss"><i>Images.scss' +
-            '</i></a></li>' +
+            '<li>Ajouter ces photos dans la constante <i>$PONTHE-PROMO-IMAGES</i> de <a href="https://github.com/ENPC-Ponthe/' +
+            'Angular-project/blobtesting/src/app/constants/style/Images.scss"><i>Images.scss</i></a></li>' +
             '<li>Si besoin, mettre à jour la constante <i>$INDEX-PONTHE-TROMBI</i> dans le même fichier.</li>'
       }
     ]
