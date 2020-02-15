@@ -37,6 +37,7 @@ import { HomeFormComponent } from './components/home-form/home-form.component';
 import { IconLinksComponent } from './components/icon-links/icon-links.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
+import { LoaderPontheComponent } from './components/loader-ponthe/loader-ponthe.component';
 import { LoadingPointsComponent } from './components/loading-points/loading-points.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
@@ -105,6 +106,7 @@ export function setupTranslateFactory(
     HomeFormComponent,
     ImageViewerComponent,
     LanguageSelectionComponent,
+    LoaderPontheComponent,
     LoadingPointsComponent,
     LoadingSpinnerComponent,
     MaterialBookingFormComponent,

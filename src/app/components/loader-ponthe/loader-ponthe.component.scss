@@ -1,0 +1,58 @@
+@import "../../PontheStyle.scss";
+
+$ANIMATION-DURATION: 2.5s;
+
+#loader-ponthe {
+    @include fullscreen;
+    display: flex;
+    align-items: center;
+    background: color(DARK_GREY);
+}
+
+svg {
+    display: block;
+    margin: auto;
+    max-height: 30vh;
+    max-width: 40vw;
+
+    @include sm {
+        max-height: 40vh;
+        max-width: 50vw;
+    }
+}
+
+.path {
+	stroke-dasharray: 2200;
+	fill: transparent;
+    animation:  dash $ANIMATION-DURATION ease-in-out infinite alternate,
+                full $ANIMATION-DURATION ease-in-out infinite alternate;
+}
+
+@keyframes dash {
+	0% {
+		stroke-dashoffset: 2200;
+		stroke-width: 1;
+		stroke: #f61;
+	}
+	60% {
+		stroke: color(PONTHE);
+		
+	}
+	80% {
+		stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 0;
+		stroke-width: 6;	
+		stroke: color(PONTHE);
+	}
+}
+
+@keyframes full {
+	35% {
+		fill: transparent;	
+	}
+	100% {
+		fill: color(PONTHE);	
+	}
+}
