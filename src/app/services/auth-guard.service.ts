@@ -51,8 +51,8 @@ export class AuthGuard implements CanActivate {
     const userbyJwt = await this.getUserByJWT();
     // console.log(userbyJwt);
     console.log('permission', this.hasUserAccessToApp);
-    console.log('null?', this.httpService.token !== 'null')
-    console.log('null?', NULL_TOKEN.indexOf(this.httpService.token))
+    console.log('null?', this.httpService.token !== 'null');
+    console.log('null?', NULL_TOKEN.indexOf(this.httpService.token));
     if (this.hasUserAccessToApp) { // Complete with log in and log out functions
       console.log('user ok');
       return true;
