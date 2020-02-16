@@ -1,6 +1,18 @@
 @import url("../../../assets/assets_c/css/main.css");
 @import "../../PontheStyle.scss";
 
+.is-preload {
+	@include sm {
+		padding: 5em 1.25em 5.25em 1.25em !important;
+	}
+	@include md {
+		padding: 10em 3.5em 6.5em 5em !important;
+	}
+	@include lg {
+		padding: 13em 4em 8em 4em !important;
+	}
+}
+
 .signup-form input {
 	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-NONE;
 
@@ -51,7 +63,7 @@ form {
 
 #app-auth-card {
 	@include sm {
-		margin-top: units(9);
+		margin-top: units(3);
 		z-index: 3;
 	}
 	@include md {

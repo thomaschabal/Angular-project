@@ -25,13 +25,11 @@ export class AuthGuard implements CanActivate {
         this.httpService.isAdmin = response.admin;
         this.httpService.promotion = response.promotion;
         this.hasUserAccessToApp = true;
-        console.log('resultat !:!!!!!!!!!!!!!! oui');
         return true; },
       (err) => {
         this.httpService.isAdmin = false;
         this.httpService.promotion = '';
         this.hasUserAccessToApp = false;
-        console.log('resultat !:!!!!!!!!!!!!!! non');
         this.router.navigate([routesAppFromRoot.auth]);
         return false;
        }
@@ -44,20 +42,11 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) => {
-    console.log(route, state);
     const ticket = route.queryParams.ticket;
-    console.log('ticket', ticket);
-    console.log('current token', this.httpService.token);
-    const userbyJwt = await this.getUserByJWT();
-    // console.log(userbyJwt);
-    console.log('permission', this.hasUserAccessToApp);
-    console.log('null?', this.httpService.token !== 'null');
-    console.log('null?', NULL_TOKEN.indexOf(this.httpService.token));
+    this.getUserByJWT();
     if (this.hasUserAccessToApp) { // Complete with log in and log out functions
-      console.log('user ok');
       return true;
     } else {
-      console.log('no user, maybe cas ?');
       this.authService.casAuthentication(ticket);
       this.router.navigate([routesAppFromRoot.auth]);
     }

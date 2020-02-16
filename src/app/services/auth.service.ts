@@ -100,15 +100,11 @@ export class AuthService {
   }
 
   casAuthentication(ticket: string) {
-    console.log('cas activated');
-    console.log('ticket for cas:', ticket);
     this.httpService.get(API_ROUTES.casAuthenticate + '?ticket=' + ticket).subscribe(
       (res: { access_token }) => {
-        console.log('res', res);
         this.authenticate(res.access_token);
       },
       (error) => {
-        console.error(error);
         this.updateLoginError(true);
       }
     );
