@@ -90,12 +90,26 @@ export class AuthService {
     this.loginErrorSource.next(newState);
   }
 
+  authenticate(token: string) {
+    this.setToken(token);
+    this.isAuth = true;
+    this.router.navigate([routesAppFromRoot.home]);
+    this.getUserByJWT();
+    this.homeService.getLatestGalleries();
+    this.homeService.getLovePics();
+  }
+
   casAuthentication(ticket: string) {
     console.log('cas activated');
     console.log('ticket for cas:', ticket);
     this.httpService.get(API_ROUTES.casAuthenticate + '?ticket=' + ticket).subscribe(
-      (res) => {
+      (res: { access_token }) => {
         console.log('res', res);
+        this.authenticate(res.access_token);
+      },
+      (error) => {
+        console.error(error);
+        this.updateLoginError(true);
       }
     );
   }
@@ -104,12 +118,7 @@ export class AuthService {
   signIn(user: LoggingUser) {
     this.httpService.post(API_ROUTES.login, user).subscribe(
       (res: { token }) => {
-        this.setToken(res.token);
-        this.isAuth = true;
-        this.router.navigate([routesAppFromRoot.home]);
-        this.getUserByJWT();
-        this.homeService.getLatestGalleries();
-        this.homeService.getLovePics();
+        this.authenticate(res.token);
       },
       (error) => { this.updateLoginError(true); }
     );
