@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { state, trigger, animate, style, transition } from '@angular/animations';
+import { state, trigger, animate, style, transition, keyframes } from '@angular/animations';
 
 import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
 import { GaleriesService } from '../../services/galeries.service';
@@ -17,9 +17,18 @@ import { routesAppFromRoot } from '../../Routes';
       transition(':enter', [ animate('200ms') ] ),
     ]),
     trigger('spinnerTrigger', [
-      state('visible', style({opacity: 1})),
-      state('hidden', style({opacity: 0})),
-      transition('* => *', [ animate('200ms') ] ),
+      transition(':enter', [
+        animate(200, keyframes([
+          style({ offset: 0, opacity: 0 }),
+          style({ offset: 1, opacity: 1 })
+        ]))
+      ]),
+      transition(':leave', [
+        animate(200, keyframes([
+          style({ offset: 0, opacity: 1 }),
+          style({ offset: 1, opacity: 0 })
+        ]))
+      ]),
     ])
   ]
 })

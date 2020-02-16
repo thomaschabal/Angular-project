@@ -1,20 +1,22 @@
 <div id="loader-ponthe">
-<svg
-  version="1.1"
-  id="Logo"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink"
-  x="0px"
-  y="0px"
-  viewBox="-31.1 283.3 918 616"
->
-  <path
-    class="path"
-    fill="none"
-    stroke="#FFCC33"
-    stroke-width="4"
-    stroke-miterlimit="10"
-    d="M63.9,846.1c11.7-12.8,22.3-24.7,33-36.3
+  <svg
+    version="1.1"
+    id="Logo"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    viewBox="-31.1 283.3 918 616"
+  >
+    <path
+      id="path1"
+      fill="transparent"
+      stroke="#FFCC33"
+      stroke-dashoffset="2200"
+      stroke-dasharray="2200"
+      stroke-width="4"
+      stroke-miterlimit="10"
+      d="M63.9,846.1c11.7-12.8,22.3-24.7,33-36.3
 			c18.1-19.7,19.1-34.1,2.7-55.4C82,731.8,64.2,709.3,47.5,686c-25.9-36.1-47.3-74.5-60-117.1C-27.9,517-26.6,465.5-1.9,416.4
 			c17.9-35.6,44.7-63.2,80.8-81.5c45.6-23.3,94.4-34.1,144.8-38.9c63.2-6,125.3-0.4,186.1,18c38.7,11.7,75.6,27.8,108.7,51.6
 			c7.3,5.2,14.9,10.6,19.5,19.5c-6.3,1.5-11.7-0.4-17.2-1.3c-10.1-1.7-18.7,0.9-20,6.2c-1.3,5,5.8,11,16.2,13.1
@@ -50,14 +52,61 @@
 			C235.3,619.2,236.1,611.2,239.9,601.7z M205.8,641.1c1.3-22.4-2.8-46.1-9.6-69.3c-3.9-13.4-9.3-26.8-20.1-36.5
 			c-14.6-13.2-28.2-10.4-38.4-0.4c-7.6,7.5-12.3,17.6-15.3,28.2c-13.1,46.6-9.5,92.7,5.1,138c5,15.5,11.4,31,24.4,42.4
 			c9.4,8.2,22.1,7.5,30.1-2.2c5-6.1,9.4-12.7,11.7-20.2C201.6,695.8,206.7,669.9,205.8,641.1z"
-  />
-  <path
-    class="path"
-    fill="none"
-    stroke="#FFCC33"
-    stroke-width="4"
-    stroke-miterlimit="10"
-    d="M878.4,515.9c3.5,32.7-9.8,65.1-23.3,97.4
+    >
+      <animate
+        attributeName="stroke-width"
+        from="1"
+        to="1"
+        dur="5s"
+        values="1;6;1"
+        keyTimes="0;0.5;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="stroke-dashoffset"
+        from="2200"
+        to="2200"
+        dur="5s"
+        values="2200;0;0;0;2200"
+        keyTimes="0;0.4;0.5;0.6;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; 0 0 0 0; 0 0 0 0; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="stroke"
+        from="#f61"
+        to="#f61"
+        dur="5s"
+        values="#f61;#fc3;#fc3;#fc3;#f61"
+        keyTimes="0;0.3;0.5;0.7;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; 0 0 0 0; 0 0 0 0; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="fill"
+        from="transparent"
+        to="transparent"
+        dur="5s"
+        values="transparent;transparent;#fc3;transparent;transparent"
+        keyTimes="0;0.175;0.5;0.825;1"
+        calcMode="spline"
+        keySplines="0 0 0 0; .42 0 .59 1; .42 0 .59 1; 0 0 0 0"
+        repeatCount="indefinite"
+      />
+    </path>
+    <path
+      class="path"
+      fill="none"
+      stroke="#FFCC33"
+      stroke-dashoffset="2200"
+      stroke-dasharray="2200"
+      stroke-width="4"
+      stroke-miterlimit="10"
+      d="M878.4,515.9c3.5,32.7-9.8,65.1-23.3,97.4
 			c-14,33.5-30.7,65.7-52.8,94.7c-10.3,13.6-20.9,26.8-34.6,37.4c-21.5,16.5-54.2,12.5-69.9,0.1c-5.8-4.5-9.4-10.1-11.7-17
 			c-7.8-23.5-8-47.9-9.3-72.1c-1.1-19.1-1.6-38.4-6.1-57.2c-1.9-7.8-5.4-13.4-12.8-17.6c-17.5-9.8-35.5-18.4-53.9-26.4
 			c-5.4-2.4-7.4-1.4-8.5,4.7c-5.1,27.9-9.9,56-19.2,82.9c-3.9,11.5-7.6,23.1-12.7,34.2c-1.9,4.2-3.4,5.2-6.4,0.9
@@ -70,25 +119,164 @@
 			c8.2-7.2,12.1-17.3,17.2-26.4c16.8-30.6,29.8-62.9,44.6-94.6c10.2-21.9,18.9-44,21.4-68.4c2-19.7-1.5-35.7-25.4-43.2
 			c-22.2-6.8-37.7-1.1-47.2,20.1c-9.3,20.9-14.9,42.9-19.1,65.2C738.8,555.3,740.5,589.9,738.4,624.1z M759.7,711.7
 			c-0.1-12.2-9.6-20.8-23.1-20.7c-12.9,0.1-25.1,13.8-25,27.9c0.1,9.3,14.9,21.7,25.9,21.9C747.7,741,759.9,725.2,759.7,711.7z"
-  />
-  <path
-    class="path"
-    fill="none"
-    stroke="#FFCC33"
-    stroke-width="4"
-    stroke-miterlimit="10"
-    d="M48.5,486.4c-0.1-11.7,5.7-21.3,13.9-23.4
+    >
+      <animate
+        attributeName="stroke-width"
+        from="1"
+        to="1"
+        dur="5s"
+        values="1;6;1"
+        keyTimes="0;0.5;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="stroke-dashoffset"
+        from="2200"
+        to="2200"
+        dur="5s"
+        values="2200;0;0;0;2200"
+        keyTimes="0;0.4;0.5;0.6;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; 0 0 0 0; 0 0 0 0; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="stroke"
+        from="#f61"
+        to="#f61"
+        dur="5s"
+        values="#f61;#fc3;#fc3;#fc3;#f61"
+        keyTimes="0;0.3;0.5;0.7;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; 0 0 0 0; 0 0 0 0; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="fill"
+        from="transparent"
+        to="transparent"
+        dur="5s"
+        values="transparent;transparent;#fc3;transparent;transparent"
+        keyTimes="0;0.175;0.5;0.825;1"
+        calcMode="spline"
+        keySplines="0 0 0 0; .42 0 .59 1; .42 0 .59 1; 0 0 0 0"
+        repeatCount="indefinite"
+      />
+    </path>
+    <path
+      class="path"
+      fill="none"
+      stroke="#FFCC33"
+      stroke-dashoffset="2200"
+      stroke-dasharray="2200"
+      stroke-width="4"
+      stroke-miterlimit="10"
+      d="M48.5,486.4c-0.1-11.7,5.7-21.3,13.9-23.4
 			c9.6-2.4,21.2,4.2,26.2,14.8c9.9,21.1,5.1,34.9-14.6,42.7c-6.9,2.7-11.9,1.3-15.8-5.1C52.5,506.2,48.6,494.6,48.5,486.4z"
-  />
-  <path
-    class="path"
-    fill="none"
-    stroke="#FFCC33"
-    stroke-width="4"
-    stroke-miterlimit="10"
-    d="M134.3,621.7c1-18.2,0.8-36.8,10.2-53.4
+    >
+      <animate
+        attributeName="stroke-width"
+        from="1"
+        to="1"
+        dur="5s"
+        values="1;6;1"
+        keyTimes="0;0.5;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="stroke-dashoffset"
+        from="2200"
+        to="2200"
+        dur="5s"
+        values="2200;0;0;0;2200"
+        keyTimes="0;0.4;0.5;0.6;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; 0 0 0 0; 0 0 0 0; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="stroke"
+        from="#f61"
+        to="#f61"
+        dur="5s"
+        values="#f61;#fc3;#fc3;#fc3;#f61"
+        keyTimes="0;0.3;0.5;0.7;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; 0 0 0 0; 0 0 0 0; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="fill"
+        from="transparent"
+        to="transparent"
+        dur="5s"
+        values="transparent;transparent;#fc3;transparent;transparent"
+        keyTimes="0;0.175;0.5;0.825;1"
+        calcMode="spline"
+        keySplines="0 0 0 0; .42 0 .59 1; .42 0 .59 1; 0 0 0 0"
+        repeatCount="indefinite"
+      />
+    </path>
+    <path
+      class="path"
+      fill="none"
+      stroke="#FFCC33"
+      stroke-dashoffset="2200"
+      stroke-dasharray="2200"
+      stroke-width="4"
+      stroke-miterlimit="10"
+      d="M134.3,621.7c1-18.2,0.8-36.8,10.2-53.4
 			c3.7-6.4,8.1-11.9,16.5-10.4c7.8,1.4,11.7,7.2,13.9,14.2c7.6,24.3,9.4,49.1,7.2,74.3c-1.2,13.8-1.6,27.4-4.9,41
 			c-1.3,5.6-3.1,10.9-5.7,16.1c-5.5,10.5-15.3,11-21.4,1.1c-7.2-11.7-10.1-25-11.8-38.4C136.4,651.3,133.5,636.6,134.3,621.7z"
-  />
-</svg>
+    >
+      <animate
+        attributeName="stroke-width"
+        from="1"
+        to="1"
+        dur="5s"
+        values="1;6;1"
+        keyTimes="0;0.5;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="stroke-dashoffset"
+        from="2200"
+        to="2200"
+        dur="5s"
+        values="2200;0;0;0;2200"
+        keyTimes="0;0.4;0.5;0.6;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; 0 0 0 0; 0 0 0 0; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="stroke"
+        from="#f61"
+        to="#f61"
+        dur="5s"
+        values="#f61;#fc3;#fc3;#fc3;#f61"
+        keyTimes="0;0.3;0.5;0.7;1"
+        calcMode="spline"
+        keySplines=".42 0 .59 1; 0 0 0 0; 0 0 0 0; .42 0 .59 1"
+        repeatCount="indefinite"
+      />
+      <animate
+        attributeName="fill"
+        from="transparent"
+        to="transparent"
+        dur="5s"
+        values="transparent;transparent;#fc3;transparent;transparent"
+        keyTimes="0;0.175;0.5;0.825;1"
+        calcMode="spline"
+        keySplines="0 0 0 0; .42 0 .59 1; .42 0 .59 1; 0 0 0 0"
+        repeatCount="indefinite"
+      />
+    </path>
+  </svg>
 </div>

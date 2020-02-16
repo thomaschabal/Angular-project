@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { state, trigger, animate, style, transition } from '@angular/animations';
+import { state, trigger, animate, style, transition, keyframes } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
@@ -26,9 +26,18 @@ import KEY_CODE from '../../constants/KeyCode';
       transition(':enter', [ animate('200ms') ] ),
     ]),
     trigger('spinnerTrigger', [
-      state('visible', style({opacity: 1})),
-      state('hidden', style({opacity: 0})),
-      transition('* => *', [ animate('200ms') ] ),
+      transition(':enter', [
+        animate(200, keyframes([
+          style({ offset: 0, opacity: 0 }),
+          style({ offset: 1, opacity: 1 })
+        ]))
+      ]),
+      transition(':leave', [
+        animate(200, keyframes([
+          style({ offset: 0, opacity: 1 }),
+          style({ offset: 1, opacity: 0 })
+        ]))
+      ]),
     ])
   ]
 })
