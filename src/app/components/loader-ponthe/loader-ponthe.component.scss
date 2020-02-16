@@ -12,6 +12,7 @@ svg {
     margin: auto;
     max-height: 30vh;
     max-width: 40vw;
+    height: 100vh;
 
     @include sm {
         max-height: 40vh;
