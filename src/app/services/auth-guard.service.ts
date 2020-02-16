@@ -23,13 +23,13 @@ export class AuthGuard implements CanActivate {
         this.httpService.isAdmin = response.admin;
         this.httpService.promotion = response.promotion;
         this.hasUserAccessToApp = true;
-        console.log('resultat !:!!!!!!!!!!!!!! oui')
+        console.log('resultat !:!!!!!!!!!!!!!! oui');
         return true; },
       (err) => {
         this.httpService.isAdmin = false;
         this.httpService.promotion = '';
         this.hasUserAccessToApp = false;
-        console.log('resultat !:!!!!!!!!!!!!!! non')
+        console.log('resultat !:!!!!!!!!!!!!!! non');
         this.router.navigate([routesAppFromRoot.auth]);
         return false;
        }
