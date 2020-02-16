@@ -16,7 +16,7 @@ export class HttpService {
     this.apiUrl = environment.apiUrl;
   }
 
-  getHeaderFromToken(token: string) {
+  getHeaderFromToken() {
     return new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
       'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ export class HttpService {
   // Method get : require the route from the API
   get(path: string) {
     const httpOptions = {
-      headers: this.getHeaderFromToken(this.token)
+      headers: this.getHeaderFromToken()
     };
     return this.httpClient.get(this.apiUrl + path, httpOptions);
   }
@@ -35,7 +35,7 @@ export class HttpService {
   // Méthode post
   post(path: string, body: any) {
     const httpOptions = {
-      headers: this.getHeaderFromToken(this.token)
+      headers: this.getHeaderFromToken()
     };
     return this.httpClient.post(this.apiUrl + path, body, httpOptions);
   }
@@ -55,7 +55,7 @@ export class HttpService {
   // Méthode delete
   delete(path: string) {
     const httpOptions = {
-      headers: this.getHeaderFromToken(this.token)
+      headers: this.getHeaderFromToken()
     };
     return this.httpClient.delete(this.apiUrl + path, httpOptions);
   }
