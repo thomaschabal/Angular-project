@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 export class HttpService {
   // Variables containing the address of the back, the user's token and his status (user or admin)
   apiUrl: string;
-  token: string;
+  token: string | null;
   isAdmin: boolean;
   promotion: string;
 

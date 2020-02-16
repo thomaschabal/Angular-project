@@ -7,9 +7,11 @@ import { AuthService } from './auth.service';
 import { routesAppFromRoot } from '../Routes';
 import API_ROUTES from './Api';
 
+const NULL_TOKEN = [null, 'null', undefined];
+
 @Injectable()
 export class AuthGuard implements CanActivate {
-  hasUserAccessToApp = (this.httpService.token !== null) && (this.httpService.token !== undefined);
+  hasUserAccessToApp = NULL_TOKEN.indexOf(this.httpService.token) === -1;
 
   constructor(private httpService: HttpService,
               private authService: AuthService,
@@ -47,9 +49,11 @@ export class AuthGuard implements CanActivate {
     console.log('ticket', ticket);
     console.log('current token', this.httpService.token);
     const userbyJwt = await this.getUserByJWT();
-    console.log(userbyJwt);
+    // console.log(userbyJwt);
     console.log('permission', this.hasUserAccessToApp);
-    if (this.httpService.token !== null && this.hasUserAccessToApp) {
+    console.log('null?', this.httpService.token !== 'null')
+    console.log('null?', NULL_TOKEN.indexOf(this.httpService.token))
+    if (this.hasUserAccessToApp) { // Complete with log in and log out functions
       console.log('user ok');
       return true;
     } else {
