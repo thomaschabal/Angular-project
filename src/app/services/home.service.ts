@@ -23,7 +23,7 @@ export class HomeService {
           const lastEvents = res.galleries;
           // REMOVE FOLLOWING LINE WHEN LOVE PICS ARE IMPLEMENTED
           // const idEvents = ['one', 'two', 'three', 'coeur'];
-          const idEvents = ['one', 'two', 'three'];
+          const idEvents = ['one', 'two', 'three', 'contact'];
           for (let i = 0; i < lastEvents.length; i++) {
             this.lastEvents[i] = {
               name: lastEvents[i].name,
