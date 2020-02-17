@@ -7,6 +7,7 @@ import { routesAppFromRoot } from '../../Routes';
 import { BREAKPOINTS, PATH_AUTH_VIDEO, CAS_BASE_URL } from '../../Constants';
 import { Subscription } from 'rxjs';
 import { PwaService } from '../../services/Pwa.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-auth',
@@ -40,7 +41,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     this.isLoginErrorSubscription = this.authService.loginErrorStream.subscribe(state => {
       this.isLoginError = state;
     });
-    this.ssoPath = CAS_BASE_URL + encodeURI('https://ponthe-testing.enpc.org/');
+    this.ssoPath = CAS_BASE_URL + encodeURI(environment.baseUrl);
   }
 
   ngOnDestroy() {
