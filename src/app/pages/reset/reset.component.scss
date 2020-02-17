@@ -1,6 +1,14 @@
 @import url("../../../assets/assets_c/css/main.css");
 @import "../../PontheStyle.scss";
 
+body {
+	margin-top: -5em;
+  
+	@include sm {
+	  margin-top: -2em;
+	}
+  }
+
 #inner-text {
 	margin-bottom: units(2.5);
 }

@@ -12,20 +12,8 @@
 }
 
 #background-auth {
+  @include fullscreen;
   background: #000;
-  width: 100vw;
-  height: 100vh;
-
-  @include sm {
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
-  @include md {
-    position: fixed;
-    top: 0;
-    left: 0;
-  }
 }
 
 @each $image in $AUTH-BG-SLIDER-IMAGES {
