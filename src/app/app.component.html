@@ -1,12 +1,16 @@
 <!-- Header -->
 <app-nav></app-nav>
 
-
 <!-- Router Outlet = content of the pages -->
 <div class="route-container" [@routeAnimations]="prepareRoute(outlet)">
 	<router-outlet #outlet="outlet"></router-outlet>
 </div>
 
-
 <!-- Footer -->
 <app-footer></app-footer>
+
+<app-alert
+	[visible]="visible"
+	[title]="titleEasterEgg"
+	(close)="closeEasterEgg()"
+	></app-alert>

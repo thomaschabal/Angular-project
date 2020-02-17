@@ -1,0 +1,23 @@
+button {
+  background: linear-gradient(30deg, red, yellow);
+  border: 0;
+  border-radius: 3.5em;
+  color: #fff;
+  display: inline-block;
+  height: 3.5em;
+  line-height: 3.5em;
+  margin-bottom: 3vh;
+  outline: 0;
+  padding: 0 2em 0 2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  width: 15vw;
+}
+
+@media screen and (max-width: 736px) {
+  button {
+    width: 45vw;
+  }
+}

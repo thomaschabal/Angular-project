@@ -1,0 +1,12 @@
+<app-modal
+  [title]="'dashboard.tutos.title' | translate"
+  [closeText]="'close' | translate"
+  [visible]="visible"
+  (close)="closeTutos()">
+  <div id="container">
+    <div *ngFor="let subjects of tutorials" class="subject">
+      <h2 [innerHTML]="subjects.title"></h2>
+      <app-tutorial-subject *ngFor="let tuto of subjects.content" [tuto]="tuto"></app-tutorial-subject>
+    </div>
+  </div>
+</app-modal>

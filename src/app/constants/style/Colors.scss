@@ -1,0 +1,32 @@
+/* COLORS */
+$COLORS: (
+    PONTHE: #fc3,
+    YELLOW: #fc3,
+    WHITE: #fff,
+    LIGHT_GREY: #ddd,
+    DARK: #222,
+    DARK_GREY: #242628,
+    DARK_DARK_GREY: #39454b,
+
+    SUCCESS: #19a219,
+    FAILURE: #f72e2e,
+
+    GRADIENT_RED_YELLOW: linear-gradient(30deg, red, yellow),
+);
+
+$OVERLAYS: (
+    HOME: rgba(0,0,0,0.25),
+    LIGHT_GREY: rgba(0,0,0,0.3),
+);
+
+@function color($color) {
+    @if map-has-key($COLORS, $color ) {
+        @return map-get($COLORS, $color);
+    }
+}
+
+@function overlay($key) {
+    @if map-has-key($OVERLAYS, $key ) {
+        @return map-get($OVERLAYS, $key);
+    }
+}

@@ -1,0 +1,42 @@
+$ASSETS-FOLDER: "/assets/images/";
+$AUTH-PICS-FOLDER: $ASSETS-FOLDER + "auth_pics/";
+$TEAM-FOLDER: $ASSETS-FOLDER + "ponthe_teams/";
+
+/* BACKGROUND IMAGES */
+$INTRO-IMAGE: url("/assets/assets_h/css/images/overlay.png"), url($ASSETS-FOLDER + "introP.jpg");
+$OVERLAY-IMAGE: url("/assets/assets_h/css/images/overlay.png");
+$AUTH-BG-SLIDER-IMAGES:
+    url($AUTH-PICS-FOLDER + "wei.jpg")
+    url($AUTH-PICS-FOLDER + "font1.jpg")
+    url($AUTH-PICS-FOLDER + "pom.jpg")
+    url($AUTH-PICS-FOLDER + "voyage1.jpg");
+
+$PONTHE-PROMO-IMAGES: (
+    015: url($ASSETS-FOLDER + "05.jpg"),
+    016: url($ASSETS-FOLDER + "04.jpg"),
+    017: url($ASSETS-FOLDER + "05.jpg"),
+    018: url($ASSETS-FOLDER + "04.jpg"),
+    019: url($TEAM-FOLDER + "019.jpg"),
+    020: 
+        url($TEAM-FOLDER + "020.jpg")
+        url($TEAM-FOLDER + "020_pulls.jpg")
+        url($TEAM-FOLDER + "020_trombi.jpg")
+        url($TEAM-FOLDER + "020_completed.jpg") 
+        url($TEAM-FOLDER + "020_021.jpg"),
+    021: 
+        url($TEAM-FOLDER + "021.jpg")
+        url($TEAM-FOLDER + "021_trombi.jpg")
+        url($TEAM-FOLDER + "021_passa.jpg")
+        url($TEAM-FOLDER + "021_pulls.jpg")
+        url($TEAM-FOLDER + "020_021_gala.jpeg")
+);
+
+$INDEX-PONTHE-TROMBI: (
+    015: -1,
+    016: -1,
+    017: -1,
+    018: -1,
+    019: -1,
+    020: 2,
+    021: 1
+);

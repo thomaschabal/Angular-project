@@ -1,0 +1,17 @@
+<!-- Intro -->
+<section id="intro" class="main style1 dark fullscreen"
+         (mouseenter)='survoleIntro("visible")'
+         (mouseleave)='survoleIntro("hidden")'>
+  <div class="content" [@introTrigger]="introState">
+    <header>
+      <h2>{{ 'members.header.title' | translate }}</h2>
+    </header>
+    <p>{{ 'members.header.subtitle' | translate }}</p>
+    <footer>
+      <a class="button style2 down" (click)="onClickNext(fragmentIntro)" aria-label="More">More</a>
+    </footer>
+  </div>
+</section>
+
+<!-- Teams per year -->
+<app-ponthe-team *ngFor="let team of teamPonthe; let i=index" [team]="team" [index]="i"></app-ponthe-team>

@@ -1,0 +1,14 @@
+<!-- Contact -->
+<section id="contact" class="main style3 secondary"
+         (mouseenter)="survoleForm('visible')"
+         (mouseleave)="survoleForm('hidden')">
+  <div class="content">
+    <header>
+      <h2>{{ 'material.header.title' | translate }}</h2>
+      <p>{{ 'material.header.subtitle' | translate }}</p>
+    </header>
+    <div class="box" [@formTrigger]="formState">
+      <app-material-booking-form></app-material-booking-form>
+    </div>
+  </div>
+</section>

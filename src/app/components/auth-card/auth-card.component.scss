@@ -1,0 +1,151 @@
+@import url("../../../assets/assets_c/css/main.css");
+@import "../../PontheStyle.scss";
+
+$MAX-WIDTH-CARD-MOBILE: 70vw;
+$MAX-WIDTH-CARD-TABLET: 60vw;
+
+#auth-card {
+	padding: units(6);
+	border-radius: units(6);
+	width: max-content;
+	margin: auto;
+	transition: background 0.5s ease, box-shadow 0.5s ease !important;
+
+	@include sm {
+		padding: units(3);
+		border-radius: units(3);
+	}
+}
+
+#auth-card:hover {
+	background: color(WHITE);
+	box-shadow: $BOX-SHADOW-CARD;
+}
+
+#header {
+	@include sm {
+		max-width: $MAX-WIDTH-CARD-MOBILE !important;
+	}
+	@include md {
+		max-width: $MAX-WIDTH-CARD-TABLET !important;
+	}
+}
+
+#header h1 {
+	color: color(YELLOW);
+	text-shadow: $AUTH-TEXT-SHADOW;
+}
+
+input, select {
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-NONE;
+
+	@include sm {
+		margin-bottom: units(1) !important;
+		width: 100% !important;
+		font-size: font-size(MEDIUM) !important;
+	}
+	@include md {
+		width: 100% !important;
+	}
+}
+
+input:focus, select:focus {
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+}
+
+form {
+	margin: 0;
+
+	@include sm {
+		max-width: $MAX-WIDTH-CARD-MOBILE !important;
+	}
+	@include md {
+		max-width: $MAX-WIDTH-CARD-TABLET !important;
+	}
+}
+
+label {
+	font-size: font-size(XLARGE);
+	transition: color 0.5s ease;
+	font-size: font-size(LARGE) !important;
+
+	@include sm {
+		font-size: font-size(MEDIUM) !important;
+	}
+}
+#auth-card:hover label {
+	color: color(DARK_DARK_GREY) !important;
+}
+
+p {
+	max-width: 60vw;
+	transition: color 0.5s ease;
+	line-height: 1.5em;
+	font-size: 1.25em !important;
+
+	@include sm {
+		font-size: 1.1em !important;
+	}
+}
+
+a {
+	color: color(YELLOW) !important;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+select {
+	color: rgba(255, 255, 255, 0.75);
+	font-family: "Roboto", sans-serif;
+	font-size: font-size(XLARGE) !important;
+	font-weight: 400;
+	letter-spacing: -0.01em;
+	line-height: 1.65em;
+	transition: color 0.5s ease;
+}
+input[type="text"] {
+  width: units(30);
+}
+input[type="submit"] {
+	background: $BUTTON-BACKGROUND-GRADIENT-YELLOWER !important;
+
+	@include sm {
+		margin: 0 !important;
+	}
+}
+select {
+	display: inline-block !important;
+	height: 59px;
+	// width: 60% !important;
+}
+
+#auth-card:hover input[type="password"],
+#auth-card:hover input[type="email"],
+#auth-card:hover input[type="text"],
+#auth-card:hover select,
+a {
+	transition: color 0.5s ease;
+	color: color(DARK_DARK_GREY) !important;
+}
+#auth-card:hover p, #auth-card:hover #email p, #auth-card:hover q {
+	color: color(DARK_DARK_GREY) !important;
+}
+
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="text"]:focus,
+select:focus {
+	background: rgba(0,0,0,0.1) !important;
+}
+
+input[type="password"]::placeholder,
+input[type="email"]::placeholder,
+input[type="text"]::placeholder {
+	transition: color 0.5s ease;
+}
+#auth-card:hover input[type="password"]::placeholder,
+#auth-card:hover input[type="email"]::placeholder,
+#auth-card:hover input[type="text"]::placeholder {
+	color: rgba(57, 69, 75, 0.5) !important;
+}

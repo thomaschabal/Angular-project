@@ -1,80 +1,113 @@
 import { HttpService } from './http.service';
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+import API_ROUTES from './Api';
+
+export const DEFAULT_PAGE_SIZE = 15;
 
 @Injectable()
 export class GaleriesService {
-  galeries_events :any[];
+  galeriesEvents = [];
+  areGaleriesEventsLoaded = false;
+  privateEvents = [];
+  arePrivateEventsLoaded = false;
+  displaySpinner = true;
+  stateSpinner = 'visible';
 
-  event_pics: any[];
+  constructor(private httpService: HttpService) {}
 
-  pic : any;
-
-  constructor(private httpService : HttpService,
-              private httpClient : HttpClient) {
-      // Request to get the list of all public events
-      const requestResult = httpService.get("/api/get-all-galleries")
-      .subscribe(
-        (res) => {
-          this.galeries_events = res["galleries"];
-        },
-        (error) => { }
-      );
+  // Determine whether the gallery is public or private
+  isPublicOrPrivate(routeGallery: string) {
+    let isPublic = true;
+    for (const event of this.privateEvents) {
+      if (event.slug === routeGallery) {
+        isPublic = false;
+      }
     }
-
+    return isPublic;
+  }
 
   // Delete an event
-  deleteEvent(event : string) {
-    return this.httpService.delete("/api/galleries/"+event);
+  deleteEvent(event: string) {
+    return this.httpService.delete(API_ROUTES.galleries + event);
   }
 
   // Get the image associated to some event
-  getEventByName(event : string) {
-    return this.httpService.post("/api/get-images/"+event, {"image-slug": event});
+  getEventByName(event: string, page = 1, pageSize = DEFAULT_PAGE_SIZE) {
+    return this.httpService.post(API_ROUTES.getImages + event, {'image-slug': event, page, page_size: pageSize});
   }
 
   // Get the list of all events
   getAllEvents() {
-    return this.httpService.get("/api/get-all-galleries");
+    if (!this.areGaleriesEventsLoaded) {
+      return this.httpService.get(API_ROUTES.getAllGalleries)
+        .toPromise()
+        .then(
+          (res: { galleries }) => {
+            this.galeriesEvents = res.galleries;
+            this.stateSpinner = 'hidden';
+            setTimeout(() => { this.displaySpinner = false; }, 200);
+            this.areGaleriesEventsLoaded = true;
+          },
+          (error) => { }
+        );
+    }
   }
 
-  getEventsOfYear(year : string) {
-    return this.httpService.get("/api/get-galleries-of-year/"+year);
+  getEventsOfYear(year: string) {
+    return this.httpService.get(API_ROUTES.getGalleriesOfYear + year);
   }
 
   // Get the list of all private events
   getPrivateEvents() {
-    return this.httpService.get("/api/get-private-galleries");
+    if (this.httpService.isAdmin === true && !this.arePrivateEventsLoaded) {
+      return this.httpService.get(API_ROUTES.getPrivateGalleries)
+        .toPromise()
+        .then(
+          (res: { galleries }) => {
+            this.privateEvents = res.galleries;
+            this.arePrivateEventsLoaded = true;
+          },
+          (error) => { }
+        );
+    }
   }
 
   // Get a random image for some event
-  getImage(event : string) {
-    return this.httpService.get("/api/get-random-image/"+event);
+  getImage(event: string) {
+    return this.httpService.get(API_ROUTES.getRandomImage + event);
   }
 
   // Turn a gallery to private
-  makePrivate(slug : string) {
-    return this.httpService.post("/api/galleries/makeprivate", {"gallery_slugs" : [slug]});
+  makePrivate(slug: string) {
+    return this.httpService.post(API_ROUTES.makePrivate, {gallery_slugs : [slug]});
   }
 
   // Turn a gallery to public
-  makePublic(slug : string) {
-    return this.httpService.post("/api/galleries/makepublic", {"gallery_slugs" : [slug]});
+  makePublic(slug: string) {
+    return this.httpService.post(API_ROUTES.makePublic, {gallery_slugs : [slug]});
   }
 
   // Get the full picture (not the thumbnail) associated to some path
-  getFullImage(path : string){
-    console.log(path);
-    return this.httpService.post("/api/get-full-image", {'file_path' : path});
+  getFullImage(path: string) {
+    return this.httpService.post(API_ROUTES.getFullImage, {file_path : path});
   }
 
-
   //// DASHBOARD METHODS
-  postEvent(event : any) {
-    return this.httpService.post('/api/create-gallery', event);
+  postEvent(event: any) {
+    return this.httpService.post(API_ROUTES.createGallery, event);
   }
 
   getModerationFiles() {
-    return this.httpService.get("/api/files/not-moderated");
+    return this.httpService.get(API_ROUTES.filesNotModerated);
+  }
+
+  //// METHODS FOR GALERIES COMPONENT
+  loadEvents = async () => {
+    await this.getAllEvents();
+    // Restricted to admins
+    await this.getPrivateEvents();
+
+    return Promise.resolve();
   }
 }

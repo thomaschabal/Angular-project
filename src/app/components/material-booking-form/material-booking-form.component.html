@@ -1,0 +1,39 @@
+<form>
+  <div class="fields" [formGroup]="materialForm" (ngSubmit)="onSubmitMateriel()">
+    <div class="field">
+      <label>{{ 'material.form.matos.title' | translate }}</label>
+    </div>
+    <div id="container">
+      <div id="items" [style.width.px]="sizeMatosContainer()">
+        <div *ngFor="let item of listMatos" class="itemCard" (click)="onClickItem(item)" [id]="selectedItems[item.name] ? 'selected' : 'none'">
+          <div class="itemPic">
+            <img [src]="item.img" />
+          </div>
+          <h2>{{ item.name }}</h2>
+          <p>{{ item.descriptif }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label for="date">{{ 'material.form.date.title' | translate }}</label>
+      <input id="date" type="text" name="date" [placeholder]="'material.form.date' | translate" formControlName="date"/>
+    </div>
+    <div class="field">
+      <label for="message">{{ 'material.form.message.title' | translate }}</label>
+      <textarea id="message" name="message" [placeholder]="'material.form.message' | translate" rows="4" formControlName="message"></textarea>
+    </div>
+  </div>
+  <p id="success" [class]="successMessage ? 'visible' : 'hidden'">
+    <span class="icon fa fa-check-circle fa-lg"></span>
+    {{ 'messages.sent' | translate }}
+  </p>
+  <p id="failure" [class]="failureMessage ? 'visible' : 'hidden'">
+    <span class="icon fa fa-times-circle fa-lg"></span>
+    {{ 'messages.fail' | translate }}
+  </p>
+  <ul class="actions special">
+    <li>
+      <input type="submit" [value]="'material.form.submitButton' | translate" (click)="onSubmitMateriel()" [disabled]="materialForm.invalid"/>
+    </li>
+  </ul>
+</form>

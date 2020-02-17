@@ -1,0 +1,11 @@
+<div id="flags-section" 
+     (mouseenter)="displayFlags(true)"
+     (mouseleave)="displayFlags(false)">
+  <span class="flag-icon flag-icon-{{ flagsByLanguage[selectedLanguage] }} selected"></span>
+  <span *ngFor="let lang of languages; let i = index">
+    <span *ngIf="lang !== selectedLanguage"
+          class="flag-icon flag-icon-{{ flagsByLanguage[lang] }} {{ showFlags ? 'flag-visible' : 'flag-hidden' }} flag{{ i }}"
+          (click)="setLang(lang)">
+    </span>
+  </span>
+</div>

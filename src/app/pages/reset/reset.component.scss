@@ -1,0 +1,77 @@
+@import url("../../../assets/assets_c/css/main.css");
+@import "../../PontheStyle.scss";
+
+#inner-text {
+	margin-bottom: units(2.5);
+}
+
+form {
+	margin: 0;
+
+	@include sm {
+		grid-gap: units(2);
+	}
+}
+
+.signup-form {
+	margin: 0;
+	align-items: flex-end;
+
+	@include sm {
+		display: flex !important;
+		margin-bottom: 0.5em;
+	}
+	@include md {
+		display: grid !important;
+		grid-template-rows: repeat(1, 1fr);
+	}
+}
+.signup-form > * {
+	margin: 0;
+}
+
+#email {
+	@include md {
+		grid-row: 1;
+		margin-bottom: units(2.5);
+	}
+}
+
+#email label {
+	margin-bottom: units(0.5);
+}
+
+#email input[type="text"] {
+	display: inline-block;
+	margin-right: units(2);
+
+	@include sm {
+		width: 50% !important;
+	}
+	@include md {
+		width: 55% !important;
+	}
+}
+#email p {
+	margin: 0;
+	display: inline-block;
+	font-size: font-size(XLARGE) !important;
+
+	@include sm {
+		font-size: font-size(SMALL) !important;
+	}
+}
+
+#submit {
+	margin-left: units(5);
+	margin-bottom: units(1);
+	
+	@include md {
+		grid-row: 2;
+		margin: 0;
+	}
+}
+
+.bg {
+	z-index: 1 !important;
+}

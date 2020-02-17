@@ -1,0 +1,57 @@
+<body class="is-preload">
+  <app-auth-card [title]="'newAccount.header.title' | translate" id="app-auth-card">
+    <p [innerHTML]="'newAccount.header.subtitle' | translate"></p>
+    <p>{{ 'newAccount.cgu.first' | translate }} <a [routerLink]="routes.cgu" [attr.aria-label]="'newAccount.cgu.cgu' | translate">{{ 'newAccount.cgu.cgu' | translate }}</a> {{ 'newAccount.cgu.second' | translate }} 
+      <a [routerLink]="routes.cgu" [attr.aria-label]="'newAccount.cgu.here' | translate">{{ 'newAccount.cgu.here' | translate }}</a>.
+    </p>
+
+    <!-- Signup Form -->
+    <form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+      <div class="field" id="firstName">
+        <label for="firstName-input">{{ 'newAccount.form.firstName' | translate }}</label>
+        <input id="firstName-input" type="text" name="firstname" [placeholder]="'newAccount.form.firstName' | translate" formControlName="firstname"/>
+      </div>
+      <div class="field" id="lastName">
+        <label for="lastName-input">{{ 'newAccount.form.familyName' | translate }}</label>
+        <input id="lastName-input" type="text" name="lastname" [placeholder]="'newAccount.form.familyName' | translate" formControlName="lastname"/>
+      </div>
+      <div class="field" id="email">
+        <label for="email-input">{{ 'newAccount.form.email' | translate }}</label>
+        <input id="email-input" type="text" name="email" [placeholder]="'newAccount.form.email' | translate" formControlName="email"/>
+        <p>{{ 'newAccount.form.email.extension' | translate }}</p>
+      </div>
+      <div class="field" id="promotion">
+        <label for="promotion-select">{{ 'newAccount.form.promotion' | translate }}</label>
+        <select id="promotion-select" class="form1" name="promotion" formControlName="promotion">
+          <option *ngFor="let prom of availablePromotions" [value]="prom">{{ prom }}</option>
+        </select>
+      </div>
+      <div class="field" id="password">
+        <label for="password-input">{{ 'newAccount.form.password' | translate }}</label>
+        <input id="password-input" type="password" name="password" [placeholder]="'newAccount.form.password' | translate" formControlName="password"/>
+      </div>
+      <div class="field" id="confirmPassword">
+        <label for="confirmPassword-input">{{ 'newAccount.form.passwordConfirmation' | translate }}</label>
+        <input id="confirmPassword-input" type="password" name="confirmation_password" [placeholder]="'newAccount.form.passwordConfirmation' | translate" formControlName="confirmation_password"/>
+      </div>
+      <input id="submit" class="submit" type="submit" [value]="'newAccount.form.submitButton' | translate" [disabled]="userForm.invalid"/>
+    </form>
+  </app-auth-card>
+
+  <app-alert
+    [visible]="alertSuccessVisible"
+		[title]="'signup.successSignup' | translate"
+		(close)="closeAlertSuccess()"
+  ></app-alert>
+  
+  <app-alert
+    [visible]="alertErrorVisible"
+		[title]="'signup.error' | translate"
+		(close)="closeAlertError()"
+	></app-alert>
+
+  <!-- Footer -->
+  <app-auth-footer></app-auth-footer>
+  <!-- Background animation -->
+  <app-auth-bg-slider class="bg"></app-auth-bg-slider>
+</body>

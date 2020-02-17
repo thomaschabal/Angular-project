@@ -1,0 +1,20 @@
+<!-- Header -->
+<header *ngIf="isOnline()" id="header">
+  <!-- Logo -->
+  <a [routerLink]='routes.home' [attr.aria-label]="'nav.title.short' | translate"><img [src]="pathLogo" [alt]="'nav.title.short' | translate" id="logo" /></a>
+  <!-- Title -->
+  <h1 *ngIf="isWideEnough()"><a [routerLink]='routes.home' [attr.aria-label]="'nav.title.long' | translate">{{ 'nav.title.long' | translate }}</a></h1>
+  <h1 *ngIf="!isWideEnough()"><a [routerLink]='routes.home' [attr.aria-label]="'nav.title.short' | translate">{{ 'nav.title.short' | translate }}</a></h1>
+
+  <!-- Navigation on the website -->
+  <nav>
+    <ul>
+      <app-nav-link [route]="routes.galeries" [name]="'nav.galeries' | translate" [imgSrc]="svgGaleries"></app-nav-link>
+      <app-nav-link *ngIf="isAdmin()" [route]="routes.dashboard" [name]="'nav.dashboard' | translate" [imgSrc]="svgDashboard"></app-nav-link>
+      <app-nav-link [route]="routes.members" [name]="'nav.members' | translate" [imgSrc]="svgMembers"></app-nav-link>
+      <app-nav-link [route]="routes.material" [name]="'nav.matos' | translate" [imgSrc]="svgMatos"></app-nav-link>
+      <app-nav-link (click)="onSignOut()" [route]="routes.auth" [name]="'nav.logout' | translate" [imgSrc]="svgLogout"></app-nav-link>
+    </ul>
+  </nav>
+</header>
+<app-auth-nav *ngIf="!isOnline()"></app-auth-nav>

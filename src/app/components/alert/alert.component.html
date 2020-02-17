@@ -1,0 +1,10 @@
+<div id="overlay" (click)="onCloseAlert()" @overlay *ngIf="visible"></div>
+<div id="moderation" @alert *ngIf="visible">
+  <h1>{{ title }}</h1>
+
+  <footer>
+    <button class="close" type="button" name="button" (click)="onCloseAlert()" aria-label="Close button">
+      {{ 'close' | translate }}
+    </button>
+  </footer>
+</div>

@@ -1,8 +1,7 @@
 //// MODULES
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-// Image Viewer module
-import { ImageViewerModule } from "ngx-image-viewer";
+import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { ServiceWorkerModule } from '@angular/service-worker';
 // Routing
 import { AppRoutingModule } from './app-routing.module';
 // Module for all the various forms of the application
@@ -13,65 +12,129 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 // Upload file module
 import { FilePickerModule } from 'ngx-awesome-uploader';
+// Video module
+// import { PlyrModule } from 'ngx-plyr';
 
+import { environment } from '../environments/environment';
+
+import { AppComponent } from './app.component';
 
 //// COMPONENTS
-import { AppComponent } from './app.component';
-import { NavComponent } from './nav/nav.component';
-import { FooterComponent } from './footer/footer.component';
-// Authentification, registering and reset of the password
-import { AuthComponent } from './auth/auth.component';
-import { NewAccountComponent } from './new-account/new-account.component';
-import { CguComponent } from './cgu/cgu.component';
-import { ResetComponent } from './reset/reset.component';
-// Home page
-import { HomeComponent } from './home/home.component';
-// Galeries
-import { GaleriesComponent } from './galeries/galeries.component';
-import { EventComponent } from './event/event.component';
-// Dashboard for uploading images and videos
-import { DashboardComponent } from './dashboard/dashboard.component';
-// Members page
-import { MembersComponent } from './members/members.component';
-// Material page
-import { MaterialComponent } from './material/material.component';
-// Error 404 page
-import { NotfoundComponent } from './notfound/notfound.component';
+import { AdminUsefulLinksComponent } from './components/admin-useful-links/admin-useful-links.component';
+import { AlertComponent } from './components/alert/alert.component';
+import { AuthBgSliderComponent } from './components/auth-bg-slider/auth-bg-slider.component';
+import { AuthCardComponent } from './components/auth-card/auth-card.component';
+import { AuthFooterComponent } from './components/auth-footer/auth-footer.component';
+import { AuthNavComponent } from './components/auth-nav/auth-nav.component';
+import { CsvImportFormComponent } from './components/csv-import-form/csv-import-form.component';
+import { DashboardFormComponent } from './components/dashboard-form/dashboard-form.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { GaleriesContactFormComponent } from './components/galeries-contact-form/galeries-contact-form.component';
+import { GaleriesFooterComponent } from './components/galeries-footer/galeries-footer.component';
+import { GaleriesModerationButtonsComponent } from './components/galeries-moderation-buttons/galeries-moderation-buttons.component';
+import { GalleryCreationFormComponent } from './components/gallery-creation-form/gallery-creation-form.component';
+import { HomeFormComponent } from './components/home-form/home-form.component';
+import { IconLinksComponent } from './components/icon-links/icon-links.component';
+import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
+import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
+import { LoaderPontheComponent } from './components/loader-ponthe/loader-ponthe.component';
+import { LoadingPointsComponent } from './components/loading-points/loading-points.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { NavComponent } from './components/nav/nav.component';
+import { NavLinkComponent } from './components/nav-link/nav-link.component';
+import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
+import { PicThumbComponent } from './components/pic-thumb/pic-thumb.component';
+import { PontheTeamComponent } from './components/ponthe-team/ponthe-team.component';
+import { TutorialSubjectComponent } from './components/tutorial-subject/tutorial-subject.component';
+import { TutorialsComponent } from './components/tutorials/tutorials.component';
+import { UploadComponent } from './components/upload/upload.component';
 
+//// PAGES
+import { AuthComponent } from './pages/auth/auth.component';
+import { NewAccountComponent } from './pages/new-account/new-account.component';
+import { CguComponent } from './pages/cgu/cgu.component';
+import { ResetComponent } from './pages/reset/reset.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { HomeComponent } from './pages/home/home.component';
+import { GaleriesComponent } from './pages/galeries/galeries.component';
+import { EventComponent } from './pages/event/event.component';
+// import { VideoComponent } from './pages/video/video.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { ModerationComponent } from './pages/moderation/moderation.component';
+import { MembersComponent } from './pages/members/members.component';
+import { MaterialComponent } from './pages/material/material.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 // SERVICES
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
-import { ConfigService } from './services/config.service';
 import { GaleriesService } from './services/galeries.service';
 import { HomeService } from './services/home.service';
 import { HttpService } from './services/http.service';
 import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
-import { UploadService } from './services/upload.service';
+import { PicsService } from './services/pics.service';
+import { PwaService } from './services/Pwa.service';
+import { TranslateService } from './services/translate.service';
+import { TranslatePipe } from './services/translate.pipe';
 import { UserService } from './services/user.service';
-import { ModerationComponent } from './moderation/moderation.component';
 
 
-
+export function setupTranslateFactory(
+  service: TranslateService): () => void {
+  return () => service.use('fr');
+}
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent,
-    AuthComponent,
-    HomeComponent,
-    GaleriesComponent,
-    MembersComponent,
-    MaterialComponent,
-    EventComponent,
-    NotfoundComponent,
+    AdminUsefulLinksComponent,
+    AlertComponent,
+    AuthBgSliderComponent,
+    AuthCardComponent,
+    AuthFooterComponent,
+    AuthNavComponent,
+    CsvImportFormComponent,
+    DashboardFormComponent,
     FooterComponent,
-    NewAccountComponent,
-    DashboardComponent,
+    GaleriesContactFormComponent,
+    GaleriesFooterComponent,
+    GaleriesModerationButtonsComponent,
+    GalleryCreationFormComponent,
+    HomeFormComponent,
+    ImageViewerComponent,
+    LanguageSelectionComponent,
+    LoaderPontheComponent,
+    LoadingPointsComponent,
+    LoadingSpinnerComponent,
+    MaterialBookingFormComponent,
+    ModalComponent,
+    NavComponent,
+    NavLinkComponent,
+    NavigationButtonComponent,
+    PicThumbComponent,
+    PontheTeamComponent,
+    TutorialSubjectComponent,
+    TutorialsComponent,
+    UploadComponent,
+    AuthComponent,
     CguComponent,
+    DashboardComponent,
+    EventComponent,
+    GaleriesComponent,
+    HomeComponent,
+    MaterialComponent,
+    MembersComponent,
+    ModerationComponent,
+    NewAccountComponent,
+    NotfoundComponent,
     ResetComponent,
-    ModerationComponent
+    // VideoComponent,
+    UserListComponent,
+    IconLinksComponent,
+    TranslatePipe,
   ],
   imports: [
     BrowserModule,
@@ -81,19 +144,29 @@ import { ModerationComponent } from './moderation/moderation.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FilePickerModule,
-    ImageViewerModule.forRoot()
+    // PlyrModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
-    HomeService,
+    AuthGuard,
+    AuthService,
     GaleriesService,
+    HomeService,
+    HttpService,
     MembersService,
     MessagesService,
-    AuthService,
-    AuthGuard,
+    PicsService,
+    PwaService,
+    TranslateService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: setupTranslateFactory,
+      deps: [
+        TranslateService
+      ],
+      multi: true
+    },
     UserService,
-    ConfigService,
-    HttpService,
-    UploadService
   ],
   bootstrap: [AppComponent]
 })

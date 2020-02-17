@@ -1,0 +1,119 @@
+@import url("../../../assets/assets_g/css/main.css");
+@import "../../PontheStyle.scss";
+
+h1 {
+  color: color(DARK_GREY);
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  font-size: font-size(LARGE);
+  margin-bottom: units(1);
+  overflow: hidden;
+  text-transform: inherit;
+  padding-left: units(1);
+  padding-right: units(1);
+
+  @include sm {
+    font-size: font-size(SMALL) !important;
+  }
+}
+
+button {
+  border-radius: units(3);
+  box-shadow: none;
+  border: 1px solid color(DARK);
+  margin-bottom: units(1.5);
+  color: color(DARK) !important;
+  background-color: color(WHITE) !important;
+  transition: background-color 0.3s ease, border 0.3s ease;
+
+  @include sm {
+    font-size: font-size(XSMALL);
+  }
+}
+button:hover {
+  box-shadow: none;
+  border: none;
+  color: color(DARK) !important;
+  background-color: color(LIGHT_GREY) !important;
+}
+
+$MODERATION-PADDING: units(6);
+$MODERATION-PADDING-MOBILE: units(2);
+#moderation {
+  position: fixed;
+  top: 15vh;
+  left: 20vw;
+  width: 60vw;
+  z-index: 3;
+  background: color(WHITE);
+  padding: $MODERATION-PADDING - units(2) $MODERATION-PADDING;
+  border-radius: units(4);
+  margin: auto;
+  transition: visibility 0.3s ease;
+  box-shadow: box-shadow(LARGE);
+
+  @include sm {
+    left: 10vw;
+    width: 80vw;
+    padding: $MODERATION-PADDING-MOBILE;
+  }
+}
+
+#moderation > h1, #moderation > footer {
+  margin-left: -$MODERATION-PADDING;
+  margin-right: -$MODERATION-PADDING;
+
+  @include sm {
+    margin-left: -$MODERATION-PADDING-MOBILE;
+    margin-right: -$MODERATION-PADDING-MOBILE;
+  }
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 3;
+  background: color(DARK);
+  opacity: 0.65;
+}
+
+#moderation > footer {
+  padding-right: $MODERATION-PADDING;
+  text-align: right;
+  width: calc(100% + 2 * #{$MODERATION-PADDING});
+
+  @include sm {
+    padding-right: units(1);
+  }
+}
+
+.close {
+  color: color(DARK) !important;
+  background-color: color(WHITE) !important;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  border-radius: units(3);
+  margin: 0 !important;
+  border: none !important;
+  transition: background 0.3s ease;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+.close:hover {
+  color: color(DARK) !important;
+  background-color: color(LIGHT_GREY) !important;
+  box-shadow: none !important;
+}
+.close:focus, .close:active {
+  color: color(DARK) !important;
+}
+
+@media screen and (max-width: 1280px) {
+  h1 {
+    font-size: font-size(XLARGE);
+  }
+}

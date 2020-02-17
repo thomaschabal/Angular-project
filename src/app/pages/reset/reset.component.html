@@ -1,0 +1,26 @@
+<body class="is-preload">
+  <app-auth-card [title]="'reset.header.title' | translate">
+    <p [innerHTML]="'reset.header.subtitle' | translate" id="inner-text"></p>
+
+    <!-- Signup Form -->
+    <form class="signup-form" [formGroup]="resetForm" (ngSubmit)="onSubmitForm()">
+      <div id="email">
+        <label for="email-input">{{ 'reset.form.email.placeholder' | translate }}</label>
+        <input id="email-input" type="text" name="email" placeholder="prenom.nom" formControlName="email"/><p>{{ 'reset.form.email.extension' | translate }}</p>
+      </div>
+      <input id="submit" type="submit" [value]="'reset.form.submitButton' | translate" [disabled]="resetForm.invalid"/>
+    </form>
+  </app-auth-card>
+
+  <app-alert
+    [visible]="alertVisible"
+		[title]="'reset.sentEmail' | translate"
+		(close)="closeAlert()"
+	></app-alert>
+
+  <!-- Footer -->
+  <app-auth-footer></app-auth-footer>
+
+  <!-- Background animation -->
+  <app-auth-bg-slider class="bg"></app-auth-bg-slider>
+</body>

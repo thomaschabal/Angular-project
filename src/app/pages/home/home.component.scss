@@ -1,0 +1,134 @@
+@import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
+
+$ARTICLE-BOX-RADIUS: units(2.5);
+$GALLERY-PICS-MARGIN: units(1);
+
+/* Intro */
+	#intro {
+		margin-top : 3em;
+		height : calc(100vh - 3em);
+		background: $INTRO-IMAGE;
+		background-size: 256px 256px, cover;
+		background-attachment: fixed, fixed;
+		background-position: top left, bottom center;
+		background-repeat: repeat, no-repeat;
+
+		@include sm {
+			margin-top: 4em;
+		}
+	}
+
+	#intro header {
+		@include sm {
+			margin-top: 1em;
+		}
+	}
+
+	#intro > .content {
+		transition: opacity 0.35s ease;
+	}
+	#intro-hovered {
+		opacity: 1;
+	}
+	#intro-none {
+		opacity: 0;
+	}
+
+/* 3 Last events */
+	#one, #two, #three {
+		height: 100vh;
+		background-attachment: fixed, fixed;
+		background-position: top left, center center;
+
+		@include sm {
+			background-position: center center, center center;
+		}
+	}
+
+#loading-events {
+	margin-top: 24px;
+	margin-bottom: 24px;
+}
+
+/* Love pics */
+	#gallery-pics > #visible {
+		opacity: 1;
+	}
+	#gallery-pics > #hidden-left {
+		opacity: 0;
+		transform: translateX(-14em);
+	}
+	#gallery-pics > #hidden-right {
+		opacity: 0;
+		transform: translateX(14em);
+	}
+
+/* Contact form */
+	#contact > .content > #home-form-hidden {
+		opacity: 1;
+		transform: none;
+	}
+	#contact > .content > #home-form-hidden {
+		opacity: 0;
+		transform: translateY(75vh);
+	}
+
+.right > .box {
+	right: -20px;
+}
+
+.left > .box {
+	left: -20px;
+}
+
+.content .box .style2 {
+	width: 34%;
+}
+
+.box {
+	border-radius: $ARTICLE-BOX-RADIUS;
+}
+
+#gallery-pics > article {
+	display: flex;
+	margin: $GALLERY-PICS-MARGIN;
+	max-width: calc(50% - 2 * #{$GALLERY-PICS-MARGIN});
+}
+
+#gallery-pics > article > img {
+	cursor: pointer;
+	border-radius: $IMAGE-RADIUS-MEDIUM-THUMBNAIL;
+
+	@include lg {
+		border-radius: units(3.5);
+	}
+}
+
+.gallery {
+	@include sm {
+		flex-direction: unset;
+		flex-wrap: wrap;
+	}
+}
+
+.darkbg {
+	top:0;
+	left:0;
+	width: 100vw;
+	height:100vh;
+	background-color: overlay(HOME);
+	position: fixed;
+	z-index: 5000;
+}
+
+#contact .box {
+	border-radius: $FORM-BORDER-RADIUS;
+	box-shadow: $BOX-SHADOW-FORM-BASE $BOX-SHADOW-FORM-SHIFT-BASE;
+}
+
+.main.style1 {
+	@include sm {
+		padding: 0.6em 15px 0.6em 15px;
+	}
+}

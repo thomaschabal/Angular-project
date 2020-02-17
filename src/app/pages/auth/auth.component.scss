@@ -1,0 +1,182 @@
+@import url("../../../assets/assets_c/css/main.css");
+@import "../../PontheStyle.scss";
+
+.is-preload {
+	@include sm {
+		padding: 5em 1.25em 5.25em 1.25em !important;
+	}
+	@include md {
+		padding: 10em 3.5em 6.5em 5em !important;
+	}
+	@include lg {
+		padding: 13em 4em 8em 4em !important;
+	}
+}
+
+.signup-form input {
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-NONE;
+
+	@include md {
+		margin: 0 !important;
+	}
+}
+
+.signup-form input[type=email],
+.signup-form input[type=password] {
+	width: units(40);
+}
+
+.signup-form input:focus {
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+}
+form {
+	margin: 0;
+	align-items: flex-end;
+
+	@include sm {
+		align-items: normal;
+	}
+
+	@include md {
+		display: grid !important;
+		grid-gap: units(2);
+		align-items: normal;
+	}
+}
+
+#sso {
+	font-weight: 600;
+	font-size: 1.25em;
+	margin-top: units(4);
+}
+#sso a {
+	@include sm {
+		color: color(YELLOW) !important;
+	}
+	@include md {
+		color: color(YELLOW) !important;
+	}
+}
+#sso a:hover {
+	text-decoration: underline;
+}
+
+#app-auth-card {
+	@include sm {
+		margin-top: units(3);
+		z-index: 3;
+	}
+	@include md {
+		z-index: 3;
+	}
+}
+
+#submit {
+	@include lg {
+		height: units(7);
+	}
+}
+
+.field {
+	@include md {
+		margin: 0 !important;
+	}
+}
+
+.field > label {
+	margin-bottom: units(0.5);
+
+	@include sm {
+		margin-bottom: 0;
+	}
+}
+
+#video-wrapper {
+	@include sm {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+	}
+	@include md {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+	}
+}
+
+#auth-footer {
+	@include sm {
+		z-index: 3;
+	}
+	@include md {
+		z-index: 3;
+	}
+}
+
+video {
+	top: 0;
+	right: 0;
+	min-height: 100vh;
+	min-width: 100vw;
+
+	@include sm {
+		height: 100vh;
+		width: auto;
+		left: -100vw;
+	}
+	@include md {
+		left: -60vw;
+	}
+}
+
+
+// Download app on mobile
+#bandeau {
+    position: fixed;
+    left: 5vw;
+    top: units(11);
+    width: 90vw;
+    z-index: 10;
+    border-radius: units(2);
+    box-shadow: box-shadow(LARGE);
+}
+
+#installation, #later {
+    font-weight: 600;
+	border-radius: units(2);
+	width: 100%;
+	font-size: font-size(MEDIUM);
+}
+
+#installation {
+    background: color(GRADIENT_RED_YELLOW);
+}
+
+#later {
+    background: color(WHITE);
+    color: color(DARK_DARK_GREY) !important;
+    border: 1px solid color(DARK_DARK_GREY);
+    position: absolute;
+    right: units(1);
+}
+
+#bandeau-install, #bandeau-installed {
+    position: fixed;
+    left: 5vw;
+    top: units(10);
+    width: 90vw;
+    z-index: 10;
+    background: color(GRADIENT_RED_YELLOW);
+    padding: units(2);
+    border-radius: units(2);
+	box-shadow: box-shadow(LARGE);
+	color: color(WHITE) !important;
+	font-weight: 600;
+	font-size: font-size(LARGE);
+}

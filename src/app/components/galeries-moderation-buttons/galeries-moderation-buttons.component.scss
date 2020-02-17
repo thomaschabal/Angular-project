@@ -1,0 +1,82 @@
+@import url("../../../assets/assets_g/css/main.css");
+@import "../../PontheStyle.scss";
+
+button {
+  border-radius: units(3);
+  box-shadow: none;
+  border: 1px solid color(DARK);
+  margin-bottom: units(1.5);
+  color: color(DARK) !important;
+  background-color: color(WHITE) !important;
+  transition: background-color 0.3s ease, border 0.3s ease;
+
+  @include sm {
+    font-size: font-size(SMALL);
+  }
+}
+button:hover {
+  box-shadow: none;
+  border: none;
+  color: color(DARK) !important;
+  background-color: color(LIGHT_GREY) !important;
+}
+
+#moderationBanner {
+  width: units(6);
+  right: 0;
+  top: 12.5vh;
+  position: fixed;
+  transform: translateX(1em);
+  background: $BUTTON-BACKGROUND-GRADIENT;
+  padding: units(1.25);
+  border-radius: units(1.5);
+  transition: width 0.5s ease-in-out;
+  z-index: 1;
+}
+#moderationBanner:hover {
+  width: units(10);
+}
+#moderationBanner > img {
+  cursor: pointer;
+  width: units(5);
+}
+
+$MODERATION-PADDING: units(6);
+$MODERATION-PADDING-MOBILE: units(2);
+
+p {
+  font-size: font-size(LARGE);
+  margin-bottom: 1em;
+}
+
+#leftColumn, #rightColumn {
+  width: 48.5%;
+  overflow-y: scroll;
+  max-height: 50vh;
+
+  @include sm {
+    width: 100%;
+    max-height: none;
+    overflow-y: visible;
+  }
+}
+#leftColumn {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3%;
+}
+
+#confirm-delete-gallery {
+  z-index: 2;
+}
+
+#confirm-delete-gallery h3{
+  color: color(DARK_DARK_GREY);
+  text-transform: inherit;
+}
+
+@media screen and (max-width: 1280px) {
+  p {
+    font-size: font-size(MEDIUM);
+  }
+}

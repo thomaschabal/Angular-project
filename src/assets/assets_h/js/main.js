@@ -23,7 +23,6 @@
 
 	// Play initial animations on page load.
 		$window.on('load', function() {
-			console.log("test");
 			setTimeout(function() {
 				$body.removeClass('is-preload');
 			}, 100);

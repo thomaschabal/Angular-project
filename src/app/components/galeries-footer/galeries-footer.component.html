@@ -1,0 +1,41 @@
+<!-- Header, displayed on the bottom -->
+<header id="header" id="event-panel">
+  <h1>
+    <a [routerLink]="routes.galeries" [attr.aria-label]="nameEvent"><strong>{{ nameEvent }}</strong></a>
+  </h1>
+  <nav (click)="changeStateFooter()">
+    <ul>
+      <li><a class="icon fa-info-circle" style="cursor: pointer" [attr.aria-label]="'galeries.footer.title' | translate">{{ 'galeries.footer.title' | translate }}</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- Footer, revealed when clicking on "A propos de l'album" -->
+<footer id="footer" class="panel" [@footerTrigger]="footerState">
+  <div class="inner split">
+
+    <!-- General information on the album -->
+    <div>
+      <section>
+        <h2>{{ nameEvent }}</h2>
+        <p>{{ resumeEvent }}</p>
+      </section>
+      <section>
+        <h2>{{ 'galeries.about.title' | translate }}</h2>
+        <ul class="icons">
+          <li *ngFor="let link of links">
+            <a href="{{ link.href }}" class="icon {{ link.class }}" [attr.aria-label]="link.name">
+              <span class="label">{{ link.name }}</span>
+            </a>
+          </li>
+				</ul>
+      </section>
+      <p class="copyright">
+        &copy; {{ 'galeries.about.copyright' | translate }}
+      </p>
+    </div>
+
+    <!-- Contact form -->
+    <app-galeries-contact-form></app-galeries-contact-form>
+  </div>
+</footer>

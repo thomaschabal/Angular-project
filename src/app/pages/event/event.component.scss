@@ -1,0 +1,114 @@
+@import url("../../../assets/assets_g/css/main.css");
+@import "../../PontheStyle.scss";
+
+.spacer {
+  margin-top: 4em;
+}
+
+html, body {
+	background: color(DARK_GREY);
+}
+
+#main .thumb > .image {
+	-webkit-tap-highlight-color: color(WHITE);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: -20vh;
+	width: 100%;
+}
+
+#image-viewer {
+  height : 70vh;
+}
+
+#deleteButton {
+  z-index: 1;
+  position: absolute;
+  top: 1vh;
+  left: 0.5vw;
+  background: overlay(LIGHT_GREY);
+  border-radius: units(2);
+}
+
+#deleteButtonSelected {
+  z-index: 5000;
+  position: absolute;
+  top: 1vh;
+  left: 0.5vw;
+  background: $BUTTON-BACKGROUND-DANGER;
+  border-radius: units(2);
+}
+
+.thumb > caption {
+  position: absolute;
+  top: 36.3vh;
+  left: 2.75%;
+  font-weight: 300;
+  color: white;
+  font-size: 0.75em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+#fullBackground {
+  width: 100vw;
+  height: 92vh;
+  top: 8vh;
+  left: 0;
+  background: color(DARK_GREY);
+  position: fixed;
+  z-index: -1;
+
+  @include sm {
+    top: 5em;
+  }
+}
+
+#uploadBanner {
+  width: 3.5em;
+  right: 0;
+  top: 12.5vh;
+  position: fixed;
+  transform: translateX(1em);
+  background: $BUTTON-BACKGROUND-GRADIENT;
+  padding: units(1.25);
+  border-radius: units(1.5);
+  transition: width 0.5s ease-in-out;
+  z-index: 1;
+}
+#uploadBanner:hover {
+  width: 4.5em;
+}
+#uploadBanner > a {
+  color: color(WHITE);
+  transition: padding-left 0.5s ease-in-out;
+  cursor: pointer;
+}
+#uploadBanner:hover > a {
+  padding-left: 0.5em;
+}
+#uploadBanner:hover > a:hover {
+  color: color(LIGHT_GREY) !important;
+}
+
+app-upload {
+  width: 100%;
+  max-height: 60vh;
+  overflow: scroll;
+}
+
+#reload-boundary {
+  width: 100vw;
+  padding: units(10);
+}
+
+.bottom-spacer {
+  width: 100vw;
+  height: units(6);
+}

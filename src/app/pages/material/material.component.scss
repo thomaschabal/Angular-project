@@ -1,0 +1,13 @@
+@import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
+
+#contact {
+  @include sm {
+    padding: 5em 10px 3em 10px;
+  }
+}
+
+#contact .box {
+  border-radius: $FORM-BORDER-RADIUS;
+  box-shadow: $BOX-SHADOW-FORM-BASE $BOX-SHADOW-FORM-SHIFT-BASE;
+}

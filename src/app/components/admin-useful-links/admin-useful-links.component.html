@@ -1,0 +1,15 @@
+<app-modal
+  [title]="'dashboard.usefulLinks.title' | translate"
+  [closeText]="'close' | translate"
+  [visible]="visible"
+  (close)="closeModal()">
+  <div id="container">
+    <div *ngFor="let subject of usefulLinks" class="subject">
+      <h2 [innerHTML]="subject.title"></h2>
+      <div *ngFor="let link of subject.content" class="link">
+        <a [href]="link.url">{{ link.title }}</a>
+        <p>{{ link.description }}</p>
+      </div>
+    </div>
+  </div>
+</app-modal>

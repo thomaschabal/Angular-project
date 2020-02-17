@@ -1,0 +1,66 @@
+@import url("../../../assets/assets_g/css/main.css");
+@import "../../PontheStyle.scss";
+
+.spacer {
+  margin-top: 8vh;
+}
+
+html, body {
+	background: color(DARK_GREY);
+}
+
+img {
+  width : 100%;
+}
+
+#main .thumb > .image {
+	-webkit-tap-highlight-color: color(WHITE);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+#image-viewer {
+  height : 70vh;
+}
+
+#acceptButton, #deleteButton {
+  z-index: 5000;
+  position: absolute;
+  top: 1vh;
+  left: 0.5vw;
+  background: $BUTTON-BACKGROUND-NONE;
+}
+
+#acceptButtonSelected, #deleteButtonSelected {
+  z-index: 5000;
+  position: absolute;
+  top: 1vh;
+  left: 0.5vw;
+}
+
+#deleteButton, #deleteButtonSelected {
+  left: 14.5vw;
+}
+
+#acceptAll, #acceptSelection {
+  background: $BUTTON-BACKGROUND-ACCEPT;
+}
+
+#acceptButtonSelected {
+  background: $BUTTON-BACKGROUND-ACCEPT-SELECTED;
+}
+
+#refuseAll, #refuseSelection {
+  background: $BUTTON-BACKGROUND-REFUSE;
+}
+
+#deleteButtonSelected {
+  background: $BUTTON-BACKGROUND-REFUSE-SELECTED;
+}

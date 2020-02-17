@@ -1,0 +1,14 @@
+@import "constants/style/BoxShadow.scss";
+@import "constants/style/Breakpoints.scss";
+@import "constants/style/Colors.scss";
+@import "constants/style/Fonts.scss";
+@import "constants/style/Images.scss";
+@import "constants/style/Units.scss";
+
+@mixin fullscreen {
+    position: fixed;
+    top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+}

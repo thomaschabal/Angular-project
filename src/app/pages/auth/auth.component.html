@@ -1,0 +1,45 @@
+<body class="is-preload">
+	<app-auth-card [title]="'auth.title' | translate" id="app-auth-card">
+		<!-- Signup Form -->
+		<form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSignIn()">
+			<div class="field">
+				<label for="email">{{ 'auth.form.id' | translate }}</label>
+				<input id="email" type="email" name="email" placeholder="prenom.nom@eleves.enpc.fr" formControlName="email"/>
+			</div>
+			<div class="field">
+				<label for="password">{{ 'auth.form.password' | translate }}</label>
+				<input id="password" type="password" name="password" placeholder="mylittlepontsny77" formControlName="password"/>
+			</div>
+
+			<div class="field">
+			<input id="submit" type="submit" [value]="'auth.form.submitButton' | translate" [disabled]="userForm.invalid"/>
+		</div>
+		</form>
+		<div id="sso">
+			<a [href]="ssoPath" [attr.aria-label]="'auth.sso' | translate">{{ 'auth.sso' | translate }}</a>
+		</div>
+	</app-auth-card>
+
+	<app-alert
+		[visible]="isLoginError"
+		[title]="'login.error' | translate"
+		(close)="closeAlert()"
+	></app-alert>
+
+	<!-- Useful links -->
+	<app-auth-footer id="auth-footer"></app-auth-footer>
+
+	<!-- Background animation -->
+	<div id="video-wrapper" *ngIf="isMobileOrTablet">
+		<video [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+	</div>
+	<video *ngIf="!isMobileOrTablet" [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+
+	<div id="bandeau" *ngIf="Pwa.promptEvent">
+		<button id="installation" (click)="installPwa()" [attr.aria-label]="'install.install' | translate">
+			{{ 'install.install' | translate }}
+		</button>
+	</div>
+	<div id="bandeau-install" *ngIf="Pwa.downloading">{{ 'install.downloading' | translate }}</div>
+	<div id="bandeau-installed" *ngIf="Pwa.installed">{{ 'install.installed' | translate }}</div>
+</body>

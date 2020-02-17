@@ -1,4 +1,4 @@
 export class Message {
-  materiel : string;
-  message : string;
+  materiel: string;
+  message: string;
 }

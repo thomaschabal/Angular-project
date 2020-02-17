@@ -1,0 +1,11 @@
+@import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
+
+input[type="submit"] {
+  background: $BUTTON-BACKGROUND-GRADIENT;
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS-LIGHT;
+}
+
+input {
+	margin-bottom: 2vh;
+}

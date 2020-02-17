@@ -1,0 +1,27 @@
+@import url("../../../assets/assets_h/css/main.css");
+@import "../../PontheStyle.scss";
+
+section, #cgu-title {
+  margin: 3.5em;
+}
+
+section {
+  text-align: justify;
+
+  @include sm {
+    margin: 2em;
+  }
+}
+
+#cgu-title {
+  margin-top: 3em;
+  margin-bottom: 2.5em;
+  text-align: center;
+  color: color(YELLOW);
+  text-decoration: underline;
+
+  @include sm {
+    margin: 0;
+    margin-top: units(10);
+  }
+}
