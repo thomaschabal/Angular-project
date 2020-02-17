@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
 
 import { HttpService } from '../../services/http.service';
 import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-upload',

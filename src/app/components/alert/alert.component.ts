@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { transition, trigger } from '@angular/animations';
+
 import { KEY_CODE } from '../image-viewer/image-viewer.component';
 import { bounceIn, fadeOut, fadeIn } from 'src/app/constants/Animations';
 

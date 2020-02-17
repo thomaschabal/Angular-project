@@ -5,7 +5,6 @@ import * as jwt_decode from 'jwt-decode';
 
 import { HttpService } from './http.service';
 import { HomeService } from './home.service';
-import { Phrases } from '../Phrases';
 import { routesAppFromRoot } from '../Routes';
 import API_ROUTES from './Api';
 import { BehaviorSubject } from 'rxjs';

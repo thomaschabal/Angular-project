@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { state, trigger, animate, style, transition, keyframes } from '@angular/animations';
 
-import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
 import { GaleriesService } from '../../services/galeries.service';
 import { routesAppFromRoot } from '../../Routes';
 

@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
-import { trigger, transition, animate, keyframes, style } from '@angular/animations';
-import { fadeOut, fadeIn, unfoldIn, unfoldOut } from 'src/app/constants/Animations';
+import { trigger, transition } from '@angular/animations';
+
 import { KEY_CODE } from '../image-viewer/image-viewer.component';
+import { fadeOut, fadeIn, unfoldIn, unfoldOut } from 'src/app/constants/Animations';
 
 const OVERLAY_OPACITY = 0.65;
 

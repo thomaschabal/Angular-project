@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { MessagesService } from '../../services/messages.service';
-import { Phrases } from '../../Phrases';
 
 const DURATION_DISPLAYING = 6000;
 

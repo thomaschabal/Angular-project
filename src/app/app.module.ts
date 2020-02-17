@@ -20,35 +20,37 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
 //// COMPONENTS
-import { AdminUsefulLinksComponent } from './components/admin-useful-links/admin-useful-links.component';
+import { AdminUsefulLinksComponent } from './components/dashboard/admin-useful-links/admin-useful-links.component';
 import { AlertComponent } from './components/alert/alert.component';
-import { AuthBgSliderComponent } from './components/auth-bg-slider/auth-bg-slider.component';
-import { AuthCardComponent } from './components/auth-card/auth-card.component';
-import { AuthFooterComponent } from './components/auth-footer/auth-footer.component';
-import { AuthNavComponent } from './components/auth-nav/auth-nav.component';
-import { CsvImportFormComponent } from './components/csv-import-form/csv-import-form.component';
-import { DashboardFormComponent } from './components/dashboard-form/dashboard-form.component';
+import { AuthBgSliderComponent } from './components/auth/auth-bg-slider/auth-bg-slider.component';
+import { AuthCardComponent } from './components/auth/auth-card/auth-card.component';
+import { AuthFooterComponent } from './components/auth/auth-footer/auth-footer.component';
+import { AuthNavComponent } from './components/auth/auth-nav/auth-nav.component';
+import { CsvImportFormComponent } from './components/dashboard/csv-import-form/csv-import-form.component';
+import { DashboardFormComponent } from './components/dashboard/dashboard-form/dashboard-form.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { GaleriesContactFormComponent } from './components/galeries-contact-form/galeries-contact-form.component';
-import { GaleriesFooterComponent } from './components/galeries-footer/galeries-footer.component';
-import { GaleriesModerationButtonsComponent } from './components/galeries-moderation-buttons/galeries-moderation-buttons.component';
-import { GalleryCreationFormComponent } from './components/gallery-creation-form/gallery-creation-form.component';
+import { GaleriesContactFormComponent } from './components/galeries/galeries-contact-form/galeries-contact-form.component';
+import { GaleriesFooterComponent } from './components/galeries/galeries-footer/galeries-footer.component';
+import {
+  GaleriesModerationButtonsComponent
+} from './components/galeries/galeries-moderation-buttons/galeries-moderation-buttons.component';
+import { GalleryCreationFormComponent } from './components/dashboard/gallery-creation-form/gallery-creation-form.component';
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { IconLinksComponent } from './components/icon-links/icon-links.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
-import { LoaderPontheComponent } from './components/loader-ponthe/loader-ponthe.component';
-import { LoadingPointsComponent } from './components/loading-points/loading-points.component';
-import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { LoaderPontheComponent } from './components/loaders/loader-ponthe/loader-ponthe.component';
+import { LoadingPointsComponent } from './components/loaders/loading-points/loading-points.component';
+import { LoadingSpinnerComponent } from './components/loaders/loading-spinner/loading-spinner.component';
 import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
 import { ModalComponent } from './components/modal/modal.component';
-import { NavComponent } from './components/nav/nav.component';
-import { NavLinkComponent } from './components/nav-link/nav-link.component';
+import { NavComponent } from './components/navigation/nav/nav.component';
+import { NavLinkComponent } from './components/navigation/nav-link/nav-link.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 import { PicThumbComponent } from './components/pic-thumb/pic-thumb.component';
-import { PontheTeamComponent } from './components/ponthe-team/ponthe-team.component';
-import { TutorialSubjectComponent } from './components/tutorial-subject/tutorial-subject.component';
-import { TutorialsComponent } from './components/tutorials/tutorials.component';
+import { PontheTeamComponent } from './components/members/ponthe-team/ponthe-team.component';
+import { TutorialSubjectComponent } from './components/dashboard/tutorial-subject/tutorial-subject.component';
+import { TutorialsComponent } from './components/dashboard/tutorials/tutorials.component';
 import { UploadComponent } from './components/upload/upload.component';
 
 //// PAGES
@@ -56,7 +58,6 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { NewAccountComponent } from './pages/new-account/new-account.component';
 import { CguComponent } from './pages/cgu/cgu.component';
 import { ResetComponent } from './pages/reset/reset.component';
-import { UserListComponent } from './user-list/user-list.component';
 import { HomeComponent } from './pages/home/home.component';
 import { GaleriesComponent } from './pages/galeries/galeries.component';
 import { EventComponent } from './pages/event/event.component';
@@ -132,7 +133,6 @@ export function setupTranslateFactory(
     NotfoundComponent,
     ResetComponent,
     // VideoComponent,
-    UserListComponent,
     IconLinksComponent,
     TranslatePipe,
   ],

@@ -2,7 +2,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
-import { NavComponent } from './components/nav/nav.component';
+import { NavComponent } from './components/navigation/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import {AuthService} from './services/auth.service';
 import {HttpService} from './services/http.service';

@@ -7,7 +7,7 @@ import { GaleriesContactFormComponent } from '../../components/galeries-contact-
 import { GaleriesFooterComponent } from '../../components/galeries-footer/galeries-footer.component';
 import { GaleriesModerationButtonsComponent } from '../../components/galeries-moderation-buttons/galeries-moderation-buttons.component';
 import { ImageViewerComponent } from '../../components/image-viewer/image-viewer.component';
-import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
+import { LoadingSpinnerComponent } from '../../components/loaders/loading-spinner/loading-spinner.component';
 import { UploadComponent } from '../../components/upload/upload.component';
 
 describe('EventComponent', () => {

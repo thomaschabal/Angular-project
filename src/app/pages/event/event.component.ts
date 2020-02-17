@@ -4,12 +4,7 @@ import { state, trigger, animate, style, transition, keyframes } from '@angular/
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
-import { GaleriesFooterComponent } from '../../components/galeries-footer/galeries-footer.component';
-import { UploadComponent } from '../../components/upload/upload.component';
-import { GaleriesModerationButtonsComponent } from '../../components/galeries-moderation-buttons/galeries-moderation-buttons.component';
-import { ImageViewerComponent } from '../../components/image-viewer/image-viewer.component';
-import { GaleriesService, DEFAULT_PAGE_SIZE } from '../../services/galeries.service';
+import { GaleriesService } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
 import { PicsService } from '../../services/pics.service';
 import KEY_CODE from '../../constants/KeyCode';

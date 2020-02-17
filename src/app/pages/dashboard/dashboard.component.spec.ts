@@ -4,9 +4,9 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
 import { of } from 'rxjs';
 
 import { DashboardComponent } from './dashboard.component';
-import { CsvImportFormComponent } from '../../components/csv-import-form/csv-import-form.component';
-import { DashboardFormComponent } from '../../components/dashboard-form/dashboard-form.component';
-import { GalleryCreationFormComponent } from '../../components/gallery-creation-form/gallery-creation-form.component';
+import { CsvImportFormComponent } from '../../components/dashboard/csv-import-form/csv-import-form.component';
+import { DashboardFormComponent } from '../../components/dashboard/dashboard-form/dashboard-form.component';
+import { GalleryCreationFormComponent } from '../../components/dashboard/gallery-creation-form/gallery-creation-form.component';
 import { NavigationButtonComponent } from '../../components/navigation-button/navigation-button.component';
 import { GaleriesService } from '../../services/galeries.service';
 

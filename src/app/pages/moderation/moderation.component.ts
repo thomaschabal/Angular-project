@@ -6,7 +6,6 @@ import { filter } from 'rxjs/operators';
 
 import { GaleriesService } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
-import { Phrases } from '../../Phrases';
 
 @Component({
   selector: 'app-moderation',
@@ -88,7 +87,7 @@ export class ModerationComponent implements OnInit, OnDestroy {
   acceptAllPics() {
     if (this.allAcceptState === 'nothing') {
       this.allAcceptState = 'nearly deleted';
-      alert(Phrases['moderation.acceptAllPics']);
+      // alert(Phrases['moderation.acceptAllPics']);
     } else {
       /// A COMPLETER
     }
@@ -97,7 +96,7 @@ export class ModerationComponent implements OnInit, OnDestroy {
   deleteAllPics() {
     if (this.allDeletionState === 'nothing') {
       this.allDeletionState = 'nearly deleted';
-      alert(Phrases['moderation.deleteAllPics']);
+      // alert(Phrases['moderation.deleteAllPics']);
     } else {
       /// A COMPLETER
     }

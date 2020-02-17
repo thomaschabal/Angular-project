@@ -3,8 +3,7 @@ const githubTree = githubRepo + 'tree/testing/';
 const githubBlob = githubRepo + 'blob/testing/';
 const githubGaleriesRepo = 'https://github.com/ENPC-Ponthe/Galeries/';
 const githubGaleriesTree = githubGaleriesRepo + 'tree/testing/';
-const githubGaleriesBlob = githubGaleriesRepo + 'blob/testing/';
-const phpMyAdmin = 'https://ponthe-testing.enpc.org/phpmyadmin/';
+const phpMyAdmin = 'https://ponthe.enpc.org/phpmyadmin/index.php';
 
 export default {
   site: {
@@ -81,6 +80,13 @@ export default {
   donnees: {
     title: 'Modifier les données',
     content: [
+      {
+        question:
+          'Comment se connecter à la base de données ?',
+        answer:
+            'Aller sur <a href="' + phpMyAdmin + '"><i>cette adresse</i></a>, se connecter avec les bons identifiants, puis faire retour ' +
+            'à la page précédente. Vous arrivez alors normalement dans la base de données.'
+      },
       {
         question:
           'Comment changer le statut d\'un utilisateur (admin ou pas, sa promo, etc) ?',

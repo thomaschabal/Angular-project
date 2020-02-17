@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
-import { Phrases } from '../../Phrases';
 import { routesAppFromRoot } from '../../Routes';
 import { EXTENSION_MAILS_ENPC } from '../../Constants';
 

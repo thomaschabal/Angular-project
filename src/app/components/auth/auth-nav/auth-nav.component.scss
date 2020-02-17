@@ -1,0 +1,116 @@
+@import url("../../../../assets/assets_h/css/main.css");
+@import "../../../PontheStyle.scss";
+@import "burger.scss";
+
+#header {
+	font-family: "Roboto", "sans-serif";
+	font-weight: 300;
+	font-size: 1.25em;
+	letter-spacing: 0.025em;
+	position: fixed;
+	z-index: 10000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	line-height: 3em;
+	color: color(YELLOW);
+	text-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+	transition: background 0.5s ease-in-out, color 0.3s ease;
+
+	@include sm {
+		visibility: collapse;
+		color: color(DARK_DARK_GREY);
+		text-shadow: none;
+		z-index: 5;
+		transition: background 0.3s ease;
+	}
+}
+#header:hover {
+	background: color(WHITE);
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+	color: color(DARK_DARK_GREY);
+	text-shadow: none;
+}
+
+.link {
+	display: inline-block;
+	margin-right: units(5);
+	font-size: 1.35em;
+	font-weight: 600;
+	transition: color 0.3s ease;
+
+	@include sm {
+		font-size: 1.2em;
+	}
+	@include md {
+		font-size: 1.15em;
+	}
+}
+.link:hover {
+	color: color(YELLOW);
+	text-decoration: underline;
+	cursor: pointer;
+}
+.link:focus {
+	outline: none;
+}
+
+#header ul {
+	padding: 1.5em 0 0 5.5em;
+
+	@include sm {
+		padding-left: units(8);
+		padding-top: units(10);
+	}
+}
+
+.visible_menu {
+	@include sm {
+		background: color(WHITE);
+		height: 100vh;
+		width: 100vw;
+		visibility: visible !important;
+	}
+}
+
+#mobile_menu .link {
+	@include sm {
+		display: block
+	}
+}
+#mobile_menu .link:focus {
+	@include sm {
+		text-decoration: underline;
+	}
+}
+
+#burger_menu {
+	visibility: hidden;
+
+	@include sm {
+		visibility: visible;
+		position: absolute;
+		top: units(3);
+		right: units(3);
+	}
+}
+
+@media screen and (max-width: 1680px) {
+	#header h1 {
+		font-size: 1.1em;
+	}
+
+	#header h1 a {
+		font-size: 1.15em;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	#header h1 {
+		font-size: 1.1em;
+	}
+
+	#header h1 a {
+		font-size: 1.05em;
+	}
+}
