@@ -39,26 +39,27 @@
 </div>
 
 <!-- Favorite pics -->
-<section id="coeur" class="main style3 primary"
+<!-- UNCOMMENT FOLLOWING LINES WHEN LOVE PICS ARE AVAILABLE -->
+<!-- THE FOLLOWING LINES DISPLAY 6 OF THE LOVE PICS, IN 2 COLUMNS, WITH ANIMATION -->
+<!-- <section id="coeur" class="main style3 primary"
          (mouseenter)='survoleCoeur("visible")'
-         (mouseleave)='survoleCoeur("hidden")'>
-  <div class="content">
+         (mouseleave)='survoleCoeur("hidden")'> -->
+  <!-- <div class="content">
     <header id="header-content">
       <h2 [innerHTML]="'home.favoritePics.title' | translate"></h2>
-    </header>
+    </header> -->
     <!-- Pics  -->
-    <div class="gallery" id="gallery-pics">
+    <!-- <div class="gallery" id="gallery-pics">
       <article *ngFor="let pic of homeService.lovePics; let i = index"
                 class="{{ placementLovePics(i) }}"
                 [id]="i%2 === 0 ? lovePicsStateLeft : lovePicsStateRight">
         <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}"
              (click)="onClickFavPic(i)"/>
-        <!-- <img class="image fit" src="../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;" alt="{{ pic.title }}" (click)="onClickFavPic(i)" style="cursor: pointer"/> -->
       </article>
     </div>
   </div>
-  <a class="button style2 down anchored" (click)="clickOnNextArrow('contact')" aria-label="Next">Next</a>
-</section>
+  <a class="button style2 down anchored" (click)="clickOnNextArrow('contact')" aria-label="Next">Next</a> -->
+<!-- </section> -->
 
 <!-- Image Viewer -->
 <!-- Darken the background -->
