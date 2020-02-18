@@ -93,8 +93,20 @@ export class AuthService {
     this.httpService.getV1(API_ROUTES.casLogin + '?ticket=' + ticket).subscribe(() => {});
   }
   casAuthentication(ticket: string) {
-    this.httpService.get('/cas/login' + '?ticket=' + ticket).subscribe((res1) => {
-      console.log(res1);
+    try {
+      this.httpService.get('/cas/login' + '?ticket=' + ticket).subscribe((res1) => {
+        console.log(res1);
+        this.httpService.get(API_ROUTES.casAuthenticate + '?ticket=' + ticket).subscribe(
+          (res: { access_token }) => {
+            this.authenticate(res.access_token);
+          },
+          (error) => {
+            this.loginError = true;
+          }
+        );
+      });
+    } catch (error) {
+      console.error(error);
       this.httpService.get(API_ROUTES.casAuthenticate + '?ticket=' + ticket).subscribe(
         (res: { access_token }) => {
           this.authenticate(res.access_token);
@@ -103,7 +115,7 @@ export class AuthService {
           this.loginError = true;
         }
       );
-    });
+    }
   }
 
   casProcess(ticket: string) {
