@@ -27,4 +27,8 @@
   </article>
 </div>
 
+<div *ngIf="galeriesService.isLoadingMoreEvents" id="reload-boundary" >
+  <app-loading-points></app-loading-points>
+</div>
+
 <app-loader-ponthe *ngIf="displaySpinner" @spinnerTrigger><app-loader-ponthe>

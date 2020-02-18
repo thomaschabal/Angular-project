@@ -9,9 +9,13 @@ export const DEFAULT_PAGE_SIZE = 15;
 export class GaleriesService {
   galeriesEvents = [];
   areGaleriesEventsLoaded = false;
+  numberOfPublicEvents: number;
   privateEvents = [];
   arePrivateEventsLoaded = false;
   displaySpinner = true;
+
+  page = 1;
+  isLoadingMoreEvents = false;
 
   constructor(private httpService: HttpService) {}
 
@@ -37,13 +41,17 @@ export class GaleriesService {
   }
 
   // Get the list of all events
-  getAllEvents() {
+  getAllEvents(page: number, pageSize: number) {
+    return this.httpService.post(API_ROUTES.getAllGalleries, { page, page_size: pageSize }).toPromise();
+  }
+
+  getAllEventsInitial(pageSize: number) {
     if (!this.areGaleriesEventsLoaded) {
-      return this.httpService.get(API_ROUTES.getAllGalleries)
-        .toPromise()
+      return this.getAllEvents(1, pageSize)
         .then(
-          (res: { galleries }) => {
+          (res: { number_of_galleries, galleries }) => {
             this.galeriesEvents = res.galleries;
+            this.numberOfPublicEvents = res.number_of_galleries;
             setTimeout(() => { this.displaySpinner = false; }, 200);
             this.areGaleriesEventsLoaded = true;
           },
@@ -108,7 +116,22 @@ export class GaleriesService {
 
   //// METHODS FOR GALERIES COMPONENT
   loadEvents = async () => {
-    await this.getAllEvents();
+    await this.getAllEventsInitial(DEFAULT_PAGE_SIZE);
     return Promise.resolve();
+  }
+
+  loadMoreEvents() {
+  if (this.page * DEFAULT_PAGE_SIZE < this.numberOfPublicEvents && !this.isLoadingMoreEvents) {
+      this.isLoadingMoreEvents = true;
+      this.getAllEvents(this.page + 1, DEFAULT_PAGE_SIZE)
+        .then(
+          (res: {galleries}) => {
+            this.galeriesEvents = this.galeriesEvents.concat(res.galleries);
+            this.page ++;
+            this.isLoadingMoreEvents = false;
+          },
+          (error) => { }
+        );
+    }
   }
 }

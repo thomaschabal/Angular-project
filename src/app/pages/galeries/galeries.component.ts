@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { state, trigger, animate, style, transition, keyframes } from '@angular/animations';
 
 import { GaleriesService } from '../../services/galeries.service';
@@ -53,8 +53,20 @@ export class GaleriesComponent implements OnInit {
       () => {
       setTimeout(() => { this.displaySpinner = this.galeriesService.displaySpinner; }, 300);
     });
-
   }
+
+  @HostListener('window:scroll', ['$event'])
+    scrollHandler() {
+      const articles = document.getElementsByClassName('thumb');
+      const articleHeight = articles[0].clientHeight;
+      const boundary = articles[articles.length - 1];
+      const boundaryTop = boundary.getBoundingClientRect().top;
+
+      // Load more pics when there are 4 lines of pics remaining before the end of the current page
+      if (boundaryTop - 4 * articleHeight < window.innerHeight) {
+        this.galeriesService.loadMoreEvents();
+      }
+    }
 
   // Display functions (hover and state)
   survoleGaleries(stateGaleries: string) {
