@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 
 import { AuthService } from '../../services/auth.service';
-import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.component';
+import { PwaService } from '../../services/Pwa.service';
 import { routesAppFromRoot } from '../../Routes';
 import { BREAKPOINTS, PATH_AUTH_VIDEO, CAS_BASE_URL } from '../../Constants';
-import { Subscription } from 'rxjs';
-import { PwaService } from '../../services/Pwa.service';
 import { environment } from 'src/environments/environment';
 
 @Component({

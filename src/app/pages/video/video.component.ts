@@ -6,10 +6,6 @@ import { filter } from 'rxjs/operators';
 // import { Plyr } from 'plyr';
 // import { PlyrComponent } from 'ngx-plyr';
 
-import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
-import { GaleriesFooterComponent } from '../../components/galeries-footer/galeries-footer.component';
-import { UploadComponent } from '../../components/upload/upload.component';
-import { GaleriesModerationButtonsComponent } from '../../components/galeries-moderation-buttons/galeries-moderation-buttons.component';
 import { HttpService } from '../../services/http.service';
 
 @Component({

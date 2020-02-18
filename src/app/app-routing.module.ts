@@ -18,7 +18,7 @@ import { MaterialComponent } from './pages/material/material.component';
 import { EventComponent } from './pages/event/event.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ModerationComponent } from './pages/moderation/moderation.component';
-import { VideoComponent } from './pages/video/video.component';
+// import { VideoComponent } from './pages/video/video.component';
 
 export const routes: Routes = [
   { path: '', canActivate: [AuthGuard], component: HomeComponent },

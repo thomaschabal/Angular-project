@@ -21,7 +21,9 @@ export class HomeService {
       .subscribe(
         (res: { galleries }) => {
           const lastEvents = res.galleries;
-          const idEvents = ['one', 'two', 'three', 'coeur'];
+          // REMOVE FOLLOWING LINE WHEN LOVE PICS ARE IMPLEMENTED
+          // const idEvents = ['one', 'two', 'three', 'coeur'];
+          const idEvents = ['one', 'two', 'three', 'contact'];
           for (let i = 0; i < lastEvents.length; i++) {
             this.lastEvents[i] = {
               name: lastEvents[i].name,

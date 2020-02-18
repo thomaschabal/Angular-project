@@ -1,5 +1,3 @@
-import { Phrases } from '../Phrases';
-
 export const LINKS = [
     {
       href: 'https://www.facebook.com/club.ponthe',
@@ -30,17 +28,17 @@ export const LINKS = [
 
 export const BUTTON_LINKS_ADMIN = [
     {
-        name: Phrases['dashboard.links.slack'],
+        name: 'Slack',
         address: 'https://ponthe.slack.com/messages',
         class: 'fa-slack',
     },
     {
-        name: Phrases['dashboard.links.trello'],
+        name: 'Trello',
         address: 'https://trello.com/b/WIQhzGmu/ev%C3%A8nements-et-communication',
         class: 'fa-trello',
     },
     {
-        name: Phrases['dashboard.links.youtube'],
+        name: 'Youtube',
         address: 'https://www.youtube.com/channel/UCxHf0yHnEezkhuhzuT2yaIg',
         class: 'fa-youtube',
     },

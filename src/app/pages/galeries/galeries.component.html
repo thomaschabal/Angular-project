@@ -1,41 +1,34 @@
 <div class="spacer"></div>
 
 <!-- Main -->
-<!-- Private events, only visible for administrators -->
-<div id="main" (mouseenter)="survoleGaleries('visible')"
+<!-- Videos, first try of implementation, to be continued -->
+<!-- <div id="main" (mouseenter)="survoleGaleries('visible')"
                (mouseleave)="survoleGaleries('hidden')">
-  <article *ngFor="let event of privateEvents; let i = index"
-           class="thumb"
-           [@galeriesTrigger]="state(i)">
-    <a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">
-      <img src="{{ event.image }}" alt="Event" width=100%
-           style="min-width: 100%; min-height: 100%"/>
-    </a>
-    <h2><a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
-    <a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name"><div class="private_background"></div></a>
-    <div id="private">{{ 'galeries.gallery.private' | translate }}</div>
-  </article>
-  <!--<article class="thumb">
+  <article class="thumb">
     <a [routerLink]="routes.videos + 'test'" aria-label="Vidéo">
       <img src="assets/images/logo-ponthe.png" alt="Vidéo" width=100%
            style="min-width: 100%; min-height: 100%"/>
     </a>
     <h2><a [routerLink]="routes.videos + 'test'" aria-label="Vidéo">Vidéo</a></h2>
     <a [routerLink]="routes.videos + 'test'" aria-label="Vidéo"></a>
-  </article>-->
-</div>
+  </article>
+</div> -->
 
 <!-- Public galleries -->
 <div id="main" (mouseenter)="survoleGaleries('visible')"
                (mouseleave)="survoleGaleries('hidden')">
-  <article *ngFor="let event of galeriesEvents; let i = index"
+  <article *ngFor="let event of galeriesService.galeriesEvents; let i = index"
            class="thumb"
-           [@galeriesTrigger]="state(i)">
+           [@galeriesTrigger]="galeriesState[i]">
     <a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">
       <img src="{{ event.image }}" alt="" width=100%/>
     </a>
     <h2><a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
   </article>
+</div>
+
+<div *ngIf="galeriesService.isLoadingMoreEvents" id="reload-boundary" >
+  <app-loading-points></app-loading-points>
 </div>
 
 <app-loader-ponthe *ngIf="displaySpinner" @spinnerTrigger><app-loader-ponthe>

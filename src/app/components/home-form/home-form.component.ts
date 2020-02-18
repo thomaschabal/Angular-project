@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 import { MessagesService } from '../../services/messages.service';
-import { Phrases } from '../../Phrases';
 
 const DURATION_DISPLAYING = 6000;
 
@@ -37,8 +37,10 @@ export class HomeFormComponent implements OnInit {
 
   // Submission of the contact form
   onSubmitMessage() {
-    if (this.messageForm.value.message !== '') {
-      this.messagesService.materialPost(this.messageForm.value).subscribe(
+    const inputMessage = this.messageForm.value.message;
+    if (inputMessage !== '') {
+      const messageToSend = 'Message envoyé depuis la page d\'accueil du site :\n\n' + inputMessage;
+      this.messagesService.messagePost({ message: messageToSend }).subscribe(
         (res) => {
           this.successMessage = true;
           this.resetForm();

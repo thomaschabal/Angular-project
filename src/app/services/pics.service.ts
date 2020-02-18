@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 import { GaleriesService, DEFAULT_PAGE_SIZE } from './galeries.service';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class PicsService {
@@ -9,15 +9,11 @@ export class PicsService {
   currentGallery: string;
 
   pics: any[];
-  picsSource = new BehaviorSubject([]);
-  picsStream = this.picsSource.asObservable();
 
   numberOfPics: number;
   page = 1;
 
   isLoadingMore = false;
-  isLoadingMoreSource = new BehaviorSubject(false);
-  isLoadingMoreStream = this.isLoadingMoreSource.asObservable();
 
   rawPics: any[];
   rawPicsIndexSource = new BehaviorSubject(-1);
@@ -29,13 +25,6 @@ export class PicsService {
 
   constructor(private galeriesService: GaleriesService) { }
 
-  updatePics() {
-    this.picsSource.next(this.pics);
-  }
-  updateIsLoadingMore(loading: boolean) {
-    this.isLoadingMore = loading;
-    this.isLoadingMoreSource.next(loading);
-  }
   updateRawPicsIndex(index: number) {
     this.rawPicsIndexSource.next(index);
   }
@@ -49,7 +38,7 @@ export class PicsService {
     this.requestStartedForPics = Array(numberOfPics);
     this.allPicturesLoaded = false;
     this.page = 1;
-    this.updateIsLoadingMore(false);
+    this.isLoadingMore = false;
   }
 
   onReceivePic(pic: any, index: number) {
@@ -103,7 +92,8 @@ export class PicsService {
     const picPrev = (i <= 0 ? i - 1 + nbPics : i - 1);
     const picNext = (i + 1 >= nbPics ? (i + 1) - nbPics : i + 1);
 
-    if (this.rawPics[i + 5] === undefined) {
+    // If current pic index + 10 is not a loaded pic, then load more pics
+    if (this.rawPics[i + DEFAULT_PAGE_SIZE - 1] === undefined) {
       this.loadMorePics();
     }
 
@@ -141,14 +131,13 @@ export class PicsService {
 
   loadMorePics() {
     if (this.page * DEFAULT_PAGE_SIZE < this.numberOfPics && !this.isLoadingMore) {
-      this.updateIsLoadingMore(true);
+      this.isLoadingMore = true;
       this.galeriesService.getEventByName(this.currentGallery, this.page + 1)
         .subscribe(
           (res: {files, gallery}) => {
             this.addFollowingLoadedImages(res.files, this.page);
             this.page ++;
-            this.updateIsLoadingMore(false);
-            this.updatePics();
+            this.isLoadingMore = false;
           },
           (error) => { }
         );

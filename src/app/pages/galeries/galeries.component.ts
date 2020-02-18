@@ -1,7 +1,6 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { state, trigger, animate, style, transition, keyframes } from '@angular/animations';
 
-import { LoadingSpinnerComponent } from '../../components/loading-spinner/loading-spinner.component';
 import { GaleriesService } from '../../services/galeries.service';
 import { routesAppFromRoot } from '../../Routes';
 
@@ -39,43 +38,40 @@ export class GaleriesComponent implements OnInit {
 
   // Loading Spinner
   displaySpinner = true;
-  stateSpinner = 'visible';
-
-  // List of events to display
-  galeriesEvents = [];
-  privateEvents = [];
 
   // Animation variables for 9 first pics
-  galeriesState = ['visible', 'visible', 'visible',
-                   'visible', 'visible', 'visible',
-                   'visible', 'visible', 'visible'];
+  galeriesState = Array(9).fill('visible');
 
-  constructor(private galeriesService: GaleriesService) {
-  }
+  constructor(public galeriesService: GaleriesService) { }
 
   ngOnInit() {
-    this.displaySpinner = this.galeriesService.displaySpinner;
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+    this.displaySpinner = this.galeriesService.displaySpinner;
     this.galeriesService.loadEvents().then(
       () => {
-      this.privateEvents = this.galeriesService.privateEvents;
-      this.galeriesEvents = this.galeriesService.galeriesEvents;
-      this.stateSpinner = this.galeriesService.stateSpinner;
-      setTimeout(() => { this.displaySpinner = this.galeriesService.displaySpinner; }, 200);
+      setTimeout(() => { this.displaySpinner = this.galeriesService.displaySpinner; }, 300);
     });
-
   }
 
+  @HostListener('window:scroll', ['$event'])
+    scrollHandler() {
+      const articles = document.getElementsByClassName('thumb');
+      const articleHeight = articles[0].clientHeight;
+      const boundary = articles[articles.length - 1];
+      const boundaryTop = boundary.getBoundingClientRect().top;
+
+      // Load more pics when there are 4 lines of pics remaining before the end of the current page
+      if (boundaryTop - 4 * articleHeight < window.innerHeight) {
+        this.galeriesService.loadMoreEvents();
+      }
+    }
 
   // Display functions (hover and state)
   survoleGaleries(stateGaleries: string) {
     for (let pic = 0; pic < this.galeriesState.length; pic++) {
       this.galeriesState[pic] = stateGaleries;
     }
-  }
-
-  state(i) {
-    return this.galeriesState[i];
   }
 }

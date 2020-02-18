@@ -1,0 +1,46 @@
+@import url("../../../../assets/assets_g/css/main.css");
+@import "../../../PontheStyle.scss";
+
+#main .thumb > .image {
+	-webkit-tap-highlight-color: color(WHITE);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	vertical-align: middle;
+	border: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+#private {
+	width: 5em;
+	background: color(GRADIENT_RED_YELLOW);
+	color: color(WHITE);
+	text-align: center;
+	position: absolute;
+	top: 1vh;
+	left: 0.5vw;
+	border-radius: 10px;
+}
+
+.private_background {
+	width: 100%;
+	height: 100%;
+	background: color(GRADIENT_RED_YELLOW);
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity:0.55;
+}
+
+#no_private_gallery {
+	color: color(DARK_DARK_GREY);
+	font-size: font-size(XLARGE);
+	text-align: center;
+	margin-top: units(2);
+	text-transform: inherit;
+	font-weight: bold;
+}

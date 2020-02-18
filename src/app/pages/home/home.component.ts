@@ -6,7 +6,6 @@ import { filter } from 'rxjs/operators';
 
 import { HomeService } from '../../services/home.service';
 import { PicsService } from '../../services/pics.service';
-import { HomeFormComponent } from '../../components/home-form/home-form.component';
 import { routesAppFromRoot } from '../../Routes';
 
 

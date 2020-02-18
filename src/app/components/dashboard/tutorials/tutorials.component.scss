@@ -1,0 +1,31 @@
+@import "../../../PontheStyle.scss";
+
+#container {
+    display: flex;
+    flex-direction: column;
+    max-height: 60vh;
+    overflow: scroll;
+    width: 100%;
+
+    @include sm {
+        max-height: 80vh;
+    }
+}
+
+.subject {
+    margin-bottom: units(4);
+
+    @include sm {
+        margin-bottom: units(2);
+    }
+}
+
+h2 {
+    font-size: font-size(XXLARGE);
+    font-weight: bold;
+    margin-bottom: units(2);
+
+    @include sm {
+        font-size: font-size(LARGE);
+    }
+}

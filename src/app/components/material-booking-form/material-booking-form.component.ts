@@ -3,7 +3,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { MessagesService } from '../../services/messages.service';
 import MATERIAL from '../../constants/Material';
-import { Phrases } from '../../Phrases';
 import { BREAKPOINTS } from 'src/app/constants/Breakpoints';
 
 const UNIT = 8;

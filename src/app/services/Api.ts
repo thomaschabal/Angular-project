@@ -11,6 +11,7 @@ export default {
 
     /* Home */
     getLatestGalleries: '/get-latest-galleries',
+    contact: '/contact',
 
     /* Members */
     members: '/members',

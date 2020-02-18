@@ -1,4 +1,4 @@
 export class Message {
-  materiel: string;
+  device: string;
   message: string;
 }

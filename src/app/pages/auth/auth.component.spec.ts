@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 
 import { AuthComponent } from './auth.component';
-import { AuthFooterComponent } from '../../components/auth-footer/auth-footer.component';
+import { AuthFooterComponent } from '../../components/auth/auth-footer/auth-footer.component';
 import { AuthService } from '../../services/auth.service';
 
 describe('AuthComponent', () => {
