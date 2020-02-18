@@ -16,7 +16,7 @@ $INTRO-MARGIN-TOP-MOBILE: 4em;
 
 	@include sm {
 		margin-top: $INTRO-MARGIN-TOP-MOBILE;
-		height: calc(120vh - #{$INTRO-MARGIN-TOP-MOBILE});
+		height: calc(130vh - #{$INTRO-MARGIN-TOP-MOBILE});
 	}
 }
 

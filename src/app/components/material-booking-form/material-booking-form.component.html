@@ -5,9 +5,9 @@
     </div>
     <div id="container">
       <div id="items" [style.width.px]="sizeMatosContainer()">
-        <div *ngFor="let item of listMatos" class="itemCard" (click)="onClickItem(item)" [id]="selectedItems[item.name] ? 'selected' : 'none'">
+        <div *ngFor="let item of listMatos" (click)="onClickItem(item)" [class]="selectedItems[item.name] ? 'itemCard selected' : 'itemCard none'">
           <div class="itemPic">
-            <img [src]="item.img" />
+            <img [src]="item.img" [alt]="item.name"/>
           </div>
           <h2>{{ item.name }}</h2>
           <p>{{ item.descriptif }}</p>

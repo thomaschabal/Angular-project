@@ -62,22 +62,22 @@
   opacity: 0.95;
 }
 
-#right_arrow, #left_arrow, #closer {
+.right_arrow, .left_arrow, #closer {
   position: absolute;
   cursor: pointer;
 }
   
-#right_arrow, #left_arrow {
+.right_arrow, .left_arrow {
     width: units(6);
     bottom: units(5);
     right: 0;
 }
   
-#right_arrow {
+.right_arrow {
   margin-right: units(5);
 }
   
-#left_arrow {
+.left_arrow {
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   margin-right: units(12);

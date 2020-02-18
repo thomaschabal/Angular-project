@@ -1,7 +1,12 @@
 <form method="post" [formGroup]="messageForm" (ngSubmit)="onSubmitMessage()">
   <div class="fields">
     <div class="field">
-      <textarea name="message" [placeholder]="'home.contact.placeholder' | translate" rows="6" formControlName="message"></textarea>
+      <textarea
+        name="message"
+        [placeholder]="'home.contact.placeholder' | translate"
+        rows="6"
+        formControlName="message"
+        [attr.aria-label]="'home.contact.placeholder' | translate"></textarea>
     </div>
   </div>
   <p id="success" [class]="successMessage ? 'visible' : 'hidden'">
