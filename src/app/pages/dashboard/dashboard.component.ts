@@ -18,7 +18,10 @@ export class DashboardComponent implements OnInit {
   // constructor(private router: Router) { }
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
 
   // On click on button "Modérer"
   navigateToModeration() {
