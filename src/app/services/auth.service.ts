@@ -93,6 +93,7 @@ export class AuthService {
     this.httpService.getV1(API_ROUTES.casLogin + '?ticket=' + ticket).subscribe(() => {});
   }
   casAuthentication(ticket: string) {
+    console.log('DEBUG 1');
     try {
       this.httpService.get('/cas/login' + '?ticket=' + ticket).subscribe((res1) => {
         console.log(res1);
@@ -106,6 +107,7 @@ export class AuthService {
         );
       });
     } catch (error) {
+      console.log('ERROR');
       console.error(error);
       this.httpService.get(API_ROUTES.casAuthenticate + '?ticket=' + ticket).subscribe(
         (res: { access_token }) => {
