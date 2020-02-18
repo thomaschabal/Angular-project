@@ -48,6 +48,7 @@ import { NavComponent } from './components/navigation/nav/nav.component';
 import { NavLinkComponent } from './components/navigation/nav-link/nav-link.component';
 import { NavigationButtonComponent } from './components/navigation-button/navigation-button.component';
 import { PicThumbComponent } from './components/pic-thumb/pic-thumb.component';
+import { PrivateGalleriesComponent } from './components/dashboard/private-galleries/private-galleries.component';
 import { PontheTeamComponent } from './components/members/ponthe-team/ponthe-team.component';
 import { TutorialSubjectComponent } from './components/dashboard/tutorial-subject/tutorial-subject.component';
 import { TutorialsComponent } from './components/dashboard/tutorials/tutorials.component';
@@ -117,6 +118,7 @@ export function setupTranslateFactory(
     NavigationButtonComponent,
     PicThumbComponent,
     PontheTeamComponent,
+    PrivateGalleriesComponent,
     TutorialSubjectComponent,
     TutorialsComponent,
     UploadComponent,

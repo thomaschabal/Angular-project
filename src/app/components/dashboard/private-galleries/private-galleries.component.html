@@ -1,0 +1,17 @@
+<div id="main" (mouseenter)="survoleGaleries('visible')"
+               (mouseleave)="survoleGaleries('hidden')">
+  <article *ngFor="let event of galeriesService.privateEvents; let i = index"
+           class="thumb">
+    <a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">
+      <img src="{{ event.image }}" alt="Event" width=100%
+           style="min-width: 100%; min-height: 100%"/>
+    </a>
+    <h2><a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
+    <a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name"><div class="private_background"></div></a>
+    <div id="private">{{ 'galeries.gallery.private' | translate }}</div>
+  </article>
+</div>
+<div *ngIf="displaySpinner" id="reload-boundary" >
+    <app-loading-points></app-loading-points>
+</div>
+<h3 *ngIf="galeriesService.privateEvents.length === 0 && !displaySpinner" id="no_private_gallery">{{ 'dashboard.privateGalleries.none' | translate }}</h3>

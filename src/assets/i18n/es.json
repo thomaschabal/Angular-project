@@ -32,6 +32,8 @@
     "dashboard.links.youtube": "Youtube",
     "dashboard.tutos.title": "Tutorials ponthe.enpc.org",
     "dashboard.usefulLinks.title": "Enlaces útiles para admins",
+    "dashboard.privateGalleries.title": "Galerías privadas",
+    "dashboard.privateGalleries.none": "No hay galerías privadas en este momento.",
   
     "event.deleteGallery.galleryWillBeDeleted": "Esta galería está a punto de ser eliminada. Haz clic por segunda vez en \"Eliminar galería\" para validar la acción.",
     "event.deleteGallery.galleryWasDeleted": "La galería ha sido eliminada",

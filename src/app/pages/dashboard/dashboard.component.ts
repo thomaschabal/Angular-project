@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 import { BUTTON_LINKS_ADMIN } from '../../Constants';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
   tutorialsVisible = false;
   adminUsefulLinksVisible = false;
 
-  constructor(private router: Router) { }
+  // constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() { }
 
@@ -22,7 +24,7 @@ export class DashboardComponent implements OnInit {
   navigateToModeration() {
     // TODO : implement moderation on this Angular version
     // this.router.navigate([routesAppFromRoot.moderation]);
-    window.location.href = 'https://ponthe-testing.enpc.org/v1/moderation';
+    window.location.href = environment.baseUrl + '/v1/moderation';
   }
 
   displayTutorials() {

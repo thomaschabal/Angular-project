@@ -38,43 +38,28 @@ export class GaleriesComponent implements OnInit {
 
   // Loading Spinner
   displaySpinner = true;
-  stateSpinner = 'visible';
-
-  // List of events to display
-  galeriesEvents = [];
-  privateEvents = [];
 
   // Animation variables for 9 first pics
-  galeriesState = ['visible', 'visible', 'visible',
-                   'visible', 'visible', 'visible',
-                   'visible', 'visible', 'visible'];
+  galeriesState = Array(9).fill('visible');
 
-  constructor(private galeriesService: GaleriesService) {
-  }
+  constructor(public galeriesService: GaleriesService) { }
 
   ngOnInit() {
-    this.displaySpinner = this.galeriesService.displaySpinner;
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+    this.displaySpinner = this.galeriesService.displaySpinner;
     this.galeriesService.loadEvents().then(
       () => {
-      this.privateEvents = this.galeriesService.privateEvents;
-      this.galeriesEvents = this.galeriesService.galeriesEvents;
-      this.stateSpinner = this.galeriesService.stateSpinner;
-      setTimeout(() => { this.displaySpinner = this.galeriesService.displaySpinner; }, 200);
+      setTimeout(() => { this.displaySpinner = this.galeriesService.displaySpinner; }, 300);
     });
 
   }
-
 
   // Display functions (hover and state)
   survoleGaleries(stateGaleries: string) {
     for (let pic = 0; pic < this.galeriesState.length; pic++) {
       this.galeriesState[pic] = stateGaleries;
     }
-  }
-
-  state(i) {
-    return this.galeriesState[i];
   }
 }

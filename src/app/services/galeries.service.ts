@@ -12,7 +12,6 @@ export class GaleriesService {
   privateEvents = [];
   arePrivateEventsLoaded = false;
   displaySpinner = true;
-  stateSpinner = 'visible';
 
   constructor(private httpService: HttpService) {}
 
@@ -45,7 +44,6 @@ export class GaleriesService {
         .then(
           (res: { galleries }) => {
             this.galeriesEvents = res.galleries;
-            this.stateSpinner = 'hidden';
             setTimeout(() => { this.displaySpinner = false; }, 200);
             this.areGaleriesEventsLoaded = true;
           },
@@ -102,12 +100,15 @@ export class GaleriesService {
     return this.httpService.get(API_ROUTES.filesNotModerated);
   }
 
+  loadPrivateEvents = async () => {
+    // Restricted to admins
+    await this.getPrivateEvents();
+    return Promise.resolve();
+  }
+
   //// METHODS FOR GALERIES COMPONENT
   loadEvents = async () => {
     await this.getAllEvents();
-    // Restricted to admins
-    await this.getPrivateEvents();
-
     return Promise.resolve();
   }
 }
