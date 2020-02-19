@@ -25,7 +25,8 @@ export class HttpService {
   // Method get : require the route from the API
   get(path: string) {
     const httpOptions = {
-      headers: this.getHeaderFromToken()
+      headers: this.getHeaderFromToken(),
+      withCredentials: true
     };
     return this.httpClient.get(environment.apiUrl + path, httpOptions);
   }
