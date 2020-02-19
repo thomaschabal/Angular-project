@@ -3,6 +3,7 @@ import { HttpRequest, HttpClient, HttpEvent, HttpEventType, HttpHeaders } from '
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpService } from '../../services/http.service';
+import { environment } from 'src/environments/environment';
 
 export class DemoFilePickerAdapter extends FilePickerAdapter {
   filesUploading = {};
@@ -40,7 +41,7 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
     this.updateFilesToUpload(this.numberOfFilesToUpload + 1);
     const form = new FormData();
     form.append('file', fileItem.file);
-    const api = this.httpService.apiUrl + '/file-upload/' + this.httpService.currentGallery;
+    const api = environment.apiUrl + '/file-upload/' + this.httpService.currentGallery;
     const httpOptions = new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
         Authorization: 'Bearer ' + this.httpService.token,
@@ -62,6 +63,6 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   }
 
   public removeFile(fileItem: FilePreviewModel): Observable<any> {
-    return this.http.post(this.httpService.apiUrl, {id: fileItem.fileId});
+    return this.http.post(environment.apiUrl, {id: fileItem.fileId});
   }
 }

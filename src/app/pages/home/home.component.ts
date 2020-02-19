@@ -63,10 +63,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     // Get text
     // Requests to the server, update of previous data
     this.homeService.loadLatestGalleries();
-    this.homeService.loadLovePics();
+
+    // NEXT LINE FOR LOVE PICS
+    // this.homeService.loadLovePics();
     // Transfer pics for image viewer
-    this.picsService.rawPics = this.homeService.lovePicsSrc;
-    this.picsService.numberOfPics = this.homeService.lovePicsSrc.length;
+    // this.picsService.rawPics = this.homeService.lovePicsSrc;
+    // this.picsService.numberOfPics = this.homeService.lovePicsSrc.length;
 
     if (this.isDesktop()) {
       this.lastEventsState1 = 'hidden-mid-left';
@@ -74,8 +76,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.lastEventsState3 = 'hidden-mid-left';
     } else {
       this.introVisible = true;
-      this.lovePicsStateLeft = 'visible';
-      this.lovePicsStateRight = 'visible';
+      // this.lovePicsStateLeft = 'visible';
+      // this.lovePicsStateRight = 'visible';
       this.formVisible = true;
     }
   }

@@ -6,16 +6,13 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class HttpService {
   // Variables containing the address of the back, the user's token and his status (user or admin)
-  apiUrl: string;
   token: string | null;
   isAdmin: boolean;
-  promotion: string;
+  promotion: string | null;
 
   currentGallery: string;
 
-  constructor(private httpClient: HttpClient) {
-    this.apiUrl = environment.apiUrl;
-  }
+  constructor(private httpClient: HttpClient) { }
 
   getHeaderFromToken() {
     return new HttpHeaders({
@@ -30,7 +27,7 @@ export class HttpService {
     const httpOptions = {
       headers: this.getHeaderFromToken()
     };
-    return this.httpClient.get(this.apiUrl + path, httpOptions);
+    return this.httpClient.get(environment.apiUrl + path, httpOptions);
   }
 
   // Méthode post
@@ -38,7 +35,7 @@ export class HttpService {
     const httpOptions = {
       headers: this.getHeaderFromToken()
     };
-    return this.httpClient.post(this.apiUrl + path, body, httpOptions);
+    return this.httpClient.post(environment.apiUrl + path, body, httpOptions);
   }
 
   // Méthode post pour des fichiers
@@ -50,7 +47,7 @@ export class HttpService {
         enctype: 'multipart/form-data'
       })
     };
-    return this.httpClient.post(this.apiUrl + path, body, httpOptions);
+    return this.httpClient.post(environment.apiUrl + path, body, httpOptions);
   }
 
   // Méthode delete
@@ -58,6 +55,6 @@ export class HttpService {
     const httpOptions = {
       headers: this.getHeaderFromToken()
     };
-    return this.httpClient.delete(this.apiUrl + path, httpOptions);
+    return this.httpClient.delete(environment.apiUrl + path, httpOptions);
   }
 }

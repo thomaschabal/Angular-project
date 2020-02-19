@@ -8,6 +8,7 @@ import { GaleriesService } from '../../services/galeries.service';
 import { HttpService } from '../../services/http.service';
 import { PicsService } from '../../services/pics.service';
 import KEY_CODE from '../../constants/KeyCode';
+import { BREAKPOINTS } from '../../constants/Breakpoints';
 
 @Component({
   selector: 'app-event',
@@ -113,8 +114,9 @@ export class EventComponent implements OnInit, OnDestroy {
       const boundary = articles[articles.length - 1];
       const boundaryTop = boundary.getBoundingClientRect().top;
 
+      const THRESHOLD = (window.innerWidth < BREAKPOINTS.SMALL) ? 14 : 4;
       // Load more pics when there are 4 lines of pics remaining before the end of the current page
-      if (boundaryTop - 4 * articleHeight < window.innerHeight) {
+      if (boundaryTop - THRESHOLD * articleHeight < window.innerHeight) {
         this.picsService.loadMorePics();
       }
     }

@@ -1,6 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
 
 import { AuthService } from '../../services/auth.service';
 import { PwaService } from '../../services/Pwa.service';
@@ -8,13 +7,15 @@ import { routesAppFromRoot } from '../../Routes';
 import { BREAKPOINTS, PATH_AUTH_VIDEO, CAS_BASE_URL } from '../../Constants';
 import { environment } from 'src/environments/environment';
 
+const NULL_TICKET = [null, 'null', undefined];
+
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
 
-export class AuthComponent implements OnInit, OnDestroy {
+export class AuthComponent implements OnInit {
   pathAuthVideo = PATH_AUTH_VIDEO;
   ssoPath: string;
 
@@ -23,10 +24,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   routes = routesAppFromRoot;
   isMobileOrTablet: boolean;
 
-  isLoginErrorSubscription: Subscription;
-  isLoginError = false;
-
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
               public Pwa: PwaService,
               private formBuilder: FormBuilder) {
   }
@@ -34,17 +32,16 @@ export class AuthComponent implements OnInit, OnDestroy {
   ngOnInit() {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+
+    const currentLocation = new URL(window.location.href);
+    const ticket = currentLocation.searchParams.get('ticket');
+    if (NULL_TICKET.indexOf(ticket) === -1) {
+      this.authService.casProcess(ticket);
+    }
+
     this.initForm();
     this.getBreakpoint();
-
-    this.isLoginErrorSubscription = this.authService.loginErrorStream.subscribe(state => {
-      this.isLoginError = state;
-    });
-    this.ssoPath = CAS_BASE_URL + encodeURI(environment.baseUrl);
-  }
-
-  ngOnDestroy() {
-    this.isLoginErrorSubscription.unsubscribe();
+    this.ssoPath = CAS_BASE_URL + encodeURI(environment.baseUrl + routesAppFromRoot.auth);
   }
 
   getBreakpoint() {
@@ -65,7 +62,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   closeAlert() {
-    this.authService.updateLoginError(false);
+    this.authService.loginError = false;
   }
 
   installPwa(): void {

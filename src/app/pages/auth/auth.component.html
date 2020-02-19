@@ -21,7 +21,7 @@
 	</app-auth-card>
 
 	<app-alert
-		[visible]="isLoginError"
+		[visible]="authService.loginError"
 		[title]="'login.error' | translate"
 		(close)="closeAlert()"
 	></app-alert>

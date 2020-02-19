@@ -3,6 +3,10 @@
 
 .spacer {
   margin-top: 4em;
+
+  @include sm {
+    margin-top: units(10);
+  }
 }
 
 html, body {

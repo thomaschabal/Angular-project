@@ -4,33 +4,35 @@ import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 
 import { HttpService } from './http.service';
-import { HomeService } from './home.service';
 import { routesAppFromRoot } from '../Routes';
 import API_ROUTES from './Api';
-import { BehaviorSubject } from 'rxjs';
 
 export const TOKEN_NAME = 'jwt_token';
+const NULL_TOKEN = [null, 'null', undefined];
 
 @Injectable()
 export class AuthService {
   isAuth: boolean;
 
   loginError = false;
-  loginErrorSource = new BehaviorSubject(false);
-  loginErrorStream = this.loginErrorSource.asObservable();
 
   constructor(private httpService: HttpService,
-              private homeService: HomeService,
               private router: Router) {
-    this.isAuth = false;
     this.getUserInfos();
   }
 
   getUserInfos() {
     this.getToken();
-    if (this.httpService.token) {
+    this.isAuth = NULL_TOKEN.indexOf(this.httpService.token) === -1;
+    if (this.isAuth) {
       this.getUserByJWT();
     }
+  }
+
+  setUserInfos(admin: boolean, promotion: string | null, permission: boolean) {
+    this.httpService.isAdmin = admin;
+    this.httpService.promotion = promotion;
+    this.isAuth = permission;
   }
 
   getToken(): string {
@@ -45,15 +47,12 @@ export class AuthService {
 
   getUserByJWT() {
     this.httpService.get(API_ROUTES.getUserByJwt).subscribe(
-      (response: {admin, promotion}) => {
-        this.httpService.isAdmin = response.admin;
-        this.httpService.promotion = response.promotion;
-        this.isAuth = true;
+      (response: { admin: boolean, promotion: string }) => {
+        const { admin, promotion } = response;
+        this.setUserInfos(admin, promotion, true);
       },
       (err) => {
-        this.httpService.isAdmin = false;
-        this.httpService.promotion = '';
-        this.isAuth = false;
+        this.setUserInfos(false, null, false);
         this.router.navigate([routesAppFromRoot.auth]);
        }
     );
@@ -84,29 +83,29 @@ export class AuthService {
     return this.httpService.get(API_ROUTES.cgu);
   }
 
-  updateLoginError(newState: boolean) {
-    this.loginError = newState;
-    this.loginErrorSource.next(newState);
-  }
-
   authenticate(token: string) {
     this.setToken(token);
     this.isAuth = true;
     this.router.navigate([routesAppFromRoot.home]);
-    this.getUserByJWT();
-    this.homeService.getLatestGalleries();
-    this.homeService.getLovePics();
   }
 
+  casLogin(ticket: string) {
+    this.httpService.get('/cas/login' + '?ticket=' + ticket);
+  }
   casAuthentication(ticket: string) {
     this.httpService.get(API_ROUTES.casAuthenticate + '?ticket=' + ticket).subscribe(
       (res: { access_token }) => {
         this.authenticate(res.access_token);
       },
       (error) => {
-        this.updateLoginError(true);
+        this.loginError = true;
       }
     );
+  }
+
+  casProcess(ticket: string) {
+    this.casLogin(ticket);
+    this.casAuthentication(ticket);
   }
 
   // Login : request to the server and update of the information on the user
@@ -115,7 +114,7 @@ export class AuthService {
       (res: { token }) => {
         this.authenticate(res.token);
       },
-      (error) => { this.updateLoginError(true); }
+      (error) => { this.loginError = true; }
     );
   }
 

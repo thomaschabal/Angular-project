@@ -3,6 +3,7 @@ import { state, trigger, animate, style, transition, keyframes } from '@angular/
 
 import { GaleriesService } from '../../services/galeries.service';
 import { routesAppFromRoot } from '../../Routes';
+import { BREAKPOINTS } from 'src/app/constants/Breakpoints';
 
 @Component({
   selector: 'app-galeries',
@@ -62,8 +63,9 @@ export class GaleriesComponent implements OnInit {
       const boundary = articles[articles.length - 1];
       const boundaryTop = boundary.getBoundingClientRect().top;
 
+      const THRESHOLD = (window.innerWidth < BREAKPOINTS.SMALL) ? 14 : 4;
       // Load more pics when there are 4 lines of pics remaining before the end of the current page
-      if (boundaryTop - 4 * articleHeight < window.innerHeight) {
+      if (boundaryTop - THRESHOLD * articleHeight < window.innerHeight) {
         this.galeriesService.loadMoreEvents();
       }
     }

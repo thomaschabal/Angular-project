@@ -57,11 +57,6 @@ const SHORTCUTS = {
 })
 
 export class AppComponent {
-  title = 'Galeries Ponthé';
-
-  // Status of the user : true = online, false = offline
-  authStatus: boolean;
-
   // Easter egg for redirection
   keys = '';
   titleEasterEgg = '';
@@ -69,8 +64,6 @@ export class AppComponent {
 
   constructor(private authService: AuthService,
               private router: Router) {
-    // Initially, the user is redirected to the Auth page and is offline
-    this.authStatus = this.authService.isAuth;
   }
 
   // Function for page transitions

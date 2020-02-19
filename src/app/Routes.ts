@@ -14,7 +14,6 @@ export const routesApp = {
   material: 'material',
   moderation: 'moderation',
   notFound: 'not-found',
-  sso: 'sso',
 };
 
 export const routesAppFromRoot = Object.assign({}, routesApp);
