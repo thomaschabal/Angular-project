@@ -105,7 +105,7 @@ export class AuthService {
 
   casProcess(ticket: string) {
     this.casLogin(ticket);
-    setTimeout(() => this.casAuthentication(ticket), 1000);
+    setTimeout(() => this.casAuthentication(ticket), 2000);
   }
 
   // Login : request to the server and update of the information on the user
