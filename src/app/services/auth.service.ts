@@ -53,6 +53,7 @@ export class AuthService {
       },
       (err) => {
         this.setUserInfos(false, null, false);
+        this.setToken(null);
         this.router.navigate([routesAppFromRoot.auth]);
        }
     );
