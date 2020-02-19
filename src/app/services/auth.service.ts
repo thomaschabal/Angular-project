@@ -90,7 +90,7 @@ export class AuthService {
   }
 
   casLogin(ticket: string) {
-    this.httpService.get(API_ROUTES.casLogin + '?ticket=' + ticket).subscribe(() => {});
+    this.httpService.getV1(API_ROUTES.casLogin + '?ticket=' + ticket).subscribe(() => {});
   }
   casAuthentication(ticket: string) {
     this.httpService.get(API_ROUTES.casAuthenticate + '?ticket=' + ticket).subscribe(
