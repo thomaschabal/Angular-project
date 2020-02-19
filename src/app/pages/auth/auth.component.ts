@@ -41,7 +41,7 @@ export class AuthComponent implements OnInit {
 
     this.initForm();
     this.getBreakpoint();
-    this.ssoPath = CAS_BASE_URL + encodeURI(environment.baseUrl + '/api/cas/login/');
+    this.ssoPath = environment.baseUrl + '/api/cas/login/'; // CAS_BASE_URL + encodeURI(environment.baseUrl + '/api/cas/login/');
   }
 
   getBreakpoint() {
