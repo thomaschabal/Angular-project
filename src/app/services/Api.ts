@@ -1,7 +1,7 @@
 export default {
     /* User */
     getUserByJwt: '/get-user-by-jwt',
-    casLogin: '/cas/login',
+    casLogin: '/cas/login/',
     casAuthenticate: '/cas/authenticate',
 
     /* Public */
