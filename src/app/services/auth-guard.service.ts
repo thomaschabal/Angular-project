@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 
 import { AuthService, NULL_TOKEN } from './auth.service';
 
+const NULL_TOKEN = [null, 'null', undefined];
+
 @Injectable()
 export class AuthGuard implements CanActivate {
 
