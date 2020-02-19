@@ -1,7 +1,7 @@
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
 
-import { AuthService, NULL_TOKEN } from './auth.service';
+import { AuthService } from './auth.service';
 
 const NULL_TOKEN = [null, 'null', undefined];
 
