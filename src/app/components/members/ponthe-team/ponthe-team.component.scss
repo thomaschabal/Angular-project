@@ -5,6 +5,9 @@
 @mixin shared-background-props($pic) {
   background: $pic;
   background-color: color(DARK_GREY);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
@@ -12,6 +15,9 @@
 @mixin shared-background-props-overlay($pic) {
     background: $OVERLAY-IMAGE, $pic;
     background-color: color(DARK_GREY);
+    -webkit-background-size: 256px 256px, cover;
+    -moz-background-size: 256px 256px, cover;
+    -o-background-size: 256px 256px, cover;
     background-size: 256px 256px, cover;
     background-attachment: fixed, fixed;
     background-position: top left, center center;
@@ -19,6 +25,9 @@
 @mixin shared-background-props-trombi($pic) {
     background: $pic;
     background-color: color(DARK_GREY);
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
     background-size: contain;
     background-attachment: fixed, fixed;
     background-position: center center, center center;
