@@ -8,7 +8,7 @@ import { routesAppFromRoot } from '../Routes';
 import API_ROUTES from './Api';
 
 export const TOKEN_NAME = 'jwt_token';
-const NULL_TOKEN = [null, 'null', undefined];
+export const NULL_TOKEN = [null, 'null', undefined];
 
 @Injectable()
 export class AuthService {
@@ -87,26 +87,6 @@ export class AuthService {
   authenticate(token: string) {
     this.setToken(token);
     this.isAuth = true;
-    this.router.navigate([routesAppFromRoot.home]);
-  }
-
-  casLogin(ticket: string) {
-    this.httpService.getV1(API_ROUTES.casLogin + '?ticket=' + ticket).subscribe(() => {});
-  }
-  casAuthentication(ticket: string) {
-    this.httpService.get(API_ROUTES.casAuthenticate + '?ticket=' + ticket).subscribe(
-      (res: { access_token }) => {
-        this.authenticate(res.access_token);
-      },
-      (error) => {
-        this.loginError = true;
-      }
-    );
-  }
-
-  casProcess(ticket: string) {
-    this.casLogin(ticket);
-    setTimeout(() => this.casAuthentication(ticket), 2000);
   }
 
   // Login : request to the server and update of the information on the user
@@ -114,6 +94,7 @@ export class AuthService {
     this.httpService.post(API_ROUTES.login, user).subscribe(
       (res: { token }) => {
         this.authenticate(res.token);
+        this.router.navigate([routesAppFromRoot.home]);
       },
       (error) => { this.loginError = true; }
     );

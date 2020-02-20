@@ -31,13 +31,6 @@ export class HttpService {
     return this.httpClient.get(environment.apiUrl + path, httpOptions);
   }
 
-  getV1(path: string) {
-    const httpOptions = {
-      headers: this.getHeaderFromToken()
-    };
-    return this.httpClient.get(environment.baseUrl + '/v1' + path, httpOptions);
-  }
-
   // Méthode post
   post(path: string, body: any) {
     const httpOptions = {
