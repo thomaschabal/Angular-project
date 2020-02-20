@@ -20,6 +20,11 @@ export default [
         descriptif: 'GoPro disponible avec harnais de torse, de tête et poignée.'
     },
     {
+        name: 'Micro Rode VideoMic Rycote',
+        img: 'assets/images/matos/micro_rode_videomic_rycote.png',
+        descriptif: 'Micro à brancher sur la prise jack d\'un appareil.'
+    },
+    {
         name: 'Trépied',
         img: 'assets/images/matos/trepied.png',
         descriptif: 'Trépied fixe de hauteur raisonnable, avec un support appareil à ne SURTOUT PAS PERDRE.'

@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import Api from '../../services/Api';
 import { AuthService } from '../../services/auth.service';
 import { PwaService } from '../../services/Pwa.service';
 import { routesAppFromRoot } from '../../Routes';
-import { BREAKPOINTS, PATH_AUTH_VIDEO, CAS_BASE_URL } from '../../Constants';
+import { BREAKPOINTS, PATH_AUTH_VIDEO } from '../../Constants';
 import { environment } from 'src/environments/environment';
-
-const NULL_TICKET = [null, 'null', undefined];
 
 @Component({
   selector: 'app-auth',
@@ -33,15 +32,9 @@ export class AuthComponent implements OnInit {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
-    const currentLocation = new URL(window.location.href);
-    const ticket = currentLocation.searchParams.get('ticket');
-    if (NULL_TICKET.indexOf(ticket) === -1) {
-      this.authService.casProcess(ticket);
-    }
-
     this.initForm();
     this.getBreakpoint();
-    this.ssoPath = environment.baseUrl + '/api/cas/login/'; // CAS_BASE_URL + encodeURI(environment.baseUrl + '/api/cas/login/');
+    this.ssoPath = environment.apiUrl + Api.casLogin;
   }
 
   getBreakpoint() {
