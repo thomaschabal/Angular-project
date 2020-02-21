@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { routesApp } from './Routes';
 
 // Service which protects the routes
+import { AdminGuard } from './services/admin-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
 
 //// COMPONENTS
@@ -30,11 +31,11 @@ export const routes: Routes = [
   { path: routesApp.galeries, canActivate: [AuthGuard], component: GaleriesComponent, data: {animation: 'GaleriesPage'} },
   { path: 'pics', redirectTo: routesApp.galeries },
   { path: 'video', redirectTo: routesApp.galeries },
-  { path: routesApp.dashboard, canActivate: [AuthGuard], component: DashboardComponent, data: {animation: 'DashboardPage'} },
+  { path: routesApp.dashboard, canActivate: [AuthGuard, AdminGuard], component: DashboardComponent, data: {animation: 'DashboardPage'} },
   { path: 'dash', redirectTo: routesApp.dashboard },
   { path: 'board', redirectTo: routesApp.dashboard },
   { path: 'admin', redirectTo: routesApp.dashboard },
-  { path: routesApp.moderation, canActivate: [AuthGuard], component: ModerationComponent, data: {animation: 'ModerationPage'} },
+  { path: routesApp.moderation, canActivate: [AuthGuard, AdminGuard], component: ModerationComponent, data: {animation: 'ModerationPage'} },
   { path: 'modo', redirectTo: routesApp.moderation },
   { path: routesApp.members, canActivate: [AuthGuard], component: MembersComponent, data: {animation: 'MembersPage'} },
   { path: 'membres', redirectTo: routesApp.members },
