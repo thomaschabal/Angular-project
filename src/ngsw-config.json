@@ -49,6 +49,7 @@
   "navigationUrls": [
     "/**",
     "!/api/**",
-    "!/v1/**"
+    "!/v1/**",
+    "!/phpmyadmin/**"
   ]
 }
