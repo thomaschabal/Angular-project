@@ -58,8 +58,9 @@ $GALLERY-PICS-MARGIN: units(1);
 }
 
 #loading-events {
-	margin-top: units(3);
-	margin-bottom: units(3);
+	padding-top: units(3);
+	padding-bottom: units(3);
+	background: color(HOME_GREY);
 }
 
 #no-gallery {
