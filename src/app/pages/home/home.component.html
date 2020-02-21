@@ -19,7 +19,7 @@
 <div id="loading-events" *ngIf="!homeService.areLastEventsLoaded">
   <app-loading-points></app-loading-points>
 </div>
-<div *ngIf="homeService.areLastEventsLoaded">
+<div *ngIf="homeService.areLastEventsLoaded" id="latest-events">
   <section  *ngFor="let event of homeService.lastEvents; let i = index"
             id="{{ event.event_id }}"
             class="main style2 {{ placement_events(i) }} dark fullscreen"
@@ -36,6 +36,7 @@
     </div>
     <a class="button style2 down anchored" (click)="clickOnNextArrow(event.next_event_id)" aria-label="Next">Next</a>
   </section>
+  <h3 *ngIf="homeService.lastEvents.length === 0" id="no-gallery">{{ 'home.noLatestGalleries' | translate }}</h3>
 </div>
 
 <!-- Favorite pics -->

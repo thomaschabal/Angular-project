@@ -40,6 +40,8 @@
   
     "footer.copyright": "Ponthé 020 - Audiovisual club of the Ecole des Ponts",
   
+    "galeries.none":
+      "There are no galleries to display. Either there is a loading problem or you don't have access to the existing galleries. Contact the members of Ponthé to find out more.",
     "galeries.gallery.private": "PRIVATE",
     "galeries.footer.title": "About the album....",
     "galeries.about.title": "Follow us on....",
@@ -52,6 +54,7 @@
 
     "home.header.title": "Le Ponthé",
     "home.header.introduction": "Welcome to the website of the <strong>Ponthé</strong>, the audiovisual club of Les Ponts.<br/>Here, you will be able to see and download the photos and videos made by the members of the club. You will also be able to upload your own photos and videos in each <strong>gallery</strong>. <br/> Enjoy the viewing!",
+    "home.noLatestGalleries": "You don't have access to any galleries at the moment because there are none for your promotion. You can contact the Ponthé to create one and add your own photos.",
     "home.noDescription": "No description for the moment.",
     "home.favoritePics.title": "Your <em>favorite</em> photos <3 <3 !",
     "home.contact.title": "Contact the Ponthé",

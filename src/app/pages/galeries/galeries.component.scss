@@ -1,16 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900");
 @import url("../../../assets/assets_g/css/main.css");
 @import "../../PontheStyle.scss";
+
+$SPACER-HEIGHT: 4em;
 
 body {
 	background: color(DARK_GREY);
 }
 
 .spacer {
-  margin-top: 4em;
+  margin-top: $SPACER-HEIGHT;
 
   @include sm {
 	  margin-top: units(10);
   }
+}
+
+#main {
+	min-height: calc(100vh - #{$SPACER-HEIGHT});
 }
 
 #main .thumb > .image {
@@ -31,4 +38,14 @@ body {
 	width: 100vw;
 	padding: units(10);
 	background: color(DARK_GREY);
+}
+
+#no-gallery {
+	width: 90vw;
+	margin-left: 5vw;
+	margin-top: units(4);
+	font-family: "Source Sans Pro";
+	font-weight: 400;
+	text-transform: inherit;
+	@include font-size(XLARGE);
 }
