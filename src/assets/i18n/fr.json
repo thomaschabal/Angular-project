@@ -40,6 +40,8 @@
   
     "footer.copyright": "Ponthé 020 - Club audiovisuel de l'Ecole des Ponts",
   
+    "galeries.none":
+      "Il n'y a pas de galerie à afficher. Soit il y a un problème de chargement, soit tu n'as pas accès aux galeries existantes. Contacte les membres du Ponthé pour en savoir plus.",
     "galeries.gallery.private": "PRIVEE",
     "galeries.footer.title": "A propos de l'album...",
     "galeries.about.title": "Suis-nous sur...",
@@ -52,6 +54,7 @@
   
     "home.header.title": "Le Ponthé",
     "home.header.introduction": "Bienvenue sur le site du <strong>Ponthé</strong>, le club audiovisuel des Ponts.<br/>Ici, tu pourras voir et télécharger les photos, vidéos et montages réalisés par les membres du club. Tu pourras également déposer tes propres photos et vidéos dans chaque <strong>galerie</strong>. <br/> Bon visionnage !",
+    "home.noLatestGalleries": "Tu n'as pour l'instant accès à aucune galerie car il n'en existe pas pour ta promotion. Tu peux contacter le Ponthé pour en créer et ajouter tes propres photos.",
     "home.noDescription": "Pas de description pour l'instant.",
     "home.favoritePics.title": "Tes photos <em>Coup de coeur </em>  <3 !",
     "home.contact.title": "Contacter le Ponthé",

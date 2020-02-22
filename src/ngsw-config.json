@@ -45,5 +45,11 @@
         "maxAge": "5d"
       }
     }
+  ],
+  "navigationUrls": [
+    "/**",
+    "!/api/**",
+    "!/v1/**",
+    "!/phpmyadmin/**"
   ]
 }

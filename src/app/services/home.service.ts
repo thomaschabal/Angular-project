@@ -8,7 +8,7 @@ const EMPTY_EVENT = {name: '', fond: '', routing: '', event_id: '', next_event_i
 
 @Injectable()
 export class HomeService {
-  lastEvents = Array(NUMBER_OF_LAST_EVENTS_HOME).fill(EMPTY_EVENT);
+  lastEvents = [];
   areLastEventsLoaded = false;
   lovePics: any;
   areLovePicsLoaded = false;
@@ -20,6 +20,7 @@ export class HomeService {
     return this.httpService.post(API_ROUTES.getLatestGalleries, { page: 1, page_size: NUMBER_OF_LAST_EVENTS_HOME })
       .subscribe(
         (res: { galleries }) => {
+          this.lastEvents = Array(res.galleries.length).fill(EMPTY_EVENT);
           const lastEvents = res.galleries;
           // REMOVE FOLLOWING LINE WHEN LOVE PICS ARE IMPLEMENTED
           // const idEvents = ['one', 'two', 'three', 'coeur'];

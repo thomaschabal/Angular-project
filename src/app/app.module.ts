@@ -70,6 +70,7 @@ import { MaterialComponent } from './pages/material/material.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 // SERVICES
+import { AdminGuard } from './services/admin-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { GaleriesService } from './services/galeries.service';
@@ -150,6 +151,7 @@ export function setupTranslateFactory(
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
+    AdminGuard,
     AuthGuard,
     AuthService,
     GaleriesService,

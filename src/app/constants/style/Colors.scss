@@ -3,6 +3,7 @@ $COLORS: (
     PONTHE: #fc3,
     YELLOW: #fc3,
     WHITE: #fff,
+    HOME_GREY: #f5f6f7,
     LIGHT_GREY: #ddd,
     DARK: #222,
     DARK_GREY: #242628,
@@ -29,4 +30,8 @@ $OVERLAYS: (
     @if map-has-key($OVERLAYS, $key ) {
         @return map-get($OVERLAYS, $key);
     }
+}
+
+@mixin color($color) {
+    color: color($color)
 }

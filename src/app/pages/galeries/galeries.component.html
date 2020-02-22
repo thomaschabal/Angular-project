@@ -25,6 +25,7 @@
     </a>
     <h2><a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
   </article>
+  <h3 *ngIf="!galeriesService.isLoadingMoreEvents && !galeriesService.displaySpinner && galeriesService.galeriesEvents.length === 0" id="no-gallery">{{ 'galeries.none' | translate }}</h3>
 </div>
 
 <div *ngIf="galeriesService.isLoadingMoreEvents" id="reload-boundary" >

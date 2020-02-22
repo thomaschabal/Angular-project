@@ -12,3 +12,7 @@ $FONT-SIZES: (
         @return map-get($FONT-SIZES, $size);
     }
 }
+
+@mixin font-size($size) {
+    font-size: font-size($size);
+}

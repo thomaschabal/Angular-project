@@ -38,24 +38,41 @@ $GALLERY-PICS-MARGIN: units(1);
 
 	#intro p {
 		@include sm {
-			font-size: font-size(LARGE);
+			@include font-size(LARGE);
 		}
 	}
 
 /* 3 Last events */
-	#one, #two, #three {
-		height: 100vh;
-		background-attachment: fixed, fixed;
-		background-position: top left, center center;
+#latest-events {
+	background: color(HOME_GREY);
+}
 
-		@include sm {
-			background-position: center center, center center;
-		}
+#one, #two, #three {
+	height: 100vh;
+	background-attachment: fixed, fixed;
+	background-position: top left, center center;
+
+	@include sm {
+		background-position: center center, center center;
 	}
+}
 
 #loading-events {
-	margin-top: units(3);
-	margin-bottom: units(3);
+	padding-top: units(3);
+	padding-bottom: units(3);
+	background: color(HOME_GREY);
+}
+
+#no-gallery {
+	width: 90vw;
+	padding-left: 10vw;
+	padding-top: units(5);
+	font-family: "Source Sans Pro";
+	font-weight: 600;
+	text-transform: inherit;
+	text-align: center;
+	@include font-size(XXLARGE);
+	@include color(DARK_DARK_GREY)
 }
 
 /* Love pics */
