@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 
 import { HttpService } from './http.service';
-import { LOVE_PICS, NUMBER_OF_LAST_EVENTS_HOME } from '../Constants';
+import { ReactionsService, FavoritePic } from './reactions.service';
 import API_ROUTES from './Api';
+import { LOVE_PICS, NUMBER_OF_LAST_EVENTS_HOME } from '../Constants';
+import { PicsService } from './pics.service';
 
 const EMPTY_EVENT = {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''};
 
@@ -10,11 +12,12 @@ const EMPTY_EVENT = {name: '', fond: '', routing: '', event_id: '', next_event_i
 export class HomeService {
   lastEvents = [];
   areLastEventsLoaded = false;
-  lovePics: any;
+  lovePics: FavoritePic[];
   areLovePicsLoaded = false;
-  lovePicsSrc: any;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService,
+              private reactionsService: ReactionsService,
+              private picsService: PicsService) {}
 
   getLatestGalleries() {
     return this.httpService.post(API_ROUTES.getLatestGalleries, { page: 1, page_size: NUMBER_OF_LAST_EVENTS_HOME })
@@ -22,9 +25,7 @@ export class HomeService {
         (res: { galleries }) => {
           this.lastEvents = Array(res.galleries.length).fill(EMPTY_EVENT);
           const lastEvents = res.galleries;
-          // REMOVE FOLLOWING LINE WHEN LOVE PICS ARE IMPLEMENTED
-          // const idEvents = ['one', 'two', 'three', 'coeur'];
-          const idEvents = ['one', 'two', 'three', 'contact'];
+          const idEvents = ['one', 'two', 'three', 'coeur'];
           for (let i = 0; i < lastEvents.length; i++) {
             this.lastEvents[i] = {
               name: lastEvents[i].name,
@@ -48,16 +49,26 @@ export class HomeService {
   }
 
   getLovePics() {
-    this.lovePics = LOVE_PICS;
-    this.lovePicsSrc = Object.values(this.lovePics).map(
-      (pic: any) => pic.address
+    this.reactionsService.getRandomUserReactions()
+        .then(
+        (res: { reactions: FavoritePic[] }) => {
+            this.lovePics = res.reactions;
+            this.areLovePicsLoaded = true;
+            this.picsService.rawPics = res.reactions.map(pic => pic.image);
+            this.picsService.numberOfPics = res.reactions.length;
+        },
+        (error) => { console.error(error); }
     );
-    this.areLovePicsLoaded = true;
   }
 
   loadLovePics() {
     if (!this.areLovePicsLoaded) {
       this.getLovePics();
     }
+  }
+
+  initHomePage() {
+    this.loadLatestGalleries();
+    this.loadLovePics();
   }
 }

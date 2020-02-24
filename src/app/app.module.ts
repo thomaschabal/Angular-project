@@ -35,13 +35,14 @@ import {
   GaleriesModerationButtonsComponent
 } from './components/galeries/galeries-moderation-buttons/galeries-moderation-buttons.component';
 import { GalleryCreationFormComponent } from './components/dashboard/gallery-creation-form/gallery-creation-form.component';
-import { HomeFormComponent } from './components/home-form/home-form.component';
+import { HomeFormComponent } from './components/home/home-form/home-form.component';
 import { IconLinksComponent } from './components/icon-links/icon-links.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { LoaderPontheComponent } from './components/loaders/loader-ponthe/loader-ponthe.component';
 import { LoadingPointsComponent } from './components/loaders/loading-points/loading-points.component';
 import { LoadingSpinnerComponent } from './components/loaders/loading-spinner/loading-spinner.component';
+import { LovePicsComponent } from './components/home/love-pics/love-pics.component';
 import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NavComponent } from './components/navigation/nav/nav.component';
@@ -73,6 +74,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { AdminGuard } from './services/admin-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
+import { BreakpointsService } from './services/breakpoints.service';
 import { GaleriesService } from './services/galeries.service';
 import { HomeService } from './services/home.service';
 import { HttpService } from './services/http.service';
@@ -80,6 +82,7 @@ import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
 import { PicsService } from './services/pics.service';
 import { PwaService } from './services/Pwa.service';
+import { ReactionsService } from './services/reactions.service';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './services/translate.pipe';
 import { UserService } from './services/user.service';
@@ -112,6 +115,7 @@ export function setupTranslateFactory(
     LoaderPontheComponent,
     LoadingPointsComponent,
     LoadingSpinnerComponent,
+    LovePicsComponent,
     MaterialBookingFormComponent,
     ModalComponent,
     NavComponent,
@@ -154,6 +158,7 @@ export function setupTranslateFactory(
     AdminGuard,
     AuthGuard,
     AuthService,
+    BreakpointsService,
     GaleriesService,
     HomeService,
     HttpService,
@@ -161,6 +166,7 @@ export function setupTranslateFactory(
     MessagesService,
     PicsService,
     PwaService,
+    ReactionsService,
     TranslateService,
     {
       provide: APP_INITIALIZER,

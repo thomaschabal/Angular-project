@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { BreakpointsService } from '../../../services/breakpoints.service';
 import { routesAppFromRoot } from '../../../Routes';
-import { BREAKPOINTS } from '../../../Constants';
 
 @Component({
   selector: 'app-auth-nav',
@@ -11,19 +11,11 @@ import { BREAKPOINTS } from '../../../Constants';
 
 export class AuthNavComponent implements OnInit {
   routes = routesAppFromRoot;
-  isMobile: boolean;
   isHamburgerActive = false;
 
-  constructor() {
-  }
+  constructor(public breakpointsService: BreakpointsService) { }
 
-  ngOnInit() {
-    this.getBreakpoint();
-  }
-
-  getBreakpoint() {
-    this.isMobile = window.innerWidth <= BREAKPOINTS.SMALL;
-  }
+  ngOnInit() { }
 
   activateHamburger() {
     this.isHamburgerActive = !this.isHamburgerActive;

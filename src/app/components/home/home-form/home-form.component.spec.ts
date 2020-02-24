@@ -2,7 +2,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { FormBuilder } from '@angular/forms';
-import { MessagesService } from '../../services/messages.service';
+import { MessagesService } from '../../../services/messages.service';
 import { HomeFormComponent } from './home-form.component';
 
 describe('HomeFormComponent', () => {

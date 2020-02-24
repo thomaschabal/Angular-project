@@ -32,4 +32,9 @@ export default {
     getFullImage: '/get-full-image',
     createGallery: '/create-gallery',
     filesNotModerated: '/files/not-moderated',
+
+    /* Reactions */
+    updateReaction: '/update-reaction',
+    getRandomUserReactions: '/get-random-user-reactions',
+    getAllUserReactions: 'get-all-user-reactions',
 };

@@ -30,10 +30,10 @@
 	<app-auth-footer id="auth-footer"></app-auth-footer>
 
 	<!-- Background animation -->
-	<div id="video-wrapper" *ngIf="isMobileOrTablet">
+	<div id="video-wrapper" *ngIf="breakpointsService.isMobileOrTablet">
 		<video [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
 	</div>
-	<video *ngIf="!isMobileOrTablet" [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+	<video *ngIf="!breakpointsService.isMobileOrTablet" [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
 
 	<div id="bandeau" *ngIf="Pwa.promptEvent">
 		<button id="installation" (click)="installPwa()" [attr.aria-label]="'install.install' | translate">
