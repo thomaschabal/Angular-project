@@ -40,12 +40,10 @@ export class LovePicsComponent implements OnInit, OnDestroy {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
-    // NEXT LINE FOR LOVE PICS
-    // this.homeService.loadLovePics();
-    // Transfer pics for image viewer
-    this.picsService.rawPics = this.homeService.lovePics.map(pic => pic.image);
-    console.log('rawPics: ', this.picsService.rawPics)
-    this.picsService.numberOfPics = this.homeService.lovePics.length;
+    if (this.homeService.lovePics) {
+      this.picsService.rawPics = this.homeService.lovePics.map(pic => pic.image);
+      this.picsService.numberOfPics = this.homeService.lovePics.length;
+    }
 
     if (!this.isDesktop()) {
       this.lovePicsStateLeft = 'visible';

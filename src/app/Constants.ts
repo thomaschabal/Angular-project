@@ -10,7 +10,6 @@ import {
   PATH_MATOS_SVG,
   PATH_LOGOUT_SVG,
   PATH_NOT_FOUND_IMAGE,
-  LOVE_PICS,
 } from './constants/Images';
 import { LINKS, BUTTON_LINKS_ADMIN } from './constants/ExternalLinks';
 import { LANGUAGES, FLAGS_BY_LANG } from './constants/Languages';
@@ -62,7 +61,6 @@ export {
   PATH_MATOS_SVG,
   PATH_LOGOUT_SVG,
   PATH_NOT_FOUND_IMAGE,
-  LOVE_PICS,
   LINKS,
   BUTTON_LINKS_ADMIN,
   LANGUAGES,

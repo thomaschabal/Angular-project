@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 
 import { HttpService } from './http.service';
 import API_ROUTES from './Api';
+import { PicsService } from './pics.service';
 
 const DEFAULT_PAGE_SIZE = 15;
 const HOME_PAGE_FAVORITE_PICS_SIZE = 6;
 
-enum Reaction {
-    NONE = 1,
-    LIKE = 2,
-    DISLIKE = 3,
-    LOVE = 4,
-    HAPPY = 5,
-    SAD = 6,
+export enum Reaction {
+    NONE = 'NONE',
+    LIKE = 'LIKE',
+    DISLIKE = 'DISLIKE',
+    LOVE = 'LOVE',
+    HAPPY = 'HAPPY',
+    SAD = 'SAD',
 }
 
 export interface FavoritePic {
@@ -28,7 +29,8 @@ export class ReactionsService {
     homeFavoritePics: FavoritePic[];
     page = 1;
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService,
+              private picsService: PicsService) {
       this.initReactionsPage();
   }
 
@@ -38,7 +40,7 @@ export class ReactionsService {
   }
 
   updateReaction(reaction: Reaction, imageSlug: string) {
-      return this.httpService.post(API_ROUTES.updateReaction, { reaction, image_slug: imageSlug });
+    return this.httpService.post(API_ROUTES.updateReaction, { reaction, image_slug: imageSlug }).toPromise();
   }
 
   getRandomUserReactions() {

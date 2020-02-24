@@ -94,7 +94,6 @@ export class EventComponent implements OnInit, OnDestroy {
         // Define the state of all pictures as not going to be deleted
         this.moderationState = Array(res.number_of_files).fill(false);
         setTimeout(() => { this.displaySpinner = false; }, 200);
-        // this.picsService.updatePics();
       },
       (error) => { }
     );

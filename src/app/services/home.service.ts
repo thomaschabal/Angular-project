@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { ReactionsService, FavoritePic } from './reactions.service';
 import API_ROUTES from './Api';
-import { LOVE_PICS, NUMBER_OF_LAST_EVENTS_HOME } from '../Constants';
+import { NUMBER_OF_LAST_EVENTS_HOME } from '../Constants';
 import { PicsService } from './pics.service';
 
 const EMPTY_EVENT = {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''};
@@ -56,6 +56,11 @@ export class HomeService {
             this.areLovePicsLoaded = true;
             this.picsService.rawPics = res.reactions.map(pic => pic.image);
             this.picsService.numberOfPics = res.reactions.length;
+            if (this.picsService.currentGallery === '') {
+              this.picsService.pics = this.lovePics;
+              this.picsService.rawPics = this.lovePics.map(pic => pic.image);
+              this.picsService.numberOfPics = this.lovePics.length;
+            }
         },
         (error) => { console.error(error); }
     );

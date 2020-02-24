@@ -13,33 +13,6 @@ export const PATH_MATOS_SVG = 'assets/images/svg_matos.svg';
 export const PATH_LOGOUT_SVG = 'assets/images/svg_logout.svg';
 export const PATH_NOT_FOUND_IMAGE = 'assets/images/logo.svg';
 
-export const LOVE_PICS = [
-    {
-      title : 'Rugby',
-      address : 'assets/images/love_pics/sport4.jpg'
-    },
-    {
-      title : 'OB de Février',
-      address : 'assets/images/love_pics/art_2018.jpg'
-    },
-    {
-      title : 'Sushis à la Skult',
-      address : 'assets/images/love_pics/skult_sushis.JPG'
-    },
-    {
-      title : 'Dimanche de lancement de campagne BDE',
-      address : 'assets/images/love_pics/dim_camp_2017.JPG'
-    },
-    {
-      title : 'Club Rock 2018',
-      address : 'assets/images/love_pics/rock2018.jpg'
-    },
-    {
-      title : 'Nuit de la Rentrée 2017',
-      address : 'assets/images/love_pics/soiree2.jpg'
-    }
-  ];
-
 export const NUMBER_PICS_BY_PONTHE_TEAM = {
   '015': 1,
   '016': 1,

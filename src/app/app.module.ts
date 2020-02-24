@@ -51,6 +51,8 @@ import { NavigationButtonComponent } from './components/navigation-button/naviga
 import { PicThumbComponent } from './components/pic-thumb/pic-thumb.component';
 import { PrivateGalleriesComponent } from './components/dashboard/private-galleries/private-galleries.component';
 import { PontheTeamComponent } from './components/members/ponthe-team/ponthe-team.component';
+import { ReactionIconComponent } from './components/reactions/reaction-icon/reaction-icon.component';
+import { ReactionsComponent } from './components/reactions/reactions/reactions.component';
 import { TutorialSubjectComponent } from './components/dashboard/tutorial-subject/tutorial-subject.component';
 import { TutorialsComponent } from './components/dashboard/tutorials/tutorials.component';
 import { UploadComponent } from './components/upload/upload.component';
@@ -124,6 +126,8 @@ export function setupTranslateFactory(
     PicThumbComponent,
     PontheTeamComponent,
     PrivateGalleriesComponent,
+    ReactionIconComponent,
+    ReactionsComponent,
     TutorialSubjectComponent,
     TutorialsComponent,
     UploadComponent,
