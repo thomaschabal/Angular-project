@@ -4,6 +4,9 @@
 $ARTICLE-BOX-RADIUS: units(2.5);
 $GALLERY-PICS-MARGIN: units(1);
 
+h2:hover {
+	cursor: pointer;
+}
 
 /* 3 Last events */
 #loading-events {

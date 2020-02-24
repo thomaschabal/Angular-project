@@ -29,6 +29,7 @@ const SHOW_EASTER_EGG = {
 const SHORTCUTS = {
   home: [routesAppFromRoot.home],
   pics: [routesAppFromRoot.galeries],
+  crush: [routesAppFromRoot.crush],
   dashboard: [routesAppFromRoot.dashboard],
   membres: [routesAppFromRoot.members],
   members: [routesAppFromRoot.members],

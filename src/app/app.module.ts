@@ -61,6 +61,7 @@ import { UploadComponent } from './components/upload/upload.component';
 import { AuthComponent } from './pages/auth/auth.component';
 import { NewAccountComponent } from './pages/new-account/new-account.component';
 import { CguComponent } from './pages/cgu/cgu.component';
+import { CrushComponent } from './pages/crush/crush.component';
 import { ResetComponent } from './pages/reset/reset.component';
 import { HomeComponent } from './pages/home/home.component';
 import { GaleriesComponent } from './pages/galeries/galeries.component';
@@ -133,6 +134,7 @@ export function setupTranslateFactory(
     UploadComponent,
     AuthComponent,
     CguComponent,
+    CrushComponent,
     DashboardComponent,
     EventComponent,
     GaleriesComponent,

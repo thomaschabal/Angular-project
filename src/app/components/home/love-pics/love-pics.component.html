@@ -4,7 +4,7 @@
          (mouseleave)='survoleCoeur("hidden")'>
   <div class="content">
     <header id="header-content">
-      <h2 [innerHTML]="'home.favoritePics.title' | translate"></h2>
+      <h2 [innerHTML]="'home.favoritePics.title' | translate" (click)="redirectToCrushPics()"></h2>
     </header>
     <!-- Pics  -->
     <div id="loading-events" *ngIf="!homeService.areLovePicsLoaded">

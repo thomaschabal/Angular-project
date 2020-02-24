@@ -9,6 +9,7 @@ export const routesApp = {
   galeries: 'galeries',
   pics: 'galeries/pics/',
   // videos: 'galeries/videos/',
+  crush: 'crush',
   dashboard: 'dashboard',
   members: 'members',
   material: 'material',

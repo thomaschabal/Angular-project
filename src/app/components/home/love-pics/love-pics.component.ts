@@ -1,10 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
 import { HomeService } from '../../../services/home.service';
 import { PicsService } from '../../../services/pics.service';
+import { BreakpointsService } from '../../../services/breakpoints.service';
+import { routesAppFromRoot } from '../../../Routes';
 
 @Component({
   selector: 'app-love-pics',
@@ -26,7 +28,9 @@ export class LovePicsComponent implements OnInit, OnDestroy {
   constructor(
     public homeService: HomeService,
     public picsService: PicsService,
-    private activeRoute: ActivatedRoute
+    private breakpointsService: BreakpointsService,
+    private activeRoute: ActivatedRoute,
+    private router: Router,
   ) {
     // Smooth transitions on arrow clicks
     this.sub = activeRoute.fragment
@@ -45,7 +49,7 @@ export class LovePicsComponent implements OnInit, OnDestroy {
       this.picsService.numberOfPics = this.homeService.lovePics.length;
     }
 
-    if (!this.isDesktop()) {
+    if (!this.breakpointsService.isDesktop) {
       this.lovePicsStateLeft = 'visible';
       this.lovePicsStateRight = 'visible';
     }
@@ -117,11 +121,11 @@ export class LovePicsComponent implements OnInit, OnDestroy {
     }
   }
 
-  isDesktop() {
-    return window.innerWidth >= 736;
-  }
-
   clickOnNextArrow(fragment: string) {
     document.getElementById(fragment).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  redirectToCrushPics() {
+    this.router.navigate([routesAppFromRoot.crush]);
   }
 }

@@ -1,0 +1,14 @@
+@import url("../../../assets/assets_g/css/main.css");
+@import "../../PontheStyle.scss";
+
+.spacer {
+  margin-top: 4em;
+
+  @include sm {
+    margin-top: units(10);
+  }
+}
+
+html, body {
+	background: color(DARK_GREY);
+}

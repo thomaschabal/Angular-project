@@ -13,6 +13,7 @@ import { CguComponent } from './pages/cgu/cgu.component';
 import { ResetComponent } from './pages/reset/reset.component';
 import { HomeComponent } from './pages/home/home.component';
 import { GaleriesComponent } from './pages/galeries/galeries.component';
+import { CrushComponent } from './pages/crush/crush.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MembersComponent } from './pages/members/members.component';
 import { MaterialComponent } from './pages/material/material.component';
@@ -31,6 +32,7 @@ export const routes: Routes = [
   { path: routesApp.galeries, canActivate: [AuthGuard], component: GaleriesComponent, data: {animation: 'GaleriesPage'} },
   { path: 'pics', redirectTo: routesApp.galeries },
   { path: 'video', redirectTo: routesApp.galeries },
+  { path: routesApp.crush, canActivate: [AuthGuard], component: CrushComponent, data: {animation: 'CrushPage'} },
   { path: routesApp.dashboard, canActivate: [AuthGuard, AdminGuard], component: DashboardComponent, data: {animation: 'DashboardPage'} },
   { path: 'dash', redirectTo: routesApp.dashboard },
   { path: 'board', redirectTo: routesApp.dashboard },

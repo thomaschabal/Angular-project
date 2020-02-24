@@ -52,6 +52,6 @@ export class NavComponent {
 
   // Display "Club audiovisuel des Ponts" or not in the header, depending on the window's width
   isWideEnough() {
-    return (window.innerWidth >= 1080);
+    return (window.innerWidth >= 1220);
   }
 }
