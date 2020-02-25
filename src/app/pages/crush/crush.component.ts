@@ -57,18 +57,16 @@ export class CrushComponent implements OnInit {
     this.picClicked = true;
     // Have a blurred background when the image viewer is active
     document.getElementById('header').style.display = 'none';
-    document.getElementById('event-panel').style.display = 'none';
-    document.getElementById('main').style.filter = 'blur(8px)';
     document.getElementById('footer').style.display = 'none';
+    document.getElementById('main').style.filter = 'blur(8px)';
   }
 
-  closePic(shutPic: boolean) {
+  closePic() {
     this.picClicked = false;
     // Remove the blurred background
     document.getElementById('header').style.display = 'block';
-    document.getElementById('event-panel').style.display = 'block';
-    document.getElementById('main').style.filter = 'none';
     document.getElementById('footer').style.display = 'block';
+    document.getElementById('main').style.filter = 'none';
   }
 
 }

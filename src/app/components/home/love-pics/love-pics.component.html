@@ -7,7 +7,7 @@
       <h2 [innerHTML]="'home.favoritePics.title' | translate" (click)="redirectToCrushPics()"></h2>
     </header>
     <!-- Pics  -->
-    <div id="loading-events" *ngIf="!homeService.areLovePicsLoaded">
+    <div id="loading-crushes" *ngIf="!homeService.areLovePicsLoaded">
         <app-loading-points></app-loading-points>
     </div>
     <div class="gallery" id="gallery-pics">
@@ -19,6 +19,7 @@
       </article>
     </div>
   </div>
+  <h3 *ngIf="homeService.areLovePicsLoaded && homeService.lovePics.length === 0" id="no-love-pics">{{ 'home.favoritePics.none' | translate }}</h3>
   <a class="button style2 down anchored" (click)="clickOnNextArrow('contact')" aria-label="Next">Next</a>
 </section>
 

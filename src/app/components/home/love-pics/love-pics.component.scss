@@ -4,15 +4,22 @@
 $ARTICLE-BOX-RADIUS: units(2.5);
 $GALLERY-PICS-MARGIN: units(1);
 
+#coeur {
+	flex-direction: column;
+}
+
 h2:hover {
 	cursor: pointer;
 }
 
 /* 3 Last events */
-#loading-events {
+#loading-crushes {
 	padding-top: units(3);
 	padding-bottom: units(3);
-	background: color(HOME_GREY);
+
+	@include sm {
+		margin-bottom: units(5);
+	}
 }
 
 /* Love pics */
@@ -71,5 +78,11 @@ h2:hover {
 .main.style1 {
 	@include sm {
 		padding: 0.6em 15px 0.6em 15px;
+	}
+}
+
+#no-love-pics {
+	@include sm {
+		margin-bottom: units(5);
 	}
 }

@@ -11,9 +11,32 @@
       [alt]="picture.name"
       class="thumb-image"
     />
+    <h2 [style.zIndex]="picClicked ? 0 : 1">{{ picture.name }}</h2>
+    <app-reaction-icon
+      class="reaction"
+      isSelected="true"
+      [type]="picture.own_reaction"
+      [iconFull]="
+        reactionsService.getIconFromReaction(picture.own_reaction, true)
+      "
+      (clickIcon)="onClickPic(i)"
+    ></app-reaction-icon>
   </article>
+
   <div *ngIf="reactionsService.isLoadingMorePics" id="reload-boundary">
     <app-loading-points></app-loading-points>
+  </div>
+
+  <div *ngIf="!reactionsService.isLoadingFirstPics && reactionsService.crushesPics.length === 0" id="no-crush">
+    <app-reaction-icon
+      id="no-crush-icon"
+      isSelected="true"
+      type="LOVE"
+      [iconFull]="
+        reactionsService.getIconFromReaction('LOVE', true)
+      "
+    ></app-reaction-icon>
+    <h3 id="no-gallery">{{ 'crush.noCrush.title' | translate }}</h3>
   </div>
 </div>
 
@@ -22,12 +45,12 @@
 
 <!-- Image Viewer -->
 <app-image-viewer
+  id="image-viewer"
   *ngIf="picClicked"
   [captionWidePic]="name"
   [indexPicture]="indexViewer"
-  (closeViewer)="closePic($event)"
+  (closeViewer)="closePic()"
 ></app-image-viewer>
 
-<app-loader-ponthe *ngIf="reactionsService.isLoadingFirstPics" @spinnerTrigger
-  ><app-loader-ponthe> </app-loader-ponthe
-></app-loader-ponthe>
+<app-loader-ponthe *ngIf="reactionsService.isLoadingFirstPics" @spinnerTrigger id="loader-ponthe"
+  ></app-loader-ponthe>

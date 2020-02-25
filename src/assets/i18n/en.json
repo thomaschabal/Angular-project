@@ -15,6 +15,8 @@
     "cgu.backToRegister": "Back to account creation",
     "cgu.title": "General Terms and Conditions of Use of the site <em>ponthe.enpc.org</em>",
   
+    "crush.noCrush.title": "Here you'll find your favorite pictures. So far, you haven't liked any of them. To see them appear here, go to the galleries and add reactions to the pictures. :)",
+
     "dashboard.header.title": "Administration area",
     "dashboard.form.title": "Creation of a gallery",
     "dashboard.form.name": "Name of the gallery",
@@ -57,6 +59,7 @@
     "home.noLatestGalleries": "You don't have access to any galleries at the moment because there are none for your promotion. You can contact the Ponthé to create one and add your own photos.",
     "home.noDescription": "No description for the moment.",
     "home.favoritePics.title": "Your <em>favorite</em> photos <3 <3 !",
+    "home.favoritePics.none": "You haven't set any favorite pictures yet. To see photos appear here, add reactions to the photos in the galleries.",
     "home.contact.title": "Contact the Ponthé",
     "home.contact.subtitle": "Send a sweet message to the members of the Ponthé who make you shudder with every new photo....",
     "home.contact.placeholder": "Your sweet message....",

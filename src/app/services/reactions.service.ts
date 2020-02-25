@@ -1,19 +1,20 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { HttpService } from "./http.service";
-import API_ROUTES from "./Api";
-import { PicsService } from "./pics.service";
+import { HttpService } from './http.service';
+import API_ROUTES from './Api';
+import { PicsService } from './pics.service';
+import { REACTIONS } from 'src/app/constants/Reactions';
 
 const DEFAULT_PAGE_SIZE = 15;
 const HOME_PAGE_FAVORITE_PICS_SIZE = 6;
 
 export enum Reaction {
-  NONE = "NONE",
-  LIKE = "LIKE",
-  DISLIKE = "DISLIKE",
-  LOVE = "LOVE",
-  HAPPY = "HAPPY",
-  SAD = "SAD"
+  NONE = 'NONE',
+  LIKE = 'LIKE',
+  DISLIKE = 'DISLIKE',
+  LOVE = 'LOVE',
+  HAPPY = 'HAPPY',
+  SAD = 'SAD'
 }
 
 export interface FavoritePic {
@@ -28,6 +29,7 @@ export class ReactionsService {
   homeFavoritePics: FavoritePic[];
   page = 1;
   crushesPics: FavoritePic[];
+  numberOfReactions: number;
   isLoadingFirstPics = true;
   isLoadingMorePics = false;
 
@@ -86,11 +88,19 @@ export class ReactionsService {
   }
 
   loadFirstCrushPics() {
+    this.initCrushesPage();
     this.getAllUserReactions(this.page).then(
-      (res: { reactions: FavoritePic[] }) => {
+      (res: { number_of_reactions: number, reactions: FavoritePic[] }) => {
         this.crushesPics = res.reactions;
+        this.numberOfReactions = res.number_of_reactions;
         this.isLoadingFirstPics = false;
         this.page++;
+        this.picsService.numberOfPics = this.numberOfReactions;
+        this.picsService.rawPics = Array(this.numberOfReactions);
+        this.picsService.pics = res.reactions;
+        for (const reaction of res.reactions) {
+          this.picsService.rawPics[res.reactions.indexOf(reaction)] = reaction.image;
+        }
       },
       error => {
         console.error(error);
@@ -99,17 +109,26 @@ export class ReactionsService {
   }
 
   loadMoreCrushPics() {
-    this.isLoadingMorePics = true;
-    this.getAllUserReactions(this.page).then(
-      (res: { reactions: FavoritePic[] }) => {
-        this.crushesPics = this.crushesPics.concat(res.reactions);
-        this.isLoadingFirstPics = false;
-        this.page++;
-        this.isLoadingMorePics = false;
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    if (!this.isLoadingMorePics && (this.page - 1) * DEFAULT_PAGE_SIZE < this.numberOfReactions) {
+      this.isLoadingMorePics = true;
+      this.getAllUserReactions(this.page).then(
+        (res: { reactions: FavoritePic[] }) => {
+          this.crushesPics = this.crushesPics.concat(res.reactions);
+          this.isLoadingFirstPics = false;
+          this.page++;
+          this.isLoadingMorePics = false;
+          
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
   }
+
+  // ICONS
+  getIconFromReaction = (reactionType: Reaction, isSelected = false) => {
+    const icons = REACTIONS.filter(reaction => reaction.name === reactionType)[0];
+    return isSelected ? icons.iconFull : icons.iconEmpty;
+  };
 }

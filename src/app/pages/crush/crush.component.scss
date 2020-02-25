@@ -1,5 +1,26 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900");
 @import url("../../../assets/assets_g/css/main.css");
 @import "../../PontheStyle.scss";
+
+$SIZE-REACTION-LARGE: units(6);
+$SIZE-REACTION-SMALL: units(4);
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.125);
+  }
+  40% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
 
 .spacer {
   margin-top: 4em;
@@ -13,8 +34,90 @@ html, body {
 	background: color(DARK_GREY);
 }
 
+#image-viewer {
+  z-index: 2 !important;
+}
+
 .thumb-image {
   cursor: pointer;
   position: absolute;
   width: 100%;
+}
+
+.reaction {
+  position: absolute;
+  height: $SIZE-REACTION-LARGE;
+  width: $SIZE-REACTION-LARGE;
+  top: units(1.5);
+  left: units(1.5);
+
+  @include sm {
+    height: $SIZE-REACTION-SMALL;
+    width: $SIZE-REACTION-SMALL;
+  }
+}
+
+#reload-boundary {
+	width: 100vw;
+	padding: units(10);
+	background: color(DARK_GREY);
+}
+
+#fullBackground {
+  width: 100vw;
+  height: 92vh;
+  top: 8vh;
+  left: 0;
+  background: color(DARK_GREY);
+  position: fixed;
+  z-index: -1;
+
+  @include sm {
+    top: 5em;
+  }
+}
+
+#no-crush {
+  width: 50vw;
+  height: calc(100vh - 63px - 100px);
+  margin: auto;
+  padding-top: units(12);
+	font-family: "Source Sans Pro";
+	font-weight: 400;
+	text-transform: inherit;
+
+  @include sm {
+    width: 70vw;
+    @include font-size(LARGE);
+    height: calc(100vh - 80px - 185px);
+    padding-top: units(8);
+  }
+}
+
+$SIZE-HEART-LARGE: units(20);
+$SIZE-HEART-SMALL: units(15);
+#no-crush-icon {
+  display: block;
+  height: $SIZE-HEART-LARGE;
+  width: $SIZE-HEART-LARGE;
+  margin: auto;
+  margin-bottom: units(6);
+  animation: heartbeat 1s infinite;
+
+  @include sm {
+    height: $SIZE-HEART-SMALL;
+    width: $SIZE-HEART-SMALL;
+  }
+}
+
+#no-crush h3 {
+	font-family: "Source Sans Pro";
+	font-weight: 600;
+  text-transform: inherit;
+  text-align: center;
+  @include font-size(XLARGE);
+  
+  @include sm {
+    @include font-size(LARGE);
+  }
 }

@@ -12,7 +12,7 @@ const EMPTY_EVENT = {name: '', fond: '', routing: '', event_id: '', next_event_i
 export class HomeService {
   lastEvents = [];
   areLastEventsLoaded = false;
-  lovePics: FavoritePic[];
+  lovePics: FavoritePic[] = [];
   areLovePicsLoaded = false;
 
   constructor(private httpService: HttpService,
