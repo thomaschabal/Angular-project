@@ -117,7 +117,6 @@ export class ReactionsService {
           this.isLoadingFirstPics = false;
           this.page++;
           this.isLoadingMorePics = false;
-          
         },
         error => {
           console.error(error);
@@ -130,5 +129,5 @@ export class ReactionsService {
   getIconFromReaction = (reactionType: Reaction, isSelected = false) => {
     const icons = REACTIONS.filter(reaction => reaction.name === reactionType)[0];
     return isSelected ? icons.iconFull : icons.iconEmpty;
-  };
+  }
 }
