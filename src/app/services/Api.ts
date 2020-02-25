@@ -36,5 +36,5 @@ export default {
     /* Reactions */
     updateReaction: '/update-reaction',
     getRandomUserReactions: '/get-random-user-reactions',
-    getAllUserReactions: 'get-all-user-reactions',
+    getAllUserReactions: '/get-all-user-reactions',
 };

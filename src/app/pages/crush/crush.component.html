@@ -1,1 +1,33 @@
 <div class="spacer"></div>
+
+<div id="main">
+  <article
+    *ngFor="let picture of reactionsService.crushesPics; let i = index"
+    class="thumb"
+  >
+    <img
+      (click)="onClickPic(i)"
+      [src]="picture.image"
+      [alt]="picture.name"
+      class="thumb-image"
+    />
+  </article>
+  <div *ngIf="reactionsService.isLoadingMorePics" id="reload-boundary">
+    <app-loading-points></app-loading-points>
+  </div>
+</div>
+
+<!-- Dark background -->
+<div id="fullBackground"></div>
+
+<!-- Image Viewer -->
+<app-image-viewer
+  *ngIf="picClicked"
+  [captionWidePic]="name"
+  [indexPicture]="indexViewer"
+  (closeViewer)="closePic($event)"
+></app-image-viewer>
+
+<app-loader-ponthe *ngIf="reactionsService.isLoadingFirstPics" @spinnerTrigger
+  ><app-loader-ponthe> </app-loader-ponthe
+></app-loader-ponthe>
