@@ -89,6 +89,7 @@ export class ReactionsService {
 
   loadFirstCrushPics() {
     this.initCrushesPage();
+    this.isLoadingFirstPics = true;
     this.getAllUserReactions(this.page).then(
       (res: { number_of_reactions: number, reactions: FavoritePic[] }) => {
         this.crushesPics = res.reactions;

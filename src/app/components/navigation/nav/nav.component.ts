@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { BreakpointsService } from 'src/app/services/breakpoints.service';
 import { AuthService } from '../../../services/auth.service';
 import { HttpService } from '../../../services/http.service';
 import { routesAppFromRoot } from '../../../Routes';
@@ -29,8 +30,11 @@ export class NavComponent {
 
   routes = routesAppFromRoot;
 
+  isHamburgerActive = false;
+
   constructor(private authService: AuthService,
               private httpService: HttpService,
+              public breakpointsService: BreakpointsService,
               private router: Router) {
   }
 
@@ -53,5 +57,18 @@ export class NavComponent {
   // Display "Club audiovisuel des Ponts" or not in the header, depending on the window's width
   isWideEnough() {
     return (window.innerWidth >= 1220);
+  }
+
+  activateHamburger() {
+    this.isHamburgerActive = !this.isHamburgerActive;
+  }
+
+  closeBurger() {
+    this.isHamburgerActive = false;
+  }
+
+  activateHamburgerAndLogOut() {
+    this.isHamburgerActive = !this.isHamburgerActive;
+    this.onSignOut();
   }
 }

@@ -32,7 +32,7 @@ button:hover {
 .hamburger.is-active .hamburger-inner,
 .hamburger.is-active .hamburger-inner::before,
 .hamburger.is-active .hamburger-inner::after {
-	background-color: #000;
+	background-color: color(DARK_DARK_GREY);
 }
   
 .hamburger-box {
@@ -97,9 +97,13 @@ button:hover {
 }
 
 .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
-	background-color: color(WHITE);
-	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
+	background-color: color(DARK_DARK_GREY);
 }
 .hamburger-inner.is-active, .hamburger-inner::before.is-active, .hamburger-inner::after.is-active {
 	background-color: color(DARK_DARK_GREY);
+}
+
+.hamburger-inner-auth, .hamburger-inner-auth::before, .hamburger-inner-auth::after {
+	background-color: color(WHITE);
+	box-shadow: $BOX-SHADOW-INPUT-BASE $BOX-SHADOW-INPUT-SHIFT-FOCUS;
 }

@@ -35,11 +35,22 @@ li a {
 	}
 }
 
-@media screen and (max-width: 736px) {
-  li a {
+li {
+  @include sm {
+    display: flex;
+    height: units(11);
+    padding-top: units(1.5);
+    padding-bottom: units(1.5);
+    border-bottom: 1px solid #c3c3c3;
+  }
+}
+
+li a {
+  @include sm {
+    height: units(8);
+    width: calc(100vw - 2 * #{units(2)});
+    height: 100% !important;
     padding: 0;
-    line-height: 1.5em;
-    height: 1.5em;
   }
 }
 
@@ -47,4 +58,22 @@ img {
   @include sm {
     border-radius: units(1);
   }
+}
+
+.mobile-a {
+  display: flex !important;
+  flex-direction: row;
+  height: units(4) !important;
+  @include font-size(XLARGE)
+}
+
+.mobile-a img {
+  margin: 0;
+  margin-right: units(2);
+  height: 100%;
+  width: 20vw;
+}
+
+.mobile-a h3 {
+  letter-spacing: -0.025em;
 }

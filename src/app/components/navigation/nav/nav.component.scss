@@ -1,122 +1,184 @@
 @import url("../../../../assets/assets_h/css/main.css");
 @import "../../../PontheStyle.scss";
+@import "../../../constants/style/burger.scss";
 
 #header {
-	font-family: "Source Sans Pro", "sans-serif";
-	font-weight: 300;
-	font-size: 1.25em;
-	line-height: 1.75em;
-	color: color(DARK_DARK_GREY);
-	letter-spacing: 0.025em;
+  font-family: "Source Sans Pro", "sans-serif";
+  font-weight: 300;
+  font-size: 1.25em;
+  color: color(DARK_DARK_GREY);
+  letter-spacing: 0.025em;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  height: 3em;
+  line-height: 3em;
+  box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.1);
+
+  @include sm {
+    font-size: 1.6em;
+    height: 3em;
+    line-height: 1.5em;
+  }
 }
 
-#header {
-	position: fixed;
-	z-index: 10000;
-	left: 0;
-	top: 0;
-	width: 100%;
-	background: rgba(255, 255, 255, 0.95);
-	height: 3em;
-	line-height: 3em;
-	box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.1);
-}
+#header a #logo {
+  display: inline-block;
+  width: 3.3em;
+  position: relative;
+  top: 0.3em;
+  left: 0.3em;
 
-#header a #logo
-{
-  display : inline-block;
-  width:3.3em;
-  position : relative;
-  top : 0.3em;
-  left : 0.3em;
+  @include sm {
+    left: 0.5em;
+    width: 3.25em;
+    top: 0.4em;
+  }
 }
 
 #header h1 {
-	position: absolute;
-	left: 3.7em;
-	top: 0;
-	height: 3em;
-	line-height: 3em;
-	cursor: default;
-	margin-left: 0.2em;
+  position: absolute;
+  left: 3.7em;
+  top: 0;
+  height: 3em;
+  line-height: 3em;
+  cursor: default;
+  margin-left: 0.2em;
 }
 
 #header h1 a {
-	font-size: 1.25em;
+  font-size: 1.25em;
 }
 
 #header nav {
-	position: absolute;
-	right: 0.5em;
-	top: 0;
-	height: 3em;
-	line-height: 3em;
-	font-size: 1.15em;
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  height: 3em;
+  line-height: 3em;
+  font-size: 1.15em;
+
+  @include sm {
+    display: flex;
+    margin-top: 7.5%;
+  }
 }
 
 #header nav ul {
-	margin: 0;
+  margin: 0;
 }
 
 @media screen and (max-width: 1680px) {
-	#header h1 {
-		font-size: 1.1em;
-	}
+  #header h1 {
+    font-size: 1.1em;
+  }
 
-	#header h1 a {
-		font-size: 1.15em;
-	}
+  #header h1 a {
+    font-size: 1.15em;
+  }
 }
 
 @media screen and (max-width: 1000px) {
-	#header h1 {
-		font-size: 1.1em;
-	}
+  #header h1 {
+    font-size: 1.1em;
+  }
 
-	#header h1 a {
-		font-size: 1.05em;
-	}
+  #header h1 a {
+    font-size: 1.05em;
+  }
 }
 
 @media screen and (max-width: 736px) {
+  #header h1 {
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0.15em;
+    height: 2.5em;
+    line-height: 2.5em;
+    width: 100vw;
+  }
 
-	#header {
-		height: 4em;
-		line-height: 1.5em;
-	}
+  #header h1 a {
+    font-size: 1em;
+    width: 100vw;
+    left: 0;
+    height: 2em;
+  }
 
-  #header nav {
-		display: flex;
-		margin-top: 7.5%;
-	}
+  #header a {
+    top: 0;
+    height: 3.5em;
+    width: 4em;
+    position: absolute;
+    z-index: 2;
+  }
+}
 
-	#header h1 {
-		text-align: center;
-		position: absolute;
-		left: 0;
-		top: -0.25em;
-		height: 2.5em;
-		line-height: 2.5em;
-		width: 100vw;
-	}
+#header-mobile {
+  @include sm {
+    font-family: "Roboto", "sans-serif";
+    font-weight: 300;
+    font-size: 1.5em;
+    letter-spacing: 0.025em;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    line-height: 3em;
+    visibility: collapse;
+    color: color(DARK_DARK_GREY);
+    text-shadow: none;
+	z-index: 5;
+	transition: background 0.3s ease-in-out;
+  }
+}
 
-	#header h1 a {
-		font-size: 1em;
-		width: 100vw;
-		left: 0;
-		height: 2em;
-	}
+#header-mobile ul {
+  @include sm {
+    padding-left: units(3.5);
+    padding-right: units(3.5);
+    padding-top: units(12);
+  }
+}
 
-	#header a {
-		top: 0;
-		height: 4em;
-		width: 4em;
-		position: absolute;
-		z-index: 2;
-	}
+.visible_menu {
+  @include sm {
+    background: color(WHITE);
+    height: 100vh;
+    width: 100vw;
+    visibility: visible !important;
+  }
+}
 
-  #header a #logo {
-    width: 3.75em;
-    top: 0.5em;
+#burger_menu {
+  @include sm {
+    visibility: visible;
+    position: fixed;
+    top: units(1.75);
+    right: units(1.5);
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  #header-mobile h1 {
+    font-size: 1.1em;
+  }
+
+  #header-mobile h1 a {
+    font-size: 1.15em;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #header-mobile h1 {
+    font-size: 1.1em;
+  }
+
+  #header-mobile h1 a {
+    font-size: 1.05em;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { BreakpointsService } from 'src/app/services/breakpoints.service';
 import { BREAKPOINTS } from '../../../Constants';
 
 @Component({
@@ -14,13 +15,9 @@ export class NavLinkComponent implements OnInit {
   @Input() imgSrc: string;
   @Input() name: string;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              public breakpointsService: BreakpointsService) { }
 
   ngOnInit() {
-  }
-
-  // Display logos instead of text on smartphones
-  isNarrowWindow() {
-    return (window.innerWidth <= BREAKPOINTS.SMALL);
   }
 }

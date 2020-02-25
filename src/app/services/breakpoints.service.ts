@@ -10,7 +10,18 @@ export class BreakpointsService {
   isMobileOrTablet: boolean;
   isTabletOrAbove: boolean;
 
-  constructor() { }
+  constructor() {
+    this.initialBreakpoints();
+  }
+
+  initialBreakpoints() {
+    const width = window.innerWidth;
+    this.isMobile = width <= BREAKPOINTS.SMALL;
+    this.isTablet = width > BREAKPOINTS.SMALL && width <= BREAKPOINTS.MEDIUM;
+    this.isDesktop = width > BREAKPOINTS.MEDIUM;
+    this.isMobileOrTablet = this.isMobile || this.isTablet;
+    this.isTabletOrAbove = !this.isMobile;
+  }
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
