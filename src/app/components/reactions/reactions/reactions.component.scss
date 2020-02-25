@@ -50,8 +50,8 @@ $SIZE-ICONS-MOBILE: units(4);
 }
 
 .small-reaction {
-    height: calc($SIZE-ICONS + units(1));
-    width: calc($SIZE-ICONS + units(1));
+    height: calc(#{$SIZE-ICONS} + units(1));
+    width: calc(#{$SIZE-ICONS} + units(1));
 
     @include sm {
         height: $SIZE-ICONS-MOBILE;
