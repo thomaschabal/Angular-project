@@ -8,6 +8,7 @@
       <h2>{{ 'home.header.title' | translate }}</h2>
     </header>
     <p [innerHTML]="'home.header.introduction' | translate"></p>
+    <a [routerLink]="routes.videos + 'video'">Vidéo</a>
     <app-loading-points *ngIf="!homeService.areLastEventsLoaded"></app-loading-points>
     <footer *ngIf="homeService.areLastEventsLoaded">
       <a class="button style2 down" (click)="clickOnNextArrow('one')" aria-label="More">More</a>

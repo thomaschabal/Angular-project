@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://ponthe.enpc.org/api',
-  baseUrl: 'https://ponthe.enpc.org',
+  apiUrl: 'https://ponthe-testing.enpc.org/api',
+  baseUrl: 'https://ponthe-testing.enpc.org',
 };

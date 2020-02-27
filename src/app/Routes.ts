@@ -8,7 +8,7 @@ export const routesApp = {
   home: 'home',
   galeries: 'galeries',
   pics: 'galeries/pics/',
-  // videos: 'galeries/videos/',
+  videos: 'galeries/movies/',
   crush: 'crush',
   dashboard: 'dashboard',
   members: 'members',

@@ -7,9 +7,9 @@
 
 <!-- Main -->
   <!-- Film -->
-  <!-- <div id="main" -->
-       <!-- [ngStyle]="{'background-image': 'url(' + filmBackground + ')', 'background-size': 'cover'}"> -->
-    <!-- <h2>{{ name }}</h2> -->
+  <div id="main"
+       [ngStyle]="{'background-image': 'url(' + filmBackground + ')', 'background-size': 'cover'}">
+    <h2>{{ name }}</h2>
     <!-- <plyr style="display: block; width: 640px;" -->
           <!-- plyrTitle="Video 1" -->
           <!-- [plyrSources]="videoSources" -->
@@ -22,9 +22,10 @@
     <!-- <div class="triangle_bottom_right"></div> -->
     <!-- <div class="triangle_bottom_right_wider"></div> -->
     <!-- <div class="triangle_bottom_left"></div> -->
-  <!-- </div> -->
+    <video src="https://ponthe-testing.enpc.org/api/get-video"></video>
+  </div>
 
 <!-- Header and Footer, revealed when clicking on "A propos de l'album" -->
-<!-- <app-galeries-footer [nameEvent]="name" [resumeEvent]="resume"></app-galeries-footer> -->
+<app-galeries-footer [nameEvent]="name" [resumeEvent]="resume"></app-galeries-footer>
 
-<!-- <app-loading-spinner *ngIf="displaySpinner" [@spinnerTrigger]="stateSpinner"></app-loading-spinner> -->
+<app-loading-spinner *ngIf="displaySpinner" [@spinnerTrigger]="stateSpinner"></app-loading-spinner>

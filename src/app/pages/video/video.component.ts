@@ -63,6 +63,8 @@ export class VideoComponent implements OnInit, OnDestroy {
   //   },
   // ];
 
+  video: any;
+
   ngOnInit() {
     const selectedRoute = this.activeRoute.snapshot.params.event;
     this.httpService.currentGallery = selectedRoute;

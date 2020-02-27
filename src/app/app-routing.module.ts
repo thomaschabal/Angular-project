@@ -20,7 +20,7 @@ import { MaterialComponent } from './pages/material/material.component';
 import { EventComponent } from './pages/event/event.component';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { ModerationComponent } from './pages/moderation/moderation.component';
-// import { VideoComponent } from './pages/video/video.component';
+import { VideoComponent } from './pages/video/video.component';
 
 export const routes: Routes = [
   { path: '', canActivate: [AuthGuard], component: HomeComponent },
@@ -43,8 +43,7 @@ export const routes: Routes = [
   { path: 'membres', redirectTo: routesApp.members },
   { path: routesApp.material, canActivate: [AuthGuard], component: MaterialComponent, data: {animation: 'MaterialPage'} },
   { path: 'matos', redirectTo: routesApp.material },
-  // UNCOMMENT WHEN DEVELOPING VIDEOS
-  // { path: routesApp.videos + ':video', canActivate: [AuthGuard], component: VideoComponent, data: {animation: 'VideoComponent'} },
+  { path: routesApp.videos + ':video', canActivate: [AuthGuard], component: VideoComponent, data: {animation: 'VideoComponent'} },
   { path: routesApp.pics + ':event', canActivate: [AuthGuard], component: EventComponent, data: {animation: 'EventPage'} },
   { path: routesApp.notFound, canActivate: [AuthGuard], component: NotfoundComponent },
   { path: '**', canActivate: [AuthGuard], redirectTo: routesApp.notFound }
