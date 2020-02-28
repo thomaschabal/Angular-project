@@ -1,4 +1,19 @@
-import { style, animate, keyframes } from '@angular/animations';
+import { style, animate, keyframes, trigger, transition } from '@angular/animations';
+
+export const pontheSpinnerAnimation = trigger('spinnerTrigger', [
+    transition(':enter', [
+      animate(200, keyframes([
+        style({ offset: 0, opacity: 0 }),
+        style({ offset: 1, opacity: 1 })
+      ]))
+    ]),
+    transition(':leave', [
+      animate(200, keyframes([
+        style({ offset: 0, opacity: 1 }),
+        style({ offset: 1, opacity: 0 })
+      ]))
+    ]),
+  ]);
 
 export const bounceIn = animate('750ms cubic-bezier(0.215, 0.61, 0.355, 1)', keyframes([
     style({ offset: 0, opacity: 0, transform: 'scale3d(0.3, 0.3, 0.3)' }),
