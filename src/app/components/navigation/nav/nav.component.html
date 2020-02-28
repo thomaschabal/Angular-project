@@ -36,8 +36,9 @@
   <header *ngIf="breakpointsService.isMobile" id="header-mobile" [class]="isHamburgerActive ? 'visible_menu' : ''">
     <div id="mobile_menu">
       <ul>
-        <app-nav-link [route]="routes.galeries" [name]="'nav.galeries' | translate" [imgSrc]="svgGaleries" (click)="closeBurger()"></app-nav-link>
-        <app-nav-link [route]="routes.crush" [name]="'nav.crush' | translate" [imgSrc]="svgGaleries" (click)="closeBurger()"></app-nav-link>
+        <app-nav-link [route]="routes.pics" [name]="'nav.pics' | translate" [imgSrc]="svgPics" (click)="closeBurger()"></app-nav-link>
+        <app-nav-link [route]="routes.videos" [name]="'nav.movies' | translate" [imgSrc]="svgMovies" (click)="closeBurger()"></app-nav-link>
+        <app-nav-link [route]="routes.crush" [name]="'nav.crush' | translate" [imgSrc]="svgCrush" (click)="closeBurger()"></app-nav-link>
         <app-nav-link *ngIf="isAdmin()" [route]="routes.dashboard" [name]="'nav.dashboard' | translate" (click)="closeBurger()" [imgSrc]="svgDashboard"></app-nav-link>
         <app-nav-link [route]="routes.members" [name]="'nav.members' | translate" [imgSrc]="svgMembers" (click)="closeBurger()"></app-nav-link>
         <app-nav-link [route]="routes.material" [name]="'nav.matos' | translate" [imgSrc]="svgMatos" (click)="closeBurger()"></app-nav-link>

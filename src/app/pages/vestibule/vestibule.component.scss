@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900");
+@import url("../../../assets/assets_g/css/main.css");
+@import "../../PontheStyle.scss";
+
+$SPACER-HEIGHT: 4em;
+
+body {
+	background: color(DARK_GREY);
+}
+
+.spacer {
+  margin-top: $SPACER-HEIGHT;
+
+  @include sm {
+	  margin-top: units(10);
+  }
+}
+
+#main {
+	min-height: calc(100vh - #{$SPACER-HEIGHT});
+}
+
+article {
+    width: 50vw;
+    max-height: calc(100vh - #{$SPACER-HEIGHT});
+    overflow: hidden;
+    background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+    vertical-align: middle;
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+
+    @include sm {
+        width: 100vw;
+        height: calc(50vh - units(5));
+        opacity: 1;
+    }
+    @include md {
+        width: 100vw;
+        height: calc(50vh - units(5));
+        opacity: 1;
+    }
+}
+article:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+@each $type, $image in $VESTIBULE-IMAGES {
+    #article_#{$type} {
+        background-image: $image;
+    }
+}
+
+
+h2 {
+    position: relative;
+    top: 45%;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: units(8);
+    font-family: "Source Sans Pro";
+    letter-spacing: 0.15em;
+    transition: font-size 0.3s ease, letter-spacing 0.3s ease;
+
+    @include sm {
+        top: 40%;
+        font-size: units(5);
+        letter-spacing: 0.02em;
+    }
+    @include md {
+        top: 40%;
+        font-size: units(6);
+        letter-spacing: 0.05em;
+    }
+}
+article:hover h2 {
+    font-size: units(9);
+    letter-spacing: 0.05em;
+}

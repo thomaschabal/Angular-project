@@ -64,8 +64,10 @@ import { CguComponent } from './pages/cgu/cgu.component';
 import { CrushComponent } from './pages/crush/crush.component';
 import { ResetComponent } from './pages/reset/reset.component';
 import { HomeComponent } from './pages/home/home.component';
+import { VestibuleComponent } from './pages/vestibule/vestibule.component';
 import { GaleriesComponent } from './pages/galeries/galeries.component';
 import { EventComponent } from './pages/event/event.component';
+import { FilmographyComponent } from './pages/filmography/filmography.component';
 import { VideoComponent } from './pages/video/video.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ModerationComponent } from './pages/moderation/moderation.component';
@@ -113,6 +115,7 @@ export function setupTranslateFactory(
     GaleriesModerationButtonsComponent,
     GalleryCreationFormComponent,
     HomeFormComponent,
+    IconLinksComponent,
     ImageViewerComponent,
     LanguageSelectionComponent,
     LoaderPontheComponent,
@@ -137,6 +140,7 @@ export function setupTranslateFactory(
     CrushComponent,
     DashboardComponent,
     EventComponent,
+    FilmographyComponent,
     GaleriesComponent,
     HomeComponent,
     MaterialComponent,
@@ -145,8 +149,8 @@ export function setupTranslateFactory(
     NewAccountComponent,
     NotfoundComponent,
     ResetComponent,
+    VestibuleComponent,
     VideoComponent,
-    IconLinksComponent,
     TranslatePipe,
   ],
   imports: [

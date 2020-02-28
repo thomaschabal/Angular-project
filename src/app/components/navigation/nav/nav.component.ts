@@ -7,12 +7,14 @@ import { HttpService } from '../../../services/http.service';
 import { routesAppFromRoot } from '../../../Routes';
 import {
   PATH_LOGO_PONTHE_SVG,
-  PATH_GALERIES_SVG,
+  PATH_PICS_SVG,
+  PATH_CRUSH_SVG,
+  PATH_MOVIES_SVG,
   PATH_DASHBOARD_SVG,
   PATH_MEMBERS_SVG,
   PATH_MATOS_SVG,
   PATH_LOGOUT_SVG
-} from 'src/app/Constants';
+} from 'src/app/constants/Images';
 
 @Component({
   selector: 'app-nav',
@@ -22,7 +24,9 @@ import {
 
 export class NavComponent {
   pathLogo = PATH_LOGO_PONTHE_SVG;
-  svgGaleries = PATH_GALERIES_SVG;
+  svgPics = PATH_PICS_SVG;
+  svgMovies = PATH_MOVIES_SVG;
+  svgCrush = PATH_CRUSH_SVG;
   svgDashboard = PATH_DASHBOARD_SVG;
   svgMembers = PATH_MEMBERS_SVG;
   svgMatos = PATH_MATOS_SVG;

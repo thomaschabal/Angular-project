@@ -116,6 +116,8 @@
     "nav.title_auth.reset": "¿Contraseña olvidada?",
     "nav.title_auth.register": "Registro",
     "nav.galeries": "Galerías",
+    "nav.pics": "Fotos",
+    "nav.movies": "Películas",
     "nav.crush": "Crushes",
     "nav.dashboard": "Tablero de control",
     "nav.members": "Miembors",
@@ -152,6 +154,9 @@
 
     "upload.filesUploaded": "archivos cargados",
     "upload.remainingFiles": "Archivos aún por salvar",
+
+    "vestibule.movies": "Películas",
+    "vestibule.pics": "Fotos",
 
     "close": "Cerrar"
   }

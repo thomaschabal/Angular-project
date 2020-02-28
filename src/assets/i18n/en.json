@@ -116,6 +116,8 @@
     "nav.title_auth.reset": "Forgotten password ?",
     "nav.title_auth.register": "Register",
     "nav.galeries": "Galleries",
+    "nav.pics": "Photos",
+    "nav.movies": "Movies",
     "nav.crush": "Crushes",
     "nav.dashboard": "Dashboard",
     "nav.members": "Members",
@@ -152,6 +154,9 @@
 
     "upload.filesUploaded": "uploaded files",
     "upload.remainingFiles": "Files still to be saved",
+
+    "vestibule.movies": "Movies",
+    "vestibule.pics": "Photos",
 
     "close": "Close"
   }

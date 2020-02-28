@@ -1,3 +1,5 @@
+const galeriesRoot = 'galeries';
+
 // These are the application's routes
 // Change the values to change the urls
 export const routesApp = {
@@ -6,9 +8,9 @@ export const routesApp = {
   cgu: 'cgu',
   reset: 'reset',
   home: 'home',
-  galeries: 'galeries',
-  pics: 'galeries/pics/',
-  videos: 'galeries/movies/',
+  galeries: galeriesRoot,
+  pics: galeriesRoot + '/pics',
+  videos: galeriesRoot + '/movies',
   crush: 'crush',
   dashboard: 'dashboard',
   members: 'members',

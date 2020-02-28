@@ -112,6 +112,8 @@
   "nav.title_auth.reset": "Mot de passe oublié ?",
   "nav.title_auth.register": "Inscription",
   "nav.galeries": "Galeries",
+  "nav.pics": "Photos",
+  "nav.movies": "Films",
   "nav.crush": "Coups de cœur",
   "nav.dashboard": "Tableau de bord",
   "nav.members": "Membres",
@@ -148,6 +150,9 @@
 
   "upload.filesUploaded": "fichiers téléchargés",
   "upload.remainingFiles": "Fichiers restant à enregistrer",
+
+  "vestibule.movies": "Films",
+  "vestibule.pics": "Photos",
 
   "close": "Fermer"
 }

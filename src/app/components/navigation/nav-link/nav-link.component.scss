@@ -38,7 +38,7 @@ li a {
 li {
   @include sm {
     display: flex;
-    height: units(11);
+    height: units(11.5);
     padding-top: units(1.5);
     padding-bottom: units(1.5);
     border-bottom: 1px solid #c3c3c3;
@@ -71,7 +71,7 @@ img {
   margin: 0;
   margin-right: units(2);
   height: 100%;
-  width: 20vw;
+  width: 23vw;
 }
 
 .mobile-a h3 {
