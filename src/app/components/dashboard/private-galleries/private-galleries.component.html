@@ -1,6 +1,6 @@
 <div id="main" (mouseenter)="survoleGaleries('visible')"
                (mouseleave)="survoleGaleries('hidden')">
-  <article *ngFor="let event of galeriesService.privateEvents; let i = index"
+  <article *ngFor="let event of galeriesService.privatePhotoEvents; let i = index"
            class="thumb">
     <a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">
       <img src="{{ event.image }}" alt="Event" width=100%
@@ -14,4 +14,4 @@
 <div *ngIf="displaySpinner" id="reload-boundary" >
     <app-loading-points></app-loading-points>
 </div>
-<h3 *ngIf="galeriesService.privateEvents.length === 0 && !displaySpinner" id="no_private_gallery">{{ 'dashboard.privateGalleries.none' | translate }}</h3>
+<h3 *ngIf="galeriesService.privatePhotoEvents.length === 0 && !displaySpinner" id="no_private_gallery">{{ 'dashboard.privateGalleries.none' | translate }}</h3>

@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900");
+@import url("../../../assets/assets_g/css/main.css");
+@import "../../PontheStyle.scss";
+
+$SPACER-HEIGHT: 4em;
+
+#bg-movies {
+    position: fixed;
+    background: color(HOME_GREY) !important;
+    height: 100vh;
+    top: 0;
+    width: 100vw;
+}
+
+.spacer {
+  margin-top: $SPACER-HEIGHT;
+
+  @include sm {
+	  margin-top: units(10);
+  }
+}
+
+#main {
+    min-height: calc(100vh - #{$SPACER-HEIGHT});
+    padding: 0 units(4);
+}
+
+#main .thumb > .image {
+	-webkit-tap-highlight-color: color(WHITE);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	vertical-align: middle;
+	border: 0;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+#main article {
+    border-radius: units(4);
+    margin: units(4);
+    width: calc((100vw - 2 * #{units(4)}) / 3 - 2 * #{units(4)}) !important;
+}
+
+#reload-boundary {
+	width: 100vw;
+	padding: units(10);
+    background: color(DARK_GREY);
+    z-index: 1;
+}
+
+#no-filmography {
+	width: 90vw;
+    margin: auto;
+    text-align: center;
+	font-family: "Source Sans Pro";
+	font-weight: 400;
+	text-transform: inherit;
+	@include font-size(XLARGE);
+}

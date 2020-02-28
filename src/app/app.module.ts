@@ -91,6 +91,7 @@ import { ReactionsService } from './services/reactions.service';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './services/translate.pipe';
 import { UserService } from './services/user.service';
+import { VideoService } from './services/video.service';
 
 
 export function setupTranslateFactory(
@@ -178,6 +179,7 @@ export function setupTranslateFactory(
     PwaService,
     ReactionsService,
     TranslateService,
+    VideoService,
     {
       provide: APP_INITIALIZER,
       useFactory: setupTranslateFactory,

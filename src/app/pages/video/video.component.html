@@ -1,7 +1,7 @@
 <div class="spacer"></div>
 
 <!-- Moderation buttons -->
-<!-- <app-galeries-moderation-buttons *ngIf="isAdmin" [selectedRoute]="selectedRoute" [moderationState]="moderationState"></app-galeries-moderation-buttons> -->
+<app-galeries-moderation-buttons *ngIf="httpService.isAdmin" [selectedRoute]="selectedRoute" [moderationState]="moderationState"></app-galeries-moderation-buttons>
 <!-- Upload for random users -->
 <!-- <app-upload *ngIf="!isAdmin"></app-upload> -->
 

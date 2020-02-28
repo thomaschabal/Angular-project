@@ -24,7 +24,7 @@ import { HttpService } from '../../services/http.service';
 export class VideoComponent implements OnInit, OnDestroy {
 
   constructor(private activeRoute: ActivatedRoute,
-              private httpService: HttpService) {
+              public httpService: HttpService) {
     this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(
       f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
     );
@@ -44,7 +44,6 @@ export class VideoComponent implements OnInit, OnDestroy {
   filmBackground: string;
 
   // Variables about the user and the current operations on the event
-  isAdmin: boolean;
   selectedRoute: string;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
@@ -69,7 +68,6 @@ export class VideoComponent implements OnInit, OnDestroy {
     const selectedRoute = this.activeRoute.snapshot.params.event;
     this.httpService.currentGallery = selectedRoute;
     this.adresse = this.activeRoute.snapshot.routeConfig.path;
-    this.isAdmin = this.httpService.isAdmin;
 
     // MOCK VALUES, FOR DEVELOPMENT
     this.displaySpinner = false;

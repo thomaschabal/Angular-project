@@ -10,8 +10,12 @@ export class GaleriesService {
   galeriesEvents = [];
   areGaleriesEventsLoaded = false;
   numberOfPublicEvents: number;
-  privateEvents = [];
-  arePrivateEventsLoaded = false;
+
+  privatePhotoEvents = [];
+  arePrivatePhotoEventsLoaded = false;
+
+  privateVideoEvents = [];
+  arePrivateVideoEventsLoaded = false;
   displaySpinner = true;
 
   page = 1;
@@ -22,7 +26,7 @@ export class GaleriesService {
   // Determine whether the gallery is public or private
   isPublicOrPrivate(routeGallery: string) {
     let isPublic = true;
-    for (const event of this.privateEvents) {
+    for (const event of this.privatePhotoEvents) {
       if (event.slug === routeGallery) {
         isPublic = false;
       }
@@ -65,14 +69,28 @@ export class GaleriesService {
   }
 
   // Get the list of all private events
-  getPrivateEvents() {
-    if (this.httpService.isAdmin === true && !this.arePrivateEventsLoaded) {
-      return this.httpService.get(API_ROUTES.getPrivateGalleries)
+  getPrivatePhotos() {
+    if (this.httpService.isAdmin === true && !this.arePrivatePhotoEventsLoaded) {
+      return this.httpService.get(API_ROUTES.getPrivatePhotoGalleries)
         .toPromise()
         .then(
           (res: { galleries }) => {
-            this.privateEvents = res.galleries;
-            this.arePrivateEventsLoaded = true;
+            this.privatePhotoEvents = res.galleries;
+            this.arePrivatePhotoEventsLoaded = true;
+          },
+          (error) => { }
+        );
+    }
+  }
+
+  getPrivateVideos() {
+    if (this.httpService.isAdmin === true && !this.arePrivateVideoEventsLoaded) {
+      return this.httpService.get(API_ROUTES.getPrivateVideoGalleries)
+        .toPromise()
+        .then(
+          (res: { galleries }) => {
+            this.privateVideoEvents = res.galleries;
+            this.arePrivateVideoEventsLoaded = true;
           },
           (error) => { }
         );
@@ -110,7 +128,8 @@ export class GaleriesService {
 
   loadPrivateEvents = async () => {
     // Restricted to admins
-    await this.getPrivateEvents();
+    await this.getPrivatePhotos();
+    await this.getPrivateVideos();
     return Promise.resolve();
   }
 
