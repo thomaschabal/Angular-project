@@ -21,6 +21,8 @@
   "dashboard.form.title": "Création d'une galerie",
   "dashboard.form.name": "Nom de la galerie",
   "dashboard.form.description": "Description de la galerie",
+  "dashboard.form.year": "Année de l'évènement",
+  "dashboard.form.type": "Type de galerie",
   "dashboard.form.submitButton": "Valider la création",
   "dashboard.createdGallery": "Galerie créée",
   "dashboard.failureCreationGallery": "Echec à la création",
@@ -39,6 +41,8 @@
 
   "event.deleteGallery.galleryWillBeDeleted": "Cette galerie est sur le point d'être supprimée. Cliquer une deuxième fois sur 'Supprimer la galerie' pour valider l'action.",
   "event.deleteGallery.galleryWasDeleted": "La galerie a bien été supprimée",
+
+  "filmography.none": "Il n'y a pas de vidéo publique que tu peux voir pour le moment. Si tu souhaites en rajouter pour ta promotion, contacte les membres du Ponthé.",
 
   "footer.copyright": "Ponthé 020 - Club audiovisuel de l'Ecole des Ponts",
 

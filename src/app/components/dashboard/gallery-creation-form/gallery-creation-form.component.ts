@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { GaleriesService } from '../../../services/galeries.service';
-import { CURRENT_YEAR, YEARS_SLUGS, SCHOOL_YEARS_SLUGS } from '../../../Constants';
+import { CURRENT_YEAR, YEARS_SLUGS, SCHOOL_YEARS_SLUGS, GALLERY_TYPES } from '../../../Constants';
 
 const DURATION_DISPLAYING = 6000;
 const EMPTY_FORM = {
@@ -10,7 +10,8 @@ const EMPTY_FORM = {
   description: ['', Validators.required],
   year_slug: ['' + CURRENT_YEAR, Validators.required],
   event_slug: 'vap-2019', //  /!\ Remplacer selon le back défini
-  boolPrivate: ['on', Validators.required]
+  boolPrivate: ['on', Validators.required],
+  type: [GALLERY_TYPES[0], Validators.required]
 };
 
 @Component({
@@ -23,6 +24,7 @@ export class GalleryCreationFormComponent implements OnInit {
   eventForm: FormGroup;
   SLUGS = SCHOOL_YEARS_SLUGS;
   YEARS = YEARS_SLUGS;
+  TYPES = GALLERY_TYPES;
   successCreation = false;
   failureCreation = false;
 
@@ -44,6 +46,12 @@ export class GalleryCreationFormComponent implements OnInit {
     // @ts-ignore
     const newYear = e.target.value;
     this.eventForm.value.year_slug = newYear;
+  }
+
+  onChangeType(e: Event) {
+    // @ts-ignore
+    const newType = e.target.value;
+    this.eventForm.value.type = newType.toUpperCase();
   }
 
   resetForm() {
