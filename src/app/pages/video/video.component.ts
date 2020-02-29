@@ -3,11 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-// import { Plyr } from 'plyr';
-// import { PlyrComponent } from 'ngx-plyr';
+import { PlyrComponent } from 'ngx-plyr';
 
 import { HttpService } from '../../services/http.service';
-
+import { VideoService } from 'src/app/services/video.service';
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',
@@ -24,6 +23,7 @@ import { HttpService } from '../../services/http.service';
 export class VideoComponent implements OnInit, OnDestroy {
 
   constructor(private activeRoute: ActivatedRoute,
+              public videoService: VideoService,
               public httpService: HttpService) {
     this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(
       f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
@@ -36,11 +36,8 @@ export class VideoComponent implements OnInit, OnDestroy {
 
   private sub: Subscription;
 
-  adresse: string;
-
   // About the film
   name: string;
-  resume: string;
   filmBackground: string;
 
   // Variables about the user and the current operations on the event
@@ -53,26 +50,38 @@ export class VideoComponent implements OnInit, OnDestroy {
   // @ViewChild(PlyrComponent)
   // plyr: PlyrComponent;
 
+  // // or get it from plyrInit event
   // player: Plyr;
 
   // videoSources: Plyr.Source[] = [
   //   {
-  //     src: 'bTqVqk7FSmY',
-  //     provider: 'youtube',
+  //     src: '',
+  //     type: 'video/mp4',
   //   },
   // ];
 
-  video: any;
+  // played(event: Plyr.PlyrEvent) {
+  //   console.log('played', event);
+  // }
+
+  // play(): void {
+  //   this.player.play(); // or this.plyr.player.play()
+  // }
 
   ngOnInit() {
-    const selectedRoute = this.activeRoute.snapshot.params.event;
-    this.httpService.currentGallery = selectedRoute;
-    this.adresse = this.activeRoute.snapshot.routeConfig.path;
+    const url = window.location.pathname.split('/');
+    const videoGallerySlug = url[url.length - 1];
+    this.videoService.setSelectedMovie(videoGallerySlug);
+    // this.videoSources[0].src = this.videoService.videoUrl;
+    // console.log(this.videoSources)
+
+    this.videoService.getVideoData();
+    if (this.httpService.isAdmin) {
+      this.videoService.getVideoCoverImage();
+    }
 
     // MOCK VALUES, FOR DEVELOPMENT
     this.displaySpinner = false;
-    this.name = 'Vidéo de test';
-    this.resume = 'Ceci est une galerie de tests.';
     this.filmBackground = 'assets/images/font1.jpg';
   }
 

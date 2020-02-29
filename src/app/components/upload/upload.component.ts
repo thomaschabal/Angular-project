@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { FilePickerComponent, ValidationError, FilePreviewModel } from 'ngx-awesome-uploader';
 
 import { HttpService } from '../../services/http.service';
+import { VideoService } from 'src/app/services/video.service';
 import { DemoFilePickerAdapter } from './demo-file-picker.adapter';
 
 @Component({
@@ -16,7 +17,7 @@ export class UploadComponent implements OnInit, OnDestroy {
 
   // FILE UPLOAD
   @ViewChild('uploader') uploader: FilePickerComponent;
-  adapter = new DemoFilePickerAdapter(this.httpClient, this.httpService);
+  adapter = new DemoFilePickerAdapter(this.httpClient, this.httpService, this.videoService);
   myFiles: FilePreviewModel[] = [];
   selectedRoute: string;
 
@@ -29,6 +30,7 @@ export class UploadComponent implements OnInit, OnDestroy {
   filesUploading = [];
 
   constructor(private httpService: HttpService,
+              private videoService: VideoService,
               private httpClient: HttpClient,
               private activeRoute: ActivatedRoute) { }
 

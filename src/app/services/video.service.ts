@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { DEFAULT_PAGE_SIZE } from './galeries.service';
 import { HttpService } from './http.service';
 import API from './Api';
+import { environment } from 'src/environments/environment';
 
 interface Film {
   name: string;
@@ -17,6 +18,7 @@ interface GetFilmographyResponse {
 
 interface FilmData {
   name: string;
+  description: string;
 }
 
 @Injectable()
@@ -28,7 +30,11 @@ export class VideoService {
   isLoadingFirstFilmography = false;
   isLoadingMoreFilmography = false;
 
-  movieDetails: FilmData[];
+  selectedMovie: string;
+  videoUrl: string;
+  coverImageUrl: string;
+  movieDetails: FilmData = { name: '', description: '' };
+  movieCoverImage: string;
 
   constructor(private httpService: HttpService) {
     this.initFilmography();
@@ -37,6 +43,12 @@ export class VideoService {
   initFilmography() {
     this.allFilmography = [];
     this.page = 1;
+  }
+
+  setSelectedMovie(gallerySlug: string) {
+    this.selectedMovie = gallerySlug;
+    this.videoUrl = environment.apiUrl + API.getVideo + gallerySlug;
+    this.coverImageUrl = environment.apiUrl + API.getVideoCoverImage + gallerySlug;
   }
 
   getFilmography(page: number) {
@@ -80,5 +92,28 @@ export class VideoService {
         }
       );
     }
+  }
+
+  getVideoData() {
+    this.httpService.post(API.getVideoData, { gallery_slug: this.selectedMovie }).toPromise()
+      .then(
+        (res: FilmData) => {
+          this.movieDetails = res;
+          console.log(this.movieDetails)
+        },
+        (error) => { console.error(error); }
+      );
+  }
+
+  getVideoCoverImage() {
+    this.httpService.post(API.getVideoCoverImage, { gallery_slug: this.selectedMovie }).toPromise()
+      .then(
+        (res: { image: string }) => {
+          const { image } = res;
+          this.movieCoverImage = image;
+          console.log(this.movieCoverImage)
+        },
+        (error) => { console.error(error); }
+      );
   }
 }

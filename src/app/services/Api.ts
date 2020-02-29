@@ -19,6 +19,7 @@ export default {
     getPrivateVideoGalleries: '/get-private-video-galleries',
     createGallery: '/create-gallery',
     filesNotModerated: '/files/not-moderated',
+    fileUpload: '/file-upload/',
 
     /* Members */
     members: '/members',
@@ -43,4 +44,7 @@ export default {
 
     /* Movies */
     getFilmography: '/get-filmography',
+    getVideo: '/get-video/',
+    getVideoData: '/get-video-data',
+    getVideoCoverImage: '/get-video-cover-image/',
 };

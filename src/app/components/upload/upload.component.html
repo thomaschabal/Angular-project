@@ -1,6 +1,6 @@
 <h3 *ngIf="filesToUpload > 0">{{ filesUploaded }} / {{ filesToUpload }} {{ 'upload.filesUploaded' | translate }}</h3>
 <div *ngIf="filesUploading.length > 0">
-  <h3>{{ 'upload.remainingFiles' }} :</h3>
+  <h3>{{ 'upload.remainingFiles' | translate }} :</h3>
   <ul>
     <li *ngFor="let file of filesUploading">{{ file }}</li>
   </ul>
