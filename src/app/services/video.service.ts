@@ -99,7 +99,6 @@ export class VideoService {
       .then(
         (res: FilmData) => {
           this.movieDetails = res;
-          console.log(this.movieDetails)
         },
         (error) => { console.error(error); }
       );
@@ -111,7 +110,6 @@ export class VideoService {
         (res: { image: string }) => {
           const { image } = res;
           this.movieCoverImage = image;
-          console.log(this.movieCoverImage)
         },
         (error) => { console.error(error); }
       );
