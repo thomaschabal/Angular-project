@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-import { DEFAULT_PAGE_SIZE } from "./galeries.service";
-import { HttpService } from "./http.service";
-import API from "./Api";
+import { DEFAULT_PAGE_SIZE } from './galeries.service';
+import { HttpService } from './http.service';
+import API from './Api';
 
 interface Film {
   name: string;
