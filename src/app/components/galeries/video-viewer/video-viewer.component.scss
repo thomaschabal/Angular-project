@@ -1,0 +1,10 @@
+@import url("../../../../assets/assets_g/css/main.css");
+@import "../../../PontheStyle.scss";
+
+video {
+  height: 100%;
+  width: 100%;
+  border-radius: units(4);
+  box-shadow: box-shadow(VIDEO);
+  object-fit: cover;
+}

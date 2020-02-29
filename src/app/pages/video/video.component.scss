@@ -11,7 +11,7 @@
   background-color: color(HOME_GREY);
 }
 
-video {
+#video {
   position: absolute;
   width: 75vw;
   margin: auto;
@@ -19,7 +19,4 @@ video {
   left: 12.5vw;
   height: 100vh;
   max-height: 75vh;
-  border-radius: units(4);
-  box-shadow: box-shadow(VIDEO);
-  object-fit: cover;
 }

@@ -19,21 +19,15 @@ import { VideoService } from 'src/app/services/video.service';
   ]
 })
 
-export class VideoComponent implements OnInit, OnDestroy {
+export class VideoComponent implements OnInit {
 
-  constructor(private activeRoute: ActivatedRoute,
-              public videoService: VideoService,
+  constructor(public videoService: VideoService,
               public httpService: HttpService) {
-    this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(
-      f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
-    );
   }
 
   // Loading Spinner
   displaySpinner = true;
   stateSpinner = 'visible';
-
-  private sub: Subscription;
 
   // About the film
   name: string;
@@ -47,27 +41,8 @@ export class VideoComponent implements OnInit, OnDestroy {
     this.videoService.setSelectedMovie(videoGallerySlug);
 
     this.videoService.getVideoData();
-    if (this.httpService.isAdmin) {
-      this.videoService.getVideoCoverImage();
-    }
 
     // MOCK VALUES, FOR DEVELOPMENT
     this.displaySpinner = false;
-  }
-
-  public ngOnDestroy(): void {
-    if (this.sub) {
-      this.sub.unsubscribe();
-    }
-  }
-
-  // Tell if a picture is going to be deleted or not
-  deleteState(i) {
-    return this.moderationState[i];
-  }
-
-  // Change the state of moderation of a picture
-  moderePic(i: number) {
-    this.moderationState[i] = !this.moderationState[i];
   }
 }

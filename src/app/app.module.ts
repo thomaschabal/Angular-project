@@ -54,6 +54,7 @@ import { ReactionsComponent } from './components/reactions/reactions/reactions.c
 import { TutorialSubjectComponent } from './components/dashboard/tutorial-subject/tutorial-subject.component';
 import { TutorialsComponent } from './components/dashboard/tutorials/tutorials.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { VideoViewerComponent } from './components/galeries/video-viewer/video-viewer.component';
 
 //// PAGES
 import { AuthComponent } from './pages/auth/auth.component';
@@ -134,6 +135,7 @@ export function setupTranslateFactory(
     TutorialSubjectComponent,
     TutorialsComponent,
     UploadComponent,
+    VideoViewerComponent,
     AuthComponent,
     CguComponent,
     CrushComponent,

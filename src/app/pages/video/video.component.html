@@ -10,18 +10,7 @@
 <!-- Main -->
 <!-- Film -->
 <div id="main">
-  <video
-    id="my-video"
-    class="video-js vjs-default-skin"
-    controls
-    preload="auto"
-    width="640"
-    height="264"
-    [poster]="videoService.coverImageUrl"
-    data-setup="{}"
-  >
-    <source [src]="videoService.videoUrl" type="video/mp4" />
-  </video>
+  <app-video-viewer id="video" [src]="videoService.videoUrl" [poster]="videoService.coverImageUrl"></app-video-viewer>
 </div>
 
 <!-- Header and Footer, revealed when clicking on "A propos de l'album" -->
