@@ -37,8 +37,9 @@
     "dashboard.tutos.title": "Tutorials ponthe.enpc.org",
     "dashboard.usefulLinks.title": "Useful links for admins",
     "dashboard.privateGalleries.title": "Private galleries",
-    "dashboard.privateGalleries.none": "There is no private gallery for the moment.",
-  
+    "dashboard.privatePhotoGalleries.none": "There is no private photo gallery for the moment.",
+    "dashboard.privateVideoGalleries.none": "There is no private video gallery for the moment.",
+
     "event.deleteGallery.galleryWillBeDeleted": "This gallery is about to be deleted. Click a second time on \"Delete gallery\" to validate the action.",
     "event.deleteGallery.galleryWasDeleted": "The gallery has been deleted",
   

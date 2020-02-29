@@ -37,7 +37,8 @@
   "dashboard.tutos.title": "Tutoriels ponthe.enpc.org",
   "dashboard.usefulLinks.title": "Liens utiles pour admins",
   "dashboard.privateGalleries.title": "Galeries privées",
-  "dashboard.privateGalleries.none": "Il n'y a pas de galerie privée pour le moment.",
+  "dashboard.privatePhotoGalleries.none": "Il n'y a pas de galerie photo privée pour le moment.",
+  "dashboard.privateVideoGalleries.none": "Il n'y a pas de galerie vidéo privée pour le moment.",
 
   "event.deleteGallery.galleryWillBeDeleted": "Cette galerie est sur le point d'être supprimée. Cliquer une deuxième fois sur 'Supprimer la galerie' pour valider l'action.",
   "event.deleteGallery.galleryWasDeleted": "La galerie a bien été supprimée",

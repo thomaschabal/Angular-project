@@ -1,9 +1,9 @@
-<div id="main" (mouseenter)="survoleGaleries('visible')"
-               (mouseleave)="survoleGaleries('hidden')">
-  <article *ngFor="let event of galeriesService.privatePhotoEvents; let i = index"
+<!-- Photos -->
+<div id="main">
+  <article *ngFor="let event of galeriesService.privatePhotoEvents"
            class="thumb">
-    <a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">
-      <img src="{{ event.image }}" alt="Event" width=100%
+    <a [routerLink]="routes.pics + '/' + event.slug" [attr.aria-label]="event.name">
+      <img [src]="event.image" alt="Event" width=100%
            style="min-width: 100%; min-height: 100%"/>
     </a>
     <h2><a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
@@ -14,4 +14,22 @@
 <div *ngIf="displaySpinner" id="reload-boundary" >
     <app-loading-points></app-loading-points>
 </div>
-<h3 *ngIf="galeriesService.privatePhotoEvents.length === 0 && !displaySpinner" id="no_private_gallery">{{ 'dashboard.privateGalleries.none' | translate }}</h3>
+<h3 *ngIf="galeriesService.privatePhotoEvents.length === 0 && !displaySpinner" id="no_private_gallery">{{ 'dashboard.privatePhotoGalleries.none' | translate }}</h3>
+
+<!-- Videos -->
+<div id="main">
+  <article *ngFor="let movie of galeriesService.privateVideoEvents"
+           class="thumb">
+    <a [routerLink]="routes.videos + '/' + movie.slug" [attr.aria-label]="movie.name">
+      <img [src]="movie.image" alt="Event" width=100%
+           style="min-width: 100%; min-height: 100%"/>
+    </a>
+    <h2><a [routerLink]="routes.videos + '/' + movie.slug" [attr.aria-label]="movie.name">{{ event.name }}</a></h2>
+    <a [routerLink]="routes.videos + '/' + movie.slug" [attr.aria-label]="movie.name"><div class="private_background"></div></a>
+    <div id="private">{{ 'galeries.gallery.private' | translate }}</div>
+  </article>
+</div>
+<div *ngIf="displaySpinner" id="reload-boundary" >
+    <app-loading-points></app-loading-points>
+</div>
+<h3 *ngIf="galeriesService.privateVideoEvents.length === 0 && !displaySpinner" id="no_private_gallery">{{ 'dashboard.privateVideoGalleries.none' | translate }}</h3>
