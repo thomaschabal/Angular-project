@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { PlyrComponent } from 'ngx-plyr';
+// import { PlyrComponent } from 'ngx-plyr';
 
 import { HttpService } from '../../services/http.service';
 import { VideoService } from 'src/app/services/video.service';
