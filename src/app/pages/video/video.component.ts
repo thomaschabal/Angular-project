@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-// import { PlyrComponent } from 'ngx-plyr';
 
 import { HttpService } from '../../services/http.service';
 import { VideoService } from 'src/app/services/video.service';
@@ -38,42 +37,14 @@ export class VideoComponent implements OnInit, OnDestroy {
 
   // About the film
   name: string;
-  filmBackground: string;
-
-  // Variables about the user and the current operations on the event
-  selectedRoute: string;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
   moderationState = [];
-
-  // get the component instance to have access to plyr instance
-  // @ViewChild(PlyrComponent)
-  // plyr: PlyrComponent;
-
-  // // or get it from plyrInit event
-  // player: Plyr;
-
-  // videoSources: Plyr.Source[] = [
-  //   {
-  //     src: '',
-  //     type: 'video/mp4',
-  //   },
-  // ];
-
-  // played(event: Plyr.PlyrEvent) {
-  //   console.log('played', event);
-  // }
-
-  // play(): void {
-  //   this.player.play(); // or this.plyr.player.play()
-  // }
 
   ngOnInit() {
     const url = window.location.pathname.split('/');
     const videoGallerySlug = url[url.length - 1];
     this.videoService.setSelectedMovie(videoGallerySlug);
-    // this.videoSources[0].src = this.videoService.videoUrl;
-    // console.log(this.videoSources)
 
     this.videoService.getVideoData();
     if (this.httpService.isAdmin) {
@@ -82,7 +53,6 @@ export class VideoComponent implements OnInit, OnDestroy {
 
     // MOCK VALUES, FOR DEVELOPMENT
     this.displaySpinner = false;
-    this.filmBackground = 'assets/images/font1.jpg';
   }
 
   public ngOnDestroy(): void {

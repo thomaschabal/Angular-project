@@ -6,8 +6,6 @@
   [selectedRoute]="videoService.selectedMovie"
   [moderationState]="moderationState"
 ></app-galeries-moderation-buttons>
-<!-- Upload for random users -->
-<!-- <app-upload *ngIf="!isAdmin"></app-upload> -->
 
 <!-- Main -->
 <!-- Film -->
@@ -24,19 +22,6 @@
   >
     <source [src]="videoService.videoUrl" type="video/mp4" />
   </video>
-  <!-- <plyr style="display: block; width: 640px;"
-  plyrTitle="Video 1"
-  [plyrSources]="videoSources"
-  (plyrInit)="player = $event"
-  (plyrPlay)="player($event)">
-  </plyr>
-  <div plyr style="width: 640px;" plyrTitle="Video 1" [plyrSources]="videoSources" (plyrInit)="player = $event" (plyrPlay)="player($event)"></div> -->
-  <!-- <video [src]="videoService.videoUrl" controls poster="assets/images/font1.jpg"></video> -->
-  <!-- <div class="triangle_top_left"></div>
-  <div class="triangle_bottom_right"></div>
-  <div class="triangle_bottom_right_wider"></div>
-  <div class="triangle_bottom_left"></div> -->
-  <!-- <video [src]="videoService.videoUrl" controls autoplay></video> -->
 </div>
 
 <!-- Header and Footer, revealed when clicking on "A propos de l'album" -->

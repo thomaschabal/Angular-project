@@ -7,6 +7,7 @@ $BOX-SHADOW: (
     NONE: 2px,
     LIGHT: 4px,
     LARGE: 10px,
+    VIDEO: 20px,
 );
 
 @function box-shadow($key) {

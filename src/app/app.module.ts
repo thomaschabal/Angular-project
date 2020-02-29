@@ -12,8 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 // Upload file module
 import { FilePickerModule } from 'ngx-awesome-uploader';
-// Video module
-// import { PlyrModule } from 'ngx-plyr';
 
 import { environment } from '../environments/environment';
 
@@ -162,7 +160,6 @@ export function setupTranslateFactory(
     HttpClientModule,
     BrowserAnimationsModule,
     FilePickerModule,
-    // PlyrModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
