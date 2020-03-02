@@ -4,25 +4,10 @@ import { HttpService } from './http.service';
 import API_ROUTES from './Api';
 import { PicsService } from './pics.service';
 import { REACTIONS } from 'src/app/constants/Reactions';
+import { FavoritePic, Reaction, GetRandomUserReactionsResponse, GetAllUserReactionsResponse } from '../types/reactions.types';
 
 const DEFAULT_PAGE_SIZE = 15;
 const HOME_PAGE_FAVORITE_PICS_SIZE = 6;
-
-export enum Reaction {
-  NONE = 'NONE',
-  LIKE = 'LIKE',
-  DISLIKE = 'DISLIKE',
-  LOVE = 'LOVE',
-  HAPPY = 'HAPPY',
-  SAD = 'SAD'
-}
-
-export interface FavoritePic {
-  own_reaction: Reaction;
-  name: string;
-  file_path: string;
-  image: string;
-}
 
 @Injectable()
 export class ReactionsService {
@@ -67,9 +52,9 @@ export class ReactionsService {
 
   getHomeLovePics() {
     this.getRandomUserReactions().then(
-      (res: { reactions: FavoritePic[] }) => {
-        this.homeFavoritePics = res.reactions;
-        console.log(this.homeFavoritePics);
+      (res: GetRandomUserReactionsResponse) => {
+        const { reactions } = res;
+        this.homeFavoritePics = reactions;
       },
       error => {
         console.error(error);
@@ -91,16 +76,18 @@ export class ReactionsService {
     this.initCrushesPage();
     this.isLoadingFirstPics = true;
     this.getAllUserReactions(this.page).then(
-      (res: { number_of_reactions: number, reactions: FavoritePic[] }) => {
-        this.crushesPics = res.reactions;
-        this.numberOfReactions = res.number_of_reactions;
+      (res: GetAllUserReactionsResponse) => {
+        const { number_of_reactions, reactions } = res;
+        this.crushesPics = reactions;
+        this.numberOfReactions = number_of_reactions;
         this.isLoadingFirstPics = false;
         this.page++;
+        this.picsService.initGalleryPics(number_of_reactions);
         this.picsService.numberOfPics = this.numberOfReactions;
         this.picsService.rawPics = Array(this.numberOfReactions);
-        this.picsService.pics = res.reactions;
-        for (const reaction of res.reactions) {
-          this.picsService.rawPics[res.reactions.indexOf(reaction)] = reaction.image;
+        this.picsService.pics = reactions;
+        for (const reaction of reactions) {
+          this.picsService.rawPics[reactions.indexOf(reaction)] = reaction.image;
         }
       },
       error => {
@@ -113,8 +100,9 @@ export class ReactionsService {
     if (!this.isLoadingMorePics && (this.page - 1) * DEFAULT_PAGE_SIZE < this.numberOfReactions) {
       this.isLoadingMorePics = true;
       this.getAllUserReactions(this.page).then(
-        (res: { reactions: FavoritePic[] }) => {
-          this.crushesPics = this.crushesPics.concat(res.reactions);
+        (res: GetAllUserReactionsResponse) => {
+          const { reactions } = res;
+          this.crushesPics = this.crushesPics.concat(reactions);
           this.isLoadingFirstPics = false;
           this.page++;
           this.isLoadingMorePics = false;

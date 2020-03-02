@@ -42,7 +42,11 @@ $SPACER-HEIGHT: 4em;
 #main article {
     border-radius: units(4);
     margin: units(4);
-    width: calc((100vw - 2 * #{units(4)}) / 3 - 2 * #{units(4)}) !important;
+	width: calc((100vw - 2 * #{units(4)}) / 3 - 2 * #{units(4)}) !important;
+	transition: box-shadow 0.3s ease !important;
+}
+#main article:hover {
+	box-shadow: box-shadow(LARGE);
 }
 
 #reload-boundary {

@@ -2,25 +2,26 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 import { GaleriesService, DEFAULT_PAGE_SIZE } from './galeries.service';
+import { GetFullImageResponse, GetImagesResponse, Pic } from '../types/pics.types';
 
 @Injectable()
 export class PicsService {
 
   currentGallery: string;
 
-  pics: any[];
+  pics: Pic[];
 
   numberOfPics: number;
   page = 1;
 
   isLoadingMore = false;
 
-  rawPics: any[];
+  rawPics: string[];
   rawPicsIndexSource = new BehaviorSubject(-1);
   rawPicsIndexStream = this.rawPicsIndexSource.asObservable();
 
-  fullSizeLoadedPics: any[];
-  requestStartedForPics: any[];
+  fullSizeLoadedPics: boolean[];
+  requestStartedForPics: boolean[];
   allPicturesLoaded = false;
 
   constructor(private galeriesService: GaleriesService) { }
@@ -41,7 +42,7 @@ export class PicsService {
     this.isLoadingMore = false;
   }
 
-  onReceivePic(pic: any, index: number) {
+  onReceivePic(pic: Pic, index: number) {
     this.rawPics[index] = pic.base64;
     this.fullSizeLoadedPics[index] = false;
     this.requestStartedForPics[index] = false;
@@ -72,10 +73,11 @@ export class PicsService {
       return this.galeriesService.getFullImage(this.pics[index].file_path)
       .toPromise()
       .then(
-        (res: { base64 }) => {
+        (res: GetFullImageResponse) => {
+          const { base64 } = res;
           // Prevent from overriding pics when changing galleries while some pics are being fetched from backend
           if (currentGallery === this.currentGallery) {
-            this.rawPics[index] = res.base64;
+            this.rawPics[index] = base64;
             this.fullSizeLoadedPics[index] = true;
             this.areAllPicturesLoaded();
             this.updateRawPicsIndex(index);
@@ -122,7 +124,7 @@ export class PicsService {
 
   // LOAD MORE PICS OF THE GALLERY
 
-  addFollowingLoadedImages(newPics: any[], page: number) {
+  addFollowingLoadedImages(newPics: Pic[], page: number) {
     for (const pic of newPics) {
       this.pics.push(pic);
       this.onReceivePic(pic, page * DEFAULT_PAGE_SIZE + newPics.indexOf(pic));
@@ -134,8 +136,9 @@ export class PicsService {
       this.isLoadingMore = true;
       this.galeriesService.getEventByName(this.currentGallery, this.page + 1)
         .subscribe(
-          (res: {files, gallery}) => {
-            this.addFollowingLoadedImages(res.files, this.page);
+          (res: GetImagesResponse) => {
+            const { files } = res;
+            this.addFollowingLoadedImages(files, this.page);
             this.page ++;
             this.isLoadingMore = false;
           },

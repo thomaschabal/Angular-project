@@ -1,4 +1,4 @@
-<div *ngIf="!isBannerOpen" class="small-reaction" id="single-icon">
+<div *ngIf="!isBannerOpen" class="small-reaction" id="single-icon" (mouseenter)="openBanner()">
     <app-reaction-icon
         [isSelected]="hasReaction"
         [type]="currentReaction.name"
@@ -6,7 +6,7 @@
         [iconEmpty]="currentReaction.iconEmpty"
     ></app-reaction-icon>
 </div>
-<div *ngIf="isBannerOpen" id="reactions">
+<div *ngIf="isBannerOpen" id="reactions" (mouseleave)="closeBanner()">
     <div *ngFor="let reaction of reactions; let i = index" class="reaction-icon">
         <app-reaction-icon
             [isSelected]="ownReaction === reaction.name"

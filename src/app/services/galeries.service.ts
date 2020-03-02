@@ -2,19 +2,27 @@ import { HttpService } from './http.service';
 import { Injectable } from '@angular/core';
 
 import API_ROUTES from './Api';
+import {
+  GetAllGalleriesResponse,
+  PhotoGallery,
+  GetPrivatePhotoGalleriesResponse,
+  GetPrivateVideoGalleriesResponse,
+  VideoGallery,
+  CreateGalleryRequest
+} from '../types/galeries.types';
 
 export const DEFAULT_PAGE_SIZE = 15;
 
 @Injectable()
 export class GaleriesService {
-  galeriesEvents = [];
+  galeriesEvents: PhotoGallery[] = [];
   areGaleriesEventsLoaded = false;
   numberOfPublicEvents: number;
 
-  privatePhotoEvents = [];
+  privatePhotoEvents: PhotoGallery[] = [];
   arePrivatePhotoEventsLoaded = false;
 
-  privateVideoEvents = [];
+  privateVideoEvents: VideoGallery[] = [];
   arePrivateVideoEventsLoaded = false;
   displaySpinner = true;
 
@@ -53,9 +61,10 @@ export class GaleriesService {
     if (!this.areGaleriesEventsLoaded) {
       return this.getAllEvents(1, pageSize)
         .then(
-          (res: { number_of_galleries, galleries }) => {
-            this.galeriesEvents = res.galleries;
-            this.numberOfPublicEvents = res.number_of_galleries;
+          (res: GetAllGalleriesResponse) => {
+            const { number_of_galleries, galleries } = res;
+            this.galeriesEvents = galleries;
+            this.numberOfPublicEvents = number_of_galleries;
             setTimeout(() => { this.displaySpinner = false; }, 200);
             this.areGaleriesEventsLoaded = true;
           },
@@ -74,8 +83,9 @@ export class GaleriesService {
       return this.httpService.get(API_ROUTES.getPrivatePhotoGalleries)
         .toPromise()
         .then(
-          (res: { galleries }) => {
-            this.privatePhotoEvents = res.galleries;
+          (res: GetPrivatePhotoGalleriesResponse) => {
+            const { galleries } = res;
+            this.privatePhotoEvents = galleries;
             this.arePrivatePhotoEventsLoaded = true;
           },
           (error) => { }
@@ -88,8 +98,9 @@ export class GaleriesService {
       return this.httpService.get(API_ROUTES.getPrivateVideoGalleries)
         .toPromise()
         .then(
-          (res: { galleries }) => {
-            this.privateVideoEvents = res.galleries;
+          (res: GetPrivateVideoGalleriesResponse) => {
+            const { galleries } = res;
+            this.privateVideoEvents = galleries;
             this.arePrivateVideoEventsLoaded = true;
           },
           (error) => { }
@@ -118,7 +129,7 @@ export class GaleriesService {
   }
 
   //// DASHBOARD METHODS
-  postEvent(event: any) {
+  postEvent(event: CreateGalleryRequest) {
     return this.httpService.post(API_ROUTES.createGallery, event);
   }
 
@@ -144,8 +155,9 @@ export class GaleriesService {
       this.isLoadingMoreEvents = true;
       this.getAllEvents(this.page + 1, DEFAULT_PAGE_SIZE)
         .then(
-          (res: {galleries}) => {
-            this.galeriesEvents = this.galeriesEvents.concat(res.galleries);
+          (res: GetAllGalleriesResponse) => {
+            const { galleries } = res;
+            this.galeriesEvents = this.galeriesEvents.concat(galleries);
             this.page ++;
             this.isLoadingMoreEvents = false;
           },

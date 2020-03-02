@@ -4,22 +4,7 @@ import { DEFAULT_PAGE_SIZE } from './galeries.service';
 import { HttpService } from './http.service';
 import API from './Api';
 import { environment } from 'src/environments/environment';
-
-interface Film {
-  name: string;
-  slug: string;
-  image?: string;
-}
-
-interface GetFilmographyResponse {
-  number_of_videos: number;
-  galleries: Film[];
-}
-
-interface FilmData {
-  name: string;
-  description: string;
-}
+import { Film, FilmData, GetFilmographyResponse, GetVideoCoverImageResponse } from '../types/video.types';
 
 @Injectable()
 export class VideoService {
@@ -107,7 +92,7 @@ export class VideoService {
   getVideoCoverImage() {
     this.httpService.post(API.getVideoCoverImage, { gallery_slug: this.selectedMovie }).toPromise()
       .then(
-        (res: { image: string }) => {
+        (res: GetVideoCoverImageResponse) => {
           const { image } = res;
           this.movieCoverImage = image;
         },
