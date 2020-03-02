@@ -9,7 +9,7 @@ $GALLERY-PICS-MARGIN: units(1);
 		margin-top : 3em;
 		height : calc(100vh - 3em);
 		background: $INTRO-IMAGE;
-		background-size: 256px 256px, cover;
+		@include background-size((256px 256px, cover));
 		background-attachment: fixed, fixed;
 		background-position: top left, bottom center;
 		background-repeat: repeat, no-repeat;

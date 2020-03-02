@@ -25,7 +25,7 @@
             class="main style2 {{ placement_events(i) }} dark fullscreen"
             (mouseenter)='survoleEvent("visible", i)'
             (mouseleave)='survoleEvent("hidden", i)'
-            [ngStyle]="{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
+            [ngStyle]="{'background-image' : 'url(' + event.fond + ')', '-webkit-background-size': 'cover', 'background-size': 'cover'}">
     <!-- <img src="../../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
     <div [@lastEventTrigger]="currentStateEvent(i)"
         class="content box style2">
