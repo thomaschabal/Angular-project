@@ -30,9 +30,9 @@
     <div [@lastEventTrigger]="currentStateEvent(i)"
         class="content box style2">
       <header>
-        <h2><a [routerLink]="routes.pics + event.routing" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
+        <h2><a [routerLink]="homeService.getEventRouting(event)" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
       </header>
-      <p><a [routerLink]="routes.pics + event.routing" [attr.aria-label]="event.resume">{{ event.resume }}</a></p>
+      <p><a [routerLink]="homeService.getEventRouting(event)" [attr.aria-label]="event.resume">{{ event.resume }}</a></p>
     </div>
     <a class="button style2 down anchored" (click)="clickOnNextArrow(event.next_event_id)" aria-label="Next">Next</a>
   </section>

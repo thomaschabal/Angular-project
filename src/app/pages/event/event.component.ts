@@ -10,6 +10,8 @@ import { PicsService } from '../../services/pics.service';
 import KEY_CODE from '../../constants/KeyCode';
 import { BREAKPOINTS } from '../../constants/Breakpoints';
 import { pontheSpinnerAnimation } from 'src/app/constants/Animations';
+import { ReactionsService } from 'src/app/services/reactions.service';
+import { GetImagesResponse } from 'src/app/types/pics.types';
 
 @Component({
   selector: 'app-event',
@@ -46,7 +48,7 @@ export class EventComponent implements OnInit, OnDestroy {
   showUploadArea = false;
 
   // State of the pictures in moderation phase : true means the pic is going to be deleted
-  moderationState = [];
+  moderationState: boolean[] = [];
   enModeration = false;
 
   // Animation variables
@@ -56,7 +58,8 @@ export class EventComponent implements OnInit, OnDestroy {
   constructor(private galeriesService: GaleriesService,
               private activeRoute: ActivatedRoute,
               public httpService: HttpService,
-              public picsService: PicsService) {
+              public picsService: PicsService,
+              public reactionsService: ReactionsService) {
     this.sub = activeRoute.fragment.pipe(filter(f => !!f)).subscribe(
       f => document.getElementById(f).scrollIntoView({ behavior : 'smooth' })
     );
@@ -72,15 +75,15 @@ export class EventComponent implements OnInit, OnDestroy {
     // Request of pictures of the event
     this.galeriesService.getEventByName(this.selectedRoute)
     .subscribe(
-      (res: {files, number_of_files, gallery}) => {
-        this.picsService.pics = res.files;
-        this.picsService.numberOfPics = res.number_of_files;
-        this.picsService.initRawPics(res.number_of_files);
-        const gallery = res.gallery;
+      (res: GetImagesResponse) => {
+        const { files, number_of_files, gallery } = res;
+        this.picsService.pics = files;
+        this.picsService.numberOfPics = number_of_files;
+        this.picsService.initRawPics(number_of_files);
         this.name = gallery.name;
         this.resume = gallery.description;
         // Define the state of all pictures as not going to be deleted
-        this.moderationState = Array(res.number_of_files).fill(false);
+        this.moderationState = Array(number_of_files).fill(false);
         setTimeout(() => { this.displaySpinner = false; }, 200);
       },
       (error) => { }
@@ -149,7 +152,7 @@ export class EventComponent implements OnInit, OnDestroy {
     document.getElementById('footer').style.display = 'none';
   }
 
-  closePic(shutPic: boolean) {
+  closePic() {
     this.picClicked = false;
     // Remove the blurred background
     document.getElementById('header').style.display = 'block';

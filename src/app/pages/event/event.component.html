@@ -41,6 +41,16 @@
             [attr.aria-label]="'moderation.delete' | translate">
       {{ 'moderation.delete' | translate }}
     </button>
+    <app-reaction-icon
+      *ngIf="picture.own_reaction !== null"
+      class="reaction"
+      isSelected="true"
+      [type]="picture.own_reaction"
+      [iconFull]="
+        reactionsService.getIconFromReaction(picture.own_reaction, true)
+      "
+      (clickIcon)="onClickPic(i)"
+    ></app-reaction-icon>
   </article>
   <div *ngIf="picsService.isLoadingMore" id="reload-boundary" >
     <app-loading-points></app-loading-points>

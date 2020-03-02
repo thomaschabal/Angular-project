@@ -6,7 +6,8 @@ import API_ROUTES from './Api';
 import { NUMBER_OF_LAST_EVENTS_HOME } from '../Constants';
 import { PicsService } from './pics.service';
 import { GetRandomUserReactionsResponse, FavoritePic } from '../types/reactions.types';
-import { LastEvent, GetLatestGalleriesResponse } from '../types/home.types';
+import { LastEvent, GetLatestGalleriesResponse, GalleryTypes } from '../types/home.types';
+import { routesAppFromRoot } from '../Routes';
 
 const EMPTY_EVENT = {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''};
 
@@ -29,13 +30,15 @@ export class HomeService {
           this.lastEvents = Array(galleries.length).fill(EMPTY_EVENT);
           const idEvents = ['one', 'two', 'three', 'coeur'];
           for (let i = 0; i < galleries.length; i++) {
+            const { name, image, slug, description, type } = galleries[i];
             this.lastEvents[i] = {
-              name: galleries[i].name,
-              fond: galleries[i].image,
-              routing: galleries[i].slug,
+              name,
+              fond: image,
+              routing: slug,
               event_id: idEvents[i],
               next_event_id: idEvents[i + 1],
-              resume: galleries[i].description,
+              resume: description,
+              type,
             };
           }
           this.areLastEventsLoaded = true;
@@ -78,5 +81,14 @@ export class HomeService {
   initHomePage() {
     this.loadLatestGalleries();
     this.loadLovePics();
+  }
+
+  getEventRouting(event: LastEvent) {
+    const { type, routing } = event;
+    if (type === GalleryTypes.PHOTO) {
+      return routesAppFromRoot.pics + '/' + routing;
+    } else if (type === GalleryTypes.VIDEO) {
+      return routesAppFromRoot.videos + '/' + routing;
+    }
   }
 }

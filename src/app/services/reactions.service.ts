@@ -116,6 +116,9 @@ export class ReactionsService {
 
   // ICONS
   getIconFromReaction = (reactionType: Reaction, isSelected = false) => {
+    if (reactionType === null) {
+      return;
+    }
     const icons = REACTIONS.filter(reaction => reaction.name === reactionType)[0];
     return isSelected ? icons.iconFull : icons.iconEmpty;
   }
