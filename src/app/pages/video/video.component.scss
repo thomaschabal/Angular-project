@@ -19,4 +19,10 @@
   left: 12.5vw;
   height: 100vh;
   max-height: 75vh;
+
+  @include sm {
+    max-height: 70vh;
+    left: 10vw;
+    width: 80vw;
+  }
 }
