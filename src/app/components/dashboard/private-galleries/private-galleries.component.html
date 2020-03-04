@@ -6,8 +6,8 @@
       <img [src]="event.image" alt="Event" width=100%
            style="min-width: 100%; min-height: 100%"/>
     </a>
-    <h2><a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
-    <a [routerLink]="routes.pics + event.slug" [attr.aria-label]="event.name"><div class="private_background"></div></a>
+    <h2><a [routerLink]="routes.pics + '/' + event.slug" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
+    <a [routerLink]="routes.pics + '/' + event.slug" [attr.aria-label]="event.name"><div class="private_background"></div></a>
     <div id="private">{{ 'galeries.gallery.private' | translate }}</div>
   </article>
 </div>
@@ -21,10 +21,10 @@
   <article *ngFor="let movie of galeriesService.privateVideoEvents"
            class="thumb">
     <a [routerLink]="routes.videos + '/' + movie.slug" [attr.aria-label]="movie.name">
-      <img [src]="movie.image" alt="Event" width=100%
+      <img [src]="movie.image" alt="Movie" width=100%
            style="min-width: 100%; min-height: 100%"/>
     </a>
-    <h2><a [routerLink]="routes.videos + '/' + movie.slug" [attr.aria-label]="movie.name">{{ event.name }}</a></h2>
+    <h2><a [routerLink]="routes.videos + '/' + movie.slug" [attr.aria-label]="movie.name">{{ movie.name }}</a></h2>
     <a [routerLink]="routes.videos + '/' + movie.slug" [attr.aria-label]="movie.name"><div class="private_background"></div></a>
     <div id="private">{{ 'galeries.gallery.private' | translate }}</div>
   </article>

@@ -29,7 +29,7 @@ $SPACER-HEIGHT: 4em;
 	}
 }
 
-#main .thumb > .image {
+#main .thumb .image {
 	-webkit-tap-highlight-color: color(WHITE);
 	background-position: center;
 	background-repeat: no-repeat;
@@ -52,6 +52,8 @@ $SPACER-HEIGHT: 4em;
 	@include sm {
 		margin: units(2) 0;
 		width: calc(100vw - 2 * #{units(4)}) !important;
+		min-height: 15em !important;
+		height: calc(40vh - 4em) !important;
 	}
 	@include md {
 		margin: units(2);

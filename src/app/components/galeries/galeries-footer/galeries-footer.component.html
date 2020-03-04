@@ -1,7 +1,7 @@
 <!-- Header, displayed on the bottom -->
 <header id="header" id="event-panel">
   <h1>
-    <a [routerLink]="routes.galeries" [attr.aria-label]="nameEvent"><strong>{{ nameEvent }}</strong></a>
+    <a [routerLink]="getFooterTitleRedirection()" [attr.aria-label]="nameEvent"><strong>{{ nameEvent }}</strong></a>
   </h1>
   <nav (click)="changeStateFooter()">
     <ul>

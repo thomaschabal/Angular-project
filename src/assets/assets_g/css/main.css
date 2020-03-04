@@ -1291,7 +1291,7 @@ body {
 	position: fixed;
 	user-select: none;
 	width: 100%;
-	z-index: 10002;
+	z-index: 2;
 }
 
 body.is-preload #event-panel {
