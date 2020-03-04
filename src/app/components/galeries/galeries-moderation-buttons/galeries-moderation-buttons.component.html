@@ -1,4 +1,4 @@
-<div *ngIf="isAdmin" id="moderationBanner" (click)="displayModerationArea()">
+<div *ngIf="httpService.isAdmin" id="moderationBanner" (click)="displayModerationArea()">
   <img src="../../../assets/images/settings.svg" />
 </div>
 

@@ -5,6 +5,8 @@
   *ngIf="httpService.isAdmin"
   [selectedRoute]="videoService.selectedMovie"
   [moderationState]="moderationState"
+  [isVideoPrivate]="videoService.movieDetails.private"
+  isVideoGallery="true"
 ></app-galeries-moderation-buttons>
 
 <!-- Main -->

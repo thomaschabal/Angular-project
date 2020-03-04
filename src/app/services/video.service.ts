@@ -18,7 +18,7 @@ export class VideoService {
   selectedMovie: string;
   videoUrl: string;
   coverImageUrl: string;
-  movieDetails: FilmData = { name: '', description: '' };
+  movieDetails: FilmData = { name: '', description: '', private: true };
   movieCoverImage: string;
 
   constructor(private httpService: HttpService) {

@@ -7,6 +7,7 @@ export interface Film {
 export interface FilmData {
   name: string;
   description: string;
+  private: boolean;
 }
 
 export interface GetFilmographyResponse {

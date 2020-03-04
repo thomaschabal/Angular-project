@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { HttpService } from '../../../services/http.service';
@@ -11,8 +11,7 @@ import KEY_CODE from '../../../constants/KeyCode';
   templateUrl: './galeries-moderation-buttons.component.html',
   styleUrls: ['./galeries-moderation-buttons.component.scss']
 })
-export class GaleriesModerationButtonsComponent implements OnInit {
-  isAdmin: boolean;
+export class GaleriesModerationButtonsComponent implements OnInit, OnChanges {
   isPublic = false;
   @Output() moderating = new EventEmitter<boolean>();
   enModeration = false;
@@ -21,15 +20,24 @@ export class GaleriesModerationButtonsComponent implements OnInit {
   moderationVisibility = false;
   galleryDeletionModal = false;
   galleryDeletedModal = false;
+  @Input() isVideoGallery = false;
+  @Input() isVideoPrivate: boolean;
 
   constructor(private galeriesService: GaleriesService,
-              private httpService: HttpService,
+              public httpService: HttpService,
               private router: Router) {
   }
 
   ngOnInit() {
-    this.isPublic = this.galeriesService.isPublicOrPrivate(this.selectedRoute);
-    this.isAdmin = this.httpService.isAdmin;
+    this.isPublic = this.isGalleryPublic();
+  }
+
+  ngOnChanges() {
+    this.isPublic = this.isGalleryPublic();
+  }
+
+  isGalleryPublic() {
+    return (this.isVideoGallery) ? !this.isVideoPrivate : this.galeriesService.isPublicOrPrivate(this.selectedRoute);
   }
 
   // Return whether the administrator is moderating the gallery or not
