@@ -12,6 +12,7 @@ button {
 
   @include sm {
     font-size: font-size(SMALL);
+    min-height: units(4);
   }
 }
 button:hover {

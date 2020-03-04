@@ -76,7 +76,7 @@ export class ReactionsComponent implements OnInit, OnChanges {
           }
         );
     } else {
-      this.updateReaction.next(Reaction.NONE);
+      this.updateReaction.next(null);
       this.hasReaction = false;
       this.closeBanner();
       this.reactionsService.updateReaction(Reaction.NONE, this.slugPic)
