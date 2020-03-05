@@ -15,5 +15,6 @@
             [iconEmpty]="reaction.iconEmpty"
             (clickIcon)="onClickIcon(i)"
         ></app-reaction-icon>
+        <h4 *ngIf="allReactionsNotEmpty()">{{ allReactions[reaction.name] || '0' }}</h4>
     </div>
 </div>

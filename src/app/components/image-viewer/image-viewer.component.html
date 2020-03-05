@@ -33,6 +33,7 @@
           <app-reactions
                [slugPic]="slugPic"
                [ownReaction]="picsService.pics[indexPicture].own_reaction"
+               [allReactions]="picsService.pics[indexPicture].all_reactions"
                (updateReaction)="updateReaction($event)"
           ></app-reactions>
      </div>

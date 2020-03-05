@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, HostListener, ElementRe
 
 import { ReactionsService } from 'src/app/services/reactions.service';
 import { REACTIONS } from 'src/app/constants/Reactions';
-import { Reaction } from 'src/app/types/reactions.types';
+import { Reaction, AllReactions } from 'src/app/types/reactions.types';
 
 const EMPTY_REACTIONS = Array(REACTIONS.length).fill(false);
 const REACTION_TYPES = REACTIONS.map(reaction => reaction.name);
@@ -21,6 +21,7 @@ export class ReactionsComponent implements OnInit, OnChanges {
   selected = EMPTY_REACTIONS.slice(0);
   @Input() slugPic: string;
   @Input() ownReaction: string;
+  @Input() allReactions: AllReactions;
   @Output() updateReaction = new EventEmitter<{}>();
   hasReaction = this.ownReaction !== undefined && this.ownReaction !== 'NONE';
   currentReaction = (this.hasReaction) ? REACTIONS.filter(reaction => reaction.name === this.ownReaction)[0] : REACTIONS[0];
@@ -47,6 +48,10 @@ export class ReactionsComponent implements OnInit, OnChanges {
 
   closeBanner() {
     this.isBannerOpen = false;
+  }
+
+  allReactionsNotEmpty() {
+    return Object.keys(this.allReactions).length > 0;
   }
 
   @HostListener('document:click', ['$event'])

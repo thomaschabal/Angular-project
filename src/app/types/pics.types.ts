@@ -1,3 +1,5 @@
+import { AllReactions } from './reactions.types';
+
 export interface GetFullImageResponse {
     base64: string;
 }
@@ -19,6 +21,7 @@ export interface Pic {
     full_dimension?: ImageDimension;
     base64?: string;
     own_reaction?: string;
+    all_reactions: AllReactions;
 }
 
 export interface GetImagesResponse {

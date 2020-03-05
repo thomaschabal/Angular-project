@@ -58,3 +58,9 @@ $SIZE-ICONS-MOBILE: units(4);
         width: $SIZE-ICONS-MOBILE;
     }
 }
+
+h4 {
+    @include font-size(LARGE);
+    font-weight: bold;
+    text-align: center;
+}
