@@ -6,6 +6,8 @@ import API from './Api';
 import { environment } from 'src/environments/environment';
 import { Film, FilmData, GetFilmographyResponse, GetVideoCoverImageResponse } from '../types/video.types';
 
+const EMPTY_MOVIE_DETAILS = { name: '', description: '', private: true, has_cover_image: false, has_video: false };
+
 @Injectable()
 export class VideoService {
   allFilmography: Film[];
@@ -18,7 +20,8 @@ export class VideoService {
   selectedMovie: string;
   videoUrl: string;
   coverImageUrl: string;
-  movieDetails: FilmData = { name: '', description: '', private: true };
+  coverImageThumbUrl: string;
+  movieDetails: FilmData = EMPTY_MOVIE_DETAILS;
   movieCoverImage: string;
 
   constructor(private httpService: HttpService) {
@@ -34,6 +37,7 @@ export class VideoService {
     this.selectedMovie = gallerySlug;
     this.videoUrl = environment.apiUrl + API.getVideo + gallerySlug;
     this.coverImageUrl = environment.apiUrl + API.getVideoCoverImage + gallerySlug;
+    this.coverImageThumbUrl = environment.apiUrl + API.getVideoCoverImageThumb + gallerySlug;
   }
 
   getFilmography(page: number) {

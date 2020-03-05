@@ -8,6 +8,8 @@ export interface FilmData {
   name: string;
   description: string;
   private: boolean;
+  has_cover_image: boolean;
+  has_video: boolean;
 }
 
 export interface GetFilmographyResponse {

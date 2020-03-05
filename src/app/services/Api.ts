@@ -47,4 +47,5 @@ export default {
     getVideo: '/get-video/',
     getVideoData: '/get-video-data',
     getVideoCoverImage: '/get-video-cover-image/',
+    getVideoCoverImageThumb: '/get-video-cover-image-thumb/',
 };

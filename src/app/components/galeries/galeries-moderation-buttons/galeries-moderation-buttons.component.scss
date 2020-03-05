@@ -81,3 +81,9 @@ p {
     font-size: font-size(MEDIUM);
   }
 }
+
+$MARGIN-COVER-IMAGE-THUMB: units(4);
+#cover-image-thumb {
+  margin: 0 $MARGIN-COVER-IMAGE-THUMB;
+  width: calc(100% - 2 * #{$MARGIN-COVER-IMAGE-THUMB});
+}

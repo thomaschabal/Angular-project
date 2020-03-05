@@ -110,6 +110,10 @@
   "moderation.acceptAllSelectedPics": "Accepter les photos sélectionnées",
   "moderation.deleteAllSelectedPics": "Supprimer les photos sélectionnées",
   "moderation.galleryIsPrivate": "Cette galerie est privée. Seuls les administrateurs peuvent y accéder.",
+  "moderation.video.hasCoverImage": "Il n'y a pas d'image de couverture pour cette vidéo.",
+  "moderation.video.hasVideo": "Il n'y a pas de vidéo dans cette galerie.",
+  "moderation.video.uploadClosed": "La galerie est pleine. L'upload n'est plus possible.",
+  "moderation.video.coverImage": "Image de couverture :",
 
   "nav.title.long": "Le Ponthé - Club audiovisuel des Ponts",
   "nav.title.short": "Le Ponthé",

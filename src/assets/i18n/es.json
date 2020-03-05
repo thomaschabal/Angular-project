@@ -114,7 +114,11 @@
     "moderation.acceptAllSelectedPics": "Aceptar las fotos seleccionadas",
     "moderation.deleteAllSelectedPics": "Eliminar las fotos seleccionadas",
     "moderation.galleryIsPrivate": "Esta galería es privada. Sólo los administradores pueden acceder a ella.",
-  
+    "moderation.video.hasCoverImage": "No hay imagen de portada para este video.",
+    "moderation.video.hasVideo": "No hay ningún video en esta galería.",
+    "moderation.video.uploadClosed": "La galería está llena. La subida está cerrada.",
+    "moderation.video.coverImage": "Imagen de la portada :",
+
     "nav.title.long": "Le Ponthé - Club audiovisual de los Ponts",
     "nav.title.short": "Le Ponthé",
     "nav.title_auth.auth": "Conexión",

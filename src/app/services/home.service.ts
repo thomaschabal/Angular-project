@@ -53,6 +53,16 @@ export class HomeService {
     }
   }
 
+  setLovePicsInPicsService(lovePics: FavoritePic[]) {
+    this.picsService.rawPics = lovePics.map(pic => pic.image);
+    this.picsService.numberOfPics = lovePics.length;
+    if (this.picsService.currentGallery === '') {
+      this.picsService.pics = this.lovePics;
+      this.picsService.rawPics = this.lovePics.map(pic => pic.image);
+      this.picsService.numberOfPics = this.lovePics.length;
+    }
+  }
+
   getLovePics() {
     this.reactionsService.getRandomUserReactions()
         .then(
@@ -60,13 +70,7 @@ export class HomeService {
             const { reactions } = res;
             this.lovePics = reactions;
             this.areLovePicsLoaded = true;
-            this.picsService.rawPics = reactions.map(pic => pic.image);
-            this.picsService.numberOfPics = reactions.length;
-            if (this.picsService.currentGallery === '') {
-              this.picsService.pics = this.lovePics;
-              this.picsService.rawPics = this.lovePics.map(pic => pic.image);
-              this.picsService.numberOfPics = this.lovePics.length;
-            }
+            this.setLovePicsInPicsService(reactions);
         },
         (error) => { console.error(error); }
     );
@@ -75,6 +79,8 @@ export class HomeService {
   loadLovePics() {
     if (!this.areLovePicsLoaded) {
       this.getLovePics();
+    } else {
+      this.setLovePicsInPicsService(this.lovePics);
     }
   }
 

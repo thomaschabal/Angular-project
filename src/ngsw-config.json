@@ -50,9 +50,6 @@
   ],
   "navigationUrls": [
     "/**",
-    "/galeries/**",
-    "/galeries/pics/**",
-    "/galeries/movies/**",
     "!/api/**",
     "!/v1/**",
     "!/phpmyadmin/**"
