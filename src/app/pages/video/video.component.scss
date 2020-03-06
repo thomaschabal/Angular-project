@@ -11,18 +11,52 @@
   background-color: color(HOME_GREY);
 }
 
+$CONTENT-WIDTH-LARGE: 75vw;
+$CONTENT-LEFT-LARGE: calc((100vw - #{$CONTENT-WIDTH-LARGE}) / 2);
+$CONTENT-MAX-HEIGHT-LARGE: 75vh;
+$CONTENT-TOP-LARGE: 10vh;
+
+$CONTENT-TOP-MEDIUM: 8vh;
+$CONTENT-WIDTH-MEDIUM: 80vw;
+$CONTENT-LEFT-MEDIUM: calc((100vw - #{$CONTENT-WIDTH-MEDIUM}) / 2);
+$CONTENT-MAX-HEIGHT-MEDIUM: 75vh;  
+
+$CONTENT-TOP-SMALL: 12vh;
+$CONTENT-WIDTH-SMALL: 80vw;
+$CONTENT-LEFT-SMALL: calc((100vw - #{$CONTENT-WIDTH-SMALL}) / 2);
+$CONTENT-MAX-HEIGHT-SMALL: 68vh;  
+
 #video {
   position: absolute;
-  width: 75vw;
+  width: $CONTENT-WIDTH-LARGE;
   margin: auto;
-  top: 12vh;
-  left: 12.5vw;
+  top: $CONTENT-TOP-LARGE;
+  left: $CONTENT-LEFT-LARGE;
   height: 100vh;
-  max-height: 75vh;
+  max-height: $CONTENT-MAX-HEIGHT-LARGE;
 
   @include sm {
-    max-height: 70vh;
-    left: 10vw;
-    width: 80vw;
+    max-height: $CONTENT-MAX-HEIGHT-SMALL;
+    left: $CONTENT-LEFT-SMALL;
+    width: $CONTENT-WIDTH-SMALL;
+  }
+  @include md {
+    top: $CONTENT-TOP-MEDIUM;
+    max-height: $CONTENT-MAX-HEIGHT-MEDIUM;
+  }
+}
+
+#reactions-videos {
+  position: absolute;
+  left: $CONTENT-LEFT-LARGE;
+  width: $CONTENT-WIDTH-LARGE;
+  top: calc(#{$CONTENT-TOP-LARGE} + #{$CONTENT-MAX-HEIGHT-LARGE} + 1vh);
+  text-align: center;
+
+  @include sm {
+    top: calc(#{$CONTENT-TOP-SMALL} + #{$CONTENT-MAX-HEIGHT-SMALL} + 1vh);;
+  }
+  @include md {
+    top: calc(#{$CONTENT-TOP-MEDIUM} + #{$CONTENT-MAX-HEIGHT-MEDIUM} + 1vh);;
   }
 }

@@ -12,7 +12,15 @@
 <!-- Main -->
 <!-- Film -->
 <div id="main">
-  <app-video-viewer id="video" [src]="videoService.videoUrl" [poster]="videoService.coverImageUrl"></app-video-viewer>
+  <app-video-viewer
+    id="video"
+    [src]="videoService.videoUrl"
+    [poster]="videoService.coverImageUrl"
+  ></app-video-viewer>
+
+  <app-reactions-videos
+    id="reactions-videos"
+  ></app-reactions-videos>
 </div>
 
 <!-- Header and Footer, revealed when clicking on "A propos de l'album" -->

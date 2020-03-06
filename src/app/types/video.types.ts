@@ -1,3 +1,5 @@
+import { AllReactions, Reaction } from './reactions.types';
+
 export interface Film {
   name: string;
   slug: string;
@@ -10,6 +12,9 @@ export interface FilmData {
   private: boolean;
   has_cover_image: boolean;
   has_video: boolean;
+  video_slug: string;
+  own_reaction: Reaction;
+  all_reactions: AllReactions;
 }
 
 export interface GetFilmographyResponse {

@@ -6,7 +6,16 @@ import API from './Api';
 import { environment } from 'src/environments/environment';
 import { Film, FilmData, GetFilmographyResponse, GetVideoCoverImageResponse } from '../types/video.types';
 
-const EMPTY_MOVIE_DETAILS = { name: '', description: '', private: true, has_cover_image: false, has_video: false };
+const EMPTY_MOVIE_DETAILS = {
+  name: '',
+  description: '',
+  private: true,
+  has_cover_image: false,
+  has_video: false,
+  video_slug: '',
+  own_reaction: null,
+  all_reactions: {}
+};
 
 @Injectable()
 export class VideoService {
