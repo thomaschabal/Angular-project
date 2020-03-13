@@ -16,6 +16,7 @@ export const PATH_MEMBERS_SVG = IMAGES_FOLDER + 'svg_members.svg';
 export const PATH_MATOS_SVG = IMAGES_FOLDER + 'svg_matos.svg';
 export const PATH_LOGOUT_SVG = IMAGES_FOLDER + 'svg_logout.svg';
 export const PATH_NOT_FOUND_IMAGE = IMAGES_FOLDER + 'logo.svg';
+export const PATH_GEAR = IMAGES_FOLDER + 'gear.svg';
 
 export const NUMBER_PICS_BY_PONTHE_TEAM = {
   '015': 1,

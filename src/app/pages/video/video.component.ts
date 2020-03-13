@@ -1,8 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { state, trigger, animate, style, transition } from '@angular/animations';
-import { Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
 
 import { HttpService } from '../../services/http.service';
 import { VideoService } from 'src/app/services/video.service';

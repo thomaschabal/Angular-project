@@ -4,7 +4,7 @@ import { DEFAULT_PAGE_SIZE } from './galeries.service';
 import { HttpService } from './http.service';
 import API from './Api';
 import { environment } from 'src/environments/environment';
-import { Film, FilmData, GetFilmographyResponse, GetVideoCoverImageResponse } from '../types/video.types';
+import { Film, FilmData, GetFilmographyResponse, GetVideoCoverImageResponse, VideoSource } from '../types/video.types';
 
 const EMPTY_MOVIE_DETAILS = {
   name: '',
@@ -16,6 +16,7 @@ const EMPTY_MOVIE_DETAILS = {
   own_reaction: null,
   all_reactions: {}
 };
+export const RESOLUTIONS = ['1080', '720', '480', '360'];
 
 @Injectable()
 export class VideoService {
@@ -27,7 +28,7 @@ export class VideoService {
   isLoadingMoreFilmography = false;
 
   selectedMovie: string;
-  videoUrl: string;
+  videoUrls: VideoSource[];
   coverImageUrl: string;
   coverImageThumbUrl: string;
   movieDetails: FilmData = EMPTY_MOVIE_DETAILS;
@@ -44,7 +45,10 @@ export class VideoService {
 
   setSelectedMovie(gallerySlug: string) {
     this.selectedMovie = gallerySlug;
-    this.videoUrl = environment.apiUrl + API.getVideo + gallerySlug;
+    this.videoUrls = RESOLUTIONS.map((resolution: string) => ({
+      url: environment.apiUrl + API.getVideo + resolution + '/' + gallerySlug,
+      resolution
+    }));
     this.coverImageUrl = environment.apiUrl + API.getVideoCoverImage + gallerySlug;
     this.coverImageThumbUrl = environment.apiUrl + API.getVideoCoverImageThumb + gallerySlug;
   }

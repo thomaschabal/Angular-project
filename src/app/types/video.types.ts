@@ -25,3 +25,8 @@ export interface GetFilmographyResponse {
 export interface GetVideoCoverImageResponse {
   image: string;
 }
+
+export interface VideoSource {
+  url: string;
+  resolution: string;
+}
