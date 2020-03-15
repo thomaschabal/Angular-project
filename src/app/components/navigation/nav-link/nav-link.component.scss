@@ -72,6 +72,11 @@ img {
   margin-right: units(2);
   height: 100%;
   width: 23vw;
+
+  @include sm-landscape {
+    width: 16vw;
+    margin-right: units(3);
+  }
 }
 
 .mobile-a h3 {

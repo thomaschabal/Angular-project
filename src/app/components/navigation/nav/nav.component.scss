@@ -100,8 +100,8 @@
   }
 }
 
-@media screen and (max-width: 736px) {
-  #header h1 {
+#header h1 {
+  @include sm {
     text-align: center;
     position: absolute;
     left: 0;
@@ -110,24 +110,6 @@
     line-height: 2.5em;
     width: 100vw;
   }
-
-  #header h1 a {
-    font-size: 1em;
-    width: 100vw;
-    left: 0;
-    height: 2em;
-  }
-
-  #header a {
-    top: 0;
-    height: 3.5em;
-    width: 4em;
-    position: absolute;
-    z-index: 2;
-  }
-}
-
-#header h1 {
   @include sm-landscape {
     top: -0.35em;
     height: 2em;
@@ -135,9 +117,24 @@
 }
 
 #header h1 a {
+  @include sm {
+    font-size: 1em;
+    width: 100vw;
+    left: 0;
+    height: 2em;
+  }
   @include sm-landscape {
     font-size: 0.85em;
     height: 2.5em;
+  }
+}
+#header a {
+  @include sm {
+    top: 0;
+    height: 3.5em;
+    width: 4em;
+    position: absolute;
+    z-index: 2;
   }
 }
 
@@ -156,8 +153,8 @@
     color: color(DARK_DARK_GREY);
     text-shadow: none;
     overflow: auto;
-	z-index: 5;
-	transition: background 0.3s ease-in-out;
+    z-index: 5;
+    transition: background 0.3s ease-in-out;
   }
 }
 
@@ -166,6 +163,12 @@
     padding-left: units(3.5);
     padding-right: units(3.5);
     padding-top: units(12);
+  }
+  @include sm-landscape {
+    padding-left: units(11);
+    padding-right: units(11);
+    padding-top: units(7);
+    margin-bottom: 0.5em;
   }
 }
 
