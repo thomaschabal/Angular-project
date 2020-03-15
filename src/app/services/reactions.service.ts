@@ -103,9 +103,9 @@ export class ReactionsService {
         (res: GetAllUserReactionsResponse) => {
           const { reactions } = res;
           this.crushesPics = this.crushesPics.concat(reactions);
-          this.isLoadingFirstPics = false;
           this.page++;
           this.isLoadingMorePics = false;
+          this.picsService.pics = this.crushesPics;
         },
         error => {
           console.error(error);
