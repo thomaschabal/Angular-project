@@ -106,6 +106,9 @@ export class ReactionsService {
           this.page++;
           this.isLoadingMorePics = false;
           this.picsService.pics = this.crushesPics;
+          for (const reaction of reactions) {
+            this.picsService.rawPics[(this.page - 1) * DEFAULT_PAGE_SIZE + reactions.indexOf(reaction)] = reaction.image;
+          }
         },
         error => {
           console.error(error);
