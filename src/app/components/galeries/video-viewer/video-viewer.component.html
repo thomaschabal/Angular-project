@@ -6,13 +6,29 @@
   [src]="selectedSourceUrl"
 ></video>
 
-<div id="resolution-selector" [class]="optionsVisible ? 'gear-hovered' : 'gear-none'" (mouseenter)="hoverOptions(true)" (mouseleave)="hoverOptions(false)">
-  <img [src]="pathGear" alt="Resolution" id="resolution-gear" (click)="setOptionsVisible()"/>
+<div
+  id="resolution-selector"
+  [class]="optionsVisible ? 'gear-hovered' : 'gear-none'"
+  (mouseenter)="hoverOptions(true)"
+  (mouseleave)="hoverOptions(false)"
+>
+  <img
+    [src]="pathGear"
+    alt="Resolution"
+    id="resolution-gear"
+    (click)="setOptionsVisible()"
+  />
   <div
     *ngFor="let source of srcs"
     [innerHTML]="source.resolution + 'p'"
     (click)="selectResolution(source.resolution)"
-    [class]="optionsVisible ? 'resolution-option-visible' : 'resolution-option-hidden'"
-    [id]="source.resolution === selectedSourceResolution ? 'selected-resolution' : 'none'"
+    [class]="
+      optionsVisible ? 'resolution-option-visible' : 'resolution-option-hidden'
+    "
+    [id]="
+      source.resolution === selectedSourceResolution
+        ? 'selected-resolution'
+        : 'none'
+    "
   ></div>
 </div>

@@ -40,7 +40,9 @@ export class VideoViewerComponent implements OnInit {
   }
 
   hoverOptions(value: boolean) {
-    this.optionsVisible = value;
+    if (this.breakpointsService.isDesktop) {
+      this.optionsVisible = value;
+    }
   }
 
 }
