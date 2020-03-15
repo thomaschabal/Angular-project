@@ -103,12 +103,12 @@ export class ReactionsService {
         (res: GetAllUserReactionsResponse) => {
           const { reactions } = res;
           this.crushesPics = this.crushesPics.concat(reactions);
-          this.page++;
           this.isLoadingMorePics = false;
           this.picsService.pics = this.crushesPics;
           for (const reaction of reactions) {
             this.picsService.rawPics[(this.page - 1) * DEFAULT_PAGE_SIZE + reactions.indexOf(reaction)] = reaction.image;
           }
+          this.page++;
         },
         error => {
           console.error(error);
