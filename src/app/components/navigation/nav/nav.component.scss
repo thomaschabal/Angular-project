@@ -23,6 +23,10 @@
     height: 3em;
     line-height: 1.5em;
   }
+
+  @include sm-landscape {
+    height: 2em;
+  }
 }
 
 #header a #logo {
@@ -36,6 +40,11 @@
     left: 0.5em;
     width: 3.25em;
     top: 0.4em;
+  }
+
+  @include sm-landscape {
+    width: 2.25em;
+    top: 0.3em;
   }
 }
 
@@ -118,6 +127,20 @@
   }
 }
 
+#header h1 {
+  @include sm-landscape {
+    top: -0.35em;
+    height: 2em;
+  }
+}
+
+#header h1 a {
+  @include sm-landscape {
+    font-size: 0.85em;
+    height: 2.5em;
+  }
+}
+
 #header-mobile {
   @include sm {
     font-family: "Roboto", "sans-serif";
@@ -161,6 +184,9 @@
     position: fixed;
     top: units(1.75);
     right: units(1.5);
+  }
+  @include sm-landscape {
+    top: 0;
   }
 }
 

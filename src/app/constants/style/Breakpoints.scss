@@ -19,6 +19,12 @@ $above-medium: (map-get($breakpoints, medium) + 1) + 'px';
     }
 }
 
+@mixin sm-landscape {
+    @media screen and (max-width: #{$small}) and (orientation:landscape) {
+        @content;
+    }
+}
+
 @mixin md {
     @media screen and (min-width: #{$above-small}) and (max-width: #{$medium}) {
         @content;

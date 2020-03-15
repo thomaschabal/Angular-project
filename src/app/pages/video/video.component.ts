@@ -38,6 +38,7 @@ export class VideoComponent implements OnInit {
     this.videoService.setSelectedMovie(videoGallerySlug);
 
     this.videoService.getVideoData();
+    this.videoService.getMovie();
 
     // MOCK VALUES, FOR DEVELOPMENT
     this.displaySpinner = false;
