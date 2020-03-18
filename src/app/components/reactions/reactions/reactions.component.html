@@ -1,0 +1,20 @@
+<div *ngIf="!isBannerOpen" class="small-reaction" id="single-icon" (mouseenter)="openBanner()">
+    <app-reaction-icon
+        [isSelected]="hasReaction"
+        [type]="currentReaction.name"
+        [iconFull]="currentReaction.iconFull"
+        [iconEmpty]="currentReaction.iconEmpty"
+    ></app-reaction-icon>
+</div>
+<div *ngIf="isBannerOpen" id="reactions" (mouseleave)="closeBanner()">
+    <div *ngFor="let reaction of reactions; let i = index" class="reaction-icon">
+        <app-reaction-icon
+            [isSelected]="ownReaction === reaction.name"
+            [type]="reaction.name"
+            [iconFull]="reaction.iconFull"
+            [iconEmpty]="reaction.iconEmpty"
+            (clickIcon)="onClickIcon(i)"
+        ></app-reaction-icon>
+        <h4 *ngIf="allReactionsNotEmpty()">{{ allReactions[reaction.name] || '0' }}</h4>
+    </div>
+</div>

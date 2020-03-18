@@ -1,9 +1,10 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { state, trigger, animate, style, transition, keyframes } from '@angular/animations';
+import { state, trigger, animate, style, transition } from '@angular/animations';
 
 import { GaleriesService } from '../../services/galeries.service';
 import { routesAppFromRoot } from '../../Routes';
 import { BREAKPOINTS } from 'src/app/constants/Breakpoints';
+import { pontheSpinnerAnimation } from 'src/app/constants/Animations';
 
 @Component({
   selector: 'app-galeries',
@@ -16,20 +17,7 @@ import { BREAKPOINTS } from 'src/app/constants/Breakpoints';
       state('hidden', style({opacity: 0})),
       transition(':enter', [ animate('200ms') ] ),
     ]),
-    trigger('spinnerTrigger', [
-      transition(':enter', [
-        animate(200, keyframes([
-          style({ offset: 0, opacity: 0 }),
-          style({ offset: 1, opacity: 1 })
-        ]))
-      ]),
-      transition(':leave', [
-        animate(200, keyframes([
-          style({ offset: 0, opacity: 1 }),
-          style({ offset: 1, opacity: 0 })
-        ]))
-      ]),
-    ])
+    pontheSpinnerAnimation
   ]
 })
 

@@ -3,6 +3,7 @@ import { Router, RouterOutlet } from '@angular/router';
 import { animate, style, transition, trigger, query } from '@angular/animations';
 
 import { AuthService } from './services/auth.service';
+import { BreakpointsService } from './services/breakpoints.service';
 import { routesAppFromRoot } from './Routes';
 import { environment } from '../environments/environment';
 
@@ -27,7 +28,9 @@ const SHOW_EASTER_EGG = {
 };
 const SHORTCUTS = {
   home: [routesAppFromRoot.home],
-  pics: [routesAppFromRoot.galeries],
+  pics: [routesAppFromRoot.pics],
+  movies: [routesAppFromRoot.videos],
+  crush: [routesAppFromRoot.crush],
   dashboard: [routesAppFromRoot.dashboard],
   membres: [routesAppFromRoot.members],
   members: [routesAppFromRoot.members],
@@ -63,12 +66,19 @@ export class AppComponent {
   visible = false;
 
   constructor(private authService: AuthService,
+              private breakpointsService: BreakpointsService,
               private router: Router) {
   }
 
   // Function for page transitions
   prepareRoute(outlet: RouterOutlet) {
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData.animation;
+  }
+
+  // Breakpoints
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.breakpointsService.onResize(event);
   }
 
   showEasterEgg(phrase: string) {

@@ -30,6 +30,11 @@ export default [
         descriptif: 'Trépied fixe de hauteur raisonnable, avec un support appareil à ne SURTOUT PAS PERDRE.'
     },
     {
+        name: 'Flycam 3000',
+        img: 'assets/images/matos/flycam_3000.png',
+        descriptif: 'Stabilisateur pour appareil photo ou caméra, avec une attache à ne pas perdre.'
+    },
+    {
         name: 'Carte SD',
         img: 'assets/images/matos/sd_64go.png',
         descriptif: 'Carte SD, indispensable pour les appareils du club.'

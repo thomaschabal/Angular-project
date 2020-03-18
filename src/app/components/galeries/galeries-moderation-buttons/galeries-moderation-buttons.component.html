@@ -1,4 +1,4 @@
-<div *ngIf="isAdmin" id="moderationBanner" (click)="displayModerationArea()">
+<div *ngIf="httpService.isAdmin" id="moderationBanner" (click)="displayModerationArea()">
   <img src="../../../assets/images/settings.svg" />
 </div>
 
@@ -36,10 +36,17 @@
             (click)="validateDeletionPics()"
             [attr.aria-label]="'moderation.deleteAllSelectedPics' | translate">
       {{ 'moderation.deleteAllSelectedPics' | translate }}
-    </button>      
+    </button>
+    <p *ngIf="isVideoGallery && !videoService.movieDetails.has_cover_image">{{ 'moderation.video.hasCoverImage' | translate }}</p>
+    <p *ngIf="isVideoGallery && !videoService.movieDetails.has_video">{{ 'moderation.video.hasVideo' | translate }}</p>
+    <p *ngIf="isVideoGallery && videoService.movieDetails.has_cover_image">{{ 'moderation.video.coverImage' | translate }}</p>
+    <img [src]="coverImageThumbSrc()" id="cover-image-thumb" />
   </div>
 
-  <app-upload id="rightColumn"></app-upload>
+  <div id="rightColumn">
+    <app-upload *ngIf="!isGalleryFull()"></app-upload>
+    <p *ngIf="isGalleryFull()">{{ 'moderation.video.uploadClosed' | translate }}</p>
+  </div>
 </app-modal>
 
 <app-modal

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { state, trigger, style, transition } from '@angular/animations';
 
-import { routesAppFromRoot } from '../../../Routes';
+import { routesAppFromRoot, photosSubpath, videosSubpath } from '../../../Routes';
 import { LINKS } from '../../../Constants';
 
 @Component({
@@ -21,7 +21,6 @@ export class GaleriesFooterComponent implements OnInit {
   @Input() nameEvent: string;
   @Input() resumeEvent: string;
   footerState = 'hidden';
-  routes = routesAppFromRoot;
 
   constructor() {
   }
@@ -31,5 +30,16 @@ export class GaleriesFooterComponent implements OnInit {
 
   changeStateFooter() {
     this.footerState = (this.footerState === 'hidden' ? 'visible' : 'hidden');
+  }
+
+  getFooterTitleRedirection() {
+    const currentUrl = window.location.pathname.split('/');
+    const currentGalleryType = currentUrl[currentUrl.length - 2];
+    if (currentGalleryType === photosSubpath) {
+      return routesAppFromRoot.pics;
+    } else if (currentGalleryType === videosSubpath) {
+      return routesAppFromRoot.videos;
+    }
+    return routesAppFromRoot.galeries;
   }
 }

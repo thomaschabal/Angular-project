@@ -15,10 +15,14 @@
     "cgu.backToRegister": "Volver a la creación de cuenta",
     "cgu.title": "Condiciones generales de uso del sitio <em>ponthe.enpc.org</em>",
   
+    "crush.noCrush.title": "Aquí encontrarás tus fotos favoritas. Hasta ahora, no te ha gustado ninguno de ellos. Para verlas aparecer aquí, vaya a las galerías y añada reacciones a las fotos. :)",
+
     "dashboard.header.title": "Área de administración",
     "dashboard.form.title": "Creación de una galería",
     "dashboard.form.name": "Nombre de la galería",
     "dashboard.form.description": "Descripción de la galería",
+    "dashboard.form.year": "Año del evento",
+    "dashboard.form.type": "Tipo de galería",
     "dashboard.form.submitButton": "Validar la creación",
     "dashboard.createdGallery": "Galería creada",
     "dashboard.failureCreationGallery": "Creación fallida",
@@ -33,11 +37,14 @@
     "dashboard.tutos.title": "Tutorials ponthe.enpc.org",
     "dashboard.usefulLinks.title": "Enlaces útiles para admins",
     "dashboard.privateGalleries.title": "Galerías privadas",
-    "dashboard.privateGalleries.none": "No hay galerías privadas en este momento.",
-  
+    "dashboard.privatePhotoGalleries.none": "No hay ninguna galería de photo privada por el momento.",
+    "dashboard.privateVideoGalleries.none": "No hay ninguna galería de video privada por el momento.",
+    
     "event.deleteGallery.galleryWillBeDeleted": "Esta galería está a punto de ser eliminada. Haz clic por segunda vez en \"Eliminar galería\" para validar la acción.",
     "event.deleteGallery.galleryWasDeleted": "La galería ha sido eliminada",
   
+    "filmography.none": "No hay ningún vídeo público que pueda ver en este momento. Si desea agregar algo para su promoción, contacte a los miembros del Ponthé.",
+
     "footer.copyright": "Ponthé 020 - Club audiovisual de la École des Ponts",
   
     "galeries.none":
@@ -57,6 +64,7 @@
     "home.noLatestGalleries": "No tienes acceso a ninguna galería por el momento porque no hay ninguna para tu promoción. Puedes contactar con el Ponthé para crear una y añadir tus propias fotos.",
     "home.noDescription": "No hay descripción por el momento.",
     "home.favoritePics.title": "Tus fotos <em>favoritas</em> <3 <3!",
+    "home.favoritePics.none": "Aún no has puesto ninguna foto favorita. Para ver las fotos que aparecen aquí, añade reacciones a las fotos de las galerías.",
     "home.contact.title": "Contacte con el Ponthé",
     "home.contact.subtitle": "Envía un dulce mensaje a los miembros del Ponthé que te hacen estremecer con cada nueva foto......",
     "home.contact.placeholder": "Tu dulce mensaje.....",
@@ -106,13 +114,20 @@
     "moderation.acceptAllSelectedPics": "Aceptar las fotos seleccionadas",
     "moderation.deleteAllSelectedPics": "Eliminar las fotos seleccionadas",
     "moderation.galleryIsPrivate": "Esta galería es privada. Sólo los administradores pueden acceder a ella.",
-  
+    "moderation.video.hasCoverImage": "No hay imagen de portada para este video.",
+    "moderation.video.hasVideo": "No hay ningún video en esta galería.",
+    "moderation.video.uploadClosed": "La galería está llena. La subida está cerrada.",
+    "moderation.video.coverImage": "Imagen de la portada :",
+
     "nav.title.long": "Le Ponthé - Club audiovisual de los Ponts",
     "nav.title.short": "Le Ponthé",
     "nav.title_auth.auth": "Conexión",
     "nav.title_auth.reset": "¿Contraseña olvidada?",
     "nav.title_auth.register": "Registro",
     "nav.galeries": "Galerías",
+    "nav.pics": "Fotos",
+    "nav.movies": "Películas",
+    "nav.crush": "Crushes",
     "nav.dashboard": "Tablero de control",
     "nav.members": "Miembors",
     "nav.matos": "Material",
@@ -148,6 +163,9 @@
 
     "upload.filesUploaded": "archivos cargados",
     "upload.remainingFiles": "Archivos aún por salvar",
+
+    "vestibule.movies": "Películas",
+    "vestibule.pics": "Fotos",
 
     "close": "Cerrar"
   }

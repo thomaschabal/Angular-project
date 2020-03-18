@@ -1,30 +1,35 @@
 <div class="spacer"></div>
 
 <!-- Moderation buttons -->
-<!-- <app-galeries-moderation-buttons *ngIf="isAdmin" [selectedRoute]="selectedRoute" [moderationState]="moderationState"></app-galeries-moderation-buttons> -->
-<!-- Upload for random users -->
-<!-- <app-upload *ngIf="!isAdmin"></app-upload> -->
+<app-galeries-moderation-buttons
+  *ngIf="httpService.isAdmin"
+  [selectedRoute]="videoService.selectedMovie"
+  [moderationState]="moderationState"
+  [isVideoPrivate]="videoService.movieDetails.private"
+  isVideoGallery="true"
+></app-galeries-moderation-buttons>
 
 <!-- Main -->
-  <!-- Film -->
-  <!-- <div id="main" -->
-       <!-- [ngStyle]="{'background-image': 'url(' + filmBackground + ')', 'background-size': 'cover'}"> -->
-    <!-- <h2>{{ name }}</h2> -->
-    <!-- <plyr style="display: block; width: 640px;" -->
-          <!-- plyrTitle="Video 1" -->
-          <!-- [plyrSources]="videoSources" -->
-          <!-- (plyrInit)="player = $event" -->
-          <!-- (plyrPlay)="player($event)"> -->
-    <!-- </plyr> -->
- <!-- <div plyr style="width: 640px;" plyrTitle="Video 1" [plyrSources]="videoSources" (plyrInit)="player = $event" (plyrPlay)="player($event)"></div> -->
-    <!-- <video src="assets/images/video-auth.mp4" controls poster="assets/images/font1.jpg"></video> -->
-    <!-- <div class="triangle_top_left"></div> -->
-    <!-- <div class="triangle_bottom_right"></div> -->
-    <!-- <div class="triangle_bottom_right_wider"></div> -->
-    <!-- <div class="triangle_bottom_left"></div> -->
-  <!-- </div> -->
+<!-- Film -->
+<div id="main">
+  <app-video-viewer
+    id="video"
+    [srcs]="videoService.videoUrls"
+    [poster]="videoService.coverImageUrl"
+  ></app-video-viewer>
+
+  <app-reactions-videos
+    id="reactions-videos"
+  ></app-reactions-videos>
+</div>
 
 <!-- Header and Footer, revealed when clicking on "A propos de l'album" -->
-<!-- <app-galeries-footer [nameEvent]="name" [resumeEvent]="resume"></app-galeries-footer> -->
+<app-galeries-footer
+  [nameEvent]="videoService.movieDetails.name"
+  [resumeEvent]="videoService.movieDetails.description"
+></app-galeries-footer>
 
-<!-- <app-loading-spinner *ngIf="displaySpinner" [@spinnerTrigger]="stateSpinner"></app-loading-spinner> -->
+<app-loading-spinner
+  *ngIf="displaySpinner"
+  [@spinnerTrigger]="stateSpinner"
+></app-loading-spinner>

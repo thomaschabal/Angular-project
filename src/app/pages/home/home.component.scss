@@ -9,7 +9,7 @@ $GALLERY-PICS-MARGIN: units(1);
 		margin-top : 3em;
 		height : calc(100vh - 3em);
 		background: $INTRO-IMAGE;
-		background-size: 256px 256px, cover;
+		@include background-size((256px 256px, cover));
 		background-attachment: fixed, fixed;
 		background-position: top left, bottom center;
 		background-repeat: repeat, no-repeat;
@@ -75,19 +75,6 @@ $GALLERY-PICS-MARGIN: units(1);
 	@include color(DARK_DARK_GREY)
 }
 
-/* Love pics */
-	#gallery-pics > #visible {
-		opacity: 1;
-	}
-	#gallery-pics > #hidden-left {
-		opacity: 0;
-		transform: translateX(-14em);
-	}
-	#gallery-pics > #hidden-right {
-		opacity: 0;
-		transform: translateX(14em);
-	}
-
 /* Contact form */
 	#contact > .content > #home-form-hidden {
 		opacity: 1;
@@ -112,28 +99,6 @@ $GALLERY-PICS-MARGIN: units(1);
 
 .box {
 	border-radius: $ARTICLE-BOX-RADIUS;
-}
-
-#gallery-pics > article {
-	display: flex;
-	margin: $GALLERY-PICS-MARGIN;
-	max-width: calc(50% - 2 * #{$GALLERY-PICS-MARGIN});
-}
-
-#gallery-pics > article > img {
-	cursor: pointer;
-	border-radius: $IMAGE-RADIUS-MEDIUM-THUMBNAIL;
-
-	@include lg {
-		border-radius: units(3.5);
-	}
-}
-
-.gallery {
-	@include sm {
-		flex-direction: unset;
-		flex-wrap: wrap;
-	}
 }
 
 .darkbg {

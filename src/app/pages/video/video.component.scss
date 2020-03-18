@@ -1,103 +1,77 @@
 @import url("../../../assets/assets_g/css/main.css");
-@import url('https://fonts.googleapis.com/css?family=Lobster&display=swap');
 @import "../../PontheStyle.scss";
 
 .spacer {
   margin-top: 4em;
 }
 
-html, body {
-	background: color(DARK_GREY);
-}
-
-#deleteButton {
-  z-index: 5000;
-  position: absolute;
-  top: 1vh;
-  left: 0.5vw;
-  background: $BUTTON-BACKGROUND-NONE;
-}
-
-#deleteButtonSelected {
-  z-index: 5000;
-  position: absolute;
-  top: 1vh;
-  left: 0.5vw;
-  background: $BUTTON-BACKGROUND-DANGER;
-}
-
-#addFiles, .publicprivate {
-  background: $BUTTON-MODERATION-ADDFILES;
-}
-
-#modere {
-  background: $BUTTON-MODERATION-MODERE;
-}
-
-#deleteevent {
-  background: $BUTTON-MODERATION-DELETEEVENT;
-}
-
-#deletepics {
-  background: $BUTTON-MODERATION-DELETEPICS;
-}
-
 #main {
   height: calc(100vh - 7em);
   width: 100vw;
+  background-color: color(HOME_GREY);
 }
 
-#main h2 {
-  width: 100vw;
+$CONTENT-WIDTH-LARGE: 75vw;
+$CONTENT-LEFT-LARGE: calc((100vw - #{$CONTENT-WIDTH-LARGE}) / 2);
+$CONTENT-MAX-HEIGHT-LARGE: 75vh;
+$CONTENT-TOP-LARGE: 10vh;
+
+$CONTENT-TOP-MEDIUM: 8vh;
+$CONTENT-WIDTH-MEDIUM: 80vw;
+$CONTENT-LEFT-MEDIUM: calc((100vw - #{$CONTENT-WIDTH-MEDIUM}) / 2);
+$CONTENT-MAX-HEIGHT-MEDIUM: 75vh;  
+
+$CONTENT-TOP-SMALL: 13vh;
+$CONTENT-WIDTH-SMALL: 80vw;
+$CONTENT-LEFT-SMALL: calc((100vw - #{$CONTENT-WIDTH-SMALL}) / 2);
+$CONTENT-MAX-HEIGHT-SMALL: 66vh;
+
+$CONTENT-TOP-SMALL-LANDSCAPE: 16.5vh;
+$CONTENT-WIDTH-SMALL-LANDSCAPE: 70vw;
+$CONTENT-LEFT-SMALL-LANDSCAPE: calc((100vw - #{$CONTENT-WIDTH-SMALL-LANDSCAPE}) / 2);
+$CONTENT-MAX-HEIGHT-SMALL-LANDSCAPE: 58vh;  
+
+#video {
+  position: absolute;
+  width: $CONTENT-WIDTH-LARGE;
+  margin: auto;
+  top: $CONTENT-TOP-LARGE;
+  left: $CONTENT-LEFT-LARGE;
+  height: 100vh;
+  max-height: $CONTENT-MAX-HEIGHT-LARGE;
+
+  @include sm {
+    max-height: $CONTENT-MAX-HEIGHT-SMALL;
+    left: $CONTENT-LEFT-SMALL;
+    width: $CONTENT-WIDTH-SMALL;
+    top: $CONTENT-TOP-SMALL;
+  }
+  @include sm-landscape {
+    max-height: $CONTENT-MAX-HEIGHT-SMALL-LANDSCAPE;
+    left: $CONTENT-LEFT-SMALL-LANDSCAPE;
+    width: $CONTENT-WIDTH-SMALL-LANDSCAPE;
+    top: $CONTENT-TOP-SMALL-LANDSCAPE;
+  }
+  @include md {
+    top: $CONTENT-TOP-MEDIUM;
+    max-height: $CONTENT-MAX-HEIGHT-MEDIUM;
+  }
+}
+
+#reactions-videos {
+  position: absolute;
+  left: $CONTENT-LEFT-LARGE;
+  width: $CONTENT-WIDTH-LARGE;
+  top: calc(#{$CONTENT-TOP-LARGE} + #{$CONTENT-MAX-HEIGHT-LARGE} + 1vh);
   text-align: center;
-  height: 10%;
-  margin-top: 2.5vh;
-  text-transform: none;
-  font-weight: bold;
-  letter-spacing: normal;
-  font-family: "Lobster", sans-serif;
-  font-size: 3.5em;
-  text-shadow: 0 0 0.5em black;
-}
 
-video {
-  max-width: 70vw;
-  margin: 0 auto;
-  top: 25vh;
-  max-height: 62.5vh;
-}
-
-.triangle_top_left, .triangle_bottom_left, .triangle_bottom_right, .triangle_bottom_right_wider {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  position: fixed;
-}
-
-.triangle_top_left {
-  border-width: 22vh 40vw 0 0;
-  border-color: #ffffff transparent transparent transparent;
-  z-index: 1;
-}
-
-.triangle_bottom_right {
-  border-width: 0 0 37vh 12.5vw;
-  border-color: transparent transparent #ffffff transparent;
-  right: 0;
-  bottom: 3em;
-  z-index: 1;
-}
-
-.triangle_bottom_right_wider {
-  border-width: 0 0 70vh 12.5vw;
-  border-color: transparent transparent #ffcd33 transparent;
-  right: 0;
-  bottom: 3em;
-}
-
-.triangle_bottom_left {
-  border-width: 0 15vw 75vh 0;
-  border-color: transparent transparent #ffcd33 transparent;
-  left: 0;
-  bottom: 3em;
+  @include sm {
+    top: calc(#{$CONTENT-TOP-SMALL} + #{$CONTENT-MAX-HEIGHT-SMALL} + 1vh);
+  }
+  @include sm-landscape {
+    top: calc(#{$CONTENT-TOP-SMALL-LANDSCAPE} + #{$CONTENT-MAX-HEIGHT-SMALL-LANDSCAPE} + 1vh);
+  }
+  @include md {
+    top: calc(#{$CONTENT-TOP-MEDIUM} + #{$CONTENT-MAX-HEIGHT-MEDIUM} + 1vh);
+  }
 }

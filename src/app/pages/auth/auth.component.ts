@@ -3,9 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import Api from '../../services/Api';
 import { AuthService } from '../../services/auth.service';
+import { BreakpointsService } from '../../services/breakpoints.service';
 import { PwaService } from '../../services/Pwa.service';
 import { routesAppFromRoot } from '../../Routes';
-import { BREAKPOINTS, PATH_AUTH_VIDEO } from '../../Constants';
+import { PATH_AUTH_VIDEO } from '../../Constants';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -21,9 +22,9 @@ export class AuthComponent implements OnInit {
   // Authentification form defined here
   userForm: FormGroup;
   routes = routesAppFromRoot;
-  isMobileOrTablet: boolean;
 
   constructor(public authService: AuthService,
+              public breakpointsService: BreakpointsService,
               public Pwa: PwaService,
               private formBuilder: FormBuilder) {
   }
@@ -33,12 +34,7 @@ export class AuthComponent implements OnInit {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 
     this.initForm();
-    this.getBreakpoint();
     this.ssoPath = environment.apiUrl + Api.casLogin;
-  }
-
-  getBreakpoint() {
-    this.isMobileOrTablet = window.innerWidth <= BREAKPOINTS.MEDIUM;
   }
 
   // Initialisation of the form when the page is initially loaded

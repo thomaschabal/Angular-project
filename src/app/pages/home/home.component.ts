@@ -4,6 +4,7 @@ import { transition, trigger, style, animate, state } from '@angular/animations'
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
+import { BreakpointsService } from '../../services/breakpoints.service';
 import { HomeService } from '../../services/home.service';
 import { PicsService } from '../../services/pics.service';
 import { routesAppFromRoot } from '../../Routes';
@@ -40,13 +41,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   lastEventsState1 = 'hidden-left';
   lastEventsState2 = 'hidden-right';
   lastEventsState3 = 'hidden-left';
-  lovePicsStateLeft = 'hidden-left';
-  lovePicsStateRight = 'hidden-right';
   formVisible = false;
 
   indexPicture: number;
 
   constructor(public homeService: HomeService,
+              public breakpointsService: BreakpointsService,
               private activeRoute: ActivatedRoute,
               private picsService: PicsService) {
     // Smooth transitions on arrow clicks
@@ -62,22 +62,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.picsService.onChangeCurrentGallery('');
     // Get text
     // Requests to the server, update of previous data
-    this.homeService.loadLatestGalleries();
+    this.homeService.initHomePage();
 
-    // NEXT LINE FOR LOVE PICS
-    // this.homeService.loadLovePics();
-    // Transfer pics for image viewer
-    // this.picsService.rawPics = this.homeService.lovePicsSrc;
-    // this.picsService.numberOfPics = this.homeService.lovePicsSrc.length;
-
-    if (this.isDesktop()) {
+    if (this.breakpointsService.isDesktop) {
       this.lastEventsState1 = 'hidden-mid-left';
       this.lastEventsState2 = 'hidden-mid-right';
       this.lastEventsState3 = 'hidden-mid-left';
     } else {
       this.introVisible = true;
-      // this.lovePicsStateLeft = 'visible';
-      // this.lovePicsStateRight = 'visible';
       this.formVisible = true;
     }
   }
@@ -86,56 +78,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     if (this.sub) { this.sub.unsubscribe(); }
   }
 
-  //// DISPLAY OF THE COMPONENTS, ANIMATIONS ON HOVER
-  onClickFavPic(i: number) {
-    this.picClicked = true;
-    this.captionWidePic = this.homeService.lovePics[i].title;
-    this.indexPicture = i;
-
-    // Have a blurred background when the image viewer is active
-    document.getElementById('header').style.display = 'none';
-    document.getElementById('intro').style.filter = 'blur(8px)';
-    for (const event of this.homeService.lastEvents) {
-      document.getElementById(event.event_id).style.filter = 'blur(8px)';
-    }
-    document.getElementById('header-content').style.filter = 'blur(8px)';
-    document.getElementById('gallery-pics').style.filter = 'blur(8px)';
-    document.getElementById('contact').style.filter = 'blur(8px)';
-    document.getElementById('footer').style.filter = 'blur(8px)';
-  }
-
-  closeWidePic() {
-    this.picClicked = false;
-    this.indexPicture = null;
-
-    // Remove the blurred background
-    document.getElementById('header').style.display = 'block';
-    document.getElementById('intro').style.filter = 'none';
-    for (const event of this.homeService.lastEvents) {
-      document.getElementById(event.event_id).style.filter = 'none';
-    }
-    document.getElementById('header-content').style.filter = 'none';
-    document.getElementById('gallery-pics').style.filter = 'none';
-    document.getElementById('contact').style.filter = 'none';
-    document.getElementById('footer').style.filter = 'none';
-  }
-
-  onChangeIndexPicture(index: number) {
-    this.indexPicture = index;
-    this.captionWidePic = this.homeService.lovePics[this.indexPicture].title;
-  }
-
-  closePic() {
-    this.closeWidePic();
-  }
-
   // Information on the positioning of elements
   placement_events(i: number) {
     return (i % 2 === 0 ? 'right' : 'left');
-  }
-
-  placementLovePics(i: number) {
-    return (i % 2 === 0 ? 'from-left' : 'from-right');
   }
 
   // Update animations when hovering elements
@@ -156,24 +101,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       }
     } else {
       if (i === 0) {
-        this.lastEventsState1 = (window.innerWidth <= 736 ? 'hidden-left' : 'hidden-mid-left');
+        this.lastEventsState1 = (this.breakpointsService.isMobile ? 'hidden-left' : 'hidden-mid-left');
       } else {
         if (i === 1) {
-          this.lastEventsState2 = (window.innerWidth <= 736 ? 'hidden-right' : 'hidden-mid-right');
+          this.lastEventsState2 = (this.breakpointsService.isMobile ? 'hidden-right' : 'hidden-mid-right');
         } else {
-          this.lastEventsState3 = (window.innerWidth <= 736 ? 'hidden-left' : 'hidden-mid-left');
+          this.lastEventsState3 = (this.breakpointsService.isMobile ? 'hidden-left' : 'hidden-mid-left');
         }
       }
-    }
-  }
-
-  survoleCoeur(stateLovePics: string) {
-    if (stateLovePics === 'visible') {
-      this.lovePicsStateLeft = stateLovePics;
-      this.lovePicsStateRight = stateLovePics;
-    } else {
-      this.lovePicsStateLeft = 'hidden-left';
-      this.lovePicsStateRight = 'hidden-right';
     }
   }
 
@@ -185,10 +120,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   currentStateEvent(i: number) {
     return (i === 0 ? this.lastEventsState1
                     : (i === 1 ? this.lastEventsState2 : this.lastEventsState3));
-  }
-
-  isDesktop() {
-    return (window.innerWidth >= 736);
   }
 
   clickOnNextArrow(fragment: string) {

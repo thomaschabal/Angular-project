@@ -1,0 +1,24 @@
+@import url("../../../../assets/assets_h/css/main.css");
+@import "../../../PontheStyle.scss";
+
+input {
+  background: linear-gradient(30deg, red, yellow);
+}
+
+#success, #failure {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	font-size: font-size(MEDIUM);
+	text-align: left;
+	display: block;
+	transition: visibility 0.3s ease;
+}
+#success::before, #failure::before {
+	padding-right: units(1);
+}
+#success {
+	color: color(SUCCESS);
+}
+#failure {
+	color: color(FAILURE);
+}

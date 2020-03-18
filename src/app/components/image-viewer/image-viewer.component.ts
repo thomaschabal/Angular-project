@@ -52,10 +52,11 @@ export class ImageViewerComponent implements OnInit, OnDestroy {
   @Output() changeIndexPicture = new EventEmitter<number>();
   @Output() closeViewer = new EventEmitter<boolean>();
   showArrows = true;
+  slugPic: string;
 
   indexNewPicLoaded: Subscription;
 
-  constructor(private picsService: PicsService,
+  constructor(public picsService: PicsService,
               private sanitizer: DomSanitizer) {
   }
 
@@ -93,12 +94,27 @@ export class ImageViewerComponent implements OnInit, OnDestroy {
     }
   }
 
+  filePathToSlug(filePath: string) {
+    if (filePath.indexOf('/') > -1) {
+      const file = filePath.split('/')[1];
+      if (file.indexOf('.') > -1) {
+        const slug = file.split('.')[0];
+        return slug;
+      }
+      return file;
+    }
+    return filePath;
+  }
+
   updateWidePic = async () => {
     this.widePicRef = this.sanitizer.bypassSecurityTrustUrl(this.picsService.rawPics[this.indexPicture]);
+
+    const filePathPic = this.picsService.pics[this.indexPicture].file_path;
+    this.slugPic = this.filePathToSlug(filePathPic);
+
     this.changeIndexPicture.emit(this.indexPicture);
-    if (this.isGallery) {
-      this.picsService.loadFullImage(this.indexPicture);
-    }
+
+    this.picsService.loadFullImage(this.indexPicture);
   }
 
   navLeft() {
@@ -129,5 +145,9 @@ export class ImageViewerComponent implements OnInit, OnDestroy {
   // Download picture
   downloadedDocumentName() {
     return this.captionWidePic + '-' + (this.indexPicture + 1) + '.jpg';
+  }
+
+  updateReaction(reaction: string) {
+    this.picsService.pics[this.indexPicture].own_reaction = reaction;
   }
 }

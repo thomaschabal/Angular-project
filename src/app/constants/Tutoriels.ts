@@ -33,6 +33,27 @@ export default {
           'C\'est tout !'
       },
       {
+        question: 'Comment mettre en ligne des vidéos ?',
+        answer:
+          '<li>Exporter d\'abord la vidéo en MP4 (codec H.264) en résolution 1080p (a.k.a. 1920x1080). Une résolution supérieure sera ' +
+          'acceptée par le serveur, mais pas convertie en 1080p, donc ce sera inutile (à moins de changer le code).</li>' +
+          '<li>Créer une galerie vidéo à partir du tableau de bord, en choisissant <em>Vidéo</em> comme type de galerie.</li>' +
+          '<li>La galerie vidéo apparaît dans les galeries privées, il faut donc cliquer dessus.</li>' +
+          '<li>Dans les options de la galerie, mettre la vidéo en ligne. Le chargement n\'indiquera pas immédiatement quand la vidéo est ' +
+          'en ligne puisqu\'il attend que le serveur ait fini son travail (qui est très long). Pour savoir quand on peut fermer la ' +
+          'galerie, aller voir la galerie dans la v1 du site. Quand la vidéo apparaît dedans, c\'est que la vidéo est bien mise en ' +
+          'ligne.</li>' +
+          '<li>Mettre en ligne également une photo dans la galerie : c\'est cette photo qui sera la photo de couverture de la galerie.' +
+          '</li></ol>' +
+          'Une fois que tout est mis en ligne, on peut recharger la page. On voit alors qu\'on ne peut plus mettre de photo ou vidéo ' +
+          'dans la galerie. Si une mauvaise photo ou vidéo a été uploadée, elle peut être supprimée à partir de la v1, comme d\'habitude,' +
+          'et l\'upload est alors à nouveau permis jusqu\'à ce que la galerie soit pleine.<br/>' +
+          'Du côté du serveur, la vidéo est stockée et des versions en 720p, 480p et 360p sont générées et également stockées. La vidéo ' +
+          'n\'est donc pas visionnable immédiatement car il faut attendre que tout ce calcul soit terminé.<br/>' +
+          '<strong>Une fois que la vidéo est disponible en entier et dans tous les formats (vérifier manuellement pour voir si ça ' +
+          'convient), la galerie est prête à être rendue publique ! :)</strong>'
+      },
+      {
         question:
           'Comment rajouter un lien utile pour les admins ?',
         answer:

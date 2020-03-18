@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
+import { BreakpointsService } from 'src/app/services/breakpoints.service';
 import { NUMBER_PICS_BY_PONTHE_TEAM } from 'src/app/constants/Images';
 
 @Component({
@@ -27,16 +28,12 @@ export class PontheTeamComponent implements OnInit {
   placement: string;
   numberOfPics: number;
 
-  constructor() { }
+  constructor(private breakpointsService: BreakpointsService) { }
 
   ngOnInit() {
     this.teamId = this.team.year_id + '_0';
     this.placement = (this.index % 2 === 0) ? 'right' : 'left';
     this.numberOfPics = NUMBER_PICS_BY_PONTHE_TEAM[this.team.year];
-  }
-
-  isMobile() {
-    return window.innerWidth <= 736;
   }
 
   survoleTeam(stateTeam: string) {
@@ -48,9 +45,9 @@ export class PontheTeamComponent implements OnInit {
       }
     } else {
       if (this.index % 2 === 0) {
-        this.teamStateLeft = (this.isMobile() ? 'hidden-left' : 'hidden-mid-left');
+        this.teamStateLeft = (this.breakpointsService.isMobile ? 'hidden-left' : 'hidden-mid-left');
       } else {
-        this.teamStateRight = (this.isMobile() ? 'hidden-right' : 'hidden-mid-right');
+        this.teamStateRight = (this.breakpointsService.isMobile ? 'hidden-right' : 'hidden-mid-right');
       }
     }
   }

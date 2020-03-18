@@ -14,6 +14,13 @@ export default {
     getLatestGalleries: '/get-latest-galleries',
     contact: '/contact',
 
+    /* Dashboard */
+    getPrivatePhotoGalleries: '/get-private-photo-galleries',
+    getPrivateVideoGalleries: '/get-private-video-galleries',
+    createGallery: '/create-gallery',
+    filesNotModerated: '/files/not-moderated',
+    fileUpload: '/file-upload/',
+
     /* Members */
     members: '/members',
 
@@ -25,11 +32,20 @@ export default {
     getImages: '/get-images/',
     getAllGalleries: '/get-all-galleries',
     getGalleriesOfYear: '/get-galleries-of-year/',
-    getPrivateGalleries: '/get-private-galleries',
     getRandomImage: '/get-random-image/',
     makePrivate: '/galleries/makeprivate',
     makePublic: '/galleries/makepublic',
     getFullImage: '/get-full-image',
-    createGallery: '/create-gallery',
-    filesNotModerated: '/files/not-moderated',
+
+    /* Reactions */
+    updateReaction: '/update-reaction',
+    getRandomUserReactions: '/get-random-user-reactions',
+    getAllUserReactions: '/get-all-user-reactions',
+
+    /* Movies */
+    getFilmography: '/get-filmography',
+    getVideo: '/get-video/',
+    getVideoData: '/get-video-data',
+    getVideoCoverImage: '/get-video-cover-image/',
+    getVideoCoverImageThumb: '/get-video-cover-image-thumb/',
 };

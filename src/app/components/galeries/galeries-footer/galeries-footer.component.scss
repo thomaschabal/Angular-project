@@ -1,7 +1,12 @@
 @import url("../../../../assets/assets_g/css/main.css");
+@import "../../../PontheStyle.scss";
 
 #event-panel {
   position: fixed;
+
+  @include sm-landscape {
+    height: 3em;
+  }
 }
 
 .footer-panel {
@@ -16,11 +21,16 @@
   opacity: 0;
 }
 
-@media screen and (max-width: 736px) {
-  #footer {
+#footer {
+  @include sm {
     top: 4em;
     max-height: none;
     height: calc(100vh - 8em);
     padding: 2em;
+  }
+
+  @include sm-landscape {
+    top: 2.5em;
+    height: calc(100vh - 6em);
   }
 }

@@ -15,9 +15,14 @@
               formControlName="description"
               id="description"></textarea>
 
-    <label for="year_slug">Année de l'évènement</label>
+    <label for="year_slug">{{ 'dashboard.form.year' | translate }}</label>
     <select name="year_slug" id="year_slug" (change)="onChangeYear($event)">
        <option *ngFor="let year_slug of SLUGS; let i = index" [value]="YEARS[i]">{{ year_slug }}</option>
+    </select>
+
+    <label for="type">{{ 'dashboard.form.type' | translate }}</label>
+    <select name="type" id="type" (change)="onChangeType($event)">
+       <option *ngFor="let type of TYPES" [value]="type">{{ type }}</option>
     </select>
 
     <p id="success" [class]="successCreation ? 'visible' : 'hidden'">

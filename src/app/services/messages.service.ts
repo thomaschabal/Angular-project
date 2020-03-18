@@ -2,15 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpService } from './http.service';
 import API_ROUTES from './Api';
-
-interface MaterialMessage {
-  device: string;
-  message: string;
-}
-
-interface Message {
-  message: string;
-}
+import { MaterialMessage, Message } from '../types/messages.types';
 
 @Injectable()
 export class MessagesService {

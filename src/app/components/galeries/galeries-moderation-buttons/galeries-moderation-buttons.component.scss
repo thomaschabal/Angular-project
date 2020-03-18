@@ -12,6 +12,7 @@ button {
 
   @include sm {
     font-size: font-size(SMALL);
+    min-height: units(4);
   }
 }
 button:hover {
@@ -79,4 +80,11 @@ p {
   p {
     font-size: font-size(MEDIUM);
   }
+}
+
+$MARGIN-COVER-IMAGE-THUMB: units(4);
+#cover-image-thumb {
+  margin: 0 $MARGIN-COVER-IMAGE-THUMB;
+  width: calc(100% - 2 * #{$MARGIN-COVER-IMAGE-THUMB});
+  border-radius: units(2);
 }

@@ -1,0 +1,2 @@
+<img *ngIf="isSelected" [src]="iconFull" [alt]="type" (click)="onClick()">
+<img *ngIf="!isSelected" [src]="iconEmpty" [alt]="type" (click)="onClick()" class="empty-icon">

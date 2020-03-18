@@ -6,11 +6,11 @@
   aria-label="Burger menu"
 >
   <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
+    <span class="hamburger-inner hamburger-inner-auth"></span>
   </span>
 </button>
 <!-- Header -->
-<header *ngIf="!isMobile" id="header">
+<header *ngIf="!breakpointsService.isMobile" id="header">
   <ul>
     <li class="link" [routerLink]='routes.auth' [attr.aria-label]="'nav.title_auth.auth' | translate">{{ 'nav.title_auth.auth' | translate}}</li>
     <li class="link" [routerLink]='routes.newAccount' [attr.aria-label]="'nav.title_auth.register' | translate">{{ 'nav.title_auth.register' | translate}}</li>
@@ -18,7 +18,7 @@
   </ul>
 </header>
 
-<header *ngIf="isMobile" id="header" [class]="isHamburgerActive ? 'visible_menu' : ''">
+<header *ngIf="breakpointsService.isMobile" id="header" [class]="isHamburgerActive ? 'visible_menu' : ''">
   <div id="mobile_menu">
     <ul>
       <li class="link" [routerLink]='routes.auth' (click)="activateHamburger()" [attr.aria-label]="'nav.title_auth.auth' | translate">{{ 'nav.title_auth.auth' | translate}}</li>

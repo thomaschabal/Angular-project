@@ -1,0 +1,80 @@
+@import url("../../../../assets/assets_g/css/main.css");
+@import "../../../PontheStyle.scss";
+
+video {
+  height: 100%;
+  width: 100%;
+  border-radius: units(4);
+  box-shadow: box-shadow(VIDEO);
+  object-fit: cover;
+}
+
+#resolution-selector {
+  position: absolute;
+  top: units(2);
+  left: units(2);
+  overflow: hidden;
+  border-radius: units(1);
+  display: flex;
+  flex-direction: column;
+  width: units(8);
+}
+#resolution-selector:hover,
+.gear-hovered {
+  width: auto;
+}
+
+#resolution-gear {
+  height: units(6);
+  width: units(6);
+  background: color(WHITE);
+  border-radius: 100%;
+  transition: border-radius 0.3s ease, height 0.3s ease, width 0.3s ease;
+
+  @include sm {
+    height: units(5);
+    width: units(5);
+  }
+}
+#resolution-selector:hover #resolution-gear,
+.gear-hovered #resolution-gear {
+  border-radius: 100% 100% 0 0;
+  height: units(8);
+  width: units(8);
+
+  @include sm {
+    height: units(6);
+    width: units(6);
+  }
+}
+
+.resolution-option-visible,
+.resolution-option-hidden {
+  background: color(WHITE);
+  text-align: center;
+  @include font-size(MEDIUM);
+  font-weight: 600;
+  cursor: pointer;
+  padding: units(0.5) units(1.25);
+  transition: background 0.3s ease, opacity 0.3s ease;
+
+  @include sm {
+    @include font-size(SMALL);
+    padding: units(0.5) units(0.75);
+  }
+}
+.resolution-option-hidden {
+  opacity: 0;
+}
+.resolution-option-visible:hover {
+  background: color(LIGHT_GREY);
+}
+#resolution-selector:hover .resolution-option-visible,
+.gear-hovered .resolution-option-visible {
+  opacity: 1;
+}
+
+#selected-resolution {
+  background: color(DARK);
+  @include color(WHITE);
+}

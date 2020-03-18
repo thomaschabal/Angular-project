@@ -12,8 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 // Upload file module
 import { FilePickerModule } from 'ngx-awesome-uploader';
-// Video module
-// import { PlyrModule } from 'ngx-plyr';
 
 import { environment } from '../environments/environment';
 
@@ -35,13 +33,14 @@ import {
   GaleriesModerationButtonsComponent
 } from './components/galeries/galeries-moderation-buttons/galeries-moderation-buttons.component';
 import { GalleryCreationFormComponent } from './components/dashboard/gallery-creation-form/gallery-creation-form.component';
-import { HomeFormComponent } from './components/home-form/home-form.component';
+import { HomeFormComponent } from './components/home/home-form/home-form.component';
 import { IconLinksComponent } from './components/icon-links/icon-links.component';
 import { ImageViewerComponent } from './components/image-viewer/image-viewer.component';
 import { LanguageSelectionComponent } from './components/language-selection/language-selection.component';
 import { LoaderPontheComponent } from './components/loaders/loader-ponthe/loader-ponthe.component';
 import { LoadingPointsComponent } from './components/loaders/loading-points/loading-points.component';
 import { LoadingSpinnerComponent } from './components/loaders/loading-spinner/loading-spinner.component';
+import { LovePicsComponent } from './components/home/love-pics/love-pics.component';
 import { MaterialBookingFormComponent } from './components/material-booking-form/material-booking-form.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NavComponent } from './components/navigation/nav/nav.component';
@@ -50,19 +49,26 @@ import { NavigationButtonComponent } from './components/navigation-button/naviga
 import { PicThumbComponent } from './components/pic-thumb/pic-thumb.component';
 import { PrivateGalleriesComponent } from './components/dashboard/private-galleries/private-galleries.component';
 import { PontheTeamComponent } from './components/members/ponthe-team/ponthe-team.component';
+import { ReactionIconComponent } from './components/reactions/reaction-icon/reaction-icon.component';
+import { ReactionsComponent } from './components/reactions/reactions/reactions.component';
+import { ReactionsVideosComponent } from './components/reactions/reactions-videos/reactions-videos.component';
 import { TutorialSubjectComponent } from './components/dashboard/tutorial-subject/tutorial-subject.component';
 import { TutorialsComponent } from './components/dashboard/tutorials/tutorials.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { VideoViewerComponent } from './components/galeries/video-viewer/video-viewer.component';
 
 //// PAGES
 import { AuthComponent } from './pages/auth/auth.component';
 import { NewAccountComponent } from './pages/new-account/new-account.component';
 import { CguComponent } from './pages/cgu/cgu.component';
+import { CrushComponent } from './pages/crush/crush.component';
 import { ResetComponent } from './pages/reset/reset.component';
 import { HomeComponent } from './pages/home/home.component';
+import { VestibuleComponent } from './pages/vestibule/vestibule.component';
 import { GaleriesComponent } from './pages/galeries/galeries.component';
 import { EventComponent } from './pages/event/event.component';
-// import { VideoComponent } from './pages/video/video.component';
+import { FilmographyComponent } from './pages/filmography/filmography.component';
+import { VideoComponent } from './pages/video/video.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ModerationComponent } from './pages/moderation/moderation.component';
 import { MembersComponent } from './pages/members/members.component';
@@ -73,6 +79,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
 import { AdminGuard } from './services/admin-guard.service';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
+import { BreakpointsService } from './services/breakpoints.service';
 import { GaleriesService } from './services/galeries.service';
 import { HomeService } from './services/home.service';
 import { HttpService } from './services/http.service';
@@ -80,9 +87,11 @@ import { MembersService } from './services/members.service';
 import { MessagesService } from './services/messages.service';
 import { PicsService } from './services/pics.service';
 import { PwaService } from './services/Pwa.service';
+import { ReactionsService } from './services/reactions.service';
 import { TranslateService } from './services/translate.service';
 import { TranslatePipe } from './services/translate.pipe';
 import { UserService } from './services/user.service';
+import { VideoService } from './services/video.service';
 
 
 export function setupTranslateFactory(
@@ -107,11 +116,13 @@ export function setupTranslateFactory(
     GaleriesModerationButtonsComponent,
     GalleryCreationFormComponent,
     HomeFormComponent,
+    IconLinksComponent,
     ImageViewerComponent,
     LanguageSelectionComponent,
     LoaderPontheComponent,
     LoadingPointsComponent,
     LoadingSpinnerComponent,
+    LovePicsComponent,
     MaterialBookingFormComponent,
     ModalComponent,
     NavComponent,
@@ -120,13 +131,19 @@ export function setupTranslateFactory(
     PicThumbComponent,
     PontheTeamComponent,
     PrivateGalleriesComponent,
+    ReactionIconComponent,
+    ReactionsComponent,
+    ReactionsVideosComponent,
     TutorialSubjectComponent,
     TutorialsComponent,
     UploadComponent,
+    VideoViewerComponent,
     AuthComponent,
     CguComponent,
+    CrushComponent,
     DashboardComponent,
     EventComponent,
+    FilmographyComponent,
     GaleriesComponent,
     HomeComponent,
     MaterialComponent,
@@ -135,8 +152,8 @@ export function setupTranslateFactory(
     NewAccountComponent,
     NotfoundComponent,
     ResetComponent,
-    // VideoComponent,
-    IconLinksComponent,
+    VestibuleComponent,
+    VideoComponent,
     TranslatePipe,
   ],
   imports: [
@@ -147,13 +164,13 @@ export function setupTranslateFactory(
     HttpClientModule,
     BrowserAnimationsModule,
     FilePickerModule,
-    // PlyrModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     AdminGuard,
     AuthGuard,
     AuthService,
+    BreakpointsService,
     GaleriesService,
     HomeService,
     HttpService,
@@ -161,7 +178,9 @@ export function setupTranslateFactory(
     MessagesService,
     PicsService,
     PwaService,
+    ReactionsService,
     TranslateService,
+    VideoService,
     {
       provide: APP_INITIALIZER,
       useFactory: setupTranslateFactory,

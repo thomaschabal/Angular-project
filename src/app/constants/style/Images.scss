@@ -11,6 +11,11 @@ $AUTH-BG-SLIDER-IMAGES:
     url($AUTH-PICS-FOLDER + "pom.jpg")
     url($AUTH-PICS-FOLDER + "voyage1.jpg");
 
+$VESTIBULE-IMAGES : (
+    VIDEO: url($ASSETS-FOLDER + "video.jpg"),
+    PHOTO: url($ASSETS-FOLDER + "photo.jpg")
+);
+
 $PONTHE-PROMO-IMAGES: (
     015: url($ASSETS-FOLDER + "05.jpg"),
     016: url($ASSETS-FOLDER + "04.jpg"),

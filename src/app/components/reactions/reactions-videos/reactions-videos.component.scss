@@ -1,0 +1,66 @@
+@import "../../../PontheStyle.scss";
+
+$SIZE-ICONS: units(6);
+$SIZE-ICONS-MOBILE: units(4);
+
+#reactions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: color(WHITE);
+    padding: units(0.5);
+    margin-top: units(1.5);
+    margin-left: units(1.5);
+    border-radius: units(1);
+
+    @include sm {
+        margin-top: units(1);
+        margin-left: units(1);
+        padding-bottom: 0;
+    }
+}
+
+#single-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: units(0.5);
+    margin-top: units(1.5);
+    margin-left: units(1.5);
+    border-radius: units(1);
+
+    @include sm {
+        margin-top: units(1);
+        margin-left: units(1);
+        padding: 0;
+    }
+}
+
+.reaction-icon, .small-reaction {
+    height: $SIZE-ICONS;
+    width: $SIZE-ICONS;
+    display: inline-block;
+    margin: units(0.5);
+
+    @include sm {
+        height: $SIZE-ICONS-MOBILE;
+        width: $SIZE-ICONS-MOBILE;
+        margin: units(0.25);
+    }
+}
+
+.small-reaction {
+    height: calc(#{$SIZE-ICONS} + units(1));
+    width: calc(#{$SIZE-ICONS} + units(1));
+
+    @include sm {
+        height: $SIZE-ICONS-MOBILE;
+        width: $SIZE-ICONS-MOBILE;
+    }
+}
+
+h4 {
+    @include font-size(LARGE);
+    font-weight: bold;
+    text-align: center;
+}

@@ -4,6 +4,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpService } from '../../services/http.service';
 import { environment } from 'src/environments/environment';
+import { VideoService } from 'src/app/services/video.service';
+import API from '../../services/Api';
 
 export class DemoFilePickerAdapter extends FilePickerAdapter {
   filesUploading = {};
@@ -18,8 +20,19 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   filesUploadedSource = new BehaviorSubject(0);
   filesUploadedStream = this.filesUploadedSource.asObservable();
 
-  constructor(private http: HttpClient, private httpService: HttpService) {
+  constructor(private http: HttpClient, private httpService: HttpService, private videoService: VideoService) {
     super();
+  }
+
+  getApiUrlForUpload() {
+    const currentUrl = window.location.href;
+    const fragments = currentUrl.split('/');
+    const galleryType = fragments[fragments.length - 2];
+    const apiBase = environment.apiUrl + API.fileUpload;
+    if (galleryType === 'pics') {
+      return apiBase + this.httpService.currentGallery;
+    }
+    return apiBase + this.videoService.selectedMovie;
   }
 
   updateFilesUploading() {
@@ -41,7 +54,8 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
     this.updateFilesToUpload(this.numberOfFilesToUpload + 1);
     const form = new FormData();
     form.append('file', fileItem.file);
-    const api = environment.apiUrl + '/file-upload/' + this.httpService.currentGallery;
+
+    const api = this.getApiUrlForUpload();
     const httpOptions = new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
         Authorization: 'Bearer ' + this.httpService.token,

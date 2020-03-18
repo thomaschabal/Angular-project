@@ -1,38 +1,44 @@
 import { Injectable } from '@angular/core';
 
 import { HttpService } from './http.service';
-import { LOVE_PICS, NUMBER_OF_LAST_EVENTS_HOME } from '../Constants';
+import { ReactionsService } from './reactions.service';
 import API_ROUTES from './Api';
+import { NUMBER_OF_LAST_EVENTS_HOME } from '../Constants';
+import { PicsService } from './pics.service';
+import { GetRandomUserReactionsResponse, FavoritePic } from '../types/reactions.types';
+import { LastEvent, GetLatestGalleriesResponse, GalleryTypes } from '../types/home.types';
+import { routesAppFromRoot } from '../Routes';
 
 const EMPTY_EVENT = {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''};
 
 @Injectable()
 export class HomeService {
-  lastEvents = [];
+  lastEvents: LastEvent[] = [];
   areLastEventsLoaded = false;
-  lovePics: any;
+  lovePics: FavoritePic[] = [];
   areLovePicsLoaded = false;
-  lovePicsSrc: any;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService,
+              private reactionsService: ReactionsService,
+              private picsService: PicsService) {}
 
   getLatestGalleries() {
     return this.httpService.post(API_ROUTES.getLatestGalleries, { page: 1, page_size: NUMBER_OF_LAST_EVENTS_HOME })
       .subscribe(
-        (res: { galleries }) => {
-          this.lastEvents = Array(res.galleries.length).fill(EMPTY_EVENT);
-          const lastEvents = res.galleries;
-          // REMOVE FOLLOWING LINE WHEN LOVE PICS ARE IMPLEMENTED
-          // const idEvents = ['one', 'two', 'three', 'coeur'];
-          const idEvents = ['one', 'two', 'three', 'contact'];
-          for (let i = 0; i < lastEvents.length; i++) {
+        (res: GetLatestGalleriesResponse) => {
+          const { galleries } = res;
+          this.lastEvents = Array(galleries.length).fill(EMPTY_EVENT);
+          const idEvents = ['one', 'two', 'three', 'coeur'];
+          for (let i = 0; i < galleries.length; i++) {
+            const { name, image, slug, description, type } = galleries[i];
             this.lastEvents[i] = {
-              name: lastEvents[i].name,
-              fond: lastEvents[i].image,
-              routing: lastEvents[i].slug,
+              name,
+              fond: image,
+              routing: slug,
               event_id: idEvents[i],
               next_event_id: idEvents[i + 1],
-              resume: lastEvents[i].description,
+              resume: description,
+              type,
             };
           }
           this.areLastEventsLoaded = true;
@@ -47,17 +53,48 @@ export class HomeService {
     }
   }
 
+  setLovePicsInPicsService(lovePics: FavoritePic[]) {
+    this.picsService.rawPics = lovePics.map(pic => pic.image);
+    this.picsService.numberOfPics = lovePics.length;
+    if (this.picsService.currentGallery === '') {
+      this.picsService.pics = this.lovePics;
+      this.picsService.rawPics = this.lovePics.map(pic => pic.image);
+      this.picsService.numberOfPics = this.lovePics.length;
+    }
+  }
+
   getLovePics() {
-    this.lovePics = LOVE_PICS;
-    this.lovePicsSrc = Object.values(this.lovePics).map(
-      (pic: any) => pic.address
+    this.reactionsService.getRandomUserReactions()
+        .then(
+        (res: GetRandomUserReactionsResponse) => {
+            const { reactions } = res;
+            this.lovePics = reactions;
+            this.areLovePicsLoaded = true;
+            this.setLovePicsInPicsService(reactions);
+        },
+        (error) => { console.error(error); }
     );
-    this.areLovePicsLoaded = true;
   }
 
   loadLovePics() {
     if (!this.areLovePicsLoaded) {
       this.getLovePics();
+    } else {
+      this.setLovePicsInPicsService(this.lovePics);
+    }
+  }
+
+  initHomePage() {
+    this.loadLatestGalleries();
+    this.loadLovePics();
+  }
+
+  getEventRouting(event: LastEvent) {
+    const { type, routing } = event;
+    if (type === GalleryTypes.PHOTO) {
+      return routesAppFromRoot.pics + '/' + routing;
+    } else if (type === GalleryTypes.VIDEO) {
+      return routesAppFromRoot.videos + '/' + routing;
     }
   }
 }

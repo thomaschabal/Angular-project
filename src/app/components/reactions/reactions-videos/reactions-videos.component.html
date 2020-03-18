@@ -1,0 +1,12 @@
+<div *ngFor="let reaction of reactions; let i = index" class="reaction-icon">
+  <app-reaction-icon
+    [isSelected]="videoService.movieDetails.own_reaction === reaction.name"
+    [type]="reaction.name"
+    [iconFull]="reaction.iconFull"
+    [iconEmpty]="reaction.iconEmpty"
+    (clickIcon)="onClickIcon(i)"
+  ></app-reaction-icon>
+  <h4 *ngIf="allReactionsNotEmpty()">
+    {{ videoService.movieDetails.all_reactions[reaction.name] || "0" }}
+  </h4>
+</div>

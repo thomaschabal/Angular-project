@@ -1,8 +1,9 @@
-<li *ngIf="!isNarrowWindow()">
+<li *ngIf="!breakpointsService.isMobile">
   <a [routerLink]='route' [attr.aria-label]="name">{{ name }}</a>
 </li>
-<li *ngIf="isNarrowWindow()">
-  <a [routerLink]='route' [attr.aria-label]="name">
+<li *ngIf="breakpointsService.isMobile">
+  <a [routerLink]='route' class="mobile-a" [attr.aria-label]="name">
     <img [src]='imgSrc' [alt]='name' class="svg_links" />
+    <h3>{{ name }}</h3>
   </a>
 </li>

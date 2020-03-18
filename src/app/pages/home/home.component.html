@@ -25,14 +25,14 @@
             class="main style2 {{ placement_events(i) }} dark fullscreen"
             (mouseenter)='survoleEvent("visible", i)'
             (mouseleave)='survoleEvent("hidden", i)'
-            [ngStyle]="{'background-image' : 'url(' + event.fond + ')', 'background-size': 'cover'}">
+            [ngStyle]="{'background-image' : 'url(' + event.fond + ')', '-webkit-background-size': 'cover', 'background-size': 'cover'}">
     <!-- <img src="../../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> -->
     <div [@lastEventTrigger]="currentStateEvent(i)"
         class="content box style2">
       <header>
-        <h2><a [routerLink]="routes.pics + event.routing" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
+        <h2><a [routerLink]="homeService.getEventRouting(event)" [attr.aria-label]="event.name">{{ event.name }}</a></h2>
       </header>
-      <p><a [routerLink]="routes.pics + event.routing" [attr.aria-label]="event.resume">{{ event.resume }}</a></p>
+      <p><a [routerLink]="homeService.getEventRouting(event)" [attr.aria-label]="event.resume">{{ event.resume }}</a></p>
     </div>
     <a class="button style2 down anchored" (click)="clickOnNextArrow(event.next_event_id)" aria-label="Next">Next</a>
   </section>
@@ -40,37 +40,7 @@
 </div>
 
 <!-- Favorite pics -->
-<!-- UNCOMMENT FOLLOWING LINES WHEN LOVE PICS ARE AVAILABLE -->
-<!-- THE FOLLOWING LINES DISPLAY 6 OF THE LOVE PICS, IN 2 COLUMNS, WITH ANIMATION -->
-<!-- <section id="coeur" class="main style3 primary"
-         (mouseenter)='survoleCoeur("visible")'
-         (mouseleave)='survoleCoeur("hidden")'> -->
-  <!-- <div class="content">
-    <header id="header-content">
-      <h2 [innerHTML]="'home.favoritePics.title' | translate"></h2>
-    </header> -->
-    <!-- Pics  -->
-    <!-- <div class="gallery" id="gallery-pics">
-      <article *ngFor="let pic of homeService.lovePics; let i = index"
-                class="{{ placementLovePics(i) }}"
-                [id]="i%2 === 0 ? lovePicsStateLeft : lovePicsStateRight">
-        <img class="image fit" src="{{ pic.address }}" title="{{ pic.title }}" alt="{{ pic.title }}"
-             (click)="onClickFavPic(i)"/>
-      </article>
-    </div>
-  </div>
-  <a class="button style2 down anchored" (click)="clickOnNextArrow('contact')" aria-label="Next">Next</a> -->
-<!-- </section> -->
-
-<!-- Image Viewer -->
-<!-- Darken the background -->
-<div *ngIf="picClicked" class="darkbg" (click)="closeWidePic()"></div>
-<app-image-viewer *ngIf="picClicked"
-                  [captionWidePic]="captionWidePic"
-                  [indexPicture]="indexPicture"
-                  [isGallery]="false"
-                  (changeIndexPicture)="onChangeIndexPicture($event)"
-                  (closeViewer)="closePic($event)"></app-image-viewer>
+<app-love-pics></app-love-pics>
 
 <!-- Contact form-->
 <section id="contact" class="main style3 secondary"

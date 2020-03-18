@@ -35,9 +35,9 @@
       "urls": [
         "https://ponthe.enpc.org/api/members",
         "https://ponthe.enpc.org/api/cgu",
+        "https://ponthe.enpc.org/api/get-latest-galleries",
         "https://ponthe.enpc.org/api/get-all-galleries",
-        "https://ponthe.enpc.org/api/get-private-galleries",
-        "https://ponthe.enpc.org/api/get-images/**"
+        "https://ponthe.enpc.org/api/get-private-galleries"
       ],
       "cacheConfig": {
         "strategy": "freshness",
