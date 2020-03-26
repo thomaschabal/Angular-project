@@ -59,7 +59,8 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
     const httpOptions = new HttpHeaders({
         'Access-Control-Allow-Origin': '*',
         Authorization: 'Bearer ' + this.httpService.token,
-        enctype: 'multipart/form-data'
+        enctype: 'multipart/form-data',
+        timeout: `${30 * 60 * 1000}`,
       });
     const req = new HttpRequest('POST', api, form, {headers: httpOptions, reportProgress: true});
     return this.http.request(req)
