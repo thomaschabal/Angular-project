@@ -50,10 +50,13 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
   }
 
   public uploadFile(fileItem: FilePreviewModel) {
+    console.log('enters upload function');
     this.filesUploading[fileItem.fileName] = true;
     this.updateFilesToUpload(this.numberOfFilesToUpload + 1);
     const form = new FormData();
     form.append('file', fileItem.file);
+    console.log('form', form);
+    console.log('file', fileItem);
 
     const api = this.getApiUrlForUpload();
     const httpOptions = new HttpHeaders({
