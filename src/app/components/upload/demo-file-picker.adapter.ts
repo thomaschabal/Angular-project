@@ -72,6 +72,7 @@ export class DemoFilePickerAdapter extends FilePickerAdapter {
     return this.http.request(req)
     .pipe(
       map( (res: HttpEvent<any>) => {
+        console.log('res', res);
         if (res.type === HttpEventType.Response) {
           delete this.filesUploading[fileItem.fileName];
           this.updateFilesUploaded(this.numberOfFilesUploaded + 1);
