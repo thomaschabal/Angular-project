@@ -6,7 +6,7 @@ import { AuthService } from '../../services/auth.service';
 import { BreakpointsService } from '../../services/breakpoints.service';
 import { PwaService } from '../../services/Pwa.service';
 import { routesAppFromRoot } from '../../Routes';
-import { PATH_AUTH_VIDEO } from '../../Constants';
+import { PATH_AUTH_VIDEO, PATH_AUTH_PHOTO } from '../../Constants';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 
 export class AuthComponent implements OnInit {
   pathAuthVideo = PATH_AUTH_VIDEO;
+  pathAuthPhoto = PATH_AUTH_PHOTO;
   ssoPath: string;
 
   // Authentification form defined here

@@ -4,6 +4,7 @@ export const NUMBER_OF_LAST_EVENTS_HOME = 3;
 const IMAGES_FOLDER = 'assets/images/';
 
 export const PATH_AUTH_VIDEO = IMAGES_FOLDER + 'video-auth.mp4';
+export const PATH_AUTH_PHOTO = IMAGES_FOLDER + 'auth_pics/font1.jpg';
 
 export const PATH_LOADING_SPINNER = IMAGES_FOLDER + 'camera-fast-spinner.svg';
 

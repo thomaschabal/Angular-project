@@ -32,8 +32,10 @@
 	<!-- Background animation -->
 	<div id="video-wrapper" *ngIf="breakpointsService.isMobileOrTablet">
 		<video [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+		<img [src]="pathAuthPhoto" style="position:absolute; z-index:0; min-width: 100vw; height: 100vh; left: -70vw" />
 	</div>
 	<video *ngIf="!breakpointsService.isMobileOrTablet" [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+	<img [src]="pathAuthPhoto" style="position:absolute; z-index:0; width: 100vw; min-height: 100vh; left: 0" />
 
 	<div id="bandeau" *ngIf="Pwa.promptEvent">
 		<button id="installation" (click)="installPwa()" [attr.aria-label]="'install.install' | translate">
