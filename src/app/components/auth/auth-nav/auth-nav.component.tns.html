@@ -1,0 +1,22 @@
+<StackLayout>
+  <app-nav-link [route]="routes.auth" [name]="'nav.title_auth.auth' | translate"></app-nav-link>
+  <app-nav-link [route]="routes.newAccount" [name]="'nav.title_auth.register' | translate"></app-nav-link>
+  <app-nav-link [route]="routes.reset" [name]="'nav.title_auth.reset' | translate"></app-nav-link>
+</StackLayout>
+
+<!--
+Original Web template:
+
+<button
+  [class]="isHamburgerActive ? 'hamburger hamburger--spin is-active' : 'hamburger hamburger--spin'"
+  id="burger_menu"
+  type="button"
+  (click)="activateHamburger()"
+  aria-label="Burger menu"
+>
+  <span class="hamburger-box">
+    <span class="hamburger-inner hamburger-inner-auth"></span>
+  </span>
+</button>
+
+-->

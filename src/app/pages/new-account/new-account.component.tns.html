@@ -1,0 +1,71 @@
+<app-action-bar></app-action-bar>
+
+<ScrollView>
+  <StackLayout class="coverImage">
+    <StackLayout [formGroup]="userForm" class="form">
+      <Label class="resetTitle" [text]="'newAccount.header.title' | translate" textWrap="true"></Label>
+      <HTMLView class="html" [html]="'newAccount.header.subtitle' | translate" textWrap="true"></HTMLView>
+      
+      <Button [text]="'newAccount.cgu.cgu' | translate" [nsRouterLink]="routes.cgu"></Button>
+      
+      <StackLayout class="formField">
+        <Label [text]="'newAccount.form.firstName' | translate" textWrap="true"></Label>
+        <TextField required [hint]="'newAccount.form.firstName' | translate" formControlName="firstname"></TextField>
+      </StackLayout>
+      <StackLayout class="formField">
+        <Label [text]="'newAccount.form.familyName' | translate" textWrap="true"></Label>
+        <TextField required [hint]="'newAccount.form.familyName' | translate" formControlName="lastname"></TextField>
+      </StackLayout>
+      <StackLayout class="formField">
+        <Label [text]="'newAccount.form.email' | translate" textWrap="true"></Label>
+        <StackLayout orientation="horizontal" class="mailStack">
+          <TextField class="mail" required [hint]="'newAccount.form.email' | translate" formControlName="email"></TextField>
+          <Label class="mailExtension" [text]="'newAccount.form.email.extension' | translate" textWrap="true"></Label>
+        </StackLayout>
+      </StackLayout>
+      <StackLayout class="formField">
+        <Label [text]="'newAccount.form.promotion' | translate" textWrap="true"></Label>
+        <ListPicker [items]="availablePromotions" selectedIndex="0" (selectedIndexChange)="onPromotionChange($event)"></ListPicker>
+      </StackLayout>
+
+      <StackLayout class="formField">
+        <Label [text]="'newAccount.form.password' | translate" textWrap="true"></Label>
+        <TextField required secure="true" [hint]="'newAccount.form.password' | translate" formControlName="password"></TextField>
+      </StackLayout>
+
+      <StackLayout class="formField">
+        <Label [text]="'newAccount.form.passwordConfirmation' | translate" textWrap="true"></Label>
+        <TextField required secure="true" [hint]="'newAccount.form.passwordConfirmation' | translate" formControlName="confirmation_password"></TextField>
+      </StackLayout>
+
+      <Button [text]="'newAccount.form.submitButton' | translate" [isEnabled]="!userForm.invalid" (tap)="onSubmitForm()"></Button>
+    </StackLayout>
+
+    <app-auth-footer></app-auth-footer>
+  </StackLayout>
+</ScrollView>
+
+<!--
+Original Web template:
+
+<body class="is-preload">
+  <app-auth-card [title]="'newAccount.header.title' | translate" id="app-auth-card">
+  </app-auth-card>
+
+  <app-alert
+    [visible]="alertSuccessVisible"
+		[title]="'signup.successSignup' | translate"
+		(close)="closeAlertSuccess()"
+  ></app-alert>
+  
+  <app-alert
+    [visible]="alertErrorVisible"
+		[title]="'signup.error' | translate"
+		(close)="closeAlertError()"
+	></app-alert>
+
+  <!-- Background animation ->
+  <app-auth-bg-slider class="bg"></app-auth-bg-slider>
+</body>
+
+-->

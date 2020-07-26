@@ -1,7 +1,7 @@
-import { HttpService } from './http.service';
+import { HttpService } from '@src/app/services/http.service';
 import { Injectable } from '@angular/core';
 
-import API_ROUTES from './Api';
+import API_ROUTES from '@src/app/services/Api';
 import {
   GetAllGalleriesResponse,
   PhotoGallery,
@@ -9,7 +9,7 @@ import {
   GetPrivateVideoGalleriesResponse,
   VideoGallery,
   CreateGalleryRequest
-} from '../types/galeries.types';
+} from '@src/app/types/galeries.types';
 
 export const DEFAULT_PAGE_SIZE = 15;
 

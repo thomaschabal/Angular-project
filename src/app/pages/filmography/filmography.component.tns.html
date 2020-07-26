@@ -1,0 +1,34 @@
+<app-action-bar></app-action-bar>
+
+<app-infinite-scroll [reloadFn]="reloadFunction">
+  <View *ngFor="let movie of videoService.allFilmography; let i = index" [nsRouterLink]="routes.videos + '/' + movie.slug">
+    <AbsoluteLayout width="100%">
+      <Image [src]="movie.image"></Image>
+      <Label class="galleryName" [text]="movie.name" textWrap="true"></Label>
+    </AbsoluteLayout>
+  </View>
+  <Label *ngIf="
+    !videoService.isLoadingFirstFilmography &&
+    !videoService.isLoadingMoreFilmography &&
+    videoService.allFilmography.length === 0"
+    [text]="'filmography.none' | translate"
+    textWrap="true"></Label>
+</app-infinite-scroll>
+
+<!--
+Original Web template:
+
+<div id="bg-movies" *ngIf="videoService.allFilmography.length !== 0"></div>
+
+<!-- Public movies ->
+
+<div *ngIf="videoService.isLoadingMoreFilmography" id="reload-boundary">
+  <app-loading-points></app-loading-points>
+</div>
+
+<app-loader-ponthe
+  *ngIf="videoService.isLoadingFirstFilmography"
+  @spinnerTrigger
+></app-loader-ponthe>
+
+-->

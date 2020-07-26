@@ -1,11 +1,11 @@
-import { LoggingUser } from '../models/LoggingUser.model';
+import { LoggingUser } from '@src/app/models/LoggingUser.model';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jwt_decode from 'jwt-decode';
 
-import { HttpService } from './http.service';
-import { routesAppFromRoot } from '../Routes';
-import API_ROUTES from './Api';
+import { HttpService } from '@src/app/services/http.service';
+import { routesAppFromRoot } from '@src/app/Routes';
+import API_ROUTES from '@src/app/services/Api';
 
 export const TOKEN_NAME = 'jwt_token';
 export const NULL_TOKEN = [null, 'null', undefined];
@@ -25,7 +25,7 @@ export class AuthService {
     this.getToken();
     this.isAuth = NULL_TOKEN.indexOf(this.httpService.token) === -1;
     if (this.isAuth) {
-      this.getUserByJWT();
+      // this.getUserByJWT();
     }
   }
 

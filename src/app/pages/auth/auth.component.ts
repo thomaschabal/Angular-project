@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import Api from '../../services/Api';
-import { AuthService } from '../../services/auth.service';
-import { BreakpointsService } from '../../services/breakpoints.service';
-import { PwaService } from '../../services/Pwa.service';
-import { routesAppFromRoot } from '../../Routes';
-import { PATH_AUTH_VIDEO, PATH_AUTH_PHOTO } from '../../Constants';
-import { environment } from 'src/environments/environment';
+import Api from '@src/app/services/Api';
+import { AuthService } from '@src/app/services/auth.service';
+import { BreakpointsService } from '@src/app/services/breakpoints.service';
+import { PwaService } from '@src/app/services/Pwa.service';
+import { routesAppFromRoot } from '@src/app/Routes';
+import { PATH_AUTH_VIDEO, PATH_AUTH_PHOTO } from '@src/app/Constants';
+import { environment } from '@src/environments/environment';
 
 @Component({
   selector: 'app-auth',

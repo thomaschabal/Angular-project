@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { GaleriesService, DEFAULT_PAGE_SIZE } from './galeries.service';
-import { GetFullImageResponse, GetImagesResponse, Pic } from '../types/pics.types';
+import { GaleriesService, DEFAULT_PAGE_SIZE } from '@src/app/services/galeries.service';
+import { GetFullImageResponse, GetImagesResponse, Pic } from '@src/app/types/pics.types';
 
 @Injectable()
 export class PicsService {

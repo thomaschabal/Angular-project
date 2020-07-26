@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { HttpService } from './http.service';
-import API_ROUTES from './Api';
+import { HttpService } from '@src/app/services/http.service';
+import API_ROUTES from '@src/app/services/Api';
 
 @Injectable()
 export class MembersService {

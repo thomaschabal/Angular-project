@@ -1,0 +1,44 @@
+<app-action-bar></app-action-bar>
+
+<ScrollView>
+	<StackLayout [formGroup]="userForm">
+		<Label [text]="'auth.form.id' | translate" textWrap="true"></Label>
+		<TextField required hint="prenom.nom@eleves.enpc.fr" formControlName="email"></TextField>
+		<Label [text]="'auth.form.password' | translate" textWrap="true"></Label>
+		<TextField required secure="true" hint="mylittlepontsny77" formControlName="password"></TextField>
+		<Button [text]="'auth.form.submitButton' | translate" [isEnabled]="!userForm.invalid" (tap)="onSignIn()"></Button>
+	</StackLayout>
+</ScrollView>
+
+<!--
+Original Web template:
+
+<body class="is-preload">
+	<app-auth-card [title]="'auth.title' | translate" id="app-auth-card">
+		<!-- Signup Form ->
+		<form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSignIn()">
+
+		</form>
+		<div id="sso">
+			<a [href]="ssoPath" [attr.aria-label]="'auth.sso' | translate">{{ 'auth.sso' | translate }}</a>
+		</div>
+	</app-auth-card>
+
+	<app-alert
+		[visible]="authService.loginError"
+		[title]="'login.error' | translate"
+		(close)="closeAlert()"
+	></app-alert>
+
+	<!-- Useful links ->
+	<app-auth-footer id="auth-footer"></app-auth-footer>
+
+	<!-- Background animation ->
+	<div id="video-wrapper">
+		<video [src]="pathAuthVideo" loop autoplay muted playsinline style="position:absolute; z-index:1"></video>
+		<img [src]="pathAuthPhoto" style="position:absolute; z-index:0; min-width: 100vw; height: 100vh; left: -70vw" />
+	</div>
+	<img [src]="pathAuthPhoto" style="position:absolute; z-index:0; width: 100vw; min-height: 100vh; left: 0" />
+</body>
+
+-->

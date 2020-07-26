@@ -1,0 +1,33 @@
+<app-action-bar></app-action-bar>
+
+<StackLayout [formGroup]="resetForm">
+  <Label [text]="'reset.header.title' | translate" textWrap="true"></Label>
+  
+  <HtmlView [html]="'reset.header.subtitle' | translate" ></HtmlView>
+  <Label [text]="'reset.form.email.placeholder' | translate" textWrap="true"></Label>
+  <StackLayout orientation="horizontal">
+    <TextField required hint="prenom.nom" formControlName="email"></TextField>
+    <Label [text]="'reset.form.email.extension' | translate" textWrap="true"></Label>
+  </StackLayout>
+  <Button [text]="'reset.form.submitButton' | translate" [isEnabled]="!resetForm.invalid" (tap)="onSubmitForm()"></Button>
+</StackLayout>
+
+<!--
+Original Web template:
+
+<body class="is-preload">
+
+  <app-alert
+    [visible]="alertVisible"
+		[title]="'reset.sentEmail' | translate"
+		(close)="closeAlert()"
+	></app-alert>
+
+  <!-- Footer ->
+  <app-auth-footer></app-auth-footer>
+
+  <!-- Background animation ->
+  <app-auth-bg-slider class="bg"></app-auth-bg-slider>
+</body>
+
+-->

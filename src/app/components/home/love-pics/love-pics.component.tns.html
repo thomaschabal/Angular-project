@@ -1,0 +1,42 @@
+<StackLayout>
+  <Label [text]="'home.favoritePics.title' | translate" textWrap="true" (tap)="redirectToCrushPics()"></Label>
+  <View *ngFor="let pic of homeService.lovePics; let i = index">
+    <Image [src]="pic.image"></Image>
+  </View>
+</StackLayout>
+
+<!--
+Original Web template:
+
+<!-- THE FOLLOWING LINES DISPLAY 6 OF THE LOVE PICS, IN 2 COLUMNS, WITH ANIMATION ->
+<section id="coeur" class="main style3 primary"
+         (mouseenter)='survoleCoeur("visible")'
+         (mouseleave)='survoleCoeur("hidden")'>
+  <div class="content">
+    <!-- Pics  ->
+    <div id="loading-crushes" *ngIf="!homeService.areLovePicsLoaded">
+        <app-loading-points></app-loading-points>
+    </div>
+    <div class="gallery" id="gallery-pics">
+      <article *ngFor="let pic of homeService.lovePics; let i = index"
+                class="{{ placementLovePics(i) }}"
+                [id]="i%2 === 0 ? lovePicsStateLeft : lovePicsStateRight">
+        <img class="image fit" src="{{ pic.image }}" title="{{ pic.name }}" alt="{{ pic.name }}"
+             (click)="onClickFavPic(i)"/>
+      </article>
+    </div>
+  </div>
+  <h3 *ngIf="homeService.areLovePicsLoaded && homeService.lovePics.length === 0" id="no-love-pics">{{ 'home.favoritePics.none' | translate }}</h3>
+  <a class="button style2 down anchored" (click)="clickOnNextArrow('contact')" aria-label="Next">Next</a>
+</section>
+
+<!-- Image Viewer ->
+<!-- Darken the background ->
+<div *ngIf="picClicked" class="darkbg" (click)="closeWidePic()"></div>
+<app-image-viewer *ngIf="picClicked"
+                  [captionWidePic]="captionWidePic"
+                  [indexPicture]="indexPicture"
+                  [isGallery]="false"
+                  (changeIndexPicture)="onChangeIndexPicture($event)"
+                  (closeViewer)="closePic($event)"></app-image-viewer>
+-->

@@ -1,0 +1,32 @@
+@import "~@nativescript/theme/css/core.css";
+@import "~@nativescript/theme/css/default.css";
+
+// @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900");
+
+// @import url("./assets/assets_h/css/main.css");
+// @import "./app/PontheStyle.scss";
+
+/* Place any CSS rules you want to apply on both iOS and Android here.
+This is where the vast majority of your CSS code goes. */
+
+// * {
+// 	margin: 0;
+// 	padding: 0;
+// 	border: 0;
+// 	font-size: 100%;
+// 	font: "Roboto", sans-serif;
+//     vertical-align: baseline;
+// }
+
+* {
+    font-family: 'SourceSansPro-BlackItalic';
+}
+
+.fa {
+    font-family: 'FontAwesome', 'fontawesome-webfont';
+    font-weight: 400;
+}
+
+// Button.-primary {
+//     font-size: 18;
+// }

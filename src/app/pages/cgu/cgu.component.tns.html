@@ -1,0 +1,11 @@
+<app-action-bar></app-action-bar>
+
+<ScrollView>
+  <StackLayout class="cgus">
+    <HTMLView id="cgu-title" [html]="'cgu.title' | translate"></HTMLView>
+    <StackLayout *ngFor="let article of articles">
+      <Label class="title" [text]="article.title" textWrap="true"></Label>
+      <Label class="article" [text]="article.body" textWrap="true"></Label>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>

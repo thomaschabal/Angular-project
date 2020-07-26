@@ -1,0 +1,83 @@
+<app-action-bar></app-action-bar>
+
+<app-infinite-scroll [reloadFn]="reloadFunction">
+  <View *ngFor="let picture of picsService.pics; let i = index">
+    <Image [src]="picture.base64"></Image>
+  </View>
+</app-infinite-scroll>
+
+<!--
+Original Web template:
+
+<!-- Moderation buttons ->
+<app-galeries-moderation-buttons
+  *ngIf="httpService.isAdmin"
+  [selectedRoute]="selectedRoute"
+  [moderationState]="moderationState"
+  (moderating)="modere()"
+></app-galeries-moderation-buttons>
+
+<!-- Upload for random users ->
+<div *ngIf="!httpService.isAdmin" id="uploadBanner">
+  <a class="icon fa fa-upload fa-lg"
+    (click)="activateUploadArea()"
+    aria-label="upload banner"></a>
+</div>
+<app-modal
+  [visible]="!httpService.isAdmin && showUploadArea"
+  [title]="'galeries.upload.title' | translate"
+  [closeText]="'close' | translate"
+  [visible]="showUploadArea"
+  (close)="hideUploadArea()"
+>
+  <app-upload></app-upload>
+</app-modal>
+
+<!-- Main ->
+<!-- Pictures of the event ->
+<div id="main"> <!--(mouseenter)="survolePics('visible')" (mouseleave) = "survolePics('hidden')">->
+  <article *ngFor="let picture of picsService.pics; let i = index" class="thumb"> <!-- [@picsTrigger]="picsState[i]"> ->
+    <img (click)="onClickPic(i)" style="cursor: pointer; position: absolute;" src="{{ picture.base64 }}" alt="" width="100%"/>
+    <button *ngIf="enModeration && !moderationState[i]"
+            id="deleteButton" type="button" name="button" style="color: #fc3"
+            (click)="moderePic(i)"
+            [attr.aria-label]="'moderation.delete' | translate">
+      {{ 'moderation.delete' | translate }}
+    </button>
+    <button *ngIf="enModeration && moderationState[i]"
+            id="deleteButtonSelected" type="button" name="button" style="color: #fc3"
+            (click)="moderePic(i)"
+            [attr.aria-label]="'moderation.delete' | translate">
+      {{ 'moderation.delete' | translate }}
+    </button>
+    <app-reaction-icon
+      *ngIf="picture.own_reaction !== null"
+      class="reaction"
+      isSelected="true"
+      [type]="picture.own_reaction"
+      [iconFull]="
+        reactionsService.getIconFromReaction(picture.own_reaction, true)
+      "
+      (clickIcon)="onClickPic(i)"
+    ></app-reaction-icon>
+  </article>
+  <div *ngIf="picsService.isLoadingMore" id="reload-boundary" >
+    <app-loading-points></app-loading-points>
+  </div>
+  <div class="bottom-spacer"></div>
+</div>
+
+<!-- Dark background ->
+<div id="fullBackground"
+    (mouseenter)="survolePics('visible')"
+    (mouseleave)="survolePics('hidden')"></div>
+
+<!-- Image Viewer ->
+<app-image-viewer *ngIf="picClicked" [captionWidePic]="name" [indexPicture]="indexViewer" (closeViewer)="closePic($event)"></app-image-viewer>
+
+<!-- Header and Footer, revealed when clicking on "A propos de l'album" ->
+<app-galeries-footer [nameEvent]="name" [resumeEvent]="resume"></app-galeries-footer>
+
+<app-loader-ponthe *ngIf="displaySpinner" @spinnerTrigger></app-loader-ponthe>
+
+-->

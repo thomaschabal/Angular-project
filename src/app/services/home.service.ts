@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import { HttpService } from './http.service';
-import { ReactionsService } from './reactions.service';
-import API_ROUTES from './Api';
-import { NUMBER_OF_LAST_EVENTS_HOME } from '../Constants';
-import { PicsService } from './pics.service';
-import { GetRandomUserReactionsResponse, FavoritePic } from '../types/reactions.types';
-import { LastEvent, GetLatestGalleriesResponse, GalleryTypes } from '../types/home.types';
-import { routesAppFromRoot } from '../Routes';
+import { HttpService } from '@src/app/services/http.service';
+import { ReactionsService } from '@src/app/services/reactions.service';
+import API_ROUTES from '@src/app/services/Api';
+import { NUMBER_OF_LAST_EVENTS_HOME } from '@src/app/Constants';
+import { PicsService } from '@src/app/services/pics.service';
+import { GetRandomUserReactionsResponse, FavoritePic } from '@src/app/types/reactions.types';
+import { LastEvent, GetLatestGalleriesResponse, GalleryTypes } from '@src/app/types/home.types';
+import { routesAppFromRoot } from '@src/app/Routes';
 
 const EMPTY_EVENT = {name: '', fond: '', routing: '', event_id: '', next_event_id: '', resume: ''};
 

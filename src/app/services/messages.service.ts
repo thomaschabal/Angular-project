@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { HttpService } from './http.service';
-import API_ROUTES from './Api';
-import { MaterialMessage, Message } from '../types/messages.types';
+import { HttpService } from '@src/app/services/http.service';
+import API_ROUTES from '@src/app/services/Api';
+import { MaterialMessage, Message } from '@src/app/types/messages.types';
 
 @Injectable()
 export class MessagesService {

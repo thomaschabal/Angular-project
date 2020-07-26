@@ -1,0 +1,23 @@
+@import "~/app/PontheStyle.scss";
+
+$LABEL_WIDTH: 70%;
+.galleryName {
+    @include font-size(XXLARGE);
+    font-family: 'Roboto', 'Roboto-Regular';
+    font-weight: 600;
+    // text-shadow: 20px 0 0 red;
+    letter-spacing: 0.025px;
+    color: color(WHITE);
+    width: $LABEL_WIDTH;
+    margin-left: calc((100% - #{$LABEL_WIDTH}) / 2);
+    text-align: center;
+    top: 115%;
+}
+
+Image {
+    width: 100%;
+}
+
+.spacer {
+    height: 0;
+}

@@ -1,4 +1,4 @@
-const REACTIONS_ICONS_FOLDER = 'assets/images/reaction_icons/';
+const REACTIONS_ICONS_FOLDER = '@assets/images/reaction_icons/';
 
 export const REACTIONS = [
     {

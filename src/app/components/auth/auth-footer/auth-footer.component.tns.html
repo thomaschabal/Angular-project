@@ -1,0 +1,18 @@
+<StackLayout>
+  <StackLayout orientation="horizontal">
+    <Label *ngFor="let link of links" class="fa" text="&#xf08c;" textWrap="true"></Label>
+    <Image src="font://&#xf08c;" stretch="none" class="fa"></Image>
+  </StackLayout>
+  <Label text="&#169; {{ 'auth.footer.copyright' | translate }}" textWrap="true"></Label>
+</StackLayout>
+
+<!--
+Original Web template:
+
+<footer id="footer">
+  <ul class="icons">
+    <li><app-language-selection id="languages"></app-language-selection></li>
+  </ul>
+</footer>
+
+-->

@@ -1,0 +1,8 @@
+<!-- <ActionBar [title]="'nav.title.short' | translate"></ActionBar> -->
+
+<ActionBar>
+    <GridLayout columns="80%, *, 125%">
+        <Image class="logo" src="~/assets/images/logo-ponthe.png" col="0" (tap)="showDrawer()"></Image>
+        <Label [text]="'nav.title.short' | translate" textWrap="true" col="2" (tap)="showDrawer()"></Label>
+    </GridLayout>
+</ActionBar>

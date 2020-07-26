@@ -1,0 +1,39 @@
+<StackLayout [formGroup]="materialForm">
+  <Label class="question" [text]="'material.form.matos.title' | translate" textWrap="true"></Label>
+  <ScrollView orientation="horizontal">
+    <StackLayout orientation="horizontal" class="listItems">
+      <StackLayout *ngFor="let item of listMatos" orientation="vertical" [class]="selectedItems[item.name] ? 'itemCard selected' : 'itemCard none'" (tap)="onClickItem(item)">
+        <Image class="itemImage" [src]="item.img"></Image>
+        <Label class="itemTitle" [text]="item.name" textWrap="true"></Label>
+        <Label class="itemDescription" [text]="item.descriptif" textWrap="true"></Label>
+      </StackLayout>
+    </StackLayout>
+  </ScrollView>
+
+  <Label class="question" [text]="'material.form.date.title' | translate" textWrap="true"></Label>
+  <TextField required [hint]="'material.form.date' | translate" formControlName="date"></TextField>
+
+  <Label class="question" [text]="'material.form.message.title' | translate" textWrap="true"></Label>
+  <TextField required [hint]="'material.form.message' | translate" formControlName="message"></TextField>
+
+  <!-- <Label [text]="'messages.sent' | translate" textWrap="true"></Label>
+  <Label [text]="'messages.fail' | translate" textWrap="true"></Label> -->
+
+  <Button [text]="'material.form.submitButton' | translate" (tap)="onSubmitMateriel()" [isEnabled]="!materialForm.invalid"></Button>
+</StackLayout>
+
+<!--
+Original Web template:
+
+<form>
+  <p id="success" [class]="successMessage ? 'visible' : 'hidden'">
+    <span class="icon fa fa-check-circle fa-lg"></span>
+    {{ 'messages.sent' | translate }}
+  </p>
+  <p id="failure" [class]="failureMessage ? 'visible' : 'hidden'">
+    <span class="icon fa fa-times-circle fa-lg"></span>
+    {{ 'messages.fail' | translate }}
+  </p>
+</form>
+
+-->

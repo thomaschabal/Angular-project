@@ -1,0 +1,29 @@
+<StackLayout [formGroup]="messageForm">
+  <TextField required [hint]="'home.contact.placeholder' | translate" formControlName="message"></TextField>
+  <Button [text]="'home.contact.submitButton' | translate" [isEnabled]="!messageForm.invalid" (tap)="onSubmitMessage()"></Button>
+</StackLayout>
+
+<!--
+Original Web template:
+
+<form method="post" [formGroup]="messageForm" (ngSubmit)="onSubmitMessage()">
+  <div class="fields">
+    <div class="field">
+      <textarea
+        name="message"
+        [placeholder]="'home.contact.placeholder' | translate"
+        rows="6"
+        formControlName="message"
+        [attr.aria-label]="'home.contact.placeholder' | translate"></textarea>
+    </div>
+  </div>
+  <p id="success" [class]="successMessage ? 'visible' : 'hidden'">
+      <span class="icon fa fa-check-circle fa-lg"></span>
+      {{ 'messages.sent' | translate }}
+    </p>
+    <p id="failure" [class]="failureMessage ? 'visible' : 'hidden'">
+      <span class="icon fa fa-times-circle fa-lg"></span>
+      {{ 'messages.fail' | translate }}
+    </p>
+</form>
+-->

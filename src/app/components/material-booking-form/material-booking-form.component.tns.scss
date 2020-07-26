@@ -1,0 +1,60 @@
+@import "~/app/PontheStyle.scss";
+
+TextField {
+    width: 100%;
+    margin: 0;
+    margin-bottom: units(4);
+}
+
+.question {
+    @include font-size(MEDIUM);
+    font-weight: 600;
+}
+
+.listItems {
+    margin: units(4) 0;
+}
+
+.itemCard {
+    height: units(100);
+    width: units(70);
+    border-width: units(0.75);
+    border-radius: units(8);
+    margin: 0 units(2);
+    padding: units(4) units(2);
+    transition: border-color 0.3s ease-in-out;
+}
+
+.selected {
+    border-color: color(SUCCESS);
+}
+.none {
+    border-color: color(DARK_DARK_GREY);
+
+    @at-root .ns-dark & {
+        border-color: color(WHITE);
+    }
+}
+
+.itemImage {
+    height: 60%;
+    margin: units(2);
+}
+
+.itemTitle {
+    text-align: center;
+    font-weight: 600;
+}
+
+.itemDescription {
+    text-align: center;
+}
+
+Button {
+    border-radius: units(6);
+    background: color(GRADIENT_RED_YELLOW);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}

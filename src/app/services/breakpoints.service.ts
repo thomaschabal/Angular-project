@@ -1,6 +1,6 @@
 import { Injectable, HostListener } from '@angular/core';
 
-import { BREAKPOINTS } from '../Constants';
+import { BREAKPOINTS } from '@src/app/Constants';
 
 @Injectable()
 export class BreakpointsService {

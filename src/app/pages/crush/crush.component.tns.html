@@ -1,0 +1,64 @@
+<app-action-bar></app-action-bar>
+
+<app-infinite-scroll [reloadFn]="reloadFunction">
+  <View *ngFor="let picture of reactionsService.crushesPics; let i = index">
+    <AbsoluteLayout width="100%">
+      <Image [src]="picture.image"></Image>
+      <Label class="galleryName" [text]="picture.name" textWrap="true"></Label>
+    </AbsoluteLayout>
+  </View>
+  <Label *ngIf="
+    !reactionsService.isLoadingFirstPics &&
+    reactionsService.crushesPics.length === 0"
+    [text]="'crush.noCrush.title' | translate"
+    textWrap="true"></Label>
+</app-infinite-scroll>
+
+<!--
+Original Web template:
+
+<div id="main">
+  <article
+    *ngFor="let picture of reactionsService.crushesPics; let i = index"
+    class="thumb"
+  >
+    <app-reaction-icon
+      class="reaction"
+      isSelected="true"
+      [type]="picture.own_reaction"
+      [iconFull]="
+        reactionsService.getIconFromReaction(picture.own_reaction, true)
+      "
+      (clickIcon)="onClickPic(i)"
+    ></app-reaction-icon>
+  </article>
+
+  <div *ngIf="reactionsService.isLoadingMorePics" id="reload-boundary">
+    <app-loading-points></app-loading-points>
+  </div>
+
+  <div id="no-crush">
+    <app-reaction-icon
+      id="no-crush-icon"
+      isSelected="true"
+      type="LOVE"
+      [iconFull]="
+        reactionsService.getIconFromReaction('LOVE', true)
+      "
+    ></app-reaction-icon>
+  </div>
+</div>
+
+<!-- Image Viewer ->
+<app-image-viewer
+  id="image-viewer"
+  *ngIf="picClicked"
+  [captionWidePic]="name"
+  [indexPicture]="indexViewer"
+  (closeViewer)="closePic()"
+></app-image-viewer>
+
+<app-loader-ponthe *ngIf="reactionsService.isLoadingFirstPics" @spinnerTrigger id="loader-ponthe"
+  ></app-loader-ponthe>
+
+-->

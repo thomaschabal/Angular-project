@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { HttpService } from './http.service';
-import API_ROUTES from './Api';
-import { PicsService } from './pics.service';
-import { REACTIONS } from 'src/app/constants/Reactions';
-import { FavoritePic, Reaction, GetRandomUserReactionsResponse, GetAllUserReactionsResponse } from '../types/reactions.types';
+import { HttpService } from '@src/app/services/http.service';
+import API_ROUTES from '@src/app/services/Api';
+import { PicsService } from '@src/app/services/pics.service';
+import { REACTIONS } from '@src/app/constants/Reactions';
+import { FavoritePic, Reaction, GetRandomUserReactionsResponse, GetAllUserReactionsResponse } from '@src/app/types/reactions.types';
 
 const DEFAULT_PAGE_SIZE = 15;
 const HOME_PAGE_FAVORITE_PICS_SIZE = 6;

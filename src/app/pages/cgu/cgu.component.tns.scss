@@ -1,0 +1,37 @@
+@import "~/app/PontheStyle.scss";
+
+section, #cgu-title {
+    margin: 3.5em;
+}
+
+.article {
+    text-align: justify;
+    font-weight: 400;
+}
+
+.title {
+    margin-top: units(4);
+    @include font-size(LARGE);
+    font-weight: 600;
+}
+
+#cgu-title {
+    margin: 0;
+    margin-top: units(5);
+    margin-bottom: units(5);
+    color: color(YELLOW);
+    text-decoration: none;
+    text-align: center;
+    @include font-size(XLARGE);
+    width: 100%;
+    font-weight: 600;
+    
+    @at-root .ns-dark & {
+        background: rgba(0,0,0,0);
+    }
+}
+
+.cgus {
+    margin: 0 units(5);
+    padding-bottom: units(8);
+}

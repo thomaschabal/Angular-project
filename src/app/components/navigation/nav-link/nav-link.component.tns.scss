@@ -1,0 +1,52 @@
+@import "~/app/PontheStyle.scss";
+
+.navLine {
+    font-size: 10px;
+    height: units(28);
+    border-color: #c3c3c3;
+    border-width: 0 0 units(0.25) 0;
+    // background: red;
+    padding: units(3) units(0);
+    margin: 0 units(5);
+}
+
+.navImage {
+    border-radius: units(3);
+    margin: 0;
+    margin-right: units(5);
+    width: 35%;
+
+    @at-root .ns-dark & {
+        border-width: units(0.25);
+        border-color: color(WHITE);
+    }
+}
+
+.navLabel {
+    font-family: 'Roboto', 'Roboto-Black';
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 3em;
+    outline: 0;
+    height: 100% !important;
+    padding: 0;
+    letter-spacing: -0.025em;
+    // display: flex !important;
+    // flex-direction: row;
+    margin-top: units(12);
+    color: color(DARK_DARK_GREY);
+    @include font-size(LARGE);
+
+    @at-root .ns-dark & {
+        color: color(WHITE);
+    }
+}
+
+
+
+// .mobile-a img {
+//     @include sm-landscape {
+//         width: 16vw;
+//         margin-right: units(3);
+//     }
+// }

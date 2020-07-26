@@ -1,0 +1,71 @@
+@import "~/app/PontheStyle.scss";
+
+.form {
+    width: 80%;
+    margin: auto;
+    margin-top: units(10);
+    margin-bottom: units(10);
+    background: color(WHITE);
+    border-radius: units(8);
+    padding: units(8);
+}
+
+Label, ListPicker, TextField {
+    color: color(DARK_DARK_GREY);
+}
+
+TextField {
+    width: 100%;
+}
+
+Button {
+    border-radius: units(6);
+    background: color(GRADIENT_RED_YELLOW);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+.coverImage {
+    background-image: url('~/assets/images/introP.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.resetTitle {
+    text-align: center;
+    margin-bottom: units(4);
+    font-weight: 900;
+    @include font-size(LARGE);
+}
+
+.formField {
+    margin: units(4) 0;
+}
+
+.formField > Label, .html, Button {
+    @include font-size(MEDIUM);
+    font-weight: 500;
+}
+
+.html {
+    margin-bottom: units(4);
+}
+
+.mailStack {
+    width: 100%;
+}
+.mail {
+    width: 60%;
+    margin: 0;
+}
+.mailExtension {
+    margin-top: units(2);
+}
+
+ListPicker {
+    width: 60%;
+}

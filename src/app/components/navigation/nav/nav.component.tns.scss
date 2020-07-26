@@ -1,0 +1,24 @@
+@import "~/app/PontheStyle.scss";
+
+.navLinksList {
+    padding: units(4) 0;
+}
+
+.navHeader {
+    height: units(32);
+    background: color(PONTHE);
+}
+
+.navHomeImage {
+    width: 32.5%;
+    margin-left: units(4);
+    margin-right: units(8);
+}
+
+.navHomeText {
+    font-family: 'Roboto', 'Roboto-Black';
+    font-weight: bold;
+    padding-top: units(9.5);
+    color: color(DARK_DARK_GREY);
+    @include font-size(XXLARGE);
+}

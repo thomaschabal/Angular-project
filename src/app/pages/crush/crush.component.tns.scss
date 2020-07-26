@@ -1,0 +1,20 @@
+@import "~/app/PontheStyle.scss";
+
+.galleryName {
+    @include font-size(LARGE);
+    font-family: 'Roboto', 'Roboto-Regular';
+    font-weight: 500;
+    // text-shadow: 20px 0 0 red;
+    color: color(WHITE);
+    text-align: center;
+    top: 0;
+    left: units(3);
+}
+
+Image {
+    width: 100%;
+}
+
+.spacer {
+    height: 0;
+}

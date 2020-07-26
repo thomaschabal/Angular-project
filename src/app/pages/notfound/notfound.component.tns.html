@@ -1,0 +1,20 @@
+<Page>
+  <app-action-bar></app-action-bar>
+
+  <StackLayout>
+  <Label [text]="'notFound.title' | translate" textWrap="true"></Label>
+  <Label [text]="'notFound.text' | translate" textWrap="true"></Label>
+  <Image [src]="imageNotFound"></Image>
+</StackLayout>
+</Page>
+
+<!--
+Original Web template:
+
+<section style="text-align: center;">
+  <h2>{{ 'notFound.title' | translate }}</h2>
+  <p [innerHTML]="'notFound.text' | translate"></p>
+  <img [src]="imageNotFound" alt="Logo du Ponthé">
+</section>
+
+-->

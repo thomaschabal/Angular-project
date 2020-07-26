@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { User } from '../models/User.model';
-import { HttpService } from './http.service';
-import API_ROUTES from './Api';
+import { User } from '@src/app/models/User.model';
+import { HttpService } from '@src/app/services/http.service';
+import API_ROUTES from '@src/app/services/Api';
 
 @Injectable()
 export class UserService {

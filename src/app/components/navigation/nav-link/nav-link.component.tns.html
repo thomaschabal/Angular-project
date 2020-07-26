@@ -1,0 +1,4 @@
+<GridLayout columns="auto, *" class="navLine" [nsRouterLink]="route">
+  <Image *ngIf="imgSrc" col="0" [src]="imgSrc" class="navImage" [stretch]="!noFill ? 'aspectFill' : 'aspectFit'"></Image>
+  <Label col="1" [text]="name" textWrap="true" class="navLabel"></Label>
+</GridLayout>

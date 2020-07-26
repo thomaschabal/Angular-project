@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from '../../services/auth.service';
-import { routesAppFromRoot } from '../../Routes';
+import { AuthService } from '@src/app/services/auth.service';
+import { routesAppFromRoot } from '@src/app/Routes';
 
 @Component({
   selector: 'app-cgu',

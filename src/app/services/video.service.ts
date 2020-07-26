@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 
-import { DEFAULT_PAGE_SIZE } from './galeries.service';
-import { HttpService } from './http.service';
-import API from './Api';
-import { environment } from 'src/environments/environment';
-import { Film, FilmData, GetFilmographyResponse, GetVideoCoverImageResponse, VideoSource } from '../types/video.types';
+import { DEFAULT_PAGE_SIZE } from '@src/app/services/galeries.service';
+import { HttpService } from '@src/app/services/http.service';
+import API from '@src/app/services/Api';
+import { environment } from '@src/environments/environment';
+import { Film, FilmData, GetFilmographyResponse, GetVideoCoverImageResponse, VideoSource } from '@src/app/types/video.types';
 
 const EMPTY_MOVIE_DETAILS = {
   name: '',
@@ -68,7 +68,6 @@ export class VideoService {
         this.numberOfMoviesInFilmography = number_of_videos;
         this.allFilmography = galleries;
         this.isLoadingFirstFilmography = false;
-        this.page++;
       },
       error => {
         console.error(error);
@@ -82,7 +81,7 @@ export class VideoService {
       this.page * DEFAULT_PAGE_SIZE < this.numberOfMoviesInFilmography
     ) {
       this.isLoadingMoreFilmography = true;
-      this.getFilmography(this.page).then(
+      this.getFilmography(this.page + 1).then(
         (res: GetFilmographyResponse) => {
           const { galleries } = res;
           this.allFilmography = this.allFilmography.concat(galleries);
@@ -112,6 +111,17 @@ export class VideoService {
         (res: GetVideoCoverImageResponse) => {
           const { image } = res;
           this.movieCoverImage = image;
+        },
+        (error) => { console.error(error); }
+      );
+  }
+
+  getMovie() {
+    this.httpService.get('/get-video/1080/' + this.selectedMovie).toPromise()
+      .then(
+        (res) => {
+          console.log('new data')
+          console.log(res)
         },
         (error) => { console.error(error); }
       );

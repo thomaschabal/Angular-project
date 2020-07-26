@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { User } from '../../models/User.model';
-import { UserService } from '../../services/user.service';
-import { routesAppFromRoot } from '../../Routes';
-import { AVAILABLE_PROMOTIONS } from '../../Constants';
+import { User } from '@src/app/models/User.model';
+import { UserService } from '@src/app/services/user.service';
+import { routesAppFromRoot } from '@src/app/Routes';
+import { AVAILABLE_PROMOTIONS } from '@src/app/Constants';
 
 @Component({
   selector: 'app-new-account',
@@ -42,6 +42,12 @@ export class NewAccountComponent implements OnInit {
       password : ['', Validators.required],
       confirmation_password : ['', Validators.required],
     });
+  }
+
+  onPromotionChange(event: any) {
+    const selectedIndex = event.object.selectedIndex;
+    const promotionPicked = this.availablePromotions[selectedIndex];
+    this.userForm.controls.promotion.setValue(promotionPicked);
   }
 
   // Submission of the registration form

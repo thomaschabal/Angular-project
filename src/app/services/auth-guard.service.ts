@@ -1,7 +1,7 @@
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { Injectable } from '@angular/core';
 
-import { AuthService, NULL_TOKEN } from './auth.service';
+import { AuthService, NULL_TOKEN } from '@src/app/services/auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
     if (NULL_TOKEN.indexOf(token) === -1) {
       this.authService.authenticate(token);
     }
-    this.authService.getUserByJWT();
+    // this.authService.getUserByJWT();
     if (this.authService.isAuth) {
       return true;
     }

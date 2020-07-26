@@ -1,0 +1,11 @@
+<RadSideDrawer [drawerTransition]="sideDrawerTransition">
+    <GridLayout tkDrawerContent rows="auto, *">
+        <app-nav [closeDrawer]="closeDrawer"></app-nav>
+    </GridLayout>
+
+    <page-router-outlet tkMainContent></page-router-outlet>
+            <!-- <Frame defaultPage="notfound"> -->
+    
+<!-- </Frame> -->
+
+</RadSideDrawer>

@@ -1,0 +1,20 @@
+@import "~/app/PontheStyle.scss";
+
+ActionBar {
+    height: units(25);
+}
+
+Label {
+    font-weight: 900;
+    font-family: 'Roboto', 'Roboto-Black';
+    @include font-size(XLARGE);
+
+    color: color(DARK_DARK_GREY);
+    @at-root .ns-dark & {
+        color: color(WHITE);
+    }
+}
+
+GridLayout > Label {
+    width: 80%;
+}

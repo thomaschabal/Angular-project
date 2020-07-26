@@ -10,7 +10,7 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "sass"
+          "style": "scss"
         }
       },
       "architect": {
@@ -146,5 +146,8 @@
       }
     }
   },
-  "defaultProject": "galeries-ponthe"
+  "defaultProject": "galeries-ponthe",
+  "cli": {
+    "defaultCollection": "@nativescript/schematics"
+  }
 }

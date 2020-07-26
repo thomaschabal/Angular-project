@@ -2,10 +2,10 @@ import { Component, HostListener } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { animate, style, transition, trigger, query } from '@angular/animations';
 
-import { AuthService } from './services/auth.service';
-import { BreakpointsService } from './services/breakpoints.service';
-import { routesAppFromRoot } from './Routes';
-import { environment } from '../environments/environment';
+import { AuthService } from '@src/app/services/auth.service';
+import { BreakpointsService } from '@src/app/services/breakpoints.service';
+import { routesAppFromRoot } from '@src/app/Routes';
+import { environment } from '@src/environments/environment';
 
 const REDIRECTIONS = {
   upont: 'https://upont.enpc.fr',

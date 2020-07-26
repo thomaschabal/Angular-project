@@ -1,0 +1,18 @@
+<app-action-bar></app-action-bar>
+
+<ScrollView>
+  <StackLayout class="form">
+    <Label class="title" [text]="'material.header.title' | translate" textWrap="true"></Label>
+    <Label class="subtitle" [text]="'material.header.subtitle' | translate" textWrap="true"></Label>
+    <app-material-booking-form></app-material-booking-form>
+  </StackLayout>
+</ScrollView>
+
+<!--
+Original Web template:
+
+    <div class="box" [@formTrigger]="formState">
+      <app-material-booking-form></app-material-booking-form>
+    </div>
+
+-->

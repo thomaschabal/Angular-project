@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserService } from '../../services/user.service';
-import { routesAppFromRoot } from '../../Routes';
-import { EXTENSION_MAILS_ENPC } from '../../Constants';
+import { UserService } from '@src/app/services/user.service';
+import { routesAppFromRoot } from '@src/app/Routes';
+import { EXTENSION_MAILS_ENPC } from '@src/app/Constants';
 
 @Component({
   selector: 'app-reset',

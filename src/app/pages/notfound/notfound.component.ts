@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PATH_NOT_FOUND_IMAGE } from '../../Constants';
+import { PATH_NOT_FOUND_IMAGE } from '@src/app/Constants';
 
 @Component({
   selector: 'app-notfound',
@@ -14,6 +14,6 @@ export class NotfoundComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 }
