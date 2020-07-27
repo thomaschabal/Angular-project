@@ -1,0 +1,21 @@
+@import "~/app/PontheStyle.scss";
+
+.mainLoader, .reLoader {
+    width: 100%;
+    color: color(DARK_DARK_GREY);
+
+    @at-root .ns-dark & {
+        color: color(WHITE);
+    }
+}
+
+.mainLoader {
+    margin-top: units(50);
+    height: units(35);
+}
+
+.reLoader {
+    margin-top: units(10);
+    margin-bottom: units(5);
+    height: units(20);
+}

@@ -1,0 +1,32 @@
+<StackLayout>
+  <Label [text]="'Ponthé ' + team.year" textWrap="true"></Label>
+  <Label
+    *ngFor="let poste of team.members"
+    [text]="poste" textWrap="true"></Label>
+</StackLayout>
+
+<!--
+Original Web template:
+
+<section [id]="teamId"
+          class="main style2 {{ placement }} dark fullscreen {{ team.year_id }}"
+          (mouseenter)='survoleTeam("visible")'
+          (mouseleave)='survoleTeam("hidden")'>
+  <!-- Information box ->
+  <a class="button style2 down anchored" (click)="onClickNext(team.prev_year_id)" aria-label="next">Next</a>
+  <div *ngIf="numberOfPics > 1"
+      (mouseenter)='survoleTeam("hidden")'
+      (mouseleave)='survoleTeam("visible")'>
+    <img class="left_arrow"
+      alt="Left arrow"
+      src="../../../assets/assets_h/css/images/poptrox-nav-thick.svg"
+      (click)="changeBg(-1)"
+      aria-label="Left arrow"/>
+    <img class="right_arrow"
+      alt="Left arrow"
+      src="../../../assets/assets_h/css/images/poptrox-nav-thick.svg"
+      (click)="changeBg(1)"
+      aria-label="Right arrow"/>
+  </div>     
+</section>
+-->

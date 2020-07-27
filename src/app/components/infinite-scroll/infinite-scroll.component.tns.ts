@@ -8,6 +8,8 @@ import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input } fr
 })
 export class InfiniteScrollComponent implements OnInit {
   @Input() reloadFn: () => void;
+  @Input() loading: boolean;
+  @Input() loadMore: boolean;
 
   @ViewChild('bottomAnchor') view: ElementRef;
 

@@ -1,0 +1,28 @@
+<app-action-bar></app-action-bar>
+
+<ScrollView>
+  <StackLayout>
+    <Label [text]="'members.header.title' | translate" textWrap="true"></Label>
+    <Label [text]="'members.header.subtitle' | translate" textWrap="true"></Label>
+    <app-ponthe-team
+      *ngFor="let team of teamPonthe; let i=index"
+      [team]="team"
+      [index]="i"
+    ></app-ponthe-team>
+  </StackLayout>
+</ScrollView>
+
+<!--
+Original Web template:
+
+<!-- Intro ->
+<section id="intro" class="main style1 dark fullscreen"
+         (mouseenter)='survoleIntro("visible")'
+         (mouseleave)='survoleIntro("hidden")'>
+  <div class="content" [@introTrigger]="introState">
+    <footer>
+      <a class="button style2 down" (click)="onClickNext(fragmentIntro)" aria-label="More">More</a>
+    </footer>
+  </div>
+</section>
+-->

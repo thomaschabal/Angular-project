@@ -25,7 +25,7 @@ import { VideoComponent } from '@src/app/pages/video/video.component';
 
 export const routes: Routes = [
 //   { path: '', canActivate: [AuthGuard], component: HomeComponent },
-  { path: '', component: GaleriesComponent },
+  { path: '', component: MembersComponent },
 
   { path: routesApp.auth, component: AuthComponent, data: {animation: 'AuthPage'} },
   { path: routesApp.newAccount, component: NewAccountComponent, data: {animation: 'NewAccountPage'} },
@@ -34,7 +34,7 @@ export const routes: Routes = [
 
   { path: routesApp.home, canActivate: [AuthGuard], component: HomeComponent, data: {animation: 'HomePage'} },
 
-//   { path: routesApp.galeries, canActivate: [AuthGuard], component: VestibuleComponent, data: {animation: 'VestibulePage'} },
+  { path: routesApp.galeries, canActivate: [AuthGuard], component: VestibuleComponent, data: {animation: 'VestibulePage'} },
   { path: routesApp.pics, canActivate: [AuthGuard], component: GaleriesComponent, data: {animation: 'GaleriesPage'} },
   { path: 'pics', redirectTo: routesApp.pics },
   { path: 'photo', redirectTo: routesApp.pics },
@@ -42,7 +42,7 @@ export const routes: Routes = [
   { path: routesApp.videos, canActivate: [AuthGuard], component: FilmographyComponent, data: {animation: 'FilmographyPage'} },
   { path: 'video', redirectTo: routesApp.videos },
   { path: 'movies', redirectTo: routesApp.videos },
-//   { path: routesApp.videos + '/:video', canActivate: [AuthGuard], component: VideoComponent, data: {animation: 'VideoComponent'} },
+  { path: routesApp.videos + '/:video', canActivate: [AuthGuard], component: VideoComponent, data: {animation: 'VideoComponent'} },
 
   { path: routesApp.crush, canActivate: [AuthGuard], component: CrushComponent, data: {animation: 'CrushPage'} },
 
@@ -50,11 +50,11 @@ export const routes: Routes = [
 //   { path: 'dash', redirectTo: routesApp.dashboard },
 //   { path: 'board', redirectTo: routesApp.dashboard },
 //   { path: 'admin', redirectTo: routesApp.dashboard },
-//   { path: routesApp.moderation, canActivate: [AuthGuard, AdminGuard], component: ModerationComponent, data: {animation: 'ModerationPage'} },
-//   { path: 'modo', redirectTo: routesApp.moderation },
+  { path: routesApp.moderation, canActivate: [AuthGuard, AdminGuard], component: ModerationComponent, data: {animation: 'ModerationPage'} },
+  { path: 'modo', redirectTo: routesApp.moderation },
 
-//   { path: routesApp.members, canActivate: [AuthGuard], component: MembersComponent, data: {animation: 'MembersPage'} },
-//   { path: 'membres', redirectTo: routesApp.members },
+  { path: routesApp.members, canActivate: [AuthGuard], component: MembersComponent, data: {animation: 'MembersPage'} },
+  { path: 'membres', redirectTo: routesApp.members },
 
   { path: routesApp.material, canActivate: [AuthGuard], component: MaterialComponent, data: {animation: 'MaterialPage'} },
   { path: 'matos', redirectTo: routesApp.material },

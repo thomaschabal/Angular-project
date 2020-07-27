@@ -1,7 +1,11 @@
 <ScrollView (scroll)="handleScroll($event)">
     <StackLayout>
-        <ng-content></ng-content>        
-        <Label #bottomAnchor class="spacer"></Label>
+        <ActivityIndicator class="mainLoader" *ngIf="loading" [busy]="loading"></ActivityIndicator>
+        <StackLayout>
+            <ng-content></ng-content>
+            <Label #bottomAnchor class="spacer"></Label>
+        </StackLayout>
+        <ActivityIndicator class="reLoader" *ngIf="loadMore" [busy]="loadMore"></ActivityIndicator>
     </StackLayout>
 </ScrollView>
           

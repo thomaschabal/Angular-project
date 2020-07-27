@@ -1,6 +1,9 @@
 <app-action-bar></app-action-bar>
 
-<app-infinite-scroll [reloadFn]="reloadFunction">
+<app-infinite-scroll
+  [reloadFn]="reloadFunction"
+  [loading]="displaySpinner"
+  [loadMore]="picsService.isLoadingMore">
   <View *ngFor="let picture of picsService.pics; let i = index">
     <Image [src]="picture.base64"></Image>
   </View>

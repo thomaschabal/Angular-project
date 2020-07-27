@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { routesAppFromRoot } from '../../Routes';
+import { routesAppFromRoot } from '@src/app/Routes';
 import { Router } from '@angular/router';
 
 const CATEGORIES = [

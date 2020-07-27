@@ -4,6 +4,17 @@ import { Router } from '@angular/router';
 import { GaleriesService } from '@src/app/services/galeries.service';
 import { routesAppFromRoot } from '@src/app/Routes';
 import { pontheSpinnerAnimation } from '@src/app/constants/Animations';
+// import { ImageSourceSVG } from 'nativescript-svg';
+
+// const svgFile = new ImageSourceSVGModule.ImageSourceSVG();
+// const path = '~/assets/images/logo-ponthe.svg';
+// console.log('SVG', svgFile)
+// const loaded = svgFile.loadFromFile(path);
+// if(loaded){
+//   console.log("object loaded");
+// } else {
+//   console.log("error");
+// }
 
 @Component({
   selector: 'app-galeries',
@@ -16,6 +27,7 @@ import { pontheSpinnerAnimation } from '@src/app/constants/Animations';
 
 export class GaleriesComponent implements OnInit {
   routes = routesAppFromRoot;
+  // svgFile: any;
 
   constructor(public galeriesService: GaleriesService,
               private router: Router) { }
@@ -24,6 +36,13 @@ export class GaleriesComponent implements OnInit {
   displaySpinner = true;
 
   ngOnInit() {
+    // const path = '~/assets/images/logo-ponthe.svg';
+    // this.svgFile = new ImageSourceSVG()
+    // this.svgFile.fromFile(path).then(loaded => console.log(loaded));
+    // console.log(this.svgFile)
+    // const loaded = svgFile.fromFile(path);
+    // console.log('SVG', svgFile, loaded)
+
     this.displaySpinner = this.galeriesService.displaySpinner;
     this.galeriesService.loadEvents().then(
       () => {

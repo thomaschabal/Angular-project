@@ -1,0 +1,52 @@
+<app-action-bar></app-action-bar>
+<VideoPlayer
+    src="https://ponthe.enpc.org/assets/images/video-auth.mp4"
+    autoplay="true"
+    height="100%"
+    width="100%"
+    controls="false"
+    loop="true"
+    fill="false"
+  ></VideoPlayer>
+
+
+<!--
+Original Web template:
+
+<div class="spacer"></div>
+
+<!-- Moderation buttons ->
+<app-galeries-moderation-buttons
+  *ngIf="httpService.isAdmin"
+  [selectedRoute]="videoService.selectedMovie"
+  [moderationState]="moderationState"
+  [isVideoPrivate]="videoService.movieDetails.private"
+  isVideoGallery="true"
+></app-galeries-moderation-buttons>
+
+<!-- Main ->
+<!-- Film ->
+<div id="main">
+  <app-video-viewer
+    id="video"
+    [srcs]="videoService.videoUrls"
+    [poster]="videoService.coverImageUrl"
+  ></app-video-viewer>
+
+  <app-reactions-videos
+    id="reactions-videos"
+  ></app-reactions-videos>
+</div>
+
+<!-- Header and Footer, revealed when clicking on "A propos de l'album" ->
+<app-galeries-footer
+  [nameEvent]="videoService.movieDetails.name"
+  [resumeEvent]="videoService.movieDetails.description"
+></app-galeries-footer>
+
+<app-loading-spinner
+  *ngIf="displaySpinner"
+  [@spinnerTrigger]="stateSpinner"
+></app-loading-spinner>
+
+-->

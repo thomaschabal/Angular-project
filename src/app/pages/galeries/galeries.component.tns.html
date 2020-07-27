@@ -1,6 +1,12 @@
 <app-action-bar></app-action-bar>
 
-<app-infinite-scroll [reloadFn]="reloadFunction">
+<app-infinite-scroll
+  [reloadFn]="reloadFunction"
+  [loading]="displaySpinner"
+  [loadMore]="galeriesService.isLoadingMoreEvents">
+    <!-- <SVGImage src="~/assets/images/logo-ponthe.svg" height="100"></SVGImage> -->
+    <!-- <SVGImage #svg [src]="svgFile" height="100"></SVGImage> -->
+    
   <View *ngFor="let event of galeriesService.galeriesEvents; let i = index">
     <AbsoluteLayout width="100%" (tap)="navigateToEvent(event.slug)">
       <Image [src]="event.image"></Image>

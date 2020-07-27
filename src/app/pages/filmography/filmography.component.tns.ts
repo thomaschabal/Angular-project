@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { VideoService } from '@src/app/services/video.service';
 import { pontheSpinnerAnimation } from '@src/app/constants/Animations';
@@ -15,7 +16,8 @@ import { routesAppFromRoot } from '@src/app/Routes';
 export class FilmographyComponent implements OnInit {
   routes = routesAppFromRoot;
 
-  constructor(public videoService: VideoService) { }
+  constructor(public videoService: VideoService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.videoService.loadFirstFilmography();
@@ -23,5 +25,10 @@ export class FilmographyComponent implements OnInit {
 
   get reloadFunction() {
     return () => this.videoService.loadMoreFilmography();
+  }
+
+  navigateToMovie(movieSlug: string) {
+    const movieAddress = this.routes.videos + '/' + movieSlug;
+    this.router.navigate([movieAddress]);
   }
 }

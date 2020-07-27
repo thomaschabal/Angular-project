@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { state, trigger, animate, style, transition } from '@angular/animations';
 
-import { HttpService } from '../../services/http.service';
-import { VideoService } from 'src/app/services/video.service';
+import { HttpService } from '@src/app/services/http.service';
+import { VideoService } from '@src/app/services/video.service';
 @Component({
   selector: 'app-video',
   templateUrl: './video.component.html',

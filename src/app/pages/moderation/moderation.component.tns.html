@@ -1,0 +1,72 @@
+<StackLayout>
+  <Label text="moderation works" textWrap="true"></Label>
+  <Label text="This is a migrated component" textWrap="true"></Label>
+  <Label text="Update it to provide the UI elements required in your mobile app" textWrap="true"></Label>
+</StackLayout>
+
+<!--
+Original Web template:
+
+<div class="spacer"></div>
+
+<div *ngIf="isAdmin" class="moderation">
+  <button id="acceptAll" type="button" name="button"
+          (click)="acceptAllPics()"
+          [attr.aria-label]="'moderation.acceptAll' | translate">
+    {{ 'moderation.acceptAll' | translate }}
+  </button>
+  <button id="refuseAll" type="button" name="button"
+          (click)="deleteAllPics()"
+          [attr.aria-label]="'moderation.deleteAll' | translate">
+    {{ 'moderation.deleteAll' | translate }}
+  </button>
+  <button id="acceptSelection" type="button" name="button"
+          (click)="acceptSelectedPics()"
+          [attr.aria-label]="'moderation.acceptAllSelectedPics' | translate">
+    {{ 'moderation.acceptAllSelectedPics' | translate }}
+  </button>
+  <button id="refuseSelection"type="button" name="button"
+          (click)="deleteSelectedPics()"
+          [attr.aria-label]="'moderation.deleteAllSelectedPics' | translate">
+    {{ 'moderation.deleteAllSelectedPics' | translate }}
+  </button>
+</div>
+
+<!-- Main ->
+  <!-- Image viewer ->
+<div *ngIf="clicked && isAdmin" id="image-viewer"></div>
+  <!-- Pictures of the event ->
+  <div *ngIf="isAdmin" id="main"
+       (mouseenter)="survolePics('visible')"
+       (mouseleave)="survolePics('hidden')">
+    <article *ngFor="let picture of pics; let i = index"
+             class="thumb"
+             [@picsTrigger] = "state(i)">
+      <img (click)="onClick(i)" src="{{ picture.base64 }}" alt="" width="100%"/>
+      <button *ngIf="!acceptState(i)"
+              id="acceptButton" type="button" name="button"
+              (click)="acceptPic(i)"
+              [attr.aria-label]="'moderation.accept' | translate">
+        {{ 'moderation.accept' | translate }}
+      </button>
+      <button *ngIf="acceptState(i)"
+              id="acceptButtonSelected" type="button" name="button"
+              (click)="acceptPic(i)"
+              [attr.aria-label]="'moderation.accept' | translate">
+        {{ 'moderation.accept' | translate }}
+      </button>
+      <button *ngIf="!deleteState(i)"
+              id="deleteButton" type="button" name="button"
+              (click)="deletePic(i)"
+              [attr.aria-label]="'moderation.delete' | translate">
+        {{ 'moderation.delete' | translate }}
+      </button>
+      <button *ngIf="deleteState(i)"
+              id="deleteButtonSelected" type="button" name="button"
+              (click)="deletePic(i)"
+              [attr.aria-label]="'moderation.delete' | translate">
+        {{ 'moderation.delete' | translate }}
+      </button>
+    </article>
+  </div>
+-->

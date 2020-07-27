@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as app from 'tns-core-modules/application';
+import { RadSideDrawer } from 'nativescript-ui-sidedrawer';
 
 @Component({
   selector: 'app-action-bar',
