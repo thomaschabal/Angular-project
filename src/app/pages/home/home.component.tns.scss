@@ -1,5 +1,111 @@
-/*
-Add your NativeScript specific styles here.
-To learn more about styling in NativeScript see:
-https://docs.nativescript.org/angular/ui/styling
-*/
+@import "~/app/PontheStyle.scss";
+
+$ARTICLE-BOX-RADIUS: units(2.5);
+$GALLERY-PICS-MARGIN: units(1);
+
+$INTRO-IMAGE: url("~/assets/images/introP.jpg");
+
+.page {
+    background: color(HOME_GREY);
+}
+
+/* Intro */
+.introImage {
+    width: 100%;
+}
+
+.homeTitle {
+    width: 100%;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+    color: color(WHITE);
+}
+
+.homeSubtitle {
+    width: 80%;
+    margin: 0 10%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: color(WHITE);
+}
+
+	// #intro > .content {
+	// 	transition: opacity 0.35s ease;
+	// }
+	// #intro-hovered {
+	// 	opacity: 1;
+	// }
+	// #intro-none {
+	// 	opacity: 0;
+	// }
+
+
+/* 3 Last events */
+.eventsLoader, .introLoader {
+    width: 100%;
+}
+
+.eventsLoader {
+    color: color(DARK_DARK_GREY);
+    height: units(50);
+    padding: units(15) 0;
+}
+.introLoader {
+    color: color(WHITE);
+    height: units(15);
+}
+
+
+.lastEventPic {
+    width: 100%;
+}
+
+$SIDE_MARGIN_EVENT_CARD: 15%;
+.lastEventCard {
+    margin: 0 $SIDE_MARGIN_EVENT_CARD;
+    margin-top: 30%;
+    padding: units(15) 5%;
+    width: calc(100% - 2 * #{$SIDE_MARGIN_EVENT_CARD});
+    text-align: center;
+    border-width: units(1);
+    border-color: color(WHITE);
+    border-radius: units(10);
+    background: rgba(0, 0, 0, 0.35);
+}
+.lastEventTitle {
+    @include font-size(XXLARGE);
+    font-weight: 900;
+    letter-spacing: 0.025;
+}
+
+
+// #no-gallery {
+// 	width: 90vw;
+// 	padding-left: 10vw;
+// 	padding-top: units(5);
+// 	font-family: "Source Sans Pro";
+// 	font-weight: 600;
+// 	text-transform: inherit;
+// 	text-align: center;
+// 	@include font-size(XXLARGE);
+// 	@include color(DARK_DARK_GREY)
+// }
+
+
+.homeFormArea {
+    margin: units(10) 10%;
+    padding: units(5) units(8);
+	border-radius: units(10);
+    color: color(DARK_DARK_GREY);
+    background: color(WHITE);
+    border-width: units(0.25);
+    border-color: color(DARK_DARK_GREY);
+}
+
+.formTitle {
+    text-align: center;
+    @include font-size(MEDIUM);
+    font-weight: 600;
+}

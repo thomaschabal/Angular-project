@@ -1,24 +1,61 @@
 <app-action-bar></app-action-bar>
 
 <ScrollView>
-  <StackLayout>
-    <StackLayout class="intro">
-      <Label [text]="'home.header.title' | translate" textWrap="true"></Label>
-      <HTMLView [html]="'home.header.introduction' | translate" textWrap="true"></HTMLView>
-    </StackLayout>
+  <StackLayout class="page">
+    <AbsoluteLayout
+      class="intro"
+      [height]="0.9 * screenHeight">
+      <Image
+        src="~/assets/images/introP.jpg"
+        stretch="aspectFill"
+        class="introImage"
+        [height]="screenHeight"></Image>
+      <Label
+        [text]="'home.header.title' | translate"
+        textWrap="true"
+        [top]="0.2 * screenHeight"
+        class="homeTitle"
+      ></Label>
+      <Label
+        [text]="formatIntroString('home.header.introduction' | translate)"
+        textWrap="true"
+        [top]="0.4 * screenHeight"
+        class="homeSubtitle"
+      ></Label>
+      <ActivityIndicator class="introLoader"
+        *ngIf="!homeService.areLastEventsLoaded"
+        [busy]="!homeService.areLastEventsLoaded"
+        [top]="0.65 * screenHeight"
+      ></ActivityIndicator>
+    </AbsoluteLayout>
 
-    <View *ngFor="let event of homeService.lastEvents; let i = index"
-      [nsRouterLink]="homeService.getEventRouting(event)">
-      <!-- <Image [src]=""></Image> -->
-      <Label [text]="event.name" textWrap="true"></Label>
-      <Label [text]="event.resume" textWrap="true"></Label>
-    </View>
+    <ActivityIndicator class="eventsLoader"
+      *ngIf="!homeService.areLastEventsLoaded"
+      [busy]="!homeService.areLastEventsLoaded"
+    ></ActivityIndicator>
+    <AbsoluteLayout
+      *ngFor="let event of homeService.lastEvents; let i = index"
+      [nsRouterLink]="homeService.getEventRouting(event)"
+      class="lastEvent"
+      [height]="0.5 * screenHeight">
+      <Image
+        class="lastEventPic"
+        [src]="event.fond"
+        [height]="0.5 * screenHeight"
+        stretch="aspectFill"></Image>
+      <StackLayout class="lastEventCard">
+        <Label class="lastEventTitle" [text]="event.name" textWrap="true"></Label>
+        <Label [text]="event.resume" textWrap="true"></Label>
+      </StackLayout>
+    </AbsoluteLayout>
 
     <app-love-pics></app-love-pics>
 
-    <Label [text]="'home.contact.title' | translate" textWrap="true"></Label>
-    <Label [text]="'home.contact.subtitle' | translate" textWrap="true"></Label>
-    <app-home-form></app-home-form>
+    <StackLayout class="homeFormArea">
+      <Label class="formTitle" [text]="'home.contact.title' | translate" textWrap="true"></Label>
+      <Label [text]="'home.contact.subtitle' | translate" textWrap="true"></Label>
+      <app-home-form></app-home-form>
+    </StackLayout>
   </StackLayout>
 </ScrollView>
 
@@ -31,7 +68,6 @@ Original Web template:
          (mouseleave)='survoleIntro(false)'>
   <div class="content"
        [id]="introVisible ? 'intro-hovered' : 'intro-none'">
-    <app-loading-points *ngIf="!homeService.areLastEventsLoaded"></app-loading-points>
     <footer *ngIf="homeService.areLastEventsLoaded">
       <a class="button style2 down" (click)="clickOnNextArrow('one')" aria-label="More">More</a>
     </footer>
@@ -39,20 +75,10 @@ Original Web template:
 </section>
 
 <!-- 3 Last Events ->
-<div id="loading-events" *ngIf="!homeService.areLastEventsLoaded">
-  <app-loading-points></app-loading-points>
-</div>
 <div *ngIf="homeService.areLastEventsLoaded" id="latest-events">
   <section  *ngFor="let event of homeService.lastEvents; let i = index"
-            id="{{ event.event_id }}"
-            class="main style2 {{ placement_events(i) }} dark fullscreen"
             (mouseenter)='survoleEvent("visible", i)'
             (mouseleave)='survoleEvent("hidden", i)'
-            [ngStyle]="{'background-image' : 'url(' + event.fond + ')', '-webkit-background-size': 'cover', 'background-size': 'cover'}">
-    <!-- <img src="../../../assets/assets_h/css/images/overlay.png" style="position: absolute; top:0; left:0; min-width:100vw; min-height: 100vh;"alt=""/> ->
-    <div [@lastEventTrigger]="currentStateEvent(i)"
-        class="content box style2">
-    </div>
     <a class="button style2 down anchored" (click)="clickOnNextArrow(event.next_event_id)" aria-label="Next">Next</a>
   </section>
   <h3 *ngIf="homeService.lastEvents.length === 0" id="no-gallery">{{ 'home.noLatestGalleries' | translate }}</h3>

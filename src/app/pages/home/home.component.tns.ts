@@ -3,10 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { transition, trigger, style, animate, state } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { screen } from 'tns-core-modules/platform/platform';
 
 import { HomeService } from '@src/app/services/home.service';
 import { PicsService } from '@src/app/services/pics.service';
 import { routesAppFromRoot } from '@src/app/Routes';
+
 
 
 @Component({
@@ -26,7 +28,7 @@ import { routesAppFromRoot } from '@src/app/Routes';
 })
 
 export class HomeComponent implements OnInit, OnDestroy {
-
+  screenHeight = screen.mainScreen.heightDIPs * (1 - 200 / screen.mainScreen.heightPixels);
   // Text to display in the HTML file
   routes = routesAppFromRoot;
 
@@ -66,6 +68,13 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     if (this.sub) { this.sub.unsubscribe(); }
+  }
+
+  formatIntroString(s: string) {
+    console.log('s', s)
+    const res = s.replace('<strong>', '').replace('</strong>', '').replace('<br/>', '');
+    console.log('res', res)
+    return s.split('<strong>').join('').split('</strong>').join('').split('<br/>').join('\n');
   }
 
   // Information on the positioning of elements

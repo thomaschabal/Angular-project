@@ -24,8 +24,8 @@ import { ModerationComponent } from '@src/app/pages/moderation/moderation.compon
 import { VideoComponent } from '@src/app/pages/video/video.component';
 
 export const routes: Routes = [
-//   { path: '', canActivate: [AuthGuard], component: HomeComponent },
-  { path: '', component: MembersComponent },
+  { path: '', canActivate: [AuthGuard], component: HomeComponent },
+  // { path: '', component: MembersComponent },
 
   { path: routesApp.auth, component: AuthComponent, data: {animation: 'AuthPage'} },
   { path: routesApp.newAccount, component: NewAccountComponent, data: {animation: 'NewAccountPage'} },

@@ -1,4 +1,4 @@
-<StackLayout *ngIf="isOnline()" orientation="horizontal" row="0" class="" [nsRouterLink]="routes.home" class="navHeader">
+<StackLayout *ngIf="isOnline()" orientation="horizontal" row="0" class="" [nsRouterLink]="routes.home" class="navHeader" (tap)="closeDrawer()">
     <Image class="navHomeImage" [src]="pathLogo" ></Image>
     <Label class="navHomeText" [text]="'nav.title.short' | translate"></Label>
 </StackLayout>

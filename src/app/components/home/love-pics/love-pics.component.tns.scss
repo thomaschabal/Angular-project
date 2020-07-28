@@ -1,5 +1,26 @@
-/*
-Add your NativeScript specific styles here.
-To learn more about styling in NativeScript see:
-https://docs.nativescript.org/angular/ui/styling
-*/
+@import "~/app/PontheStyle.scss";
+
+.lovePics {
+    background: color(HOME_GREY);
+}
+
+.lovePicsTitle {
+    color: color(DARK_DARK_GREY);
+    width: 100%;
+    text-align: center;
+    margin-top: units(8);
+    margin-bottom: units(4);
+    @include font-size(XLARGE);
+    font-weight: 900;
+    background: transparent;
+}
+
+.allPics {
+    margin-left: units(5);
+}
+
+.lovePicImage {
+    width: 45%;
+    border-radius: units(10);
+    margin: units(2);
+}

@@ -1,8 +1,16 @@
-<StackLayout>
-  <Label [text]="'home.favoritePics.title' | translate" textWrap="true" (tap)="redirectToCrushPics()"></Label>
-  <View *ngFor="let pic of homeService.lovePics; let i = index">
-    <Image [src]="pic.image"></Image>
-  </View>
+<StackLayout class="lovePics">
+  <Label
+    class="lovePicsTitle"
+    [text]="('home.favoritePics.title' | translate).replace('<em>', '').replace('</em>', '')"
+    textWrap="true"
+    (tap)="redirectToCrushPics()"
+  ></Label>
+  <WrapLayout orientation="horizontal" class="allPics">
+    <Image
+      *ngFor="let pic of homeService.lovePics; let i = index"
+      [src]="pic.image"
+      class="lovePicImage"></Image>
+  </WrapLayout>
 </StackLayout>
 
 <!--
