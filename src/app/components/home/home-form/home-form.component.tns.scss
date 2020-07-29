@@ -7,10 +7,5 @@ TextField {
 }
 
 Button {
-    border-radius: units(6);
-    background: color(GRADIENT_RED_YELLOW);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100%;
-    width: 100%;
+    @include mobileButton;
 }

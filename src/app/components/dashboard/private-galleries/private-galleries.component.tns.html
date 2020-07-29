@@ -1,0 +1,31 @@
+<StackLayout>
+  <!-- Photos -->
+  <ActivityIndicator
+    *ngIf="displaySpinner"
+    [busy]="displaySpinner"></ActivityIndicator>
+  <View *ngFor="let event of galeriesService.privatePhotoEvents">
+    <Image
+      [src]="event.image"
+      (tap)="navigateToPrivateGallery(event.slug)"
+    ></Image>
+  </View>
+  <Label
+    *ngIf="galeriesService.privatePhotoEvents.length === 0 && !displaySpinner"
+    [text]="'dashboard.privatePhotoGalleries.none' | translate"
+    textWrap="true"></Label>
+  
+    <!-- Videos -->
+  <ActivityIndicator
+    *ngIf="displaySpinner"
+    [busy]="displaySpinner"></ActivityIndicator>
+  <View *ngFor="let movie of galeriesService.privateVideoEvents">
+    <Image
+      [src]="movie.image"
+      (tap)="navigateToPrivateMovie(movie.slug)"
+    ></Image>
+  </View>
+  <Label
+    *ngIf="galeriesService.privateVideoEvents.length === 0 && !displaySpinner"
+    [text]="'dashboard.privateVideoGalleries.none' | translate"
+    textWrap="true"></Label>
+</StackLayout>

@@ -24,8 +24,8 @@ import { ModerationComponent } from '@src/app/pages/moderation/moderation.compon
 import { VideoComponent } from '@src/app/pages/video/video.component';
 
 export const routes: Routes = [
-  { path: '', canActivate: [AuthGuard], component: HomeComponent },
-  // { path: '', component: MembersComponent },
+  // { path: '', canActivate: [AuthGuard], component: HomeComponent },
+  { path: '', component: DashboardComponent },
 
   { path: routesApp.auth, component: AuthComponent, data: {animation: 'AuthPage'} },
   { path: routesApp.newAccount, component: NewAccountComponent, data: {animation: 'NewAccountPage'} },
@@ -46,10 +46,10 @@ export const routes: Routes = [
 
   { path: routesApp.crush, canActivate: [AuthGuard], component: CrushComponent, data: {animation: 'CrushPage'} },
 
-//   { path: routesApp.dashboard, canActivate: [AuthGuard, AdminGuard], component: DashboardComponent, data: {animation: 'DashboardPage'} },
-//   { path: 'dash', redirectTo: routesApp.dashboard },
-//   { path: 'board', redirectTo: routesApp.dashboard },
-//   { path: 'admin', redirectTo: routesApp.dashboard },
+  { path: routesApp.dashboard, canActivate: [AuthGuard, AdminGuard], component: DashboardComponent, data: {animation: 'DashboardPage'} },
+  { path: 'dash', redirectTo: routesApp.dashboard },
+  { path: 'board', redirectTo: routesApp.dashboard },
+  { path: 'admin', redirectTo: routesApp.dashboard },
   { path: routesApp.moderation, canActivate: [AuthGuard, AdminGuard], component: ModerationComponent, data: {animation: 'ModerationPage'} },
   { path: 'modo', redirectTo: routesApp.moderation },
 

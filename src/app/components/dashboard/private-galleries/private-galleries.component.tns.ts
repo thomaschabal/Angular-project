@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GaleriesService } from '@src/app/services/galeries.service';
 import { routesAppFromRoot } from '@src/app/Routes';
@@ -14,7 +15,8 @@ export class PrivateGalleriesComponent implements OnInit {
   // Loading Spinner
   displaySpinner = true;
 
-  constructor(public galeriesService: GaleriesService) { }
+  constructor(public galeriesService: GaleriesService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.galeriesService.loadPrivateEvents().then(
@@ -23,4 +25,13 @@ export class PrivateGalleriesComponent implements OnInit {
     });
   }
 
+  navigateToPrivateGallery(gallerySlug: string) {
+    const galleryAddress = this.routes.pics + '/' + gallerySlug;
+    this.router.navigate([galleryAddress]);
+  }
+
+  navigateToPrivateMovie(movieSlug: string) {
+    const movieAddress = this.routes.videos + '/' + movieSlug;
+    this.router.navigate([movieAddress]);
+  }
 }

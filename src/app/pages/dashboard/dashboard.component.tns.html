@@ -1,0 +1,41 @@
+<app-action-bar></app-action-bar>
+
+<ScrollView>
+  <StackLayout>
+    <Label [text]="'dashboard.header.title' | translate" textWrap="true"></Label>
+
+    <app-gallery-creation-form></app-gallery-creation-form>
+
+    <Label
+      [text]="'dashboard.links.moderation' | translate"
+      textWrap="true"
+      (tap)="displayModeration()"
+    ></Label>
+    <ActivityIndicator *ngIf="loadingModerationView" [busy]="loadingModerationView"></ActivityIndicator>
+    <WebView
+      *ngIf="openModeration"
+      [loadStarted]="moderationStarted()"
+      [loadFinished]="moderationLoaded()"
+      row="1"
+      src="https://ponthe.enpc.org/v1/moderation"
+    ></WebView>
+    
+    <Label [text]="'dashboard.privateGalleries.title' | translate" textWrap="true"></Label>
+    <app-private-galleries></app-private-galleries>
+  </StackLayout>
+</ScrollView>
+
+<!--
+Original Web template:
+
+  <!-- Adminstration area ->
+  <div class="content" id="admin_area">
+
+    <div id="col_admin_2">
+      <span *ngFor="let link of buttonLinks">
+        <a [href]="link.address" class="icons fa {{ link.class }} fa-3x" [attr.aria-label]="link.address"></a>
+      </span>
+    </div>
+  </div>
+
+-->

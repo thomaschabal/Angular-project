@@ -6,7 +6,9 @@
     margin-top: units(10);
     margin-bottom: units(10);
     background: color(WHITE);
-    border-radius: units(8);
+    border-radius: units(15);
+    border-width: units(1);
+    border-color: color(DARK_DARK_GREY);
     padding: units(8);
 }
 
@@ -19,12 +21,7 @@ TextField {
 }
 
 Button {
-    border-radius: units(6);
-    background: color(GRADIENT_RED_YELLOW);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100%;
-    width: 100%;
+    @include mobileButton;
 }
 
 .coverImage {
@@ -37,9 +34,9 @@ Button {
 
 .resetTitle {
     text-align: center;
-    margin-bottom: units(4);
+    margin-bottom: units(5);
     font-weight: 900;
-    @include font-size(LARGE);
+    @include font-size(XLARGE);
 }
 
 .formField {

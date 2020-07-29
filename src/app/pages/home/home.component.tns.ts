@@ -71,9 +71,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   formatIntroString(s: string) {
-    console.log('s', s)
     const res = s.replace('<strong>', '').replace('</strong>', '').replace('<br/>', '');
-    console.log('res', res)
     return s.split('<strong>').join('').split('</strong>').join('').split('<br/>').join('\n');
   }
 

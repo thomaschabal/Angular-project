@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { GaleriesService } from '../../../services/galeries.service';
-import { CURRENT_YEAR, YEARS_SLUGS, SCHOOL_YEARS_SLUGS, GALLERY_TYPES } from '../../../Constants';
+import { GaleriesService } from '@src/app/services/galeries.service';
+import { CURRENT_YEAR, YEARS_SLUGS, SCHOOL_YEARS_SLUGS, GALLERY_TYPES } from '@src/app/Constants';
 
 const DURATION_DISPLAYING = 6000;
 const EMPTY_FORM = {
@@ -73,5 +73,18 @@ export class GalleryCreationFormComponent implements OnInit {
         setTimeout(() => this.failureCreation = false, DURATION_DISPLAYING);
       }
     );
+  }
+
+  // Mobile Nativescript functions
+  onYearChange(event: any) {
+    const selectedIndex = event.object.selectedIndex;
+    const yearPicked = this.SLUGS[selectedIndex];
+    this.eventForm.controls.year_slug.setValue(yearPicked);
+  }
+
+  onTypeChange(event: any) {
+    const selectedIndex = event.object.selectedIndex;
+    const typePicked = this.TYPES[selectedIndex].toUpperCase();
+    this.eventForm.controls.type.setValue(typePicked);
   }
 }

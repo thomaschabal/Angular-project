@@ -1,0 +1,52 @@
+<app-dashboard-form [title]="'dashboard.form.title' | translate"> 
+   <StackLayout [formGroup]="eventForm">
+      <Label [text]="'dashboard.form.name' | translate" textWrap="true"></Label>
+      <TextField
+         required
+         hint="WEI 2021"
+         formControlName="name"
+      ></TextField>
+
+      <Label [text]="'dashboard.form.description' | translate" textWrap="true"></Label>
+      <TextField
+         required
+         hint="Le WEI de l'Ecole des Ponts s'est déroulé du 32 Août au 33 Septembre 2021. 200 2A, 300 1A, c'était SPARTAAA ! 3 jours de pur bonheur, maillot du meilleur 1A pour le Prez BDE, maillot de la meilleure intégratrice pour Jeannine et son bonjour."
+         rows="4"
+         formControlName="description"
+      ></TextField>
+
+      <Label [text]="'dashboard.form.year' | translate" textWrap="true"></Label>
+      <ListPicker
+         [items]="SLUGS"
+         selectedIndex="0"
+         (selectedIndexChange)="onYearChange($event)"
+      ></ListPicker>
+
+      <Label [text]="'dashboard.form.type' | translate" textWrap="true"></Label>
+      <ListPicker
+         [items]="TYPES"
+         selectedIndex="0"
+         (selectedIndexChange)="onTypeChange($event)"
+      ></ListPicker>
+
+      <Button
+         [text]="'dashboard.form.submitButton' | translate"
+         [isEnabled]="!eventForm.invalid"
+         (tap)="onSubmitEvent()"
+      ></Button>
+   </StackLayout>
+</app-dashboard-form>
+
+<!--
+Original Web template:
+
+    <p id="success" [class]="successCreation ? 'visible' : 'hidden'">
+       <span class="icon fa fa-check-circle fa-lg"></span>
+       {{ 'dashboard.createdGallery' | translate }}
+    </p>
+    <p id="failure" [class]="failureCreation ? 'visible' : 'hidden'">
+       <span class="icon fa fa-times-circle fa-lg"></span>
+       {{ 'dashboard.failureCreationGallery' | translate }}
+    </p>
+
+-->

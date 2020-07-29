@@ -1,0 +1,7 @@
+<StackLayout>
+  <Label
+    [text]="title"
+    textWrap="true"
+    (tap)="formVisibility()"></Label>
+  <ng-content *ngIf="displayContent"></ng-content>
+</StackLayout>

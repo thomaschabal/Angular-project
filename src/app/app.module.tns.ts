@@ -52,6 +52,10 @@ import { MembersComponent } from '@src/app/pages/members/members.component';
 import { VestibuleComponent } from '@src/app/pages/vestibule/vestibule.component';
 import { ModerationComponent } from '@src/app/pages/moderation/moderation.component';
 import { PontheTeamComponent } from '@src/app/components/members/ponthe-team/ponthe-team.component';
+import { DashboardComponent } from '@src/app/pages/dashboard/dashboard.component';
+import { GalleryCreationFormComponent } from '@src/app/components/dashboard/gallery-creation-form/gallery-creation-form.component';
+import { PrivateGalleriesComponent } from '@src/app/components/dashboard/private-galleries/private-galleries.component';
+import { DashboardFormComponent } from '@src/app/components/dashboard/dashboard-form/dashboard-form.component';
 
 // Uncomment and add to NgModule imports if you need to use two-way binding and/or HTTP wrapper
 // import { NativeScriptFormsModule, NativeScriptHttpClientModule } from '@nativescript/angular';
@@ -90,6 +94,10 @@ export function setupTranslateFactory(
     VestibuleComponent,
     ModerationComponent,
     PontheTeamComponent,
+    DashboardComponent,
+    GalleryCreationFormComponent,
+    PrivateGalleriesComponent,
+    DashboardFormComponent,
   ],
   imports: [
     NativeScriptModule,

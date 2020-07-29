@@ -44,15 +44,11 @@ export class NavComponent {
 
   // Boolean showing if the user is authenticated or not
   isOnline() {
-    return true
-    // TODO:fix this
     return (this.authService.isAuth);
   }
 
   // Boolean showing if the user is administrator or not
   isAdmin() {
-    return true
-    // TODO:fix this
     return (this.httpService.isAdmin);
   }
 

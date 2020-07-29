@@ -9,7 +9,7 @@ import { routesAppFromRoot } from '@src/app/Routes';
 import API_ROUTES from '@src/app/services/Api';
 
 export const TOKEN_NAME = 'jwt_token';
-export const NULL_TOKEN = [null, 'null', undefined];
+export const NULL_TOKEN = [null, 'null', undefined, ''];
 
 @Injectable()
 export class AuthService {
@@ -103,7 +103,7 @@ export class AuthService {
 
   // Logout
   signOut() {
-    this.setToken(null);
+    this.setToken('');
     this.isAuth = false;
     this.httpService.isAdmin = false;
     this.httpService.promotion = null;

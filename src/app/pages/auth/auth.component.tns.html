@@ -1,12 +1,40 @@
 <app-action-bar></app-action-bar>
-
+<VideoPlayer
+	src="https://ponthe.enpc.org/assets/images/video-auth.mp4"
+	autoplay="true"
+	controls="false"
+	loop="true"
+	fill="true"
+></VideoPlayer>
+<!-- [src]="pathAuthVideo" -->
 <ScrollView>
 	<StackLayout [formGroup]="userForm">
-		<Label [text]="'auth.form.id' | translate" textWrap="true"></Label>
-		<TextField required hint="prenom.nom@eleves.enpc.fr" formControlName="email"></TextField>
-		<Label [text]="'auth.form.password' | translate" textWrap="true"></Label>
-		<TextField required secure="true" hint="mylittlepontsny77" formControlName="password"></TextField>
-		<Button [text]="'auth.form.submitButton' | translate" [isEnabled]="!userForm.invalid" (tap)="onSignIn()"></Button>
+		<StackLayout class="authForm">
+			<Label
+				class="authTitle"
+				[text]="'auth.title' | translate"
+				textWrap="true"
+			></Label>
+			<Label [text]="'auth.form.id' | translate" textWrap="true"></Label>
+			<TextField
+				required
+				hint="prenom.nom@eleves.enpc.fr"
+				formControlName="email"
+				keyboardType="email"
+			></TextField>
+			<Label [text]="'auth.form.password' | translate" textWrap="true"></Label>
+			<TextField
+				required
+				secure="true"
+				hint="mylittlepontsny77"
+				formControlName="password"
+			></TextField>
+			<Button
+				[text]="'auth.form.submitButton' | translate"
+				[isEnabled]="!userForm.invalid"
+				(tap)="onSignIn()"
+			></Button>
+		</StackLayout>
 	</StackLayout>
 </ScrollView>
 
@@ -16,9 +44,6 @@ Original Web template:
 <body class="is-preload">
 	<app-auth-card [title]="'auth.title' | translate" id="app-auth-card">
 		<!-- Signup Form ->
-		<form class="signup-form" [formGroup]="userForm" (ngSubmit)="onSignIn()">
-
-		</form>
 		<div id="sso">
 			<a [href]="ssoPath" [attr.aria-label]="'auth.sso' | translate">{{ 'auth.sso' | translate }}</a>
 		</div>

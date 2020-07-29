@@ -50,3 +50,13 @@ $BOX-SHADOW-CARD: $BOX-SHADOW-INPUT-BASE units(8);
 
 /* IMAGE VIEWER */
 $BOX-SHADOW-INNER-LARGE: inset 0 0 units(25) 25px #000;
+
+
+@mixin mobileButton {
+    border-radius: units(6);
+    background: color(GRADIENT_RED_YELLOW);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}

@@ -1,5 +1,60 @@
-/*
-Add your NativeScript specific styles here.
-To learn more about styling in NativeScript see:
-https://docs.nativescript.org/angular/ui/styling
-*/
+@import "~/app/PontheStyle.scss";
+
+Label {
+    @include font-size(LARGE);
+    font-weight: 600;
+}
+
+TextField {
+    width: 55%;
+    color: color(DARK_DARK_GREY);
+    margin: 0;
+    margin-right: units(4);
+}
+
+HTMLView {
+    font-weight: 600;
+    margin-bottom: units(8);
+    color: color(DARK_DARK_GREY);
+}
+
+Button {
+    @include mobileButton;
+}
+
+.resetForm {
+    margin: 0 10%;
+    margin-top: units(35);
+    background: color(WHITE);
+    padding: units(10);
+    color: color(DARK_DARK_GREY);
+    border-radius: units(15);
+    border-width: units(1);
+    border-color: color(DARK_DARK_GREY);
+}
+
+.resetTitle {
+    @include font-size(XLARGE);
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: units(5);
+}
+
+.resetField {
+    width: 100%;
+    margin-bottom: units(8);
+}
+
+.resetExtension {
+    @include font-size(SMALL);
+    font-weight: 300;
+    height: 100%;
+}
+
+.coverImage {
+    background-image: url('~/assets/images/introP.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}

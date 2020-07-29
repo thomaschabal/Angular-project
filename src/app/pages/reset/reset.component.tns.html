@@ -1,17 +1,27 @@
 <app-action-bar></app-action-bar>
 
-<StackLayout [formGroup]="resetForm">
-  <Label [text]="'reset.header.title' | translate" textWrap="true"></Label>
-  
-  <HtmlView [html]="'reset.header.subtitle' | translate" ></HtmlView>
-  <Label [text]="'reset.form.email.placeholder' | translate" textWrap="true"></Label>
-  <StackLayout orientation="horizontal">
-    <TextField required hint="prenom.nom" formControlName="email"></TextField>
-    <Label [text]="'reset.form.email.extension' | translate" textWrap="true"></Label>
-  </StackLayout>
-  <Button [text]="'reset.form.submitButton' | translate" [isEnabled]="!resetForm.invalid" (tap)="onSubmitForm()"></Button>
-</StackLayout>
-
+<ScrollView>
+    <StackLayout [formGroup]="resetForm" class="coverImage">
+      <StackLayout class="resetForm">
+        <Label
+          class="resetTitle"
+          [text]="'reset.header.title' | translate"
+          textWrap="true"
+        ></Label>
+        <HtmlView [html]="'reset.header.subtitle' | translate" ></HtmlView>
+        <Label [text]="'reset.form.email.placeholder' | translate" textWrap="true"></Label>
+        <StackLayout class="resetField" orientation="horizontal">
+          <TextField required hint="prenom.nom" formControlName="email"></TextField>
+          <Label class="resetExtension" [text]="'reset.form.email.extension' | translate" textWrap="true"></Label>
+        </StackLayout>
+        <Button
+          [text]="'reset.form.submitButton' | translate"
+          [isEnabled]="!resetForm.invalid"
+          (tap)="onSubmitForm()"
+        ></Button>
+      </StackLayout>
+    </StackLayout>
+  </ScrollView>
 <!--
 Original Web template:
 

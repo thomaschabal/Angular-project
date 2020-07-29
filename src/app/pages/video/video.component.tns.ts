@@ -48,7 +48,6 @@ export class VideoComponent implements OnInit {
     this.videoService.getVideoData();
 
     this.videoUrl = this.videoService.videoUrls[2].url;
-    console.log(this.videoUrl)
     // MOCK VALUES, FOR DEVELOPMENT
     this.displaySpinner = false;
   }

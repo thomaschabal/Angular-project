@@ -73,6 +73,7 @@ $SIDE_MARGIN_EVENT_CARD: 15%;
     border-color: color(WHITE);
     border-radius: units(10);
     background: rgba(0, 0, 0, 0.35);
+    color: color(WHITE);
 }
 .lastEventTitle {
     @include font-size(XXLARGE);
