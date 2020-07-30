@@ -3,13 +3,18 @@
   <ActivityIndicator
     *ngIf="displaySpinner"
     [busy]="displaySpinner"></ActivityIndicator>
-  <View *ngFor="let event of galeriesService.privatePhotoEvents">
-    <Image
-      [src]="event.image"
-      (tap)="navigateToPrivateGallery(event.slug)"
-    ></Image>
-  </View>
+  <StackLayout>
+    <View *ngFor="let event of galeriesService.privatePhotoEvents">
+      <AbsoluteLayout
+        width="100%"
+        (tap)="navigateToPrivateGallery(event.slug)">
+        <Image [src]="event.image"></Image>
+        <ShadowedLabel class="galleryName" [text]="event.name" textWrap="true"></ShadowedLabel>
+      </AbsoluteLayout>
+    </View>
+  </StackLayout>
   <Label
+    class="noGallery"
     *ngIf="galeriesService.privatePhotoEvents.length === 0 && !displaySpinner"
     [text]="'dashboard.privatePhotoGalleries.none' | translate"
     textWrap="true"></Label>
@@ -18,13 +23,18 @@
   <ActivityIndicator
     *ngIf="displaySpinner"
     [busy]="displaySpinner"></ActivityIndicator>
-  <View *ngFor="let movie of galeriesService.privateVideoEvents">
-    <Image
-      [src]="movie.image"
-      (tap)="navigateToPrivateMovie(movie.slug)"
-    ></Image>
-  </View>
+  <StackLayout>
+    <View *ngFor="let movie of galeriesService.privateVideoEvents">
+      <AbsoluteLayout
+        width="100%"
+        (tap)="navigateToPrivateMovie(movie.slug)">
+        <Image [src]="movie.image"></Image>
+        <ShadowedLabel class="galleryName" [text]="movie.name" textWrap="true"></ShadowedLabel>
+      </AbsoluteLayout>
+    </View>
+  </StackLayout>
   <Label
+    class="noGallery"
     *ngIf="galeriesService.privateVideoEvents.length === 0 && !displaySpinner"
     [text]="'dashboard.privateVideoGalleries.none' | translate"
     textWrap="true"></Label>

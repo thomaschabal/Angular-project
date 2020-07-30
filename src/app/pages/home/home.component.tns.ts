@@ -9,6 +9,9 @@ import { HomeService } from '@src/app/services/home.service';
 import { PicsService } from '@src/app/services/pics.service';
 import { routesAppFromRoot } from '@src/app/Routes';
 
+import { registerElement } from 'nativescript-angular/element-registry';
+import { ShadowedLabel } from 'nativescript-shadowed-label';
+registerElement('ShadowedLabel', () => ShadowedLabel);
 
 
 @Component({

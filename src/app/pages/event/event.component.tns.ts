@@ -11,6 +11,9 @@ import { pontheSpinnerAnimation } from '@src/app/constants/Animations';
 import { ReactionsService } from '@src/app/services/reactions.service';
 import { GetImagesResponse } from '@src/app/types/pics.types';
 
+import { registerElement } from 'nativescript-angular/element-registry';
+registerElement('ImageZoom', () => require('nativescript-image-zoom').ImageZoom);
+
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',

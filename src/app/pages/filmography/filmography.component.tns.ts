@@ -5,6 +5,10 @@ import { VideoService } from '@src/app/services/video.service';
 import { pontheSpinnerAnimation } from '@src/app/constants/Animations';
 import { routesAppFromRoot } from '@src/app/Routes';
 
+import { registerElement } from 'nativescript-angular/element-registry';
+import { ShadowedLabel } from 'nativescript-shadowed-label';
+registerElement('ShadowedLabel', () => ShadowedLabel);
+
 @Component({
   selector: 'app-filmography',
   templateUrl: './filmography.component.html',

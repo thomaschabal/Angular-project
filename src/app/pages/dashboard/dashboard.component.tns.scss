@@ -1,5 +1,38 @@
-/*
-Add your NativeScript specific styles here.
-To learn more about styling in NativeScript see:
-https://docs.nativescript.org/angular/ui/styling
-*/
+@import "~/app/PontheStyle.scss";
+
+.dashboardTitle {
+    width: 100%;
+    text-align: center;
+    @include font-size(XXLARGE);
+    font-weight: 900;
+    margin: units(5) 0;
+}
+
+.privateGalleriesTitle {
+    width: 100%;
+    text-align: center;
+    @include font-size(XXLARGE);
+    font-weight: 600;
+    margin-bottom: units(5);
+    margin-top: units(10);
+}
+
+.moderationTitle {
+    background: color(WHITE);
+    border-color: color(DARK_DARK_GREY);
+    border-width: units(0.5);
+    color: color(DARK_DARK_GREY);
+    margin: units(5) 5%;
+    padding: units(3) units(5);
+    border-radius: units(10);
+    @include font-size(XLARGE);
+    font-weight: 600;
+}
+.moderationView > Label {
+    @include font-size(XLARGE);
+    font-weight: 600;
+}
+
+.open {
+    text-decoration: underline;
+}

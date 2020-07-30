@@ -20,6 +20,7 @@ $INTRO-IMAGE: url("~/assets/images/introP.jpg");
     font-weight: 600;
     text-align: center;
     color: color(WHITE);
+    text-shadow: 0 0 5 #000;
 }
 
 .homeSubtitle {
@@ -29,6 +30,7 @@ $INTRO-IMAGE: url("~/assets/images/introP.jpg");
     font-size: 14px;
     font-weight: 400;
     color: color(WHITE);
+    text-shadow: 0 0 3 #000;
 }
 
 	// #intro > .content {
@@ -72,13 +74,16 @@ $SIDE_MARGIN_EVENT_CARD: 15%;
     border-width: units(1);
     border-color: color(WHITE);
     border-radius: units(10);
-    background: rgba(0, 0, 0, 0.35);
     color: color(WHITE);
 }
 .lastEventTitle {
     @include font-size(XXLARGE);
     font-weight: 900;
     letter-spacing: 0.025;
+    text-shadow: 0 0 5 #000;
+}
+.lastEventResume {
+    text-shadow: 0 0 3 #000;
 }
 
 

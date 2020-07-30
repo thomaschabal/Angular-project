@@ -2,12 +2,15 @@
 
 <ScrollView>
   <StackLayout>
-    <Label [text]="'dashboard.header.title' | translate" textWrap="true"></Label>
+    <Label class="dashboardTitle" [text]="'dashboard.header.title' | translate" textWrap="true"></Label>
 
-    <app-gallery-creation-form></app-gallery-creation-form>
+    <app-gallery-creation-form
+      class="dashboardCreationForm"
+    ></app-gallery-creation-form>
 
     <Label
-      [text]="'dashboard.links.moderation' | translate"
+      [class]="openModeration ? 'moderationTitle open' : 'moderationTitle none'"
+      [text]="'+ ' + ('dashboard.links.moderation' | translate)"
       textWrap="true"
       (tap)="displayModeration()"
     ></Label>
@@ -16,11 +19,10 @@
       *ngIf="openModeration"
       [loadStarted]="moderationStarted()"
       [loadFinished]="moderationLoaded()"
-      row="1"
       src="https://ponthe.enpc.org/v1/moderation"
     ></WebView>
     
-    <Label [text]="'dashboard.privateGalleries.title' | translate" textWrap="true"></Label>
+    <Label class="privateGalleriesTitle" [text]="'dashboard.privateGalleries.title' | translate" textWrap="true"></Label>
     <app-private-galleries></app-private-galleries>
   </StackLayout>
 </ScrollView>

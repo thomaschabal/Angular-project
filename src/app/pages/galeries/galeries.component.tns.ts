@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { GaleriesService } from '@src/app/services/galeries.service';
 import { routesAppFromRoot } from '@src/app/Routes';
 import { pontheSpinnerAnimation } from '@src/app/constants/Animations';
+
+import { registerElement } from 'nativescript-angular/element-registry';
+import { ShadowedLabel } from 'nativescript-shadowed-label';
+registerElement('ShadowedLabel', () => ShadowedLabel);
+
 // import { ImageSourceSVG } from 'nativescript-svg';
 
 // const svgFile = new ImageSourceSVGModule.ImageSourceSVG();

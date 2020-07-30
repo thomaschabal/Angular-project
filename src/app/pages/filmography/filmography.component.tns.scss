@@ -5,7 +5,7 @@ $LABEL_WIDTH: 70%;
     @include font-size(XXLARGE);
     font-family: 'Roboto', 'Roboto-Regular';
     font-weight: 600;
-    // text-shadow: 20px 0 0 red;
+    text-shadow: 0 0 5 #000;
     letter-spacing: 0.025px;
     color: color(WHITE);
     width: $LABEL_WIDTH;

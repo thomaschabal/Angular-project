@@ -1,5 +1,6 @@
 <StackLayout>
   <Label
+    [class]="displayContent ? 'formTitle open' : 'formTitle none'"
     [text]="title"
     textWrap="true"
     (tap)="formVisibility()"></Label>

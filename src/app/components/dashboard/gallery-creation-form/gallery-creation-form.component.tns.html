@@ -1,4 +1,4 @@
-<app-dashboard-form [title]="'dashboard.form.title' | translate"> 
+<app-dashboard-form [title]="'+ ' + ('dashboard.form.title' | translate)"> 
    <StackLayout [formGroup]="eventForm">
       <Label [text]="'dashboard.form.name' | translate" textWrap="true"></Label>
       <TextField

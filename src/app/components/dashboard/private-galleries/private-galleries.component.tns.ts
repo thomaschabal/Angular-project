@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { GaleriesService } from '@src/app/services/galeries.service';
 import { routesAppFromRoot } from '@src/app/Routes';
 
+import { registerElement } from 'nativescript-angular/element-registry';
+import { ShadowedLabel } from 'nativescript-shadowed-label';
+registerElement('ShadowedLabel', () => ShadowedLabel);
+
 @Component({
   selector: 'app-private-galleries',
   templateUrl: './private-galleries.component.html',

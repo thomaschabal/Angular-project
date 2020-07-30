@@ -1,4 +1,4 @@
-<StackLayout>
+<StackLayout (tap)="closeDrawer()">
   <app-nav-link [route]="routes.auth" [name]="'nav.title_auth.auth' | translate"></app-nav-link>
   <app-nav-link [route]="routes.newAccount" [name]="'nav.title_auth.register' | translate"></app-nav-link>
   <app-nav-link [route]="routes.reset" [name]="'nav.title_auth.reset' | translate"></app-nav-link>

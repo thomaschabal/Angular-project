@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { routesAppFromRoot } from '@src/app/Routes';
 
@@ -10,6 +10,7 @@ import { routesAppFromRoot } from '@src/app/Routes';
 
 export class AuthNavComponent implements OnInit {
   routes = routesAppFromRoot;
+  @Input() closeDrawer: () => void;
 
   constructor() { }
 

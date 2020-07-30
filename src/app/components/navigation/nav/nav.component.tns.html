@@ -17,7 +17,7 @@
         <app-nav-link [route]="routes.auth" [name]="'nav.logout' | translate" [imgSrc]="svgLogout" [noFill]="true" (tap)="onSignOut()"></app-nav-link>
     </StackLayout>
 
-    <app-auth-nav *ngIf="!isOnline()"></app-auth-nav>
+    <app-auth-nav *ngIf="!isOnline()" [closeDrawer]="closeDrawer"></app-auth-nav>
 </ScrollView>
 
 <!--

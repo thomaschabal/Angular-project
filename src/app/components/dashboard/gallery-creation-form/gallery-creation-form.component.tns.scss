@@ -1,5 +1,16 @@
-/*
-Add your NativeScript specific styles here.
-To learn more about styling in NativeScript see:
-https://docs.nativescript.org/angular/ui/styling
-*/
+@import "~/app/PontheStyle.scss";
+
+Button {
+    @include mobileButton;
+}
+
+Label {
+    @include font-size(LARGE);
+    font-weight: 600;
+    margin-top: units(3);
+}
+
+TextField {
+    width: 100%;
+    color: color(DARK_DARK_GREY);
+}

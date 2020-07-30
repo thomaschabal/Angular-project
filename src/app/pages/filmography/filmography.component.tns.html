@@ -4,10 +4,14 @@
   [reloadFn]="reloadFunction"
   [loading]="videoService.isLoadingFirstFilmography"
   [loadMore]="videoService.isLoadingMoreFilmography">
-  <View *ngFor="let movie of videoService.allFilmography; let i = index">
+  <View *ngFor="let movie of videoService.allFilmography">
     <AbsoluteLayout width="100%" (tap)="navigateToMovie(movie.slug)">
       <Image [src]="movie.image"></Image>
-      <Label class="galleryName" [text]="movie.name" textWrap="true"></Label>
+      <ShadowedLabel
+        class="galleryName"
+        [text]="movie.name"
+        textWrap="true"
+      ></ShadowedLabel>
     </AbsoluteLayout>
   </View>
   <Label *ngIf="

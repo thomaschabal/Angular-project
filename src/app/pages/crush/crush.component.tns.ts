@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { ReactionsService } from '@src/app/services/reactions.service';
 import { pontheSpinnerAnimation } from '@src/app/constants/Animations';
 
+import { registerElement } from 'nativescript-angular/element-registry';
+import { ShadowedLabel } from 'nativescript-shadowed-label';
+registerElement('ShadowedLabel', () => ShadowedLabel);
+
 @Component({
   selector: 'app-crush',
   templateUrl: './crush.component.html',

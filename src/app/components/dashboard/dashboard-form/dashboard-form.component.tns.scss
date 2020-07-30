@@ -1,5 +1,20 @@
-/*
-Add your NativeScript specific styles here.
-To learn more about styling in NativeScript see:
-https://docs.nativescript.org/angular/ui/styling
-*/
+@import "~/app/PontheStyle.scss";
+
+StackLayout {
+    background: color(WHITE);
+    border-color: color(DARK_DARK_GREY);
+    border-width: units(0.5);
+    color: color(DARK_DARK_GREY);
+    margin: units(5) 5%;
+    padding: units(3) units(5);
+    border-radius: units(10);
+}
+
+.formTitle {
+    @include font-size(XLARGE);
+    font-weight: 600;
+}
+
+.open {
+    text-decoration: underline;
+}

@@ -4,7 +4,7 @@
   <View *ngFor="let picture of reactionsService.crushesPics; let i = index">
     <AbsoluteLayout width="100%">
       <Image [src]="picture.image"></Image>
-      <Label class="galleryName" [text]="picture.name" textWrap="true"></Label>
+      <ShadowedLabel class="galleryName" [text]="picture.name" textWrap="true"></ShadowedLabel>
     </AbsoluteLayout>
   </View>
   <Label *ngIf="

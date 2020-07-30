@@ -10,18 +10,18 @@
         stretch="aspectFill"
         class="introImage"
         [height]="screenHeight"></Image>
-      <Label
+      <ShadowedLabel
         [text]="'home.header.title' | translate"
         textWrap="true"
         [top]="0.2 * screenHeight"
         class="homeTitle"
-      ></Label>
-      <Label
+      ></ShadowedLabel>
+      <ShadowedLabel
         [text]="formatIntroString('home.header.introduction' | translate)"
         textWrap="true"
         [top]="0.4 * screenHeight"
         class="homeSubtitle"
-      ></Label>
+      ></ShadowedLabel>
       <ActivityIndicator class="introLoader"
         *ngIf="!homeService.areLastEventsLoaded"
         [busy]="!homeService.areLastEventsLoaded"
@@ -44,8 +44,8 @@
         [height]="0.5 * screenHeight"
         stretch="aspectFill"></Image>
       <StackLayout class="lastEventCard">
-        <Label class="lastEventTitle" [text]="event.name" textWrap="true"></Label>
-        <Label [text]="event.resume" textWrap="true"></Label>
+        <ShadowedLabel class="lastEventTitle" [text]="event.name" textWrap="true"></ShadowedLabel>
+        <ShadowedLabel class="lastEventResume" [text]="event.resume" textWrap="true"></ShadowedLabel>
       </StackLayout>
     </AbsoluteLayout>
 
