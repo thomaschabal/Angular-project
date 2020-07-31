@@ -1,5 +1,19 @@
-/*
-Add your NativeScript specific styles here.
-To learn more about styling in NativeScript see:
-https://docs.nativescript.org/angular/ui/styling
-*/
+@import "~/app/PontheStyle.scss";
+
+.teamTitle {
+    width: 100%;
+    @include font-size(XXLARGE);
+    font-weight: 600;
+    text-align: center;
+    margin-top: units(5);
+}
+
+.listMembers {
+    margin: units(5) 10%;
+    font-weight: 600;
+    letter-spacing: 0.025;
+}
+
+.picturesMembers {
+    height: 100%;
+}

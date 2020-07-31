@@ -3,6 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { style, state, animate, transition, trigger } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { screen } from 'tns-core-modules/platform/platform';
+import { registerElement } from 'nativescript-angular/element-registry';
+import { ShadowedLabel } from 'nativescript-shadowed-label';
+registerElement('ShadowedLabel', () => ShadowedLabel);
 
 import { MembersService } from '@src/app/services/members.service';
 import { routesAppFromRoot } from '@src/app/Routes';
@@ -21,7 +25,7 @@ import { routesAppFromRoot } from '@src/app/Routes';
 })
 
 export class MembersComponent implements OnInit, OnDestroy {
-
+  screenHeight = screen.mainScreen.heightDIPs * (1 - 200 / screen.mainScreen.heightPixels);
   routes = routesAppFromRoot;
   // Data to show to the user
   fragmentIntro = '';

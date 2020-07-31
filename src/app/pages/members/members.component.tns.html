@@ -2,8 +2,27 @@
 
 <ScrollView>
   <StackLayout>
-    <Label [text]="'members.header.title' | translate" textWrap="true"></Label>
-    <Label [text]="'members.header.subtitle' | translate" textWrap="true"></Label>
+    <AbsoluteLayout
+      class="intro"
+      [height]="0.9 * screenHeight">
+      <Image
+        src="~/assets/images/introP.jpg"
+        stretch="aspectFill"
+        class="introImage"
+        [height]="screenHeight"></Image>
+      <ShadowedLabel
+        class="membersTitle"
+        [text]="'members.header.title' | translate"
+        textWrap="true"
+        [top]="0.2 * screenHeight"
+      ></ShadowedLabel>
+      <ShadowedLabel
+        class="membersSubtitle"
+        [text]="'members.header.subtitle' | translate"
+        textWrap="true"
+        [top]="0.4 * screenHeight"
+      ></ShadowedLabel>
+    </AbsoluteLayout>
     <app-ponthe-team
       *ngFor="let team of teamPonthe; let i=index"
       [team]="team"

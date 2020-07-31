@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { screen } from 'tns-core-modules/platform/platform';
 
-import { NUMBER_PICS_BY_PONTHE_TEAM } from '@src/app/constants/Images';
+import { NUMBER_PICS_BY_PONTHE_TEAM, PONTHE_PROMO_IMAGES } from '@src/app/constants/Images';
 
 @Component({
   selector: 'app-ponthe-team',
@@ -26,6 +27,8 @@ export class PontheTeamComponent implements OnInit {
   teamStateRight = 'hidden-right';
   placement: string;
   numberOfPics: number;
+  teamPictures = [];
+  screenWidth: number = screen.mainScreen.widthDIPs * (1 - 50 / screen.mainScreen.widthPixels);
 
   constructor() { }
 
@@ -33,6 +36,13 @@ export class PontheTeamComponent implements OnInit {
     this.teamId = this.team.year_id + '_0';
     this.placement = (this.index % 2 === 0) ? 'right' : 'left';
     this.numberOfPics = NUMBER_PICS_BY_PONTHE_TEAM[this.team.year];
+    if (Object.keys(PONTHE_PROMO_IMAGES).includes(this.team.year)) {
+      this.teamPictures = PONTHE_PROMO_IMAGES[this.team.year];
+    }
+    this.screenWidth = screen.mainScreen.widthDIPs;
+    if (this.teamPictures.length > 1) {
+      this.screenWidth = this.screenWidth * (1 - 50 / screen.mainScreen.widthPixels);
+    }
   }
 
   survoleTeam(stateTeam: string) {

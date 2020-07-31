@@ -1,8 +1,22 @@
 <StackLayout>
-  <Label [text]="'Ponthé ' + team.year" textWrap="true"></Label>
   <Label
-    *ngFor="let poste of team.members"
-    [text]="poste" textWrap="true"></Label>
+    class="teamTitle"
+    [text]="'Ponthé ' + team.year"
+    textWrap="true"></Label>
+  <StackLayout class="listMembers">
+    <Label
+      *ngFor="let poste of team.members"
+      [text]="poste" textWrap="true"></Label>
+  </StackLayout>
+  <ScrollView orientation="horizontal">
+    <StackLayout orientation="horizontal">
+      <Image
+        *ngFor="let pic of teamPictures"
+        [src]="pic"
+        [width]="screenWidth"
+        class="picturesMembers"></Image>
+    </StackLayout>
+  </ScrollView>
 </StackLayout>
 
 <!--
