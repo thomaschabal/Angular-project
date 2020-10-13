@@ -26,4 +26,5 @@ export const NUMBER_PICS_BY_PONTHE_TEAM = {
   '019': 1,
   '020': 5,
   '021': 5,
+  '022': 1,
 };

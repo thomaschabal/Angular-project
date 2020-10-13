@@ -33,7 +33,9 @@ $PONTHE-PROMO-IMAGES: (
         url($TEAM-FOLDER + "021_trombi.jpg")
         url($TEAM-FOLDER + "021_passa.jpg")
         url($TEAM-FOLDER + "021_pulls.jpg")
-        url($TEAM-FOLDER + "020_021_gala.jpeg")
+        url($TEAM-FOLDER + "020_021_gala.jpeg"),
+    022:
+        url($TEAM-FOLDER + "022_pulls_compressee.jpg")
 );
 
 $INDEX-PONTHE-TROMBI: (
@@ -43,5 +45,6 @@ $INDEX-PONTHE-TROMBI: (
     018: -1,
     019: -1,
     020: 2,
-    021: 1
+    021: 1,
+    022: -1
 );
