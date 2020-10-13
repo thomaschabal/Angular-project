@@ -1,6 +1,6 @@
 export const LINKS = [
     {
-      href: 'https://www.facebook.com/club.ponthe',
+      href: 'https://www.facebook.com/Ponth%C3%A9-%C3%89cole-des-Ponts-ParisTech-105234431249408',
       class: 'fa-facebook',
       name: 'Facebook',
     },
@@ -14,11 +14,11 @@ export const LINKS = [
       class: 'fa-github',
       name: 'GitHub',
     },
-    // {
-    //   href: '#',
-    //   class: 'fa-linkedin',
-    //   name: 'LinkedIn',
-    // },
+     {
+       href: 'https://www.linkedin.com/company/ponth%C3%A9-%C3%A9coledesponts',
+       class: 'fa-linkedin',
+       name: 'LinkedIn',
+     },
     {
       href: 'mailto:ponthe@liste.enpc.fr',
       class: 'fa-envelope-o',
